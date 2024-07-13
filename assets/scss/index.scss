@@ -1,0 +1,12 @@
+@import "./reset";
+@import "./root";
+@import "./fonts";
+@import "./ui/";
+
+.wrapper {
+  background: var(--color-bg-main);
+  //   color: rgb(var(--color-dark));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
