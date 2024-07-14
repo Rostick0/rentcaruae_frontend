@@ -1,4 +1,10 @@
-.ui-text {
-  color: var(--color-basic);
-  font-weight: 700;
+.text {
+  &-ui {
+    color: var(--color-basic);
+    font-weight: 700;
+  }
+
+  &-decoration {
+    text-decoration: underline;
+  }
 }

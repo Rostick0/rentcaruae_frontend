@@ -49,7 +49,7 @@
         <VFormComponent :field="country" />
         <div class="header__links">
           <NuxtLink
-            class="header__link ui-text"
+            class="header__link text-ui"
             v-for="link in links"
             :key="link.name"
             :to="link.link"

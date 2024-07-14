@@ -17,7 +17,7 @@
           From
           <del class="car-short__price-old" v-if="car?.price_old"
             >AED {{ car?.price_old }}</del
-          >&nbsp;<span class="car-short__price ui-text"
+          >&nbsp;<span class="car-short__price text-ui"
             >AED {{ car?.price }}</span
           >
           per day

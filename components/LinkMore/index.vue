@@ -1,6 +1,6 @@
 <template>
   <NuxtLink class="link-more" :to="to">
-    <span class="ui-text">{{ name }}</span>
+    <span class="text-ui">{{ name }}</span>
     <svg
       width="20"
       height="20"

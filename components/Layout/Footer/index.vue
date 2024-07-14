@@ -8,7 +8,7 @@
 
         <div class="footer__center">
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Rent car</div>
+            <div class="footer-item__title text-ui">Rent car</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Abu Dhabi</NuxtLink>
               <NuxtLink class="footer-item__link" to="/">Al Ain</NuxtLink>
@@ -17,7 +17,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Categories</div>
+            <div class="footer-item__title text-ui">Categories</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Luxury</NuxtLink>
               <NuxtLink class="footer-item__link" to="/">Sports</NuxtLink>
@@ -26,7 +26,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Brands</div>
+            <div class="footer-item__title text-ui">Brands</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Audi</NuxtLink>
               <NuxtLink class="footer-item__link" to="/">BMW</NuxtLink>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Body Types</div>
+            <div class="footer-item__title text-ui">Body Types</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Compact</NuxtLink>
               <NuxtLink class="footer-item__link" to="/">Convertible</NuxtLink>
@@ -44,7 +44,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Rental by period</div>
+            <div class="footer-item__title text-ui">Rental by period</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Daily rental</NuxtLink>
               <NuxtLink class="footer-item__link" to="/"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">About us</div>
+            <div class="footer-item__title text-ui">About us</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/">Blog</NuxtLink>
               <NuxtLink class="footer-item__link" to="/"
@@ -68,7 +68,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title ui-text">Follow us</div>
+            <div class="footer-item__title text-ui">Follow us</div>
             <div class="footer-item__btns">
               <a class="footer-item__icon" href="#">
                 <svg
