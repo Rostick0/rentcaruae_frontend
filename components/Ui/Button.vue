@@ -29,7 +29,7 @@ defineProps<Props>();
   padding: 12px 16px;
 
   &.outlined {
-    background-color: var(--color-white);
+    background-color: transparent;
     color: var(--color-basic);
     border-color: var(--color-basic);
   }

@@ -138,6 +138,7 @@
   &__center {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     grid-gap: 20px 44px;
     margin-bottom: 32px;
   }

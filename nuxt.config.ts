@@ -24,5 +24,5 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/scss/index.scss"],
 
-  modules: ["nuxt-lazy-hydrate"],
+  modules: ["nuxt-lazy-hydrate", "@nuxt/image"],
 });
