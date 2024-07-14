@@ -13,7 +13,7 @@ defineComponent({
 
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
   variant?: "standard" | "outlined";
-  color?: "grey" | "grey-dark";
+  // color?: "grey" | "grey-dark";
 }
 
 defineProps<Props>();
@@ -28,11 +28,11 @@ defineProps<Props>();
   font-size: 16px;
   padding: 12px 16px;
 
-  // &.outlined {
-  //   background-color: var(--color-white);
-  //   color: var(--color-black);
-  //   border-color: var(--color-green);
-  // }
+  &.outlined {
+    background-color: var(--color-white);
+    color: var(--color-basic);
+    border-color: var(--color-basic);
+  }
 
   // &.grey {
   //   background-color: var(--color-grey);

@@ -2,7 +2,9 @@
   <header class="header">
     <div class="container">
       <div class="header__top">
-        <Logo />
+        <NuxtLink class="d-flex" to="/">
+          <Logo />
+        </NuxtLink>
         <UiButton class="btn-flex">
           <svg
             width="20"
