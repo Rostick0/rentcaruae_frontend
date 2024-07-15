@@ -3,19 +3,19 @@
     <MainBanner />
     <MainBrands />
     <div class="car-cards">
-      <CarShortList
+      <CarCardShortList
         :cars="cars"
         title="Special offers"
         linkText="All special offers"
         link="/"
       />
-      <CarShortList
+      <CarCardShortList
         :cars="cars"
         title="Luxury cars"
         linkText="All Luxury cars"
         link="/"
       />
-      <CarShortList
+      <CarCardShortList
         :cars="cars"
         title="SUV for rent"
         linkText="All SUV"

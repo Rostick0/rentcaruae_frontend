@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <div class="banner__left">
-      <h1 class="banner__title">Rent a car in Dubai</h1>
+      <h1 class="banner__title h1">Rent a car in Dubai</h1>
       <h2 class="banner__subtitle">
         Book a car for a day or a month without commission
       </h2>
@@ -62,8 +62,6 @@ const links = [
   margin-bottom: 40px;
 
   &__title {
-    font-size: 52px;
-    line-height: 1;
     margin-bottom: 20px;
   }
 

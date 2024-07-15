@@ -12,19 +12,30 @@
         @keydown.enter="isOpened = !isOpened"
         class="select__field"
         tabindex="0"
-        :class="{ select__active: isOpened }"
+        :class="{
+          select__active: isOpened,
+        }"
         @click="toggle"
       >
+        <template v-if="withLeftIcon">
+          <component v-if="componentLeftIcon" :is="componentLeftIcon" />
+          <span
+            class="select__icon _left"
+            v-else-if="svgLeftIcon"
+            v-html="svgLeftIcon"
+          ></span>
+        </template>
         <template v-if="isSearchable">
           <input
             class="select__value"
-            :class="{ icon: withIcon }"
+            :class="{ icon: withIcon, 'icon-left': withLeftIcon }"
             :placeholder="placeholder"
             :value="model?.value ?? model?.name ?? model?.title"
             v-if="!isOpened"
           />
           <input
             class="select__value"
+            :class="{ icon: withIcon, 'icon-left': withLeftIcon }"
             v-if="isOpened"
             :placeholder="placeholder"
             ref="inputRef"
@@ -39,6 +50,8 @@
             :class="{
               placeholder:
                 placeholder && !(model?.value ?? model?.name ?? model?.title),
+              icon: withIcon,
+              'icon-left': withLeftIcon,
             }"
           >
             {{
@@ -135,6 +148,18 @@ const props = defineProps({
     type: [String, null, undefined],
   },
   componentIcon: {
+    default: null,
+    type: [Object, null, undefined],
+  },
+  withLeftIcon: {
+    default: false,
+    type: Boolean,
+  },
+  svgLeftIcon: {
+    default: null,
+    type: [String, null, undefined],
+  },
+  componentLeftIcon: {
     default: null,
     type: [Object, null, undefined],
   },
@@ -236,19 +261,6 @@ const handleScroll = (event) => {
     // width: 100%;
   }
 
-  // &__active {
-  //   .select {
-  //     &__value {
-  //       border-bottom-left-radius: 0;
-  //       border-bottom-right-radius: 0;
-  //     }
-
-  //     &__icon {
-  //       transform: rotate(180deg) translateY(50%);
-  //     }
-  //   }
-  // }
-
   &__icon {
     display: flex;
     position: absolute;
@@ -256,6 +268,11 @@ const handleScroll = (event) => {
     right: 16px;
     transform: translateY(-50%);
     transition: 0.3s;
+
+    &._left {
+      left: 16px;
+      right: initial;
+    }
   }
 
   input {
@@ -272,14 +289,18 @@ const handleScroll = (event) => {
     font-weight: 700;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1;
     white-space: nowrap;
     padding: 12px 16px;
-    padding-right: 40px;
     // width: 100%;
     width: fit-content;
 
     &.icon {
-      padding-right: 44px;
+      padding-right: 40px;
+    }
+
+    &.icon-left {
+      padding-left: 40px;
     }
   }
 
@@ -311,23 +332,24 @@ const handleScroll = (event) => {
 
   &__options {
     background-color: var(--color-white);
-    color: var(--color-grey-dark);
-    border: 1px solid var(--color-line);
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    color: var(--color-basic);
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 #00000040;
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
-    font-size: 14px;
-    padding: 10px 18px;
+    row-gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 8px;
     position: absolute;
+    // left: 50%;
     bottom: 1px;
     transform: translateY(100%);
     overflow: auto;
     max-height: 20rem;
     width: 100%;
-    z-index: 1000000;
+    // width: fit-content;
+    z-index: 1000;
   }
 }
 </style>

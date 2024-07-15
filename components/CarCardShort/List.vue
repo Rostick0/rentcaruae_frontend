@@ -5,7 +5,7 @@
       <LinkMore :name="linkText" :to="link" />
     </div>
     <div class="car-list__cars">
-      <CarShortItem v-for="car in cars" :key="car?.id" :car="car" />
+      <LazyCarCardShortItem v-for="car in cars" :key="car?.id" :car="car" />
     </div>
   </div>
 </template>

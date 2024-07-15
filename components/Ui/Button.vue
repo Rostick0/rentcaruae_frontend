@@ -26,7 +26,7 @@ defineProps<Props>();
   border: 1px solid transparent;
   border-radius: 8px;
   font-size: 16px;
-  padding: 12px 16px;
+  padding: 11px 16px;
 
   &.outlined {
     background-color: transparent;

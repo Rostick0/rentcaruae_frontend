@@ -1,0 +1,332 @@
+<template>
+  <div class="car">
+    <div class="car__top">
+      <div class="car__title">{{ car?.title }}</div>
+      <LazyNuxtImg
+        :src="car?.make?.path"
+        loading="lazy"
+        :alt="car?.make?.name"
+        width="40"
+        height="40"
+      />
+    </div>
+    <div class="car__image">
+      <LazyNuxtImg
+        class="car__img"
+        :src="car?.image?.path"
+        loading="lazy"
+        :alt="car?.title"
+        fit="cover"
+        width="320"
+        height="196"
+      />
+    </div>
+    <div class="car__info">
+      <div class="car__info_left">
+        <div class="car__options">
+          <div class="car__option" v-for="option in car?.options" :key="option">
+            {{ option }}
+          </div>
+        </div>
+        <div class="car__characteristics">
+          <div class="car-characteristic">
+            <LazyNuxtImg
+              class="car-characteristic__iconc"
+              :src="`images/icon/${car?.gearbox}.svg`"
+              loading="lazy"
+              alt="gearbox"
+              width="20"
+              height="20"
+            />
+            <span class="car-characteristic__text">{{ car?.gearbox }}</span>
+          </div>
+          <div class="car-characteristic">
+            <LazyNuxtImg
+              class="car-characteristic__icon"
+              src="images/icon/persons.svg"
+              loading="lazy"
+              alt="persons"
+              width="20"
+              height="20"
+            />
+            <span class="car-characteristic__text"
+              >{{ car?.persons }} Person</span
+            >
+          </div>
+          <div class="car-characteristic">
+            <LazyNuxtImg
+              class="car-characteristic__icon"
+              :src="`images/icon/${car?.fuel_type}.svg`"
+              loading="lazy"
+              alt="fuel type"
+              width="20"
+              height="20"
+            />
+            <span class="car-characteristic__text">{{ car?.fuel_type }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="car__info_right">
+        <LazyNuxtImg
+          :src="car?.user?.path"
+          loading="lazy"
+          :alt="car?.user?.name"
+          width="78"
+          height="39"
+        />
+      </div>
+    </div>
+    <div class="car__stats">
+      <div class="car-stat">
+        <div class="car-stat__title">Deposit</div>
+        <div class="car-stat__value" :class="{ free: !car?.deposite }">
+          {{ car?.deposite ?? "Free" }}
+        </div>
+      </div>
+      <div class="car-stat__hr"></div>
+      <div class="car-stat">
+        <div class="car-stat__title">Mileage day/mo</div>
+        <div class="car-stat__value">
+          {{ car?.mileage_day }} <span class="car-stat__value_km">km</span> /
+          {{ car?.mileage_month }} <span class="car-stat__value_km">km</span>
+        </div>
+      </div>
+      <div class="car-stat__hr"></div>
+      <div class="car-stat">
+        <div class="car-stat__title">Minimum</div>
+        <div class="car-stat__value">
+          {{ car?.min_days }} {{ car?.min_days > 1 ? "cars" : "car" }}
+        </div>
+      </div>
+    </div>
+    <div class="car__params">
+      <div class="car__params_left">
+        <div
+          class="car-module"
+          v-for="moduleItem in car?.modules"
+          :key="moduleItem"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.33329 13.25L3.83329 9.75001L2.66663 10.9167L7.33329 15.5833L17.3333 5.58334L16.1666 4.41667L7.33329 13.25Z"
+              fill="#221EE3"
+            />
+          </svg>
+          <span>{{ moduleItem }}</span>
+        </div>
+      </div>
+      <div class="car__params_right">
+        <div class="car-price">
+          <div class="car-price__old">
+            Daily
+            <del class="car-price__old_del">AED {{ car?.price_daily_old }}</del>
+          </div>
+          <div class="car-price__current">AED {{ car?.price_daily }}</div>
+        </div>
+        <div class="car-price">
+          <div class="car-price__old">
+            Monthly
+            <del class="car-price__old_del">AED {{ car?.price_month_old }}</del>
+          </div>
+          <div class="car-price__current">AED {{ car?.price_month }}</div>
+        </div>
+      </div>
+    </div>
+    <UiButton class="car__btn">Rent now</UiButton>
+  </div>
+</template>
+
+<script setup>
+const props = defineProps({
+  car: Object,
+});
+</script>
+
+<style lang="scss" scoped>
+.car {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 20px;
+  padding-top: 6px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__image {
+    display: flex;
+    padding-top: 62%;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  &__img {
+    border-radius: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    margin-bottom: 16px;
+
+    &__right {
+      flex-shrink: 0;
+    }
+  }
+
+  &__options {
+    display: flex;
+    grid-gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__option {
+    color: var(--color-white);
+    border-radius: 30px;
+    font-weight: 700;
+    padding: 4px 12px;
+
+    &:first-child {
+      background-color: #10c44d;
+    }
+
+    &:nth-child(2) {
+      background-color: #26bce4;
+    }
+  }
+
+  &__characteristics {
+    display: flex;
+    grid-gap: 12px;
+  }
+
+  &-characteristic {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+
+    &__icon {
+      flex-shrink: 0;
+    }
+
+    &__text {
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &-module {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  &__stats {
+    background-color: #f9f9fb;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 24px;
+  }
+
+  &-stat {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 4px;
+    padding: 8px;
+
+    &__title {
+      font-size: 12px;
+    }
+
+    &__value {
+      font-size: 16px;
+      font-weight: 700;
+
+      &.free {
+        color: #1b7e55;
+      }
+
+      &_km {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+    &__hr {
+      background-color: var(--color-text100);
+      content: "";
+      display: inline-block;
+      align-self: center;
+      width: 1px;
+      height: 16px;
+    }
+  }
+
+  &__params {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: 8px;
+    margin-bottom: 20px;
+
+    &_right {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+  }
+
+  &-price {
+    text-align: right;
+    font-weight: 700;
+
+    &__old {
+      font-size: 12px;
+      margin-bottom: 2px;
+
+      &_del {
+        color: var(--color-old-val);
+      }
+    }
+
+    &__current {
+      color: var(--color-basic);
+      font-size: 20px;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}
+</style>

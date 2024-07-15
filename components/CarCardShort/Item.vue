@@ -46,6 +46,7 @@ const props = defineProps({
   border-radius: 8px;
 
   &__image {
+    display: flex;
     padding-top: 63%;
     position: relative;
   }
