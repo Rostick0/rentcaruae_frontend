@@ -26,7 +26,12 @@ defineProps<Props>();
   border: 1px solid transparent;
   border-radius: 8px;
   font-size: 16px;
+  transition: 0.3s;
   padding: 11px 16px;
+
+  &:hover {
+    background-color: var(--color-basic-hover);
+  }
 
   &.outlined {
     background-color: transparent;

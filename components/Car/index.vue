@@ -38,11 +38,21 @@ const specifications = computed(() =>
 .car {
   display: flex;
   align-items: flex-start;
+  column-gap: 20px;
+  margin-bottom: 20px;
 
   &__spoilers {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+  }
+
+  &__left {
+    flex-shrink: 1;
+  }
+
+  &__right {
+    flex: 0 0 456px;
   }
 }
 </style>

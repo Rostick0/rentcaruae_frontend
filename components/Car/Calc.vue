@@ -1,14 +1,394 @@
 <template>
-  <div class="calc"></div>
+  <form class="calc" @submit="onSubmit">
+    <div class="calc__top">
+      <div class="calc__top_left">
+        <div class="calc__top_title calc__title">
+          {{ periodSelect.modelValue?.name }} rental offer
+        </div>
+        <div class="calc__top_period">
+          <span>Selected period:</span>
+          <VFormComponent :field="periodSelect" />
+        </div>
+      </div>
+      <div class="calc__top_right">
+        <div class="calc__price-old">
+          {{ periodSelect.modelValue?.name }}
+          <del class="del">AED 3 600</del>
+        </div>
+        <div class="calc__price">
+          AED
+          <span class="calc__price_val">3 499</span>
+        </div>
+      </div>
+    </div>
+    <div class="calc-item">
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/deposit.svg"
+            loading="lazy"
+            alt="Deposit"
+            width="20"
+            heihgt="20"
+          />
+          <span>Deposit</span>
+        </div>
+        <span>AED 3 800</span>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <VFormComponent
+            class="calc-item__switch calc-item__size-small"
+            :field="without_deposite"
+          />
+
+          <!-- <UiSwitch
+            class="calc-item__switch calc-item__size-small"
+            v-model="without_deposite"
+            >You can rent a car without any deposit dy including the additional
+            service fee in your rental price</UiSwitch
+          > -->
+        </div>
+        <div class="calc-item__flex_right">
+          AED 45 <br />
+          <span class="calc-item__size-small">per day</span>
+        </div>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/calendar.svg"
+            loading="lazy"
+            alt="Calendar"
+            width="20"
+            heihgt="20"
+          />
+          <span>Minimum rental period</span>
+        </div>
+        <span>3 days</span>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/map.svg"
+            loading="lazy"
+            alt="Calendar"
+            width="20"
+            heihgt="20"
+          />
+          <span>Total mileage limit</span>
+        </div>
+        <span>1200 km</span>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/settings.svg"
+            loading="lazy"
+            alt="Calendar"
+            width="20"
+            heihgt="20"
+          />
+          <span>Service and maintenance</span>
+        </div>
+        <span>Free</span>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/protect.svg"
+            loading="lazy"
+            alt="Calendar"
+            width="20"
+            heihgt="20"
+          />
+          <span>Basic insurance</span>
+        </div>
+        <span>Free</span>
+      </div>
+      <div class="calc-item__flex">
+        <div class="calc-item__flex_left">
+          <LazyNuxtImg
+            src="images/icon/card.svg"
+            loading="lazy"
+            alt="Calendar"
+            width="20"
+            heihgt="20"
+          />
+          <span>VAT Tax Applicable</span>
+        </div>
+        <span>+5%</span>
+      </div>
+
+      <UiButton class="calc__button" @click.prevent>Book</UiButton>
+      <UiButton class="calc__button whatsapp" @click.prevent>WhatsApp</UiButton>
+    </div>
+    <div class="calc-item">
+      <div class="calc__title">Choose rental dates</div>
+      <div class="calc-date">
+        <div class="calc-date__item">
+          <strong class="calc-item__size-small">Pick-up date</strong>
+          <div class="text-ui">
+            {{ moment(period.modelValue?.[0]).format("D MMM YYYY") }}
+          </div>
+        </div>
+        <div class="calc-date__item">
+          <strong class="calc-item__size-small">Drop-off date</strong>
+          <div class="text-ui">
+            {{ moment(period.modelValue?.[1]).format("D MMM YYYY") }}
+          </div>
+        </div>
+        <div class="calc-date__item">
+          <strong class="calc-item__size-small">Drop-off date</strong>
+          <div class="calc__price text-ui">{{ daysRental }}</div>
+        </div>
+      </div>
+      <VFormComponent :field="period" />
+    </div>
+    <div class="calc-item">
+      <div class="calc__title">Your booking details</div>
+      <VFormComponent :field="tel" />
+      <div class="calc__amount">
+        <div class="calc-item__flex">
+          <div class="calc-item__flex_left">
+            <span>Rental</span>
+            <span>{{ daysRental }} day</span>
+          </div>
+          <strong class="calc-item__size-small">AED 36289</strong>
+        </div>
+        <div class="calc-item__flex">
+          <div class="calc-item__flex_left">
+            <span>VAT</span>
+            <span>Tax (5%)</span>
+          </div>
+          <strong class="calc-item__size-small">+ AED 1815</strong>
+        </div>
+        <div class="calc-item__hr"></div>
+        <div class="calc-item__flex">
+          <div class="calc__title">Total</div>
+          <strong class="calc__price">
+            AED <span class="calc__price_val">39 788</span>
+          </strong>
+        </div>
+      </div>
+      <UiButton class="calc__button">Book</UiButton>
+    </div>
+  </form>
 </template>
 
 <script setup>
+import { useForm } from "vee-validate";
+import moment from "moment";
 const props = defineProps({
   car: Object,
+});
+
+const { handleSubmit } = useForm();
+
+const onSubmit = handleSubmit(async (values) => {
+  console.log(values);
+});
+
+const periodSelect = ref({
+  type: "select",
+  name: "period",
+  modelValue: periodOptions[0],
+
+  bind: {
+    options: periodOptions,
+    // slots: "dasd",
+  },
+});
+
+const period = ref({
+  type: "date",
+  name: "period",
+  modelValue: [new Date(), new Date()],
+
+  bind: {
+    inline: true,
+    enableTimePicker: false,
+    range: true,
+    format: "MM/dd/yyyy - MM/dd/yyyy",
+    monthNameFormat: "long",
+    // options: periodOptions,
+    // slots: "dasd",
+  },
+});
+
+const without_deposite = ref({
+  type: "switch",
+  name: "without_deposite",
+  modelValue: false,
+
+  bind: {
+    label:
+      "You can rent a car without any deposit dy including the additional service fee in your rental price",
+  },
+});
+
+const daysRental = computed(
+  () =>
+    moment(period.modelValue?.[1]).diff(
+      moment(period.modelValue?.[0]),
+      "days"
+    ) + 1
+);
+
+const tel = ref({
+  type: "tel",
+  name: "tel",
+  modelValue: [],
+
+  bind: {
+    label: "Phone number",
+    options: periodOptions,
+    // slots: "dasd",
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .calc {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-weight: 700;
+
+    &_title {
+      margin-bottom: 4px;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &_right {
+      text-align: end;
+    }
+
+    &_period {
+      display: flex;
+      column-gap: 10px;
+    }
+  }
+
+  &__price {
+    color: var(--color-basic);
+    font-size: 20px;
+
+    &-old {
+      font-size: 12px;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &_val {
+      font-size: 28px;
+    }
+  }
+
+  &-item {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 24px 12px;
+
+    &__flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &_left {
+        display: flex;
+        align-items: center;
+        column-gap: 4px;
+        font-size: 14px;
+
+        img {
+          flex-shrink: 0;
+        }
+      }
+
+      &_right {
+        text-align: end;
+      }
+    }
+
+    &__size-small {
+      font-size: 12px;
+    }
+
+    &__hr {
+      background-color: #f5f5f5;
+      width: 100%;
+      height: 1px;
+    }
+  }
+
+  &-date {
+    display: flex;
+    column-gap: 12px;
+
+    &__item {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 8px;
+
+      &:last-child {
+        background-color: transparent;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__button {
+    padding: 12px;
+    width: 100%;
+
+    &.whatsapp {
+      background: #2cb742;
+    }
+  }
+
+  &__amount {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+}
+</style>
+
+<style lang="scss">
+.calc {
+  &__top {
+    &_period {
+      .select__value {
+        padding: 0;
+        padding-right: 40px;
+      }
+    }
+  }
+
+  .switch {
+    &__label {
+      font-size: 12px;
+      max-width: 284px;
+    }
+  }
 }
 </style>

@@ -1,4 +1,4 @@
-export const langOption = [
+export const langOptions = [
   {
     id: "en",
     value: "English",

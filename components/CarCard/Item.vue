@@ -71,14 +71,14 @@
         <div class="car-price">
           <div class="car-price__old">
             Daily
-            <del class="car-price__old_del">AED {{ car?.price_daily_old }}</del>
+            <del class="del">AED {{ car?.price_daily_old }}</del>
           </div>
           <div class="car-price__current">AED {{ car?.price_daily }}</div>
         </div>
         <div class="car-price">
           <div class="car-price__old">
             Monthly
-            <del class="car-price__old_del">AED {{ car?.price_month_old }}</del>
+            <del class="del">AED {{ car?.price_month_old }}</del>
           </div>
           <div class="car-price__current">AED {{ car?.price_month }}</div>
         </div>
@@ -205,10 +205,6 @@ const props = defineProps({
     &__old {
       font-size: 12px;
       margin-bottom: 2px;
-
-      &_del {
-        color: var(--color-old-val);
-      }
     }
 
     &__current {

@@ -39,9 +39,6 @@ const car = {
     {
       path: "images/fake/a3130d83c1cfa5ac446b1ac68ea7104e.jfif",
     },
-    {
-      path: "images/fake/d5f6e1e52b1bcc35d8eafdbf4ad6f310.jfif",
-    },
   ],
   prices: [
     {

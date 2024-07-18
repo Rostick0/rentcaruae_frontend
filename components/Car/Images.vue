@@ -43,6 +43,7 @@ const activeImage = ref(props.images[0]?.path);
     padding-top: 62%;
     margin-bottom: 16px;
     position: relative;
+    width: 100%;
 
     &_img {
       border-radius: 8px;
@@ -61,6 +62,7 @@ const activeImage = ref(props.images[0]?.path);
 
   &__item {
     border-radius: 8px;
+    overflow: auto;
   }
 }
 </style>

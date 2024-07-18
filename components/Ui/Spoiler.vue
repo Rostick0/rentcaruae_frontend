@@ -36,7 +36,6 @@ const active = ref(false);
     display: flex;
     align-items: center;
     column-gap: 4px;
-    margin-bottom: 8px;
   }
 
   &__icon {
@@ -57,6 +56,7 @@ const active = ref(false);
   &__content {
     font-size: 12px;
     padding-left: 20px;
+    margin-top: 8px;
   }
 }
 </style>

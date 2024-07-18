@@ -17,7 +17,8 @@
 </template>
 
 <script setup>
-const Datepicker = await import("@vuepic/vue-datepicker");
+// const Datepicker = await import("@vuepic/vue-datepicker");
+import Datepicker from "@vuepic/vue-datepicker";
 await import("@vuepic/vue-datepicker/dist/main.css");
 
 const emits = defineEmits(["update:modelValue"]);
@@ -30,9 +31,6 @@ const props = defineProps({
   message: String,
   label: String,
   placeholder: String,
-  maska: String,
-  dataMaskaReversed: Boolean,
-  maskaTokens: String,
   errorMessage: String,
   onChange: Function,
   deps: [Array, Object, String, Number],
@@ -54,6 +52,7 @@ const props = defineProps({
 });
 
 function handleInput(date) {
+  console.log(date);
   emits("update:modelValue", date || undefined);
 }
 
@@ -81,18 +80,115 @@ watch(
 </script>
 
 <style lang="scss">
-.dp__pointer {
-  border: 1px solid var(--color-grey-dark);
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: Roboto, Arial, sans-serif;
-  line-height: 1;
-  padding: 20px 12px;
-  padding-left: 32px;
-  width: 100%;
+.control__datepicker {
+  .dp__menu {
+    border: none;
+    justify-content: center;
+  }
 
-  &::placeholder {
-    color: var(--color-grey-dark);
+  .dp__calendar_header_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    width: 48px;
+    height: 48px;
+  }
+
+  .dp__calendar_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+  }
+
+  .dp__pointer {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dp__month_year_select {
+    width: fit-content;
+
+    &:last-child {
+      font-weight: 700;
+    }
+  }
+
+  .dp__calendar_row {
+    margin: 0;
+  }
+
+  .dp__calendar_header_separator {
+    display: none;
+  }
+}
+
+.dp__flex_display {
+  justify-content: center;
+}
+
+.dp__month_year_wrap {
+  justify-content: center;
+  column-gap: 4px;
+}
+
+.dp--arrow-btn-nav {
+  display: none;
+}
+
+.dp__pointer {
+  // border: none;
+
+  // border: 1px solid var(--color-grey-dark);
+  // border-radius: 8px;
+  // font-size: 16px;
+  // font-family: Roboto, Arial, sans-serif;
+  // line-height: 1;
+  // padding: 20px 12px;
+  // padding-left: 32px;
+  // width: 100%;
+
+  // &::placeholder {
+  //   color: var(--color-grey-dark);
+  // }
+
+  &.dp__range_start,
+  &.dp__range_end {
+    background-color: var(--color-basic);
+    border-color: var(--color-basic);
+    border-radius: 8px;
+    position: relative;
+
+    // &::after {
+    //   background-color: red;
+    //   content: "";
+    //   position: absolute;
+    //   right: -9px;
+    //   width: 8px;
+    //   height: 40px;
+    //   z-index: 0;
+    // }
+  }
+
+  // &.dp__range_start {
+  //   &::before {
+  //     background-color: #a1d1ff;
+  //     content: "";
+  //     position: absolute;
+  //     right: 0;
+  //     width: 50%;
+  //     height: 100%;
+  //     z-index: -1;
+  //     // z-index: -1;
+  //   }
+  // }
+
+  &.dp__range_between {
+    background-color: #a1d1ff;
+    border-color: #a1d1ff;
   }
 }
 </style>

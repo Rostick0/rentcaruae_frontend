@@ -57,11 +57,21 @@ defineProps<Props>();
 
 <style lang="scss" scoped>
 .control {
+  // background: #f5f5f5;
   display: flex;
   flex-direction: column;
   row-gap: 4px;
   position: relative;
   width: 100%;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+  }
 
   &__message {
     color: var(--color-red);

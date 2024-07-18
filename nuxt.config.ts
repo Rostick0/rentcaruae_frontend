@@ -25,4 +25,8 @@ export default defineNuxtConfig({
   css: ["~/assets/scss/index.scss"],
 
   modules: ["nuxt-lazy-hydrate", "@nuxt/image"],
+
+  build: {
+    transpile: ["@vuepic/vue-datepicker"],
+  },
 });

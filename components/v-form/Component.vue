@@ -59,12 +59,6 @@
       :error-message="errorMessage"
       @setError="setErrors"
     />
-    <UiTagCheckbox
-      v-else-if="field.type == 'tag'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
     <UiRadio
       v-else-if="field.type == 'radio'"
       v-model="model"
@@ -73,6 +67,18 @@
     />
     <UiRadioCategory
       v-else-if="field.type == 'radio-category'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+    <UiTelSelect
+      v-else-if="field.type == 'tel'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+    <UiSwitch
+      v-else-if="field.type == 'switch'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
