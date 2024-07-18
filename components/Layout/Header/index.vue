@@ -106,20 +106,6 @@ const currency = ref({
 
 const country = ref(optionsCountries[0]);
 
-// const optionsCountries = [
-
-// ];
-// const country = ref({
-//   type: "select",
-//   name: "country",
-//   modelValue: "",
-
-//   bind: {
-//     debounceMs: 500,
-//     // searchFn: fetchMake,
-//   },
-// });
-
 const links = [
   {
     name: "Categories",

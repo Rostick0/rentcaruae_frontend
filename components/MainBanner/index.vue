@@ -5,6 +5,7 @@
       <h2 class="banner__subtitle">
         Book a car for a day or a month without commission
       </h2>
+      <MainSearch class="banner__search" />
       <div class="banner__links">
         <NuxtLink
           v-for="link in links"
@@ -59,7 +60,15 @@ const links = [
 <style lang="scss" scoped>
 .banner {
   display: flex;
+  align-items: center;
+  padding-top: 40px;
   margin-bottom: 40px;
+  position: relative;
+
+  &__left {
+    position: relative;
+    z-index: 1;
+  }
 
   &__title {
     margin-bottom: 20px;
@@ -67,6 +76,11 @@ const links = [
 
   &__subtitle {
     margin-bottom: 40px;
+  }
+
+  &__search {
+    margin-bottom: 40px;
+    width: 95%;
   }
 
   &__links {
@@ -77,10 +91,25 @@ const links = [
 
   &__right {
     flex-grow: 1;
+    position: absolute;
+    right: -160px;
   }
 
   &__img {
-    width: 100%;
+    max-width: 708px;
+    // width: 100%;
+    width: 50vw;
+  }
+}
+</style>
+
+<style lang="scss">
+.banner {
+  &__link {
+    .btn {
+      font-weight: 700;
+      // padding: 12px 8px;
+    }
   }
 }
 </style>
