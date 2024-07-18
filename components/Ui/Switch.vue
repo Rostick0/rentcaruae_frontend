@@ -15,8 +15,6 @@ const props = defineProps({
   label: String,
 });
 
-console.log(props)
-
 const emits = defineEmits(["update:modelValue"]);
 </script>
 

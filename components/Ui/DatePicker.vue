@@ -52,7 +52,6 @@ const props = defineProps({
 });
 
 function handleInput(date) {
-  console.log(date);
   emits("update:modelValue", date || undefined);
 }
 

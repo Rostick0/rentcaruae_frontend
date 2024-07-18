@@ -67,6 +67,7 @@ const isOpened = ref(false);
   }
 
   &__value {
+    color: var(--color-basic);
     font-weight: 700;
   }
 

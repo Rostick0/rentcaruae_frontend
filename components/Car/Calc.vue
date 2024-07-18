@@ -186,7 +186,7 @@ const props = defineProps({
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
-  console.log(values);
+  // console.log(values);
 });
 
 const periodSelect = ref({
@@ -227,12 +227,20 @@ const without_deposite = ref({
   },
 });
 
-const daysRental = computed(
-  () =>
-    moment(period.modelValue?.[1]).diff(
-      moment(period.modelValue?.[0]),
-      "days"
-    ) + 1
+const daysRental = ref(
+  moment(period.modelValue?.[1]).diff(moment(period.modelValue?.[0]), "days") +
+    1
+);
+
+watch(
+  () => period.value.modelValue,
+  () => {
+    daysRental.value =
+      moment(period.modelValue?.[1]).diff(
+        moment(period.modelValue?.[0]),
+        "days"
+      ) + 1;
+  }
 );
 
 const tel = ref({

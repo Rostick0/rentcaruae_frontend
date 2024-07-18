@@ -5,7 +5,7 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <div class="control__tel-select">
+    <div class="control__tel-select tel-select">
       <label class="tel-select__field">
         <UiSelectWithIcons
           v-model="phone"
@@ -58,11 +58,8 @@ watch(
 
   &__field {
     background: #f5f5f5;
-    // border-radius: 8px;
-    // font-weight: 700;
     padding: 8px;
     padding-top: 24px;
-    // width: 100%;
     display: flex;
     column-gap: 4px;
     position: relative;
@@ -82,36 +79,13 @@ watch(
     flex-grow: 1;
     font-size: 16px;
     font-weight: 700;
-    // background: #f5f5f5;
-    // border-radius: 8px;
-    // font-weight: 700;
-    // padding: 8px;
-    // padding-top: 24px;
-    // width: 100%;
-    // background-color: var(--color-white);
-    // color: var(--color-grey-dark);
-    // border: 1px solid var(--color-line);
-    // border-radius: 8px;
-    // pointer-events: none;
-    // font-size: 14px;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // white-space: nowrap;
-    // padding: 10px 16px;
-    // padding-right: 40px;
-    // width: 100%;
   }
 }
 </style>
 
 <style lang="scss">
-.select {
-  &__field {
-    .select {
-    }
-  }
-
-  &-icons {
+.tel-select {
+  .select-icons {
     &-switch {
       &__icon {
         order: 1;
@@ -127,6 +101,7 @@ watch(
     }
 
     &__value {
+      color: var(--color-text100);
       order: 3;
     }
   }
