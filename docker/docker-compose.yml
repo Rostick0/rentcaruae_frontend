@@ -25,7 +25,7 @@ services:
       - PORT=3000
     restart: "no"
     ports:
-      - "24680:24679"
+      - "24681:24678"
       - "5000:3000"
     networks:
       - nuxt-network
