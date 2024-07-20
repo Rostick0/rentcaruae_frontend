@@ -11,7 +11,7 @@ volumes:
   node_modules: {}
 
 services:
-  aue_frontend:
+  rentcaruae_frontend:
     build:
       dockerfile: ../docker/nuxt/Dockerfile
       context: './../frontend'
@@ -27,7 +27,6 @@ services:
     ports:
       - "24680:24679"
       - "5000:3000"
-      - "445:443"
     volumes: 
       # - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/:/etc/letsencrypt/
