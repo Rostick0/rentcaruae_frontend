@@ -27,10 +27,6 @@ services:
     ports:
       - "24680:24679"
       - "5000:3000"
-    volumes: 
-      # - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      # - /etc/letsencrypt/:/etc/letsencrypt/
-      # - /etc/nginx/sites-available/buycardubai:/etc/nginx/conf.d/default.conf
     networks:
       - nuxt-network
       - default
