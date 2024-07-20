@@ -21,6 +21,7 @@
         </div>
       </div>
     </div>
+    <UiRange />
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
