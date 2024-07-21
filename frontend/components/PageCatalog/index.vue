@@ -2,10 +2,19 @@
   <div class="catalog">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1 class="catalog__title h1">{{ h1 }}</h1>
+      <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
+      <slot name="topBlock" />
       <CarType v-model="type" />
-      <Filter />
-      <CarCardList :cars="cars" />
+      <LazyFilter />
+      <LazyCarCardList :cars="cars" />
+      <LazyCarCardShortList
+        class="catalog__specials"
+        :cars="carsSec"
+        title="Special offers"
+        linkText="All special offers"
+        link="/"
+      />
+      <LazyCarCardList :cars="[...cars].splice(0, 3)" />
     </div>
   </div>
 </template>
@@ -46,9 +55,54 @@ const cars = [1, 2, 3, 4, 5, 6].map((item) => ({
   options: ["NEW", "Special offer"],
   modules: ["1 day rental available", "Insurance included", "Free delivery"],
 }));
+
+const carsSec = [
+  {
+    id: 1,
+    title: "Ferrari F8 Tributo Spyder",
+    price_old: 800,
+    price: 699,
+    image: {
+      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1.png",
+    },
+    make: {
+      name: "",
+      path: "images/fake/Logos (2).png",
+    },
+  },
+  {
+    id: 2,
+    title: "BMW 430i cabrio",
+    price_old: 800,
+    price: 499,
+    image: {
+      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (1).png",
+    },
+    make: {
+      name: "",
+      path: "images/fake/Logos (3).png",
+    },
+  },
+  {
+    id: 3,
+    title: "Rolls Royce Cullinan",
+    price_old: 800,
+    price: 599,
+    image: {
+      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (2).png",
+    },
+    make: {
+      name: "",
+      path: "images/fake/Logos (4).png",
+    },
+  },
+];
 </script>
 
 <style lang="scss" scoped>
 .catalog {
+  &__specials {
+    margin: 20px 0 40px;
+  }
 }
 </style>

@@ -13,7 +13,7 @@ defineComponent({
 
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
   variant?: "standard" | "outlined";
-  // color?: "grey" | "grey-dark";
+  color?: "whatsapp";
 }
 
 defineProps<Props>();
@@ -39,12 +39,8 @@ defineProps<Props>();
     border-color: var(--color-basic);
   }
 
-  // &.grey {
-  //   background-color: var(--color-grey);
-
-  //   &-dark {
-  //     background-color: var(--color-grey-dark);
-  //   }
-  // }
+  &.whatsapp {
+    background: #2cb742;
+  }
 }
 </style>

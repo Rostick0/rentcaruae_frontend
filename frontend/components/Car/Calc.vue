@@ -122,7 +122,9 @@
       </div>
 
       <UiButton class="calc__button" @click.prevent>Book</UiButton>
-      <UiButton class="calc__button whatsapp" @click.prevent>WhatsApp</UiButton>
+      <UiButton class="calc__button" @click.prevent color="whatsapp"
+        >WhatsApp</UiButton
+      >
     </div>
     <div class="calc-item">
       <div class="calc__title">Choose rental dates</div>
@@ -368,10 +370,6 @@ const tel = ref({
   &__button {
     padding: 12px;
     width: 100%;
-
-    &.whatsapp {
-      background: #2cb742;
-    }
   }
 
   &__amount {
