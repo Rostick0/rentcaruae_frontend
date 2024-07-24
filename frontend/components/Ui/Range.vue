@@ -12,6 +12,7 @@
       <div
         class="range-input__line"
         @mousedown="mouseDownHandler"
+        @touchstart="touchStartHandler"
         :style="{
           left: line?.x + 'px',
         }"
@@ -74,14 +75,30 @@ const mouseDownHandler = (e) => {
 
   window.addEventListener("mousemove", mouseMoveEventListener);
   const mouseUpEventListener = (e) => {
-    // line.value.mouseDown = false;
-
-    // line.value.x = false;
     document.body.style.userSelect = "";
     window.removeEventListener("mouseup", mouseUpEventListener, true);
+
     window.removeEventListener("mousemove", mouseMoveEventListener);
   };
   window.addEventListener("mouseup", mouseUpEventListener, true);
+};
+
+const touchStartHandler = (e) => {
+  line.value.x = setPosition(e.touches[0].clientX);
+
+  const touchMoveEventListener = (e) => {
+    line.value.x = setPosition(e.touches[0].clientX);
+  };
+
+  window.addEventListener("touchmove", touchMoveEventListener);
+
+  const touchEndEventListener = (e) => {
+    document.body.style.userSelect = "";
+    window.removeEventListener("touchend", touchEndEventListener, true);
+    window.removeEventListener("touchmove", touchMoveEventListener);
+  };
+
+  window.addEventListener("touchend", touchEndEventListener, true);
 };
 </script>
 
