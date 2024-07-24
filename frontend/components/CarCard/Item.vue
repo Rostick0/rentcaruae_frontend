@@ -14,6 +14,7 @@
       <LazyNuxtImg
         class="car__img"
         :src="car?.image?.path"
+        decoding="async"
         loading="lazy"
         :alt="car?.title"
         fit="cover"
@@ -41,7 +42,7 @@
       <div class="car-stat">
         <div class="car-stat__title">Minimum</div>
         <div class="car-stat__value">
-          {{ car?.min_days }} {{ car?.min_days > 1 ? "cars" : "car" }}
+          {{ car?.min_days }} {{ car?.min_days > 1 ? "days" : "day" }}
         </div>
       </div>
     </div>

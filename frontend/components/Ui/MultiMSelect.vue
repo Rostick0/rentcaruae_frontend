@@ -150,7 +150,7 @@ async function handleSearch(_searchString) {
 
   page.value = 1;
   totalPages.value = options?.last_page;
-  currentOptions.value = [...options.data];
+  if (options?.data?.legnth) currentOptions.value = [...options.data];
 }
 
 // Записывает новый массив после скролла и двигает лимит вперёд, вызывается при скролле
@@ -167,6 +167,6 @@ async function handleScrollToBottom() {
   );
 
   totalPages.value = newPages?.last_page;
-  currentOptions.value = [...currentOptions.value, ...newPages.data];
+  if (newPages?.data?.legnth) currentOptions.value = [...currentOptions.value, ...newPages.data];
 }
 </script>

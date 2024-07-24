@@ -2,6 +2,7 @@
   <div class="brands__list">
     <NuxtLink class="brands__link" v-for="brand in brands" :key="brand.id">
       <LazyNuxtImg
+        loading="lazy"
         :src="brand.image"
         :alt="brands.name"
         width="40"

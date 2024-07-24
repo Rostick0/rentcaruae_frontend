@@ -73,6 +73,7 @@
             class="main-search-company__img"
             :src="company.image_url"
             :alt="company.name"
+            loading="lazy"
             width="40"
             height="40"
           />

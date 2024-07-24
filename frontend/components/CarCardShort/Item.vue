@@ -4,6 +4,7 @@
       <LazyNuxtImg
         class="car-short__img"
         :src="car?.image?.path"
+        decoding="async"
         loading="lazy"
         :alt="car?.title"
         width="264"

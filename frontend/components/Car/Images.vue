@@ -4,6 +4,7 @@
       <LazyNuxtImg
         class="car-image__main_img"
         :src="activeImage"
+        decoding="async"
         loading="lazy"
         :alt="carTitle"
         fit="cover"
@@ -15,6 +16,7 @@
         v-for="image in images"
         :key="image?.id"
         :src="image?.path"
+        decoding="async"
         loading="lazy"
         :alt="carTitle"
         width="154"

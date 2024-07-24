@@ -17,7 +17,6 @@
 </template>
 
 <script setup>
-// const Datepicker = await import("@vuepic/vue-datepicker");
 import Datepicker from "@vuepic/vue-datepicker";
 await import("@vuepic/vue-datepicker/dist/main.css");
 
@@ -91,19 +90,14 @@ watch(
     justify-content: center;
     font-size: 14px;
     font-weight: 500;
-    width: 48px;
-    height: 48px;
-  }
-
-  .dp__calendar_item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 
   .dp__pointer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
   }
@@ -139,20 +133,9 @@ watch(
 }
 
 .dp__pointer {
-  // border: none;
-
-  // border: 1px solid var(--color-grey-dark);
-  // border-radius: 8px;
-  // font-size: 16px;
-  // font-family: Roboto, Arial, sans-serif;
-  // line-height: 1;
-  // padding: 20px 12px;
-  // padding-left: 32px;
-  // width: 100%;
-
-  // &::placeholder {
-  //   color: var(--color-grey-dark);
-  // }
+  &.dp__today {
+    border-radius: 8px;
+  }
 
   &.dp__range_start,
   &.dp__range_end {
@@ -160,30 +143,17 @@ watch(
     border-color: var(--color-basic);
     border-radius: 8px;
     position: relative;
-
-    // &::after {
-    //   background-color: red;
-    //   content: "";
-    //   position: absolute;
-    //   right: -9px;
-    //   width: 8px;
-    //   height: 40px;
-    //   z-index: 0;
-    // }
   }
 
-  // &.dp__range_start {
-  //   &::before {
-  //     background-color: #a1d1ff;
-  //     content: "";
-  //     position: absolute;
-  //     right: 0;
-  //     width: 50%;
-  //     height: 100%;
-  //     z-index: -1;
-  //     // z-index: -1;
-  //   }
-  // }
+  &.dp__range_start {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.dp__range_end {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
   &.dp__range_between {
     background-color: #a1d1ff;

@@ -8,6 +8,8 @@
             class="company__img"
             :src="data.image"
             :alt="data.name"
+            decoding="async"
+            loading="lazy"
             fit="contain"
             width="139"
             height="56"

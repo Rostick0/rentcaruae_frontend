@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <UiRange />
+    <UiRange modelValue="50" />
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -42,13 +42,6 @@
             class="calc-item__switch calc-item__size-small"
             :field="without_deposite"
           />
-
-          <!-- <UiSwitch
-            class="calc-item__switch calc-item__size-small"
-            v-model="without_deposite"
-            >You can rent a car without any deposit dy including the additional
-            service fee in your rental price</UiSwitch
-          > -->
         </div>
         <div class="calc-item__flex_right">
           AED 45 <br />
@@ -142,8 +135,10 @@
           </div>
         </div>
         <div class="calc-date__item">
-          <strong class="calc-item__size-small">Drop-off date</strong>
-          <div class="calc__price text-ui">{{ daysRental }}</div>
+          <strong class="calc-item__size-small">Your rental</strong>
+          <div class="calc__price text-ui">
+            {{ daysRental }} {{ daysRental > 1 ? "days" : "day" }}
+          </div>
         </div>
       </div>
       <VFormComponent :field="period" />
@@ -182,6 +177,7 @@
 <script setup>
 import { useForm } from "vee-validate";
 import moment from "moment";
+
 const props = defineProps({
   car: Object,
 });
@@ -212,7 +208,6 @@ const period = ref({
     inline: true,
     enableTimePicker: false,
     range: true,
-    format: "MM/dd/yyyy - MM/dd/yyyy",
     monthNameFormat: "long",
     // options: periodOptions,
     // slots: "dasd",
@@ -239,8 +234,8 @@ watch(
   () => period.value.modelValue,
   () => {
     daysRental.value =
-      moment(period.modelValue?.[1]).diff(
-        moment(period.modelValue?.[0]),
+      moment(period.value.modelValue?.[1]).diff(
+        moment(period.value.modelValue?.[0]),
         "days"
       ) + 1;
   }
@@ -363,6 +358,7 @@ const tel = ref({
       &:last-child {
         background-color: transparent;
         margin-left: auto;
+        text-align: right;
       }
     }
   }
