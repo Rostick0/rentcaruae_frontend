@@ -1,7 +1,7 @@
 <template>
   <div class="range">
     <div class="range__top"></div>
-    <div class="range-input" ref="rangeInput">
+    <div class="range-input" ref="rangeInput" @click="clickHandler">
       <div
         class="range-input__left"
         :style="{
@@ -30,6 +30,8 @@
 </template>
 
 <script setup>
+import debounce from "lodash/debounce";
+
 const props = defineProps({
   modelValue: {
     type: [Number, String, null],
@@ -48,6 +50,11 @@ const valueComputed = computed(() =>
   Math.round((line.value.x / width.value) * 100)
 );
 
+watch(
+  () => line.value.x,
+  debounce(() => emits("update:modelValue", valueComputed.value), 200)
+);
+
 const setPosition = (clientX) => {
   const left = rangeInput.value.getBoundingClientRect().left;
   // const width = rangeInput.value.getBoundingClientRect().width;
@@ -63,8 +70,12 @@ const setPosition = (clientX) => {
 
 onMounted(() => {
   width.value = rangeInput.value.getBoundingClientRect().width;
-  line.value.x = setPosition(props.modelValue ?? 0);
+  line.value.x = width.value * ((props.modelValue ?? 0) / 100);
 });
+
+const clickHandler = (e) => {
+  line.value.x = setPosition(e.clientX + 12);
+};
 
 const mouseDownHandler = (e) => {
   line.value.x = setPosition(e.clientX);
