@@ -33,7 +33,8 @@ const props = defineProps({
   align-items: center;
   grid-gap: 4px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  padding-top: 4px;
+  margin-bottom: 24px;
 
   &__item {
     display: flex;

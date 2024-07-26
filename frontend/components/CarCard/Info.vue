@@ -74,7 +74,7 @@ const props = defineProps({
     color: var(--color-white);
     border-radius: 30px;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 4px 12px 3px;
 
     &:first-child {
       background-color: #10c44d;
@@ -90,7 +90,7 @@ const props = defineProps({
     align-items: center;
     justify-content: space-between;
     column-gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 
     &__right {
       flex-shrink: 0;
@@ -99,7 +99,7 @@ const props = defineProps({
 
   &__characteristics {
     display: flex;
-    grid-gap: 12px;
+    grid-gap: 13px;
   }
 
   &-characteristic {

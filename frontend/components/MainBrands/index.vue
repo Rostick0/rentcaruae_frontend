@@ -37,7 +37,7 @@ const brands = [
     align-items: center;
     justify-content: space-between;
     min-height: 44px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   // &__more {

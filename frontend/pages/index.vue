@@ -223,7 +223,7 @@ const cars = [
 }
 
 .rental-service {
-  margin-bottom: 40px;
+  margin-bottom: 42px;
 
   &__title {
     display: flex;
@@ -234,10 +234,15 @@ const cars = [
 
   &__content {
     max-width: 840px;
+
+    p {
+      line-height: 1;
+    }
   }
 
   &__description {
     font-size: 14px;
+    margin-bottom: 4px;
   }
 
   &__link {
@@ -253,7 +258,7 @@ const cars = [
   &__title {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 14px;
     min-height: 44px;
   }
 

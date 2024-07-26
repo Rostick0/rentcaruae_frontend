@@ -19,7 +19,7 @@ interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 defineProps<Props>();
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn {
   background-color: var(--color-basic);
   color: var(--color-white);
@@ -37,6 +37,10 @@ defineProps<Props>();
     background-color: transparent;
     color: var(--color-basic);
     border-color: var(--color-basic);
+
+    .svg-fill {
+      fill: var(--color-basic);
+    }
   }
 
   &.whatsapp {

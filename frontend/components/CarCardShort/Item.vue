@@ -15,21 +15,20 @@
       <div class="car-short__content_left">
         <div class="car-short__title">{{ car?.title }}</div>
         <div class="car-short__info">
-          From
+          <span>From</span>
           <del class="car-short__price-old" v-if="car?.price_old"
             >AED {{ car?.price_old }}</del
-          >&nbsp;<span class="car-short__price text-ui"
-            >AED {{ car?.price }}</span
           >
-          per day
+          <span class="car-short__price text-ui">AED {{ car?.price }}</span>
+          <span>per day</span>
         </div>
       </div>
       <LazyNuxtImg
         class="car-short__icon"
         :src="car?.make?.path"
         loading="lazy"
-        width="44"
-        height="44"
+        width="40"
+        height="40"
       />
     </NuxtLink>
   </div>
@@ -67,7 +66,12 @@ const props = defineProps({
     justify-content: space-between;
     font-weight: 700;
     padding: 8px;
+    padding-top: 7px;
     padding-right: 4px;
+
+    &__left {
+      font-weight: 700;
+    }
   }
 
   &__title {
@@ -76,6 +80,9 @@ const props = defineProps({
   }
 
   &__info {
+    display: flex;
+    grid-gap: 4.5px;
+    align-items: flex-end;
     font-size: 12px;
   }
 

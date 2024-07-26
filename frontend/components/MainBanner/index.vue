@@ -62,8 +62,8 @@ const links = [
 .banner {
   display: flex;
   align-items: center;
-  padding-top: 40px;
-  margin-bottom: 40px;
+  padding-top: 48px;
+  margin-bottom: 43px;
   position: relative;
 
   &__left {
@@ -72,22 +72,23 @@ const links = [
   }
 
   &__title {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   &__subtitle {
-    margin-bottom: 40px;
+    font-weight: 400;
+    margin-bottom: 48px;
   }
 
   &__search {
-    margin-bottom: 40px;
-    width: 95%;
+    margin-bottom: 41px;
+    width: 92%;
   }
 
   &__links {
     display: flex;
     flex-wrap: wrap;
-    grid-gap: 16px;
+    grid-gap: 15px;
   }
 
   &__right {

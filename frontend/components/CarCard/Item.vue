@@ -71,17 +71,21 @@
       <div class="car__params_right">
         <div class="car-price">
           <div class="car-price__old">
-            Daily
-            <del class="del">AED {{ car?.price_daily_old }}</del>
+            <span>Daily</span>
+            <del class="del">AED {{ formatNumber(car?.price_daily_old) }}</del>
           </div>
-          <div class="car-price__current">AED {{ car?.price_daily }}</div>
+          <div class="car-price__current">
+            AED {{ formatNumber(car?.price_daily) }}
+          </div>
         </div>
         <div class="car-price">
           <div class="car-price__old">
-            Monthly
-            <del class="del">AED {{ car?.price_month_old }}</del>
+            <span>Monthly</span>
+            <del class="del">AED {{ formatNumber(+car?.price_month_old) }}</del>
           </div>
-          <div class="car-price__current">AED {{ car?.price_month }}</div>
+          <div class="car-price__current">
+            AED {{ formatNumber(+car?.price_month) }}
+          </div>
         </div>
       </div>
     </div>
@@ -107,7 +111,8 @@ const props = defineProps({
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 6px;
+    padding-right: 4px;
+    margin-bottom: 4px;
   }
 
   &__title {
@@ -146,7 +151,7 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
   }
 
   &-stat {
@@ -190,12 +195,18 @@ const props = defineProps({
     align-items: flex-start;
     justify-content: space-between;
     column-gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+
+    &_left {
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
 
     &_right {
       display: flex;
       flex-direction: column;
-      row-gap: 8px;
+      row-gap: 18px;
     }
   }
 
@@ -204,6 +215,9 @@ const props = defineProps({
     font-weight: 700;
 
     &__old {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: 7px;
       font-size: 12px;
       margin-bottom: 2px;
     }

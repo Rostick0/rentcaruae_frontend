@@ -2,7 +2,18 @@
   <div class="car">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1 class="car__title h1">{{ car?.title }} in {{ car?.city?.name }}</h1>
+      <div class="car__top">
+        <LazyNuxtImg
+          class="car__make_img"
+          :src="car?.make?.path"
+          decoding="async"
+          loading="lazy"
+          :alt="car?.make?.name"
+          width="40"
+          height="40"
+        />
+        <h1 class="car__title h1">{{ car?.title }} in {{ car?.city?.name }}</h1>
+      </div>
       <Car :car="car" />
       <CarCardShortList
         :cars="cars"
@@ -85,7 +96,7 @@ const car = {
   description:
     "Renty offers different car rental plans, from a standard one-day agreement to yearly rentals. You can usually hire a luxury vehicle for at least one day. However, some cars are eligible for an hourly hire. Our car rental platform also provides fully featured car leasing in the UAE, including top-notch vehicles from all the categories listed on the website.\n\nCustomers can also rent economy cars for a month or even a year. It is also quite common for people to extend their rental agreement. Contact us to learn more about available plans for the vehicle of your choice.",
   city: {
-    name: "",
+    name: "Dubai",
   },
   specifications: [
     {
@@ -164,5 +175,18 @@ const cars = [
 
 <style lang="scss" scoped>
 .car {
+  &__top {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 39px;
+  }
+
+  &__make {
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
 }
 </style>

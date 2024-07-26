@@ -79,12 +79,12 @@ const carType = [
       align-items: center;
       column-gap: 4px;
       color: var(--color-black);
-      padding: 8px;
+      padding: 7px 7.75px;
     }
 
     &:first-child {
       color: var(--color-white);
-      padding: 14px 16px;
+      padding: 12px 15px;
     }
   }
 }

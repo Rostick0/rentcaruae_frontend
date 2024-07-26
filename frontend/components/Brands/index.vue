@@ -28,7 +28,7 @@ const props = defineProps({
   &__link {
     background-color: var(--color-white);
     border-radius: 8px;
-    box-shadow: 1px 1px 4px 1px #00000040;
+    box-shadow: 1px 1px 3px 1px #00000040;
     display: flex;
     padding: 16px;
   }

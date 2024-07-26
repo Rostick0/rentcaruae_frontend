@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <div class="header__top">
-        <NuxtLink class="d-flex" to="/">
+        <NuxtLink class="header__logo d-flex" to="/">
           <Logo />
         </NuxtLink>
         <UiButton class="btn-flex">
@@ -21,10 +21,12 @@
           <span>Rent a car</span>
         </UiButton>
         <div class="header__search">
-          <VFormComponent :field="make" />
+          <MainSearch variant="outlined" />
         </div>
-        <VFormComponent :field="lang" />
-        <VFormComponent :field="currency" />
+        <div class="d-flex">
+          <VFormComponent :field="lang" />
+          <VFormComponent :field="currency" />
+        </div>
         <UiButton class="btn-flex">
           <svg
             width="20"
@@ -138,7 +140,11 @@ const links = [
     display: flex;
     align-items: center;
     column-gap: 16px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+  }
+
+  &__logo {
+    margin-right: 4px;
   }
 
   &__search {
@@ -148,11 +154,12 @@ const links = [
   &__bottom {
     display: flex;
     align-items: center;
+    column-gap: 81px;
   }
 
   &__links {
     display: flex;
-    grid-gap: 20px;
+    grid-gap: 21px;
   }
 
   &__link {
@@ -165,13 +172,22 @@ const links = [
 @import "./../../../assets/scss/ui/";
 
 .header__search {
-  .control-select {
-    width: 100%;
+  .btn.main-search__send {
+    background-color: var(--color-white);
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 1;
   }
+  // .control-select {
+  //   width: 100%;
+  // }
 
-  .select__value {
-    @extend .input;
-    width: 100%;
-  }
+  // .select__value {
+  //   @extend .input;
+  //   width: 100%;
+  // }
 }
 </style>

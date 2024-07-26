@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <UiRange modelValue="50" />
+    <!-- <UiRange modelValue="50" /> -->
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">

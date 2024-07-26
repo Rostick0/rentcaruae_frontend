@@ -55,6 +55,7 @@ const active = ref(false);
 
   &__content {
     font-size: 12px;
+    line-height: 1.4;
     padding-left: 20px;
     margin-top: 8px;
   }

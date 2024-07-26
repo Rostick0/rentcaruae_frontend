@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer__container">
         <NuxtLink class="footer__top" to="/">
-          <Logo />
+          <Logo class="footer__logo" />
         </NuxtLink>
 
         <div class="footer__center">
@@ -132,7 +132,11 @@
 
   &__top {
     display: inline-flex;
-    margin-bottom: 32px;
+    margin-bottom: 38px;
+  }
+
+  &__logo {
+    color: var(--color-basic);
   }
 
   &__center {
@@ -153,7 +157,7 @@
       display: flex;
       flex-direction: column;
       row-gap: 4px;
-      padding: 8px;
+      padding: 8px 12px;
     }
 
     &__link {
@@ -184,6 +188,8 @@
   }
 
   &__join {
+    padding: 6px 16px;
+    font-weight: 700;
     width: fit-content;
   }
 

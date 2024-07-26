@@ -27,7 +27,7 @@
           />
         </svg>
       </button>
-      <UiButton class="d-flex main-search__send">
+      <UiButton class="d-flex main-search__send" :variant="variant">
         <svg
           width="20"
           height="20"
@@ -37,6 +37,7 @@
         >
           <g clip-path="url(#clip0_417_350)">
             <path
+              class="svg-fill"
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M12.3 11.0583L17.075 15.8333L15.8333 17.075L11.0583 12.3C10.1667 12.9417 9.09167 13.3333 7.91667 13.3333C4.925 13.3333 2.5 10.9083 2.5 7.91667C2.5 4.925 4.925 2.5 7.91667 2.5C10.9083 2.5 13.3333 4.925 13.3333 7.91667C13.3333 9.09167 12.9417 10.1667 12.3 11.0583ZM7.91667 4.16667C5.84167 4.16667 4.16667 5.84167 4.16667 7.91667C4.16667 9.99167 5.84167 11.6667 7.91667 11.6667C9.99167 11.6667 11.6667 9.99167 11.6667 7.91667C11.6667 5.84167 9.99167 4.16667 7.91667 4.16667Z"
@@ -45,7 +46,13 @@
           </g>
           <defs>
             <clipPath id="clip0_417_350">
-              <rect width="20" height="20" rx="10" fill="white" />
+              <rect
+                class="svg-fill"
+                width="20"
+                height="20"
+                rx="10"
+                fill="white"
+              />
             </clipPath>
           </defs>
         </svg>
@@ -90,6 +97,7 @@ const props = defineProps({
     type: String,
     default: "Search a car by brand or model",
   },
+  variant: String,
 });
 
 const isShow = ref(false);
@@ -146,7 +154,7 @@ const companies = [
     border: 1px solid var(--color-basic);
     border-radius: 8px;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 8px;
     position: relative;
     width: 100%;
 
@@ -162,7 +170,7 @@ const companies = [
   }
 
   &__send {
-    padding: 12px 40px;
+    padding: 11.25px 44px;
     margin-left: -16px;
     padding-left: 56px;
   }

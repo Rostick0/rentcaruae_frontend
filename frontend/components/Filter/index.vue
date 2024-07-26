@@ -85,6 +85,7 @@ const sort = ref({
   &__right {
     display: flex;
     align-items: center;
+    column-gap: 2px;
   }
 
   &__button {
