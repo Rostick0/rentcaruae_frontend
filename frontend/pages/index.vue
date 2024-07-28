@@ -31,7 +31,7 @@
             agreement to yearly rentals. You can usually hire a luxury vehicle
             for at least one day. However, some cars are eligible for an hourly
             hire. Our car rental platform also provides fully
-            <a href="" class="text-decoration"
+            <a href="" class="text-decoration-underline"
               >featured car leasing in the UAE,</a
             >
             including top-notch vehicles from all the categories listed on the

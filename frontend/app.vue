@@ -19,6 +19,11 @@ defineRule("image", image);
 defineRule("min_value", min_value);
 defineRule("max_value", max_value);
 
+const { accessToken, user, getUser } = await useAuth();
+if (accessToken.value && !user.value) {
+  await getUser();
+}
+
 configure({
   // create and set a localization handler
   generateMessage: localize("en", {

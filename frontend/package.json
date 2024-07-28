@@ -20,7 +20,8 @@
     "nuxt-lazy-hydrate": "^1.0.0",
     "uuid": "^10.0.0",
     "vee-validate": "^4.13.2",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-toastification": "^1.7.14"
   },
   "devDependencies": {
     "@nuxt/image": "^1.7.0",

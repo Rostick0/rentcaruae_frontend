@@ -4,7 +4,11 @@
     font-weight: 700;
   }
 
-  &-decoration {
+  &-left {
+    text-align: left;
+  }
+
+  &-decoration-underline {
     text-decoration: underline;
   }
 }

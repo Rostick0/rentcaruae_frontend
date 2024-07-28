@@ -27,6 +27,15 @@ export default defineNuxtConfig({
   modules: ["nuxt-lazy-hydrate", "@nuxt/image"],
 
   build: {
-    transpile: ["@vuepic/vue-datepicker"],
+    transpile: ["@vuepic/vue-datepicker", "vue-toastification"],
+  },
+
+  // routeRules: {
+  //   "/admin": {
+  //     layout: "admin",
+  //   },
+  // },
+  nitro: {
+    compressPublicAssets: true,
   },
 });
