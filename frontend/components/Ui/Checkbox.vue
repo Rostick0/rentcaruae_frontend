@@ -11,7 +11,7 @@
       <span v-if="withIcon" class="checkbox__icon">
         <svg
           class="checkbox__icon_svg"
-          width="80%"
+          width="13"
           height="13"
           viewBox="0 0 18 13"
           fill="none"
@@ -102,8 +102,8 @@ watch(
   }
 
   &__input:checked + &__icon {
-    background-color: var(--color-green);
-    border-color: var(--color-green);
+    background-color: var(--color-basic);
+    border-color: var(--color-basic);
 
     .checkbox__icon_svg {
       opacity: 1;
@@ -111,15 +111,15 @@ watch(
   }
 
   &__icon {
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--color-basic);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     transition: 0.3s;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 
     &_svg {
       transition: 0.3s;
@@ -128,7 +128,7 @@ watch(
   }
 
   &__label {
-    color: var(--color-grey-dark);
+    // color: var(--color-grey-dark);
     font-size: 14px;
     font-weight: 500;
     padding-top: 4px;

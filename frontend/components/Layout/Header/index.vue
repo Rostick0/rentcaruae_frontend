@@ -184,10 +184,5 @@ const links = [
   // .control-select {
   //   width: 100%;
   // }
-
-  // .select__value {
-  //   @extend .input;
-  //   width: 100%;
-  // }
 }
 </style>
