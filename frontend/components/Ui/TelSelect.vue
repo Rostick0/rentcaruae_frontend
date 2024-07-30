@@ -58,6 +58,7 @@ watch(
 
   &__field {
     background: #f5f5f5;
+    border-radius: 8px;
     padding: 8px;
     padding-top: 24px;
     display: flex;

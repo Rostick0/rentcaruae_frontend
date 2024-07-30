@@ -3,7 +3,7 @@
     <NuxtLink class="brands__link" v-for="brand in brands" :key="brand.id">
       <LazyNuxtImg
         loading="lazy"
-        :src="brand.image"
+        :src="brand.image_url"
         :alt="brands.name"
         width="40"
         height="40"
@@ -22,7 +22,11 @@ const props = defineProps({
 .brands {
   &__list {
     display: flex;
+    flex-wrap: wrap;
     grid-gap: 24px;
+    // padding: 10px;
+    // margin: -10px;
+    // overflow: auto;
   }
 
   &__link {

@@ -30,6 +30,13 @@ export default defineNuxtConfig({
     transpile: ["@vuepic/vue-datepicker", "vue-toastification"],
   },
 
+  runtimeConfig: {
+    public: {
+      HOST: process.env.HOST,
+      API_URL: `${process.env.API_URL}`,
+      BACK_URL: `${process.env.BACK_URL}`,
+    },
+  },
   // routeRules: {
   //   "/admin": {
   //     layout: "admin",

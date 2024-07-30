@@ -9,23 +9,25 @@
 </template>
 
 <script setup>
-const brands = [
-  {
-    id: 1,
-    name: "a",
-    image: "images/fake/Logos.png",
+const { data, get } = await useApi({
+  name: "brands.getAll",
+  init: false,
+  params: {
+    limit: 12,
+    sort: "is_popular",
   },
-  {
-    id: 2,
-    name: "a",
-    image: "images/fake/Logos (1).png",
-  },
-  {
-    id: 3,
-    name: "a",
-    image: "images/fake/Logos (2).png",
-  },
-];
+});
+
+await get();
+
+const config = useRuntimeConfig();
+
+const brands = computed(() =>
+  data.value.map((item) => ({
+    ...item,
+    image_url: config.public.BACK_URL + item.image_url,
+  }))
+);
 </script>
 
 <style lang="scss" scoped>

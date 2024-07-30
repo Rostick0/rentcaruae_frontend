@@ -136,10 +136,12 @@ watch(
   }
 
   &__field {
-    border: 1px solid var(--color-grey-dark);
+    background-color: #f5f5f5;
     border-radius: 8px;
     font-size: 16px;
-    padding: 21px 12px;
+    font-weight: 700;
+    padding: 8px;
+    padding-top: 24px;
     width: 100%;
 
     &:focus {

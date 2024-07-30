@@ -10,36 +10,52 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">Rent car</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Abu Dhabi</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Al Ain</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Ajman</NuxtLink>
+              <NuxtLink
+                class="footer-item__link"
+                v-for="city in cities"
+                :to="`/`"
+                :key="city.id"
+                >{{ city.name }}</NuxtLink
+              >
             </div>
           </div>
 
           <div class="footer-item">
             <div class="footer-item__title text-ui">Categories</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Luxury</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Sports</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">SUV</NuxtLink>
+              <NuxtLink
+                class="footer-item__link"
+                v-for="category in categories"
+                :key="category.id"
+                to="/"
+                >{{ category.name }}</NuxtLink
+              >
             </div>
           </div>
 
           <div class="footer-item">
             <div class="footer-item__title text-ui">Brands</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Audi</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">BMW</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Ferrari</NuxtLink>
+              <NuxtLink
+                class="footer-item__link"
+                v-for="brand in brands"
+                :key="brand.id"
+                to="/"
+                >{{ brand.name }}</NuxtLink
+              >
             </div>
           </div>
 
           <div class="footer-item">
             <div class="footer-item__title text-ui">Body Types</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Compact</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Convertible</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/">Coupe</NuxtLink>
+              <NuxtLink
+                class="footer-item__link"
+                v-for="transmission in generations"
+                :key="transmission.id"
+                to="/"
+                >{{ transmission.name }}</NuxtLink
+              >
             </div>
           </div>
 
@@ -64,6 +80,10 @@
                 >Privacy policy</NuxtLink
               >
               <NuxtLink class="footer-item__link" to="/">Terms of use</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/sitemap"
+                >Site map</NuxtLink
+              >
+              <NuxtLink class="footer-item__link" to="/">Contact us</NuxtLink>
             </div>
           </div>
 
@@ -124,7 +144,33 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const { data: cities } = await useApi({
+  name: "cities.getAll",
+});
+
+const { data: categories } = await useApi({
+  name: "categories.getAll",
+});
+
+const { data: brands } = await useApi({
+  name: "brands.getAll",
+  params: {
+    sort: "is_popular,-name",
+    limit: 8,
+  },
+});
+
+const { data: generations } = await useApi({
+  name: "distinctValue.getAll",
+  params: {
+    table: "generations",
+    column: 'name',
+    sort: "-name",
+    limit: 8,
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .footer {

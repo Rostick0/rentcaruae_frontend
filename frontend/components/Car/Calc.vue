@@ -114,7 +114,7 @@
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button" @click.prevent>Book</UiButton>
+      <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
       <UiButton class="calc__button" @click.prevent color="whatsapp"
         >WhatsApp</UiButton
       >
@@ -143,9 +143,11 @@
       </div>
       <VFormComponent :field="period" />
     </div>
-    <div class="calc-item">
+    <div class="calc-item" ref="book" v-if="isBook">
       <div class="calc__title">Your booking details</div>
       <VFormComponent :field="tel" />
+      <VFormComponent :field="full_name" />
+      <VFormComponent :field="email" />
       <div class="calc__amount">
         <div class="calc-item__flex">
           <div class="calc-item__flex_left">
@@ -177,6 +179,17 @@
 <script setup>
 import { useForm } from "vee-validate";
 import moment from "moment";
+
+const isBook = ref();
+const book = ref();
+
+const clickBook = () => {
+  isBook.value = true;
+
+  nextTick(() => {
+    book.value?.scrollIntoView({ behavior: "smooth" });
+  });
+};
 
 const props = defineProps({
   car: Object,
@@ -250,6 +263,28 @@ const tel = ref({
     label: "Phone number",
     options: periodOptions,
     // slots: "dasd",
+  },
+});
+
+const full_name = ref({
+  type: "text",
+  name: "full_name",
+  modelValue: "",
+  rules: "required|max:255",
+
+  bind: {
+    label: "Full Name",
+  },
+});
+
+const email = ref({
+  type: "text",
+  name: "email",
+  modelValue: "",
+  rules: "required|email|max:255",
+
+  bind: {
+    label: "E-mail",
   },
 });
 </script>
