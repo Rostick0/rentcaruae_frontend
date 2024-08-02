@@ -1,30 +1,36 @@
 <template>
-  <UiMSelectAlternative
-    v-if="isAlternative"
-    @scrolled-bottom="debounceHandleScrollToBottom"
-    v-bind="props"
-    ref="exposedValues"
-    :options="currentOptions"
-    v-model="modelValue"
-    v-model:search-string="searchString"
-    :is-searchable="!!searchFn"
-    :page="page"
-    :totalPages="totalPages"
-  />
-  <UiMSelect
-    v-else
-    @scrolled-bottom="debounceHandleScrollToBottom"
-    v-bind="props"
-    ref="exposedValues"
-    :options="currentOptions"
-    v-model="modelValue"
-    v-model:search-string="searchString"
-    :is-searchable="!!searchFn"
-  />
+  <UiControl
+    :invalid="!!errorMessage"
+    :message="errorMessage || message"
+    :rightIcon="rightIcon"
+  >
+    <UiMSelectAlternative
+      v-if="isAlternative"
+      @scrolled-bottom="debounceHandleScrollToBottom"
+      v-bind="$attrs"
+      ref="exposedValues"
+      :options="currentOptions"
+      v-model="modelValue"
+      v-model:search-string="searchString"
+      :is-searchable="!!searchFn"
+      :page="page"
+      :totalPages="totalPages"
+    />
+    <UiMSelect
+      v-else
+      @scrolled-bottom="debounceHandleScrollToBottom"
+      v-bind="$attrs"
+      ref="exposedValues"
+      :options="currentOptions"
+      v-model="modelValue"
+      v-model:search-string="searchString"
+      :is-searchable="!!searchFn"
+    />
+  </UiControl>
 </template>
 
 <script setup>
-import debounce from 'lodash/debounce';
+import debounce from "lodash/debounce";
 
 const props = defineProps({
   limit: {
@@ -53,6 +59,8 @@ const props = defineProps({
     default: 600,
   },
   forceDeps: Boolean,
+  message: String,
+  errorMessage: String,
   isAlternative: Boolean,
 });
 
@@ -150,7 +158,7 @@ async function handleSearch(_searchString) {
 
   page.value = 1;
   totalPages.value = options?.last_page;
-  if (options?.data?.legnth) currentOptions.value = [...options.data];
+  if (options?.data?.length) currentOptions.value = [...options.data];
 }
 
 // Записывает новый массив после скролла и двигает лимит вперёд, вызывается при скролле
@@ -167,6 +175,7 @@ async function handleScrollToBottom() {
   );
 
   totalPages.value = newPages?.last_page;
-  if (newPages?.data?.legnth) currentOptions.value = [...currentOptions.value, ...newPages.data];
+  if (newPages?.data?.length)
+    currentOptions.value = [...currentOptions.value, ...newPages.data];
 }
 </script>

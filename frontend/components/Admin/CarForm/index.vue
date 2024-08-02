@@ -1,0 +1,106 @@
+<template>
+  <div class="car-form">
+    <form class="car-form__values" @submit="onSubmit">
+      <AdminCarFormCarInfo :validateField="validateField" />
+
+      <AdminCarFormCarSpecification />
+
+      <AdminCarFormCarPhoto />
+
+      <AdminCarFormPrice />
+
+      <AdminCarFormLeasingOptions
+        v-if="isAddedLeasingOptions"
+        :isShow="isAddedLeasingOptions"
+        @setHide="isAddedLeasingOptions = false"
+      />
+      <UiButton
+        v-else
+        class="car-form__btn"
+        variant="outlined"
+        @click="isAddedLeasingOptions = true"
+        >Add leasing options</UiButton
+      >
+
+      <AdminCarFormRentalTerms />
+
+      <AdminCarFormSpecialOffer
+        v-if="isSpecialOffer"
+        :isShow="isSpecialOffer"
+        @setHide="isSpecialOffer = false"
+      />
+
+      <div class="car-form__values_bottom">
+        <UiButton
+          class="car-form__btn _special-offer"
+          v-if="!isSpecialOffer"
+          @click="isSpecialOffer = true"
+          variant="outlined"
+        >
+          <span>Create Special Offer</span>
+          <span class="car-form__btn_small">AED 20 per day</span>
+        </UiButton>
+
+        <VFormComponent :field="is_show" />
+        <UiButton>Save</UiButton>
+      </div>
+    </form>
+    <div class="car-form__preview">
+      <!-- <LazyCarCardItem /> -->
+    </div>
+  </div>
+</template>
+
+<script setup>
+import api from "~/api";
+import { useForm } from "vee-validate";
+
+const is_show = ref({
+  type: "switch",
+  name: "is_show",
+  modelValue: false,
+
+  bind: {
+    label: "Publish on website",
+  },
+});
+
+const { validateField, handleSubmit } = useForm();
+
+const onSubmit = handleSubmit(async (values) => {
+  console.log(JSON.stringify(values));
+  // const res = await api.car.create({ data: values });
+});
+
+const isAddedLeasingOptions = ref(false);
+const isSpecialOffer = ref(false);
+</script>
+
+<style lang="scss" scoped>
+.car-form {
+  display: flex;
+  column-gap: 80px;
+
+  &__values {
+    display: flex;
+    flex-direction: column;
+    row-gap: 22px;
+    flex-grow: 1;
+
+    &_bottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  &__btn {
+    align-self: flex-start;
+    font-weight: 700;
+
+    &_small {
+      font-size: 10px;
+    }
+  }
+}
+</style>

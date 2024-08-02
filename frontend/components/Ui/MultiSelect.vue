@@ -1,30 +1,36 @@
 <template>
-  <UiSelectAlternative
-    v-if="isAlternative"
-    @scrolled-bottom="debounceHandleScrollToBottom"
-    @scrolled-top="debounceHandleScrollToTop"
-    v-bind="props"
-    :options="currentOptions"
-    v-model="modelValue"
-    v-model:search-string="searchString"
-    :is-searchable="isSearchable"
-    :page="page"
-    :totalPages="totalPages"
-  />
-  <UiSelect
-    v-else
-    @scrolled-bottom="debounceHandleScrollToBottom"
-    @scrolled-top="debounceHandleScrollToTop"
-    v-bind="props"
-    :options="currentOptions"
-    v-model="modelValue"
-    v-model:search-string="searchString"
-    :is-searchable="!!searchFn && isSearchable"
-  />
+  <UiControl
+    class="control-select"
+    :invalid="!!errorMessage"
+    :message="errorMessage || message"
+  >
+    <UiSelectAlternative
+      v-if="isAlternative"
+      @scrolled-bottom="debounceHandleScrollToBottom"
+      @scrolled-top="debounceHandleScrollToTop"
+      v-bind="$attrs"
+      :options="currentOptions"
+      v-model="modelValue"
+      v-model:search-string="searchString"
+      :is-searchable="!!searchFn && isSearchable"
+    />
+    <UiSelect
+      v-else
+      @scrolled-bottom="debounceHandleScrollToBottom"
+      @scrolled-top="debounceHandleScrollToTop"
+      v-bind="$attrs"
+      :options="currentOptions"
+      v-model="modelValue"
+      v-model:search-string="searchString"
+      :is-searchable="isSearchable"
+      :page="page"
+      :totalPages="totalPages"
+    />
+  </UiControl>
 </template>
 
 <script setup>
-import debounce from 'lodash/debounce'
+import debounce from "lodash/debounce";
 
 const props = defineProps({
   limit: {
@@ -61,6 +67,8 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  message: String,
+  errorMessage: String,
   defaultSearchString: String,
 });
 
@@ -90,10 +98,7 @@ const debounceHandleScrollToBottom = debounce(
   handleScrollToBottom,
   props.debounceMs
 );
-const debounceHandleScrollToTop = debounce(
-  handleScrollToTop,
-  props.debounceMs
-);
+const debounceHandleScrollToTop = debounce(handleScrollToTop, props.debounceMs);
 
 const debounceHandleSearch = debounce(handleSearch, props.debounceMs);
 
@@ -145,6 +150,9 @@ watch(
   () => props.modelValue,
   async () => {
     props.onChange?.(ctx.value);
+
+    searchString.value =
+      modelValue.value?.name ?? modelValue.value?.value ?? "";
   },
   {
     deep: true,
@@ -166,7 +174,8 @@ async function handleSearch(_searchString) {
 
   page.value = 1;
   totalPages.value = options?.last_page;
-  if (options?.data?.legnth) currentOptions.value = [...options.data];
+
+  if (options?.data?.length) currentOptions.value = [...options.data];
 }
 
 async function handleScrollToTop(div) {
@@ -214,6 +223,7 @@ async function handleScrollToBottom() {
   );
 
   totalPages.value = newPages?.last_page;
-  if (newPages?.data?.legnth) currentOptions.value = [...currentOptions.value, ...newPages.data];
+  if (newPages?.data?.length)
+    currentOptions.value = [...currentOptions.value, ...newPages.data];
 }
 </script>

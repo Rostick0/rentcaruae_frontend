@@ -1,52 +1,80 @@
 <template>
-  <UiControl
-    :label="label"
-    :invalid="!!errorMessage"
-    :message="errorMessage || message"
-    :rightIcon="rightIcon"
+  <div
+    @focusout="onFocusout"
+    ref="wrapper"
+    tabindex="-1"
+    class="control__select"
   >
     <div
-      @focusout="onFocusout"
-      ref="wrapper"
-      tabindex="-1"
-      class="control__select"
+      class="select__field"
+      :class="{ select__active: isOpened }"
+      @click.stop="toggle"
     >
-      <div
-        class="select__field"
-        :class="{ select__active: isOpened }"
-        @click.stop="toggle"
-      >
-        <template v-if="isSearchable">
-          <input
-            v-if="!isOpened"
-            class="select__value"
-            :placeholder="placeholder || 'No selected'"
-            :value="selectedItemsText"
-            readonly
-          />
+      <template v-if="isSearchable">
+        <input
+          v-if="!isOpened"
+          class="select__value"
+          :placeholder="placeholder || 'No selected'"
+          :value="selectedItemsText"
+          readonly
+        />
 
-          <input
-            class="select__value"
-            ref="inputRef"
-            @input="$emit('update:searchString', $event.target.value)"
-            :value="searchString"
-            v-if="isOpened"
-            type="text"
-          />
-        </template>
-        <template v-else>
-          <input
-            type="text"
-            class="select__value"
-            :value="selectedItemsText || placeholder || 'No selected'"
-          />
-          <!-- <div class="select__value">
+        <input
+          class="select__value"
+          ref="inputRef"
+          @input="$emit('update:searchString', $event.target.value)"
+          :value="searchString"
+          v-if="isOpened"
+          type="text"
+        />
+      </template>
+      <template v-else>
+        <input
+          type="text"
+          class="select__value"
+          :value="selectedItemsText || placeholder || 'No selected'"
+        />
+        <!-- <div class="select__value">
             {{ selectedItemsText || placeholder || "No selected" }}
           </div> -->
-        </template>
+      </template>
+      <svg
+        v-if="withIcon"
+        class="select__icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 9L12 15L18 9"
+          stroke="var(--color-grey-dark)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+    <div
+      v-show="isOpened"
+      @scroll="handleScroll"
+      class="select__options"
+      @mousedown.prevent
+    >
+      <div
+        class="options__item"
+        v-for="option in sortedOptions"
+        :key="option.id"
+        @mousedown="handleSelect(option)"
+        :class="{
+          selected:
+            modelValue &&
+            modelValue?.find?.((i) => option?.id == i?.id || option?.id == i),
+        }"
+      >
         <svg
-          v-if="withIcon"
-          class="select__icon"
+          class="options__item_icon"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -54,54 +82,19 @@
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M6 9L12 15L18 9"
-            stroke="var(--color-grey-dark)"
+            d="M18.6666 7L9.49998 16.1667L5.33331 12"
+            stroke="#009639"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </svg>
-      </div>
-      <div
-        v-show="isOpened"
-        @scroll="handleScroll"
-        class="select__options"
-        @mousedown.prevent
-      >
-        <div
-          class="options__item"
-          v-for="option in sortedOptions"
-          :key="option.id"
-          @mousedown="handleSelect(option)"
-          :class="{
-            selected:
-              modelValue &&
-              modelValue?.find?.((i) => option?.id == i?.id || option?.id == i),
-          }"
-        >
-          <svg
-            class="options__item_icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18.6666 7L9.49998 16.1667L5.33331 12"
-              stroke="#009639"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>
-            {{ option.name || option.value }}
-          </span>
-        </div>
+        <span>
+          {{ option.name || option.value }}
+        </span>
       </div>
     </div>
-  </UiControl>
+  </div>
 </template>
 
 <script setup>

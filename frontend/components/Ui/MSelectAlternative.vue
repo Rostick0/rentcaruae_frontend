@@ -1,107 +1,97 @@
 <template>
-  <div>
-    <UiControl
-      :label="label"
-      :hideMessage="hideMessage"
-      :invalid="!!errorMessage"
-      :message="errorMessage || message"
-      :rightIcon="rightIcon"
-    >
-      <div @focusout="onFocusout" ref="wrapper" class="select">
-        <div
-          v-if="!isHideInput"
-          @keydown.enter="!alwaysOpen && (isOpened = !isOpened)"
-          class="select__field"
-          tabindex="0"
-          :class="{ select__active: isOpened }"
-          @click="!alwaysOpen && toggle()"
-        >
-          <template v-if="isSearchable">
-            <input
-              v-bind="$attrs"
-              class="control__field control__field_placeholder-top select__value"
-              :placeholder="isPlaceholderTop ? '' : placeholder"
-              :class="{
-                control__field_placeholder_top: isPlaceholderTop,
-              }"
-              ref="inputRef"
-              @input="onInput"
-              :value="searchString"
-              type="text"
-            />
-            <span v-if="isPlaceholderTop" class="control__label_name">{{
-              placeholder
-            }}</span>
-          </template>
-          <template v-else>
-            <input
-              class="control__field control__field_placeholder-top select__value control__field_placeholder-no-focus"
-              :class="{
-                control__field_placeholder_top: isPlaceholderTop,
-              }"
-              :placeholder="isPlaceholderTop ? '' : placeholder"
-              :value="model?.value ?? model?.name ?? model?.title"
-              readonly
-            />
-            <span v-if="isPlaceholderTop" class="control__label_name">{{
-              placeholder
-            }}</span>
-          </template>
-          <svg
-            v-if="withIcon"
-            class="select__icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 9L12 15L18 9"
-              stroke="var(--color-grey-dark)"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
-    </UiControl>
+  <div @focusout="onFocusout" ref="wrapper" class="select">
     <div
-      class="select__options"
-      v-show="alwaysOpen || isHideInput || isOpened"
-      ref="selectRef"
-      @mousedown.prevent
+      v-if="!isHideInput"
+      @keydown.enter="!alwaysOpen && (isOpened = !isOpened)"
+      class="select__field"
+      tabindex="0"
+      :class="{ select__active: isOpened }"
+      @click="!alwaysOpen && toggle()"
     >
-      <template v-if="sortedOptions?.length">
-        <div
-          class="options__item"
-          v-for="option in sortedOptions"
-          :key="option.id"
-          @mousedown="handleSelect(option)"
+      <template v-if="isSearchable">
+        <input
+          v-bind="$attrs"
+          class="control__field control__field_placeholder-top select__value"
+          :placeholder="isPlaceholderTop ? '' : placeholder"
           :class="{
-            selected:
-              modelValue &&
-              modelValue?.find?.((i) => option?.id == i?.id || option?.id == i),
+            control__field_placeholder_top: isPlaceholderTop,
           }"
-        >
-          <component v-if="componentOption" :is="componentOption" :="option" />
-          <template v-else>
-            {{ option?.value ?? option?.name ?? option?.title }}
-          </template>
-        </div>
-        <div
-          v-if="page < totalPages"
-          class="link options__item options__item_more"
-          @click="addMore"
-        >
-          Show more
-        </div>
+          ref="inputRef"
+          @input="onInput"
+          :value="searchString"
+          type="text"
+        />
+        <span v-if="isPlaceholderTop" class="control__label_name">{{
+          placeholder
+        }}</span>
       </template>
       <template v-else>
-        <div class="options__notfound">No results</div>
+        <input
+          class="control__field control__field_placeholder-top select__value control__field_placeholder-no-focus"
+          :class="{
+            control__field_placeholder_top: isPlaceholderTop,
+          }"
+          :placeholder="isPlaceholderTop ? '' : placeholder"
+          :value="model?.value ?? model?.name ?? model?.title"
+          readonly
+        />
+        <span v-if="isPlaceholderTop" class="control__label_name">{{
+          placeholder
+        }}</span>
       </template>
+      <svg
+        v-if="withIcon"
+        class="select__icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 9L12 15L18 9"
+          stroke="var(--color-grey-dark)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </div>
+  </div>
+  <div
+    class="select__options"
+    v-show="alwaysOpen || isHideInput || isOpened"
+    ref="selectRef"
+    @mousedown.prevent
+  >
+    <template v-if="sortedOptions?.length">
+      <div
+        class="options__item"
+        v-for="option in sortedOptions"
+        :key="option.id"
+        @mousedown="handleSelect(option)"
+        :class="{
+          selected:
+            modelValue &&
+            modelValue?.find?.((i) => option?.id == i?.id || option?.id == i),
+        }"
+      >
+        <component v-if="componentOption" :is="componentOption" :="option" />
+        <template v-else>
+          {{ option?.value ?? option?.name ?? option?.title }}
+        </template>
+      </div>
+      <div
+        v-if="page < totalPages"
+        class="link options__item options__item_more"
+        @click="addMore"
+      >
+        Show more
+      </div>
+    </template>
+    <template v-else>
+      <div class="options__notfound">No results</div>
+    </template>
   </div>
 </template>
 

@@ -1,126 +1,101 @@
 <template>
-  <UiControl
-    class="control-select"
-    :label="label"
-    :hideMessage="hideMessage"
-    :invalid="!!errorMessage"
-    :message="errorMessage || message"
-    :rightIcon="rightIcon"
-  >
-    <div @focusout="onFocusout" ref="wrapper" tabindex="-1" class="select">
-      <div
-        @keydown.enter="isOpened = !isOpened"
-        class="select__field"
-        tabindex="0"
-        :class="{
-          select__active: isOpened,
-        }"
-        @click="toggle"
+  <div @focusout="onFocusout" ref="wrapper" class="select">
+    <div
+      v-if="!isHideInput"
+      @keydown.enter="!alwaysOpen && (isOpened = !isOpened)"
+      class="select__field"
+      tabindex="0"
+      :class="{ select__active: isOpened }"
+      @click="!alwaysOpen && toggle()"
+    >
+      <template v-if="isSearchable">
+        <input
+          v-bind="$attrs"
+          class="control__field control__field_placeholder-top select__value"
+          :placeholder="isPlaceholderTop ? '' : placeholder"
+          :class="{
+            control__field_placeholder_top: isPlaceholderTop,
+          }"
+          ref="inputRef"
+          @input="onInput"
+          :value="searchString"
+          type="text"
+        />
+        <span v-if="isPlaceholderTop" class="control__label_name">{{
+          placeholder
+        }}</span>
+      </template>
+      <template v-else>
+        <input
+          class="control__field control__field_placeholder-top select__value control__field_placeholder-no-focus"
+          :class="{
+            control__field_placeholder_top: isPlaceholderTop,
+          }"
+          :placeholder="isPlaceholderTop ? '' : placeholder"
+          :value="model?.value ?? model?.name ?? model?.title"
+          readonly
+        />
+        <span v-if="isPlaceholderTop" class="control__label_name">{{
+          placeholder
+        }}</span>
+      </template>
+      <svg
+        v-if="withIcon"
+        class="select__icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <template v-if="withLeftIcon">
-          <component v-if="componentLeftIcon" :is="componentLeftIcon" />
-          <span
-            class="select__icon _left"
-            v-else-if="svgLeftIcon"
-            v-html="svgLeftIcon"
-          ></span>
-        </template>
-        <template v-if="isSearchable">
-          <input
-            class="select__value"
-            :class="{ icon: withIcon, 'icon-left': withLeftIcon }"
-            :placeholder="placeholder"
-            :value="model?.value ?? model?.name ?? model?.title"
-            v-if="!isOpened"
-          />
-          <input
-            class="select__value"
-            :class="{ icon: withIcon, 'icon-left': withLeftIcon }"
-            v-if="isOpened"
-            :placeholder="placeholder"
-            ref="inputRef"
-            @input="$emit('update:searchString', $event.target.value)"
-            :value="searchString"
-            type="text"
-          />
-        </template>
-        <template v-else>
-          <div
-            class="select__value"
-            :class="{
-              placeholder:
-                placeholder && !(model?.value ?? model?.name ?? model?.title),
-              icon: withIcon,
-              'icon-left': withLeftIcon,
-            }"
-          >
-            {{
-              (model?.value ?? model?.name ?? model?.title ?? placeholder) ||
-              "No selected"
-            }}
-          </div>
-          <!-- <input
-            type="text"
-            class="select__value"
-            :value="
-              (model?.value ?? model?.name ?? model?.title ?? placeholder) ||
-              'No selected'
-            "
-            readonly
-          /> -->
-        </template>
-        <template v-if="withIcon">
-          <component v-if="componentIcon" :is="componentIcon" />
-          <span
-            class="select__icon"
-            v-else-if="svgIcon"
-            v-html="svgIcon"
-          ></span>
-          <svg
-            v-else
-            class="select__icon"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13.825 6.91248L10 10.7291L6.175 6.91248L5 8.08748L10 13.0875L15 8.08748L13.825 6.91248Z"
-              fill="var(--color-basic)"
-            />
-          </svg>
-        </template>
-      </div>
-      <div
-        class="select__options"
-        v-show="isOpened"
-        ref="selectRef"
-        @scroll="handleScroll"
-        @mousedown.prevent
-      >
-        <template v-if="options?.length">
-          <div
-            class="options__item"
-            v-for="option in options"
-            :key="option.id"
-            @mousedown="handleSelect(option)"
-            :class="{ selected: option?.id == model?.id }"
-          >
-            <span>{{ option?.value ?? option?.name ?? option?.title }}</span>
-          </div>
-        </template>
-        <template v-else>
-          <div class="options__notfound">No results</div>
-        </template>
-      </div>
+        <path
+          d="M6 9L12 15L18 9"
+          stroke="var(--color-grey-dark)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </div>
-  </UiControl>
+    <div
+      class="select__options"
+      :class="{
+        select__options_color: isColour,
+      }"
+      v-show="alwaysOpen || isHideInput || isOpened"
+      ref="selectRef"
+      @mousedown.prevent
+    >
+      <template v-if="options?.length">
+        <div
+          class="options__item"
+          v-for="option in options"
+          :key="option.id"
+          @mousedown="handleSelect(option)"
+          :class="{ selected: option?.id == model?.id }"
+        >
+          <component v-if="componentOption" :is="componentOption" :="option" />
+          <template v-else>
+            {{ option?.value ?? option?.name ?? option?.title }}
+          </template>
+        </div>
+        <div
+          v-if="page < totalPages"
+          class="link options__item options__item_more"
+          @click="addMore"
+        >
+          Show more
+        </div>
+      </template>
+      <template v-else>
+        <div class="options__notfound">No results</div>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script setup>
 const selectRef = ref();
-
 const props = defineProps({
   rightIcon: [String, Object, Array],
   errorMessage: String,
@@ -128,7 +103,14 @@ const props = defineProps({
   label: String,
   searchString: String,
   isSearchable: Boolean,
-  closeAfterSelect: Boolean,
+  alwaysOpen: {
+    type: Boolean,
+    default: false,
+  },
+  closeAfterSelect: {
+    type: Boolean,
+    default: true,
+  },
   hideMessage: Boolean,
   modelValue: {
     type: [Object, Number, String, Array],
@@ -139,32 +121,42 @@ const props = defineProps({
     default: false,
     type: Boolean,
   },
+  isPlaceholderTop: {
+    default: false,
+    type: Boolean,
+  },
   withIcon: {
     default: true,
     type: Boolean,
   },
-  svgIcon: {
-    default: null,
-    type: [String, null, undefined],
-  },
-  componentIcon: {
-    default: null,
-    type: [Object, null, undefined],
-  },
-  withLeftIcon: {
+  isHideInput: {
     default: false,
     type: Boolean,
   },
-  svgLeftIcon: {
-    default: null,
-    type: [String, null, undefined],
+  componentOption: {
+    type: [Object, null],
   },
-  componentLeftIcon: {
-    default: null,
-    type: [Object, null, undefined],
+  isColour: {
+    default: false,
+    type: Boolean,
+  },
+  page: {
+    type: Number,
+  },
+  totalPages: {
+    type: Number,
   },
 });
-const emits = defineEmits(["scrolledTop", "scrolledBottom"]);
+const emits = defineEmits([
+  "scrolledTop",
+  "scrolledBottom",
+  "update:modelValue",
+  "update:searchString",
+]);
+
+if (props.isHideInput) {
+  emits("update:searchString", null);
+}
 
 const model = computed({
   get() {
@@ -186,6 +178,7 @@ const model = computed({
 
     if (props.modelValueIsNumber) {
       if (props.modelValue === _value?.id) {
+        emits("update:searchString", null);
         return emits("update:modelValue", null);
       }
 
@@ -193,6 +186,7 @@ const model = computed({
     }
 
     if (props.modelValue?.id === _value?.id) {
+      emits("update:searchString", null);
       return emits("update:modelValue", null);
     }
 
@@ -201,6 +195,11 @@ const model = computed({
 });
 
 const isOpened = ref(false);
+
+const onInput = (e) => {
+  emits("update:searchString", e.target.value);
+  emits("update:modelValue", null);
+};
 
 watch([selectRef], () => {
   if (selectRef.value) {
@@ -227,52 +226,48 @@ const handleSelect = (option) => {
   if (props.closeAfterSelect) {
     isOpened.value = false;
   }
-  emits("update:searchString", option?.value ?? option?.name ?? option?.title);
+  if (!props.isHideInput) {
+    emits(
+      "update:searchString",
+      option?.value ?? option?.name ?? option?.title
+    );
+  }
+
   model.value = option;
 };
 
-const handleScroll = (event) => {
-  const div = event.target;
-
-  const scrollFromTop = div.scrollTop;
-  const scrollFromBottom =
-    div.scrollHeight - (div.scrollTop + div.clientHeight);
-
-  if (scrollFromBottom < 20) {
-    emits("scrolledBottom", div);
-  }
-  if (scrollFromTop < 20) {
-    emits("scrolledTop", div);
-  }
+const addMore = (event) => {
+  emits("scrolledBottom", event.target);
 };
 </script>
 
 <style lang="scss" scoped>
-.control-select {
-  width: fit-content;
-}
-
 .select {
   cursor: pointer;
   position: relative;
 
   &__field {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     position: relative;
-    // width: 100%;
+    width: 100%;
+  }
+
+  &__active {
+    .select {
+      &__icon {
+        transform: rotate(180deg) translateY(50%);
+      }
+    }
   }
 
   &__icon {
-    display: flex;
     position: absolute;
     top: 50%;
     right: 16px;
     transform: translateY(-50%);
     transition: 0.3s;
-
-    &._left {
-      left: 16px;
-      right: initial;
-    }
   }
 
   input {
@@ -284,50 +279,15 @@ const handleScroll = (event) => {
   }
 
   &__value {
-    color: var(--color-basic);
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 700;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1;
-    white-space: nowrap;
-    padding: 12px 16px;
-    // width: 100%;
-    width: fit-content;
-
-    &.icon {
-      padding-right: 40px;
-    }
-
-    &.icon-left {
-      padding-left: 40px;
-    }
-  }
-
-  .options {
-    background-color: var(--color-white);
-    color: var(--color-grey-dark);
-    border: 1px solid var(--color-line);
-    border-top: none;
-    border-radius: 8px;
-    font-size: 14px;
-    padding: 4px 18px;
-
-    &__item {
-      font-size: 14px;
-      transition: 0.3s;
-
-      &:hover {
-        color: var(--color-grey);
-      }
-      &.selected {
-        color: var(--color-green);
-      }
-    }
-
-    &__notfound {
-      cursor: default;
-    }
+    padding: 8px;
+    padding-top: 24px;
+    // padding-right: 40px;
+    width: 100%;
   }
 
   &__options {
@@ -335,21 +295,99 @@ const handleScroll = (event) => {
     color: var(--color-basic);
     border-radius: 8px;
     box-shadow: 0 4px 4px 0 #00000040;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     row-gap: 8px;
     font-size: 12px;
     font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     padding: 10px 8px;
     position: absolute;
-    // left: 50%;
-    bottom: 1px;
-    transform: translateY(100%);
-    overflow: auto;
-    max-height: 20rem;
     width: 100%;
-    // width: fit-content;
-    z-index: 1000;
+    max-height: 20rem;
+    z-index: 10;
+
+    &_color {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
+
+  @media (max-width: 1024px) {
+    &__options {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.options {
+  &__item {
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--color-grey);
+    }
+    &.selected {
+      color: var(--color-green);
+    }
+  }
+
+  &__notfound {
+    cursor: default;
+  }
+}
+
+.control {
+  &.invalid {
+    .control__field {
+      border-color: var(--color-red);
+      color: var(--color-red);
+    }
+  }
+
+  &__label {
+    display: flex;
+    position: relative;
+
+    &_name {
+      color: var(--color-grey-dark);
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      transition: 0.3s;
+    }
+  }
+
+  // &__field_placeholder-no-focus:focus + &__label_name {
+  //   font-size: 16px;
+  //   transform: translateY(-50%);
+  //   top: 50%;
+  // }
+
+  // &__field:focus + &__label_name,
+  // &__field:not(:placeholder-shown) + &__label_name {
+  //   font-size: 12px;
+  //   top: 11px;
+  //   transform: translateY(0);
+  // }
+
+  // &__field {
+  //   border: 1px solid var(--color-grey-dark);
+  //   border-radius: 8px;
+  //   font-size: 16px;
+  //   padding: 20px 12px;
+
+  //   &_placeholder_top {
+  //     padding: 30px 12px 10px;
+  //   }
+
+  //   &:focus {
+  //     border-color: var(--color-green);
+  //   }
+  // }
 }
 </style>

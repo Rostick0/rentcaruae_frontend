@@ -41,7 +41,7 @@ configure({
       size: "The {field} size must be less than {size} KB",
       image: "The {field} field must be an image",
       min_value: "The {field} must be greater than or equal to 0:{min}",
-      max_value: "The {field} must be less than 0:{max}",
+      max_value: "The {field} must be less than 0:{max_value}",
     },
   }),
 });

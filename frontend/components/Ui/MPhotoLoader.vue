@@ -5,52 +5,46 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <UiStack flex="same-all" gap="2" flexDirection="column">
-      <div class="photoloader__images">
-        <div class="photoloader__image" v-for="item in files" :key="item.id">
-          <div class="photoloader__image_delete" @click="handleRemove(item)">
-            ✖
-          </div>
-          <img
-            class="photoloader__img"
-            :src="item?.path"
-            alt="Ошибка загрузки"
-          />
+    <div class="photoloader__images">
+      <div class="photoloader__image" v-for="item in files" :key="item.id">
+        <div class="photoloader__image_delete" @click="handleRemove(item)">
+          ✖
         </div>
-        <label
-          class="control__photoloader photoloader__block"
-          :class="{ error: errorMessage }"
-        >
-          <input
-            @change="handleOnFileChange"
-            @click="$event.target.value = null"
-            v-bind="$attrs"
-            class="photoloader__input"
-            type="file"
-            accept="image/png,image/jpeg,image/jpg"
-          />
-          <span class="photoloader__block_content">
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.5 7.96082V18.5502C0.5 20.1665 1.81265 21.4792 3.42898 21.4792H21.571C23.1873 21.4792 24.5 20.1665 24.5 18.5502V7.96082C24.5 6.42286 23.251 5.17388 21.7131 5.17388H17.8143L17.7212 4.76735C17.3441 3.13633 15.909 2 14.2339 2H10.7612C9.09102 2 7.65592 3.13633 7.27388 4.76735L7.18082 5.17388H3.28694C1.74898 5.17388 0.5 6.42775 0.5 7.96082Z"
-                fill="#009639"
-              />
-              <path
-                d="M12.5 19C15.8061 19 18.5 16.3061 18.5 13C18.5 9.69388 15.8061 7 12.5 7C9.19388 7 6.5 9.68805 6.5 13C6.5 16.312 9.19388 19 12.5 19ZM12.5 8.42857C15.019 8.42857 17.0714 10.481 17.0714 13C17.0714 15.5189 15.019 17.5714 12.5 17.5714C9.98105 17.5714 7.92857 15.5189 7.92857 13C7.92857 10.481 9.98105 8.42857 12.5 8.42857Z"
-                fill="white"
-              />
-            </svg>
-            <span class="photoloader__title">Add photo</span>
-          </span>
-        </label>
+        <img class="photoloader__img" :src="item?.path" alt="Error" />
       </div>
-    </UiStack>
+      <label
+        class="control__photoloader photoloader__block"
+        :class="{ error: errorMessage }"
+      >
+        <input
+          @change="handleOnFileChange"
+          @click="$event.target.value = null"
+          v-bind="$attrs"
+          class="photoloader__input"
+          type="file"
+          accept="image/png,image/jpeg,image/jpg"
+        />
+        <span class="photoloader__block_content">
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.5 7.96082V18.5502C0.5 20.1665 1.81265 21.4792 3.42898 21.4792H21.571C23.1873 21.4792 24.5 20.1665 24.5 18.5502V7.96082C24.5 6.42286 23.251 5.17388 21.7131 5.17388H17.8143L17.7212 4.76735C17.3441 3.13633 15.909 2 14.2339 2H10.7612C9.09102 2 7.65592 3.13633 7.27388 4.76735L7.18082 5.17388H3.28694C1.74898 5.17388 0.5 6.42775 0.5 7.96082Z"
+              fill="white"
+            />
+            <path
+              d="M12.5 19C15.8061 19 18.5 16.3061 18.5 13C18.5 9.69388 15.8061 7 12.5 7C9.19388 7 6.5 9.68805 6.5 13C6.5 16.312 9.19388 19 12.5 19ZM12.5 8.42857C15.019 8.42857 17.0714 10.481 17.0714 13C17.0714 15.5189 15.019 17.5714 12.5 17.5714C9.98105 17.5714 7.92857 15.5189 7.92857 13C7.92857 10.481 9.98105 8.42857 12.5 8.42857Z"
+              fill="#221EE3"
+            />
+          </svg>
+          <span class="photoloader__title">Add photo</span>
+        </span>
+      </label>
+    </div>
   </UiControl>
 </template>
 <script setup>
@@ -135,13 +129,13 @@ const handleRemove = (item) => {
 <style lang="scss" scoped>
 .photoloader {
   &__block {
-    background: #00963940;
+    background-color: var(--color-basic);
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100%;
+    padding-top: 62.34%;
     position: relative;
     transition: 0.3s;
     width: 100%;
@@ -172,20 +166,21 @@ const handleRemove = (item) => {
   }
 
   &__title {
-    color: var(--color-green);
+    color: var(--color-white);
     font-size: 16px;
+    letter-spacing: 0.02em;
     z-index: 2;
   }
 
   &__images {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 8px;
+    grid-gap: 8px 40px;
     width: 100%;
   }
 
   &__image {
-    padding-top: 100%;
+    padding-top: 62.34%;
     position: relative;
 
     &_delete {

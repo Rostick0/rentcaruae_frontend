@@ -4,7 +4,12 @@
       <div class="switch__icon_circle"></div>
     </div>
     <div class="switch__label">
-      {{ label }}
+      <template v-if="label">
+        {{ label }}
+      </template>
+      <template v-else>
+        <slot />
+      </template>
     </div>
   </div>
 </template>

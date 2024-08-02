@@ -5,6 +5,7 @@ export default {
   //   delete: async ({ id, params }) => useFetcher().delete(`/transmissions/${id}`, params),
   //   update: async ({ id, data, params }) =>
   //     useFetcher().patch(`/transmissions/${id}`, data, params),
-  getAll: async ({ params }) => useFetcher().get(`/transmissions`, params),
+  getAll: async ({ params = {} } = {}) =>
+    useFetcher().get(`/transmissions`, params),
   //   create: async ({ data }) => useFetcher().post(`/transmissions`, data),
 };

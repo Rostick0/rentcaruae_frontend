@@ -23,7 +23,7 @@ await get();
 const config = useRuntimeConfig();
 
 const brands = computed(() =>
-  data.value.map((item) => ({
+  data.value?.map?.((item) => ({
     ...item,
     image_url: config.public.BACK_URL + item.image_url,
   }))

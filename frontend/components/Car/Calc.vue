@@ -208,6 +208,7 @@ const periodSelect = ref({
 
   bind: {
     options: periodOptions,
+    isAlternative: true,
     // slots: "dasd",
   },
 });

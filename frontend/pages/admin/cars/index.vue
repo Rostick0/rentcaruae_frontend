@@ -2,7 +2,9 @@
   <div class="page-cars">
     <h1 class="h1 admin page-cars__title">
       <span>Manage cars</span>
-      <UiButton class="page-cars__add" variant="outlined">+ Add car</UiButton>
+      <NuxtLink class="d-flex" to="/admin/cars/add">
+        <UiButton class="page-cars__add" variant="outlined">+ Add car</UiButton>
+      </NuxtLink>
     </h1>
     <AdminCarsTable :cars="data" />
     <AdminPagination currentPage="1" limit="8" totalCountData="40" />

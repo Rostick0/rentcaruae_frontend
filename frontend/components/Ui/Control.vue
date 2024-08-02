@@ -5,9 +5,11 @@
       { invalid },
       { valid },
       { control__hideMessage: hideMessage },
+      { isReadOnly },
       leftIcon ? 'leftIcon' : '',
       rightIcon ? 'rightIcon' : '',
     ]"
+    :style="{ '--readOnlyText': `'${readOnlyText ?? 'Hide'}'` }"
   >
     <div v-if="label" class="control__label">
       {{ label }}
@@ -50,9 +52,11 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   invalid?: boolean;
   valid?: boolean;
   hideMessage?: boolean;
+  isReadOnly?: boolean;
+  readOnlyText?: string;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
@@ -77,6 +81,32 @@ defineProps<Props>();
     color: var(--color-red);
     font-size: 12px;
     padding-left: 12px;
+  }
+
+  &.isReadOnly {
+    // filter: blur(1px);
+    .control__wrap {
+      position: relative;
+      
+      &::after {
+        background-color: rgb(0, 0, 0, 0.25);
+        color: var(--color-white);
+        border-radius: 8px;
+        content: var(--readOnlyText);
+        cursor: not-allowed;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // opacity: 0.1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+    }
   }
 }
 </style>

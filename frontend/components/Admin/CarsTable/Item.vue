@@ -34,7 +34,7 @@ const props = defineProps({
 });
 
 const prices = computed(() =>
-  props.car?.price_periods?.map((item) => ({
+  props.car?.price_periods?.map?.((item) => ({
     price: `AED ${formatNumber(item?.price)}`,
     period: convertPeriod(item?.period),
   }))
