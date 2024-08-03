@@ -3,9 +3,7 @@
     <h2 class="rental-pricing__title">Rental pricing</h2>
     <ul class="rental-pricing__list">
       <li class="rental-pricing__item" v-for="item in prices" :key="item?.id">
-        <span
-          >{{ item?.min }}{{ item?.max ? " - " + item?.max : "+" }} Days</span
-        >
+        <span>{{ item?.period }} Days</span>
         <span>AED {{ item?.price }}</span>
       </li>
     </ul>

@@ -3,7 +3,7 @@
     <div class="car-image__main">
       <LazyNuxtImg
         class="car-image__main_img"
-        :src="activeImage"
+        :src="activeImage?.image?.path_webp"
         decoding="async"
         loading="lazy"
         :alt="carTitle"
@@ -15,7 +15,7 @@
         class="car-image__item"
         v-for="image in images"
         :key="image?.id"
-        :src="image?.path"
+        :src="image?.image?.path_webp"
         decoding="async"
         loading="lazy"
         :alt="carTitle"
@@ -33,7 +33,7 @@ const props = defineProps({
   carTitle: String,
 });
 
-const activeImage = ref(props.images[0]?.path);
+const activeImage = ref(props.images?.[0]);
 </script>
 
 <style lang="scss" scoped>

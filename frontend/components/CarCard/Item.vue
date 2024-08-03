@@ -3,9 +3,11 @@
     <div class="car__top">
       <div class="car__title">{{ car?.title }}</div>
       <LazyNuxtImg
-        :src="car?.make?.path"
+        :src="
+          $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
+        "
         loading="lazy"
-        :alt="car?.make?.name"
+        :alt="car?.generation?.model_car?.brand?.name"
         width="40"
         height="40"
       />
@@ -13,7 +15,7 @@
     <div class="car__image">
       <LazyNuxtImg
         class="car__img"
-        :src="car?.image?.path"
+        :src="car?.images?.[0]?.image?.path + '?w=320'"
         decoding="async"
         loading="lazy"
         :alt="car?.title"
@@ -34,15 +36,17 @@
       <div class="car-stat">
         <div class="car-stat__title">Mileage day/mo</div>
         <div class="car-stat__value">
-          {{ car?.mileage_day }} <span class="car-stat__value_km">km</span> /
-          {{ car?.mileage_month }} <span class="car-stat__value_km">km</span>
+          {{ car?.price?.[0]?.mileage }}
+          <span class="car-stat__value_km">km</span> /
+          {{ car?.price?.[1]?.mileage }}
+          <span class="car-stat__value_km">km</span>
         </div>
       </div>
       <div class="car-stat__hr"></div>
       <div class="car-stat">
         <div class="car-stat__title">Minimum</div>
         <div class="car-stat__value">
-          {{ car?.min_days }} {{ car?.min_days > 1 ? "days" : "day" }}
+          {{ car?.min_days ?? 1 }} {{ car?.min_days > 1 ? "days" : "day" }}
         </div>
       </div>
     </div>
@@ -72,19 +76,33 @@
         <div class="car-price">
           <div class="car-price__old">
             <span>Daily</span>
-            <del class="del">AED {{ formatNumber(car?.price_daily_old) }}</del>
+            <del class="del" v-if="car?.price_special?.[0]"
+              >AED {{ formatNumber(car?.price?.[0]?.price) }}</del
+            >
           </div>
           <div class="car-price__current">
-            AED {{ formatNumber(car?.price_daily) }}
+            AED
+            {{
+              formatNumber(
+                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+              )
+            }}
           </div>
         </div>
         <div class="car-price">
           <div class="car-price__old">
             <span>Monthly</span>
-            <del class="del">AED {{ formatNumber(+car?.price_month_old) }}</del>
+            <del class="del" v-if="car?.price_special?.[1]"
+              >AED {{ formatNumber(car?.price?.[1]?.price) }}</del
+            >
           </div>
           <div class="car-price__current">
-            AED {{ formatNumber(+car?.price_month) }}
+            AED
+            {{
+              formatNumber(
+                car?.price_special?.[1]?.price ?? car?.price?.[1]?.price
+              )
+            }}
           </div>
         </div>
       </div>
@@ -97,6 +115,9 @@
 const props = defineProps({
   car: Object,
 });
+
+// const config = useRuntimeConfig();
+// const urlBrandImage = config.public.BACK_URL;
 </script>
 
 <style lang="scss" scoped>

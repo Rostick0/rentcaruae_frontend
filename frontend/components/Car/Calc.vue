@@ -7,17 +7,19 @@
         </div>
         <div class="calc__top_period">
           <span>Selected period:</span>
-          <VFormComponent :field="periodSelect" />
+          <div>
+            <VFormComponent :field="periodSelect" />
+          </div>
         </div>
       </div>
       <div class="calc__top_right">
         <div class="calc__price-old">
           {{ periodSelect.modelValue?.name }}
-          <del class="del">AED 3 600</del>
+          <del class="del" v-if="priceSpecial">AED {{ priceSpecial }}</del>
         </div>
         <div class="calc__price">
           AED
-          <span class="calc__price_val">3 499</span>
+          <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
     </div>
@@ -34,7 +36,7 @@
           />
           <span>Deposit</span>
         </div>
-        <span>AED 3 800</span>
+        <span>AED {{ car?.security_deposit?.price }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -59,7 +61,10 @@
           />
           <span>Minimum rental period</span>
         </div>
-        <span>3 days</span>
+        <span
+          >{{ car?.min_days ?? 1 }}
+          {{ car?.min_days > 1 ? "days" : "day" }}</span
+        >
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -72,7 +77,7 @@
           />
           <span>Total mileage limit</span>
         </div>
-        <span>1200 km</span>
+        <span>{{ maxMileage }} km</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -136,9 +141,7 @@
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">
-            {{ daysRental }} {{ daysRental > 1 ? "days" : "day" }}
-          </div>
+          <div class="calc__price text-ui">{{ daysRental }} {{ dayText }}</div>
         </div>
       </div>
       <VFormComponent :field="period" />
@@ -152,22 +155,29 @@
         <div class="calc-item__flex">
           <div class="calc-item__flex_left">
             <span>Rental</span>
-            <span>{{ daysRental }} day</span>
+            <span>{{ daysRental }} {{ dayText }}</span>
           </div>
-          <strong class="calc-item__size-small">AED 36289</strong>
+          <strong class="calc-item__size-small"
+            >AED {{ formatNumber(priceRental) }}</strong
+          >
         </div>
         <div class="calc-item__flex">
           <div class="calc-item__flex_left">
             <span>VAT</span>
             <span>Tax (5%)</span>
           </div>
-          <strong class="calc-item__size-small">+ AED 1815</strong>
+          <strong class="calc-item__size-small"
+            >+ AED {{ formatNumber(tax) }}</strong
+          >
         </div>
         <div class="calc-item__hr"></div>
         <div class="calc-item__flex">
           <div class="calc__title">Total</div>
           <strong class="calc__price">
-            AED <span class="calc__price_val">39 788</span>
+            AED
+            <span class="calc__price_val">{{
+              formatNumber(priceRental + tax)
+            }}</span>
           </strong>
         </div>
       </div>
@@ -243,6 +253,43 @@ const daysRental = ref(
   moment(period.modelValue?.[1]).diff(moment(period.modelValue?.[0]), "days") +
     1
 );
+
+const dayText = computed(() => (daysRental?.value > 1 ? "days" : "day"));
+
+const maxMileage = computed(() =>
+  props?.car?.price?.length && Array.isArray(props?.car?.price)
+    ? Math.max(...props?.car?.price?.map((item) => item?.mileage))
+    : 0
+);
+
+const priceSpecial = computed(() =>
+  formatNumber(
+    props?.car?.price_special?.find(
+      (item) => item?.period === periodSelect.value.modelValue.period
+    )?.price &&
+      props?.car?.price?.find(
+        (item) => item?.period === periodSelect.value.modelValue.period
+      )?.price
+  )
+);
+
+const price = computed(() =>
+  formatNumber(
+    props?.car?.price_special?.find(
+      (item) => item?.period === periodSelect.value.modelValue.period
+    )?.price ??
+      props?.car?.price?.find(
+        (item) => item?.period === periodSelect.value.modelValue.period
+      )?.price
+  )
+);
+
+const priceRental = computed(
+  () =>
+    getPeriodPrice(props.car, daysRental.value) +
+    (without_deposite.value?.modelValue ? 45 * daysRental.value : 0)
+);
+const tax = computed(() => priceRental.value * 0.05);
 
 watch(
   () => period.value.modelValue,

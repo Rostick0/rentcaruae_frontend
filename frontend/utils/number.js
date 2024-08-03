@@ -1,2 +1,1 @@
-export const formatNumber = (val) =>
-  val.toLocaleString("ru-RU",);
+export const formatNumber = (val) => val?.toLocaleString("ru-RU");

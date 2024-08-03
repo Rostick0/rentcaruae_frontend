@@ -158,6 +158,7 @@ watch(
   &.dp__range_between {
     background-color: #a1d1ff;
     border-color: #a1d1ff;
+    border-radius: 0;
   }
 }
 </style>

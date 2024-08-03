@@ -22,7 +22,7 @@ const useApi = async ({
   unwatchedFilters = {},
   requestParams = {},
   callback = null,
-  init = true,
+  init = false,
   afterCallback = () => {},
   headers = {},
   initialValue = null,

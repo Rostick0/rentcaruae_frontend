@@ -7,16 +7,16 @@
         </div>
       </div>
       <div class="car__characteristics">
-        <div class="car-characteristic">
+        <div class="car-characteristic" :title="car?.transmission?.name">
           <LazyNuxtImg
             class="car-characteristic__iconc"
-            :src="`images/icon/${car?.gearbox}.svg`"
+            :src="`images/icon/auto.svg`"
             loading="lazy"
-            alt="gearbox"
+            alt="fuel type"
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text">{{ car?.gearbox }}</span>
+          <span class="car-characteristic__text">{{ car?.transmission?.name?.substr(0, 4) }}</span>
         </div>
         <div class="car-characteristic">
           <LazyNuxtImg
@@ -28,19 +28,19 @@
             height="20"
           />
           <span class="car-characteristic__text"
-            >{{ car?.persons }} Person</span
+            >{{ car?.seats }} Person</span
           >
         </div>
         <div class="car-characteristic">
           <LazyNuxtImg
             class="car-characteristic__icon"
-            :src="`images/icon/${car?.fuel_type}.svg`"
+            :src="`images/icon/${car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'}.svg`"
             loading="lazy"
             alt="fuel type"
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text">{{ car?.fuel_type }}</span>
+          <span class="car-characteristic__text">{{ car?.fuel_type?.name }}</span>
         </div>
       </div>
     </div>

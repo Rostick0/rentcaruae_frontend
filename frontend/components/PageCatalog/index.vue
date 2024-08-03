@@ -6,7 +6,7 @@
       <slot name="topBlock" />
       <CarType v-model="type" />
       <LazyFilter />
-      <LazyCarCardList :cars="cars" />
+      <LazyCarCardList :cars="data" />
       <LazyCarCardShortList
         class="catalog__specials"
         :cars="carsSec"
@@ -14,7 +14,7 @@
         linkText="All special offers"
         link="/"
       />
-      <LazyCarCardList :cars="[...cars].splice(0, 3)" />
+      <!-- <LazyCarCardList :cars="[...cars].splice(0, 3)" /> -->
     </div>
   </div>
 </template>
@@ -27,34 +27,42 @@ const props = defineProps({
 
 const type = ref();
 
-const cars = [1, 2, 3, 4, 5, 6].map((item) => ({
-  id: 2,
-  title: "BMW 430i cabrio",
-  price_daily_old: 3600,
-  price_daily: 3499,
-  price_month_old: 80000,
-  price_month: 60000,
-  deposite: null,
-  min_days: 1,
-  mileage_day: 250,
-  mileage_month: 2400,
-  gearbox: "auto",
-  persons: 4,
-  fuel_type: "petrol",
-  image: {
-    path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (1).png",
+const { data, get } = await useApi({
+  name: "car.getAll",
+  params: {
+    extends: "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
   },
-  make: {
-    name: "",
-    path: "images/fake/Logos (3).png",
-  },
-  user: {
-    name: "",
-    path: "images/fake/thrifty-car-rental-lg.png 1.png",
-  },
-  options: ["NEW", "Special offer"],
-  modules: ["1 day rental available", "Insurance included", "Free delivery"],
-}));
+});
+
+await get();
+// const cars = [1, 2, 3, 4, 5, 6].map((item) => ({
+//   id: 2,
+//   title: "BMW 430i cabrio",
+//   price_daily_old: 3600,
+//   price_daily: 3499,
+//   price_month_old: 80000,
+//   price_month: 60000,
+//   deposite: null,
+//   min_days: 1,
+//   mileage_day: 250,
+//   mileage_month: 2400,
+//   gearbox: "auto",
+//   persons: 4,
+//   fuel_type: "petrol",
+//   image: {
+//     path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (1).png",
+//   },
+//   make: {
+//     name: "",
+//     path: "images/fake/Logos (3).png",
+//   },
+//   user: {
+//     name: "",
+//     path: "images/fake/thrifty-car-rental-lg.png 1.png",
+//   },
+//   options: ["NEW", "Special offer"],
+//   modules: ["1 day rental available", "Insurance included", "Free delivery"],
+// }));
 
 const carsSec = [
   {

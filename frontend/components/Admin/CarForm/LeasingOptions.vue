@@ -2,43 +2,43 @@
   <AdminFormBlock title="leasing options">
     <div class="form-item__price">
       <div class="form-item__price_name">1 month</div>
-      <VFormComponent :field="leasing_price_0" />
+      <VFormComponent :field="price_leasing_0" />
     </div>
     <div class="form-item__price">
       <div class=""></div>
-      <VFormComponent :field="leasing_mileage_0" />
+      <VFormComponent :field="mileage_leasing_0" />
     </div>
     <div class="form-item__price">
       <div class="form-item__price_name">3 months</div>
-      <VFormComponent :field="leasing_price_1" />
+      <VFormComponent :field="price_leasing_1" />
     </div>
     <div class="form-item__price">
       <div class=""></div>
-      <VFormComponent :field="leasing_mileage_1" />
+      <VFormComponent :field="mileage_leasing_1" />
     </div>
     <div class="form-item__price">
       <div class="form-item__price_name">6 months</div>
-      <VFormComponent :field="leasing_price_2" />
+      <VFormComponent :field="price_leasing_2" />
     </div>
     <div class="form-item__price">
       <div class=""></div>
-      <VFormComponent :field="leasing_mileage_2" />
+      <VFormComponent :field="mileage_leasing_2" />
     </div>
     <div class="form-item__price">
       <div class="form-item__price_name">9 months</div>
-      <VFormComponent :field="leasing_price_3" />
+      <VFormComponent :field="price_leasing_3" />
     </div>
     <div class="form-item__price">
       <div class=""></div>
-      <VFormComponent :field="leasing_mileage_3" />
+      <VFormComponent :field="mileage_leasing_3" />
     </div>
     <div class="form-item__price">
       <div class="form-item__price_name">12 months</div>
-      <VFormComponent :field="leasing_price_4" />
+      <VFormComponent :field="price_leasing_4" />
     </div>
     <div class="form-item__price">
       <div class=""></div>
-      <VFormComponent :field="leasing_mileage_4" />
+      <VFormComponent :field="mileage_leasing_4" />
       <div class="form-item__price_switch">
         <UiSwitch
           label="Available for leasing?"
@@ -57,9 +57,9 @@ const props = defineProps({
 
 const emits = defineEmits(["setHide"]);
 
-const leasing_price_0 = ref({
+const price_leasing_0 = ref({
   type: "text",
-  name: "leasing_price.0",
+  name: "price_leasing.0",
   modelValue: "",
 
   bind: {
@@ -71,9 +71,9 @@ const leasing_price_0 = ref({
   },
 });
 
-const leasing_mileage_0 = ref({
+const mileage_leasing_0 = ref({
   type: "text",
-  name: "leasing_mileage.0",
+  name: "mileage_leasing.0",
   modelValue: "",
 
   bind: {
@@ -85,9 +85,9 @@ const leasing_mileage_0 = ref({
   },
 });
 
-const leasing_price_1 = ref({
+const price_leasing_1 = ref({
   type: "text",
-  name: "leasing_price.1",
+  name: "price_leasing.1",
   modelValue: "",
 
   bind: {
@@ -99,9 +99,9 @@ const leasing_price_1 = ref({
   },
 });
 
-const leasing_mileage_1 = ref({
+const mileage_leasing_1 = ref({
   type: "text",
-  name: "leasing_mileage.1",
+  name: "mileage_leasing.1",
   modelValue: "",
 
   bind: {
@@ -113,9 +113,9 @@ const leasing_mileage_1 = ref({
   },
 });
 
-const leasing_price_2 = ref({
+const price_leasing_2 = ref({
   type: "text",
-  name: "leasing_price.2",
+  name: "price_leasing.2",
   modelValue: "",
 
   bind: {
@@ -127,9 +127,9 @@ const leasing_price_2 = ref({
   },
 });
 
-const leasing_mileage_2 = ref({
+const mileage_leasing_2 = ref({
   type: "text",
-  name: "leasing_mileage.2",
+  name: "mileage_leasing.2",
   modelValue: "",
 
   bind: {
@@ -141,9 +141,9 @@ const leasing_mileage_2 = ref({
   },
 });
 
-const leasing_price_3 = ref({
+const price_leasing_3 = ref({
   type: "text",
-  name: "leasing_price.3",
+  name: "price_leasing.3",
   modelValue: "",
 
   bind: {
@@ -155,9 +155,9 @@ const leasing_price_3 = ref({
   },
 });
 
-const leasing_mileage_3 = ref({
+const mileage_leasing_3 = ref({
   type: "text",
-  name: "leasing_mileage.3",
+  name: "mileage_leasing.3",
   modelValue: "",
 
   bind: {
@@ -169,9 +169,9 @@ const leasing_mileage_3 = ref({
   },
 });
 
-const leasing_price_4 = ref({
+const price_leasing_4 = ref({
   type: "text",
-  name: "leasing_price.4",
+  name: "price_leasing.4",
   modelValue: "",
 
   bind: {
@@ -183,9 +183,9 @@ const leasing_price_4 = ref({
   },
 });
 
-const leasing_mileage_4 = ref({
+const mileage_leasing_4 = ref({
   type: "text",
-  name: "leasing_mileage.4",
+  name: "mileage_leasing.4",
   modelValue: "",
 
   bind: {

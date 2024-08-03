@@ -3,7 +3,7 @@
     <div class="car-short__image">
       <LazyNuxtImg
         class="car-short__img"
-        :src="car?.image?.path"
+        :src="car?.images?.[0]?.image?.path_webp"
         decoding="async"
         loading="lazy"
         :alt="car?.title"
@@ -16,16 +16,26 @@
         <div class="car-short__title">{{ car?.title }}</div>
         <div class="car-short__info">
           <span>From</span>
-          <del class="car-short__price-old" v-if="car?.price_old"
-            >AED {{ car?.price_old }}</del
+          <del class="car-short__price-old" v-if="car?.price_special?.[0]"
+            >AED {{ formatNumber(car?.price?.[0]?.price) }}AED
+            {{ car?.price_old }}</del
           >
-          <span class="car-short__price text-ui">AED {{ car?.price }}</span>
+          <span class="car-short__price text-ui"
+            >AED
+            {{
+              formatNumber(
+                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+              )
+            }}</span
+          >
           <span>per day</span>
         </div>
       </div>
       <LazyNuxtImg
         class="car-short__icon"
-        :src="car?.make?.path"
+        :src="
+          $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
+        "
         loading="lazy"
         width="40"
         height="40"

@@ -46,7 +46,8 @@
       </div>
     </form>
     <div class="car-form__preview">
-      <!-- <LazyCarCardItem /> -->
+      <LazyCarCardItem :car="car" />
+      <LazyCarCardShortItem :car="car" />
     </div>
   </div>
 </template>
@@ -54,6 +55,13 @@
 <script setup>
 import api from "~/api";
 import { useForm } from "vee-validate";
+
+const props = defineProps({
+  car: {
+    type: Object,
+    required: false,
+  },
+});
 
 const is_show = ref({
   type: "switch",
@@ -101,6 +109,13 @@ const isSpecialOffer = ref(false);
     &_small {
       font-size: 10px;
     }
+  }
+
+  &__preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 360px;
   }
 }
 </style>

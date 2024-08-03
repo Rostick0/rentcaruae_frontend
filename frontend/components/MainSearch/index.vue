@@ -181,6 +181,7 @@ const companies = [
     padding: 12px 10px;
     position: absolute;
     width: calc(100% - 104px);
+    z-index: 2;
   }
 
   &__models {

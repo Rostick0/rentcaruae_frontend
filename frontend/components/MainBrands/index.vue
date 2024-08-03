@@ -11,7 +11,6 @@
 <script setup>
 const { data, get } = await useApi({
   name: "brands.getAll",
-  init: false,
   params: {
     limit: 12,
     sort: "is_popular",

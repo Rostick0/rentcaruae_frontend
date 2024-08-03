@@ -147,14 +147,17 @@
 <script setup>
 const { data: cities } = await useApi({
   name: "cities.getAll",
+  init: true,
 });
 
 const { data: categories } = await useApi({
   name: "categories.getAll",
+  init: true,
 });
 
 const { data: brands } = await useApi({
   name: "brands.getAll",
+  init: true,
   params: {
     sort: "is_popular,-name",
     limit: 8,
@@ -163,9 +166,10 @@ const { data: brands } = await useApi({
 
 const { data: generations } = await useApi({
   name: "distinctValue.getAll",
+  init: true,
   params: {
     table: "generations",
-    column: 'name',
+    column: "name",
     sort: "-name",
     limit: 8,
   },

@@ -8,7 +8,7 @@
         :specifications="specifications"
       />
       <CarDescription :title="car?.title" :description="car?.description" />
-      <CarRentalPricing :prices="car?.prices" />
+      <CarRentalPricing :prices="car?.price_leasing" />
       <div class="car__spoilers">
         <UiSpoiler>
           <template #title>DOCUMENTS REQUIRED</template>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="car__right">
-      <LazyCarCalc />
+      <LazyCarCalc :car="car" />
     </div>
   </div>
 </template>
@@ -28,9 +28,13 @@
 const props = defineProps({
   car: Object,
 });
+console.log(props.car?.car_options);
 
 const specifications = computed(() =>
-  groupByInArray(props.car?.specifications, "type")
+  groupByInArray(
+    props.car?.car_options?.map((item) => item?.option),
+    "type"
+  )
 );
 </script>
 
@@ -48,6 +52,7 @@ const specifications = computed(() =>
   }
 
   &__left {
+    flex-grow: 1;
     flex-shrink: 1;
   }
 

@@ -2,10 +2,17 @@ export const periodOptions = [
   {
     id: 1,
     name: "daily",
+    period: 1,
   },
   {
     id: 2,
+    name: "week",
+    period: 7,
+  },
+  {
+    id: 3,
     name: "month",
+    period: 30,
   },
 ];
 
