@@ -5,9 +5,13 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  car: Object,
+});
+
 const images = ref({
   type: "multiple-photo-loader",
   name: "images",
-  modelValue: "",
+  modelValue: props?.car?.images?.map?.((item) => item?.image) ?? "",
 });
 </script>

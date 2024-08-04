@@ -19,6 +19,7 @@ import debounce from "lodash/debounce";
 import api from "~/api";
 
 const props = defineProps({
+  car: Object,
   validateField: Function,
 });
 
@@ -27,7 +28,7 @@ const brand = ref({
   name: "brand",
   rules: "required",
   //   modelValue: props?.product?.modification?.generation?.model_car?.make ?? "",
-  modelValue: "",
+  modelValue: props?.car?.generation?.model_car?.brand ?? "",
 
   bind: {
     label: "Car brend",
@@ -48,7 +49,7 @@ const model_car = ref({
   type: "select",
   name: "model_car",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.generation?.model_car ?? "",
 
   bind: {
     label: "Car model",
@@ -74,13 +75,13 @@ const year = ref({
   type: "text",
   name: "year",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.year ?? "",
 
   bind: {
     label: "Make",
     placeholder: "Year",
     maska: "####",
-    isReadOnly: true,
+    isReadOnly: !model_car.value.modelValue,
     readOnlyText: "Select model car",
   },
 });
@@ -104,7 +105,7 @@ const category_id = ref({
   type: "select",
   name: "category_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.category ?? "",
 
   bind: {
     label: "Car categorias",
@@ -119,7 +120,7 @@ const generation_id = ref({
   type: "select",
   name: "generation_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.generation ?? "",
 
   bind: {
     label: "Body type",
@@ -127,7 +128,7 @@ const generation_id = ref({
     debounceMs: 200,
     searchFn: fetchGeneration,
     withIcon: false,
-    isReadOnly: true,
+    isReadOnly: !year.value.modelValue,
     readOnlyText: "Select year",
     deps: computed(() => year.value.modelValue),
     onDepsChange: debounce((ctx) => {

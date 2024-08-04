@@ -15,10 +15,14 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  car: Object,
+});
+
 const security_deposit = ref({
   type: "text",
   name: "security_deposit",
-  modelValue: "",
+  modelValue: props?.car?.security_deposit?.price ?? "",
 
   bind: {
     label: "Security deposit (AED)",
@@ -32,7 +36,7 @@ const security_deposit = ref({
 const free_per_day_security = ref({
   type: "text",
   name: "free_per_day_security",
-  modelValue: "",
+  modelValue: props?.car?.free_per_day_security?.price ?? "",
 
   bind: {
     label: "Deposit Free per day (AED)",
@@ -46,7 +50,7 @@ const free_per_day_security = ref({
 const is_free_deposite = ref({
   type: "switch",
   name: "is_show_security",
-  modelValue: true,
+  modelValue: !!props?.car?.free_per_day_security?.price,
 
   bind: {
     label: "Deposit FREE",

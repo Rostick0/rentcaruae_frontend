@@ -1,7 +1,6 @@
 <template>
   <h1 class="h1 admin">Edit car</h1>
   <AdminCarForm :car="data" />
-  <!-- {{ data }} -->
 </template>
 
 <script setup>
@@ -11,18 +10,30 @@ definePageMeta({
 
 const id = useRoute().params.id;
 
-// const { data } = await api.car.get({ id });
-const { data } = await useApi({
+const { data, get } = await useApi({
   name: "car.get",
-  init: true,
   params: {
-    extends:
-      "generation.model_car.brand,price,images.image,fuel_type,transmission,security_deposit,price_special,car_options.option",
+    extends: [
+      "generation.model_car.brand",
+      "car_options.option",
+      "images.image",
+      "category",
+      "fuel_type",
+      "security_deposit",
+      "transmission",
+      "colour",
+      "colour_interior",
+      "price",
+      "price_leasing",
+      "price_special",
+    ].join(),
   },
   requestParams: {
     id,
   },
 });
+
+await get();
 
 // console.log(data.value);
 </script>

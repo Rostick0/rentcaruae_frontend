@@ -18,13 +18,17 @@
 <script setup>
 import api from "~/api";
 
+const props = defineProps({
+  car: Object,
+});
+
 const transmissionOptions =
   (await api.transmissions.getAll().then((res) => res?.data)) ?? [];
 const transmission_id = ref({
   type: "select",
   name: "transmission_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.transmission ?? "",
 
   bind: {
     label: "Transmission",
@@ -40,7 +44,7 @@ const colour_id = ref({
   type: "select",
   name: "colour_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.colour ?? "",
 
   bind: {
     label: "Car colour",
@@ -54,7 +58,7 @@ const seats = ref({
   type: "text",
   name: "seats",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.seats ?? "",
 
   bind: {
     label: "Seats",
@@ -66,7 +70,7 @@ const colour_interior_id = ref({
   type: "select",
   name: "colour_interior_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.colour_interior ?? "",
 
   bind: {
     label: "Interior colour",
@@ -82,7 +86,7 @@ const fuel_type_id = ref({
   type: "select",
   name: "fuel_type_id",
   rules: "required",
-  modelValue: "",
+  modelValue: props?.car?.fuel_type ?? "",
 
   bind: {
     label: "Fuel type",
@@ -95,7 +99,7 @@ const fuel_type_id = ref({
 const is_new = ref({
   type: "switch",
   name: "is_new",
-  modelValue: false,
+  modelValue: !!props?.car?.is_new ?? false,
 
   bind: {
     label: "NEW",

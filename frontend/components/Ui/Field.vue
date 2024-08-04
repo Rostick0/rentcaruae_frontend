@@ -45,7 +45,7 @@
 <script setup>
 const emits = defineEmits(["update:modelValue"]);
 const props = defineProps({
-  modelValue: String,
+  modelValue: [String, Number],
   invalid: Boolean,
   leftIcon: String,
   rightIcon: String,

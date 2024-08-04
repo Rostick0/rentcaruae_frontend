@@ -52,6 +52,7 @@
 
 <script setup>
 const props = defineProps({
+  car: Object,
   isShow: Boolean,
 });
 
@@ -60,7 +61,7 @@ const emits = defineEmits(["setHide"]);
 const price_leasing_0 = ref({
   type: "text",
   name: "price_leasing.0",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[0]?.price ?? "",
 
   bind: {
     label: "Price per 1 month (AED)",
@@ -74,7 +75,7 @@ const price_leasing_0 = ref({
 const mileage_leasing_0 = ref({
   type: "text",
   name: "mileage_leasing.0",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[0]?.mileage ?? "",
 
   bind: {
     label: "Mileage per month (km)",
@@ -88,7 +89,7 @@ const mileage_leasing_0 = ref({
 const price_leasing_1 = ref({
   type: "text",
   name: "price_leasing.1",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[1]?.price ?? "",
 
   bind: {
     label: "Price per 3 months (AED)",
@@ -102,7 +103,7 @@ const price_leasing_1 = ref({
 const mileage_leasing_1 = ref({
   type: "text",
   name: "mileage_leasing.1",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[1]?.mileage ?? "",
 
   bind: {
     label: "Mileage per 3 months (km)",
@@ -116,7 +117,7 @@ const mileage_leasing_1 = ref({
 const price_leasing_2 = ref({
   type: "text",
   name: "price_leasing.2",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[2]?.price ?? "",
 
   bind: {
     label: "Price per 6 months (AED)",
@@ -130,7 +131,7 @@ const price_leasing_2 = ref({
 const mileage_leasing_2 = ref({
   type: "text",
   name: "mileage_leasing.2",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[2]?.mileage ?? "",
 
   bind: {
     label: "Mileage per 3 months (km)",
@@ -144,7 +145,7 @@ const mileage_leasing_2 = ref({
 const price_leasing_3 = ref({
   type: "text",
   name: "price_leasing.3",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[3]?.price ?? "",
 
   bind: {
     label: "Price per 9 months (AED)",
@@ -158,7 +159,7 @@ const price_leasing_3 = ref({
 const mileage_leasing_3 = ref({
   type: "text",
   name: "mileage_leasing.3",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[3]?.mileage ?? "",
 
   bind: {
     label: "Mileage per 9 months (km)",
@@ -172,7 +173,7 @@ const mileage_leasing_3 = ref({
 const price_leasing_4 = ref({
   type: "text",
   name: "price_leasing.4",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[4]?.price ?? "",
 
   bind: {
     label: "Price per 12 months (AED)",
@@ -186,7 +187,7 @@ const price_leasing_4 = ref({
 const mileage_leasing_4 = ref({
   type: "text",
   name: "mileage_leasing.4",
-  modelValue: "",
+  modelValue: props?.car?.price_leasing?.[4]?.mileage ?? "",
 
   bind: {
     label: "Mileage per 3 months (km)",

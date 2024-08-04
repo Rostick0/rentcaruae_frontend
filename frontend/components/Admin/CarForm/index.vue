@@ -1,16 +1,17 @@
 <template>
   <div class="car-form">
     <form class="car-form__values" @submit="onSubmit">
-      <AdminCarFormCarInfo :validateField="validateField" />
+      <AdminCarFormCarInfo :car="car" :validateField="validateField" />
 
-      <AdminCarFormCarSpecification />
+      <AdminCarFormCarSpecification :car="car" />
 
-      <AdminCarFormCarPhoto />
+      <AdminCarFormCarPhoto :car="car" />
 
-      <AdminCarFormPrice />
+      <AdminCarFormPrice :car="car" />
 
       <AdminCarFormLeasingOptions
         v-if="isAddedLeasingOptions"
+        :car="car"
         :isShow="isAddedLeasingOptions"
         @setHide="isAddedLeasingOptions = false"
       />
@@ -22,10 +23,11 @@
         >Add leasing options</UiButton
       >
 
-      <AdminCarFormRentalTerms />
+      <AdminCarFormRentalTerms :car="car" />
 
       <AdminCarFormSpecialOffer
         v-if="isSpecialOffer"
+        :car="car"
         :isShow="isSpecialOffer"
         @setHide="isSpecialOffer = false"
       />
@@ -73,15 +75,17 @@ const is_show = ref({
   },
 });
 
-const { validateField, handleSubmit } = useForm();
+const { validateField, values, handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
   console.log(JSON.stringify(values));
   // const res = await api.car.create({ data: values });
 });
 
-const isAddedLeasingOptions = ref(false);
-const isSpecialOffer = ref(false);
+console.log(props.car);
+
+const isAddedLeasingOptions = ref(!!props?.car?.price_leasing?.length);
+const isSpecialOffer = ref(!!props?.car?.price_special?.length);
 </script>
 
 <style lang="scss" scoped>

@@ -26,6 +26,7 @@
 
 <script setup>
 const props = defineProps({
+  car: Object,
   isShow: Boolean,
 });
 
@@ -34,7 +35,7 @@ const emits = defineEmits(["setHide"]);
 const special_price_day = ref({
   type: "text",
   name: "price_special.0",
-  modelValue: "",
+  modelValue: props?.car?.price_special?.[0]?.price ?? "",
 
   bind: {
     label: `Special price per day (Current price )`,
@@ -48,7 +49,7 @@ const special_price_day = ref({
 const special_price_week = ref({
   type: "text",
   name: "price_special.1",
-  modelValue: "",
+  modelValue: props?.car?.price_special?.[1]?.price ?? "",
 
   bind: {
     label: `Special price per week (Current price )`,
@@ -62,7 +63,7 @@ const special_price_week = ref({
 const special_price_month = ref({
   type: "text",
   name: "price_special.2",
-  modelValue: "",
+  modelValue: props?.car?.price_special?.[2]?.price ?? "",
 
   bind: {
     label: `Special price per month (Current price )`,

@@ -41,10 +41,14 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  car: Object,
+});
+
 const price_per_day = ref({
   type: "text",
   name: "price_sum.0",
-  modelValue: "",
+  modelValue: props?.car?.price?.[0]?.price ?? "",
 
   bind: {
     label: "Price per day (AED)",
@@ -58,7 +62,7 @@ const price_per_day = ref({
 const mileage_per_day = ref({
   type: "text",
   name: "price_mileage.0",
-  modelValue: "",
+  modelValue: props?.car?.price?.[0]?.mileage ?? "",
 
   bind: {
     label: "Mileage per day (km)",
@@ -77,7 +81,7 @@ const minDaysOptions = [1, 2, 3, 4, 5, 6, 7, 14, 30].map((item) => ({
 const min_days = ref({
   type: "select",
   name: "min_days",
-  modelValue: "",
+  modelValue: props?.car?.min_days ? { id: min_days, value: min_days } : "",
 
   bind: {
     isAlternative: true,
@@ -88,7 +92,7 @@ const min_days = ref({
 const is_show_per_day = ref({
   type: "switch",
   name: "price_is_show.0",
-  modelValue: true,
+  modelValue: !!props?.car?.price?.[0]?.is_show ?? true,
 
   bind: {
     label: "Available for daily?",
@@ -98,7 +102,7 @@ const is_show_per_day = ref({
 const price_per_week = ref({
   type: "text",
   name: "price_sum.1",
-  modelValue: "",
+  modelValue: props?.car?.price?.[1]?.price ?? "",
 
   bind: {
     label: "Price per week (AED)",
@@ -112,7 +116,7 @@ const price_per_week = ref({
 const mileage_per_week = ref({
   type: "text",
   name: "price_mileage.1",
-  modelValue: "",
+  modelValue: props?.car?.price?.[1]?.mileage ?? "",
 
   bind: {
     label: "Mileage per week (km)",
@@ -126,7 +130,7 @@ const mileage_per_week = ref({
 const is_show_per_week = ref({
   type: "switch",
   name: "price_is_show.1",
-  modelValue: true,
+  modelValue: !!props?.car?.price?.[1]?.is_show ?? true,
 
   bind: {
     label: "Available for weekly?",
@@ -136,7 +140,7 @@ const is_show_per_week = ref({
 const price_per_month = ref({
   type: "text",
   name: "price_sum.2",
-  modelValue: "",
+  modelValue: props?.car?.price?.[2]?.price ?? "",
 
   bind: {
     label: "Price per month (AED)",
@@ -150,7 +154,7 @@ const price_per_month = ref({
 const mileage_per_month = ref({
   type: "text",
   name: "price_mileage.2",
-  modelValue: "",
+  modelValue: props?.car?.price?.[2]?.mileage ?? "",
 
   bind: {
     label: "Mileage per month (km)",
@@ -164,7 +168,7 @@ const mileage_per_month = ref({
 const is_show_per_month = ref({
   type: "switch",
   name: "price_is_show.2",
-  modelValue: true,
+  modelValue: !!props?.car?.price?.[2]?.is_show ?? true,
 
   bind: {
     label: "Available for monthly?",
