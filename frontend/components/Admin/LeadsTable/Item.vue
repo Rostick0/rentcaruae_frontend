@@ -1,22 +1,24 @@
 <template>
   <tr class="table_tr">
     <td class="table__td">
-      {{ moment(car?.created_at).format("DD MMM YYYY") }}
+      {{ moment(lead?.created_at).format("DD MMM YYYY") }}
     </td>
     <td class="table__td text-left">
-      {{ car?.brand?.name }} <br />{{ car?.model?.name }}
+      {{ lead?.car?.generation?.model_car?.brand?.name }} <br />{{
+        lead?.car?.generation?.model_car?.name
+      }}
     </td>
-    <td class="table__td">{{ car?.user?.name }}</td>
+    <td class="table__td">{{ lead?.full_name }}</td>
     <td class="table__td">
-      {{ car?.user?.email }}
+      {{ lead?.email }}
     </td>
     <td class="table__td">
-      {{ car?.user?.tel }}
+      {{ lead?.tel }}
     </td>
     <td class="table__td">
-      {{ car?.rental }}
+      {{ lead?.period }}
     </td>
-    <td class="table__td">AED {{ car?.price }}</td>
+    <td class="table__td">AED {{ formatNumber(lead?.price) }}</td>
   </tr>
 </template>
 
@@ -24,7 +26,7 @@
 import moment from "moment";
 
 const props = defineProps({
-  car: Object,
+  lead: Object,
 });
 </script>
 

@@ -6,36 +6,30 @@
         <UiButton class="page-cars__add" variant="outlined">+ Add car</UiButton>
       </NuxtLink>
     </h1>
-    <AdminCarsTable :cars="data" />
+    <AdminCarsTable
+      :cars="data"
+      @selectCar="(car) => ((carSelected = car), open())"
+    />
     <AdminPagination
       :currentPage="meta?.current_page"
       limit="8"
       :totalCountData="meta?.total"
+      @setPage="(page) => (filters.page = page)"
+    />
+    <LazyAdminCarPromoteModal
+      :nameModal="nameModal"
+      :carSelected="carSelected"
     />
   </div>
 </template>
 
 <script setup>
-// const data = [...new Array(8)].map((_, i) => ({
-//   id: i,
-//   title: "BMW 430i cabrio",
-//   is_show: 1,
-//   price_periods: [
-//     {
-//       period: 1,
-//       price: 499,
-//     },
-//     {
-//       period: 7,
-//       price: 1499,
-//     },
-//     {
-//       period: 30,
-//       price: 1499,
-//     },
-//   ],
-//   updated_at: "2023-07-16",
-// }));
+const { filters } = useFilter({
+  initialFilters: {
+    page: 1,
+    sort: "-id",
+  },
+});
 
 const { data, meta } = await useApi({
   name: "car.getAll",
@@ -44,9 +38,15 @@ const { data, meta } = await useApi({
     extends: "price",
     limit: 8,
   },
+  filters,
 });
 
-// console.log(meta.value);
+const nameModal = "specialPrice";
+const { open, close } = useModal({
+  name: nameModal,
+});
+
+const carSelected = ref();
 
 definePageMeta({
   layout: "admin",

@@ -55,14 +55,15 @@
 </template>
 
 <script setup>
-import api from "~/api";
-import { useForm } from "vee-validate";
+// const emits = defineEmits(["setValue"]);
 
 const props = defineProps({
-  car: {
-    type: Object,
-    required: false,
+  car: Object,
+  onSubmit: {
+    type: Function,
+    required: true,
   },
+  validateField: Function,
 });
 
 const is_show = ref({
@@ -74,15 +75,6 @@ const is_show = ref({
     label: "Publish on website",
   },
 });
-
-const { validateField, values, handleSubmit } = useForm();
-
-const onSubmit = handleSubmit(async (values) => {
-  console.log(JSON.stringify(values));
-  // const res = await api.car.create({ data: values });
-});
-
-console.log(props.car);
 
 const isAddedLeasingOptions = ref(!!props?.car?.price_leasing?.length);
 const isSpecialOffer = ref(!!props?.car?.price_special?.length);

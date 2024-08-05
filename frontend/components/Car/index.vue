@@ -28,11 +28,10 @@
 const props = defineProps({
   car: Object,
 });
-console.log(props.car?.car_options);
 
 const specifications = computed(() =>
   groupByInArray(
-    props.car?.car_options?.map((item) => item?.option),
+    props.car?.car_options?.map?.((item) => item?.option),
     "type"
   )
 );

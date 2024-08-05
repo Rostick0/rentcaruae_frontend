@@ -5,8 +5,8 @@
       {{ totalCountData }} items
     </div>
     <div class="admin-pagination__btns">
-      <button class="admin-pagination__btn">Previous</button>
-      <button class="admin-pagination__btn">Next</button>
+      <button class="admin-pagination__btn" @click="prevClick">Previous</button>
+      <button class="admin-pagination__btn" @click="nextClick">Next</button>
     </div>
   </div>
 </template>
@@ -17,6 +17,18 @@ const props = defineProps({
   limit: [Number, String],
   totalCountData: [Number, String],
 });
+
+const emit = defineEmits(["setPage"]);
+
+const lastPage = computed(() =>
+  Math.ceil(props?.totalCountData / props?.limit)
+);
+
+const prevClick = () =>
+  props?.currentPage > 1 && emit("setPage", props?.currentPage - 1);
+const nextClick = () =>
+  props?.currentPage < lastPage.value &&
+  emit("setPage", props?.currentPage + 1);
 </script>
 
 <style lang="scss" scoped>

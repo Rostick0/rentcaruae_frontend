@@ -9,13 +9,15 @@
       <th class="table__th">Rental</th>
       <th class="table__th">Price</th>
     </tr>
-    <AdminLeadsTableItem v-for="car in cars" :key="car.id" :car="car" />
+    <tbody>
+      <AdminLeadsTableItem v-for="lead in leads" :key="lead.id" :lead="lead" />
+    </tbody>
   </table>
 </template>
 
 <script setup>
 const props = defineProps({
-  cars: Array,
+  leads: Array,
 });
 </script>
 

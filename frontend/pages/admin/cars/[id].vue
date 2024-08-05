@@ -1,32 +1,23 @@
 <template>
   <h1 class="h1 admin">Edit car</h1>
-  <AdminCarForm :car="data" />
+  <AdminCarForm
+    :car="data"
+    :validateField="validateField"
+    :onSubmit="onSubmit"
+  />
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "admin",
-});
+import api from "~/api";
+import useImage from "~/composables/useImage";
+import { useForm } from "vee-validate";
 
 const id = useRoute().params.id;
 
 const { data, get } = await useApi({
   name: "car.get",
   params: {
-    extends: [
-      "generation.model_car.brand",
-      "car_options.option",
-      "images.image",
-      "category",
-      "fuel_type",
-      "security_deposit",
-      "transmission",
-      "colour",
-      "colour_interior",
-      "price",
-      "price_leasing",
-      "price_special",
-    ].join(),
+    extends: carFullExtends,
   },
   requestParams: {
     id,
@@ -35,5 +26,27 @@ const { data, get } = await useApi({
 
 await get();
 
-// console.log(data.value);
+const { validateField, handleSubmit, setErrors } = useForm();
+
+const onSubmit = handleSubmit(async (values) => {
+  const data = await getCarOnSubmitValues(values);
+
+  console.log(data);
+  const res = await api.car.update({
+    data,
+    id,
+  });
+
+  if (res?.error) {
+    warningPopup(res?.errorResponse?.data?.message);
+    setErrors(res?.errorResponse?.data?.errors);
+    return;
+  }
+
+  navigateTo("/admin/cars");
+});
+
+definePageMeta({
+  layout: "admin",
+});
 </script>

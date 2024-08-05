@@ -1,7 +1,7 @@
 <template>
   <tr class="table__tr">
     <td class="table__td">
-      <UiCheckbox />
+      <UiCheckbox v-model="isSelected" />
     </td>
     <td class="table__td">{{ car?.id }}</td>
     <td class="table__td">{{ car?.title }}</td>
@@ -21,7 +21,9 @@
       <NuxtLink class="link" :to="'/admin/cars/' + car?.id">Edit</NuxtLink>
     </td>
     <td class="table__td">
-      <UiButton>Promote</UiButton>
+      <UiButton @click="emits('selectCar', car)" variant="outlined"
+        >Promote</UiButton
+      >
     </td>
   </tr>
 </template>
@@ -33,9 +35,19 @@ import api from "~/api";
 
 const props = defineProps({
   car: Object,
+  isSelected: Boolean,
 });
 
+const emits = defineEmits(["selectCar"]);
+
 const isShow = ref(!!props.car?.is_show);
+
+const isSelected = ref(props.isSelected);
+
+watch(
+  () => props.isSelected,
+  (newV) => (isSelected.value = newV)
+);
 
 const changeShow = debounce(async (newV) => {
   const res = await api.car.update({

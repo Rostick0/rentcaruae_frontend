@@ -5,8 +5,8 @@ import pickBy from "lodash/pickBy";
 
 export default ({
   initialFilters = {},
-  withQueryParams = true,
-  withInitQueryParams = true,
+  withQueryParams = false,
+  withInitQueryParams = false,
   debounceMs = 500,
 } = {}) => {
   const id = uniqueId();

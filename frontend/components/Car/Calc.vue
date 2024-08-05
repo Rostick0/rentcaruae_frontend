@@ -38,7 +38,7 @@
         </div>
         <span>AED {{ car?.security_deposit?.price }}</span>
       </div>
-      <div class="calc-item__flex">
+      <div class="calc-item__flex" v-if="!car?.free_per_day_security">
         <div class="calc-item__flex_left">
           <VFormComponent
             class="calc-item__switch calc-item__size-small"

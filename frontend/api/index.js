@@ -10,6 +10,7 @@ import fuelTypes from "./modules/fuelTypes";
 import generations from "./modules/generations";
 import image from "./modules/image";
 import modelCars from "./modules/modelCars";
+import operations from "./modules/operations";
 import options from "./modules/options";
 import transmissions from "./modules/transmissions";
 import users from "./modules/users";
@@ -27,6 +28,7 @@ export default {
   generations,
   image,
   modelCars,
+  operations,
   options,
   transmissions,
   users,
