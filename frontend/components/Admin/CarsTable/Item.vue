@@ -7,7 +7,7 @@
     <td class="table__td">{{ car?.title }}</td>
     <td class="table__td"></td>
     <td class="table__td">
-      <UiSwitch />
+      <UiSwitch :modelValue="isShow" @update:model-value="changeShow" />
     </td>
     <td class="table__td">
       {{ moment(car?.created_at).format("DD MMM YYYY") }}
@@ -28,16 +28,35 @@
 
 <script setup>
 import moment from "moment";
+import debounce from "lodash/debounce";
+import api from "~/api";
 
 const props = defineProps({
   car: Object,
 });
 
+const isShow = ref(!!props.car?.is_show);
+
+const changeShow = debounce(async (newV) => {
+  const res = await api.car.update({
+    data: {
+      is_show: newV,
+    },
+    id: props?.car?.id,
+  });
+
+  if (res?.error) return;
+
+  isShow.value = res?.data?.is_show;
+}, 300);
+
 const prices = computed(() =>
-  props.car?.price_periods?.map?.((item) => ({
-    price: `AED ${formatNumber(item?.price)}`,
-    period: convertPeriod(item?.period),
-  }))
+  props.car?.price
+    ?.filter?.((item) => item?.is_show)
+    ?.map?.((item) => ({
+      price: `AED ${formatNumber(item?.price)}`,
+      period: convertPeriod(item?.period),
+    }))
 );
 </script>
 

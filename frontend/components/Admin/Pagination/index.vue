@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-pagination">
+  <div class="admin-pagination" v-if="totalCountData > limit">
     <div class="admin-pagination__info">
       {{ (currentPage - 1) * limit + 1 }} - {{ currentPage * limit }} of
       {{ totalCountData }} items

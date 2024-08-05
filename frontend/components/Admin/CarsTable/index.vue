@@ -1,19 +1,21 @@
 <template>
   <table class="table">
     <tr class="table_tr">
-      <td class="table__td">
+      <th class="table__td">
         <UiCheckbox />
-      </td>
-      <td class="table__td">Car id</td>
-      <td class="table__td">Title</td>
-      <td class="table__td">Special offer</td>
-      <td class="table__td">Published</td>
-      <td class="table__td">Last refresh</td>
-      <td class="table__td">Price</td>
-      <td class="table__td"></td>
-      <td class="table__td"></td>
+      </th>
+      <th class="table__td">Car id</th>
+      <th class="table__td">Title</th>
+      <th class="table__td">Special offer</th>
+      <th class="table__td">Published</th>
+      <th class="table__td">Last refresh</th>
+      <th class="table__td">Price</th>
+      <th class="table__td"></th>
+      <th class="table__td"></th>
     </tr>
-    <AdminCarsTableItem v-for="car in cars" :key="car.id" :car="car" />
+    <tbody>
+      <AdminCarsTableItem v-for="car in cars" :key="car.id" :car="car" />
+    </tbody>
   </table>
 </template>
 
