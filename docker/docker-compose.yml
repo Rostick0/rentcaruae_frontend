@@ -16,9 +16,9 @@ services:
       dockerfile: ../docker/nuxt/Dockerfile
       context: './../frontend'
       args:
-        - BASE_URL=https://147.45.139.233:3000
-        - API_URL=https://147.45.139.233/api
-        - BACK_URL=https://147.45.139.233
+        - BASE_URL=https://147.45.139.233:5002
+        - API_URL=https://147.45.139.233:5003/api
+        - BACK_URL=https://147.45.139.233::5003
     image: nginx:latest
     environment:
       - HOST=0.0.0.0
