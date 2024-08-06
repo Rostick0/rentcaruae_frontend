@@ -25,6 +25,13 @@ export const getCarOnSubmitValues = async ({
   fuel_type_id,
   generation_id,
   transmission_id,
+  price_leasing,
+  mileage_leasing,
+  mileage_per_month,
+  price_sum,
+  price_mileage,
+  security_deposit,
+  price_special,
   ...values
 }) => {
   const { getImageIdsFrom } = useImage();
@@ -40,5 +47,12 @@ export const getCarOnSubmitValues = async ({
     fuel_type_id: fuel_type_id?.id,
     generation_id: generation_id?.id,
     transmission_id: transmission_id?.id,
+    price_leasing: price_leasing?.map((item) => removeSpaces(item)),
+    mileage_leasing: mileage_leasing?.map((item) => removeSpaces(item)),
+    price_sum: price_sum?.map((item) => removeSpaces(item)),
+    price_mileage: price_mileage?.map((item) => removeSpaces(item)),
+    security_deposit: removeSpaces(security_deposit),
+    free_per_day_security: removeSpaces(free_per_day_security),
+    price_special: price_special?.map((item) => removeSpaces(item)),
   };
 };

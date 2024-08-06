@@ -8,3 +8,5 @@ export const groupByInArray = (array, name) => {
     value: group[el],
   }));
 };
+
+export const removeSpaces = (str) => str?.replace(new RegExp(" ", "g"), "");

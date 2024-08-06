@@ -9,6 +9,7 @@
       <LazyCarCardList :cars="data" />
       <LazyCarCardShortList
         class="catalog__specials"
+        v-if="carsSec?.length > 1"
         :cars="carsSec"
         title="Special offers"
         linkText="All special offers"
@@ -30,11 +31,26 @@ const type = ref();
 const { data, get } = await useApi({
   name: "car.getAll",
   params: {
-    extends: "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
+    extends:
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
+    sort: "-id",
   },
 });
 
 await get();
+
+const { data: carsSec, get: getCarsSec } = await useApi({
+  name: "car.getAll",
+  params: {
+    extends:
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
+    sort: "-id",
+    "filterNotIN[id]": data.value?.map((item) => item?.id)?.join(),
+  },
+});
+
+await getCarsSec();
+
 // const cars = [1, 2, 3, 4, 5, 6].map((item) => ({
 //   id: 2,
 //   title: "BMW 430i cabrio",
@@ -64,47 +80,47 @@ await get();
 //   modules: ["1 day rental available", "Insurance included", "Free delivery"],
 // }));
 
-const carsSec = [
-  {
-    id: 1,
-    title: "Ferrari F8 Tributo Spyder",
-    price_old: 800,
-    price: 699,
-    image: {
-      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1.png",
-    },
-    make: {
-      name: "",
-      path: "images/fake/Logos (2).png",
-    },
-  },
-  {
-    id: 2,
-    title: "BMW 430i cabrio",
-    price_old: 800,
-    price: 499,
-    image: {
-      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (1).png",
-    },
-    make: {
-      name: "",
-      path: "images/fake/Logos (3).png",
-    },
-  },
-  {
-    id: 3,
-    title: "Rolls Royce Cullinan",
-    price_old: 800,
-    price: 599,
-    image: {
-      path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (2).png",
-    },
-    make: {
-      name: "",
-      path: "images/fake/Logos (4).png",
-    },
-  },
-];
+// const carsSec = [
+//   {
+//     id: 1,
+//     title: "Ferrari F8 Tributo Spyder",
+//     price_old: 800,
+//     price: 699,
+//     image: {
+//       path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1.png",
+//     },
+//     make: {
+//       name: "",
+//       path: "images/fake/Logos (2).png",
+//     },
+//   },
+//   {
+//     id: 2,
+//     title: "BMW 430i cabrio",
+//     price_old: 800,
+//     price: 499,
+//     image: {
+//       path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (1).png",
+//     },
+//     make: {
+//       name: "",
+//       path: "images/fake/Logos (3).png",
+//     },
+//   },
+//   {
+//     id: 3,
+//     title: "Rolls Royce Cullinan",
+//     price_old: 800,
+//     price: 599,
+//     image: {
+//       path: "images/fake/blue_ferrari-f-tributo-spyder_2023_5106_main_418c0a75d6958ea527747c6032734721 1 (2).png",
+//     },
+//     make: {
+//       name: "",
+//       path: "images/fake/Logos (4).png",
+//     },
+//   },
+// ];
 </script>
 
 <style lang="scss" scoped>
