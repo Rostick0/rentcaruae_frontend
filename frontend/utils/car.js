@@ -1,3 +1,5 @@
+import useImage from "~/composables/useImage";
+
 export const carFullExtends = [
   "generation.model_car.brand",
   "car_options.option",
