@@ -145,26 +145,23 @@
 </template>
 
 <script setup>
-const { data: cities } = await useApi({
-  name: "cities.getAll",
-  init: true,
-});
+const cities = useState("cities");
 
-const { data: categories } = await useApi({
+const { data: categories, get: getCategories } = await useApi({
   name: "categories.getAll",
-  init: true,
 });
+await getCategories();
 
-const { data: brands } = await useApi({
+const { data: brands, get: getBrands } = await useApi({
   name: "brands.getAll",
-  init: true,
   params: {
     sort: "is_popular,-name",
     limit: 8,
   },
 });
+await getBrands();
 
-const { data: generations } = await useApi({
+const { data: generations, get: getGenerations } = await useApi({
   name: "distinctValue.getAll",
   init: true,
   params: {
@@ -174,6 +171,7 @@ const { data: generations } = await useApi({
     limit: 8,
   },
 });
+await getGenerations();
 </script>
 
 <style lang="scss" scoped>

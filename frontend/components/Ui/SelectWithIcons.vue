@@ -61,6 +61,7 @@ const isOpened = ref(false);
   position: relative;
 
   &__switch {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 4px;

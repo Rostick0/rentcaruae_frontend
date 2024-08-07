@@ -48,7 +48,7 @@
         </UiButton>
       </div>
       <div class="header__bottom">
-        <UiSelectWithIcons v-model="country" :options="optionsCountries" />
+        <UiSelectWithIcons v-model="city" :options="citiesComputed" />
         <!-- <VFormComponent :field="country" /> -->
         <div class="header__links">
           <NuxtLink
@@ -109,7 +109,12 @@ const currency = ref({
   },
 });
 
-const country = ref(optionsCountries[0]);
+const cities = useState("cities");
+
+const citiesComputed = computed(() =>
+  cities.value?.map?.((item) => ({ ...item, icon_url: "images/flags/ae.svg" }))
+);
+const city = ref(citiesComputed.value?.[0]);
 
 const links = [
   {
@@ -130,7 +135,7 @@ const links = [
   },
   {
     name: "Car Leasing",
-    link: "/",
+    link: "/leasing",
   },
 ];
 </script>
