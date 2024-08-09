@@ -1,5 +1,8 @@
 <template>
-  <PageCatalog :breadcrumbs="breadcrumbs">
+  <PageCatalog
+    :breadcrumbs="breadcrumbs"
+    :paramsCar="{ 'filterEQ[user_id]': data.owner?.id }"
+  >
     <template #topBlock>
       <div class="company">
         <div class="company__top">
@@ -17,7 +20,7 @@
         </div>
         <div class="company__bottom">
           <div class="company__description">
-            <p>{{ data.description }}</p>
+            <p v-if="data?.description">{{ data.description }}</p>
             <div class="company__address">
               <svg
                 width="20"
@@ -35,27 +38,40 @@
                   fill="#221EE3"
                 />
               </svg>
-              <span>{{ data.address }}</span>
+              <span>{{ address }}</span>
             </div>
           </div>
           <div class="company__bottom_right">
             <div class="company__action">
-              <NuxtLink class="d-flex" :to="data.map_address">
+              <a
+                class="d-flex"
+                :href="`https://www.google.ru/maps/place/${address}`"
+                rel="noopener nofollow"
+                target="_blank"
+              >
                 <UiButton class="company__btn" variant="outlined"
                   >View on map</UiButton
                 >
-              </NuxtLink>
-              <NuxtLink class="d-flex" :to="data.whatsapp">
+              </a>
+              <a
+                class="d-flex"
+                :href="`https://wa.me/${data?.owner?.tel}`"
+                rel="noopener nofollow"
+                target="_blank"
+              >
                 <UiButton class="company__btn" color="whatsapp"
                   >WhatsApp</UiButton
                 >
-              </NuxtLink>
+              </a>
             </div>
             <div class="company__schedule">
-              <div class="company__schedule_item" v-for="item in data.schedule">
+              <div
+                class="company__schedule_item"
+                v-for="item in companySchedules"
+              >
                 <span>{{ item.week_day }}</span>
                 <span>
-                  {{ item.start + " - " + item.end }}
+                  {{ item.period }}
                 </span>
               </div>
             </div>
@@ -85,52 +101,83 @@ const breadcrumbs = ref([
   },
 ]);
 
-const data = {
-  name: "Yeti car rental",
-  image: "images/fake/yeti-rental-dubai1.png 1.png",
-  description:
-    "Yeti Car Rental is a company with a believe in a high-quality service for our customers. Our fleet consist of new / luxury / super cars, which will fully incorporate your needs and requirements. We have Kia Sportage, Kia Optima, Kia Picanto, Kia Rio, Hyundai Sonata, Hyundai Elantra, Toyota Yaris, Infiniti and many more! You are most welcome to contact us and place an inquiry for corporate lease, long and short-term rentals. Be first to make a booking and get ZERO-mileage car. If you want to rent a car in Dubai - Yeti is the best for You!",
-  address: "902, Al Ameri Tower, Barsha Heights, Dubai - UAE",
-  map_address: "",
-  whatsapp: "",
-  schedule: [
-    {
-      week_day: "Monday",
-      start: "9:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Tuesday",
-      start: "9:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Wednesday",
-      start: "9:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Thursday",
-      start: "9:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Friday",
-      start: "9:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Saturday",
-      start: "10:00 am",
-      end: "8:00 pm",
-    },
-    {
-      week_day: "Sunday",
-      start: "10:00 am",
-      end: "8:00 pm",
-    },
-  ],
-};
+const id = useRoute().params?.id;
+
+const { data, get } = await useApi({
+  name: "companies.get",
+  params: {
+    extends: "owner,company_schedules,city",
+  },
+  requestParams: {
+    id,
+  },
+});
+
+await get();
+
+const address = computed(() =>
+  `${data.value?.city?.name} ${data.value?.aread_name ?? ""} ${
+    data.value?.building_name ?? ""
+  } ${data.value?.office_number ?? ""}`.trim()
+);
+
+const companySchedules = computed(() =>
+  data.value?.company_schedules?.map((item) => ({
+    ...item,
+    period:
+      item?.start && item?.end && item?.is_show
+        ? item.start + " - " + item.end
+        : "-",
+    week_day: daysWeek[item?.week_day],
+  }))
+);
+
+// const dataa = {
+//   name: "Yeti car rental",
+//   image: "images/fake/yeti-rental-dubai1.png 1.png",
+//   description:
+//     "Yeti Car Rental is a company with a believe in a high-quality service for our customers. Our fleet consist of new / luxury / super cars, which will fully incorporate your needs and requirements. We have Kia Sportage, Kia Optima, Kia Picanto, Kia Rio, Hyundai Sonata, Hyundai Elantra, Toyota Yaris, Infiniti and many more! You are most welcome to contact us and place an inquiry for corporate lease, long and short-term rentals. Be first to make a booking and get ZERO-mileage car. If you want to rent a car in Dubai - Yeti is the best for You!",
+//   address: "902, Al Ameri Tower, Barsha Heights, Dubai - UAE",
+//   map_address: "",
+//   whatsapp: "",
+//   schedule: [
+//     {
+//       week_day: "Monday",
+//       start: "9:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Tuesday",
+//       start: "9:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Wednesday",
+//       start: "9:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Thursday",
+//       start: "9:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Friday",
+//       start: "9:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Saturday",
+//       start: "10:00 am",
+//       end: "8:00 pm",
+//     },
+//     {
+//       week_day: "Sunday",
+//       start: "10:00 am",
+//       end: "8:00 pm",
+//     },
+//   ],
+// };
 </script>
 
 <style lang="scss" scoped>

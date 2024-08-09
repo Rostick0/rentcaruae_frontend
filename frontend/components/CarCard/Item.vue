@@ -28,8 +28,8 @@
     <div class="car__stats">
       <div class="car-stat">
         <div class="car-stat__title">Deposit</div>
-        <div class="car-stat__value" :class="{ free: !car?.deposite }">
-          {{ car?.deposite ?? "Free" }}
+        <div class="car-stat__value" :class="{ free: !car?.security_deposit?.price }">
+          {{ car?.security_deposit?.price ?? "Free" }}
         </div>
       </div>
       <div class="car-stat__hr"></div>

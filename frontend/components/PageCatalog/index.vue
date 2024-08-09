@@ -24,6 +24,7 @@
 const props = defineProps({
   h1: String,
   breadcrumbs: Array,
+  paramsCar: Object,
 });
 
 const type = ref();
@@ -32,8 +33,9 @@ const { data, get } = await useApi({
   name: "car.getAll",
   params: {
     extends:
-      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit",
     sort: "-id",
+    ...props?.paramsCar,
   },
 });
 
