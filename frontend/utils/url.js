@@ -1,6 +1,8 @@
 export const convertNameToUrl = (name) =>
   typeof name === "string"
-    ? encodeURIComponent(name.toLowerCase().replace(new RegExp(" ", "g"), "_"))
+    ? encodeURIComponent(
+        name.toLowerCase().replace(new RegExp(" ", "g"), "_")
+      )?.replace(new RegExp("%2F", "g"), "/")
     : "";
 
 export const convertUrlToName = (name) =>
@@ -11,6 +13,6 @@ export const setOneFilterValue = (routeParams) => {
     return { "filterEQ[generation.name]": routeParams?.body };
   if (routeParams?.type)
     return { "filterEQ[category.name]": routeParams?.type };
-  if (routeParams?.brand) return { "filterEQ[brand.name]": routeParams?.brand };
+  if (routeParams?.brand) return { "filterEQ[generation.model_car.brand.name]": routeParams?.brand };
   return {};
 };

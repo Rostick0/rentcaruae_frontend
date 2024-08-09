@@ -33,7 +33,7 @@
 const currentCity = useState("currentCity");
 
 const links = computed(() => {
-  const link = `/${currentCity?.name ?? "all"}/type/`;
+  const link = `/${currentCity.value?.name ?? "all"}/type/`;
 
   return [
     {
@@ -56,7 +56,7 @@ const links = computed(() => {
     },
   ].map(({ name }) => ({
     name,
-    link: (link + name).toLowerCase(),
+    link: convertNameToUrl(link + name),
   }));
 });
 </script>

@@ -1,10 +1,17 @@
 <template>
   <div class="brands__list">
-    <NuxtLink class="brands__link" v-for="brand in brands" :key="brand.id">
+    <NuxtLink
+      class="brands__link"
+      v-for="brand in brands"
+      :key="brand?.id"
+      :to="
+        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
+      "
+    >
       <LazyNuxtImg
         loading="lazy"
-        :src="brand.image_url"
-        :alt="brands.name"
+        :src="brand?.image_url"
+        :alt="brand?.name"
         width="40"
         height="40"
       />
@@ -16,6 +23,8 @@
 const props = defineProps({
   brands: Array,
 });
+
+const currentCity = useState("currentCity");
 </script>
 
 <style lang="scss" scoped>

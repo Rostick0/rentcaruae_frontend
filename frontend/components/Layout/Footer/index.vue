@@ -13,7 +13,7 @@
               <NuxtLink
                 class="footer-item__link"
                 v-for="city in cities"
-                :to="`/${city.name}`.toLowerCase()"
+                :to="convertNameToUrl(`/${city.name}`)"
                 :key="city.id"
                 >{{ city.name }}</NuxtLink
               >
@@ -28,9 +28,9 @@
                 v-for="category in categories"
                 :key="category.id"
                 :to="
-                  `/${currentCity?.name ?? 'all'}/type/${
-                    category?.name
-                  }`.toLowerCase()
+                  convertNameToUrl(
+                    `/${currentCity?.name ?? 'all'}/type/${category?.name}`
+                  )
                 "
                 >{{ category.name }}</NuxtLink
               >
@@ -45,9 +45,9 @@
                 v-for="brand in brands"
                 :key="brand.id"
                 :to="
-                  `/${currentCity?.name ?? 'all'}/brand/${
-                    brand?.name
-                  }`.toLowerCase()
+                  convertNameToUrl(
+                    `/${currentCity?.name ?? 'all'}/brand/${brand?.name}`
+                  )
                 "
                 >{{ brand.name }}</NuxtLink
               >
@@ -62,9 +62,9 @@
                 v-for="generation in generations"
                 :key="generation.id"
                 :to="
-                  `/${currentCity?.name ?? 'all'}/body/${
-                    generation?.name
-                  }`.toLowerCase()
+                  convertNameToUrl(
+                    `/${currentCity?.name ?? 'all'}/body/${generation?.name}`
+                  )
                 "
                 >{{ generation.name }}</NuxtLink
               >
@@ -147,7 +147,7 @@
               </a>
             </div>
             <div class="footer__rental">Are you a car rental company?</div>
-            <NuxtLink class="d-flex" to="/">
+            <NuxtLink class="d-flex" to="/login">
               <UiButton class="footer__join" variant="outlined"
                 >Join us</UiButton
               >
