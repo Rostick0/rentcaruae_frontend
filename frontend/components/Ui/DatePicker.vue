@@ -95,11 +95,17 @@ watch(
   }
 
   .dp__pointer {
+    background-color: #f5f5f5;
+    border-color: transparent;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 24px 32px 8px;
+    // padding-top: 24px;
+    width: 100%;
   }
 
   .dp__month_year_select {
@@ -116,6 +122,12 @@ watch(
 
   .dp__calendar_header_separator {
     display: none;
+  }
+
+  .dp__input_icon,
+  .dp__clear_icon {
+    transform: translateY(24px);
+    top: 0;
   }
 }
 

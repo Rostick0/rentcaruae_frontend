@@ -47,16 +47,15 @@ export default async () => {
     try {
       await auth
         .me(
-          //   {
-          //     // extends:
-          //     //   "contacts,country,image,flat_owners.user,alert,collection_relats.collection",
-          //   },
+          {
+            extends: "company.company_schedules,company.city",
+          },
           {},
           { Authorization: `Bearer ${accessToken.value}` }
         )
         .then((resp) => {
           if (!resp?.error && resp) {
-            user.value = resp;
+            user.value = resp?.data;
           }
         });
     } catch (error) {
@@ -76,7 +75,7 @@ export default async () => {
       navigateTo("/login");
     }
   };
-  
+
   // if (accessToken.value && !user.value) {
   //   await getUser();
   // }

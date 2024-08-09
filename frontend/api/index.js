@@ -4,6 +4,7 @@ import car from "./modules/car";
 import categories from "./modules/categories";
 import cities from "./modules/cities";
 import colours from "./modules/colours";
+import companies from "./modules/companies";
 import distinctValue from "./modules/distinctValue";
 import emailCode from "./modules/emailCode";
 import fuelTypes from "./modules/fuelTypes";
@@ -22,6 +23,7 @@ export default {
   categories,
   cities,
   colours,
+  companies,
   distinctValue,
   emailCode,
   fuelTypes,

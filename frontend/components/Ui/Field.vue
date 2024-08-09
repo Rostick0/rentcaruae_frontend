@@ -9,24 +9,7 @@
     <template #leftIcon>
       <slot name="leftIcon"></slot>
     </template>
-    <label v-if="isPlaceholderTop" class="control__label">
-      <input
-        v-bind="$attrs"
-        placeholder=""
-        class="control__field control__field_placeholder-top"
-        :class="size"
-        v-maska
-        :data-maska="maska"
-        :data-maska-tokens="maskaTokens"
-        :data-maska-reversed="dataMaskaReversed"
-        @change="handleChange"
-        @input="handleInput"
-        :value="modelValue"
-      />
-      <span class="control__label_name">{{ placeholder }}</span>
-    </label>
     <input
-      v-else
       v-bind="$attrs"
       :placeholder="placeholder ?? ''"
       class="control__field"
@@ -62,7 +45,6 @@ const props = defineProps({
   maskaTokens: String,
   errorMessage: String,
   onChange: Function,
-  isPlaceholderTop: Boolean,
   deps: [Array, Object, String, Number],
   // small | standard | big
   size: String,
@@ -128,13 +110,6 @@ watch(
     }
   }
 
-  &__field:focus + &__label_name,
-  &__field:not(:placeholder-shown) + &__label_name {
-    font-size: 12px;
-    top: 11px;
-    transform: translateY(0);
-  }
-
   &__field {
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -146,10 +121,6 @@ watch(
 
     &:focus {
       border-color: var(--color-green);
-    }
-
-    &_placeholder-top {
-      padding: 30px 12px 10px;
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="car-form">
-    <form class="car-form__values" @submit="onSubmit">
+  <div class="car-form form__flex">
+    <form class="form__fields" @submit="onSubmit">
       <AdminCarFormCarInfo :car="car" :validateField="validateField" />
 
       <AdminCarFormCarSpecification :car="car" />
@@ -32,22 +32,25 @@
         @setHide="isSpecialOffer = false"
       />
 
-      <div class="car-form__values_bottom">
-        <UiButton
-          class="car-form__btn _special-offer"
-          v-if="!isSpecialOffer"
-          @click="isSpecialOffer = true"
-          variant="outlined"
-        >
-          <span>Create Special Offer</span>
-          <span class="car-form__btn_small">AED 20 per day</span>
-        </UiButton>
-
-        <VFormComponent :field="is_show" />
-        <UiButton>Save</UiButton>
+      <div class="form__bottom">
+        <div class="">
+          <UiButton
+            class="form-btn _special-offer"
+            v-if="!isSpecialOffer"
+            @click="isSpecialOffer = true"
+            variant="outlined"
+          >
+            <span>Create Special Offer</span>
+            <span class="text-small">AED 20 per day</span>
+          </UiButton>
+        </div>
+        <div class="form__flex_switch">
+          <VFormComponent :field="is_show" />
+          <UiButton>Save</UiButton>
+        </div>
       </div>
     </form>
-    <div class="car-form__preview">
+    <div class="car-form__preview form__flex_right">
       <LazyCarCardItem :car="car" />
       <LazyCarCardShortItem :car="car" />
     </div>
@@ -69,7 +72,7 @@ const props = defineProps({
 const is_show = ref({
   type: "switch",
   name: "is_show",
-  modelValue: false,
+  modelValue: !!props?.car?.is_show,
 
   bind: {
     label: "Publish on website",
@@ -82,36 +85,10 @@ const isSpecialOffer = ref(!!props?.car?.price_special?.length);
 
 <style lang="scss" scoped>
 .car-form {
-  display: flex;
-  column-gap: 80px;
-
-  &__values {
-    display: flex;
-    flex-direction: column;
-    row-gap: 22px;
-    flex-grow: 1;
-
-    &_bottom {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-  }
-
-  &__btn {
-    align-self: flex-start;
-    font-weight: 700;
-
-    &_small {
-      font-size: 10px;
-    }
-  }
-
   &__preview {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 360px;
   }
 }
 </style>

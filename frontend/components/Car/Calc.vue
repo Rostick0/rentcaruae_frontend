@@ -309,7 +309,6 @@ const tel = ref({
 
   bind: {
     label: "Phone number",
-    options: periodOptions,
     // slots: "dasd",
   },
 });

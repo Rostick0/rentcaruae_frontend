@@ -49,26 +49,6 @@ defineProps<FieldProps>();
 
 <style lang="scss" scoped>
 .control {
-  // &__label {
-  //   display: flex;
-  //   position: relative;
-
-  //   &_name {
-  //     color: var(--color-grey-dark);
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 12px;
-  //     transform: translateY(-50%);
-  //     transition: 0.3s;
-  //   }
-  // }
-
-  // &__field:focus + &__label_name,
-  // &__field:not(:placeholder-shown) + &__label_name {
-  //   font-size: 12px;
-  //   top: 11px;
-  //   transform: translateY(0);
-  // }
   &.invalid {
     .control__textarea {
       border-color: var(--color-red);
@@ -77,18 +57,17 @@ defineProps<FieldProps>();
   }
 
   &__textarea {
-    border: 1px solid var(--color-grey-dark);
+    background-color: #f5f5f5;
     border-radius: 8px;
     font-size: 16px;
-    padding: 10px 8px;
+    font-weight: 700;
+    padding: 8px;
+    padding-top: 24px;
     width: 100%;
+    min-height: 51px;
 
     &:focus {
       border-color: var(--color-green);
-    }
-
-    &_placeholder-top {
-      padding: 30px 12px 10px;
     }
   }
 }

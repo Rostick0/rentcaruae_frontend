@@ -1,4 +1,39 @@
 .form {
+  &__flex {
+    display: flex;
+    column-gap: 80px;
+
+    &_right {
+      width: 100%;
+      max-width: 360px;
+    }
+  
+    &_switch {
+      display: flex;
+      align-items: center;
+      column-gap: 60px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    row-gap: 22px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+  }
+
   &-item {
     display: grid;
     align-items: center;

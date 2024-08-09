@@ -86,20 +86,20 @@ const year = ref({
   },
 });
 
-watch(
-  () => model_car.value.modelValue,
-  (newV) => {
-    year.value.bind.isReadOnly = !newV;
+// watch(
+//   () => model_car.value.modelValue,
+//   (newV) => {
+//     year.value.bind.isReadOnly = !newV;
 
-    year.value.rules =
-      "required" +
-      (model_car.value.modelValue
-        ? `|min_value:${model_car.value.modelValue?.year_from}|max_value:${
-            model_car.value.modelValue?.year_to ?? new Date().getFullYear()
-          }`
-        : "");
-  }
-);
+//     year.value.rules =
+//       "required" +
+//       (model_car.value.modelValue
+//         ? `|min_value:${model_car.value.modelValue?.year_from}|max_value:${
+//             model_car.value.modelValue?.year_to ?? new Date().getFullYear()
+//           }`
+//         : "");
+//   }
+// );
 
 const category_id = ref({
   type: "select",
@@ -128,9 +128,9 @@ const generation_id = ref({
     debounceMs: 200,
     searchFn: fetchGeneration,
     withIcon: false,
-    isReadOnly: !year.value.modelValue,
+    isReadOnly: !model_car.value.modelValue,
     readOnlyText: "Select year",
-    deps: computed(() => year.value.modelValue),
+    deps: computed(() => model_car.value.modelValue),
     onDepsChange: debounce((ctx) => {
       ctx.handleSearch();
 
@@ -141,14 +141,14 @@ const generation_id = ref({
   },
 });
 
-watch(
-  () => year.value.modelValue,
-  async () => {
-    generation_id.value.bind.isReadOnly = !(await props
-      .validateField("year")
-      .then((res) => res?.valid));
-  }
-);
+// watch(
+//   () => year.value.modelValue,
+//   async () => {
+//     generation_id.value.bind.isReadOnly = !(await props
+//       .validateField("year")
+//       .then((res) => res?.valid));
+//   }
+// );
 
 async function fetchBrand(_, searchString, limit, page) {
   return await api.brands.getAll({
@@ -185,13 +185,12 @@ async function fetchCategory(_, searchString, limit, page) {
 }
 
 async function fetchGeneration(_, searchString, limit, page) {
-  if (!model_car.value.modelValue || !year.value.modelValue) return;
+  if (!model_car.value.modelValue) return;
 
   return await api.generations.getAll({
     params: {
       "filterLIKE[name]": searchString,
       "filterEQ[model_car_id]": model_car.value.modelValue?.id,
-      year: year.value.modelValue,
       limit,
       page,
     },
