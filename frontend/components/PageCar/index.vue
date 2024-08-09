@@ -16,7 +16,7 @@
           height="40"
         />
         <h1 class="car__title h1">
-          {{ data?.title }} in {{ data?.user?.city?.name ?? "Dubai" }}
+          {{ data?.title }} in {{ data?.user?.city?.name ?? "World" }}
         </h1>
       </div>
       <Car :car="data" />

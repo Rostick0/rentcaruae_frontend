@@ -30,32 +30,35 @@
 </template>
 
 <script setup>
-const links = [
-  {
-    name: "Economy",
-    link: "/",
-  },
-  {
-    name: "VAN",
-    link: "/",
-  },
-  {
-    name: "SUV",
-    link: "/",
-  },
-  {
-    name: "Convertible",
-    link: "/",
-  },
-  {
-    name: "Business",
-    link: "/",
-  },
-  {
-    name: "Luxury",
-    link: "/",
-  },
-];
+const currentCity = useState("currentCity");
+
+const links = computed(() => {
+  const link = `/${currentCity?.name ?? "all"}/type/`;
+
+  return [
+    {
+      name: "Economy",
+    },
+    {
+      name: "VAN",
+    },
+    {
+      name: "SUV",
+    },
+    {
+      name: "Convertible",
+    },
+    {
+      name: "Business",
+    },
+    {
+      name: "Luxury",
+    },
+  ].map(({ name }) => ({
+    name,
+    link: (link + name).toLowerCase(),
+  }));
+});
 </script>
 
 <style lang="scss" scoped>

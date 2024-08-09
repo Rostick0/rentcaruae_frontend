@@ -114,7 +114,8 @@ const cities = useState("cities");
 const citiesComputed = computed(() =>
   cities.value?.map?.((item) => ({ ...item, icon_url: "images/flags/ae.svg" }))
 );
-const city = ref(citiesComputed.value?.[0]);
+
+const city = useState("currentCity", () => citiesComputed.value?.[0]);
 
 const links = [
   {

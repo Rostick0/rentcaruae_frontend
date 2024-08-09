@@ -4,7 +4,7 @@
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
-      <CarType v-model="type" />
+      <CarType v-model="filters['filterEQ[generation.name]']" />
       <LazyFilter />
       <LazyCarCardList :cars="data" />
       <LazyCarCardShortList
@@ -27,7 +27,15 @@ const props = defineProps({
   paramsCar: Object,
 });
 
-const type = ref();
+const route = useRoute();
+
+// // if (route.params?.body) {
+// //   initialFilters["filterEQ[generation.name]"] = route.params?.body;
+// // }
+
+const { filters } = useFilter({
+  initialFilters: setOneFilterValue(route.params),
+});
 
 const { data, get } = await useApi({
   name: "car.getAll",
@@ -37,6 +45,7 @@ const { data, get } = await useApi({
     sort: "-id",
     ...props?.paramsCar,
   },
+  filters,
 });
 
 await get();
@@ -52,6 +61,8 @@ const { data: carsSec, get: getCarsSec } = await useApi({
 });
 
 await getCarsSec();
+
+// watch(() => rou)
 
 // const cars = [1, 2, 3, 4, 5, 6].map((item) => ({
 //   id: 2,

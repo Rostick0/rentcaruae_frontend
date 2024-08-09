@@ -6,4 +6,11 @@ export const convertNameToUrl = (name) =>
 export const convertUrlToName = (name) =>
   decodeURIComponent(name.replace(new RegExp("_", "g"), " "));
 
-// .replace(new RegExp(" ", "g"), "_")
+export const setOneFilterValue = (routeParams) => {
+  if (routeParams?.body)
+    return { "filterEQ[generation.name]": routeParams?.body };
+  if (routeParams?.type)
+    return { "filterEQ[category.name]": routeParams?.type };
+  if (routeParams?.brand) return { "filterEQ[brand.name]": routeParams?.brand };
+  return {};
+};

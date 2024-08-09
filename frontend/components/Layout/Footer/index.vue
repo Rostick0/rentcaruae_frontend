@@ -13,7 +13,7 @@
               <NuxtLink
                 class="footer-item__link"
                 v-for="city in cities"
-                :to="`/`"
+                :to="`/${city.name}`.toLowerCase()"
                 :key="city.id"
                 >{{ city.name }}</NuxtLink
               >
@@ -27,7 +27,11 @@
                 class="footer-item__link"
                 v-for="category in categories"
                 :key="category.id"
-                to="/"
+                :to="
+                  `/${currentCity?.name ?? 'all'}/type/${
+                    category?.name
+                  }`.toLowerCase()
+                "
                 >{{ category.name }}</NuxtLink
               >
             </div>
@@ -40,7 +44,11 @@
                 class="footer-item__link"
                 v-for="brand in brands"
                 :key="brand.id"
-                to="/"
+                :to="
+                  `/${currentCity?.name ?? 'all'}/brand/${
+                    brand?.name
+                  }`.toLowerCase()
+                "
                 >{{ brand.name }}</NuxtLink
               >
             </div>
@@ -51,10 +59,14 @@
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
-                v-for="transmission in generations"
-                :key="transmission.id"
-                to="/"
-                >{{ transmission.name }}</NuxtLink
+                v-for="generation in generations"
+                :key="generation.id"
+                :to="
+                  `/${currentCity?.name ?? 'all'}/body/${
+                    generation?.name
+                  }`.toLowerCase()
+                "
+                >{{ generation.name }}</NuxtLink
               >
             </div>
           </div>
@@ -135,7 +147,11 @@
               </a>
             </div>
             <div class="footer__rental">Are you a car rental company?</div>
-            <UiButton class="footer__join" variant="outlined">Join us</UiButton>
+            <NuxtLink class="d-flex" to="/">
+              <UiButton class="footer__join" variant="outlined"
+                >Join us</UiButton
+              >
+            </NuxtLink>
           </div>
         </div>
         <div class="footer__bottom">© Buycaruae 2023</div>
@@ -146,6 +162,7 @@
 
 <script setup>
 const cities = useState("cities");
+const currentCity = useState("currentCity");
 
 const { data: categories, get: getCategories } = await useApi({
   name: "categories.getAll",
