@@ -59,10 +59,8 @@ const model_car = ref({
     withIcon: false,
     deps: computed(() => brand.value.modelValue),
     onDepsChange(ctx) {
-      // console.log(ctx.modelValue?.brand_id === brand.value.modelValue?.id);
       if (ctx.modelValue?.brand_id === brand.value.modelValue?.id) return;
 
-      // console.log(ctx.modelValue);
       if (ctx.modelValue) return;
 
       ctx.updateModelValue();

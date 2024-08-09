@@ -1,7 +1,7 @@
 <template>
   <div class="profile-form form__flex">
     <form class="form__fields" @submit="onSubmit">
-      <pre>{{ values?.company_schedules }}</pre>
+      <!-- <pre>{{ values?.company_schedules }}</pre> -->
       <AdminProfileFormCompany />
       <AdminProfileFormCompanySchedules />
       <div class="form__bottom">
@@ -30,6 +30,17 @@ const user = useState("user");
 const { handleSubmit, setErrors, values } = useForm();
 const onSubmit = handleSubmit(async (values) => {
   const data = {};
+
+  console.log(
+    values?.company_schedules?.period?.map?.((item) => {
+      const [start, end] = convertTimeToDb(item);
+
+      return {
+        start,
+        end,
+      };
+    })
+  );
 
   console.log(values);
   // const res = await api.companies.update({ id: user.value?.company?.id, data });

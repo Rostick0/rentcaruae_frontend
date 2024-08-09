@@ -48,7 +48,7 @@ export default async () => {
       await auth
         .me(
           {
-            extends: "company.company_schedules,company.city",
+            extends: "company.company_schedules,company.city,company.license,company.sertificate",
           },
           {},
           { Authorization: `Bearer ${accessToken.value}` }

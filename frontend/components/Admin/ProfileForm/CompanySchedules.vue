@@ -41,32 +41,36 @@
 <script setup>
 const user = useState("user");
 
-console.log(user.value?.company?.company_schedules);
 const monday = ref({
   type: "date",
   name: "company_schedules.period.0",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[0]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[0]?.end),
+  ],
 
   bind: {
     label: "Monday",
     placeholder: "Time",
     timePicker: true,
     range: true,
-    // format: "HH:mm",
-    timeFormat: "HH:mm",
+    // format: "HH:mm:ss",
   },
 });
 
 const monday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.0",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[0]?.is_show,
 });
 
 const tuesday = ref({
   type: "date",
   name: "company_schedules.period.1",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[1]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[1]?.end),
+  ],
 
   bind: {
     label: "Tuesday",
@@ -79,13 +83,16 @@ const tuesday = ref({
 const tuesday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.1",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[1]?.is_show,
 });
 
 const wednesday = ref({
   type: "date",
   name: "company_schedules.period.2",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[2]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[2]?.end),
+  ],
 
   bind: {
     label: "Wednesday",
@@ -98,13 +105,16 @@ const wednesday = ref({
 const wednesday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.2",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[2]?.is_show,
 });
 
 const thursday = ref({
   type: "date",
   name: "company_schedules.period.3",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[3]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[3]?.end),
+  ],
 
   bind: {
     label: "Thursday",
@@ -117,13 +127,16 @@ const thursday = ref({
 const thursday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.3",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[3]?.is_show,
 });
 
 const friday = ref({
   type: "date",
   name: "company_schedules.period.4",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[4]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[4]?.end),
+  ],
 
   bind: {
     label: "Friday",
@@ -136,13 +149,16 @@ const friday = ref({
 const friday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.4",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[4]?.is_show,
 });
 
 const saturday = ref({
   type: "date",
   name: "company_schedules.period.5",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[5]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[5]?.end),
+  ],
 
   bind: {
     label: "Saturday",
@@ -155,13 +171,16 @@ const saturday = ref({
 const saturday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.5",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[5]?.is_show,
 });
 
 const sunday = ref({
   type: "date",
   name: "company_schedules.period.6",
-  modelValue: "",
+  modelValue: [
+    convertTimeToEdit(user.value?.company?.company_schedules?.[6]?.start),
+    convertTimeToEdit(user.value?.company?.company_schedules?.[6]?.end),
+  ],
 
   bind: {
     label: "Sunday",
@@ -174,7 +193,7 @@ const sunday = ref({
 const sunday_is_show = ref({
   type: "switch",
   name: "company_schedules.is_show.6",
-  modelValue: true,
+  modelValue: !!user.value?.company?.company_schedules?.[6]?.is_show,
 });
 </script>
 

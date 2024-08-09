@@ -1,18 +1,20 @@
 <template>
   <AdminFormBlock class="verification" title="Verification status">
     <div class="verification__list">
-      <UiStatus>Add Trade license</UiStatus>
-      <UiStatus>Add Vat sertificate</UiStatus>
-      <UiStatus>Verified</UiStatus>
+      <UiStatus :isAccept="!!user?.company?.license"
+        >Add Trade license</UiStatus
+      >
+      <UiStatus :isAccept="!!user?.company?.sertificate"
+        >Add Vat sertificate</UiStatus
+      >
+      <UiStatus :isAccept="!!user?.is_verified">Verified</UiStatus>
     </div>
     <UiButton>Resend</UiButton>
   </AdminFormBlock>
 </template>
 
 <script setup>
-const props = defineProps({
-  user: Object,
-});
+const user = useState("user");
 </script>
 
 <style lang="scss" scoped>

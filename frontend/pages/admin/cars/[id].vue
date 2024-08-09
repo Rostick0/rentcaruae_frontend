@@ -31,7 +31,6 @@ const { validateField, handleSubmit, setErrors } = useForm();
 const onSubmit = handleSubmit(async (values) => {
   const data = await getCarOnSubmitValues(values);
 
-  console.log(data);
   const res = await api.car.update({
     data,
     id,
