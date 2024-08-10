@@ -29,10 +29,6 @@ const props = defineProps({
 
 const route = useRoute();
 
-// // if (route.params?.body) {
-// //   initialFilters["filterEQ[generation.name]"] = route.params?.body;
-// // }
-
 const { filters } = useFilter({
   initialFilters: setOneFilterValue(route.params),
 });
@@ -41,7 +37,7 @@ const { data, get } = await useApi({
   name: "car.getAll",
   params: {
     extends:
-      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit",
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit,user.company.image.image",
     sort: "-id",
     ...props?.paramsCar,
   },

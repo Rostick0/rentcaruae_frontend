@@ -31,13 +31,16 @@ export default () => {
     return data;
   };
 
-  const getImageParamFrom = async (image, param = "id") => {
-    if (typeof image !== "string") {
-      const resp = await createImage(image).then((resp) => resp[param]);
+  const getImageFrom = async (image) => {
+    if (image?.toString() === "[object File]") {
+      const resp = await createImage(image);
 
       if (resp?.error) {
         warningPopup("Image dont upload");
+        return;
       }
+
+      return resp;
     }
     return image;
   };
@@ -52,7 +55,7 @@ export default () => {
   return {
     createImage,
     createImages,
-    getImageParamFrom,
+    getImageFrom,
     getImageIdsFrom,
   };
 };

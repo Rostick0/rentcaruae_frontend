@@ -79,8 +79,6 @@ const year = ref({
     label: "Make",
     placeholder: "Year",
     maska: "####",
-    isReadOnly: !model_car.value.modelValue,
-    readOnlyText: "Select model car",
   },
 });
 

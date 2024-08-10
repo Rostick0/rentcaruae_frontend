@@ -1,13 +1,13 @@
 .form {
   &__flex {
     display: flex;
-    column-gap: 80px;
+    column-gap: 20px;
 
     &_right {
       width: 100%;
       max-width: 360px;
     }
-  
+
     &_switch {
       display: flex;
       align-items: center;
@@ -20,6 +20,28 @@
     flex-direction: column;
     flex-grow: 1;
     row-gap: 22px;
+
+    &_inner {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    &_files {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      .control {
+        max-width: fit-content;
+      }
+
+      &_flex {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 20px;
+      }
+    }
   }
 
   &__bottom {

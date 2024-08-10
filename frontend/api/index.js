@@ -7,6 +7,7 @@ import colours from "./modules/colours";
 import companies from "./modules/companies";
 import distinctValue from "./modules/distinctValue";
 import emailCode from "./modules/emailCode";
+import file from "./modules/file";
 import fuelTypes from "./modules/fuelTypes";
 import generations from "./modules/generations";
 import image from "./modules/image";
@@ -26,6 +27,7 @@ export default {
   companies,
   distinctValue,
   emailCode,
+  file,
   fuelTypes,
   generations,
   image,

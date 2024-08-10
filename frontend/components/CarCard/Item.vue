@@ -115,9 +115,6 @@
 const props = defineProps({
   car: Object,
 });
-
-// const config = useRuntimeConfig();
-// const urlBrandImage = config.public.BACK_URL;
 </script>
 
 <style lang="scss" scoped>

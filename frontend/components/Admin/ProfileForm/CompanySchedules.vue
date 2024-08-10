@@ -54,7 +54,6 @@ const monday = ref({
     placeholder: "Time",
     timePicker: true,
     range: true,
-    // format: "HH:mm:ss",
   },
 });
 

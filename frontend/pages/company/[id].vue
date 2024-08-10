@@ -6,14 +6,13 @@
     <template #topBlock>
       <div class="company">
         <div class="company__top">
-          <h1 class="company__title h1">{{ data.name }}</h1>
+          <h1 class="company__title h1">{{ data?.name }}</h1>
           <LazyNuxtImg
             class="company__img"
-            :src="data.image"
-            :alt="data.name"
+            :src="data?.image?.image?.path_webp + '?w=139'"
+            :alt="data?.name"
             decoding="async"
             loading="lazy"
-            fit="contain"
             width="139"
             height="56"
           />
@@ -106,7 +105,7 @@ const id = useRoute().params?.id;
 const { data, get } = await useApi({
   name: "companies.get",
   params: {
-    extends: "owner,company_schedules,city",
+    extends: "owner,company_schedules,city,image.image",
   },
   requestParams: {
     id,
@@ -196,6 +195,7 @@ const companySchedules = computed(() =>
   }
 
   &__img {
+    object-fit: contain;
     flex-shrink: 0;
   }
 

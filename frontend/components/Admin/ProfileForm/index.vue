@@ -23,30 +23,56 @@
 
 <script setup>
 import { useForm } from "vee-validate";
+import useImage from "~/composables/useImage";
 import api from "~/api";
 
 const user = useState("user");
 
-const { handleSubmit, setErrors, values } = useForm();
-const onSubmit = handleSubmit(async (values) => {
-  const data = {};
+const { getFileFrom } = useFile();
+const { getImageFrom } = useImage();
 
-  console.log(
-    values?.company_schedules?.period?.map?.((item) => {
+const { handleSubmit, setErrors, values } = useForm();
+
+const onSubmit = handleSubmit(
+  async ({ image, license, sertificate, company_schedules, ...values }) => {
+    const data = {
+      ...values,
+      company_schedules: {
+        start: [],
+        end: [],
+        is_show: company_schedules?.is_show,
+      },
+    };
+
+    data.company.city_id = data?.company?.city_id?.id;
+
+    const image_id = await getImageFrom(image).then((res) => res?.id);
+    const license_id = await getFileFrom(license).then((res) => res?.id);
+    const sertificate_id = await getFileFrom(sertificate).then(
+      (res) => res?.id
+    );
+
+    company_schedules?.period?.forEach?.((item) => {
       const [start, end] = convertTimeToDb(item);
 
-      return {
-        start,
-        end,
-      };
-    })
-  );
+      data.company_schedules.start.push(start);
+      data.company_schedules.end.push(end);
+    });
 
-  console.log(values);
-  // const res = await api.companies.update({ id: user.value?.company?.id, data });
+    const res = await api.companies.update({
+      id: user.value?.company?.id,
+      data: {
+        ...data,
+        image: image_id,
+        license: license_id,
+        sertificate: sertificate_id,
+      },
+    });
 
-  // if (res?.error)
-});
+    // if (res?.error) {
+    // }
+  }
+);
 
 const is_show = ref({
   type: "switch",

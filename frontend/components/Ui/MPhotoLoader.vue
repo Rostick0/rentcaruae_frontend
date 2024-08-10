@@ -135,10 +135,11 @@ const handleRemove = (item) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 62.34%;
+    flex-shrink: 0;
     position: relative;
     transition: 0.3s;
-    width: 100%;
+    width: 154px;
+    height: 96px;
 
     &_content {
       display: flex;
@@ -173,9 +174,9 @@ const handleRemove = (item) => {
   }
 
   &__images {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 8px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 8px 30px;
     width: 100%;
   }
 
@@ -213,18 +214,6 @@ const handleRemove = (item) => {
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  @media (max-width: 576px) {
-    &__images {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (max-width: 370px) {
-    &__images {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 }
 </style>

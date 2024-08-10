@@ -9,13 +9,19 @@
       <VFormComponent :field="user_email" />
     </div>
     <div class="form-item">
-      <div class="">
+      <div class="form__fields_inner">
         <VFormComponent :field="company_city_id" />
         <VFormComponent :field="company_aread_name" />
         <VFormComponent :field="company_building_name" />
         <VFormComponent :field="company_office_number" />
       </div>
-      <div class=""></div>
+      <div class="form__fields_files">
+        <VFormComponent :field="image" />
+        <div class="form__fields_files_flex">
+          <VFormComponent :field="license" />
+          <VFormComponent :field="sertificate" />
+        </div>
+      </div>
     </div>
     <VFormComponent :field="company_description" />
   </AdminFormBlock>
@@ -117,6 +123,39 @@ const company_office_number = ref({
   bind: {
     label: "Office number",
     placeholder: "Office number",
+  },
+});
+
+const image = ref({
+  type: "photo-loader",
+  name: "image",
+  modelValue: user.value?.company?.image?.image,
+
+  bind: {
+    title: "Upload logo",
+    subtitle: "140 x 56 pix",
+  },
+});
+
+const license = ref({
+  type: "file-loader",
+  name: "license",
+  modelValue: user.value?.company?.license?.file,
+
+  bind: {
+    title: "Trade license",
+    subtitle: "for verification",
+  },
+});
+
+const sertificate = ref({
+  type: "file-loader",
+  name: "sertificate",
+  modelValue: user.value?.company?.sertificate?.file,
+
+  bind: {
+    title: "Vat sertificate",
+    subtitle: "for verification",
   },
 });
 

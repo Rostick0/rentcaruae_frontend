@@ -16,7 +16,9 @@
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text">{{ car?.transmission?.name?.substr(0, 4) }}</span>
+          <span class="car-characteristic__text">{{
+            car?.transmission?.name?.substr(0, 4)
+          }}</span>
         </div>
         <div class="car-characteristic">
           <LazyNuxtImg
@@ -27,28 +29,31 @@
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text"
-            >{{ car?.seats }} Person</span
-          >
+          <span class="car-characteristic__text">{{ car?.seats }} Person</span>
         </div>
         <div class="car-characteristic">
           <LazyNuxtImg
             class="car-characteristic__icon"
-            :src="`images/icon/${car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'}.svg`"
+            :src="`images/icon/${
+              car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
+            }.svg`"
             loading="lazy"
             alt="fuel type"
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text">{{ car?.fuel_type?.name }}</span>
+          <span class="car-characteristic__text">{{
+            car?.fuel_type?.name
+          }}</span>
         </div>
       </div>
     </div>
     <div class="car__info_right">
       <LazyNuxtImg
-        :src="car?.user?.path"
+        class="car__info_img"
+        :src="car?.user?.company?.image?.image?.path_webp + '?w=78'"
         loading="lazy"
-        :alt="car?.user?.name"
+        :alt="car?.user?.company?.name"
         width="78"
         height="39"
       />
@@ -92,8 +97,13 @@ const props = defineProps({
     column-gap: 8px;
     margin-bottom: 18px;
 
-    &__right {
+    &_right {
+      display: flex;
       flex-shrink: 0;
+    }
+
+    &_img {
+      object-fit: contain;
     }
   }
 
