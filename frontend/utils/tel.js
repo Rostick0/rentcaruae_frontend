@@ -11,7 +11,10 @@ export const optionsNumbers = [
   },
 ];
 
-export const convertTel = (tel) => [
+export const convertTelToForm = (tel) => [
   optionsNumbers.find((i) => i.id === tel?.substring(0, tel?.length - 10)),
   tel?.substring(tel?.length - 10),
 ];
+
+export const convertTelToDb = (tel) =>
+  tel?.join("")?.replace(new RegExp(" ", "g"), "");

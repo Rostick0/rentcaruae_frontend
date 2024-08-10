@@ -44,6 +44,7 @@ const onSubmit = handleSubmit(
       },
     };
 
+    data.user.tel = convertTelToDb(data?.user?.tel);
     data.company.city_id = data?.company?.city_id?.id;
 
     const image_id = await getImageFrom(image).then((res) => res?.id);
@@ -69,8 +70,11 @@ const onSubmit = handleSubmit(
       },
     });
 
-    // if (res?.error) {
-    // }
+    if (res?.error) {
+      warningPopup(res?.errorResponse?.data?.message);
+      setErrors(res?.errorResponse?.data?.errors);
+      return;
+    }
   }
 );
 
