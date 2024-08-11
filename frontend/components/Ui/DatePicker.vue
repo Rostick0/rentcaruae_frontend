@@ -8,6 +8,8 @@
     <Datepicker
       :placeholder="placeholder"
       class="control__datepicker"
+      :class="{ time_picker: timePicker }"
+      :timePicker="timePicker"
       :format="format"
       v-bind="$attrs"
       @update:model-value="handleInput"
@@ -48,6 +50,7 @@ const props = defineProps({
       }/${date?.getFullYear()}`;
     },
   },
+  timePicker: Boolean,
 });
 
 function handleInput(date) {
@@ -94,7 +97,7 @@ watch(
     height: 40px;
   }
 
-  .dp__pointer {
+  &.time_picker .dp__pointer {
     background-color: #f5f5f5;
     border-color: transparent;
     border-radius: 8px;

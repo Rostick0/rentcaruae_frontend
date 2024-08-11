@@ -9,12 +9,12 @@ export const daysWeek = [
 ];
 
 export const convertTimeToEdit = (timeString) => {
-  const timeSplit = timeString?.split(":");
+  const timeSplit = timeString?.split?.(":");
 
   return {
-    hours: timeSplit[0],
-    minutes: timeSplit[1],
-    seconds: timeSplit[2],
+    hours: timeSplit?.[0],
+    minutes: timeSplit?.[1],
+    seconds: timeSplit?.[2],
   };
 };
 
