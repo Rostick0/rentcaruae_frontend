@@ -120,9 +120,17 @@
       </div>
 
       <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
-      <UiButton class="calc__button" @click.prevent color="whatsapp"
-        >WhatsApp</UiButton
+      <a
+        class="d-flex"
+        @click="clickWhatsApp"
+        :href="`https://wa.me/${car?.user?.tel}`"
+        rel="noopener nofollow"
+        target="_blank"
       >
+        <UiButton class="calc__button no-click" @click.prevent color="whatsapp"
+          >WhatsApp</UiButton
+        >
+      </a>
     </div>
     <div class="calc-item">
       <div class="calc__title">Choose rental dates</div>
@@ -189,6 +197,11 @@
 <script setup>
 import { useForm } from "vee-validate";
 import moment from "moment";
+import api from "~/api";
+
+const props = defineProps({
+  car: Object,
+});
 
 const isBook = ref();
 const book = ref();
@@ -201,14 +214,27 @@ const clickBook = () => {
   });
 };
 
-const props = defineProps({
-  car: Object,
-});
+const isAddStatisticWhatsApp = ref(false);
+
+const clickWhatsApp = async () => {
+  if (!isAddStatisticWhatsApp) return;
+
+  try {
+    await api.statisticsDay.create({
+      data: {
+        type: "whatsapp",
+        car_id: props?.car?.id,
+      },
+    });
+    isAddStatisticWhatsApp.value = true;
+  } catch {}
+};
 
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
   // console.log(values);
+  // await api.operations.create()
 });
 
 const periodSelect = ref({

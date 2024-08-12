@@ -14,6 +14,7 @@ import image from "./modules/image";
 import modelCars from "./modules/modelCars";
 import operations from "./modules/operations";
 import options from "./modules/options";
+import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
 import users from "./modules/users";
 
@@ -34,6 +35,7 @@ export default {
   modelCars,
   operations,
   options,
+  statisticsDay,
   transmissions,
   users,
 };

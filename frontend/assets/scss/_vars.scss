@@ -1,3 +1,7 @@
 .d-flex {
   display: flex;
 }
+
+.no-click {
+  pointer-events: none;
+}
