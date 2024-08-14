@@ -159,7 +159,8 @@
       <VFormComponent :field="tel" />
       <VFormComponent :field="full_name" />
       <VFormComponent :field="email" />
-      <div class="calc__amount">
+      <CalcAmount :price="priceRental" :textTopleft="`Rental ${daysRental} ${dayText}`" />
+      <!-- <div class="calc__amount">
         <div class="calc-item__flex">
           <div class="calc-item__flex_left">
             <span>Rental</span>
@@ -188,7 +189,7 @@
             }}</span>
           </strong>
         </div>
-      </div>
+      </div> -->
       <UiButton class="calc__button">Book</UiButton>
     </div>
   </form>

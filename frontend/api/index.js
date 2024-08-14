@@ -5,6 +5,7 @@ import categories from "./modules/categories";
 import cities from "./modules/cities";
 import colours from "./modules/colours";
 import companies from "./modules/companies";
+import deposites from "./modules/deposites";
 import distinctValue from "./modules/distinctValue";
 import emailCode from "./modules/emailCode";
 import file from "./modules/file";
@@ -26,6 +27,7 @@ export default {
   cities,
   colours,
   companies,
+  deposites,
   distinctValue,
   emailCode,
   file,

@@ -1,7 +1,6 @@
 <template>
   <div class="profile-form form__flex">
     <form class="form__fields" @submit="onSubmit">
-      <!-- <pre>{{ values?.company_schedules }}</pre> -->
       <AdminProfileFormCompany />
       <AdminProfileFormCompanySchedules />
       <div class="form__bottom">
