@@ -64,6 +64,7 @@ const depositesComputed = computed(() =>
   &-item {
     border: 1px solid var(--color-text20);
     border-radius: 8px;
+    cursor: pointer;
     padding: 24px 10px 40px;
 
     &.active {

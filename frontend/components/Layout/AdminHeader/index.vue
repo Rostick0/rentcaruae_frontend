@@ -1,7 +1,7 @@
 <template>
   <div class="admin-header">
     <div class="admin-header__balance">AED <span class="admin-header__balance_sum">{{ balance.toLocaleString() }}</span></div>
-    <NuxtLink class="d-flex" to="/">
+    <NuxtLink class="d-flex" to="/admin/deposite">
       <UiButton class="admin-header__btn">Deposite</UiButton>
     </NuxtLink>
   </div>

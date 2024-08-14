@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <!-- <UiRange modelValue="50" /> -->
+    <UiRange v-if="isLeasing" modelValue="50" />
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -38,7 +38,7 @@
         </div>
         <span>AED {{ car?.security_deposit?.price }}</span>
       </div>
-      <div class="calc-item__flex" v-if="!car?.free_per_day_security">
+      <div class="calc-item__flex" v-if="!isLeasing && !car?.free_per_day_security">
         <div class="calc-item__flex_left">
           <VFormComponent
             class="calc-item__switch calc-item__size-small"
@@ -159,7 +159,10 @@
       <VFormComponent :field="tel" />
       <VFormComponent :field="full_name" />
       <VFormComponent :field="email" />
-      <CalcAmount :price="priceRental" :textTopleft="`Rental ${daysRental} ${dayText}`" />
+      <CalcAmount
+        :price="priceRental"
+        :textTopleft="`Rental ${daysRental} ${dayText}`"
+      />
       <!-- <div class="calc__amount">
         <div class="calc-item__flex">
           <div class="calc-item__flex_left">
@@ -203,6 +206,10 @@ import api from "~/api";
 const props = defineProps({
   car: Object,
 });
+
+const route = useRoute();
+
+const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 
 const isBook = ref();
 const book = ref();

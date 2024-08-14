@@ -87,16 +87,6 @@ watch(
     justify-content: center;
   }
 
-  .dp__calendar_header_item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 500;
-    width: 40px;
-    height: 40px;
-  }
-
   &.time_picker .dp__pointer {
     background-color: #f5f5f5;
     border-color: transparent;
@@ -119,12 +109,28 @@ watch(
     }
   }
 
-  .dp__calendar_row {
-    margin: 0;
-  }
+  .dp__calendar {
+    &_item {
+      flex-grow: 0;
+    }
 
-  .dp__calendar_header_separator {
-    display: none;
+    &_row {
+      margin: 0;
+    }
+
+    &_header_separator {
+      display: none;
+    }
+
+    &_header_item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .dp__input_icon,
