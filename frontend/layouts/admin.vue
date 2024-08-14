@@ -13,6 +13,7 @@
 <style lang="scss" scoped>
 .wrapper {
   flex-direction: row;
+  max-height: 100vh;
 
   &__content {
     display: flex;

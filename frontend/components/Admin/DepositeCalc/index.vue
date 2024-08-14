@@ -1,6 +1,6 @@
 <template>
   <AdminFormBlock class="deposite-calc" title="Choose option">
-    <AdminDepositeCalcSelect :deposites="data" />
+    <AdminDepositeCalcSelect :deposites="data" v-model="price" />
     <div class="deposite-calc__bottom">
       <CalcAmount :price="price" textTopleft="Package Advanced" />
       <UiButton>Deposit</UiButton>
@@ -9,20 +9,21 @@
 </template>
 
 <script setup>
-const price = ref(300);
-
-const { data } = await useApi({
+const { data, get } = await useApi({
   name: "deposites.getAll",
   params: {
     extends: "deposite_leads",
   },
-  init: true,
 });
+
+await get();
+
+const price = ref(data.value?.[0]?.price);
 </script>
 
 <style lang="scss" scoped>
 .deposite-calc {
-max-width: 716px;
+  max-width: 716px;
 
   &__bottom {
     display: flex;

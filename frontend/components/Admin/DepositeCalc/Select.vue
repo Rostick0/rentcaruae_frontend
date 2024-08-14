@@ -2,8 +2,10 @@
   <div class="deposite-select">
     <div
       class="deposite-select-item"
+      :class="{ active: deposite?.price === modelValue }"
       v-for="deposite in depositesComputed"
       :key="deposite.id"
+      @click="emits('update:modelValue', deposite?.price)"
     >
       <div class="deposite-select-item__top">
         <div class="deposite-select-item__price">
@@ -38,8 +40,11 @@
 </template>
 
 <script setup>
+const emits = defineEmits(["update:modelValue"]);
+
 const props = defineProps({
   deposites: Array,
+  modelValue: Number,
 });
 
 const depositesComputed = computed(() =>
@@ -60,6 +65,10 @@ const depositesComputed = computed(() =>
     border: 1px solid var(--color-text20);
     border-radius: 8px;
     padding: 24px 10px 40px;
+
+    &.active {
+      border-color: var(--color-basic);
+    }
 
     &__top {
       text-align: center;
