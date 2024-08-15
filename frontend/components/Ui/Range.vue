@@ -36,6 +36,9 @@ const props = defineProps({
   modelValue: {
     type: [Number, String, null],
   },
+  partsCount: {
+    type: [String, Number],
+  },
 });
 
 const emits = defineEmits(["update:modelValue"]);
@@ -55,15 +58,20 @@ watch(
   debounce(() => emits("update:modelValue", valueComputed.value), 200)
 );
 
+const partPx = computed(() => Math.round(width.value / props.partsCount));
+
 const setPosition = (clientX) => {
   const left = rangeInput.value.getBoundingClientRect().left;
   // const width = rangeInput.value.getBoundingClientRect().width;
 
-  const positon = clientX - left - 12;
+  const positon = clientX - left;
 
   if (positon <= 0) return 0;
 
   if (positon - width.value > 0) return width.value;
+
+  if (props?.partsCount)
+    return Math.round(positon / partPx.value) * partPx.value;
 
   return positon;
 };
@@ -74,7 +82,7 @@ onMounted(() => {
 });
 
 const clickHandler = (e) => {
-  line.value.x = setPosition(e.clientX + 12);
+  line.value.x = setPosition(e.clientX);
 };
 
 const mouseDownHandler = (e) => {

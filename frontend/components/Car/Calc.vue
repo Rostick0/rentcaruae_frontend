@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <UiRange v-if="isLeasing" modelValue="50" />
+    <UiRange v-if="isLeasing" partsCount="6" />
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -38,7 +38,10 @@
         </div>
         <span>AED {{ car?.security_deposit?.price }}</span>
       </div>
-      <div class="calc-item__flex" v-if="!isLeasing && !car?.free_per_day_security">
+      <div
+        class="calc-item__flex"
+        v-if="!isLeasing && !car?.free_per_day_security"
+      >
         <div class="calc-item__flex_left">
           <VFormComponent
             class="calc-item__switch calc-item__size-small"
@@ -154,47 +157,12 @@
       </div>
       <VFormComponent :field="period" />
     </div>
-    <div class="calc-item" ref="book" v-if="isBook">
-      <div class="calc__title">Your booking details</div>
-      <VFormComponent :field="tel" />
-      <VFormComponent :field="full_name" />
-      <VFormComponent :field="email" />
-      <CalcAmount
-        :price="priceRental"
-        :textTopleft="`Rental ${daysRental} ${dayText}`"
-      />
-      <!-- <div class="calc__amount">
-        <div class="calc-item__flex">
-          <div class="calc-item__flex_left">
-            <span>Rental</span>
-            <span>{{ daysRental }} {{ dayText }}</span>
-          </div>
-          <strong class="calc-item__size-small"
-            >AED {{ formatNumber(priceRental) }}</strong
-          >
-        </div>
-        <div class="calc-item__flex">
-          <div class="calc-item__flex_left">
-            <span>VAT</span>
-            <span>Tax (5%)</span>
-          </div>
-          <strong class="calc-item__size-small"
-            >+ AED {{ formatNumber(tax) }}</strong
-          >
-        </div>
-        <div class="calc-item__hr"></div>
-        <div class="calc-item__flex">
-          <div class="calc__title">Total</div>
-          <strong class="calc__price">
-            AED
-            <span class="calc__price_val">{{
-              formatNumber(priceRental + tax)
-            }}</span>
-          </strong>
-        </div>
-      </div> -->
-      <UiButton class="calc__button">Book</UiButton>
-    </div>
+    <CarForm
+      v-if="isBook"
+      :daysRental="daysRental"
+      :priceRental="priceRental"
+      :dayText="dayText"
+    />
   </form>
 </template>
 
@@ -253,22 +221,19 @@ const periodSelect = ref({
   bind: {
     options: periodOptions,
     isAlternative: true,
-    // slots: "dasd",
   },
 });
 
 const period = ref({
   type: "date",
   name: "period",
-  modelValue: [new Date(), new Date()],
+  modelValue: isLeasing.value ? new Date() : [new Date(), new Date()],
 
   bind: {
     inline: true,
     enableTimePicker: false,
-    range: true,
+    range: !isLeasing.value,
     monthNameFormat: "long",
-    // options: periodOptions,
-    // slots: "dasd",
   },
 });
 
@@ -323,7 +288,6 @@ const priceRental = computed(
     getPeriodPrice(props.car, daysRental.value) +
     (without_deposite.value?.modelValue ? 45 * daysRental.value : 0)
 );
-const tax = computed(() => priceRental.value * 0.05);
 
 watch(
   () => period.value.modelValue,
@@ -335,39 +299,6 @@ watch(
       ) + 1;
   }
 );
-
-const tel = ref({
-  type: "tel",
-  name: "tel",
-  modelValue: [],
-
-  bind: {
-    label: "Phone number",
-    // slots: "dasd",
-  },
-});
-
-const full_name = ref({
-  type: "text",
-  name: "full_name",
-  modelValue: "",
-  rules: "required|max:255",
-
-  bind: {
-    label: "Full Name",
-  },
-});
-
-const email = ref({
-  type: "text",
-  name: "email",
-  modelValue: "",
-  rules: "required|email|max:255",
-
-  bind: {
-    label: "E-mail",
-  },
-});
 </script>
 
 <style lang="scss" scoped>
