@@ -35,6 +35,7 @@ import debounce from "lodash/debounce";
 const props = defineProps({
   modelValue: {
     type: [Number, String, null],
+    default: 0,
   },
   partsCount: {
     type: [String, Number],
@@ -53,9 +54,21 @@ const valueComputed = computed(() =>
   Math.round((line.value.x / width.value) * 100)
 );
 
+const getOnePartSizePx = computed(() => 100 / props?.partsCount);
+const getPartsDivisor = computed(() =>
+  props?.partsCount ? getOnePartSizePx.value : 1
+);
+
 watch(
   () => line.value.x,
-  debounce(() => emits("update:modelValue", valueComputed.value), 200)
+  debounce(
+    () =>
+      emits(
+        "update:modelValue",
+        Math.round(valueComputed.value / getPartsDivisor.value)
+      ),
+    200
+  )
 );
 
 const partPx = computed(() => Math.round(width.value / props.partsCount));
@@ -78,12 +91,13 @@ const setPosition = (clientX) => {
 
 onMounted(() => {
   width.value = rangeInput.value.getBoundingClientRect().width;
-  line.value.x = width.value * ((props.modelValue ?? 0) / 100);
+  line.value.x =
+    width.value *
+    (((props?.partsCount ? getOnePartSizePx.value : 1) * props.modelValue) /
+      100);
 });
 
-const clickHandler = (e) => {
-  line.value.x = setPosition(e.clientX);
-};
+const clickHandler = (e) => (line.value.x = setPosition(e.clientX));
 
 const mouseDownHandler = (e) => {
   line.value.x = setPosition(e.clientX);

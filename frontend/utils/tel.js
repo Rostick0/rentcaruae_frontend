@@ -17,4 +17,7 @@ export const convertTelToForm = (tel) => [
 ];
 
 export const convertTelToDb = (tel) =>
-  tel?.join("")?.replace(new RegExp(" ", "g"), "");
+  tel?.join("")?.replace(new RegExp(" ", "g"), "")?.replace("+", "");
+
+export const convertTelToDbOrNull = (tel) =>
+  tel?.[1] ? convertTelToDb(tel) : null;

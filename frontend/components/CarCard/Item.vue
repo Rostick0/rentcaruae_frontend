@@ -28,7 +28,10 @@
     <div class="car__stats">
       <div class="car-stat">
         <div class="car-stat__title">Deposit</div>
-        <div class="car-stat__value" :class="{ free: !car?.security_deposit?.price }">
+        <div
+          class="car-stat__value"
+          :class="{ free: !car?.security_deposit?.price }"
+        >
           {{ car?.security_deposit?.price ?? "Free" }}
         </div>
       </div>
@@ -46,7 +49,7 @@
       <div class="car-stat">
         <div class="car-stat__title">Minimum</div>
         <div class="car-stat__value">
-          {{ car?.min_days ?? 1 }} {{ car?.min_days > 1 ? "days" : "day" }}
+          {{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}
         </div>
       </div>
     </div>

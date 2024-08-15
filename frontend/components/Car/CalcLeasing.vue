@@ -2,27 +2,17 @@
   <form class="calc" @submit="onSubmit">
     <div class="calc__top">
       <div class="calc__top_left">
-        <div class="calc__top_title calc__title">
-          {{ periodSelect.modelValue?.name }} rental offer
-        </div>
-        <div class="calc__top_period">
-          <span>Selected period:</span>
-          <div>
-            <VFormComponent :field="periodSelect" />
-          </div>
-        </div>
+        <div class="calc__top_title calc__title">Monthly rental offer</div>
       </div>
       <div class="calc__top_right">
-        <div class="calc__price-old">
-          {{ periodSelect.modelValue?.name }}
-          <del class="del" v-if="priceSpecial">AED {{ priceSpecial }}</del>
-        </div>
+        <div class="calc__price-old">Monthly price</div>
         <div class="calc__price">
           AED
           <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
     </div>
+    <VFormComponent :field="periodSelect" />
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -36,18 +26,6 @@
           <span>Deposit</span>
         </div>
         <span>AED {{ car?.security_deposit?.price }}</span>
-      </div>
-      <div class="calc-item__flex" v-if="!car?.free_per_day_security">
-        <div class="calc-item__flex_left">
-          <VFormComponent
-            class="calc-item__switch calc-item__size-small"
-            :field="without_deposite"
-          />
-        </div>
-        <div class="calc-item__flex_right">
-          AED 45 <br />
-          <span class="calc-item__size-small">per day</span>
-        </div>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -134,23 +112,17 @@
       <div class="calc__title">Choose rental dates</div>
       <div class="calc-date">
         <div class="calc-date__item">
-          <strong class="calc-item__size-small">Pick-up date</strong>
+          <strong class="calc-item__size-small">Start date</strong>
           <div class="text-ui">
-            {{ moment(period.modelValue?.[0]).format("D MMM YYYY") }}
-          </div>
-        </div>
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Drop-off date</strong>
-          <div class="text-ui">
-            {{ moment(period.modelValue?.[1]).format("D MMM YYYY") }}
+            {{ moment(start_date.modelValue).format("D MMM YYYY") }}
           </div>
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ daysRental }} {{ dayText }}</div>
+          <div class="calc__price text-ui">{{ daysRental }} Mounth</div>
         </div>
       </div>
-      <VFormComponent :field="period" />
+      <VFormComponent :field="start_date" />
     </div>
     <CarForm
       v-if="isBook"
@@ -199,16 +171,15 @@ const clickWhatsApp = async () => {
   } catch {}
 };
 
-const { handleSubmit } = useForm();
+const { handleSubmit, setErrors } = useForm();
 
-const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
+const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
   const data = {
     ...values,
-    start_date: moment(period?.[1]).format("YYYY-MM-DD"),
-    period: daysRental.value,
+    start_date: moment(start_date).format("YYYY-MM-DD"),
     tel: convertTelToDbOrNull(tel),
     car_id: route.params.id,
-    type: "economy",
+    type: "leasing",
   };
 
   const res = await api.operations.create({ data });
@@ -219,32 +190,30 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     return;
   }
 
-  success("Thank you for your application");
+  success('Thank you for your application');
 
   isBook.value = false;
 });
 
 const periodSelect = ref({
-  type: "select",
+  type: "range",
   name: "period",
-  modelValue: periodOptions[0],
+  modelValue: 0,
 
   bind: {
-    options: periodOptions,
-    isAlternative: true,
+    partsCount: "5",
   },
 });
 
-const period = ref({
+const start_date = ref({
   type: "date",
-  name: "period",
-  modelValue: [new Date(), new Date()],
+  name: "start_date",
+  modelValue: new Date(),
 
   bind: {
     autoApply: true,
     inline: true,
     enableTimePicker: false,
-    range: true,
     monthNameFormat: "long",
     minDate: new Date(),
   },
@@ -262,21 +231,23 @@ const without_deposite = ref({
 });
 
 const daysRental = ref(
-  moment(period.modelValue?.[1]).diff(moment(period.modelValue?.[0]), "days") +
-    1
+  moment(start_date.modelValue?.[1]).diff(
+    moment(start_date.modelValue?.[0]),
+    "days"
+  ) + 1
 );
 
 const dayText = computed(() => pluralize("day", daysRental?.value));
-
+console.log(props.car);
 const maxMileage = computed(() =>
-  props?.car?.price?.length && Array.isArray(props?.car?.price)
-    ? Math.max(...props?.car?.price?.map((item) => item?.mileage))
+  props?.car?.price_leasing?.length && Array.isArray(props?.car?.price_leasing)
+    ? Math.max(...props?.car?.price_leasing?.map((item) => item?.mileage))
     : 0
 );
 
 const priceSpecial = computed(() =>
   formatNumber(
-    props?.car?.price_special?.find(
+    props?.car?.price_leasing?.find(
       (item) => item?.period === periodSelect.value.modelValue.period
     )?.price &&
       props?.car?.price?.find(
@@ -303,11 +274,11 @@ const priceRental = computed(
 );
 
 watch(
-  () => period.value.modelValue,
+  () => start_date.value.modelValue,
   () => {
     daysRental.value =
-      moment(period.value.modelValue?.[1]).diff(
-        moment(period.value.modelValue?.[0]),
+      moment(start_date.value.modelValue?.[1]).diff(
+        moment(start_date.value.modelValue?.[0]),
         "days"
       ) + 1;
   }

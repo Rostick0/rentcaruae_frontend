@@ -23,7 +23,9 @@
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
-    />
+    >
+      <slot />
+    </UiCheckbox>
     <UiMultiMSelect
       v-else-if="field.type == 'multiple-select'"
       v-model="model"
@@ -79,6 +81,12 @@
     />
     <UiSwitch
       v-else-if="field.type == 'switch'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+    <UiRange
+      v-else-if="field.type == 'range'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"

@@ -19,7 +19,8 @@
       </div>
     </div>
     <div class="car__right">
-      <LazyCarCalc :car="car" />
+      <LazyCarCalcLeasing v-if="isLeasing" :car="car" />
+      <LazyCarCalc v-else :car="car" />
     </div>
   </div>
 </template>
@@ -28,6 +29,10 @@
 const props = defineProps({
   car: Object,
 });
+
+const route = useRoute();
+
+const isLeasing = computed(() => route.fullPath.split('/')[2] === 'leasing')
 
 const specifications = computed(() =>
   groupByInArray(

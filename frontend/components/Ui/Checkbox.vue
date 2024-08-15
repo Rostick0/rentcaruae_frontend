@@ -29,6 +29,9 @@
       <span class="checkbox__label" v-if="label">
         {{ label }}
       </span>
+      <span class="checkbox__label" v-if="$slots">
+        <slot />
+      </span>
     </label>
   </UiControl>
 </template>
