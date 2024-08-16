@@ -1,6 +1,6 @@
 <template>
   <UiControl :invalid="!!errorMessage" :message="errorMessage || message">
-    <label class="control__checkbox checkbox">
+    <label class="control__checkbox checkbox" :class="[variant]">
       <input
         v-bind="$attrs"
         class="checkbox__input"
@@ -35,36 +35,61 @@
     </label>
   </UiControl>
 </template>
-<script setup>
+
+<script lang="ts" setup>
 defineComponent({
   inheritAttrs: false,
 });
 
 const emits = defineEmits(["update:modelValue"]);
 
-const props = defineProps({
-  label: String,
-  modelValue: [Boolean, Number, String],
-  message: String,
-  placeholder: String,
-  errorMessage: String,
-  onChange: Function,
-  deps: [Array, Object, String, Number],
-  onDepsChange: {
-    type: Function,
-  },
-  forceDeps: Boolean,
-  innerConvertTo: Function,
-  withIcon: {
-    type: Boolean,
-    default: true,
-  },
-});
+// const props = defineProps({
+//   label: String,
+//   modelValue: Boolean,
+//   message: String,
+//   placeholder: String,
+//   errorMessage: String,
+//   onChange: Function,
+//   deps: [Array, Object, String, Number],
+//   onDepsChange: {
+//     type: Function,
+//   },
+//   forceDeps: Boolean,
+//   innerConvertTo: Function,
+//   withIcon: {
+//     type: Boolean,
+//     default: true,
+//   },
+//   variant: {
 
-function handleChange(event) {
+//   }
+// });
+const props = withDefaults(
+  defineProps<{
+    label?: string;
+    modelValue: boolean;
+    message?: string;
+    placeholder?: string;
+    errorMessage?: string;
+    onChange?: Function;
+    deps?: Array<any> | Object | string | number;
+    onDepsChange?: Function;
+    forceDeps?: boolean;
+    innerConvertTo?: Function;
+    withIcon?: boolean;
+    variant?: "grey-small";
+  }>(),
+  {
+    withIcon: true,
+  }
+);
+
+function handleChange(event: Event) {
+  const eventTarget = event.target as HTMLInputElement;
+
   emits(
     "update:modelValue",
-    props?.innerConvertTo?.(event.target.checked) ?? event.target.checked
+    props?.innerConvertTo?.(eventTarget.checked) ?? eventTarget.checked
   );
   props?.onChange?.(event);
 }
@@ -72,8 +97,7 @@ function handleChange(event) {
 const ctx = computed(() => ({
   modelValue: props.modelValue,
   handleChange,
-  handleChange,
-  updateModelValue: (value) => emits("update:modelValue", value),
+  updateModelValue: (value: boolean) => emits("update:modelValue", value),
 }));
 
 watch(
@@ -135,6 +159,28 @@ watch(
     font-size: 14px;
     font-weight: 500;
     padding-top: 4px;
+  }
+
+  &.grey-small {
+    align-items: center;
+    column-gap: 8px;
+
+    .checkbox__label {
+      color: var(--color-gray-blue);
+      font-size: 12px;
+      padding-top: 0;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.checkbox {
+  &.grey-small {
+    a {
+      color: var(--color-gray-blue);
+      text-decoration: underline;
+    }
   }
 }
 </style>

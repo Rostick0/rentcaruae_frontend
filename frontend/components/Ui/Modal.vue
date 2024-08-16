@@ -55,5 +55,10 @@ watch(
   width: 100%;
   height: 100%;
   z-index: 9999;
+
+  & > * {
+    overflow: auto;
+    max-height: calc(100vh - 40px);
+  }
 }
 </style>

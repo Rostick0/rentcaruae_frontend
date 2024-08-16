@@ -11,9 +11,12 @@
     <UiButton class="calc__button">Book</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
       By ticking this box, you agree to the
-      <NuxtLink to="/terms_of_service" target="_blank">Terms of Service</NuxtLink> <br />and
-      <NuxtLink to="/private_policy" target="_blank">Privacy Policy</NuxtLink>, including cookie
-      use.
+      <NuxtLink to="/terms_of_service" target="_blank"
+        >Terms of Service</NuxtLink
+      >
+      <br />and
+      <NuxtLink to="/private_policy" target="_blank">Privacy Policy</NuxtLink>,
+      including cookie use.
     </VFormComponent>
   </div>
 </template>
@@ -64,30 +67,12 @@ const is_agree = ref({
   modelValue: false,
   rules: "required",
 
-  bind: {},
+  bind: {
+    variant: "grey-small",
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/scss/components/car-carc";
-</style>
-
-<style lang="scss">
-.calc-item {
-  .checkbox {
-    align-items: center;
-    column-gap: 8px;
-
-    &__label {
-      color: var(--color-gray-blue);
-      font-size: 12px;
-      padding-top: 0;
-
-      a {
-        color: var(--color-gray-blue);
-        text-decoration: underline;
-      }
-    }
-  }
-}
 </style>

@@ -147,17 +147,19 @@
               </a>
             </div>
             <div class="footer__rental">Are you a car rental company?</div>
-            <NuxtLink class="d-flex" to="/login">
-              <UiButton class="footer__join" variant="outlined"
-                >Join us</UiButton
-              >
-            </NuxtLink>
+            <UiButton
+              class="footer__join"
+              @click="open(), (authModalState = 'register')"
+              variant="outlined"
+              >Join us</UiButton
+            >
           </div>
         </div>
         <div class="footer__bottom">© Buycaruae 2023</div>
       </div>
     </div>
   </div>
+  <AuthModal />
 </template>
 
 <script setup>
@@ -189,6 +191,12 @@ const { data: generations, get: getGenerations } = await useApi({
   },
 });
 await getGenerations();
+
+const { open } = useModal({
+  name: "auth-modal",
+});
+
+const authModalState = useState("authModalState");
 </script>
 
 <style lang="scss" scoped>

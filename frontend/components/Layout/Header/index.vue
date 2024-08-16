@@ -27,7 +27,7 @@
           <VFormComponent :field="lang" />
           <VFormComponent :field="currency" />
         </div>
-        <UiButton class="btn-flex">
+        <UiButton class="btn-flex" @click="open(), (authModalState = 'login')">
           <svg
             width="20"
             height="20"
@@ -65,24 +65,29 @@
 </template>
 
 <script setup>
-const make = ref({
-  type: "select",
-  name: "make",
-  modelValue: "",
-
-  bind: {
-    debounceMs: 500,
-    isSearchable: true,
-    // withIcon: false,
-    svgIcon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M12.3 11.0583L17.075 15.8333L15.8333 17.075L11.0583 12.3C10.1667 12.9417 9.09167 13.3333 7.91667 13.3333C4.925 13.3333 2.5 10.9083 2.5 7.91667C2.5 4.925 4.925 2.5 7.91667 2.5C10.9083 2.5 13.3333 4.925 13.3333 7.91667C13.3333 9.09167 12.9417 10.1667 12.3 11.0583ZM7.91667 4.16667C5.84167 4.16667 4.16667 5.84167 4.16667 7.91667C4.16667 9.99167 5.84167 11.6667 7.91667 11.6667C9.99167 11.6667 11.6667 9.99167 11.6667 7.91667C11.6667 5.84167 9.99167 4.16667 7.91667 4.16667Z" fill="#221EE3"/>
-</svg>`,
-    placeholder: "Search a car by brand or model",
-    isAlternative: true,
-    searchFn: () => {},
-    // searchFn: fetchMake,
-  },
+const { open } = useModal({
+  name: "auth-modal",
 });
+const authModalState = useState("authModalState");
+
+// const make = ref({
+//   type: "select",
+//   name: "make",
+//   modelValue: "",
+
+//   bind: {
+//     debounceMs: 500,
+//     isSearchable: true,
+//     // withIcon: false,
+//     svgIcon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+// <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3 11.0583L17.075 15.8333L15.8333 17.075L11.0583 12.3C10.1667 12.9417 9.09167 13.3333 7.91667 13.3333C4.925 13.3333 2.5 10.9083 2.5 7.91667C2.5 4.925 4.925 2.5 7.91667 2.5C10.9083 2.5 13.3333 4.925 13.3333 7.91667C13.3333 9.09167 12.9417 10.1667 12.3 11.0583ZM7.91667 4.16667C5.84167 4.16667 4.16667 5.84167 4.16667 7.91667C4.16667 9.99167 5.84167 11.6667 7.91667 11.6667C9.99167 11.6667 11.6667 9.99167 11.6667 7.91667C11.6667 5.84167 9.99167 4.16667 7.91667 4.16667Z" fill="#221EE3"/>
+// </svg>`,
+//     placeholder: "Search a car by brand or model",
+//     isAlternative: true,
+//     searchFn: () => {},
+//     // searchFn: fetchMake,
+//   },
+// });
 
 const lang = ref({
   type: "select",

@@ -7,21 +7,19 @@ export default async () => {
   const user = useState("user", () => null);
 
   const setUser = (resp) => {
-    user.value = resp?.user;
-    accessToken.value = resp?.token;
+    user.value = resp?.data?.user;
+    accessToken.value = resp?.data?.access_token;
   };
 
   const login = async (data, isRedirect = true) => {
     try {
       const resp = await auth.login(data);
-      // if (resp?.error) resp?.popup();
-      if (resp?.error) {
-        return resp?.errorResponse?.data;
-      }
+
+      if (resp?.error) return resp?.errorResponse?.data;
+
       setUser(resp);
-      if (isRedirect) {
-        navigateTo({ name: "index" });
-      }
+
+      if (isRedirect) navigateTo("/");
     } catch (error) {
       console.error(error);
     }
@@ -30,14 +28,11 @@ export default async () => {
   const register = async (data, isRedirect = true) => {
     try {
       const resp = await auth.register(data);
-      // if (resp?.error) resp?.popup();
-      if (resp?.error) {
-        return resp?.errorResponse?.data;
-      }
+
+      if (resp?.error) return resp?.errorResponse?.data;
+
       setUser(resp);
-      if (isRedirect) {
-        navigateTo({ name: "index" });
-      }
+      if (isRedirect) navigateTo("/");
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +43,8 @@ export default async () => {
       await auth
         .me(
           {
-            extends: "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image",
+            extends:
+              "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image",
           },
           {},
           { Authorization: `Bearer ${accessToken.value}` }
@@ -72,7 +68,7 @@ export default async () => {
     if (params) {
       navigateTo(params);
     } else {
-      navigateTo("/login");
+      navigateTo("/");
     }
   };
 
