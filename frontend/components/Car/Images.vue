@@ -60,10 +60,13 @@ const activeImage = ref(props.images?.[0]);
   &__list {
     display: flex;
     column-gap: 10px;
+    overflow: auto;
+    max-width: 646px;
   }
 
   &__item {
     border-radius: 8px;
+    flex-shrink: 0;
     overflow: auto;
   }
 }

@@ -122,7 +122,7 @@ const citiesComputed = computed(() =>
 
 const city = useState("currentCity", () => citiesComputed.value?.[0]);
 
-const links = [
+const links = computed(() => [
   {
     name: "Categories",
     link: "/",
@@ -141,9 +141,9 @@ const links = [
   },
   {
     name: "Car Leasing",
-    link: "/leasing",
+    link: convertNameToUrl(`/${city?.value?.name}/leasing`),
   },
-];
+]);
 </script>
 
 <style lang="scss" scoped>

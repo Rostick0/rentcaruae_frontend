@@ -41,7 +41,7 @@ const id = useRoute().params.id;
 const { data, get } = await useApi({
   name: "car.get",
   params: {
-    extends: carFullExtends + ",user.company.image.image",
+    extends: carFullExtends + ",user.company.image.image,user.company.city",
   },
   requestParams: {
     id,

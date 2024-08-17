@@ -110,7 +110,18 @@
         </div>
       </div>
     </div>
-    <UiButton class="car__btn">Rent now</UiButton>
+    <NuxtLink
+      class="d-flex"
+      :to="
+        convertNameToUrl(
+          `/${city?.name}/${route.fullPath.split('/')[2] ?? 'economy'}/${
+            car?.generation?.model_car?.brand?.name
+          }/${car?.generation?.model_car?.name}/${car?.id}`
+        )
+      "
+    >
+      <UiButton class="car__btn">Rent now</UiButton>
+    </NuxtLink>
   </div>
 </template>
 
@@ -118,6 +129,10 @@
 const props = defineProps({
   car: Object,
 });
+
+const city = useState("currentCity");
+
+const route = useRoute();
 </script>
 
 <style lang="scss" scoped>
