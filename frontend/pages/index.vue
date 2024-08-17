@@ -4,19 +4,22 @@
     <MainBrands />
     <div class="car-cards">
       <CarCardShortList
-        :cars="cars"
+        v-if="specialCars?.length"
+        :cars="specialCars"
         title="Special offers"
         linkText="All special offers"
-        link="/"
+        :link="`/`"
       />
       <CarCardShortList
-        :cars="cars"
+        v-if="luxuryCars?.length"
+        :cars="luxuryCars"
         title="Luxury cars"
         linkText="All Luxury cars"
         link="/"
       />
       <CarCardShortList
-        :cars="cars"
+        v-if="suvCars?.length"
+        :cars="suvCars"
         title="SUV for rent"
         linkText="All SUV"
         link="/"
@@ -212,6 +215,42 @@ const cars = [
     },
   },
 ];
+
+const { data: specialCars, get: getSpecialCars } = await useApi({
+  name: "car.getAll",
+  params: {
+    extends: "images.image,price,price_special,generation.model_car.brand",
+    "filterNEEQ[price_special.id]": true,
+    sort: '-id',
+    limit: 4,
+  },
+});
+
+await getSpecialCars();
+
+const { data: luxuryCars, get: getLuxuryCars } = await useApi({
+  name: "car.getAll",
+  params: {
+    extends: "images.image,price,price_special,generation.model_car.brand",
+    "filterEQ[category_id]": 6,
+    sort: '-id',
+    limit: 4,
+  },
+});
+
+await getLuxuryCars();
+
+const { data: suvCars, get: getsuvCars } = await useApi({
+  name: "car.getAll",
+  params: {
+    extends: "images.image,price,price_special,generation.model_car.brand",
+    "filterEQ[category_id]": 3,
+    sort: '-id',
+    limit: 4,
+  },
+});
+
+await getsuvCars();
 </script>
 
 <style lang="scss" scoped>

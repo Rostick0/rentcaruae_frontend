@@ -119,7 +119,7 @@
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ daysRental }} Mounth</div>
+          <div class="calc__price text-ui">{{ periodSelect }} Mounth</div>
         </div>
       </div>
       <VFormComponent :field="start_date" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <footer class="footer" id="footer">
     <div class="container">
       <div class="footer__container">
         <NuxtLink class="footer__top" to="/">
@@ -158,7 +158,7 @@
         <div class="footer__bottom">© Buycaruae 2023</div>
       </div>
     </div>
-  </div>
+  </footer>
   <AuthModal />
 </template>
 

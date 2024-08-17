@@ -28,7 +28,7 @@
 const props = defineProps({
   padding: {
     type: [Number, String],
-    default: 2
+    default: 4
   },
   meta: {
     type: Object,
@@ -112,14 +112,14 @@ const items = computed(() => {
     }
 
     &.active {
-      background-color: var(--color-green);
-      color: var(--color-white);
+     // background-color: var(--color-green);
+      color: var(--color-basic);
       cursor: default;
     }
   }
 
   &-item {
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--color-basic);
     border-right-width: 0;
     display: flex;
     justify-content: center;

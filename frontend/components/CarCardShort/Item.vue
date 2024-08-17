@@ -63,6 +63,7 @@ const props = defineProps({
 
   &__img {
     border-radius: 8px;
+    object-fit: cover;
     position: absolute;
     left: 0;
     top: 0;

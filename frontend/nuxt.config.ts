@@ -37,11 +37,6 @@ export default defineNuxtConfig({
       BACK_URL: `${process.env.BACK_URL}`,
     },
   },
-  // routeRules: {
-  //   "/admin": {
-  //     layout: "admin",
-  //   },
-  // },
   nitro: {
     compressPublicAssets: true,
   },

@@ -19,7 +19,6 @@
         decoding="async"
         loading="lazy"
         :alt="car?.title"
-        fit="cover"
         width="320"
         height="196"
       />
@@ -165,6 +164,7 @@ const route = useRoute();
 
   &__img {
     border-radius: 8px;
+    object-fit: cover;
     position: absolute;
     left: 0;
     top: 0;

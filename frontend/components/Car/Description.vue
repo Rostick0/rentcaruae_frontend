@@ -1,9 +1,12 @@
 <template>
   <div class="description">
     <h2 class="description__title">{{ title }}</h2>
-    <div class="description__content" :class="{ active }" ref="content">
-      {{ description }}
-    </div>
+    <div
+      class="description__content"
+      :class="{ active }"
+      ref="content"
+      v-html="description"
+    />
     <UiButton
       class="description__btn"
       v-if="isShow"

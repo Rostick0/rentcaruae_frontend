@@ -130,53 +130,6 @@ const companySchedules = computed(() =>
     week_day: daysWeek[item?.week_day],
   }))
 );
-
-// const dataa = {
-//   name: "Yeti car rental",
-//   image: "images/fake/yeti-rental-dubai1.png 1.png",
-//   description:
-//     "Yeti Car Rental is a company with a believe in a high-quality service for our customers. Our fleet consist of new / luxury / super cars, which will fully incorporate your needs and requirements. We have Kia Sportage, Kia Optima, Kia Picanto, Kia Rio, Hyundai Sonata, Hyundai Elantra, Toyota Yaris, Infiniti and many more! You are most welcome to contact us and place an inquiry for corporate lease, long and short-term rentals. Be first to make a booking and get ZERO-mileage car. If you want to rent a car in Dubai - Yeti is the best for You!",
-//   address: "902, Al Ameri Tower, Barsha Heights, Dubai - UAE",
-//   map_address: "",
-//   whatsapp: "",
-//   schedule: [
-//     {
-//       week_day: "Monday",
-//       start: "9:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Tuesday",
-//       start: "9:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Wednesday",
-//       start: "9:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Thursday",
-//       start: "9:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Friday",
-//       start: "9:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Saturday",
-//       start: "10:00 am",
-//       end: "8:00 pm",
-//     },
-//     {
-//       week_day: "Sunday",
-//       start: "10:00 am",
-//       end: "8:00 pm",
-//     },
-//   ],
-// };
 </script>
 
 <style lang="scss" scoped>

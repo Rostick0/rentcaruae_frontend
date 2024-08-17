@@ -361,33 +361,5 @@ const addMore = (event) => {
       transition: 0.3s;
     }
   }
-
-  // &__field_placeholder-no-focus:focus + &__label_name {
-  //   font-size: 16px;
-  //   transform: translateY(-50%);
-  //   top: 50%;
-  // }
-
-  // &__field:focus + &__label_name,
-  // &__field:not(:placeholder-shown) + &__label_name {
-  //   font-size: 12px;
-  //   top: 11px;
-  //   transform: translateY(0);
-  // }
-
-  // &__field {
-  //   border: 1px solid var(--color-grey-dark);
-  //   border-radius: 8px;
-  //   font-size: 16px;
-  //   padding: 20px 12px;
-
-  //   &_placeholder_top {
-  //     padding: 30px 12px 10px;
-  //   }
-
-  //   &:focus {
-  //     border-color: var(--color-green);
-  //   }
-  // }
 }
 </style>

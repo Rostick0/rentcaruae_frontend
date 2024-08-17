@@ -59,46 +59,6 @@ const carType = [
     img: "images/car-type/Liftback.png",
   },
 ];
-
-// const carType = computed(() => {
-//   // const routePath = useRoute().fullPath.substring(1).split("/");
-
-//   return [
-//     {
-//       name: "SUV",
-//       img: "images/car-type/SUV.png",
-//     },
-//     {
-//       name: "VAN",
-//       img: "images/car-type/VAN.png",
-//     },
-//     {
-//       name: "Sedan",
-//       img: "images/car-type/Sedan.png",
-//     },
-//     {
-//       name: "Coupe",
-//       img: "images/car-type/Coupe.png",
-//     },
-//     {
-//       name: "Cabrio",
-//       img: "images/car-type/Cabrio.png",
-//     },
-//     {
-//       name: "Hatchback",
-//       img: "images/car-type/Hatchback.png",
-//     },
-//     {
-//       name: "Liftback",
-//       img: "images/car-type/Liftback.png",
-//     },
-//   ].map((item) => ({
-//     ...item,
-//     link: `/${routePath[0]}/${
-//       routePath[1]
-//     }/body/${item.name.toLocaleLowerCase()}`,
-//   }));
-// });
 </script>
 
 <style lang="scss" scoped>

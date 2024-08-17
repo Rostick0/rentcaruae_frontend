@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-// const {} = await useAuth();
 </script>
 
 <style lang="scss" scoped>

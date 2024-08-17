@@ -32,26 +32,6 @@ const options = [
 
 const selectedPeriod = ref(options[0]);
 
-// const pagination = ref();
-
-// const data = [...new Array(8)].map((_, i) => ({
-//   id: i + 1,
-//   brand: {
-//     name: "Ferrari",
-//   },
-//   model: {
-//     name: "F8 Tributo Spyder",
-//   },
-//   user: {
-//     name: "Leonel Messi",
-//     email: "Messi@gmail.com",
-//     tel: "+971 553 231 32 32",
-//   },
-//   rental: "11",
-//   price: 36289,
-//   created_at: "2023-07-16",
-// }));
-
 const { data, meta } = await useApi({
   name: "operations.getAll",
   init: true,

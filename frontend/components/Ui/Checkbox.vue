@@ -43,27 +43,6 @@ defineComponent({
 
 const emits = defineEmits(["update:modelValue"]);
 
-// const props = defineProps({
-//   label: String,
-//   modelValue: Boolean,
-//   message: String,
-//   placeholder: String,
-//   errorMessage: String,
-//   onChange: Function,
-//   deps: [Array, Object, String, Number],
-//   onDepsChange: {
-//     type: Function,
-//   },
-//   forceDeps: Boolean,
-//   innerConvertTo: Function,
-//   withIcon: {
-//     type: Boolean,
-//     default: true,
-//   },
-//   variant: {
-
-//   }
-// });
 const props = withDefaults(
   defineProps<{
     label?: string;

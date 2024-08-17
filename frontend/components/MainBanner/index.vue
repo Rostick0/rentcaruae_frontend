@@ -102,7 +102,6 @@ const links = computed(() => {
 
   &__img {
     max-width: 708px;
-    // width: 100%;
     width: 50vw;
   }
 }

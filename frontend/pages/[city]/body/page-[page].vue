@@ -1,5 +1,5 @@
 <template>
-  <PageCar :breadcrumbs="breadcrumbs" />
+  <PageCatalog :breadcrumbs="breadcrumbs" :h1="h1" />
 </template>
 
 <script setup>
@@ -13,7 +13,8 @@ const breadcrumbs = ref([
     link: "/",
   },
   {
-    name: "Economy Car Rental",
+    name: "Car leasing in Dubai ",
   },
 ]);
+const h1 = ref("Car leasing in Dubai");
 </script>

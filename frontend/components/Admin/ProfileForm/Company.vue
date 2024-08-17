@@ -49,7 +49,6 @@ const user_tel = ref({
 
   bind: {
     label: "Phone number",
-    // slots: "dasd",
   },
 });
 

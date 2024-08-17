@@ -12,8 +12,9 @@
 const { data, get } = await useApi({
   name: "brands.getAll",
   params: {
+    extendsCount: "cars",
+    sort: "cars_count,-name",
     limit: 12,
-    sort: "is_popular",
   },
 });
 
