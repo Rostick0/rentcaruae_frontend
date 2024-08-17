@@ -16,7 +16,10 @@
         <span>{{ idx }}</span>
       </button>
     </li>
-    <li v-if="page <= meta?.total && $slots.rightIcon" @click="setPage(page + 1)">
+    <li
+      v-if="page <= meta?.total && $slots.rightIcon"
+      @click="setPage(page + 1)"
+    >
       <slot name="rightIcon"></slot>
     </li>
   </ul>
@@ -28,7 +31,7 @@
 const props = defineProps({
   padding: {
     type: [Number, String],
-    default: 4
+    default: 4,
   },
   meta: {
     type: Object,
@@ -36,6 +39,7 @@ const props = defineProps({
   },
   modelValue: {
     type: [Number, null],
+    default: 1,
   },
   limit: {
     type: Number,
@@ -58,12 +62,11 @@ const setPage = (val) => {
 
 const { meta, modelValue } = toRefs(props);
 
-const number = computed(() => {
-  return Math.floor(props?.meta?.total / props?.meta?.per_page);
-});
+const number = computed(() =>
+  Math.floor(props?.meta?.total / props?.meta?.per_page)
+);
 
 const items = computed(() => {
-  const result = [];
   const start = (() => {
     const result = [];
     result.push(modelValue.value);
@@ -84,7 +87,8 @@ const items = computed(() => {
     }
     if (number.value - modelValue.value - props.padding - 1 === 1)
       result.push(number.value - 1);
-    if (number.value - modelValue.value - props.padding - 1 > 1) result.push("…");
+    if (number.value - modelValue.value - props.padding - 1 > 1)
+      result.push("…");
     if (number.value - (modelValue.value + props.padding - 1) > 1)
       result.push(number.value);
     return result;
@@ -112,7 +116,7 @@ const items = computed(() => {
     }
 
     &.active {
-     // background-color: var(--color-green);
+      // background-color: var(--color-green);
       color: var(--color-basic);
       cursor: default;
     }

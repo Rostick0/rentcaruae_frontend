@@ -30,3 +30,6 @@ export const pluralize = (word, count) => {
 
   return word;
 };
+
+export const setCatalogUrl = (val, page) =>
+  val?.split("/page")[0] + (page > 1 ? `/page-${page}` : "");

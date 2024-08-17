@@ -25,8 +25,6 @@
 import chunk from "lodash/chunk";
 
 const props = defineProps({
-  h1: String,
-  breadcrumbs: Array,
   paramsCar: Object,
 });
 
@@ -35,7 +33,7 @@ const route = useRoute();
 const { filters } = useFilter({
   initialFilters: {
     ...setOneFilterValue(route.params),
-    page: 1,
+    page: +(route.params?.page ?? 1),
   },
 });
 
@@ -68,10 +66,54 @@ const { data: carsSec, get: getCarsSec } = await useApi({
 
 await getCarsSec();
 
-// watch(() => filters.value.page, (newV) => {
-//   console.log(newv);
-//   // window.history.pushState({}, null, getNewUrl(stateRoute.value));
-// });
+const rent = computed(() =>
+  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
+);
+const currentCity = useState("currentCity");
+const pageText = computed(() =>
+  filters.value.page > 1 ? `- Page ${filters.value.page}` : ""
+);
+
+const breadcrumbs = computed(() => [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: currentCity.value?.name,
+    link: convertNameToUrl(`/${currentCity.value?.name}`),
+  },
+  {
+    name: `Car ${rent.value} in ${currentCity.value?.name}`,
+  },
+]);
+
+const h1 = computed(() =>
+  `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim()
+);
+
+watch(
+  () => filters.value.page,
+  (newV) => {
+    window.history.pushState({}, null, setCatalogUrl(route.path, newV));
+    useHead({
+      title:
+        `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+    });
+  }
+);
+
+useHead({
+  title:
+    `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+  meta: [
+    {
+      name: "description",
+      content:
+        `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>

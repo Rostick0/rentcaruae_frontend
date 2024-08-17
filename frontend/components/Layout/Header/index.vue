@@ -5,7 +5,7 @@
         <NuxtLink class="header__logo d-flex" to="/">
           <Logo />
         </NuxtLink>
-        <UiButton class="btn-flex">
+        <UiButton class="btn-flex" @click="clickRentCar">
           <svg
             width="20"
             height="20"
@@ -96,6 +96,15 @@ const { open } = useModal({
 const authModalState = useState("authModalState");
 
 const user = useState("user");
+
+const clickRentCar = () => {
+  if (user.value) {
+    navigateTo("/admin/cars/add");
+    return;
+  }
+
+  open();
+};
 // const make = ref({
 //   type: "select",
 //   name: "make",

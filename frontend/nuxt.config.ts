@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  site: { indexable: false },
   pages: true,
   app: {
     head: {
