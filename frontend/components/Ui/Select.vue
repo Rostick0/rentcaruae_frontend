@@ -12,32 +12,20 @@
         <input
           v-bind="$attrs"
           class="control__field control__field_placeholder-top select__value"
-          :placeholder="isPlaceholderTop ? '' : placeholder"
-          :class="{
-            control__field_placeholder_top: isPlaceholderTop,
-          }"
+          :placeholder="placeholder"
           ref="inputRef"
           @input="onInput"
           :value="searchString"
           type="text"
         />
-        <span v-if="isPlaceholderTop" class="control__label_name">{{
-          placeholder
-        }}</span>
       </template>
       <template v-else>
         <input
           class="control__field control__field_placeholder-top select__value control__field_placeholder-no-focus"
-          :class="{
-            control__field_placeholder_top: isPlaceholderTop,
-          }"
-          :placeholder="isPlaceholderTop ? '' : placeholder"
+          :placeholder="placeholder"
           :value="model?.value ?? model?.name ?? model?.title"
           readonly
         />
-        <span v-if="isPlaceholderTop" class="control__label_name">{{
-          placeholder
-        }}</span>
       </template>
       <svg
         v-if="withIcon"
@@ -118,10 +106,6 @@ const props = defineProps({
   options: Array,
   placeholder: [String, Number],
   modelValueIsNumber: {
-    default: false,
-    type: Boolean,
-  },
-  isPlaceholderTop: {
     default: false,
     type: Boolean,
   },

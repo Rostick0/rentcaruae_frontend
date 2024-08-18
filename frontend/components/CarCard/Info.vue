@@ -2,8 +2,12 @@
   <div class="car__info">
     <div class="car__info_left">
       <div class="car__options">
-        <div class="car__option" v-for="option in car?.options" :key="option">
+        <!-- <div class="car__option" v-for="option in car?.options" :key="option">
           {{ option }}
+        </div> -->
+        <div class="car__option" v-if="car?.is_new">NEW</div>
+        <div class="car__option" v-if="car?.price_special?.length">
+          Special offer
         </div>
       </div>
       <div class="car__characteristics">

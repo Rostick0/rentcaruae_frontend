@@ -6,7 +6,7 @@
       </div>
       <div class="select-period__info_item">
         <div class="select-period__subtitle">{{ subtitle }}</div>
-        <UiSelect
+        <UiSelectAlternative
           :modelValue="modelValue"
           @update:modelValue="(val) => emits('update:modelValue', val)"
           :options="options"

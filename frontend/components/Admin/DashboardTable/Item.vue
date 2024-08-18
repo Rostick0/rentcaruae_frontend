@@ -1,32 +1,32 @@
 <template>
   <tr class="table_tr">
     <td class="table__td">
-      {{ moment(car?.created_at).format("DD MMM YYYY") }}
+      {{ moment(item?.date).format("DD MMM YYYY") }}
     </td>
-    <td class="table__td">{{ car?.refreshes }}</td>
-    <td class="table__td">{{ car?.special_offers }}</td>
+    <td class="table__td">{{ item?.refreshes }}</td>
+    <td class="table__td">{{ item?.special_offers }}</td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType :isShowType="car?.id < 3" :isDecline="car?.id == 2">
-          {{ car?.total_views }}
+        <UiStatType :isShowType="item?.id < 3" :isDecline="item?.id == 2">
+          {{ item?.views }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
         <UiStatType>
-          {{ car?.booking }}
+          {{ item?.booking }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
         <UiStatType>
-          {{ car?.whatsapp }}
+          {{ item?.whatsapp }}
         </UiStatType>
       </div>
     </td>
-    <td class="table__td">AED {{ car?.price_daily }}</td>
+    <td class="table__td">AED {{ item?.price }}</td>
     <td class="table__td">
       <NuxtLink class="link" to="/">More</NuxtLink>
     </td>
@@ -37,7 +37,7 @@
 import moment from "moment";
 
 const props = defineProps({
-  car: Object,
+  item: Object,
 });
 </script>
 

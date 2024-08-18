@@ -98,12 +98,12 @@ const authModalState = useState("authModalState");
 const user = useState("user");
 
 const clickRentCar = () => {
-  if (user.value) {
-    navigateTo("/admin/cars/add");
-    return;
-  }
+  // if (user.value) {
+  //   navigateTo("/admin/cars/add");
+  //   return;
+  // }
 
-  open();
+  // open();
 };
 // const make = ref({
 //   type: "select",

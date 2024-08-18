@@ -15,7 +15,7 @@
     <div class="car__image">
       <LazyNuxtImg
         class="car__img"
-        :src="car?.images?.[0]?.image?.path + '?w=320'"
+        :src="car?.images?.[0]?.image?.path_webp + '?w=320'"
         decoding="async"
         loading="lazy"
         :alt="car?.title"
@@ -54,25 +54,7 @@
     </div>
     <div class="car__params">
       <div class="car__params_left">
-        <div
-          class="car-module"
-          v-for="moduleItem in car?.modules"
-          :key="moduleItem"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.33329 13.25L3.83329 9.75001L2.66663 10.9167L7.33329 15.5833L17.3333 5.58334L16.1666 4.41667L7.33329 13.25Z"
-              fill="#221EE3"
-            />
-          </svg>
-          <span>{{ moduleItem }}</span>
-        </div>
+        <CarCardModule :car="car" />
       </div>
       <div class="car__params_right">
         <div class="car-price">
@@ -170,16 +152,6 @@ const route = useRoute();
     top: 0;
     width: 100%;
     height: 100%;
-  }
-
-  &-module {
-    display: flex;
-    align-items: center;
-    column-gap: 4px;
-
-    svg {
-      flex-shrink: 0;
-    }
   }
 
   &__stats {

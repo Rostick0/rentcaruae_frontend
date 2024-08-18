@@ -9,13 +9,13 @@
       <th class="table__th">WhatsApp</th>
       <th class="table__th">Daily spend</th>
     </tr>
-    <AdminDashboardTableItem v-for="car in cars" :key="car.id" :car="car" />
+    <AdminDashboardTableItem v-for="item in data" :key="item?.id" :item="item" />
   </table>
 </template>
 
 <script setup>
 const props = defineProps({
-  cars: Array,
+  data: Array,
 });
 </script>
 
