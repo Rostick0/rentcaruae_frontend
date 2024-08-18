@@ -38,6 +38,9 @@ const props = defineProps({
 
 const id = useRoute().params.id;
 
+const { create } = useView();
+create(id);
+
 const { data, get } = await useApi({
   name: "car.get",
   params: {

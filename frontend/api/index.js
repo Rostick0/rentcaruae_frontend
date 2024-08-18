@@ -18,6 +18,7 @@ import options from "./modules/options";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
 import users from "./modules/users";
+import views from "./modules/views";
 
 export default {
   auth,
@@ -40,4 +41,5 @@ export default {
   statisticsDay,
   transmissions,
   users,
+  views,
 };
