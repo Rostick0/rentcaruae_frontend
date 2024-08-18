@@ -1,6 +1,11 @@
 <template>
   <div class="admin-header">
-    <div class="admin-header__balance">AED <span class="admin-header__balance_sum">{{ balance.toLocaleString() }}</span></div>
+    <div class="admin-header__balance">
+      AED
+      <span class="admin-header__balance_sum">{{
+        formatNumber(user?.balance)
+      }}</span>
+    </div>
     <NuxtLink class="d-flex" to="/admin/deposite">
       <UiButton class="admin-header__btn">Deposite</UiButton>
     </NuxtLink>
@@ -9,8 +14,6 @@
 
 <script setup>
 const user = useState("user");
-
-const balance = 3499;
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +26,7 @@ const balance = 3499;
 
   &__balance {
     font-weight: 700;
-    
+
     &_sum {
       font-size: 20px;
     }

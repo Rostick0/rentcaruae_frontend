@@ -1,7 +1,7 @@
 <template>
   <h1 class="h1 admin">Dashboard</h1>
   <AdminSelectPeriod
-    v-model="selectPeriod"
+    v-model="selectedPeriod"
     :options="options"
     title="Date range"
     subtitle="Selected period:"
@@ -11,22 +11,24 @@
 </template>
 
 <script setup>
+import moment from "moment";
+
 const options = [
   {
-    id: 7,
+    id: moment().subtract(7, "d").format("YYYY-MM-DD"),
     name: "7 days",
   },
   {
-    id: 30,
+    id: moment().subtract(30, "d").format("YYYY-MM-DD"),
     name: "30 days",
   },
 ];
 
-const selectPeriod = ref(options[0]);
+const selectedPeriod = ref(options[0]);
 
 const { filters } = useFilter({
   initialFilters: {
-    limit: selectPeriod.value.id,
+    "filterGEQ[date]": selectedPeriod.value.id,
   },
 });
 
@@ -40,9 +42,9 @@ const { data } = await useApi({
 });
 
 watch(
-  () => selectPeriod.value,
+  () => selectedPeriod.value,
   (newV) => {
-    filters.value.limit = newV.id;
+    filters.value["filterGEQ[date]"] = newV.id;
   }
 );
 

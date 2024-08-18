@@ -92,7 +92,7 @@
       </div>
     </div>
     <NuxtLink
-      class="d-flex"
+      class="d-flex car__link"
       :to="
         convertNameToUrl(
           `/${city?.name}/${route.fullPath.split('/')[2] ?? 'economy'}/${
@@ -120,6 +120,8 @@ const route = useRoute();
 .car {
   background-color: var(--color-white);
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   padding: 20px;
   padding-top: 6px;
@@ -234,6 +236,10 @@ const route = useRoute();
       color: var(--color-basic);
       font-size: 20px;
     }
+  }
+
+  &__link {
+    margin-top: auto;
   }
 
   &__btn {

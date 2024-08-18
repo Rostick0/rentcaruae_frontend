@@ -15,30 +15,47 @@
 </template>
 
 <script setup>
+import moment from "moment";
+
 const options = [
   {
-    id: 1,
+    id: moment().format("YYYY-MM-DD"),
     name: "1 day",
   },
   {
-    id: 2,
+    id: moment().subtract(7, "d").format("YYYY-MM-DD"),
     name: "7 days",
   },
   {
-    id: 3,
+    id: moment().subtract(30, "d").format("YYYY-MM-DD"),
     name: "30 days",
   },
 ];
 
 const selectedPeriod = ref(options[0]);
 
-const { data, meta } = await useApi({
-  name: "operations.getAll",
-  init: true,
-  params: {
-    extends: "car.generation.model_car.brand",
+const { filters } = useFilter({
+  initialFilters: {
+    "filterGEQ[created_at]": selectedPeriod.value.id,
   },
 });
+
+const { data, meta } = await useApi({
+  name: "operations.getAll",
+  params: {
+    extends: "car.generation.model_car.brand",
+    sort: "id",
+  },
+  filters,
+  init: true,
+});
+
+watch(
+  () => selectedPeriod.value,
+  (newV) => {
+    filters.value["filterGEQ[created_at]"] = newV.id;
+  }
+);
 
 definePageMeta({
   layout: "admin",
