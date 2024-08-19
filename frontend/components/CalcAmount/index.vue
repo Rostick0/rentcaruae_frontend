@@ -3,7 +3,7 @@
     <div class="calc-amount__flex">
       <div class="calc-amount__flex_left">
         <!-- <span>Rental</span>
-        <span>{{ daysRental }} {{ dayText }}</span> -->
+        <span>{{ periodRental }} {{ periodText }}</span> -->
         {{ textTopleft }}
       </div>
       <strong class="calc-amount__size-small"

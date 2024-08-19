@@ -119,16 +119,16 @@
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ periodSelect }} Mounth</div>
+          <div class="calc__price text-ui">{{ periodRental }} {{ periodText }}</div>
         </div>
       </div>
       <VFormComponent :field="start_date" />
     </div>
     <CarForm
       v-if="isBook"
-      :daysRental="daysRental"
+      :periodRental="periodRental"
       :priceRental="priceRental"
-      :dayText="dayText"
+      :periodText="periodText"
     />
   </form>
 </template>
@@ -141,6 +141,10 @@ import api from "~/api";
 const props = defineProps({
   car: Object,
 });
+
+console.log(props.car);
+
+// const priceLeasing = computed(() => props.car?.price_leasing);
 
 const route = useRoute();
 
@@ -190,7 +194,7 @@ const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
     return;
   }
 
-  success('Thank you for your application');
+  success("Thank you for your application");
 
   isBook.value = false;
 });
@@ -201,7 +205,7 @@ const periodSelect = ref({
   modelValue: 0,
 
   bind: {
-    partsCount: "5",
+    partsCount: props.car?.price_leasing?.length - 1,
   },
 });
 
@@ -230,15 +234,12 @@ const without_deposite = ref({
   },
 });
 
-const daysRental = ref(
-  moment(start_date.modelValue?.[1]).diff(
-    moment(start_date.modelValue?.[0]),
-    "days"
-  ) + 1
+const periodRental = computed(
+  () => props.car?.price_leasing?.[periodSelect.value.modelValue]?.period / 30
 );
 
-const dayText = computed(() => pluralize("day", daysRental?.value));
-console.log(props.car);
+const periodText = computed(() => pluralize("month", periodRental.value));
+
 const maxMileage = computed(() =>
   props?.car?.price_leasing?.length && Array.isArray(props?.car?.price_leasing)
     ? Math.max(...props?.car?.price_leasing?.map((item) => item?.mileage))
@@ -269,14 +270,14 @@ const price = computed(() =>
 
 const priceRental = computed(
   () =>
-    getPeriodPrice(props.car, daysRental.value) +
-    (without_deposite.value?.modelValue ? 45 * daysRental.value : 0)
+    getPeriodPrice(props.car, periodRental.value) +
+    (without_deposite.value?.modelValue ? 45 * periodRental.value : 0)
 );
 
 watch(
   () => start_date.value.modelValue,
   () => {
-    daysRental.value =
+    periodRental.value =
       moment(start_date.value.modelValue?.[1]).diff(
         moment(start_date.value.modelValue?.[0]),
         "days"

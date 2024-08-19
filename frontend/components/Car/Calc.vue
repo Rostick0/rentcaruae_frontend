@@ -147,16 +147,16 @@
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ daysRental }} {{ dayText }}</div>
+          <div class="calc__price text-ui">{{ periodRental }} {{ periodText }}</div>
         </div>
       </div>
       <VFormComponent :field="period" />
     </div>
     <CarForm
       v-if="isBook"
-      :daysRental="daysRental"
+      :periodRental="periodRental"
       :priceRental="priceRental"
-      :dayText="dayText"
+      :periodText="periodText"
     />
   </form>
 </template>
@@ -205,7 +205,7 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
   const data = {
     ...values,
     start_date: moment(period?.[1]).format("YYYY-MM-DD"),
-    period: daysRental.value,
+    period: periodRental.value,
     tel: convertTelToDbOrNull(tel),
     car_id: route.params.id,
     type: "economy",
@@ -261,12 +261,12 @@ const without_deposite = ref({
   },
 });
 
-const daysRental = ref(
+const periodRental = ref(
   moment(period.modelValue?.[1]).diff(moment(period.modelValue?.[0]), "days") +
     1
 );
 
-const dayText = computed(() => pluralize("day", daysRental?.value));
+const periodText = computed(() => pluralize("day", periodRental?.value));
 
 const maxMileage = computed(() =>
   props?.car?.price?.length && Array.isArray(props?.car?.price)
@@ -298,14 +298,14 @@ const price = computed(() =>
 
 const priceRental = computed(
   () =>
-    getPeriodPrice(props.car, daysRental.value) +
-    (without_deposite.value?.modelValue ? 45 * daysRental.value : 0)
+    getPeriodPrice(props.car, periodRental.value) +
+    (without_deposite.value?.modelValue ? 45 * periodRental.value : 0)
 );
 
 watch(
   () => period.value.modelValue,
   () => {
-    daysRental.value =
+    periodRental.value =
       moment(period.value.modelValue?.[1]).diff(
         moment(period.value.modelValue?.[0]),
         "days"

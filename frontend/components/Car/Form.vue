@@ -6,7 +6,7 @@
     <VFormComponent :field="email" />
     <CalcAmount
       :price="priceRental"
-      :textTopleft="`Rental ${daysRental} ${dayText}`"
+      :textTopleft="`Rental ${periodRental} ${periodText}`"
     />
     <UiButton class="calc__button">Book</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
@@ -23,9 +23,9 @@
 
 <script setup>
 const props = defineProps({
-  daysRental: [String, Number],
+  periodRental: [String, Number],
   priceRental: [String, Number],
-  dayText: String,
+  periodText: String,
 });
 
 const tel = ref({

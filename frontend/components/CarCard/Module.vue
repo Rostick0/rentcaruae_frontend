@@ -1,5 +1,5 @@
 <template>
-  <div class="car-module" v-if="car?.security_deposit?.price">
+  <div class="car-module" v-if="!car?.security_deposit?.price">
     <LazyNuxtImg src="images/icon/arrow.svg" loading="lazy" width="20" height="20" alt="" />
     <span>Deposit-free option</span>
   </div>
