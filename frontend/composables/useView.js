@@ -8,16 +8,13 @@ export default () => {
     viewKey.value = v4();
   }
 
-  const create = async (carId) => {
-    const res = await api.views.create({
+  const create = async (carId) =>
+    await api.views.create({
       data: {
         user_key: viewKey.value,
         car_id: carId,
       },
     });
-
-    return res;
-  };
 
   return {
     create,

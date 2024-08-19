@@ -2,13 +2,21 @@
   <div class="refresh-used">
     <div class="refresh-used__top">
       <span>Refresh Used</span>
-      <div class="refresh-used__counter">20/35</div>
+      <div class="refresh-used__counter">
+        {{ user?.refresh_car?.count + "/" + user?.refresh_car?.max }}
+      </div>
     </div>
-    <UiProgressLine :progress="(20 / 35) * 100" />
+    <UiProgressLine
+      :progress="
+        Math.round((user?.refresh_car?.count / user?.refresh_car?.max) * 100)
+      "
+    />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const user = useState("user");
+</script>
 
 <style lang="scss" scoped>
 .refresh-used {

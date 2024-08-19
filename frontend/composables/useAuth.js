@@ -44,7 +44,7 @@ export default async () => {
         .me(
           {
             extends:
-              "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image",
+              "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car",
           },
           {},
           { Authorization: `Bearer ${accessToken.value}` }
