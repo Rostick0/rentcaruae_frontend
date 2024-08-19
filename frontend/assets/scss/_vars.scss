@@ -2,6 +2,24 @@
   display: flex;
 }
 
+.align {
+  &-flex {
+    &-start {
+      align-items: flex-start;
+    }
+
+    &-end {
+      align-items: flex-end;
+    }
+  }
+}
+
+.justify {
+  &-space-between {
+    justify-content: space-between;
+  }
+}
+
 .no-click {
   pointer-events: none;
 }

@@ -12,7 +12,38 @@
         </div>
       </div>
     </div>
-    <VFormComponent :field="periodSelect" />
+    <div class="calc-range">
+      <div class="calc-range__top text-ui">
+        <div class="">{{ periodRental }} {{ periodText }}</div>
+        <div class="">
+          <del class="del" v-if="periodSelect.modelValue !== 0"
+            >AED
+            {{
+              formatNumber(
+                props.car?.price_leasing[0]?.price *
+                  Math.round(
+                    props.car?.price_leasing[periodSelect.modelValue]?.period /
+                      props.car?.price_leasing[0]?.period
+                  )
+              )
+            }}</del
+          >
+          <div class="">
+            AED
+            {{
+              formatNumber(
+                props.car?.price_leasing[periodSelect.modelValue]?.price
+              )
+            }}
+          </div>
+        </div>
+      </div>
+      <VFormComponent :field="periodSelect" />
+      <div class="calc-range__bottom">
+        <div class="">{{ minMonth }}</div>
+        <div class="">{{ maxMonth }}</div>
+      </div>
+    </div>
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -119,7 +150,9 @@
         </div>
         <div class="calc-date__item">
           <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ periodRental }} {{ periodText }}</div>
+          <div class="calc__price text-ui">
+            {{ periodRental }} {{ periodText }}
+          </div>
         </div>
       </div>
       <VFormComponent :field="start_date" />
@@ -134,6 +167,7 @@
 </template>
 
 <script setup>
+import lastItem from "lodash/last";
 import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
@@ -141,8 +175,6 @@ import api from "~/api";
 const props = defineProps({
   car: Object,
 });
-
-console.log(props.car);
 
 // const priceLeasing = computed(() => props.car?.price_leasing);
 
@@ -246,16 +278,16 @@ const maxMileage = computed(() =>
     : 0
 );
 
-const priceSpecial = computed(() =>
-  formatNumber(
-    props?.car?.price_leasing?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price &&
-      props?.car?.price?.find(
-        (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
-  )
-);
+// const priceSpecial = computed(() =>
+//   formatNumber(
+//     props?.car?.price_leasing?.find(
+//       (item) => item?.period === periodSelect.value.modelValue
+//     )?.price
+//     //   props?.car?.price?.find(
+//     //     (item) => item?.period === periodSelect.value.modelValue.period
+//     //   )?.price
+//   )
+// );
 
 const price = computed(() =>
   formatNumber(
@@ -274,6 +306,24 @@ const priceRental = computed(
     (without_deposite.value?.modelValue ? 45 * periodRental.value : 0)
 );
 
+const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
+
+const minMonth = computed(
+  () =>
+    `${props.car?.price_leasing?.[0]?.price} ${pluralize(
+      "month",
+      props.car?.price_leasing?.[0]?.price
+    )}`
+);
+
+const maxMonth = computed(
+  () =>
+    `${lastPriceLeasing.value?.price} ${pluralize(
+      "month",
+      lastPriceLeasing.value?.price
+    )}`
+);
+
 watch(
   () => start_date.value.modelValue,
   () => {
@@ -288,6 +338,22 @@ watch(
 
 <style lang="scss" scoped>
 @import "../../assets/scss/components/car-carc";
+
+.calc {
+  &-range {
+    &__top,
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    &__top {
+      align-items: flex-end;
+    }
+  }
+}
 </style>
 
 <style lang="scss">

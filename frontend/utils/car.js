@@ -27,10 +27,10 @@ export const getCarOnSubmitValues = async ({
   transmission_id,
   price_leasing,
   mileage_leasing,
-  mileage_per_month,
   price_sum,
   price_mileage,
   security_deposit,
+  free_per_day_security,
   price_special,
   ...values
 }) => {

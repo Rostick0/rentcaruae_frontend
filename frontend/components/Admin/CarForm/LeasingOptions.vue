@@ -39,6 +39,14 @@
     <div class="form-item__price">
       <div class=""></div>
       <VFormComponent :field="mileage_leasing_4" />
+    </div>
+    <div class="form-item__price">
+      <div class="form-item__price_name">24 months</div>
+      <VFormComponent :field="price_leasing_5" />
+    </div>
+    <div class="form-item__price">
+      <div class=""></div>
+      <VFormComponent :field="mileage_leasing_5" />
       <div class="form-item__price_switch">
         <UiSwitch
           label="Available for leasing?"
@@ -188,6 +196,34 @@ const mileage_leasing_4 = ref({
   type: "text",
   name: "mileage_leasing.4",
   modelValue: props?.car?.price_leasing?.[4]?.mileage ?? "",
+
+  bind: {
+    label: "Mileage per 3 months (km)",
+    placeholder: "0000",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
+  },
+});
+
+const price_leasing_5 = ref({
+  type: "text",
+  name: "price_leasing.5",
+  modelValue: props?.car?.price_leasing?.[5]?.price ?? "",
+
+  bind: {
+    label: "Price per 12 months (AED)",
+    placeholder: "0000",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
+  },
+});
+
+const mileage_leasing_5 = ref({
+  type: "text",
+  name: "mileage_leasing.5",
+  modelValue: props?.car?.price_leasing?.[5]?.mileage ?? "",
 
   bind: {
     label: "Mileage per 3 months (km)",
