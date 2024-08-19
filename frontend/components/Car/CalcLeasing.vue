@@ -15,8 +15,8 @@
     <div class="calc-range">
       <div class="calc-range__top text-ui">
         <div class="">{{ periodRental }} {{ periodText }}</div>
-        <div class="">
-          <del class="del" v-if="periodSelect.modelValue !== 0"
+        <div class="text-right">
+          <del class="calc-range__del del" v-if="periodSelect.modelValue !== 0"
             >AED
             {{
               formatNumber(
@@ -308,21 +308,17 @@ const priceRental = computed(
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
 
-const minMonth = computed(
-  () =>
-    `${props.car?.price_leasing?.[0]?.price} ${pluralize(
-      "month",
-      props.car?.price_leasing?.[0]?.price
-    )}`
-);
+const minMonth = computed(() => {
+  const monthCount = props.car?.price_leasing?.[0]?.period / 30;
+  
+  return `${monthCount} ${pluralize("month", monthCount)}`;
+});
 
-const maxMonth = computed(
-  () =>
-    `${lastPriceLeasing.value?.price} ${pluralize(
-      "month",
-      lastPriceLeasing.value?.price
-    )}`
-);
+const maxMonth = computed(() => {
+  const monthCount = lastPriceLeasing.value?.period / 30;
+
+  return `${monthCount} ${pluralize("month", monthCount)}`;
+});
 
 watch(
   () => start_date.value.modelValue,
@@ -351,6 +347,11 @@ watch(
 
     &__top {
       align-items: flex-end;
+      font-size: 14px;
+    }
+
+    &__del {
+      font-size: 12px;
     }
   }
 }
