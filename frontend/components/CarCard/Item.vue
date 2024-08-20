@@ -95,9 +95,11 @@
       class="d-flex car__link"
       :to="
         convertNameToUrl(
-          `/${city?.name}/${route.fullPath.split('/')[2] ?? 'economy'}/${
-            car?.generation?.model_car?.brand?.name
-          }/${car?.generation?.model_car?.name}/${car?.id}`
+          `/${city?.name}/${
+            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'economy'
+          }/${car?.generation?.model_car?.brand?.name}/${
+            car?.generation?.model_car?.name
+          }/${car?.id}`
         )
       "
     >
