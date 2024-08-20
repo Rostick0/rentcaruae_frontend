@@ -13,6 +13,11 @@ export const setOneFilterValue = (routeParams) => {
     return { "filterEQ[generation.name]": routeParams?.body };
   if (routeParams?.type)
     return { "filterEQ[category.name]": routeParams?.type };
-  if (routeParams?.brand) return { "filterEQ[generation.model_car.brand.name]": routeParams?.brand };
+  if (routeParams?.brand)
+    return { "filterEQ[generation.model_car.brand.name]": routeParams?.brand };
+  if (routeParams?.modelcar)
+    return {
+      "filterEQ[generation.model_car.name]": routeParams?.modelcar,
+    };
   return {};
 };

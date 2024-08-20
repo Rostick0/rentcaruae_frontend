@@ -11,7 +11,18 @@
         height="166"
       />
     </div>
-    <NuxtLink class="car-short__content" to="/">
+    <NuxtLink
+      class="car-short__content"
+      :to="
+        convertNameToUrl(
+          `/${city?.name}/${
+            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'economy'
+          }/${car?.generation?.model_car?.brand?.name}/${
+            car?.generation?.model_car?.name
+          }/${car?.id}`
+        )
+      "
+    >
       <div class="car-short__content_left">
         <div class="car-short__title">{{ car?.title }}</div>
         <div class="car-short__info">
@@ -48,6 +59,10 @@
 const props = defineProps({
   car: Object,
 });
+
+const route = useRoute();
+
+const city = useState("currentCity");
 </script>
 
 <style lang="scss" scoped>

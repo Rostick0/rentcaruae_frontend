@@ -58,40 +58,45 @@
         </svg>
       </UiButton>
     </div>
+    <!-- {{ brands }} -->
     <div class="main-search__options" v-show="isShow">
-      <div class="main-search__models">
+      <div class="main-search__models" v-if="modelCars?.length">
         <UiButton
           class="main-search-model"
-          v-for="model in models"
+          v-for="model in modelCars"
           :key="model?.id"
+          @click="clickRedirect('model-car', model?.name)"
           variant="outlined"
         >
           {{ model.name }}
         </UiButton>
-        <!-- <div class="main-search-model">Audi A6</div> -->
       </div>
-      <div class="main-search__companies">
+      <div class="main-search__companies" v-if="brands?.length">
         <div
-          class="main-search-company"
-          v-for="company in companies"
-          :key="company.id"
+          class="main-search-brand"
+          v-for="brand in brands"
+          :key="brand?.id"
+          @click="clickRedirect('brand', brand?.name)"
         >
           <LazyNuxtImg
-            class="main-search-company__img"
-            :src="company.image_url"
-            :alt="company.name"
+            class="main-search-brand__img"
+            :src="$config.public.BACK_URL + brand?.image_url"
+            :alt="brand?.name"
             loading="lazy"
             width="40"
             height="40"
           />
-          <span class="main-search-company__name">{{ company.name }}</span>
+          <span class="main-search-brand__name">{{ brand?.name }}</span>
         </div>
       </div>
+      <div class="del" v-if="!modelCars?.length && !brands?.length">None</div>
     </div>
   </div>
 </template>
 
 <script setup>
+import debounce from "lodash/debounce";
+
 const props = defineProps({
   placeholder: {
     type: String,
@@ -100,18 +105,45 @@ const props = defineProps({
   variant: String,
 });
 
-const isShow = ref(false);
 const search = ref();
+const isShow = computed(() => search.value?.length >= 3);
+
+const city = useState("currentCity");
+
+const clickRedirect = (type, name) =>
+  navigateTo(convertNameToUrl(`${city.value?.name}/${type}/${name}`));
+
+const { filters } = useFilter({
+  initialFilters: {
+    "filterLIKE[name]": "",
+  },
+});
+
+const { data: brands } = await useApi({
+  name: "brands.getAll",
+  filters,
+  init: true,
+  params: {
+    limit: 12,
+  },
+});
+
+const { data: modelCars } = await useApi({
+  name: "modelCars.getAll",
+  filters,
+  init: true,
+  params: {
+    limit: 12,
+  },
+});
 
 watch(
   () => search.value,
-  (newV) => {
-    if (newV?.length >= 3) {
-      isShow.value = true;
-    } else {
-      isShow.value = false;
-    }
-  }
+  debounce(async (newV) => {
+    if (!isShow.value) return;
+
+    filters.value["filterLIKE[name]"] = newV;
+  }, 500)
 );
 
 const models = [
@@ -204,7 +236,7 @@ const companies = [
     // width: fit-content;
   }
 
-  &-company {
+  &-brand {
     display: flex;
     align-items: center;
     column-gap: 8px;
