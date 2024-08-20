@@ -71,7 +71,7 @@
           {{ model.name }}
         </UiButton>
       </div>
-      <div class="main-search__companies" v-if="brands?.length">
+      <div class="main-search__brands" v-if="brands?.length">
         <div
           class="main-search-brand"
           v-for="brand in brands"
@@ -111,7 +111,7 @@ const isShow = computed(() => search.value?.length >= 3);
 const city = useState("currentCity");
 
 const clickRedirect = (type, name) =>
-  navigateTo(convertNameToUrl(`${city.value?.name}/${type}/${name}`));
+  navigateTo(convertNameToUrl(`/${city.value?.name}/${type}/${name}`));
 
 const { filters } = useFilter({
   initialFilters: {
@@ -145,30 +145,6 @@ watch(
     filters.value["filterLIKE[name]"] = newV;
   }, 500)
 );
-
-const models = [
-  {
-    id: 1,
-    name: "Audi A5",
-  },
-  {
-    id: 2,
-    name: "Audi A6",
-  },
-];
-
-const companies = [
-  {
-    id: 1,
-    name: "BMW",
-    image_url: "images/fake/Logos (3).png",
-  },
-  {
-    id: 2,
-    name: "Alfa Romeo",
-    image_url: "images/fake/Logos (1).png",
-  },
-];
 </script>
 
 <style lang="scss" scoped>
@@ -225,10 +201,11 @@ const companies = [
 
   &-model {
     border-radius: 30px;
+    cursor: pointer;
     padding: 4px 12px;
   }
 
-  &__companies {
+  &__brands {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 16px 20px;
@@ -237,6 +214,7 @@ const companies = [
   }
 
   &-brand {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 8px;
