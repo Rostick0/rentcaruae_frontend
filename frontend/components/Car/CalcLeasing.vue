@@ -277,7 +277,7 @@ const price = computed(() =>
 );
 
 const priceRental = computed(
-  () => props.car?.price_leasing[periodSelect.value.modelValue]
+  () => props.car?.price_leasing[periodSelect.value.modelValue]?.price
 );
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));

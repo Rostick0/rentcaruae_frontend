@@ -49,6 +49,7 @@ const activeImage = ref(props.images?.[0]);
 
     &_img {
       border-radius: 8px;
+      object-fit: cover;
       position: absolute;
       left: 0;
       top: 0;
@@ -67,6 +68,7 @@ const activeImage = ref(props.images?.[0]);
   &__item {
     border-radius: 8px;
     flex-shrink: 0;
+    object-fit: cover;
     overflow: auto;
   }
 }
