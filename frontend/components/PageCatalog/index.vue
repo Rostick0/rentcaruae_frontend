@@ -9,8 +9,8 @@
       <LazyCarCardList :cars="cars[0]" />
       <LazyCarCardShortList
         class="catalog__specials"
-        v-if="carsSec?.length > 1"
-        :cars="carsSec"
+        v-if="carsSpecial?.length > 1"
+        :cars="carsSpecial"
         title="Special offers"
         linkText="All special offers"
         link="/"
@@ -25,7 +25,10 @@
 import chunk from "lodash/chunk";
 
 const props = defineProps({
-  paramsCar: Object,
+  paramsCar: {
+    type: Object,
+    default: {},
+  },
 });
 
 const route = useRoute();
@@ -42,8 +45,8 @@ const { data, get, meta } = await useApi({
   params: {
     extends:
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit,user.company.image.image",
-    sort: "-id",
-    limit: 8,
+    sort: "promo_car.point,-id",
+    limit: 12,
     ...props?.paramsCar,
   },
   filters,
@@ -53,7 +56,7 @@ await get();
 
 const cars = computed(() => chunk(data.value, 6));
 
-const { data: carsSec, get: getCarsSec } = await useApi({
+const { data: carsSpecial, get: getCarsSpecial } = await useApi({
   name: "car.getAll",
   params: {
     extends:
@@ -64,7 +67,7 @@ const { data: carsSec, get: getCarsSec } = await useApi({
   },
 });
 
-await getCarsSec();
+await getCarsSpecial();
 
 const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"

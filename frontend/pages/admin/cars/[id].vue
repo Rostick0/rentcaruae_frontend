@@ -28,22 +28,27 @@ await get();
 
 const { validateField, handleSubmit, setErrors } = useForm();
 
-const onSubmit = handleSubmit(async (values) => {
-  const data = await getCarOnSubmitValues(values);
+const onSubmit = handleSubmit(
+  async (values) => {
+    const data = await getCarOnSubmitValues(values);
 
-  const res = await api.car.update({
-    data,
-    id,
-  });
+    const res = await api.car.update({
+      data,
+      id,
+    });
 
-  if (res?.error) {
-    warningPopup(res?.errorResponse?.data?.message);
-    setErrors(res?.errorResponse?.data?.errors);
-    return;
+    if (res?.error) {
+      warningPopup(res?.errorResponse?.data?.message);
+      setErrors(res?.errorResponse?.data?.errors);
+      return;
+    }
+
+    navigateTo("/admin/cars");
+  },
+  () => {
+    warningPopup("Not all fields are valid");
   }
-
-  navigateTo("/admin/cars");
-});
+);
 
 definePageMeta({
   layout: "admin",

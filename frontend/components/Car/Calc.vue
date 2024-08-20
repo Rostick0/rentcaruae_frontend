@@ -187,6 +187,7 @@ const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
   if (!isAddStatisticWhatsApp) return;
+  isAddStatisticWhatsApp.value = true;
 
   try {
     await api.statisticsDay.create({
@@ -195,7 +196,6 @@ const clickWhatsApp = async () => {
         car_id: props?.car?.id,
       },
     });
-    isAddStatisticWhatsApp.value = true;
   } catch {}
 };
 

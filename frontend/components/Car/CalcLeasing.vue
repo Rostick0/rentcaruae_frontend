@@ -176,8 +176,6 @@ const props = defineProps({
   car: Object,
 });
 
-// const priceLeasing = computed(() => props.car?.price_leasing);
-
 const route = useRoute();
 
 const isBook = ref();
@@ -195,6 +193,7 @@ const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
   if (!isAddStatisticWhatsApp) return;
+  isAddStatisticWhatsApp.value = true;
 
   try {
     await api.statisticsDay.create({
@@ -203,7 +202,6 @@ const clickWhatsApp = async () => {
         car_id: props?.car?.id,
       },
     });
-    isAddStatisticWhatsApp.value = true;
   } catch {}
 };
 
@@ -255,17 +253,6 @@ const start_date = ref({
   },
 });
 
-const without_deposite = ref({
-  type: "switch",
-  name: "without_deposite",
-  modelValue: false,
-
-  bind: {
-    label:
-      "You can rent a car without any deposit dy including the additional service fee in your rental price",
-  },
-});
-
 const periodRental = computed(
   () => props.car?.price_leasing?.[periodSelect.value.modelValue]?.period / 30
 );
@@ -277,17 +264,6 @@ const maxMileage = computed(() =>
     ? Math.max(...props?.car?.price_leasing?.map((item) => item?.mileage))
     : 0
 );
-
-// const priceSpecial = computed(() =>
-//   formatNumber(
-//     props?.car?.price_leasing?.find(
-//       (item) => item?.period === periodSelect.value.modelValue
-//     )?.price
-//     //   props?.car?.price?.find(
-//     //     (item) => item?.period === periodSelect.value.modelValue.period
-//     //   )?.price
-//   )
-// );
 
 const price = computed(() =>
   formatNumber(
@@ -301,16 +277,14 @@ const price = computed(() =>
 );
 
 const priceRental = computed(
-  () =>
-    getPeriodPrice(props.car, periodRental.value) +
-    (without_deposite.value?.modelValue ? 45 * periodRental.value : 0)
+  () => props.car?.price_leasing[periodSelect.value.modelValue]
 );
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
 
 const minMonth = computed(() => {
   const monthCount = props.car?.price_leasing?.[0]?.period / 30;
-  
+
   return `${monthCount} ${pluralize("month", monthCount)}`;
 });
 
@@ -319,17 +293,6 @@ const maxMonth = computed(() => {
 
   return `${monthCount} ${pluralize("month", monthCount)}`;
 });
-
-watch(
-  () => start_date.value.modelValue,
-  () => {
-    periodRental.value =
-      moment(start_date.value.modelValue?.[1]).diff(
-        moment(start_date.value.modelValue?.[0]),
-        "days"
-      ) + 1;
-  }
-);
 </script>
 
 <style lang="scss" scoped>
