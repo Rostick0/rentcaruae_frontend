@@ -45,7 +45,7 @@ const { data, get, meta } = await useApi({
   params: {
     extends:
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit,user.company.image.image",
-    sort: "promo_car.point,-id",
+    sort: "promo_car.point,id",
     limit: 12,
     ...props?.paramsCar,
   },
