@@ -81,7 +81,9 @@ const minDaysOptions = [1, 2, 3, 4, 5, 6, 7, 14, 30].map((item) => ({
 const min_days = ref({
   type: "select",
   name: "min_days",
-  modelValue: props?.car?.min_days ? { id: min_days, value: min_days } : "",
+  modelValue: props?.car?.min_days
+    ? { id: min_days, value: min_days }
+    : { id: 1, value: 1 },
 
   bind: {
     isAlternative: true,

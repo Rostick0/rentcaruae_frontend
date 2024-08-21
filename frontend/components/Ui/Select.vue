@@ -216,7 +216,6 @@ const handleSelect = (option) => {
       option?.value ?? option?.name ?? option?.title
     );
   }
-
   model.value = option;
 };
 

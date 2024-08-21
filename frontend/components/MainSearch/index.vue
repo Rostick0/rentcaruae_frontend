@@ -68,7 +68,7 @@
           @click="clickRedirect('model-car', model?.name)"
           variant="outlined"
         >
-          {{ model.name }}
+          {{ model?.name }}
         </UiButton>
       </div>
       <div class="main-search__brands" v-if="brands?.length">
@@ -115,7 +115,7 @@ const clickRedirect = (type, name) =>
 
 const { filters } = useFilter({
   initialFilters: {
-    "filterQ": "",
+    filterQ: "",
   },
 });
 
@@ -124,7 +124,9 @@ const { data: brands } = await useApi({
   filters,
   init: true,
   params: {
-    limit: 12,
+    extendsCount: "cars",
+    sort: "cars_count,-name",
+    limit: 6,
   },
 });
 
@@ -133,7 +135,9 @@ const { data: modelCars } = await useApi({
   filters,
   init: true,
   params: {
-    limit: 12,
+    extendsCount: "cars",
+    sort: "cars_count,-name",
+    limit: 6,
   },
 });
 
