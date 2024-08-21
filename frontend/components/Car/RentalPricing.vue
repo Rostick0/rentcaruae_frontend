@@ -2,26 +2,51 @@
   <div class="rental-pricing">
     <h2 class="rental-pricing__title">Rental pricing</h2>
     <ul class="rental-pricing__list">
-      <li class="rental-pricing__item" v-for="item in prices" :key="item?.id">
-        <span>{{ item?.period }} Days</span>
-        <span>AED {{ formatNumber(item?.price) }}</span>
-      </li>
-      <li v-if="!isLeasing">
-        <NuxtLink
-          class="rental-pricing__item text-ui"
-          :to="$route.fullPath.replace('economy', 'leasing')"
+      <template v-if="isLeasing">
+        <li
+          class="rental-pricing__item"
+          v-for="item in car?.price_leasing"
+          :key="item?.id"
         >
-          <span>View mounthly offer</span>
-          <span>1-12 months</span>
-        </NuxtLink>
-      </li>
+          <span>{{ item?.period }} Days</span>
+          <span>AED {{ formatNumber(item?.price) }}</span>
+        </li>
+        <li>
+          <NuxtLink
+            class="rental-pricing__item text-ui"
+            :to="$route.fullPath.replace('leasing', 'economy')"
+          >
+            <span>View daily offer</span>
+            <span>1-30 days</span>
+          </NuxtLink>
+        </li>
+      </template>
+      <template v-else>
+        <li
+          class="rental-pricing__item"
+          v-for="item in car?.price"
+          :key="item?.id"
+        >
+          <span>{{ item?.period }} Days</span>
+          <span>AED {{ formatNumber(item?.price) }}</span>
+        </li>
+        <li>
+          <NuxtLink
+            class="rental-pricing__item text-ui"
+            :to="$route.fullPath.replace('economy', 'leasing')"
+          >
+            <span>View mounthly offer</span>
+            <span>1-12 months</span>
+          </NuxtLink>
+        </li>
+      </template>
     </ul>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  prices: Array,
+  car: Array,
   isLeasing: Boolean,
 });
 </script>

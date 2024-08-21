@@ -8,7 +8,7 @@
         :specifications="specifications"
       />
       <CarDescription :title="car?.title" :description="car?.description" />
-      <CarRentalPricing :prices="isLeasing ? car?.price_leasing : car?.price" />
+      <CarRentalPricing :car="car" :isLeasing="isLeasing" />
       <!-- <div class="car__spoilers">
         <UiSpoiler>
           <template #title>DOCUMENTS REQUIRED</template>

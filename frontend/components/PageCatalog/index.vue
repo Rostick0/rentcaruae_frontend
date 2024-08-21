@@ -16,7 +16,11 @@
         link="/"
       />
       <LazyCarCardList :cars="cars[1]" />
-      <UiPagination v-model="filters.page" :meta="meta" />
+      <UiPagination
+        class="catalog__pagination"
+        v-model="filters.page"
+        :meta="meta"
+      />
     </div>
   </div>
 </template>
@@ -123,6 +127,10 @@ useHead({
 .catalog {
   &__specials {
     margin: 20px 0 40px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
   }
 }
 </style>
