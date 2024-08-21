@@ -30,15 +30,17 @@
           <span>{{ item?.period }} Days</span>
           <span>AED {{ formatNumber(item?.price) }}</span>
         </li>
-        <li>
-          <NuxtLink
-            class="rental-pricing__item text-ui"
-            :to="$route.fullPath.replace('economy', 'leasing')"
-          >
-            <span>View mounthly offer</span>
-            <span>1-12 months</span>
-          </NuxtLink>
-        </li>
+        <template v-if="car?.price_leasing">
+          <li>
+            <NuxtLink
+              class="rental-pricing__item text-ui"
+              :to="$route.fullPath.replace('economy', 'leasing')"
+            >
+              <span>View mounthly offer</span>
+              <span>1-12 months</span>
+            </NuxtLink>
+          </li>
+        </template>
       </template>
     </ul>
   </div>

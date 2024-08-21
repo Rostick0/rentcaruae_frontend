@@ -224,7 +224,6 @@ const handleSelect = (option) => {
   }
   emits("update:searchString", option?.value ?? option?.name ?? option?.title);
   model.value = option;
-  console.log(option)
 };
 
 const handleScroll = (event) => {
