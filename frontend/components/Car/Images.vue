@@ -10,12 +10,17 @@
         fit="cover"
       />
     </div>
-    <div class="car-image__list" v-if="images?.length">
+    <div
+      class="car-image__list"
+      :class="{ all: isShowAll }"
+      v-if="images?.length"
+    >
       <LazyNuxtImg
         class="car-image__item"
         v-for="image in images"
         :key="image?.id"
         :src="image?.image?.path_webp"
+        @click="activeImage = image"
         decoding="async"
         loading="lazy"
         :alt="carTitle"
@@ -23,6 +28,14 @@
         height="96"
         fit="cover"
       />
+      <button
+        class="car-image__all"
+        v-if="!isShowAll"
+        @click="isShowAll = true"
+      >
+        Show <br />
+        all
+      </button>
     </div>
   </div>
 </template>
@@ -34,6 +47,7 @@ const props = defineProps({
 });
 
 const activeImage = ref(props.images?.[0]);
+const isShowAll = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -59,10 +73,18 @@ const activeImage = ref(props.images?.[0]);
   }
 
   &__list {
-    display: flex;
-    column-gap: 10px;
-    overflow: auto;
-    max-width: 646px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    position: relative;
+    overflow: hidden;
+    max-height: 96px;
+    transition: 0.3s;
+
+    &.all {
+      max-height: 1500px;
+    }
+    // overflow: auto;
   }
 
   &__item {
@@ -70,6 +92,22 @@ const activeImage = ref(props.images?.[0]);
     flex-shrink: 0;
     object-fit: cover;
     overflow: auto;
+  }
+
+  &__all {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    color: var(--color-white);
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 0 4px;
+    position: absolute;
+    top: 0;
+    right: 1px;
+    height: 100%;
   }
 }
 </style>

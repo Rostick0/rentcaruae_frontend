@@ -130,34 +130,37 @@
         >
       </a>
     </div>
-    <div class="calc-item">
-      <div class="calc__title">Choose rental dates</div>
-      <div class="calc-date">
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Pick-up date</strong>
-          <div class="text-ui">
-            {{ moment(period.modelValue?.[0]).format("D MMM YYYY") }}
+    <template v-if="isBook">
+      <div class="calc-item">
+        <div class="calc__title">Choose rental dates</div>
+        <div class="calc-date">
+          <div class="calc-date__item">
+            <strong class="calc-item__size-small">Pick-up date</strong>
+            <div class="text-ui">
+              {{ moment(period.modelValue?.[0]).format("D MMM YYYY") }}
+            </div>
+          </div>
+          <div class="calc-date__item">
+            <strong class="calc-item__size-small">Drop-off date</strong>
+            <div class="text-ui">
+              {{ moment(period.modelValue?.[1]).format("D MMM YYYY") }}
+            </div>
+          </div>
+          <div class="calc-date__item">
+            <strong class="calc-item__size-small">Your rental</strong>
+            <div class="calc__price text-ui">
+              {{ periodRental }} {{ periodText }}
+            </div>
           </div>
         </div>
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Drop-off date</strong>
-          <div class="text-ui">
-            {{ moment(period.modelValue?.[1]).format("D MMM YYYY") }}
-          </div>
-        </div>
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">{{ periodRental }} {{ periodText }}</div>
-        </div>
+        <VFormComponent :field="period" />
       </div>
-      <VFormComponent :field="period" />
-    </div>
-    <CarForm
-      v-if="isBook"
-      :periodRental="periodRental"
-      :priceRental="priceRental"
-      :periodText="periodText"
-    />
+      <CarForm
+        :periodRental="periodRental"
+        :priceRental="priceRental"
+        :periodText="periodText"
+      />
+    </template>
   </form>
 </template>
 
@@ -173,14 +176,14 @@ const props = defineProps({
 const route = useRoute();
 
 const isBook = ref();
-const book = ref();
+// const book = ref();
 
 const clickBook = () => {
   isBook.value = true;
 
-  nextTick(() => {
-    book.value?.scrollIntoView({ behavior: "smooth" });
-  });
+  // nextTick(() => {
+    // book.value?.scrollIntoView({ behavior: "smooth" });
+  // });
 };
 
 const isAddStatisticWhatsApp = ref(false);

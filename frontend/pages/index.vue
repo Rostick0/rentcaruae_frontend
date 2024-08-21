@@ -53,7 +53,7 @@
         </NuxtLink>
       </div>
     </div>
-    <div class="faq">
+    <!-- <div class="faq">
       <h2 class="faq__title">Frequently Asked Questions</h2>
       <div class="faq__content">
         <div class="faq-item">
@@ -169,7 +169,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

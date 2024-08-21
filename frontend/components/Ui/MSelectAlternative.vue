@@ -107,7 +107,7 @@ const props = defineProps({
   errorMessage: String,
   message: String,
   label: String,
-  searchString: String,
+  searchString: [String, Number],
   isSearchable: Boolean,
   placeholder: String,
   hideMessage: Boolean,

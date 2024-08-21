@@ -69,7 +69,7 @@ const props = defineProps({
   },
   message: String,
   errorMessage: String,
-  defaultSearchString: String,
+  defaultSearchString: [String, Number],
 });
 
 const emits = defineEmits(["update:modelValue"]);

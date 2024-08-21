@@ -72,7 +72,9 @@ const data = [0, 0, 0, 0].map((el, i) => ({
   &-item {
     background-color: var(--color-white);
     color: var(--color-basic);
+    border: 1px solid transparent;
     border-radius: 8px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     row-gap: 4px;
@@ -80,7 +82,12 @@ const data = [0, 0, 0, 0].map((el, i) => ({
     font-weight: 700;
     letter-spacing: 0.02em;
     padding: 10px 8px;
+    transition: 0.3s;
     min-width: 120px;
+
+    &:hover {
+      border-color: var(--color-basic);
+    }
   }
 
   &__right {

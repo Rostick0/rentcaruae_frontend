@@ -174,7 +174,9 @@ await getCategories();
 const { data: brands, get: getBrands } = await useApi({
   name: "brands.getAll",
   params: {
-    sort: "is_popular,-name",
+    extendsCount: "cars",
+    sort: "cars_count,-name",
+    "filterNEQN[model_cars.generations.cars.id]": true,
     limit: 8,
   },
 });

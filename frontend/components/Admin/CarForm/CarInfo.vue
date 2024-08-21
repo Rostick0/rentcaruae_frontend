@@ -27,7 +27,6 @@ const brand = ref({
   type: "select",
   name: "brand",
   rules: "required",
-  //   modelValue: props?.product?.modification?.generation?.model_car?.make ?? "",
   modelValue: props?.car?.generation?.model_car?.brand ?? "",
 
   bind: {
@@ -82,21 +81,6 @@ const year = ref({
   },
 });
 
-// watch(
-//   () => model_car.value.modelValue,
-//   (newV) => {
-//     year.value.bind.isReadOnly = !newV;
-
-//     year.value.rules =
-//       "required" +
-//       (model_car.value.modelValue
-//         ? `|min_value:${model_car.value.modelValue?.year_from}|max_value:${
-//             model_car.value.modelValue?.year_to ?? new Date().getFullYear()
-//           }`
-//         : "");
-//   }
-// );
-
 const category_id = ref({
   type: "select",
   name: "category_id",
@@ -125,7 +109,7 @@ const generation_id = ref({
     searchFn: fetchGeneration,
     withIcon: false,
     isReadOnly: !model_car.value.modelValue,
-    readOnlyText: "Select year",
+    readOnlyText: "Select model",
     deps: computed(() => model_car.value.modelValue),
     onDepsChange: debounce((ctx) => {
       ctx.handleSearch();
@@ -137,14 +121,13 @@ const generation_id = ref({
   },
 });
 
-// watch(
-//   () => year.value.modelValue,
-//   async () => {
-//     generation_id.value.bind.isReadOnly = !(await props
-//       .validateField("year")
-//       .then((res) => res?.valid));
-//   }
-// );
+watch(
+  () => model_car.value.modelValue,
+  async (newV) => {
+    console.log(newV)
+    if (newV) generation_id.value.bind.isReadOnly = !newV;
+  }
+);
 
 async function fetchBrand(_, searchString, limit, page) {
   return await api.brands.getAll({

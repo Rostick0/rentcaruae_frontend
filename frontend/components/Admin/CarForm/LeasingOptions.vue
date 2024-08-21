@@ -142,7 +142,7 @@ const mileage_leasing_2 = ref({
   modelValue: props?.car?.price_leasing?.[2]?.mileage ?? "",
 
   bind: {
-    label: "Mileage per 3 months (km)",
+    label: "Mileage per 6 months (km)",
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
@@ -198,7 +198,7 @@ const mileage_leasing_4 = ref({
   modelValue: props?.car?.price_leasing?.[4]?.mileage ?? "",
 
   bind: {
-    label: "Mileage per 3 months (km)",
+    label: "Mileage per 12 months (km)",
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
@@ -212,7 +212,7 @@ const price_leasing_5 = ref({
   modelValue: props?.car?.price_leasing?.[5]?.price ?? "",
 
   bind: {
-    label: "Price per 12 months (AED)",
+    label: "Price per 24 months (AED)",
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
@@ -226,7 +226,7 @@ const mileage_leasing_5 = ref({
   modelValue: props?.car?.price_leasing?.[5]?.mileage ?? "",
 
   bind: {
-    label: "Mileage per 3 months (km)",
+    label: "Mileage per 24 months (km)",
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",

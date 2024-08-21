@@ -115,7 +115,7 @@ const clickRedirect = (type, name) =>
 
 const { filters } = useFilter({
   initialFilters: {
-    "filterLIKE[name]": "",
+    "filterQ": "",
   },
 });
 
@@ -142,7 +142,7 @@ watch(
   debounce(async (newV) => {
     if (!isShow.value) return;
 
-    filters.value["filterLIKE[name]"] = newV;
+    filters.value["filterQ"] = newV;
   }, 500)
 );
 </script>

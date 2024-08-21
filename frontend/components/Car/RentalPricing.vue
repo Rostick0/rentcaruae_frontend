@@ -4,7 +4,16 @@
     <ul class="rental-pricing__list">
       <li class="rental-pricing__item" v-for="item in prices" :key="item?.id">
         <span>{{ item?.period }} Days</span>
-        <span>AED {{ item?.price }}</span>
+        <span>AED {{ formatNumber(item?.price) }}</span>
+      </li>
+      <li v-if="!isLeasing">
+        <NuxtLink
+          class="rental-pricing__item text-ui"
+          :to="$route.fullPath.replace('economy', 'leasing')"
+        >
+          <span>View mounthly offer</span>
+          <span>1-12 months</span>
+        </NuxtLink>
       </li>
     </ul>
   </div>
@@ -13,6 +22,7 @@
 <script setup>
 const props = defineProps({
   prices: Array,
+  isLeasing: Boolean,
 });
 </script>
 

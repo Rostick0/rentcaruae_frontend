@@ -3,7 +3,7 @@
     <form class="form__fields" @submit="onSubmit">
       <AdminCarFormCarInfo :car="car" :validateField="validateField" />
 
-      <AdminCarFormCarSpecification :car="car" />
+      <AdminCarFormCarSpecification :car="car" :valuesForm="valuesForm" />
 
       <AdminCarFormCarPhoto :car="car" />
 
@@ -52,7 +52,7 @@
     </form>
     <div class="car-form__preview form__flex_right">
       <LazyCarCardItem :car="car" />
-      <LazyCarCardShortItem :car="car" />
+      <LazyCarCardShortItem v-show="valuesForm?.is_show_security" :car="car" />
     </div>
   </div>
 </template>
@@ -62,6 +62,7 @@
 
 const props = defineProps({
   car: Object,
+  valuesForm: Object,
   onSubmit: {
     type: Function,
     required: true,

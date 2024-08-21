@@ -10,7 +10,7 @@
     </div>
     <div class="form-item">
       <VFormComponent :field="fuel_type_id" />
-      <VFormComponent :field="is_new" />
+      <VFormComponent v-if="isShowIsNew" :field="is_new" />
     </div>
   </AdminFormBlock>
 </template>
@@ -20,6 +20,7 @@ import api from "~/api";
 
 const props = defineProps({
   car: Object,
+  valuesForm: Object,
 });
 
 const transmissionOptions =
@@ -105,4 +106,10 @@ const is_new = ref({
     label: "NEW",
   },
 });
+
+const isShowIsNew = computed(
+  () =>
+    props.valuesForm?.year &&
+    props.valuesForm.year >= new Date().getFullYear() - 1
+);
 </script>

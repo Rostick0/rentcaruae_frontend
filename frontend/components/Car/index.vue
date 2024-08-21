@@ -8,15 +8,15 @@
         :specifications="specifications"
       />
       <CarDescription :title="car?.title" :description="car?.description" />
-      <CarRentalPricing :prices="car?.price_leasing" />
-      <div class="car__spoilers">
+      <CarRentalPricing :prices="isLeasing ? car?.price_leasing : car?.price" />
+      <!-- <div class="car__spoilers">
         <UiSpoiler>
           <template #title>DOCUMENTS REQUIRED</template>
         </UiSpoiler>
         <UiSpoiler>
           <template #title>Frequently Asked Questions</template>
         </UiSpoiler>
-      </div>
+      </div> -->
     </div>
     <div class="car__right">
       <LazyCarCalcLeasing v-if="isLeasing" :car="car" />
@@ -32,7 +32,7 @@ const props = defineProps({
 
 const route = useRoute();
 
-const isLeasing = computed(() => route.fullPath.split('/')[2] === 'leasing')
+const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 
 const specifications = computed(() =>
   groupByInArray(
@@ -62,6 +62,8 @@ const specifications = computed(() =>
 
   &__right {
     flex: 0 0 456px;
+    position: sticky;
+    top: 16px;
   }
 }
 </style>

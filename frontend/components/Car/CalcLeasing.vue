@@ -18,23 +18,11 @@
         <div class="text-right">
           <del class="calc-range__del del" v-if="periodSelect.modelValue !== 0"
             >AED
-            {{
-              formatNumber(
-                props.car?.price_leasing[0]?.price *
-                  Math.round(
-                    props.car?.price_leasing[periodSelect.modelValue]?.period /
-                      props.car?.price_leasing[0]?.period
-                  )
-              )
-            }}</del
-          >
+            {{ formatNumber(priceRentalDel) }}
+          </del>
           <div class="">
             AED
-            {{
-              formatNumber(
-                props.car?.price_leasing[periodSelect.modelValue]?.price
-              )
-            }}
+            {{ formatNumber(priceRental) }}
           </div>
         </div>
       </div>
@@ -139,30 +127,31 @@
         >
       </a>
     </div>
-    <div class="calc-item">
-      <div class="calc__title">Choose rental dates</div>
-      <div class="calc-date">
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Start date</strong>
-          <div class="text-ui">
-            {{ moment(start_date.modelValue).format("D MMM YYYY") }}
+    <template v-if="isBook">
+      <div class="calc-item">
+        <div class="calc__title">Choose rental dates</div>
+        <div class="calc-date">
+          <div class="calc-date__item">
+            <strong class="calc-item__size-small">Start date</strong>
+            <div class="text-ui">
+              {{ moment(start_date.modelValue).format("D MMM YYYY") }}
+            </div>
+          </div>
+          <div class="calc-date__item">
+            <strong class="calc-item__size-small">Your rental</strong>
+            <div class="calc__price text-ui">
+              {{ periodRental }} {{ periodText }}
+            </div>
           </div>
         </div>
-        <div class="calc-date__item">
-          <strong class="calc-item__size-small">Your rental</strong>
-          <div class="calc__price text-ui">
-            {{ periodRental }} {{ periodText }}
-          </div>
-        </div>
+        <VFormComponent :field="start_date" />
       </div>
-      <VFormComponent :field="start_date" />
-    </div>
-    <CarForm
-      v-if="isBook"
-      :periodRental="periodRental"
-      :priceRental="priceRental"
-      :periodText="periodText"
-    />
+      <CarForm
+        :periodRental="periodRental"
+        :priceRental="priceRental"
+        :periodText="periodText"
+      />
+    </template>
   </form>
 </template>
 
@@ -179,14 +168,14 @@ const props = defineProps({
 const route = useRoute();
 
 const isBook = ref();
-const book = ref();
+// const book = ref();
 
 const clickBook = () => {
   isBook.value = true;
 
-  nextTick(() => {
-    book.value?.scrollIntoView({ behavior: "smooth" });
-  });
+  // nextTick(() => {
+  //   book.value?.scrollIntoView({ behavior: "smooth" });
+  // });
 };
 
 const isAddStatisticWhatsApp = ref(false);
@@ -266,18 +255,20 @@ const maxMileage = computed(() =>
 );
 
 const price = computed(() =>
-  formatNumber(
-    props?.car?.price_special?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price ??
-      props?.car?.price?.find(
-        (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
-  )
+  formatNumber(props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price)
+);
+
+const priceRentalDel = computed(
+  () =>
+    (props.car?.price_leasing[0]?.price *
+      props.car?.price_leasing[periodSelect.value.modelValue]?.period) /
+    30
 );
 
 const priceRental = computed(
-  () => props.car?.price_leasing[periodSelect.value.modelValue]?.price
+  () =>
+    props.car?.price_leasing[periodSelect.value.modelValue]?.price *
+    (props.car?.price_leasing[periodSelect.value.modelValue]?.period / 30)
 );
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));

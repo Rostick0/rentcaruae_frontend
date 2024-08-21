@@ -174,9 +174,10 @@ const handleRemove = (item) => {
   }
 
   &__images {
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 8px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 154px);
+    grid-gap: 8px;
+    justify-content: space-between;
     width: 100%;
   }
 

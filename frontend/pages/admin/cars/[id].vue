@@ -1,6 +1,7 @@
 <template>
   <h1 class="h1 admin">Edit car</h1>
   <AdminCarForm
+    :valuesForm="values"
     :car="data"
     :validateField="validateField"
     :onSubmit="onSubmit"
@@ -9,7 +10,6 @@
 
 <script setup>
 import api from "~/api";
-import useImage from "~/composables/useImage";
 import { useForm } from "vee-validate";
 
 const id = useRoute().params.id;
@@ -26,7 +26,7 @@ const { data, get } = await useApi({
 
 await get();
 
-const { validateField, handleSubmit, setErrors } = useForm();
+const { validateField, handleSubmit, setErrors, values } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {

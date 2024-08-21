@@ -32,7 +32,7 @@ const props = defineProps({
   errorMessage: String,
   message: String,
   label: String,
-  searchString: String,
+  searchString: [String, Number],
   placeholder: String,
   modelValue: {
     type: Array,

@@ -74,7 +74,6 @@
       </div>
       <div class="header__bottom">
         <UiSelectWithIcons v-model="city" :options="citiesComputed" />
-        <!-- <VFormComponent :field="country" /> -->
         <div class="header__links">
           <NuxtLink
             class="header__link text-ui"
@@ -135,7 +134,7 @@ const citiesComputed = computed(() =>
   cities.value?.map?.((item) => ({ ...item, icon_url: "images/flags/ae.svg" }))
 );
 
-const city = useState("currentCity", () => citiesComputed.value?.[0]);
+const city = useState("currentCity", () => citiesComputed.value?.[3]);
 
 const links = computed(() => [
   {
@@ -200,24 +199,32 @@ const links = computed(() => [
 <style lang="scss">
 @import "./../../../assets/scss/ui/";
 
-.header__search {
-  .main-search {
-    &__close {
-      right: 68px;
-    }
+.header {
+  &__search {
+    .main-search {
+      &__close {
+        right: 68px;
+      }
 
-    &__send.btn {
-      background-color: var(--color-white);
-      border-left: none;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      padding-left: 20px;
-      padding-right: 20px;
-      z-index: 1;
-    }
+      &__send.btn {
+        background-color: var(--color-white);
+        border-left: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        z-index: 1;
+      }
 
-    &__options {
-      width: 100%;
+      &__options {
+        width: 100%;
+      }
+    }
+  }
+  
+  .select-icons-option {
+    &__text {
+      text-wrap: nowrap;
     }
   }
   // .control-select {

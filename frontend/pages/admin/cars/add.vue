@@ -1,13 +1,17 @@
 <template>
   <h1 class="h1 admin">Add car</h1>
-  <AdminCarForm :validateField="validateField" :onSubmit="onSubmit" />
+  <AdminCarForm
+    :valuesForm="values"
+    :validateField="validateField"
+    :onSubmit="onSubmit"
+  />
 </template>
 
 <script setup>
 import { useForm } from "vee-validate";
 import api from "~/api";
 
-const { validateField, handleSubmit, setErrors } = useForm();
+const { validateField, handleSubmit, setErrors, values } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {
