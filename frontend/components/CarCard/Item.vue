@@ -40,7 +40,7 @@
         <div class="car-stat__value">
           {{ car?.price?.[0]?.mileage }}
           <span class="car-stat__value_km">km</span> /
-          {{ car?.price?.[1]?.mileage }}
+          {{ car?.price?.[2]?.mileage }}
           <span class="car-stat__value_km">km</span>
         </div>
       </div>

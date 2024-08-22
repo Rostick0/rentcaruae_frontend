@@ -48,7 +48,7 @@
 
 <script setup>
 const props = defineProps({
-  car: Array,
+  car: Object,
   isLeasing: Boolean,
 });
 </script>

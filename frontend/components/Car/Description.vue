@@ -1,11 +1,11 @@
 <template>
   <div class="description">
-    <h2 class="description__title">{{ title }}</h2>
+    <h2 class="description__title">{{ car?.title }} {{ car?.year }}</h2>
     <div
       class="description__content"
       :class="{ active }"
       ref="content"
-      v-html="description"
+      v-html="car?.description"
     />
     <UiButton
       class="description__btn"
@@ -19,8 +19,7 @@
 
 <script setup>
 const props = defineProps({
-  title: [String, null],
-  description: [String, null],
+  car: Object,
 });
 
 const isShow = ref();

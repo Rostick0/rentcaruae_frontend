@@ -7,7 +7,7 @@
         v-if="specifications"
         :specifications="specifications"
       />
-      <CarDescription :title="car?.title" :description="car?.description" />
+      <CarDescription :car="car" />
       <CarRentalPricing :car="car" :isLeasing="isLeasing" />
       <!-- <div class="car__spoilers">
         <UiSpoiler>
