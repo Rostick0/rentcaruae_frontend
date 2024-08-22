@@ -1,10 +1,12 @@
 <template>
   <tr class="table_tr">
     <td class="table__td">
-      {{ moment(item?.date).format("DD MMM YYYY") }}
+      {{ item?.car?.generation?.model_car?.brand?.name }}
     </td>
-    <td class="table__td">{{ item?.refreshes }}</td>
-    <td class="table__td">{{ item?.special_offers }}</td>
+    <td class="table__td">
+      {{ item?.car?.generation?.model_car?.name }}
+    </td>
+    <td class="table__td"></td>
     <td class="table__td">
       <div class="table__td_flex">
         <UiStatType :isShowType="item?.id < 3" :isDecline="item?.id == 2">
@@ -28,7 +30,7 @@
     </td>
     <td class="table__td">AED {{ item?.price }}</td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/date/${item?.date}`">More</NuxtLink>
+      <NuxtLink class="link" :to="`/admin/cars/${item?.car?.id}`">Edit</NuxtLink>
     </td>
   </tr>
 </template>

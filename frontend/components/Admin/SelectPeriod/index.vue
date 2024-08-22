@@ -2,7 +2,7 @@
   <div class="select-period">
     <div class="select-period__info">
       <div class="select-period__info_item">
-        <div class="select-period__title">{{ title }}</div>
+        <div class="select-period__title">{{ title }} {{ titleRight }}</div>
       </div>
       <div class="select-period__info_item">
         <div class="select-period__subtitle">{{ subtitle }}</div>
@@ -19,6 +19,7 @@
 <script setup>
 const props = defineProps({
   title: String,
+  titleRight: String,
   subtitle: String,
   modelValue: Object,
   options: Array,

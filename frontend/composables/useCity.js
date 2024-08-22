@@ -12,5 +12,6 @@ export default async () => {
 
   return {
     cities,
+    currentCity,
   };
 };
