@@ -15,7 +15,7 @@
       <div class="calc__top_right">
         <div class="calc__price-old">
           {{ periodSelect.modelValue?.name }}
-          <del class="del" v-if="priceSpecial">AED {{ priceSpecial }}</del>
+          <del class="color-red" v-if="priceSpecial">AED {{ priceSpecial }}</del>
         </div>
         <div class="calc__price">
           AED

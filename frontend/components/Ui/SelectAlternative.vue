@@ -180,16 +180,16 @@ const model = computed({
     }
 
     if (props.modelValueIsNumber) {
-      if (props.modelValue === _value?.id) {
-        return emits("update:modelValue", null);
-      }
+      // if (props.modelValue === _value?.id) {
+      //   return emits("update:modelValue", null);
+      // }
 
       return emits("update:modelValue", _value.id);
     }
 
-    if (props.modelValue?.id === _value?.id) {
-      return emits("update:modelValue", null);
-    }
+    // if (props.modelValue?.id === _value?.id) {
+    //   return emits("update:modelValue", null);
+    // }
 
     return emits("update:modelValue", _value);
   },

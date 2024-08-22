@@ -6,7 +6,7 @@
     <UiButton
       v-for="type in carType"
       :key="type.name"
-      class="car-type__item"
+      class="car-type__item text-pre-small"
       @click="emits('update:modelValue', type.name.toLocaleLowerCase())"
       variant="outlined"
     >
@@ -71,7 +71,6 @@ const carType = [
   }
 
   &__item {
-    font-size: 12px;
     font-weight: 700;
 
     &.outlined {

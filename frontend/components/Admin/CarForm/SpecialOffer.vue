@@ -21,16 +21,21 @@
         </UiSwitch>
       </div>
     </div>
+    <slot name="bottom" />
   </AdminFormBlock>
 </template>
 
 <script setup>
 const props = defineProps({
+  valuesForm: Object,
   car: Object,
   isShow: Boolean,
 });
 
 const emits = defineEmits(["setHide"]);
+
+const setLabel = (type, val) =>
+  `Special price per ${type} (Current price ${valueOrDefault(val, "-")})`;
 
 const special_price_day = ref({
   type: "text",
@@ -38,7 +43,10 @@ const special_price_day = ref({
   modelValue: props?.car?.price_special?.[0]?.price ?? "",
 
   bind: {
-    label: `Special price per day (Current price )`,
+    label: setLabel(
+      "day",
+      props.car?.price?.[0]?.price ?? props.valuesForm?.price_sum?.[0]
+    ),
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
@@ -52,7 +60,10 @@ const special_price_week = ref({
   modelValue: props?.car?.price_special?.[1]?.price ?? "",
 
   bind: {
-    label: `Special price per week (Current price )`,
+    label: setLabel(
+      "week",
+      props.car?.price?.[1]?.price ?? props.valuesForm?.price_sum?.[1]
+    ),
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
@@ -66,11 +77,20 @@ const special_price_month = ref({
   modelValue: props?.car?.price_special?.[2]?.price ?? "",
 
   bind: {
-    label: `Special price per month (Current price )`,
+    label: setLabel(
+      "month",
+      props.car?.price?.[2]?.price ?? props.valuesForm?.price_sum?.[2]
+    ),
     placeholder: "0000",
     maska: "S SS#",
     maskaTokens: "S:[0-9]:repeated",
     dataMaskaReversed: true,
   },
+});
+
+watch(props.valuesForm?.price_sum, (newV) => {
+  special_price_day.value.bind.label = setLabel("day", newV?.[0]);
+  special_price_week.value.bind.label = setLabel("week", newV?.[1]);
+  special_price_month.value.bind.label = setLabel("month", newV?.[2]);
 });
 </script>

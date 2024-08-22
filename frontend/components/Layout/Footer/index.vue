@@ -146,7 +146,7 @@
                 </svg>
               </a>
             </div>
-            <div class="footer__rental">Are you a car rental company?</div>
+            <div class="footer__rental text-pre-small">Are you a car rental company?</div>
             <UiButton
               class="footer__join"
               @click="open(), (authModalState = 'register')"
@@ -257,7 +257,6 @@ const authModalState = useState("authModalState");
 
   &__rental {
     color: var(--color-basic);
-    font-size: 12px;
     margin: auto 0 8px;
     max-width: 124px;
   }

@@ -70,8 +70,6 @@
 <script setup>
 const currentCity = useState("currentCity");
 
-console.log(currentCity.value);
-
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
   "filterNEEQ[price_special.id]": true,

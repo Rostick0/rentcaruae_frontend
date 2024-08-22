@@ -69,6 +69,7 @@ const props = defineProps<Props>();
   width: 100%;
 
   &__label {
+    background-color: #f5f5f5;
     font-size: 12px;
     font-weight: 700;
     position: absolute;
@@ -87,7 +88,7 @@ const props = defineProps<Props>();
     // filter: blur(1px);
     .control__wrap {
       position: relative;
-      
+
       &::after {
         background-color: rgb(0, 0, 0, 0.25);
         color: var(--color-white);

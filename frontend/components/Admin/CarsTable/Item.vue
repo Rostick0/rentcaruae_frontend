@@ -1,7 +1,12 @@
 <template>
   <tr class="table__tr">
     <td class="table__td">
-      <UiCheckbox v-model="isSelected" />
+      <UiCheckbox
+        :modelValue="isSelected"
+        @update:model-value="
+          (value) => emits('changeOneCarSelected', { id: car?.id, value })
+        "
+      />
     </td>
     <td class="table__td">{{ car?.id }}</td>
     <td class="table__td">{{ car?.title }}</td>
@@ -38,16 +43,16 @@ const props = defineProps({
   isSelected: Boolean,
 });
 
-const emits = defineEmits(["selectCar"]);
+const emits = defineEmits(["selectCar", "changeOneCarSelected"]);
 
 const isShow = ref(!!props.car?.is_show);
 
-const isSelected = ref(props.isSelected);
+// const isSelected = ref(props.isSelected);
 
-watch(
-  () => props.isSelected,
-  (newV) => (isSelected.value = newV)
-);
+// watch(
+//   () => props.isSelected,
+//   (newV) => (isSelected.value = newV)
+// );
 
 const changeShow = debounce(async (newV) => {
   const res = await api.car.update({

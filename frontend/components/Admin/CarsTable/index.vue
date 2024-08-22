@@ -2,7 +2,9 @@
   <table class="table">
     <tr class="table_tr">
       <th class="table__td">
-        <UiCheckbox @update:modelValue="changeCarsSelected" />
+        <UiCheckbox
+          @update:modelValue="(val) => emits('setCarsSelected', val)"
+        />
       </th>
       <th class="table__td">Car id</th>
       <th class="table__td">Title</th>
@@ -20,6 +22,7 @@
         :car="car"
         :isSelected="carsSelected?.[index]?.value"
         @selectCar="(car) => emits('selectCar', car)"
+        @changeOneCarSelected="(car) => emits('changeOneCarSelected', car)"
       />
     </tbody>
   </table>
@@ -28,21 +31,12 @@
 <script setup>
 const props = defineProps({
   cars: Array,
+  carsSelected: Array,
 });
 
-const carsSelected = ref(
-  props?.cars?.map((id) => ({
-    id,
-    value: false,
-  }))
-);
-
-const changeCarsSelected = (value) => {
-  carsSelected.value = props?.cars?.map((id) => ({
-    id,
-    value,
-  }));
-};
-
-const emits = defineEmits(["selectCar"]);
+const emits = defineEmits([
+  "selectCar",
+  "setCarsSelected",
+  "changeOneCarSelected",
+]);
 </script>

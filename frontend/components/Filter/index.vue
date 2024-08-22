@@ -1,7 +1,7 @@
 <template>
   <div class="filter">
     <div class="filter__left">
-      <div class="filter-item" v-for="item in data" :key="item.id">
+      <div class="filter-item text-pre-small" v-for="item in data" :key="item.id">
         <span>{{ item.title }}</span>
         <span>from AED {{ item.price }}</span>
       </div>
@@ -78,7 +78,6 @@ const data = [0, 0, 0, 0].map((el, i) => ({
     display: flex;
     flex-direction: column;
     row-gap: 4px;
-    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.02em;
     padding: 10px 8px;

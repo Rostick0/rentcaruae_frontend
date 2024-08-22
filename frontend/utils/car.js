@@ -56,3 +56,12 @@ export const getCarOnSubmitValues = async ({
     price_special: price_special?.map((item) => removeSpaces(item)),
   };
 };
+
+export const getPriceRefreshCars = (user, val) => {
+  if (user?.refresh_car?.max > 35) return val * 10;
+
+  if (user?.refresh_car?.count - val < 0)
+    return (val - user?.refresh_car?.count) * 10;
+
+  return 0;
+};

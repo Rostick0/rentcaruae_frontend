@@ -19,8 +19,12 @@
   &-small {
     font-size: 10px;
   }
+
+  &-pre-small {
+    font-size: 12px;
+  }
 }
 
-.del {
+.color-red {
   color: var(--color-old-val);
 }

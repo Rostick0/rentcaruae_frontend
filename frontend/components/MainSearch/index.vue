@@ -89,7 +89,7 @@
           <span class="main-search-brand__name">{{ brand?.name }}</span>
         </div>
       </div>
-      <div class="del" v-if="!modelCars?.length && !brands?.length">None</div>
+      <div class="color-red" v-if="!modelCars?.length && !brands?.length">None</div>
     </div>
   </div>
 </template>

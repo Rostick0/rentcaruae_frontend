@@ -7,6 +7,8 @@
 
       <AdminCarFormCarPhoto :car="car" />
 
+      <AdminCarFormDescription :car="car" />
+
       <AdminCarFormPrice :car="car" />
 
       <AdminCarFormLeasingOptions
@@ -28,6 +30,7 @@
       <AdminCarFormSpecialOffer
         v-if="isSpecialOffer"
         :car="car"
+        :valuesForm="valuesForm"
         :isShow="isSpecialOffer"
         @setHide="isSpecialOffer = false"
       />

@@ -13,10 +13,12 @@
       </div>
     </div>
     <div class="calc-range">
-      <div class="calc-range__top text-ui">
+      <div class="calc-range__top text-ui text-pre-small">
         <div class="">{{ periodRental }} {{ periodText }}</div>
         <div class="text-right">
-          <del class="calc-range__del del" v-if="periodSelect.modelValue !== 0"
+          <del
+            class="calc-range__del color-red"
+            v-if="periodSelect.modelValue !== 0"
             >AED
             {{ formatNumber(priceRentalDel) }}
           </del>
@@ -255,7 +257,9 @@ const maxMileage = computed(() =>
 );
 
 const price = computed(() =>
-  formatNumber(props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price)
+  formatNumber(
+    props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price
+  )
 );
 
 const priceRentalDel = computed(
@@ -295,17 +299,12 @@ const maxMonth = computed(() => {
     &__bottom {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
       font-weight: 500;
     }
 
     &__top {
       align-items: flex-end;
       font-size: 14px;
-    }
-
-    &__del {
-      font-size: 12px;
     }
   }
 }
