@@ -1,14 +1,21 @@
 <template>
   <div class="car-type__list">
-    <UiButton class="car-type__item" @click="emits('update:modelValue', '')">
+    <UiButton
+      class="car-type__item"
+      @click="emits('update:modelValue', '')"
+      :variant="modelValue === '' ? 'standard' : 'outlined'"
+    >
       All Cars
     </UiButton>
     <UiButton
       v-for="type in carType"
       :key="type.name"
       class="car-type__item text-pre-small"
-      @click="emits('update:modelValue', type.name.toLocaleLowerCase())"
-      variant="outlined"
+      :class="{ active: modelValue === type.name.toLowerCase() }"
+      @click="emits('update:modelValue', type.name.toLowerCase())"
+      :variant="
+        modelValue === type.name.toLowerCase() ? 'standard' : 'outlined'
+      "
     >
       <LazyNuxtImg
         :src="type.img"
@@ -71,18 +78,17 @@ const carType = [
   }
 
   &__item {
+    display: flex;
     font-weight: 700;
+    align-items: center;
+    column-gap: 4px;
+    padding: 7px 7.75px;
 
     &.outlined {
-      display: flex;
-      align-items: center;
-      column-gap: 4px;
       color: var(--color-black);
-      padding: 7px 7.75px;
     }
 
     &:first-child {
-      color: var(--color-white);
       padding: 12px 15px;
     }
   }

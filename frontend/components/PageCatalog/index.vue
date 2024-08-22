@@ -91,12 +91,17 @@ const breadcrumbs = computed(() => [
     link: convertNameToUrl(`/${currentCity.value?.name}`),
   },
   {
-    name: `Car ${rent.value} in ${currentCity.value?.name}`,
+    name:
+      rent.value === "leasing"
+        ? `Car ${rent.value} in ${currentCity.value?.name}`
+        : `Economy cars Rental`,
   },
 ]);
 
 const h1 = computed(() =>
-  `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim()
+  rent.value === "leasing"
+    ? `Car leasing in ${currentCity.value?.name} ${pageText.value}`.trim()
+    : `Economy cars for rent in ${currentCity.value?.name} ${pageText.value}`.trim()
 );
 
 watch(
