@@ -17,13 +17,15 @@
         :isShow="isAddedLeasingOptions"
         @setHide="isAddedLeasingOptions = false"
       />
-      <UiButton
-        v-else
-        class="car-form__btn"
-        variant="outlined"
-        @click="isAddedLeasingOptions = true"
-        >Add leasing options</UiButton
-      >
+      <div class="" v-else>
+        <UiButton
+          class="car-form__btn"
+          variant="outlined"
+          @click="isAddedLeasingOptions = true"
+        >
+          <strong>Add leasing options</strong>
+        </UiButton>
+      </div>
 
       <AdminCarFormRentalTerms :car="car" />
 

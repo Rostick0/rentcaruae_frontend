@@ -76,6 +76,15 @@ export const updateCarShow = (newV, prev) => {
     data.title = `${newV?.model_car?.brand?.name} ${newV?.model_car?.name}`;
   }
 
+  if (newV?.is_new !== data?.is_new) {
+    data.is_new = newV.is_new;
+  }
+
+  if (newV?.price_leasing?.length !== data?.price_leasing?.length) {
+    // при true, нужно чтоб массив не был пустым
+    data.price_special = newV.price_leasing;
+  }
+
   if (newV?.transmission_id?.id !== data?.transmission?.id) {
     data.transmission = newV?.transmission_id;
   }
