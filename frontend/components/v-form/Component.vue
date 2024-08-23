@@ -91,6 +91,12 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
+    <UiSelectCheckbox
+      v-else-if="field.type == 'select-checkbox'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
   </ClientOnly>
 </template>
 

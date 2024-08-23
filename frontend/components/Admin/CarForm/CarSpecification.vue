@@ -12,6 +12,8 @@
       <VFormComponent :field="fuel_type_id" />
       <VFormComponent v-if="isShowIsNew" :field="is_new" />
     </div>
+    <!-- <VFormComponent :field="car_options" /> -->
+    <!-- <pre> {{ options }}</pre> -->
   </AdminFormBlock>
 </template>
 
@@ -104,6 +106,21 @@ const is_new = ref({
 
   bind: {
     label: "NEW",
+  },
+});
+
+const options = (await api.options.getAll().then((res) => res?.data)) ?? [];
+
+console.log(options);
+
+const car_options = ref({
+  type: "select-checkbox",
+  name: "car_options",
+  modelValue: "",
+
+  bind: {
+    label: 'Car options',
+    options,
   },
 });
 

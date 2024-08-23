@@ -72,7 +72,7 @@ const currentCity = useState("currentCity");
 
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
-  "filterNEEQ[price_special.id]": true,
+  "filterNEQ[price_special.id]": true,
   sort: "-id",
   limit: 4,
 };

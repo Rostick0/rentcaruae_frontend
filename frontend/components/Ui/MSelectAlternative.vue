@@ -12,32 +12,20 @@
         <input
           v-bind="$attrs"
           class="control__field control__field_placeholder-top select__value"
-          :placeholder="isPlaceholderTop ? '' : placeholder"
-          :class="{
-            control__field_placeholder_top: isPlaceholderTop,
-          }"
+          :placeholder="placeholder"
           ref="inputRef"
           @input="onInput"
           :value="searchString"
           type="text"
         />
-        <span v-if="isPlaceholderTop" class="control__label_name">{{
-          placeholder
-        }}</span>
       </template>
       <template v-else>
         <input
           class="control__field control__field_placeholder-top select__value control__field_placeholder-no-focus"
-          :class="{
-            control__field_placeholder_top: isPlaceholderTop,
-          }"
-          :placeholder="isPlaceholderTop ? '' : placeholder"
+          :placeholder="placeholder"
           :value="model?.value ?? model?.name ?? model?.title"
           readonly
         />
-        <span v-if="isPlaceholderTop" class="control__label_name">{{
-          placeholder
-        }}</span>
       </template>
       <svg
         v-if="withIcon"
@@ -127,10 +115,6 @@ const props = defineProps({
   componentOption: {
     type: [Object, null],
   },
-  isPlaceholderTop: {
-    default: false,
-    type: Boolean,
-  },
   withIcon: {
     default: true,
     type: Boolean,
@@ -140,10 +124,6 @@ const props = defineProps({
     type: Boolean,
   },
   alwaysOpen: {
-    default: false,
-    type: Boolean,
-  },
-  isColour: {
     default: false,
     type: Boolean,
   },
@@ -332,38 +312,34 @@ const addMore = (event) => {
     display: flex;
     position: relative;
 
-    &_name {
-      color: var(--color-grey-dark);
-      position: absolute;
-      top: 50%;
-      left: 12px;
-      transform: translateY(-50%);
-      transition: 0.3s;
-    }
+    // &_name {
+    //   color: var(--color-grey-dark);
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 12px;
+    //   transform: translateY(-50%);
+    //   transition: 0.3s;
+    // }
   }
 
-  &__field_placeholder-no-focus:focus + &__label_name {
-    font-size: 16px;
-    transform: translateY(-50%);
-    top: 50%;
-  }
+  // &__field_placeholder-no-focus:focus + &__label_name {
+  //   font-size: 16px;
+  //   transform: translateY(-50%);
+  //   top: 50%;
+  // }
 
-  &__field:focus + &__label_name,
-  &__field:not(:placeholder-shown) + &__label_name {
-    font-size: 12px;
-    top: 11px;
-    transform: translateY(0);
-  }
+  // &__field:focus + &__label_name,
+  // &__field:not(:placeholder-shown) + &__label_name {
+  //   font-size: 12px;
+  //   top: 11px;
+  //   transform: translateY(0);
+  // }
 
   &__field {
     border: 1px solid var(--color-grey-dark);
     border-radius: 8px;
     font-size: 16px;
     padding: 20px 12px;
-
-    &_placeholder_top {
-      padding: 30px 12px 10px;
-    }
 
     &:focus {
       border-color: var(--color-green);

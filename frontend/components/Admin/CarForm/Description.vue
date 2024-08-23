@@ -1,5 +1,5 @@
 <template>
-  <AdminFormBlock class="description" title="Car specification">
+  <AdminFormBlock class="description" title="Car information">
     <VFormComponent :field="description" />
     <div class="text-ui color-red description__info text-pre-small">
       *it is forbidden to specify phone numbers, e-mail addresses and other

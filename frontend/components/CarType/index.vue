@@ -3,7 +3,7 @@
     <UiButton
       class="car-type__item"
       @click="emits('update:modelValue', '')"
-      :variant="modelValue === '' ? 'standard' : 'outlined'"
+      :variant="!modelValue ? 'standard' : 'outlined'"
     >
       All Cars
     </UiButton>
