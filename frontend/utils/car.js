@@ -65,3 +65,56 @@ export const getPriceRefreshCars = (user, val) => {
 
   return 0;
 };
+
+export const updateCarShow = (newV, prev) => {
+  const data = prev;
+
+  if (newV?.model_car?.id !== data?.model_car?.id) {
+    data.generation = {
+      model_car: newV?.model_car,
+    };
+    data.title = `${newV?.model_car?.brand?.name} ${newV?.model_car?.name}`;
+  }
+
+  if (newV?.transmission_id?.id !== data?.transmission?.id) {
+    data.transmission = newV?.transmission_id;
+  }
+
+  if (newV?.seats !== data?.seats) {
+    data.seats = newV?.seats;
+  }
+
+  if (
+    newV?.price_mileage?.[0] !== data.price[0]?.mileage ||
+    newV?.price_sum?.[0] !== data.price[0]?.price
+  ) {
+    data.price[0] = {
+      price: newV?.price_sum?.[0],
+      mileage: newV?.price_mileage?.[0],
+    };
+  }
+
+  if (
+    newV?.price_mileage?.[2] !== data.price[2]?.mileage ||
+    newV?.price_sum?.[2] !== data.price[2]?.price
+  ) {
+    data.price[2] = {
+      price: newV?.price_sum?.[2],
+      mileage: newV?.price_mileage?.[2],
+    };
+  }
+
+  if (newV?.security_deposit !== data?.security_deposit?.price) {
+    data.security_deposit = { price: newV?.security_deposit };
+  }
+
+  if (newV?.min_days !== data?.min_days?.value) {
+    data.min_days = newV?.min_days?.value;
+  }
+
+  if (newV?.images?.[0]?.id !== data?.images?.[0]?.id) {
+    data.images = [{ image: { path_webp: newV?.images[0]?.path } }];
+  }
+
+  return data;
+};

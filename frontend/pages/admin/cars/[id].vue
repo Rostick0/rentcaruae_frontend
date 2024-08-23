@@ -50,6 +50,13 @@ const onSubmit = handleSubmit(
   }
 );
 
+watch(
+  values,
+  debounce((newV) => {
+    data.value = updateCarShow(newV, data.value);
+  }, 300)
+);
+
 definePageMeta({
   layout: "admin",
 });

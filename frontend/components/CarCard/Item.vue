@@ -15,7 +15,12 @@
     <div class="car__image">
       <LazyNuxtImg
         class="car__img"
-        :src="car?.images?.[0]?.image?.path_webp + '?w=320'"
+        :src="
+          car?.images?.[0]?.image?.path_webp +
+          (car?.images?.[0]?.image?.path_webp?.startsWith('blob')
+            ? ''
+            : '?w=320')
+        "
         decoding="async"
         loading="lazy"
         :alt="car?.title"
@@ -76,15 +81,15 @@
         <div class="car-price">
           <div class="car-price__old">
             <span>Monthly</span>
-            <del class="color-red" v-if="car?.price_special?.[1]"
-              >AED {{ formatNumber(car?.price?.[1]?.price) }}</del
+            <del class="color-red" v-if="car?.price_special?.[2]"
+              >AED {{ formatNumber(car?.price?.[2]?.price) }}</del
             >
           </div>
           <div class="car-price__current">
             AED
             {{
               formatNumber(
-                car?.price_special?.[1]?.price ?? car?.price?.[1]?.price
+                car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
               )
             }}
           </div>
