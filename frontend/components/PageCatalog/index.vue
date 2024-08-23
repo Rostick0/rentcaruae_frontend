@@ -44,6 +44,15 @@ const { filters } = useFilter({
   },
 });
 
+const rent = computed(() =>
+  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
+);
+
+const paramLeasing = {};
+
+if (rent.value === "leasing")
+  paramLeasing["filterNEQ[price_leasing.id]"] = true;
+
 const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
@@ -51,6 +60,7 @@ const { data, get, meta } = await useApi({
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit,user.company.image.image",
     sort: "promo_car.point,id",
     limit: 12,
+    ...paramLeasing,
     ...props?.paramsCar,
   },
   filters,
@@ -83,6 +93,7 @@ const { data: prices, get: getPrices } = await useApi({
     limit: 8,
     sort: "-price",
     extends: "car",
+    type: rent.value === "economy" ? "price" : "price_leasing",
   },
   filters: pricesFilters,
 });
@@ -97,9 +108,6 @@ watch(filters.value, (newV) => {
   });
 });
 
-const rent = computed(() =>
-  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
-);
 const currentCity = useState("currentCity");
 const pageText = computed(() =>
   filters.value.page > 1 ? `- Page ${filters.value.page}` : ""
