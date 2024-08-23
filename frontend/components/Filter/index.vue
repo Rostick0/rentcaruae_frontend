@@ -1,9 +1,13 @@
 <template>
   <div class="filter">
     <div class="filter__left">
-      <div class="filter-item text-pre-small" v-for="item in data" :key="item.id">
-        <span>{{ item.title }}</span>
-        <span>from AED {{ item.price }}</span>
+      <div
+        class="filter-item text-pre-small"
+        v-for="item in prices"
+        :key="item?.id"
+      >
+        <span>{{ item?.car?.title }}</span>
+        <span>from AED {{ item?.price }}</span>
       </div>
     </div>
     <!-- <div class="filter__right">
@@ -35,11 +39,15 @@
 </template>
 
 <script setup>
-const data = [0, 0, 0, 0].map((el, i) => ({
-  id: i,
-  title: "Toyota",
-  price: 90,
-}));
+// const data = [0, 0, 0, 0].map((el, i) => ({
+//   id: i,
+//   title: "Toyota",
+//   price: 90,
+// }));
+
+const props = defineProps({
+  prices: Array,
+});
 
 // const a = [{ id: "a", name: "Sort featured" }];
 

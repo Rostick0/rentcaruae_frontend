@@ -5,7 +5,7 @@
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
       <CarType v-model="filters['filterEQ[generation.name]']" />
-      <LazyFilter />
+      <LazyFilter :prices="prices" />
       <LazyCarCardList :cars="cars[0]" />
       <LazyCarCardShortList
         class="catalog__specials"
@@ -55,7 +55,6 @@ const { data, get, meta } = await useApi({
   },
   filters,
 });
-
 await get();
 
 const cars = computed(() => chunk(data.value, 6));
@@ -70,8 +69,33 @@ const { data: carsSpecial, get: getCarsSpecial } = await useApi({
     limit: 4,
   },
 });
-
 await getCarsSpecial();
+
+const { filters: pricesFilters } = useFilter({
+  initialFilters: {
+    ...setOneFilterValue(route.params, "car."),
+  },
+});
+
+const { data: prices, get: getPrices } = await useApi({
+  name: "pricePeriods.getAll",
+  params: {
+    limit: 8,
+    sort: "-price",
+    extends: "car",
+  },
+  filters: pricesFilters,
+});
+await getPrices();
+
+watch(filters.value, (newV) => {
+  ["filterEQ[generation.name]"]?.forEach((item) => {
+    const a = item?.replace("filterEQ[", "filterEQ[car.");
+    if (newV[item] !== pricesFilters.value[a]) {
+      pricesFilters.value[a] = newV[item];
+    }
+  });
+});
 
 const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"

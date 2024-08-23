@@ -15,6 +15,7 @@ import image from "./modules/image";
 import modelCars from "./modules/modelCars";
 import operations from "./modules/operations";
 import options from "./modules/options";
+import pricePeriods from "./modules/pricePeriods";
 import promoCars from "./modules/promoCars";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
@@ -39,6 +40,7 @@ export default {
   modelCars,
   operations,
   options,
+  pricePeriods,
   promoCars,
   statisticsDay,
   transmissions,
