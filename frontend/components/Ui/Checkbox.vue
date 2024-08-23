@@ -11,8 +11,8 @@
       <span v-if="withIcon" class="checkbox__icon">
         <svg
           class="checkbox__icon_svg"
-          width="13"
-          height="13"
+          width="65%"
+          height="65%"
           viewBox="0 0 18 13"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

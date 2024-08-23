@@ -41,6 +41,23 @@ defineProps<Props>();
     .svg-fill {
       fill: var(--color-basic);
     }
+
+    .svg-stroke {
+      stroke: var(--color-basic);
+    }
+
+    &:hover {
+      color: var(--color-basic-hover);
+      border-color: var(--color-basic-hover);
+
+      .svg-fill {
+        fill: var(--color-basic-hover);
+      }
+
+      .svg-stroke {
+        stroke: var(--color-basic-hover);
+      }
+    }
   }
 
   &.whatsapp {

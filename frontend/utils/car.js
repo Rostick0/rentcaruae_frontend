@@ -32,6 +32,7 @@ export const getCarOnSubmitValues = async ({
   security_deposit,
   free_per_day_security,
   price_special,
+  car_options,
   ...values
 }) => {
   const { getImageIdsFrom } = useImage();
@@ -54,6 +55,7 @@ export const getCarOnSubmitValues = async ({
     security_deposit: removeSpaces(security_deposit),
     free_per_day_security: removeSpaces(free_per_day_security),
     price_special: price_special?.map((item) => removeSpaces(item)),
+    car_options: car_options?.join(),
   };
 };
 

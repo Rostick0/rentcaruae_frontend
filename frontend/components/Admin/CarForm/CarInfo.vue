@@ -124,7 +124,6 @@ const generation_id = ref({
 watch(
   () => model_car.value.modelValue,
   async (newV) => {
-    console.log(newV)
     if (newV) generation_id.value.bind.isReadOnly = !newV;
   }
 );

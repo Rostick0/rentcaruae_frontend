@@ -1,10 +1,11 @@
 <template>
   <UiControl
+    class="select-checkbox"
     :label="label"
     :invalid="!!errorMessage || invalid"
     :message="errorMessage || message"
   >
-    <div class="select-checkbox">
+    <div class="select-checkbox__inner">
       <div
         class="select-checkbox__"
         v-for="itemGroup in optionsGroup"
@@ -35,6 +36,7 @@ const emits = defineEmits(["update:modelValue"]);
 const props = defineProps({
   errorMessage: String,
   message: String,
+  invalid: String,
   label: String,
   placeholder: String,
   modelValue: {
@@ -71,9 +73,12 @@ const handleSelect = (option) => {
 
 <style lang="scss" scoped>
 .select-checkbox {
-  display: flex;
-  color: #464655;
-  grid-gap: 20px 40px;
+  &__inner {
+    color: #464655;
+    display: flex;
+    font-size: 14px;
+    grid-gap: 20px 40px;
+  }
 
   &__title {
     font-weight: 700;
@@ -93,6 +98,23 @@ const handleSelect = (option) => {
 
   &__item {
     font-size: 14px;
+  }
+}
+</style>
+
+<style lang="scss">
+.select-checkbox {
+  &.control {
+    row-gap: 10px;
+  }
+
+  .control {
+    &__label {
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      position: static;
+    }
   }
 }
 </style>

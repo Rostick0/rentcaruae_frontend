@@ -3,7 +3,6 @@
     <h2 class="rental-service__title">Car rental service</h2>
     <div class="rental-service__content">
       <div class="rental-service__description">
-        <h3 class="rental-service__description_title">Car Rental Service</h3>
         <p>
           RentCarUAE is a car rental service in Dubai. With us, you can rent a
           car for one or several days, weeks, or even months. We carefully
