@@ -221,10 +221,11 @@ const links = computed(() => [
       }
     }
   }
-  
+
   .select-icons-option {
     &__text {
       text-wrap: nowrap;
+      white-space: nowrap;
     }
   }
   // .control-select {
