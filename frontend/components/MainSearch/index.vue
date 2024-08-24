@@ -126,8 +126,6 @@ const { data: brands } = await useApi({
   params: {
     extendsCount: "cars",
     sort: "cars_count,-name",
-    "filterNEQN[model_cars.generations.cars.id]": true,
-    // "filterNEQN[model_cars.cars_count]": true,
     limit: 6,
   },
 });
