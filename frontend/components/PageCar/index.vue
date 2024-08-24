@@ -83,6 +83,94 @@ useHead({
       content: description,
     },
   ],
+  script: [
+    {
+      // innerHTML: JSON.stringify({
+      //   "@context": "https://schema.org",
+      //   "@type": "Product",
+      //   name: data?.value?.title,
+      //   description: data?.value?.description,
+      //   image: data?.value?.images?.map?.((item) => item?.image?.path_webp),
+      //   // offers: {
+      //   //   "@type": "Offer",
+      //   //   availability: "https://schema.org/InStock",
+      //   //   price: data.value?.price,
+      //   //   priceCurrency: "AED",
+      //   // },
+      //   offers: [
+      //     {
+      //       "@type": "Offer",
+      //       priceCurrency: "AED",
+      //       price: data.value?.price?.[0]?.price,
+      //       // itemCondition: "https://schema.org/NewCondition",
+      //       // availability: "https://schema.org/InStock",
+      //       // rentalDuration: {
+      //       //   "@type": "QuantitativeValue",
+      //       //   value: 1,
+      //       //   unitCode: "DAY",
+      //       // },
+      //       itemCondition: "https://schema.org/NewCondition",
+      //       availability: "https://schema.org/InStock",
+      //       leaseLength: "1 day",
+      //       rentalPeriod: {
+      //         "@type": "Duration",
+      //         duration: "P0D",
+      //       },
+      //       leasePayment: {
+      //         "@type": "MonetaryAmount",
+      //         value: "49",
+      //         currency: "USD",
+      //       },
+      //     },
+      //     {
+      //       "@type": "Offer",
+      //       priceCurrency: "AED",
+      //       price: data.value?.price?.[1]?.price,
+      //       itemCondition: "https://schema.org/NewCondition",
+      //       availability: "https://schema.org/InStock",
+      //       rentalDuration: {
+      //         "@type": "QuantitativeValue",
+      //         value: 7,
+      //         unitCode: "DAY",
+      //       },
+      //     },
+      //     {
+      //       "@type": "Offer",
+      //       priceCurrency: "AED",
+      //       price: data.value?.price?.[2]?.price,
+      //       itemCondition: "https://schema.org/NewCondition",
+      //       availability: "https://schema.org/InStock",
+      //       rentalDuration: {
+      //         "@type": "QuantitativeValue",
+      //         value: 1,
+      //         unitCode: "MONTH",
+      //       },
+      //     },
+      //   ],
+      //   color: data.value?.colour?.name,
+      //   vehicleInteriorColor: data.value?.colour_interior?.name,
+      //   bodyType: data.value?.generation?.name,
+      //   itemCondition: "https://schema.org/NewCondition",
+      //   brand: {
+      //     "@type": "Brand",
+      //     name: data.value?.generation?.model_car?.brand?.name,
+      //   },
+      //   model: data.value?.generation?.model_car?.name,
+      //   vehicleModelDate: data.value?.year,
+      //   vehicleEngine: {
+      //     "@type": "EngineSpecification",
+      //     fuelType: data.value?.fuel_type?.name,
+      //   },
+      //   // mileageFromOdometer: {
+      //   //   "@type": "QuantitativeValue",
+      //   //   value: data?.value?.mileage,
+      //   //   unitCode: "KMT",
+      //   // },
+      //   // numberOfDoors: data.value?.modification?.doors_count,
+      // }),
+      type: "application/ld+json",
+    },
+  ],
 });
 </script>
 

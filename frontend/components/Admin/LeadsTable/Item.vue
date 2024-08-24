@@ -18,7 +18,9 @@
       {{ lead?.tel }}
     </td>
     <td class="table__td">
-      {{ lead?.period }}
+      {{ moment(lead?.start_date).format("DD MMM YYYY") }} - {{ dateEnd }} ({{
+        lead?.period
+      }})
     </td>
     <td class="table__td">AED {{ formatNumber(lead?.price) }}</td>
   </tr>
@@ -30,6 +32,10 @@ import moment from "moment";
 const props = defineProps({
   lead: Object,
 });
+
+const dateEnd = computed(() =>
+  moment(props?.lead?.start_date).add("days", props?.lead?.period).format("DD MMM YYYY")
+);
 </script>
 
 <style lang="scss" scoped></style>
