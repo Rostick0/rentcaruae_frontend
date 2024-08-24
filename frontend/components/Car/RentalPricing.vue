@@ -30,7 +30,7 @@
           <span>{{ item?.period }} Days</span>
           <span>AED {{ formatNumber(item?.price) }}</span>
         </li>
-        <template v-if="car?.price_leasing">
+        <template v-if="car?.price_leasing?.length">
           <li>
             <NuxtLink
               class="rental-pricing__item text-ui"

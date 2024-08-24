@@ -1,19 +1,14 @@
 <template>
   <div class="description">
     <h2 class="description__title">{{ car?.title }} {{ car?.year }}</h2>
-    <div
-      class="description__content"
-      :class="{ active }"
-      ref="content"
-      v-html="car?.description"
-    />
-    <UiButton
-      class="description__btn"
-      v-if="isShow"
-      @click="active = !active"
-      variant="outlined"
-      >{{ active ? "Hide" : "Show more" }}</UiButton
-    >
+    <UiContentOverflow heightDefault="128">
+      <div
+        class="description__content"
+        :class="{ active }"
+        ref="content"
+        v-html="car?.description"
+      />
+    </UiContentOverflow>
   </div>
 </template>
 
@@ -43,19 +38,6 @@ onMounted(() => {
     white-space: pre-wrap;
     overflow: hidden;
     margin-bottom: 20px;
-    max-height: 128px;
-
-    &.active {
-      max-height: initial;
-    }
-  }
-
-  .description__btn {
-    border-color: transparent;
-    display: block;
-    margin-top: -20px;
-    margin-left: auto;
-    width: fit-content;
   }
 }
 </style>
