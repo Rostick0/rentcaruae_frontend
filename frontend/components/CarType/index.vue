@@ -19,8 +19,8 @@
     >
       <LazyNuxtImg
         :src="type.img"
-        loading="lazy"
         :alt="type.name"
+        loading="lazy"
         width="52"
         height="26"
       />

@@ -4,9 +4,9 @@
       <LazyNuxtImg
         class="car-short__img"
         :src="car?.images?.[0]?.image?.path_webp"
+        :alt="car?.title"
         decoding="async"
         loading="lazy"
-        :alt="car?.title"
         width="264"
         height="166"
       />
@@ -47,6 +47,7 @@
         :src="
           $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
         "
+        :alt="car?.generation?.model_car?.brand?.name"
         loading="lazy"
         width="40"
         height="40"

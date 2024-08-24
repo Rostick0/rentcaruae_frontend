@@ -9,7 +9,7 @@
           <h1 class="company__title h1">{{ data?.name }}</h1>
           <LazyNuxtImg
             class="company__img"
-            :src="data?.image?.image?.path_webp + '?w=139'"
+            :src="data?.image?.image?.path_webp + '?w=170'"
             :alt="data?.name"
             decoding="async"
             loading="lazy"

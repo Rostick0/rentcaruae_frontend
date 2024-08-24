@@ -39,8 +39,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/deposit.svg"
-            loading="lazy"
             alt="Deposit"
+            loading="lazy"
             width="20"
             heihgt="20"
           />
@@ -52,8 +52,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/calendar.svg"
-            loading="lazy"
             alt="Calendar"
+            loading="lazy"
             width="20"
             heihgt="20"
           />
@@ -67,8 +67,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/map.svg"
-            loading="lazy"
             alt="Calendar"
+            loading="lazy"
             width="20"
             heihgt="20"
           />
@@ -80,8 +80,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/settings.svg"
-            loading="lazy"
             alt="Calendar"
+            loading="lazy"
             width="20"
             heihgt="20"
           />
@@ -93,8 +93,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/protect.svg"
-            loading="lazy"
             alt="Calendar"
+            loading="lazy"
             width="20"
             heihgt="20"
           />
@@ -106,8 +106,8 @@
         <div class="calc-item__flex_left">
           <LazyNuxtImg
             src="images/icon/card.svg"
-            loading="lazy"
             alt="Calendar"
+            loading="lazy"
             width="20"
             heihgt="20"
           />

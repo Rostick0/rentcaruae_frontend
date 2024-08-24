@@ -9,9 +9,9 @@
       "
     >
       <LazyNuxtImg
-        loading="lazy"
         :src="brand?.image_url"
         :alt="brand?.name"
+        loading="lazy"
         width="40"
         height="40"
       />

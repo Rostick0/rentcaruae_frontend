@@ -21,9 +21,9 @@
             ? ''
             : '?w=320')
         "
+        :alt="car?.title"
         decoding="async"
         loading="lazy"
-        :alt="car?.title"
         width="320"
         height="196"
       />

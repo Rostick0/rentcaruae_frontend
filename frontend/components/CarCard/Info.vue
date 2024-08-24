@@ -15,8 +15,8 @@
           <LazyNuxtImg
             class="car-characteristic__iconc"
             :src="`images/icon/auto.svg`"
-            loading="lazy"
             alt="fuel type"
+            loading="lazy"
             width="20"
             height="20"
           />
@@ -28,8 +28,8 @@
           <LazyNuxtImg
             class="car-characteristic__icon"
             src="images/icon/persons.svg"
-            loading="lazy"
             alt="persons"
+            loading="lazy"
             width="20"
             height="20"
           />
@@ -41,8 +41,8 @@
             :src="`images/icon/${
               car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
             }.svg`"
-            loading="lazy"
             alt="fuel type"
+            loading="lazy"
             width="20"
             height="20"
           />
@@ -55,9 +55,10 @@
     <div class="car__info_right">
       <LazyNuxtImg
         class="car__info_img"
-        :src="car?.user?.company?.image?.image?.path_webp + '?w=78'"
-        loading="lazy"
+        :src="car?.user?.company?.image?.image?.path_webp + '?w=150'"
         :alt="car?.user?.company?.name"
+        decoding="async"
+        loading="lazy"
         width="78"
         height="39"
       />

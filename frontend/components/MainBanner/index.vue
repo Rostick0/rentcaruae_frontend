@@ -21,6 +21,7 @@
       <LazyNuxtImg
         class="banner__img"
         src="images/blue_lamborghini.png"
+        alt="RentCarUAE"
         decoding="async"
         loading="lazy"
         fit="contain"

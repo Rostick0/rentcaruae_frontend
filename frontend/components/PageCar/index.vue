@@ -9,9 +9,9 @@
             $config.public.BACK_URL +
             data?.generation?.model_car?.brand?.image_url
           "
+          :alt="data?.generation?.model_car?.brand?.name"
           decoding="async"
           loading="lazy"
-          :alt="data?.generation?.model_car?.brand?.name"
           width="40"
           height="40"
         />
