@@ -7,7 +7,15 @@
     <CalcAmount
       :price="priceRental"
       :textTopleft="`Rental ${periodRental} ${periodText}`"
-    />
+      :tax="tax"
+    >
+      <template #calc-stats>
+        <slot name="calc-stats" />
+      </template>
+      <template #summary>
+        <slot name="summary" />
+      </template>
+    </CalcAmount>
     <UiButton class="calc__button">Book</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
       By ticking this box, you agree to the
@@ -25,6 +33,7 @@
 const props = defineProps({
   periodRental: [String, Number],
   priceRental: [String, Number],
+  tax: [String, Number],
   periodText: String,
 });
 

@@ -31,11 +31,11 @@ const currentCity = useState("currentCity");
 .brands {
   &__list {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     grid-gap: 24px;
-    // padding: 10px;
-    // margin: -10px;
-    // overflow: auto;
+    padding: 10px;
+    margin: -10px;
+    overflow: auto;
   }
 
   &__link {

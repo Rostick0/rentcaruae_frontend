@@ -15,7 +15,9 @@
       <div class="calc__top_right">
         <div class="calc__price-old">
           {{ periodSelect.modelValue?.name }}
-          <del class="color-red" v-if="priceSpecial">AED {{ priceSpecial }}</del>
+          <del class="color-red" v-if="priceSpecial"
+            >AED {{ priceSpecial }}</del
+          >
         </div>
         <div class="calc__price">
           AED
@@ -159,7 +161,28 @@
         :periodRental="periodRental"
         :priceRental="priceRental"
         :periodText="periodText"
-      />
+        :tax="tax"
+      >
+        <template #calc-stats>
+          <div class="calc-amount__flex" v-if="without_deposite.modelValue">
+            <div class="calc-amount__flex_left">Additional service</div>
+            <strong class="calc-amount__size-small"
+              >AED {{ withoutDepositePrice }}</strong
+            >
+          </div>
+        </template>
+        <template #summary>
+          <div class="calc-amount__flex">
+            <div class="calc__title">Total</div>
+            <strong class="calc-amount__price">
+              AED
+              <span class="calc-amount__price_val">{{
+                formatNumber(total)
+              }}</span>
+            </strong>
+          </div>
+        </template>
+      </CarForm>
     </template>
   </form>
 </template>
@@ -182,7 +205,7 @@ const clickBook = () => {
   isBook.value = true;
 
   // nextTick(() => {
-    // book.value?.scrollIntoView({ behavior: "smooth" });
+  // book.value?.scrollIntoView({ behavior: "smooth" });
   // });
 };
 
@@ -299,11 +322,19 @@ const price = computed(() =>
   )
 );
 
-const priceRental = computed(
-  () =>
-    getPeriodPrice(props.car, periodRental.value) +
-    (without_deposite.value?.modelValue ? 45 * periodRental.value : 0)
+const withoutDepositePrice = computed(() =>
+  without_deposite.value?.modelValue ? 45 * periodRental.value : 0
 );
+
+const priceRental = computed(() =>
+  getPeriodPrice(props.car, periodRental.value)
+);
+
+const preTotal = computed(() =>
+  Math.round(priceRental.value + withoutDepositePrice.value)
+);
+const tax = computed(() => Math.round(preTotal.value * 0.05));
+const total = computed(() => preTotal.value + tax.value);
 
 watch(
   () => period.value.modelValue,
@@ -319,6 +350,7 @@ watch(
 
 <style lang="scss" scoped>
 @import "../../assets/scss/components/car-carc";
+@import "../../assets/scss/components/calc-amount";
 </style>
 
 <style lang="scss">

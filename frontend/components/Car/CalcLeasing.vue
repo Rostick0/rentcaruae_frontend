@@ -129,14 +129,14 @@
         >
       </a>
     </div>
-    <template v-if="isBook">
+    <template v-if="true || isBook">
       <div class="calc-item">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
           <div class="calc-date__item">
             <strong class="calc-item__size-small">Start date</strong>
             <div class="text-ui">
-              {{ moment(start_date.modelValue).format("D MMM YYYY") }}
+              {{ startDateFormated }}
             </div>
           </div>
           <div class="calc-date__item">
@@ -152,7 +152,30 @@
         :periodRental="periodRental"
         :priceRental="priceRental"
         :periodText="periodText"
-      />
+        :tax="tax"
+      >
+        <template #calc-stats>
+          <div class="calc-amount__flex">
+            <div class="calc-amount__flex_left">Start date</div>
+            <strong class="text-ui calc-amount__size-small">{{
+              startDateFormated
+            }}</strong>
+          </div>
+          <div class="calc-amount__flex">
+            <div class="calc-amount__flex_left">Car delivery</div>
+            <strong class="calc-amount__size-small">Free</strong>
+          </div>
+        </template>
+        <template #summary>
+          <div class="calc-amount__flex">
+            <div class="calc__title">Monthly payment</div>
+            <strong class="calc-amount__price">
+              AED
+              <span class="calc-amount__price_val">{{ price }}</span>
+            </strong>
+          </div>
+        </template>
+      </CarForm>
     </template>
   </form>
 </template>
@@ -243,6 +266,9 @@ const start_date = ref({
     minDate: new Date(),
   },
 });
+const startDateFormated = computed(() =>
+  moment(start_date.value.modelValue).format("D MMM YYYY")
+);
 
 const periodRental = computed(
   () => props.car?.price_leasing?.[periodSelect.value.modelValue]?.period / 30
@@ -274,6 +300,7 @@ const priceRental = computed(
     props.car?.price_leasing[periodSelect.value.modelValue]?.price *
     (props.car?.price_leasing[periodSelect.value.modelValue]?.period / 30)
 );
+const tax = computed(() => Math.round(priceRentalDel.value * 0.05));
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
 
@@ -291,6 +318,7 @@ const maxMonth = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/components/calc-amount";
 @import "../../assets/scss/components/car-carc";
 
 .calc {
