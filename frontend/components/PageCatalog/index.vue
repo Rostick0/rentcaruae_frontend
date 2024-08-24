@@ -37,9 +37,11 @@ const props = defineProps({
 
 const route = useRoute();
 
+const oneFilterValue = setOneFilterValue(route.params);
+
 const { filters } = useFilter({
   initialFilters: {
-    ...setOneFilterValue(route.params),
+    ...oneFilterValue,
     page: +(route.params?.page ?? 1),
   },
 });
@@ -130,12 +132,6 @@ const breadcrumbs = computed(() => [
   },
 ]);
 
-const h1 = computed(() =>
-  rent.value === "leasing"
-    ? `Car leasing in ${currentCity.value?.name} ${pageText.value}`.trim()
-    : `Economy cars for rent in ${currentCity.value?.name} ${pageText.value}`.trim()
-);
-
 watch(
   () => filters.value.page,
   (newV) => {
@@ -147,14 +143,19 @@ watch(
   }
 );
 
+const { title, description, h1 } = getCatalogSeo(
+  getOneFilterType(route.params),
+  currentCity.value,
+  pageText.value,
+  rent.value === "leasing"
+);
+
 useHead({
-  title:
-    `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+  title,
   meta: [
     {
       name: "description",
-      content:
-        `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+      content: description,
     },
   ],
 });

@@ -1,4 +1,6 @@
 import useImage from "~/composables/useImage";
+import lastItem from "lodash/last";
+import startCase from "lodash/startCase";
 
 export const carFullExtends = [
   "generation.model_car.brand",
@@ -128,4 +130,57 @@ export const updateCarShow = (newV, prev) => {
   }
 
   return data;
+};
+
+export const getCarSeo = (car, isLeasing) => {
+  return isLeasing
+    ? {
+        title: `Lease ${car?.title} in Dubai at AED ${formatNumber(
+          lastItem(car?.price_leasing)?.price
+        )}/month`,
+        description: `Lease a ${car?.title} at RentcarUAE for long term basis in ${car?.user?.company?.city?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+        h1: `Monthly rental ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}`,
+      }
+    : {
+        title: `Rent ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}, UAE at AED 65/day & AED 1400/month `,
+        description: `Rent ${car?.title} in ${car?.user?.company?.city?.name}, UAE for AED 65/day & AED 1400/month.`,
+        h1: `Rent ${car?.title} in ${car?.user?.company?.city?.name}`,
+      };
+};
+
+export const getOneFilterType = (routeParams) => {
+  const whiteList = ["body", "type", "brand", "modelcar"];
+  const keys = Object.keys(routeParams);
+  const result = {};
+
+  keys?.some((item) => {
+    if (!whiteList.find((i) => i === item)) return;
+
+    result.type = item;
+    result.value = startCase(routeParams[item]);
+
+    return true;
+  });
+
+  return result;
+};
+
+export const getCatalogSeo = ({ type, value }, city, pageText, isLeasing) => {
+  if (isLeasing)
+    return {
+      title:
+        `Car leasing in ${city?.name}, flexible monthly plans and best Deals in ${pageText}`.trim(),
+      description: `Lease a car for long term basis in ${city?.name}. Relive yourself from your travel troubles in ${city?.name}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Lease a Car in ${city?.name} ${pageText}`.trim(),
+    };
+
+  if (type === "type")
+    return {
+      title:
+        `Rent ${value} Car in ${city?.name}, UAE - ${value} Cars Rental in ${city?.name} ${pageText}`.trim(),
+      description: `Find economy car rentals in ${city?.name} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
+      h1: `${value} cars for rent in Dubai ${city?.name} ${pageText}`.trim(),
+    };
+
+  return {};
 };

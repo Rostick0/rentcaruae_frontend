@@ -101,7 +101,7 @@
       :to="
         convertNameToUrl(
           `/${city?.name}/${
-            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'economy'
+            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
           }/${car?.generation?.model_car?.brand?.name}/${
             car?.generation?.model_car?.name
           }/${car?.id}`

@@ -16,10 +16,10 @@
           height="40"
         />
         <h1 class="car__title h1">
-          {{ data?.title }} in {{ data?.user?.company?.city?.name ?? "World" }}
+          {{ h1 }}
         </h1>
       </div>
-      <Car :car="data" />
+      <Car :car="data" :isLeasing="isLeasing" />
       <CarCardShortList
         v-if="data?.length"
         :cars="cars"
@@ -69,6 +69,21 @@ const { data: cars, get: getCars } = await useApi({
 });
 
 await getCars();
+
+const route = useRoute();
+const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
+
+const { h1, title, description } = getCarSeo(data.value, isLeasing.value);
+
+useHead({
+  title,
+  meta: [
+    {
+      name: "description",
+      content: description,
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>

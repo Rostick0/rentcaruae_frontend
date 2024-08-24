@@ -60,7 +60,6 @@
         linkText="All Sports cars"
         :link="convertNameToUrl(`/${currentCity?.name}/type/sports`)"
       />
-      
     </div>
     <MainServiceRental />
     <!-- <MainFaq /> -->
@@ -150,6 +149,16 @@ const { data: sportsCars, get: getSportsCars } = await useApi({
   },
 });
 await getSportsCars();
+
+useHead({
+  title: `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`,
+  meta: [
+    {
+      property: 'description',
+      content: `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`,
+    }
+  ]
+});
 </script>
 
 <style lang="scss" scoped>

@@ -14,7 +14,7 @@
         <li>
           <NuxtLink
             class="rental-pricing__item text-ui"
-            :to="$route.fullPath.replace('leasing', 'economy')"
+            :to="$route.fullPath.replace('leasing', 'rent')"
           >
             <span>View daily offer</span>
             <span>1-30 days</span>
@@ -34,7 +34,7 @@
           <li>
             <NuxtLink
               class="rental-pricing__item text-ui"
-              :to="$route.fullPath.replace('economy', 'leasing')"
+              :to="$route.fullPath.replace('rent', 'leasing')"
             >
               <span>View mounthly offer</span>
               <span>1-12 months</span>

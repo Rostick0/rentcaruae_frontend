@@ -211,7 +211,7 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     period: periodRental.value,
     tel: convertTelToDbOrNull(tel),
     car_id: route.params.id,
-    type: "economy",
+    type: "rent",
   };
 
   const res = await api.operations.create({ data });

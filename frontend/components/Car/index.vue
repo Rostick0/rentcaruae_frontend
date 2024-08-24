@@ -28,11 +28,8 @@
 <script setup>
 const props = defineProps({
   car: Object,
+  isLeasing: Boolean,
 });
-
-const route = useRoute();
-
-const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 
 const specifications = computed(() =>
   groupByInArray(

@@ -1,5 +1,5 @@
 <template>
-  <div class="specifications">
+  <div class="specifications" v-if="specifications?.length">
     <h2 class="specifications__title">Specifications</h2>
     <div class="specifications__inner">
       <div

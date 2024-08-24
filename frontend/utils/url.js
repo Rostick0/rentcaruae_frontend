@@ -16,7 +16,8 @@ export const setOneFilterValue = (routeParams, param = "") => {
   else if (routeParams?.type)
     data[`filterEQ[${param}category.name]`] = routeParams?.type;
   else if (routeParams?.brand)
-    data[`filterEQ[${param}generation.model_car.brand.name]`] = routeParams?.brand;
+    data[`filterEQ[${param}generation.model_car.brand.name]`] =
+      routeParams?.brand;
   else if (routeParams?.modelcar)
     data[`filterEQ[${param}generation.model_car.name]`] = routeParams?.modelcar;
 
