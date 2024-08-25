@@ -42,7 +42,7 @@
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
-                v-for="brand in brands"
+                v-for="brand in brandsLimit"
                 :key="brand.id"
                 :to="
                   convertNameToUrl(
@@ -74,12 +74,12 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">Rental by period</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Daily rental</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/"
-                >Weekly rental</NuxtLink
-              >
-              <NuxtLink class="footer-item__link" to="/"
-                >Mounthly rental</NuxtLink
+              <NuxtLink
+                class="footer-item__link"
+                v-for="period in rentalPeriods"
+                :key="period?.link"
+                :to="period?.link"
+                >{{ period?.name }}</NuxtLink
               >
             </div>
           </div>
@@ -146,7 +146,9 @@
                 </svg>
               </a>
             </div>
-            <div class="footer__rental text-pre-small">Are you a car rental company?</div>
+            <div class="footer__rental text-pre-small">
+              Are you a car rental company?
+            </div>
             <UiButton
               class="footer__join"
               @click="open(), (authModalState = 'register')"
@@ -166,33 +168,16 @@
 const cities = useState("cities");
 const currentCity = useState("currentCity");
 
-const { data: categories, get: getCategories } = await useApi({
-  name: "categories.getAll",
-});
-await getCategories();
+const categories = useState("categories");
 
-const { data: brands, get: getBrands } = await useApi({
-  name: "brands.getAll",
-  params: {
-    extendsCount: "cars",
-    sort: "cars_count,-name",
-    "filterNEQN[model_cars.generations.cars.id]": true,
-    limit: 8,
-  },
-});
-await getBrands();
+const brands = useState("brands");
+const brandsLimit = computed(
+  () => brands.value?.length && [...brands.value]?.slice(0, 8)
+);
 
-const { data: generations, get: getGenerations } = await useApi({
-  name: "distinctValue.getAll",
-  init: true,
-  params: {
-    table: "generations",
-    column: "name",
-    sort: "-name",
-    limit: 8,
-  },
-});
-await getGenerations();
+const generations = useState("generations");
+
+const rentalPeriods = useState("rentalPeriods");
 
 const { open } = useModal({
   name: "auth-modal",
@@ -203,6 +188,7 @@ const authModalState = useState("authModalState");
 
 <style lang="scss" scoped>
 .footer {
+  background-color: var(--color-grey);
   padding: 40px 0 30px;
 
   &__top {

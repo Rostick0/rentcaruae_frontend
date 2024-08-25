@@ -9,24 +9,17 @@
 </template>
 
 <script setup>
-const { data, get } = await useApi({
-  name: "brands.getAll",
-  params: {
-    extendsCount: "cars",
-    sort: "cars_count,-name",
-    limit: 12,
-  },
-});
-
-await get();
+const data = useState("brands");
 
 const config = useRuntimeConfig();
 
 const brands = computed(() =>
-  data.value?.map?.((item) => ({
-    ...item,
-    image_url: config.public.BACK_URL + item.image_url,
-  }))
+  data.value
+    ?.map?.((item) => ({
+      ...item,
+      image_url: config.public.BACK_URL + item.image_url,
+    }))
+    ?.slice(0, 12)
 );
 </script>
 

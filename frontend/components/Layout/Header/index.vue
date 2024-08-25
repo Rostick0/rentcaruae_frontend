@@ -5,21 +5,29 @@
         <NuxtLink class="header__logo d-flex" to="/">
           <Logo />
         </NuxtLink>
-        <UiButton class="btn-flex" @click="clickRentCar">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
-            <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
-            <rect x="11" y="11" width="7" height="7" rx="2" fill="white" />
-            <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
-          </svg>
-          <span>Rent a car</span>
-        </UiButton>
+        <UiDropdownMenu>
+          <template #body>
+            <UiButton class="btn-flex">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
+                <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
+                <rect x="11" y="11" width="7" height="7" rx="2" fill="white" />
+                <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
+              </svg>
+              <span>Rent a car</span>
+            </UiButton>
+          </template>
+          <template #drop>
+            <LayoutHeaderRentalDropDown :list="rentACar" />
+          </template>
+        </UiDropdownMenu>
+
         <div class="header__search">
           <MainSearch variant="outlined" />
         </div>
@@ -75,12 +83,24 @@
       <div class="header__bottom">
         <UiSelectWithIcons v-model="city" :options="citiesComputed" />
         <div class="header__links">
+          <UiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
+            <template #body>
+              <div class="header__link text-ui">
+                {{ menuItem.name }}
+              </div>
+            </template>
+            <template #drop>
+              <LayoutHeaderDropDown
+                v-if="!menuItem?.is_brand"
+                :links="menuItem?.links"
+              />
+              <LayoutHeaderBrandsDropDown v-else :links="menuItem?.links" />
+            </template>
+          </UiDropdownMenu>
           <NuxtLink
             class="header__link text-ui"
-            v-for="link in links"
-            :key="link.name"
-            :to="link.link"
-            >{{ link.name }}</NuxtLink
+            :to="convertNameToUrl(`/${city?.name}/leasing`)"
+            >Car Leasing</NuxtLink
           >
         </div>
       </div>
@@ -89,20 +109,14 @@
 </template>
 
 <script setup>
+import remove from "lodash/remove";
+
 const { open } = useModal({
   name: "auth-modal",
 });
 const authModalState = useState("authModalState");
 
 const user = useState("user");
-
-const clickRentCar = () => {
-  // if (user.value) {
-  //   navigateTo("/admin/cars/add");
-  //   return;
-  // }
-  // open();
-};
 
 const lang = ref({
   type: "select",
@@ -136,28 +150,71 @@ const citiesComputed = computed(() =>
 
 const city = useState("currentCity", () => citiesComputed.value?.[3]);
 
-const links = computed(() => [
+const categories = useState("categories");
+const brands = useState("brands");
+const generations = useState("generations");
+const rentalPeriods = useState("rentalPeriods");
+
+const categoriesLinks = computed(() =>
+  categories.value?.map?.((item) => ({
+    ...item,
+    link: convertNameToUrl(`/${city.value?.name ?? "all"}/type/${item?.name}`),
+  }))
+);
+
+const brandsLinks = computed(() =>
+  brands.value?.map?.((item) => ({
+    ...item,
+    link: convertNameToUrl(`/${city.value?.name ?? "all"}/brand/${item?.name}`),
+  }))
+);
+
+const generationsLinks = computed(() =>
+  generations.value?.map?.((item) => ({
+    ...item,
+    link: convertNameToUrl(`/${city.value?.name ?? "all"}/body/${item?.name}`),
+  }))
+);
+
+const menu = computed(() => [
   {
     name: "Categories",
-    link: "#footer",
+    links: categoriesLinks.value,
   },
   {
     name: "Brands",
-    link: "#footer",
+    links: brandsLinks.value,
+    is_brand: true,
   },
   {
     name: "Body Types",
-    link: "#footer",
+    links: generationsLinks.value,
   },
   {
     name: "Rental by period",
-    link: "#footer",
-  },
-  {
-    name: "Car Leasing",
-    link: convertNameToUrl(`/${city?.value?.name}/leasing`),
+    links: rentalPeriods.value,
   },
 ]);
+
+const citiesLinks = computed(() =>
+  cities.value?.map((item) => ({
+    ...item,
+    link: convertNameToUrl(`/${item?.name}`),
+  }))
+);
+
+const rentACar = computed(() => {
+  const data = [...menu.value];
+  remove(data, (item) => item.name === "Brands");
+
+  return [
+    {
+      name: "Rent car",
+      links: citiesLinks.value,
+    },
+    ...data,
+  ];
+});
 </script>
 
 <style lang="scss" scoped>
@@ -191,6 +248,7 @@ const links = computed(() => [
   }
 
   &__link {
+    cursor: pointer;
     padding: 12px 16px;
   }
 }

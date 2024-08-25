@@ -145,7 +145,7 @@ watch(
     column-gap: 8px;
 
     .checkbox__label {
-      color: var(--color-gray-blue);
+      color: var(--color-grey-blue);
       font-size: 12px;
       padding-top: 0;
     }
@@ -157,7 +157,7 @@ watch(
 .checkbox {
   &.grey-small {
     a {
-      color: var(--color-gray-blue);
+      color: var(--color-grey-blue);
       text-decoration: underline;
     }
   }

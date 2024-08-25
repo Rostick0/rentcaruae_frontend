@@ -60,9 +60,9 @@ const toggle = () => {
 <style lang="scss">
 .dropdown {
   &-menu {
-    position: fixed;
+    position: absolute;
     z-index: 102;
-    width: 200px;
+    // width: 200px;
 
     &-button {
     }

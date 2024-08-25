@@ -129,7 +129,7 @@
         >
       </a>
     </div>
-    <template v-if="true || isBook">
+    <template v-if="isBook">
       <div class="calc-item">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
