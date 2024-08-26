@@ -7,6 +7,7 @@
       <th class="table__th">E-mail</th>
       <th class="table__th">Phone</th>
       <th class="table__th">Rental</th>
+      <th class="table__th">With deposite?</th>
       <th class="table__th">Price</th>
     </tr>
     <tbody>

@@ -47,9 +47,6 @@
     </div>
     <div
       class="select__options"
-      :class="{
-        select__options_color: isColour,
-      }"
       v-show="alwaysOpen || isHideInput || isOpened"
       ref="selectRef"
       @mousedown.prevent
@@ -119,10 +116,6 @@ const props = defineProps({
   },
   componentOption: {
     type: [Object, null],
-  },
-  isColour: {
-    default: false,
-    type: Boolean,
   },
   page: {
     type: Number,
@@ -287,14 +280,10 @@ const addMore = (event) => {
     grid-template-columns: repeat(4, 1fr);
     padding: 10px 8px;
     position: absolute;
+    overflow: auto;
     width: 100%;
     max-height: 20rem;
     z-index: 10;
-
-    &_color {
-      display: flex;
-      flex-wrap: wrap;
-    }
   }
 
   @media (max-width: 1024px) {

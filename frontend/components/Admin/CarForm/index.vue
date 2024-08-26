@@ -57,7 +57,7 @@
     </form>
     <div class="car-form__preview form__flex_right">
       <LazyCarCardItem :car="car" />
-      <LazyCarCardShortItem v-show="valuesForm?.is_show_security" :car="car" />
+      <LazyCarCardShortItem v-show="isSpecialOffer" :car="car" />
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <LazyUiModal :name="nameModal">
-    <form class="car-promote">
+    <form class="car-promote" @submit="onSubmit">
       <LazyAdminCarFormSpecialOffer :car="carSelected" isShow @setHide="close">
         <template #bottom>
           <div class="car-promote__bottom">
@@ -13,6 +13,9 @@
 </template>
 
 <script setup>
+import { useForm } from "vee-validate";
+import api from "~/api";
+
 const props = defineProps({
   nameModal: {
     type: String,
@@ -22,6 +25,17 @@ const props = defineProps({
     type: [Object, null],
     required: true,
   },
+});
+
+const { handleSubmit } = useForm();
+
+const onSubmit = handleSubmit(async (data) => {
+  const res = await api.car.update({
+    id: props.carSelected?.id,
+    data,
+  });
+
+  console.log(res);
 });
 
 const { open, close } = useModal({

@@ -27,6 +27,7 @@ export const getCarOnSubmitValues = async ({
   fuel_type_id,
   generation_id,
   transmission_id,
+  min_days,
   price_leasing,
   mileage_leasing,
   price_sum,
@@ -50,6 +51,7 @@ export const getCarOnSubmitValues = async ({
     fuel_type_id: fuel_type_id?.id,
     generation_id: generation_id?.id,
     transmission_id: transmission_id?.id,
+    min_days: min_days?.id,
     price_leasing: price_leasing?.map((item) => removeSpaces(item)),
     mileage_leasing: mileage_leasing?.map((item) => removeSpaces(item)),
     price_sum: price_sum?.map((item) => removeSpaces(item)),
@@ -62,7 +64,7 @@ export const getCarOnSubmitValues = async ({
 };
 
 export const getPriceRefreshCars = (user, val) => {
-  if (user?.refresh_car?.max > 35) return val * 10;
+  // if (user?.refresh_car?.max > 35) return val * 10;
 
   if (user?.refresh_car?.count - val < 0)
     return (val - user?.refresh_car?.count) * 10;

@@ -22,6 +22,9 @@
         lead?.period
       }})
     </td>
+    <td class="table__td">
+      <UiSwitch :modelValue="lead?.without_deposite"></UiSwitch>
+    </td>
     <td class="table__td">AED {{ formatNumber(lead?.price) }}</td>
   </tr>
 </template>
@@ -34,7 +37,9 @@ const props = defineProps({
 });
 
 const dateEnd = computed(() =>
-  moment(props?.lead?.start_date).add("days", props?.lead?.period).format("DD MMM YYYY")
+  moment(props?.lead?.start_date)
+    .add("days", props?.lead?.period)
+    .format("DD MMM YYYY")
 );
 </script>
 
