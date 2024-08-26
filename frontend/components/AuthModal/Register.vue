@@ -151,7 +151,7 @@ const onSubmit = handleSubmit(async ({ tel, city_id, ...values }) => {
 
   const data = {
     ...values,
-    tel: convertTelToDbOrNull(tel),
+    tel: convertPhoneToDb(tel),
   };
   data.company.city_id = data?.company?.city_id?.id;
   

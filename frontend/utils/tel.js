@@ -16,8 +16,17 @@ export const convertTelToForm = (tel) => [
   tel?.substring(tel?.length - 10),
 ];
 
-export const convertTelToDb = (tel) =>
-  tel?.join("")?.replace(new RegExp(" ", "g"), "")?.replace("+", "");
+// export const convertTelToDb = (tel) =>
+//   tel?.join("")?.replace(new RegExp(" ", "g"), "")?.replace("+", "");
 
-export const convertTelToDbOrNull = (tel) =>
-  tel?.[1] ? convertTelToDb(tel) : null;
+// export const convertTelToDbOrNull = (tel) =>
+//   tel?.[1] ? convertTelToDb(tel) : null;
+
+export const convertPhoneToForm = (val) =>
+  (val?.length > 0 && val !== "+" ? "+" : "") +
+  (val?.replace(/[^\w\s]/gi, "")?.replace(/\p{L}/gu, "") ?? "");
+
+export const convertPhoneToDb = (tel) =>
+  tel?.replace(new RegExp(" ", "g"), "")?.replace("+", "");
+
+// export const convertPhoneToDbOrNull = (val) => {};

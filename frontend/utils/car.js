@@ -190,3 +190,8 @@ export const getCatalogSeo = ({ type, value }, city, pageText, isLeasing) => {
 
   return {};
 };
+
+export const getWhatsappText = (car, isLeasing = false) =>
+  `I would like to ${isLeasing ? "lease" : "rent"} ${
+    car?.generation?.model_car?.brand?.name
+  } ${car?.generation?.model_car?.name}`;

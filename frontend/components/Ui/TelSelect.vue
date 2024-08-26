@@ -7,25 +7,36 @@
   >
     <div class="control__tel-select tel-select">
       <label class="tel-select__field">
-        <UiSelectWithIcons
+        <!-- <UiSelectWithIcons
           v-model="phone"
           :options="optionsNumbers"
           closeAfterSelect
+        /> -->
+        <TelInput
+          @update:modelValue="updatePhone"
+          :modelValue="modelValue"
+          defaultCountry="ae"
+          :dropdownOptions="{ showFlags: true, showDialCodeInList: true }"
+          :inputOptions="{
+            maxlength: 19,
+          }"
         />
-        <VueTelInput />
-        <input
+        <!-- <input
           class="tel-select__value"
           v-model="phoneText"
           type="text"
           v-maska
           data-maska="### ### ## ##"
-        />
+        /> -->
       </label>
     </div>
   </UiControl>
 </template>
 
 <script setup>
+import debounce from "lodash/debounce";
+import { VueTelInput as TelInput } from "vue-tel-input";
+import "vue-tel-input/vue-tel-input.css";
 const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
@@ -36,20 +47,23 @@ const props = defineProps({
   searchString: [String, Number],
   placeholder: String,
   modelValue: {
-    type: Array,
-    default: ["", ""],
+    type: String,
+    default: "",
   },
 });
 
-const phone = ref(props.modelValue?.[0] ?? optionsNumbers[0]);
-const phoneText = ref(props.modelValue?.[1]);
+const updatePhone = (val) =>
+  emits("update:modelValue", convertPhoneToForm(val));
 
-watch(
-  () => [phone.value, phoneText.value],
-  () => {
-    emits("update:modelValue", [phone.value?.name, phoneText.value]);
-  }
-);
+// const phone = ref(props.modelValue?.[0] ?? optionsNumbers[0]);
+// const phoneText = ref(props.modelValue?.[1]);
+
+// watch(
+//   () => [phone.value, phoneText.value],
+//   () => {
+//     emits("update:modelValue", [phone.value?.name, phoneText.value]);
+//   }
+// );
 </script>
 
 <style lang="scss" scoped>
@@ -87,25 +101,69 @@ watch(
 
 <style lang="scss">
 .tel-select {
-  .select-icons {
-    &-switch {
-      &__icon {
-        order: 1;
-      }
+  .vue-tel-input {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+  }
 
-      &__arrow {
-        order: 2;
+  .vti {
+    &__selection {
+      margin-left: -2px;
+    }
 
-        path {
-          fill: var(--color-text100);
-        }
+    &__dropdown {
+      padding: 0;
+
+      &-arrow {
+        border-left: 2px solid;
+        border-bottom: 2px solid;
+        border-color: var(--color-text100);
+        color: transparent;
+        transform: rotate(-45deg);
+        margin-top: -2px;
+        width: 8px;
+        height: 8px;
       }
     }
 
-    &__value {
-      color: var(--color-text100);
-      order: 3;
+    &__input {
+      background: transparent;
+      font-size: 16px;
+      font-weight: 700;
+      padding-left: 6px;
+      width: 100%;
+    }
+
+    &__flag {
+      box-shadow: none;
+      margin-left: 0;
+      margin-right: 8px;
+      transform: scale(0.8);
+      // width: 16px;
+      // height: 14px;
     }
   }
+
+  // .select-icons {
+  //   &-switch {
+  //     &__icon {
+  //       order: 1;
+  //     }
+
+  //     &__arrow {
+  //       order: 2;
+
+  //       path {
+  //         fill: var(--color-text100);
+  //       }
+  //     }
+  //   }
+
+  //   &__value {
+  //     color: var(--color-text100);
+  //     order: 3;
+  //   }
+  // }
 }
 </style>

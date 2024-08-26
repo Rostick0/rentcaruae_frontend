@@ -1,6 +1,7 @@
 <template>
   <div class="calc-item" ref="book">
     <div class="calc__title">Your booking details</div>
+    {{ tel.modelValue }}
     <VFormComponent :field="tel" />
     <VFormComponent :field="full_name" />
     <VFormComponent :field="email" />
@@ -40,7 +41,7 @@ const props = defineProps({
 const tel = ref({
   type: "tel",
   name: "tel",
-  modelValue: [],
+  modelValue: "",
   rules: "",
 
   bind: {

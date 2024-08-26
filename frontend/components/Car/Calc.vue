@@ -123,7 +123,7 @@
       <a
         class="d-flex"
         @click="clickWhatsApp"
-        :href="`https://wa.me/${car?.user?.tel}`"
+        :href="`https://wa.me/${car?.user?.tel}?text=${getWhatsappText(car)}`"
         rel="noopener nofollow"
         target="_blank"
       >
@@ -232,22 +232,24 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     ...values,
     start_date: moment(period?.[1]).format("YYYY-MM-DD"),
     period: periodRental.value,
-    tel: convertTelToDbOrNull(tel),
+    tel: convertPhoneToDb(tel),
     car_id: route.params.id,
     type: "rent",
   };
 
-  const res = await api.operations.create({ data });
+  console.log(data);
 
-  if (res?.error) {
-    warningPopup(res?.errorResponse?.data?.message);
-    setErrors(res?.errorResponse?.data?.errors);
-    return;
-  }
+  // const res = await api.operations.create({ data });
 
-  success("Thank you for your application");
+  // if (res?.error) {
+  //   warningPopup(res?.errorResponse?.data?.message);
+  //   setErrors(res?.errorResponse?.data?.errors);
+  //   return;
+  // }
 
-  isBook.value = false;
+  // success("Thank you for your application");
+
+  // isBook.value = false;
 });
 
 const periodSelect = ref({

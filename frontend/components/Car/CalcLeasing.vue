@@ -120,7 +120,10 @@
       <a
         class="d-flex"
         @click="clickWhatsApp"
-        :href="`https://wa.me/${car?.user?.tel}`"
+        :href="`https://wa.me/${car?.user?.tel}?text=${getWhatsappText(
+          car,
+          true
+        )}`"
         rel="noopener nofollow"
         target="_blank"
       >
@@ -225,7 +228,7 @@ const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
   const data = {
     ...values,
     start_date: moment(start_date).format("YYYY-MM-DD"),
-    tel: convertTelToDbOrNull(tel),
+    tel: convertPhoneToDb(tel),
     car_id: route.params.id,
     type: "leasing",
   };
