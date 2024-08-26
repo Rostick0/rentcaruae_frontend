@@ -69,7 +69,9 @@ const emits = defineEmits(["setHide"]);
 const price_leasing_0 = ref({
   type: "text",
   name: "price_leasing.0",
-  modelValue: props?.car?.price_leasing?.[0]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 30)?.price ??
+    "",
 
   bind: {
     label: "Price per 1 month (AED)",
@@ -83,7 +85,9 @@ const price_leasing_0 = ref({
 const mileage_leasing_0 = ref({
   type: "text",
   name: "mileage_leasing.0",
-  modelValue: props?.car?.price_leasing?.[0]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 30)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per month (km)",
@@ -97,7 +101,9 @@ const mileage_leasing_0 = ref({
 const price_leasing_1 = ref({
   type: "text",
   name: "price_leasing.1",
-  modelValue: props?.car?.price_leasing?.[1]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 90)?.price ??
+    "",
 
   bind: {
     label: "Price per 3 months (AED)",
@@ -111,7 +117,9 @@ const price_leasing_1 = ref({
 const mileage_leasing_1 = ref({
   type: "text",
   name: "mileage_leasing.1",
-  modelValue: props?.car?.price_leasing?.[1]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 90)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per 3 months (km)",
@@ -125,7 +133,9 @@ const mileage_leasing_1 = ref({
 const price_leasing_2 = ref({
   type: "text",
   name: "price_leasing.2",
-  modelValue: props?.car?.price_leasing?.[2]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 180)?.price ??
+    "",
 
   bind: {
     label: "Price per 6 months (AED)",
@@ -139,7 +149,9 @@ const price_leasing_2 = ref({
 const mileage_leasing_2 = ref({
   type: "text",
   name: "mileage_leasing.2",
-  modelValue: props?.car?.price_leasing?.[2]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 180)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per 6 months (km)",
@@ -153,7 +165,9 @@ const mileage_leasing_2 = ref({
 const price_leasing_3 = ref({
   type: "text",
   name: "price_leasing.3",
-  modelValue: props?.car?.price_leasing?.[3]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 270)?.price ??
+    "",
 
   bind: {
     label: "Price per 9 months (AED)",
@@ -167,7 +181,9 @@ const price_leasing_3 = ref({
 const mileage_leasing_3 = ref({
   type: "text",
   name: "mileage_leasing.3",
-  modelValue: props?.car?.price_leasing?.[3]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 270)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per 9 months (km)",
@@ -181,7 +197,9 @@ const mileage_leasing_3 = ref({
 const price_leasing_4 = ref({
   type: "text",
   name: "price_leasing.4",
-  modelValue: props?.car?.price_leasing?.[4]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 360)?.price ??
+    "",
 
   bind: {
     label: "Price per 12 months (AED)",
@@ -195,7 +213,9 @@ const price_leasing_4 = ref({
 const mileage_leasing_4 = ref({
   type: "text",
   name: "mileage_leasing.4",
-  modelValue: props?.car?.price_leasing?.[4]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 360)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per 12 months (km)",
@@ -209,7 +229,9 @@ const mileage_leasing_4 = ref({
 const price_leasing_5 = ref({
   type: "text",
   name: "price_leasing.5",
-  modelValue: props?.car?.price_leasing?.[5]?.price ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 720)?.price ??
+    "",
 
   bind: {
     label: "Price per 24 months (AED)",
@@ -223,7 +245,9 @@ const price_leasing_5 = ref({
 const mileage_leasing_5 = ref({
   type: "text",
   name: "mileage_leasing.5",
-  modelValue: props?.car?.price_leasing?.[5]?.mileage ?? "",
+  modelValue:
+    props?.car?.price_leasing?.find?.((item) => item?.period == 720)?.mileage ??
+    "",
 
   bind: {
     label: "Mileage per 24 months (km)",

@@ -12,6 +12,7 @@
           :options="optionsNumbers"
           closeAfterSelect
         />
+        <VueTelInput />
         <input
           class="tel-select__value"
           v-model="phoneText"
