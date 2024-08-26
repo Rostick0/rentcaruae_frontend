@@ -95,7 +95,7 @@ export const updateCarShow = (newV, prev) => {
     data.transmission = newV?.transmission_id;
   }
 
-  if (newV?.seats !== data?.seats) {
+  if (newV?.seats != data?.seats) {
     data.seats = newV?.seats;
   }
 

@@ -25,17 +25,28 @@ const props = defineProps({
     type: [Object, null],
     required: true,
   },
+  getCars: Function,
 });
+
+console.log(props.carSelected);
 
 const { handleSubmit } = useForm();
 
-const onSubmit = handleSubmit(async (data) => {
+const onSubmit = handleSubmit(async ({ price_special }) => {
   const res = await api.car.update({
     id: props.carSelected?.id,
-    data,
+    data: {
+      price_special: price_special?.map((item) => removeSpaces(item)),
+    },
   });
 
-  console.log(res);
+  if (res?.error) {
+    warningPopup(res?.errorResponse);
+    return;
+  }
+
+  close();
+  props?.getCars?.();
 });
 
 const { open, close } = useModal({

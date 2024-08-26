@@ -29,6 +29,7 @@
     <LazyAdminCarPromoteModal
       :nameModal="nameModal"
       :carSelected="carSelected"
+      :getCars="get"
     />
   </div>
 </template>
@@ -48,7 +49,7 @@ const { filters } = useFilter({
 const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
-    extends: "price",
+    extends: "price,price_special",
     without_cache: true,
     limit: 8,
   },

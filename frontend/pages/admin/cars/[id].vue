@@ -52,9 +52,17 @@ const onSubmit = handleSubmit(
   }
 );
 
+const isRenred = ref();
+
+onMounted(() => {
+  isRenred.value = true;
+});
+
 watch(
   values,
   debounce((newV) => {
+    if (!isRenred.value) return;
+    
     data.value = updateCarShow(newV, data.value);
   }, 300)
 );
