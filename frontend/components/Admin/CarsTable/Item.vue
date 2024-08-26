@@ -10,7 +10,9 @@
     </td>
     <td class="table__td">{{ car?.id }}</td>
     <td class="table__td">{{ car?.title }}</td>
-    <td class="table__td"></td>
+    <td class="table__td">
+      <UiActive class="margin-center" v-if="car?.price_special?.length" />
+    </td>
     <td class="table__td">
       <UiSwitch :modelValue="isShow" @update:model-value="changeShow" />
     </td>
@@ -46,13 +48,6 @@ const props = defineProps({
 const emits = defineEmits(["selectCar", "changeOneCarSelected"]);
 
 const isShow = ref(!!props.car?.is_show);
-
-// const isSelected = ref(props.isSelected);
-
-// watch(
-//   () => props.isSelected,
-//   (newV) => (isSelected.value = newV)
-// );
 
 const changeShow = debounce(async (newV) => {
   const res = await api.car.update({

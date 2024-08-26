@@ -71,8 +71,8 @@ const currentCity = useState("currentCity");
 
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
-  "filterNEQ[price_special.id]": true,
-  sort: "-id",
+  "filterNEQ[price_special.price]": true,
+  sort: "id",
   limit: 4,
 };
 // const { data: specialCars, get: getSpecialCars } = await useApi({
@@ -154,10 +154,10 @@ useHead({
   title: `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`,
   meta: [
     {
-      property: 'description',
+      property: "description",
       content: `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`,
-    }
-  ]
+    },
+  ],
 });
 </script>
 

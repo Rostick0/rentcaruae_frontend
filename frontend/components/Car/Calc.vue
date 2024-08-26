@@ -165,7 +165,7 @@
       >
         <template #calc-stats>
           <div class="calc-amount__flex" v-if="without_deposite.modelValue">
-            <div class="calc-amount__flex_left">Additional service</div>
+            <div class="calc-amount__flex_left">Deposite free</div>
             <strong class="calc-amount__size-small"
               >AED {{ withoutDepositePrice }}</strong
             >

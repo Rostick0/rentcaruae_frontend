@@ -28,8 +28,6 @@ const props = defineProps({
   getCars: Function,
 });
 
-console.log(props.carSelected);
-
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async ({ price_special }) => {

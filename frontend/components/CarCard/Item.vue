@@ -65,7 +65,7 @@
         <div class="car-price">
           <div class="car-price__old">
             <span>Daily</span>
-            <del class="color-red" v-if="car?.price_special?.[0]"
+            <del class="color-red" v-if="car?.price_special?.[0]?.price"
               >AED {{ formatNumber(car?.price?.[0]?.price) }}</del
             >
           </div>
@@ -81,7 +81,7 @@
         <div class="car-price">
           <div class="car-price__old">
             <span>Monthly</span>
-            <del class="color-red" v-if="car?.price_special?.[2]"
+            <del class="color-red" v-if="car?.price_special?.[2]?.price"
               >AED {{ formatNumber(car?.price?.[2]?.price) }}</del
             >
           </div>
