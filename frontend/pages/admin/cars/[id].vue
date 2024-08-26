@@ -19,6 +19,7 @@ const { data, get } = await useApi({
   name: "car.get",
   params: {
     extends: carFullExtends,
+    without_cache: true,
   },
   requestParams: {
     id,

@@ -82,7 +82,7 @@ const min_days = ref({
   type: "select",
   name: "min_days",
   modelValue: props?.car?.min_days
-    ? { id: min_days, value: min_days }
+    ? { id: props?.car?.min_days, value: props?.car?.min_days }
     : { id: 1, value: 1 },
 
   bind: {

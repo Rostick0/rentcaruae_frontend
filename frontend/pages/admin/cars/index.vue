@@ -49,6 +49,7 @@ const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
     extends: "price",
+    without_cache: true,
     limit: 8,
   },
   filters,
