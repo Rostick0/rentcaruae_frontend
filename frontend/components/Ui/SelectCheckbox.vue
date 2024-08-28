@@ -106,14 +106,14 @@ const handleSelect = (option) => {
 .select-checkbox {
   &.control {
     row-gap: 10px;
-  }
 
-  .control {
-    .control__label {
-      background-color: transparent;
-      font-size: 16px;
-      font-weight: 500;
-      position: static;
+    .control {
+      &__label {
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: 500;
+        position: static;
+      }
     }
   }
 }
