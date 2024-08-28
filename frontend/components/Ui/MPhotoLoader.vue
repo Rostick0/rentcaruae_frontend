@@ -5,13 +5,52 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <div class="photoloader__images">
-      <div class="photoloader__image" v-for="item in files" :key="item.id">
-        <div class="photoloader__image_delete" @click="handleRemove(item)">
-          ✖
+    <div class="photoloader__images" @mouseup="dragElem = null">
+      <template
+        v-for="item in files?.sort((a, b) => a?.order - b?.order)"
+        :key="item.id"
+      >
+        <div @mouseup="dragElem = null">
+          <UiDraggable>
+            <template #willselect>
+              <div
+                class="photoloader__image"
+                @mousedown="dragElem = item"
+                @mousemove="
+                  dragElem && item.id != dragElem.id && changeOrder(item)
+                "
+              >
+                <div
+                  class="photoloader__image_delete"
+                  @click="handleRemove(item)"
+                >
+                  ✖
+                </div>
+                <img class="photoloader__img" :src="item?.path" alt="Error" />
+              </div>
+            </template>
+            <!-- <template #selected>
+            <div
+              class="photoloader__image"
+              @mousemove="
+                dragElem &&
+                  item.id != dragElem.id &&
+                  changeOrder(dragElem, item)
+              "
+            >
+              <div
+                class="photoloader__image_delete"
+                @click="handleRemove(item)"
+              >
+                ✖
+              </div>
+              <img class="photoloader__img" :src="item?.path" alt="Error" />
+            </div>
+          </template> -->
+          </UiDraggable>
         </div>
-        <img class="photoloader__img" :src="item?.path" alt="Error" />
-      </div>
+      </template>
+
       <label
         class="control__photoloader photoloader__block"
         :class="{ error: errorMessage }"
@@ -48,6 +87,7 @@
   </UiControl>
 </template>
 <script setup>
+import debounce from "lodash/debounce";
 import { size } from "@vee-validate/rules";
 import { v4 } from "uuid";
 
@@ -76,11 +116,34 @@ const props = defineProps({
   forceDeps: Boolean,
 });
 
-const files = ref(props.modelValue);
+const files = ref(
+  props.modelValue?.map((item, i) => ({ ...item, order: i + 1 }))
+);
 
 onMounted(async () => {
-  files.value = props?.modelValue || [];
+  files.value =
+    props?.modelValue?.map((item, i) => ({ ...item, order: i + 1 })) || [];
 });
+
+const dragElem = ref();
+
+const changeOrder = debounce((el) => {
+  // const a = [...props.modelValue];
+  const tmpOrder = files.value.find((i) => i.id == dragElem.value.id).order;
+  files.value.find((i) => i.id == dragElem.value.id).order = el.order;
+  files.value.find((i) => i.id == el.id).order = tmpOrder;
+
+  emits("update:modelValue", files.value);
+  // console.log(tmpOrder);
+  // console.log(a, props.modelValue);
+  // emits("update:modelValue", a);
+  // api.table.update({
+  //   id: dragElem.id,
+  //   data: {
+  //     order: dragElem.order
+  //   }
+  // })
+}, 10);
 
 const handleOnFileChange = (e) => {
   const _files = e.target.files;

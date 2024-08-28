@@ -237,19 +237,19 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     type: "rent",
   };
 
-  console.log(data);
+  // console.log(data);
 
-  // const res = await api.operations.create({ data });
+  const res = await api.operations.create({ data });
 
-  // if (res?.error) {
-  //   warningPopup(res?.errorResponse?.data?.message);
-  //   setErrors(res?.errorResponse?.data?.errors);
-  //   return;
-  // }
+  if (res?.error) {
+    warningPopup(res?.errorResponse?.data?.message);
+    setErrors(res?.errorResponse?.data?.errors);
+    return;
+  }
 
-  // success("Thank you for your application");
+  success("Thank you for your application");
 
-  // isBook.value = false;
+  isBook.value = false;
 });
 
 const periodSelect = ref({
