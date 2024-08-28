@@ -109,7 +109,7 @@ const handleSelect = (option) => {
   }
 
   .control {
-    &__label {
+    .control__label {
       background-color: transparent;
       font-size: 16px;
       font-weight: 500;

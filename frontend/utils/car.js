@@ -148,8 +148,8 @@ export const getCarSeo = (car, isLeasing) => {
         h1: `Monthly rental ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}`,
       }
     : {
-        title: `Rent ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}, UAE at AED 65/day & AED 1400/month `,
-        description: `Rent ${car?.title} in ${car?.user?.company?.city?.name}, UAE for AED 65/day & AED 1400/month.`,
+        title: `Rent ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}, UAE at AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month `,
+        description: `Rent ${car?.title} in ${car?.user?.company?.city?.name}, UAE for AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month.`,
         h1: `Rent ${car?.title} in ${car?.user?.company?.city?.name}`,
       };
 };
