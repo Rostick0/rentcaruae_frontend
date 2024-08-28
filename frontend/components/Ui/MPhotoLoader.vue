@@ -5,49 +5,39 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <div class="photoloader__images" @mouseup="dragElem = null">
+    <div class="photoloader__images">
       <template
         v-for="item in files?.sort((a, b) => a?.order - b?.order)"
         :key="item.id"
       >
         <div @mouseup="dragElem = null">
-          <UiDraggable>
-            <template #willselect>
-              <div
-                class="photoloader__image"
-                @mousedown="dragElem = item"
-                @mousemove="
-                  dragElem && item.id != dragElem.id && changeOrder(item)
-                "
-              >
+          <div @mousedown="dragElem = item">
+            <UiDraggable>
+              <template #willselect>
                 <div
-                  class="photoloader__image_delete"
-                  @click="handleRemove(item)"
+                  class="photoloader__image"
+                  @mousemove="
+                    dragElem &&
+                      item.id != dragElem.id &&
+                      changeOrder(dragElem, item)
+                  "
                 >
-                  ✖
+                  <div
+                    class="photoloader__image_delete"
+                    @click="handleRemove(item)"
+                  >
+                    ✖
+                  </div>
+                  <img class="photoloader__img" :src="item?.path" alt="Error" />
                 </div>
-                <img class="photoloader__img" :src="item?.path" alt="Error" />
-              </div>
-            </template>
-            <!-- <template #selected>
-            <div
-              class="photoloader__image"
-              @mousemove="
-                dragElem &&
-                  item.id != dragElem.id &&
-                  changeOrder(dragElem, item)
-              "
-            >
-              <div
-                class="photoloader__image_delete"
-                @click="handleRemove(item)"
-              >
-                ✖
-              </div>
-              <img class="photoloader__img" :src="item?.path" alt="Error" />
-            </div>
-          </template> -->
-          </UiDraggable>
+              </template>
+              <template #selected>
+                <div class="photoloader__image">
+                  <img class="photoloader__img" :src="item?.path" alt="Error" />
+                </div>
+              </template>
+            </UiDraggable>
+          </div>
         </div>
       </template>
 
@@ -127,23 +117,14 @@ onMounted(async () => {
 
 const dragElem = ref();
 
-const changeOrder = debounce((el) => {
-  // const a = [...props.modelValue];
-  const tmpOrder = files.value.find((i) => i.id == dragElem.value.id).order;
-  files.value.find((i) => i.id == dragElem.value.id).order = el.order;
+const changeOrder = debounce((dragElemArg, el) => {
+  const tmpOrder = files.value.find((i) => i.id == dragElemArg.id).order;
+  files.value.find((i) => i.id == dragElemArg.id).order = el.order;
   files.value.find((i) => i.id == el.id).order = tmpOrder;
 
   emits("update:modelValue", files.value);
-  // console.log(tmpOrder);
-  // console.log(a, props.modelValue);
-  // emits("update:modelValue", a);
-  // api.table.update({
-  //   id: dragElem.id,
-  //   data: {
-  //     order: dragElem.order
-  //   }
-  // })
-}, 10);
+  dragElem.value = null
+});
 
 const handleOnFileChange = (e) => {
   const _files = e.target.files;
