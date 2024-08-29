@@ -44,7 +44,7 @@ create(id);
 const { data, get } = await useApi({
   name: "car.get",
   params: {
-    extends: carFullExtends + ",user.company.image.image,user.company.city",
+    extends: carFullExtends + ",user.company.city",
   },
   requestParams: {
     id,
@@ -166,6 +166,9 @@ useHead({
   }
 
   &__make {
+    &_img {
+      flex-shrink: 0;
+    }
   }
 
   &__title {

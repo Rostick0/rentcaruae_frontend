@@ -31,13 +31,13 @@ const toggle = () => {
     const dropdownMenu = wrapper.value?.querySelector(".dropdown-menu");
     const elementRect = dropdownMenu.getBoundingClientRect();
 
-    if (elementRect.right > window.innerWidth) {
-      dropdownMenu.style.left =
-        window.innerWidth - 20 - elementRect?.width + "px";
-    } else {
-      dropdownMenu.style.left =
-        wrapper.value?.getBoundingClientRect()?.left + "px";
-    }
+    // if (elementRect.right > window.innerWidth) {
+    //   dropdownMenu.style.left =
+    //     window.innerWidth - 20 - elementRect?.width + "px";
+    // } else {
+    //   dropdownMenu.style.left =
+    //     wrapper.value?.getBoundingClientRect()?.left + "px";
+    // }
 
     if (elementRect.bottom > window.innerHeight) {
       dropdownMenu.style.top =
@@ -49,9 +49,8 @@ const toggle = () => {
         "px";
     } else {
       dropdownMenu.style.top =
-        wrapper.value?.getBoundingClientRect()?.top +
-        wrapper.value?.clientHeight +
-        "px";
+        // wrapper.value?.getBoundingClientRect()?.top +
+        wrapper.value?.clientHeight + "px";
     }
   });
 };
@@ -59,6 +58,8 @@ const toggle = () => {
 
 <style lang="scss">
 .dropdown {
+  position: relative;
+
   &-menu {
     position: absolute;
     z-index: 102;

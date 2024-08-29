@@ -2,24 +2,40 @@
   <header class="header">
     <div class="container">
       <div class="header__top">
-        <button class="d-flex mobile">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.5 15H17.5V13.3333H2.5V15ZM2.5 10.8333H17.5V9.16667H2.5V10.8333ZM2.5 5V6.66667H17.5V5H2.5Z"
-              fill="#221EE3"
-            />
-          </svg>
-        </button>
+        <template v-if="$device.isMobile">
+          <button class="d-flex" v-if="!isActive" @click="isActive = true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.5 15H17.5V13.3333H2.5V15ZM2.5 10.8333H17.5V9.16667H2.5V10.8333ZM2.5 5V6.66667H17.5V5H2.5Z"
+                fill="#221EE3"
+              />
+            </svg>
+          </button>
+          <button class="d-flex" v-else @click="isActive = false">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.827 10.5002L16.7258 4.60135C17.0922 4.23517 17.0922 3.64104 16.7258 3.27487C16.3593 2.90838 15.7658 2.90838 15.3993 3.27487L9.50047 9.17367L3.60135 3.27487C3.23486 2.90838 2.64135 2.90838 2.27487 3.27487C1.90838 3.64104 1.90838 4.23517 2.27487 4.60135L8.17399 10.5002L2.27487 16.399C1.90838 16.7651 1.90838 17.3593 2.27487 17.7254C2.45811 17.9084 2.69826 18 2.93811 18C3.17795 18 3.4181 17.9084 3.60135 17.7251L9.50047 11.8263L15.3993 17.7251C15.5825 17.9084 15.8227 18 16.0625 18C16.3024 18 16.5425 17.9084 16.7258 17.7251C17.0922 17.359 17.0922 16.7648 16.7258 16.3987L10.827 10.5002Z"
+                fill="#221EE3"
+              />
+            </svg>
+          </button>
+        </template>
         <NuxtLink class="header__logo d-flex" to="/">
           <Logo />
         </NuxtLink>
-        <UiDropdownMenu class="desktop">
+        <UiDropdownMenu v-if="$device.isDesktopOrTablet">
           <template #body>
             <UiButton class="btn-flex">
               <svg
@@ -45,7 +61,7 @@
         <div class="header__search">
           <MainSearch variant="outlined" />
         </div>
-        <div class="d-flex desktop">
+        <div class="d-flex" v-if="$device.isDesktopOrTablet">
           <VFormComponent :field="lang" />
           <VFormComponent :field="currency" />
         </div>
@@ -94,8 +110,34 @@
           <span>Log in</span>
         </UiButton>
       </div>
-      <div class="header__bottom">
-        <UiSelectWithIcons v-model="city" :options="citiesComputed" />
+      <div class="header__bottom" :class="{ active: isActive }">
+        <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
+          <template #body>
+            <UiButton class="btn-flex">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
+                <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
+                <rect x="11" y="11" width="7" height="7" rx="2" fill="white" />
+                <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
+              </svg>
+              <span>Rent a car</span>
+            </UiButton>
+          </template>
+          <template #drop>
+            <LayoutHeaderRentalDropDown :list="rentACar" />
+          </template>
+        </UiDropdownMenu>
+        <UiSelectWithIcons
+          v-if="$device.isDesktopOrTablet"
+          v-model="city"
+          :options="citiesComputed"
+        />
         <div class="header__links">
           <UiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
             <template #body>
@@ -117,6 +159,15 @@
             >Car Leasing</NuxtLink
           >
         </div>
+        <UiSelectWithIcons
+          v-if="$device.isMobile"
+          v-model="city"
+          :options="citiesComputed"
+        />
+        <div class="header__bottom_select" v-if="$device.isMobile">
+          <VFormComponent :field="lang" />
+          <VFormComponent :field="currency" />
+        </div>
       </div>
     </div>
   </header>
@@ -131,6 +182,8 @@ const { open } = useModal({
 const authModalState = useState("authModalState");
 
 const user = useState("user");
+
+const isActive = ref(false);
 
 const lang = ref({
   type: "select",
@@ -266,20 +319,16 @@ const rentACar = computed(() => {
     padding: 12px 16px;
   }
 
-  @media (min-width: 1025px) {
-    .mobile {
-      display: none;
-    }
-  }
-
   @media (max-width: 1024px) {
+    padding-top: 8px;
+
     &__logo {
       margin-right: auto;
       // order: 1
     }
 
     &__top {
-      row-gap: 8px;
+      grid-gap: 8px;
       flex-wrap: wrap;
     }
 
@@ -288,13 +337,43 @@ const rentACar = computed(() => {
       width: 100%;
     }
 
-    .desktop,
-    &__bottom {
-      display: none;
+    &__links {
+      flex-direction: column;
+      grid-gap: 0;
     }
 
-    .mobile {
-      display: initial;
+    &__bottom {
+      background-color: var(--color-bg-main);
+      display: none;
+      align-items: flex-start;
+      flex-direction: column;
+      row-gap: 20px;
+      padding: 8px 20px;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+
+      &_rent {
+        margin-bottom: -12px;
+        width: 100%;
+
+        .btn {
+          justify-content: center;
+          width: 100%;
+        }
+      }
+
+      &.active {
+        display: flex;
+      }
+
+      &_select {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        margin-left: -16px;
+      }
     }
   }
 }
@@ -335,5 +414,17 @@ const rentACar = computed(() => {
   // .control-select {
   //   width: 100%;
   // }
+
+  @media (max-width: 1024px) {
+    .header-rental-drop-down {
+      flex-wrap: wrap;
+
+      &-item {
+        &:last-child {
+          background-color: var(--color-white);
+        }
+      }
+    }
+  }
 }
 </style>

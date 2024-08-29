@@ -256,5 +256,24 @@ const authModalState = useState("authModalState");
   &__bottom {
     font-size: 14px;
   }
+
+  @media (max-width: 1024px) {
+    padding: 20px 0;
+
+    &__top {
+      margin-bottom: 20px;
+    }
+
+    &__center {
+      grid-gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__center {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 </style>

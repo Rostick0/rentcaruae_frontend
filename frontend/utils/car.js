@@ -16,6 +16,7 @@ export const carFullExtends = [
   "price",
   "price_leasing",
   "price_special",
+  "user.company.image.image",
 ].join();
 
 export const getCarOnSubmitValues = async ({

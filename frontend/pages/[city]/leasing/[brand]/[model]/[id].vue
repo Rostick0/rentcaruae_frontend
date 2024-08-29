@@ -13,7 +13,7 @@ const breadcrumbs = ref([
     link: "/",
   },
   {
-    name: "Economy Car Rental",
+    name: "Car leasing",
   },
 ]);
 </script>
