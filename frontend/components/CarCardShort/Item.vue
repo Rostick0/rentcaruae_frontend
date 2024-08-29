@@ -43,7 +43,7 @@
         </div>
       </div>
       <LazyNuxtImg
-        class="car-short__icon"
+        class="car-short__brand"
         :src="
           $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
         "
@@ -119,6 +119,12 @@ const city = useState("currentCity");
     &-old {
       color: var(--color-old-val);
     }
+  }
+
+  &__brand {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
   }
 }
 </style>
