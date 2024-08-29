@@ -2,10 +2,24 @@
   <header class="header">
     <div class="container">
       <div class="header__top">
+        <button class="d-flex mobile">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.5 15H17.5V13.3333H2.5V15ZM2.5 10.8333H17.5V9.16667H2.5V10.8333ZM2.5 5V6.66667H17.5V5H2.5Z"
+              fill="#221EE3"
+            />
+          </svg>
+        </button>
         <NuxtLink class="header__logo d-flex" to="/">
           <Logo />
         </NuxtLink>
-        <UiDropdownMenu>
+        <UiDropdownMenu class="desktop">
           <template #body>
             <UiButton class="btn-flex">
               <svg
@@ -31,7 +45,7 @@
         <div class="header__search">
           <MainSearch variant="outlined" />
         </div>
-        <div class="d-flex">
+        <div class="d-flex desktop">
           <VFormComponent :field="lang" />
           <VFormComponent :field="currency" />
         </div>
@@ -250,6 +264,38 @@ const rentACar = computed(() => {
   &__link {
     cursor: pointer;
     padding: 12px 16px;
+  }
+
+  @media (min-width: 1025px) {
+    .mobile {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__logo {
+      margin-right: auto;
+      // order: 1
+    }
+
+    &__top {
+      row-gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    &__search {
+      order: 3;
+      width: 100%;
+    }
+
+    .desktop,
+    &__bottom {
+      display: none;
+    }
+
+    .mobile {
+      display: initial;
+    }
   }
 }
 </style>

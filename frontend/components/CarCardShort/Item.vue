@@ -3,7 +3,7 @@
     <div class="car-short__image">
       <LazyNuxtImg
         class="car-short__img"
-        :src="car?.images?.[0]?.image?.path_webp"
+        :src="car?.images?.[0]?.image?.path_webp + '?w=280'"
         :alt="car?.title"
         decoding="async"
         loading="lazy"

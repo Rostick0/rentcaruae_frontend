@@ -114,6 +114,7 @@ const props = defineProps({
 
   &__characteristics {
     display: flex;
+    flex-wrap: wrap;
     grid-gap: 13px;
   }
 

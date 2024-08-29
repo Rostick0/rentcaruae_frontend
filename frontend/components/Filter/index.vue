@@ -75,6 +75,7 @@ const props = defineProps({
   &__left {
     display: flex;
     column-gap: 14px;
+    overflow: auto;
   }
 
   &-item {

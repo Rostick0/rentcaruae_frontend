@@ -1,31 +1,35 @@
 <template>
   <div class="banner">
-    <div class="banner__left">
-      <h1 class="banner__title h1">Rent a car in Dubai</h1>
-      <h2 class="banner__subtitle">
-        Book a car for a day or a month without commission
-      </h2>
-      <MainSearch class="banner__search" />
-      <div class="banner__links">
-        <NuxtLink
-          v-for="link in links"
-          class="banner__link d-flex"
-          :key="link.name"
-          :to="link.link"
-        >
-          <UiButton variant="outlined">{{ link.name }}</UiButton>
-        </NuxtLink>
+    <div class="container">
+      <div class="banner__container">
+        <div class="banner__left">
+          <h1 class="banner__title h1">Rent a car in Dubai</h1>
+          <h2 class="banner__subtitle">
+            Book a car for a day or a month without commission
+          </h2>
+          <MainSearch class="banner__search" />
+          <div class="banner__links">
+            <NuxtLink
+              v-for="link in links"
+              class="banner__link d-flex"
+              :key="link.name"
+              :to="link.link"
+            >
+              <UiButton variant="outlined">{{ link.name }}</UiButton>
+            </NuxtLink>
+          </div>
+        </div>
+        <div class="banner__right">
+          <LazyNuxtImg
+            class="banner__img"
+            src="images/blue_lamborghini.png"
+            alt="RentCarUAE"
+            decoding="async"
+            loading="lazy"
+            fit="contain"
+          />
+        </div>
       </div>
-    </div>
-    <div class="banner__right">
-      <LazyNuxtImg
-        class="banner__img"
-        src="images/blue_lamborghini.png"
-        alt="RentCarUAE"
-        decoding="async"
-        loading="lazy"
-        fit="contain"
-      />
     </div>
   </div>
 </template>
@@ -64,11 +68,15 @@ const links = computed(() => {
 
 <style lang="scss" scoped>
 .banner {
-  display: flex;
-  align-items: center;
   padding-top: 48px;
   margin-bottom: 43px;
   position: relative;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
 
   &__left {
     position: relative;
@@ -98,12 +106,36 @@ const links = computed(() => {
   &__right {
     flex-grow: 1;
     position: absolute;
-    right: -160px;
+    right: 0;
   }
 
   &__img {
     max-width: 708px;
     width: 50vw;
+  }
+
+  @media (max-width: 1280px) {
+    &__img {
+      width: 46vw;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__subtitle {
+      font-size: 20px;
+    }
+
+    &__left {
+      max-width: 55vw;
+    }
+
+    &__right {
+      right: -64px;
+    }
+
+    &__img {
+      width: 50vw;
+    }
   }
 }
 </style>

@@ -224,5 +224,12 @@ watch(
     align-items: center;
     column-gap: 8px;
   }
+
+  @media (max-width: 768px) {
+    &__send {
+      padding: 11.25px;
+      padding-left: 26px;
+    }
+  }
 }
 </style>

@@ -79,9 +79,10 @@ const carType = [
 
   &__item {
     display: flex;
-    font-weight: 700;
     align-items: center;
     column-gap: 4px;
+    flex-shrink: 0;
+    font-weight: 700;
     padding: 7px 7.75px;
 
     &.outlined {

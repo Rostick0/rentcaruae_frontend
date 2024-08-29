@@ -1,27 +1,43 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <LazyNuxtImg
-        class="car-image__main_img"
-        :src="activeImage?.image?.path_webp"
-        :alt="carTitle"
-        decoding="async"
-        loading="lazy"
-        fit="cover"
-      />
+      <Swiper
+        class="car-image__swiper"
+        @swiper="(swiperInit) => (swiper = swiperInit)"
+        :spaceBetween="10"
+        :breakpoints="{
+          0: {
+            slidesPerView: 1.07,
+          },
+          769: {
+            slidesPerView: 1,
+          },
+        }"
+      >
+        <SwiperSlide v-for="image in images" :key="image?.id">
+          <LazyNuxtImg
+            class="car-image__main_img"
+            :src="image?.image?.path_webp?.replace('?w=180', '') + '?w=700'"
+            :alt="carTitle"
+            decoding="async"
+            loading="lazy"
+            fit="cover"
+          />
+        </SwiperSlide>
+      </Swiper>
     </div>
     <div
       class="car-image__list"
       :class="{ all: isShowAll }"
-      v-if="images?.length"
+      v-if="images?.length && $device?.isDesktopOrTablet"
     >
       <LazyNuxtImg
         class="car-image__item"
-        v-for="image in images"
+        v-for="(image, index) in images"
         :key="image?.id"
-        :src="image?.image?.path_webp"
+        :src="image?.image?.path_webp + '?w=180'"
         :alt="carTitle"
-        @click="activeImage = image"
+        @click="changeActiveIndex(index)"
         decoding="async"
         loading="lazy"
         width="154"
@@ -46,8 +62,11 @@ const props = defineProps({
   carTitle: String,
 });
 
-const activeImage = ref(props.images?.[0]);
 const isShowAll = ref(false);
+
+const swiper = ref();
+
+const changeActiveIndex = (index) => swiper.value.slideTo(index, 200, false);
 </script>
 
 <style lang="scss" scoped>
@@ -64,12 +83,20 @@ const isShowAll = ref(false);
     &_img {
       border-radius: 8px;
       object-fit: cover;
-      position: absolute;
-      left: 0;
-      top: 0;
+      // position: absolute;
+      // left: 0;
+      // top: 0;
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__swiper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 
   &__list {

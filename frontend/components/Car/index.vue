@@ -2,13 +2,19 @@
   <div class="car">
     <div class="car__left">
       <LazyCarImages :images="car?.images" :carTitle="car?.title" />
-      <CarCardInfo :car="car" />
-      <CarSpecifications
-        v-if="specifications"
+      <CarInfo
+        v-if="$device.isDesktopOrTablet"
+        :car="car"
         :specifications="specifications"
+        :isLeasing="isLeasing"
       />
-      <CarDescription :car="car" />
-      <CarRentalPricing :car="car" :isLeasing="isLeasing" />
+      <!-- <CarCardInfo :car="car" />
+        <CarSpecifications
+          v-if="specifications"
+          :specifications="specifications"
+        />
+        <CarDescription v-if="car?.description" :car="car" />
+        <CarRentalPricing :car="car" :isLeasing="isLeasing" /> -->
       <!-- <div class="car__spoilers">
         <UiSpoiler>
           <template #title>DOCUMENTS REQUIRED</template>
@@ -19,8 +25,24 @@
       </div> -->
     </div>
     <div class="car__right">
-      <LazyCarCalcLeasing v-if="isLeasing" :car="car" />
-      <LazyCarCalc v-else :car="car" />
+      <LazyCarCalcLeasing v-if="isLeasing" :car="car">
+        <template v-if="$device.isMobile" #car-info>
+          <CarInfo
+            :car="car"
+            :specifications="specifications"
+            :isLeasing="isLeasing"
+          />
+        </template>
+      </LazyCarCalcLeasing>
+      <LazyCarCalc v-else :car="car">
+        <template v-if="$device.isMobile" #car-info>
+          <CarInfo
+            :car="car"
+            :specifications="specifications"
+            :isLeasing="isLeasing"
+          />
+        </template>
+      </LazyCarCalc>
     </div>
   </div>
 </template>
@@ -61,6 +83,14 @@ const specifications = computed(() =>
     flex: 0 0 456px;
     position: sticky;
     top: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+
+    &__right {
+      flex: 1 0 100%;
+    }
   }
 }
 </style>

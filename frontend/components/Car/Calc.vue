@@ -132,8 +132,9 @@
         >
       </a>
     </div>
+    <slot name="car-info" />
     <template v-if="isBook">
-      <div class="calc-item">
+      <div class="calc-item" ref="book">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
           <div class="calc-date__item">
@@ -199,14 +200,14 @@ const props = defineProps({
 const route = useRoute();
 
 const isBook = ref();
-// const book = ref();
+const book = ref();
 
 const clickBook = () => {
   isBook.value = true;
 
-  // nextTick(() => {
-  // book.value?.scrollIntoView({ behavior: "smooth" });
-  // });
+  nextTick(() => {
+    book.value?.scrollIntoView({ behavior: "smooth" });
+  });
 };
 
 const isAddStatisticWhatsApp = ref(false);
@@ -236,8 +237,6 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     car_id: route.params.id,
     type: "rent",
   };
-
-  // console.log(data);
 
   const res = await api.operations.create({ data });
 

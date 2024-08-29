@@ -1,6 +1,6 @@
 <template>
+  <MainBanner />
   <div class="container">
-    <MainBanner />
     <MainBrands />
     <div class="car-cards">
       <!-- <CarCardShortList
@@ -71,7 +71,7 @@ const currentCity = useState("currentCity");
 
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
-  "filterNEQ[price_special.price]": true,
+  // "filterNEQ[price_special.price]": true,
   sort: "id",
   limit: 4,
 };

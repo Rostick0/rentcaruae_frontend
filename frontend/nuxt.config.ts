@@ -25,7 +25,16 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/scss/index.scss"],
 
-  modules: ["nuxt-lazy-hydrate", "@nuxt/image"],
+  modules: [
+    "nuxt-lazy-hydrate",
+    "@nuxt/image",
+    "nuxt-swiper",
+    "@nuxtjs/device",
+  ],
+  swiper: {
+    modules: ["pagination"],
+    styleLang: "css",
+  },
 
   build: {
     transpile: ["@vuepic/vue-datepicker", "vue-toastification"],

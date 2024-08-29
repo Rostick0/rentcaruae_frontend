@@ -132,8 +132,9 @@
         >
       </a>
     </div>
-    <template v-if="true || isBook">
-      <div class="calc-item">
+    <slot name="car-info" />
+    <template v-if="isBook">
+      <div class="calc-item" ref="book">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
           <div class="calc-date__item">
@@ -196,14 +197,14 @@ const props = defineProps({
 const route = useRoute();
 
 const isBook = ref();
-// const book = ref();
+const book = ref();
 
 const clickBook = () => {
   isBook.value = true;
 
-  // nextTick(() => {
-  //   book.value?.scrollIntoView({ behavior: "smooth" });
-  // });
+  nextTick(() => {
+    book.value?.scrollIntoView({ behavior: "smooth" });
+  });
 };
 
 const isAddStatisticWhatsApp = ref(false);

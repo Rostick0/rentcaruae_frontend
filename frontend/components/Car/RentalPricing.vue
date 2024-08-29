@@ -63,6 +63,7 @@ const props = defineProps({
 
   &__list {
     display: flex;
+    flex-wrap: wrap;
     grid-gap: 40px;
   }
 
@@ -71,11 +72,18 @@ const props = defineProps({
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     row-gap: 4px;
     font-size: 12px;
     font-weight: 700;
     line-height: 0.02em;
     padding: 10px 20px 10px 8px;
+  }
+
+  @media (max-width: 1024px) {
+    &__list {
+      grid-gap: 16px;
+    }
   }
 }
 </style>

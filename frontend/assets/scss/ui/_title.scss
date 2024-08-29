@@ -6,4 +6,8 @@
   &.admin {
     margin-bottom: 18px;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+  }
 }

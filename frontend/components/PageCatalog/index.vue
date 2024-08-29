@@ -163,6 +163,8 @@ useHead({
 
 <style lang="scss" scoped>
 .catalog {
+  padding-bottom: 20px;
+
   &__specials {
     margin: 20px 0 40px;
   }

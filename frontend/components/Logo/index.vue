@@ -10,5 +10,9 @@
   display: inline-block;
   font-size: 28px;
   font-weight: 700;
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
 }
 </style>

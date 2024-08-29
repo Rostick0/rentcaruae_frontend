@@ -19,7 +19,7 @@
           car?.images?.[0]?.image?.path_webp +
           (car?.images?.[0]?.image?.path_webp?.startsWith('blob')
             ? ''
-            : '?w=320')
+            : '?w=350')
         "
         :alt="car?.title"
         decoding="async"

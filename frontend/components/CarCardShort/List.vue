@@ -31,8 +31,9 @@ const props = defineProps({
 
   &__cars {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 264px);
+    grid-template-columns: repeat(4, 264px);
     grid-gap: 24px;
+    overflow: auto;
   }
 }
 </style>

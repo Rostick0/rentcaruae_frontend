@@ -50,6 +50,8 @@ const line = ref({
   x: 0,
 });
 
+const resizeWindow = ref();
+
 const valueComputed = computed(() =>
   Math.round((line.value.x / width.value) * 100)
 );
@@ -75,7 +77,6 @@ const partPx = computed(() => Math.round(width.value / props.partsCount));
 
 const setPosition = (clientX) => {
   const left = rangeInput.value.getBoundingClientRect().left;
-  // const width = rangeInput.value.getBoundingClientRect().width;
 
   const positon = clientX - left;
 
@@ -90,11 +91,20 @@ const setPosition = (clientX) => {
 };
 
 onMounted(() => {
-  width.value = rangeInput.value.getBoundingClientRect().width;
-  line.value.x =
-    width.value *
-    (((props?.partsCount ? getOnePartSizePx.value : 1) * props.modelValue) /
-      100);
+  resizeWindow.value = debounce(() => {
+    width.value = rangeInput.value.getBoundingClientRect().width;
+    line.value.x =
+      width.value *
+      (((props?.partsCount ? getOnePartSizePx.value : 1) * props.modelValue) /
+        100);
+  }, 50);
+
+  resizeWindow.value();
+  window.addEventListener("resize", resizeWindow.value);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", resizeWindow.value);
 });
 
 const clickHandler = (e) => (line.value.x = setPosition(e.clientX));
