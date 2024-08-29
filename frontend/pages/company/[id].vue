@@ -154,9 +154,9 @@ const companySchedules = computed(() =>
 
   &__bottom {
     display: flex;
+    justify-content: space-between;
     font-size: 14px;
     font-weight: 700;
-    justify-content: space-between;
 
     &_right {
       display: flex;
@@ -201,7 +201,30 @@ const companySchedules = computed(() =>
       display: flex;
       column-gap: 10px;
       justify-content: space-between;
-      width: 264px;
+      width: 100%;
+      max-width: 264px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__bottom {
+      row-gap: 20px;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__bottom {
+      &_right {
+        row-gap: 20px;
+        flex-direction: column;
+      }
+    }
+
+    &__action {
+      flex-direction: row;
+      column-gap: 16px;
+      width: 100%;
     }
   }
 }

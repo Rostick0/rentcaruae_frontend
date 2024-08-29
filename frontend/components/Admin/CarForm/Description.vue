@@ -20,7 +20,7 @@ const description = ref({
   modelValue: props?.car?.description ?? "",
 
   bind: {
-    label: `Car description ${props?.car?.description?.length}/4000`,
+    label: `Car description ${props?.car?.description?.length ?? 0}/4000`,
     placeholder: "Description",
     rows: 10,
   },
