@@ -91,12 +91,11 @@ const changeOneCarSelected = ({ id, value }) =>
   (carsSelected.value.find((item) => item?.id === id).value = value);
 
 const clickRefresh = async () => {
+  const cars = carsSelected.value?.filter((item) => item?.value);
+
   const res = await api.promoCars.create({
     data: {
-      cars: carsSelected.value
-        ?.filter((item) => item?.value)
-        ?.map((item) => item?.id)
-        ?.join(","),
+      cars: cars?.map((item) => item?.id)?.join(","),
     },
   });
 
@@ -105,7 +104,11 @@ const clickRefresh = async () => {
     return;
   }
 
+  const difference = user.value.refresh_car.count - cars?.length;
+  user.value.refresh_car.count = difference > 0 ? difference : 0;
+
   success("Sucess");
+  
   carsSelected.value = carsSelected.value?.map?.((item) => ({
     ...item,
     value: false,

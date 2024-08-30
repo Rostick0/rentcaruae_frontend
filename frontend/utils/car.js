@@ -53,13 +53,13 @@ export const getCarOnSubmitValues = async ({
     generation_id: generation_id?.id,
     transmission_id: transmission_id?.id,
     min_days: min_days?.id,
-    price_leasing: price_leasing?.map((item) => removeSpaces(item)),
-    mileage_leasing: mileage_leasing?.map((item) => removeSpaces(item)),
+    price_leasing: price_leasing?.map((item) => removeSpaces(item)) ?? null,
+    mileage_leasing: mileage_leasing?.map((item) => removeSpaces(item)) ?? null,
     price_sum: price_sum?.map((item) => removeSpaces(item)),
     price_mileage: price_mileage?.map((item) => removeSpaces(item)),
     security_deposit: removeSpaces(security_deposit),
     free_per_day_security: removeSpaces(free_per_day_security),
-    price_special: price_special?.map((item) => removeSpaces(item)),
+    price_special: price_special?.map((item) => removeSpaces(item)) ?? null,
     car_options: car_options?.join(),
   };
 };
