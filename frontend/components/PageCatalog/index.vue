@@ -21,6 +21,7 @@
         v-model="filters.page"
         :meta="meta"
       />
+      <!-- <PageCatalogTextBodyConvertible /> -->
     </div>
   </div>
 </template>

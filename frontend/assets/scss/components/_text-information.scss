@@ -1,0 +1,33 @@
+.text-information {
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 44px;
+  }
+
+  &__content {
+    max-width: 840px;
+
+    p {
+      line-height: 1;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    margin-bottom: 4px;
+
+    &_title {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__link {
+    color: var(--color-basic);
+    display: block;
+    padding: 12px 16px;
+    margin-left: auto;
+    width: fit-content;
+  }
+}
