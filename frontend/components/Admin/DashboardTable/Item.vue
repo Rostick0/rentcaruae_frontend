@@ -1,7 +1,6 @@
 <template>
   <tr class="table_tr">
     <td class="table__td">
-      {{ itemNext?.views }}
       {{ moment(item?.date).format("DD MMM YYYY") }}
     </td>
     <td class="table__td">{{ item?.refreshes }}</td>
