@@ -1,7 +1,6 @@
 <template>
   <div class="calc-item" ref="book">
     <div class="calc__title">Your booking details</div>
-    {{ tel.modelValue }}
     <VFormComponent :field="tel" />
     <VFormComponent :field="full_name" />
     <VFormComponent :field="email" />

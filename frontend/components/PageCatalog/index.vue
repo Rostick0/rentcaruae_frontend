@@ -4,7 +4,7 @@
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
-      <CarType v-model="filters['filterEQ[generation.name]']" />
+      <CarType id="carType" v-model="filters['filterEQ[generation.name]']" />
       <LazyFilter :prices="prices" />
       <LazyCarCardList :cars="cars[0]" />
       <LazyCarCardShortList
@@ -95,8 +95,9 @@ const { data: prices, get: getPrices } = await useApi({
   params: {
     limit: 8,
     sort: "-price",
-    extends: "car",
-    type: rent.value === "economy" ? "price" : "price_leasing",
+    extends: "car.generation.model_car.brand",
+    "filterEQ[type]": rent.value === "leasing" ? "price_leasing" : "price",
+    "filterGEQ[price]": 1,
   },
   filters: pricesFilters,
 });
@@ -136,6 +137,9 @@ const breadcrumbs = computed(() => [
 watch(
   () => filters.value.page,
   (newV) => {
+    document
+      .querySelector("#carType")
+      ?.scrollIntoView?.({ behavior: "smooth" });
     window.history.pushState({}, null, setCatalogUrl(route.path, newV));
     useHead({
       title:

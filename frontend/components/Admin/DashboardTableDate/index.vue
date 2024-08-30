@@ -8,6 +8,7 @@
       <th class="table__th">Booking</th>
       <th class="table__th">WhatsApp</th>
       <th class="table__th">Daily spend</th>
+      <th class="table__th"></th>
     </tr>
     <AdminDashboardTableDateItem
       v-for="item in data"

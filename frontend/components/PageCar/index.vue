@@ -21,11 +21,11 @@
       </div>
       <Car :car="data" :isLeasing="isLeasing" />
       <CarCardShortList
-        v-if="data?.length"
+        v-if="cars?.length"
         :cars="cars"
         title="Similar Car Rental Options"
         linkText="All convertible"
-        link="/"
+        :link="convertNameToUrl(`/${currentCity?.name}/type/${data?.category?.name}`)"
       />
     </div>
   </div>
@@ -35,6 +35,8 @@
 const props = defineProps({
   breadcrumbs: Array,
 });
+
+const currentCity = useState("currentCity");
 
 const id = useRoute().params.id;
 
@@ -57,7 +59,8 @@ const { data: cars, get: getCars } = await useApi({
   name: "car.getAll",
   params: {
     "filterNEQ[id]": id,
-    "filterEQ[generation.model_car.id]": data.value?.generation?.model_car?.id,
+    // "filterEQ[generation.model_car.id]": data.value?.generation?.model_car?.id,
+    "filterEQ[category_id": data.value?.category_id,
     extends: [
       "generation.model_car.brand",
       "images.image",
@@ -158,6 +161,8 @@ useHead({
 
 <style lang="scss" scoped>
 .car {
+  padding-bottom: 40px;
+
   &__top {
     display: flex;
     align-items: center;

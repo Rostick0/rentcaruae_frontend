@@ -105,7 +105,7 @@ const id = useRoute().params?.id;
 const { data, get } = await useApi({
   name: "companies.get",
   params: {
-    extends: "owner,company_schedules,city,image.image",
+    extends: "owner,company_schedules,city.country,image.image",
   },
   requestParams: {
     id,
@@ -115,9 +115,11 @@ const { data, get } = await useApi({
 await get();
 
 const address = computed(() =>
-  `${data.value?.city?.name} ${data.value?.aread_name ?? ""} ${
-    data.value?.building_name ?? ""
-  } ${data.value?.office_number ?? ""}`.trim()
+  `${data.value?.office_number ?? ""} ${data.value?.building_name ?? ""} ${
+    data.value?.building_name ? "," : ""
+  } ${data.value?.aread_name ? data.value?.aread_name + "," : ""} ${
+    data.value?.city?.name
+  }, ${data.value?.city?.country?.name}`.trim()
 );
 
 const companySchedules = computed(() =>
@@ -130,6 +132,10 @@ const companySchedules = computed(() =>
     week_day: daysWeek[item?.week_day],
   }))
 );
+
+useHead({
+  title: data.value?.name,
+});
 </script>
 
 <style lang="scss" scoped>

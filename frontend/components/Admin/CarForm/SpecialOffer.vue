@@ -17,7 +17,7 @@
           @update:modelValue="emits('setHide', true)"
         >
           Special offer available <br />
-          <span class="text-ui">AED 20 per day</span>
+          <span class="text-ui">AED {{ PRICE_SPECAIL_PER_DAY }} per day</span>
         </UiSwitch>
       </div>
     </div>

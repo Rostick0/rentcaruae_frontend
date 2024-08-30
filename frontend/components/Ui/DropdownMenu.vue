@@ -63,6 +63,7 @@ const toggle = () => {
   &-menu {
     position: absolute;
     z-index: 102;
+    width: -webkit-max-content;
     // width: 200px;
 
     &-button {

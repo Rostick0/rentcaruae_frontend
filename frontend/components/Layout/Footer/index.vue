@@ -87,7 +87,7 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">About us</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/">Blog</NuxtLink>
+              <!-- <NuxtLink class="footer-item__link" to="/">Blog</NuxtLink> -->
               <NuxtLink class="footer-item__link" to="/"
                 >Privacy policy</NuxtLink
               >
@@ -95,14 +95,14 @@
               <NuxtLink class="footer-item__link" to="/sitemap"
                 >Site map</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/">Contact us</NuxtLink>
+              <a class="footer-item__link" href="mailto:hello@rentcaruae.com">Contact us</a>
             </div>
           </div>
 
           <div class="footer-item">
             <div class="footer-item__title text-ui">Follow us</div>
             <div class="footer-item__btns">
-              <a class="footer-item__icon" href="#">
+              <!-- <a class="footer-item__icon" href="#">
                 <svg
                   width="32"
                   height="32"
@@ -127,7 +127,7 @@
                     fill="#221EE3"
                   />
                 </svg>
-              </a>
+              </a> -->
               <a class="footer-item__icon" href="#">
                 <svg
                   width="32"

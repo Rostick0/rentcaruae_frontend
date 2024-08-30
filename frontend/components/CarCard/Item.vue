@@ -12,7 +12,7 @@
         height="40"
       />
     </div>
-    <div class="car__image">
+    <NuxtLink class="car__image" :to="link">
       <LazyNuxtImg
         class="car__img"
         :src="
@@ -27,7 +27,7 @@
         width="320"
         height="196"
       />
-    </div>
+    </NuxtLink>
     <CarCardInfo :car="car" />
     <div class="car__stats">
       <div class="car-stat">
@@ -96,18 +96,7 @@
         </div>
       </div>
     </div>
-    <NuxtLink
-      class="d-flex car__link"
-      :to="
-        convertNameToUrl(
-          `/${city?.name}/${
-            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
-          }/${car?.generation?.model_car?.brand?.name}/${
-            car?.generation?.model_car?.name
-          }/${car?.id}`
-        )
-      "
-    >
+    <NuxtLink class="d-flex car__link" :to="link">
       <UiButton class="car__btn">Rent now</UiButton>
     </NuxtLink>
   </div>
@@ -119,8 +108,17 @@ const props = defineProps({
 });
 
 const city = useState("currentCity");
-
 const route = useRoute();
+
+const link = computed(() =>
+  convertNameToUrl(
+    `/${city?.name}/${
+      route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
+    }/${props.car?.generation?.model_car?.brand?.name}/${
+      props.car?.generation?.model_car?.name
+    }/${props.car?.id}`
+  )
+);
 </script>
 
 <style lang="scss" scoped>

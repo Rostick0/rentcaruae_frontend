@@ -1,14 +1,23 @@
 <template>
   <div class="filter">
     <div class="filter__left">
-      <div
+      <NuxtLink
         class="filter-item text-pre-small"
         v-for="item in prices"
         :key="item?.id"
+        :to="
+          convertNameToUrl(
+            `/${city?.name}/${
+              route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
+            }/${item.car?.generation?.model_car?.brand?.name}/${
+              item.car?.generation?.model_car?.name
+            }/${item.car?.id}`
+          )
+        "
       >
         <span>{{ item?.car?.title }}</span>
         <span>from AED {{ item?.price }}</span>
-      </div>
+      </NuxtLink>
     </div>
     <!-- <div class="filter__right">
       <VFormComponent :field="sort" />
@@ -39,30 +48,12 @@
 </template>
 
 <script setup>
-// const data = [0, 0, 0, 0].map((el, i) => ({
-//   id: i,
-//   title: "Toyota",
-//   price: 90,
-// }));
-
 const props = defineProps({
   prices: Array,
 });
 
-// const a = [{ id: "a", name: "Sort featured" }];
-
-// const sort = ref({
-//   type: "select",
-//   name: "sort",
-//   modelValue: a[0],
-
-//   bind: {
-//     options: a,
-//     withLeftIcon: true,
-//     svgLeftIcon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3334 14.175V8.33333H11.6667V14.175H9.16675L12.5001 17.5L15.8334 14.175H13.3334ZM7.50008 2.5L4.16675 5.825H6.66675V11.6667H8.33341V5.825H10.8334L7.50008 2.5ZM13.3334 14.175V8.33333H11.6667V14.175H9.16675L12.5001 17.5L15.8334 14.175H13.3334ZM7.50008 2.5L4.16675 5.825H6.66675V11.6667H8.33341V5.825H10.8334L7.50008 2.5Z" fill="#221EE3"/></svg>`,
-//     isAlternative: true,
-//   },
-// });
+const city = useState("currentCity");
+const route = useRoute();
 </script>
 
 <style lang="scss" scoped>

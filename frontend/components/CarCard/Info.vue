@@ -53,15 +53,17 @@
       </div>
     </div>
     <div class="car__info_right">
-      <LazyNuxtImg
-        class="car__info_img"
-        :src="car?.user?.company?.image?.image?.path_webp + '?w=150'"
-        :alt="car?.user?.company?.name"
-        decoding="async"
-        loading="lazy"
-        width="78"
-        height="39"
-      />
+      <NuxtLink class="d-flex" :to="`/company/${car?.user?.company?.id}`">
+        <LazyNuxtImg
+          class="car__info_img"
+          :src="car?.user?.company?.image?.image?.path_webp + '?w=150'"
+          :alt="car?.user?.company?.name"
+          decoding="async"
+          loading="lazy"
+          width="78"
+          height="39"
+        />
+      </NuxtLink>
     </div>
   </div>
 </template>

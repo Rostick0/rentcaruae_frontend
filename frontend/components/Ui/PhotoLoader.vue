@@ -198,7 +198,7 @@ const handleOnFileChange = (e) => {
 
   &__img {
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;

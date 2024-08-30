@@ -12,6 +12,7 @@
     :currentPage="meta?.current_page"
     :limit="selectedPeriod.id"
     :totalCountData="meta?.total"
+    @setPage="(page) => (filters.page = page)"
   />
 </template>
 
@@ -40,6 +41,7 @@ const route = useRoute();
 
 const { filters } = useFilter({
   initialFilters: {
+    page: 1,
     "filterEQ[date]": route.params?.date,
     limit: selectedPeriod.value.id,
   },
@@ -60,6 +62,7 @@ watch(
   () => selectedPeriod.value,
   (newV) => {
     filters.value["limit"] = newV.id;
+    filters.value["page"] = 1;
   }
 );
 

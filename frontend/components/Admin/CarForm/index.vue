@@ -46,7 +46,9 @@
             variant="outlined"
           >
             <span>Create Special Offer</span>
-            <span class="text-small">AED 20 per day</span>
+            <span class="text-small"
+              >AED {{ PRICE_SPECAIL_PER_DAY }} per day</span
+            >
           </UiButton>
         </div>
         <div class="form__flex_switch">

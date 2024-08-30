@@ -89,7 +89,9 @@
           <span class="main-search-brand__name">{{ brand?.name }}</span>
         </div>
       </div>
-      <div class="color-red" v-if="!modelCars?.length && !brands?.length">None</div>
+      <div class="color-red" v-if="!modelCars?.length && !brands?.length">
+        None
+      </div>
     </div>
   </div>
 </template>
@@ -105,13 +107,23 @@ const props = defineProps({
   variant: String,
 });
 
-const search = ref();
-const isShow = computed(() => search.value?.length >= 3);
+const search = ref("");
+// const isShow = computed(() => search.value?.length >= 3);
+const isShow = ref();
+
+watch(
+  () => search.value?.length,
+  debounce((newV) => {
+    isShow.value = newV >= 2 ? true : false;
+  }, 200)
+);
 
 const city = useState("currentCity");
 
-const clickRedirect = (type, name) =>
+const clickRedirect = (type, name) => {
+  isShow.value = false;
   navigateTo(convertNameToUrl(`/${city.value?.name}/${type}/${name}`));
+};
 
 const { filters } = useFilter({
   initialFilters: {
