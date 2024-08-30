@@ -17,7 +17,11 @@
       <UiSwitch :modelValue="isShow" @update:model-value="changeShow" />
     </td>
     <td class="table__td">
-      {{ moment(car?.created_at).format("DD MMM YYYY") }}
+      {{
+        car?.last_refresh
+          ? moment(car?.last_refresh).format("DD MMM YYYY")
+          : "-"
+      }}
     </td>
     <td class="table__td">
       <template v-for="item in prices" :key="item?.id">

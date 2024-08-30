@@ -104,11 +104,13 @@ const clickRefresh = async () => {
     return;
   }
 
-  const difference = user.value.refresh_car.count - cars?.length;
-  user.value.refresh_car.count = difference > 0 ? difference : 0;
+  try {
+    const difference = user.value.refresh_car.count - cars?.length;
+    user.value.refresh_car.count = difference > 0 ? difference : 0;
+  } catch {}
 
   success("Sucess");
-  
+
   carsSelected.value = carsSelected.value?.map?.((item) => ({
     ...item,
     value: false,

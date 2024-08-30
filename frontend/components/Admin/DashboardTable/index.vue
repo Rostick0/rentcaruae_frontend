@@ -9,7 +9,12 @@
       <th class="table__th">WhatsApp</th>
       <th class="table__th">Daily spend</th>
     </tr>
-    <AdminDashboardTableItem v-for="item in data" :key="item?.id" :item="item" />
+    <AdminDashboardTableItem
+      v-for="(item, index) in data"
+      :key="item?.id"
+      :item="item"
+      :itemNext="data?.[index + 1]"
+    />
   </table>
 </template>
 

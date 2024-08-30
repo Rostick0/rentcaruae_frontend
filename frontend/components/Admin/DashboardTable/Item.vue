@@ -1,27 +1,39 @@
 <template>
   <tr class="table_tr">
     <td class="table__td">
+      {{ itemNext?.views }}
       {{ moment(item?.date).format("DD MMM YYYY") }}
     </td>
     <td class="table__td">{{ item?.refreshes }}</td>
     <td class="table__td">{{ item?.special_offers }}</td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType :isShowType="item?.id < 3" :isDecline="item?.id == 2">
+        <UiStatType
+          :isShowType="itemNext?.views && itemNext.views !== item?.views"
+          :isDecline="itemNext?.views > item?.views"
+        >
           {{ item?.views }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType>
+        <UiStatType
+          :isShowType="itemNext?.booking && itemNext.booking !== item?.booking"
+          :isDecline="itemNext?.booking > item?.booking"
+        >
           {{ item?.booking }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType>
+        <UiStatType
+          :isShowType="
+            itemNext?.whatsapp && itemNext.whatsapp !== item?.whatsapp
+          "
+          :isDecline="itemNext?.whatsapp > item?.whatsapp"
+        >
           {{ item?.whatsapp }}
         </UiStatType>
       </div>
@@ -38,6 +50,7 @@ import moment from "moment";
 
 const props = defineProps({
   item: Object,
+  itemNext: Object,
 });
 </script>
 
