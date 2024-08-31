@@ -9,7 +9,8 @@
             $config.public.BACK_URL +
             data?.generation?.model_car?.brand?.image_url
           "
-          :alt="data?.generation?.model_car?.brand?.name"
+          :title="data?.generation?.model_car?.brand?.name"
+          :alt="`${data?.generation?.model_car?.brand?.name} for rent`"
           decoding="async"
           loading="lazy"
           width="40"
@@ -25,7 +26,9 @@
         :cars="cars"
         title="Similar Car Rental Options"
         linkText="All convertible"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/${data?.category?.name}`)"
+        :link="
+          convertNameToUrl(`/${currentCity?.name}/type/${data?.category?.name}`)
+        "
       />
     </div>
   </div>

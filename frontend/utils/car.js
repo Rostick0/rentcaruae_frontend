@@ -198,3 +198,7 @@ export const getWhatsappText = (car, isLeasing = false) =>
   `I would like to ${isLeasing ? "lease" : "rent"} ${
     car?.generation?.model_car?.brand?.name
   } ${car?.generation?.model_car?.name}`;
+
+export const getCarImageTitle = (car, city) =>
+  `${car?.title} ${car?.year} for rent in ${city?.name}`;
+export const getCarImageAlt = (car) => `Rent ${car?.title} in ${car?.year}`;

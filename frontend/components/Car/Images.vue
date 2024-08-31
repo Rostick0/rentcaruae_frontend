@@ -18,7 +18,8 @@
           <LazyNuxtImg
             class="car-image__main_img"
             :src="image?.image?.path_webp?.replace('?w=180', '') + '?w=700'"
-            :alt="carTitle"
+            :title="getCarImageTitle(car, currentCity)"
+            :alt="getCarImageAlt(car)"
             decoding="async"
             loading="lazy"
             fit="cover"
@@ -36,7 +37,8 @@
         v-for="(image, index) in images"
         :key="image?.id"
         :src="image?.image?.path_webp + '?w=180'"
-        :alt="carTitle"
+        :title="getCarImageTitle(car, currentCity)"
+        :alt="getCarImageAlt(car)"
         @click="changeActiveIndex(index)"
         decoding="async"
         loading="lazy"
@@ -59,13 +61,14 @@
 <script setup>
 const props = defineProps({
   images: Array,
-  carTitle: String,
+  car: Object,
 });
 
 const isShowAll = ref(false);
 
-const swiper = ref();
+const currentCity = useState("currentCity");
 
+const swiper = ref();
 const changeActiveIndex = (index) => swiper.value.slideTo(index, 200, false);
 </script>
 

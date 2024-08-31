@@ -44,7 +44,10 @@
             <div class="company__action">
               <a
                 class="d-flex"
-                :href="`https://www.google.ru/maps/place/${address}`"
+                :href="`https://www.google.ru/maps/place/${address?.replaceAll(
+                  ',',
+                  ''
+                )}`"
                 rel="noopener nofollow"
                 target="_blank"
               >

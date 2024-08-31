@@ -7,7 +7,8 @@
           $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
         "
         loading="lazy"
-        :alt="car?.generation?.model_car?.brand?.name"
+        :title="car?.generation?.model_car?.brand?.name"
+        :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
         width="40"
         height="40"
       />
@@ -21,7 +22,8 @@
             ? ''
             : '?w=350')
         "
-        :alt="car?.title"
+        :title="getCarImageTitle(car, currentCity)"
+        :alt="getCarImageAlt(car)"
         decoding="async"
         loading="lazy"
         width="320"
@@ -126,12 +128,12 @@ const props = defineProps({
   isLeasing: Boolean,
 });
 
-const city = useState("currentCity");
+const currentCity = useState("currentCity");
 const route = useRoute();
 
 const link = computed(() =>
   convertNameToUrl(
-    `/${city?.name}/${
+    `/${currentCity?.name}/${
       route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
     }/${props.car?.generation?.model_car?.brand?.name}/${
       props.car?.generation?.model_car?.name

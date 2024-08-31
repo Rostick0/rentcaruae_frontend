@@ -1,7 +1,7 @@
 <template>
   <div class="car">
     <div class="car__left">
-      <LazyCarImages :images="car?.images" :carTitle="car?.title" />
+      <LazyCarImages :images="car?.images" :car="car" />
       <CarInfo
         v-if="$device.isDesktopOrTablet"
         :car="car"

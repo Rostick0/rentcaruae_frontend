@@ -9,10 +9,10 @@
 </template>
 
 <script setup>
-const { categories } = await useCategory();
-const { brands } = await useBrand();
-const { generations } = await useGeneration();
-const { rentalPeriods } = useRentalPeriod();
+await useCategory();
+await useBrand();
+await useGeneration();
+useRentalPeriod();
 </script>
 
 <style lang="scss" scoped>

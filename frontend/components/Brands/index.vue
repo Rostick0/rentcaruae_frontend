@@ -10,7 +10,8 @@
     >
       <LazyNuxtImg
         :src="brand?.image_url"
-        :alt="brand?.name"
+        :title="brand?.name"
+        :alt="`${brand?.name} for rent`"
         loading="lazy"
         width="40"
         height="40"

@@ -1,23 +1,33 @@
 export default () => {
   const currentCity = useState("currentCity");
-  const rentalPeriods = useState("rentalPeriods", () => [
-    {
-      name: "Daily rental",
-      link: `/${currentCity.value?.name}/leasing`,
-    },
-    {
-      name: "Weekly rental",
-      link: `/${currentCity.value?.name}/leasing`,
-    },
-    {
-      name: "Monthly rental",
-      link: `/${currentCity.value?.name}/leasing`,
-    },
-    {
-      name: "Car leasing",
-      link: `/${currentCity.value?.name}/leasing`,
-    },
-  ]);
+
+  const rentalPeriods = useState("rentalPeriods", () => []);
+
+  watch(
+    () => currentCity.value,
+    (newV) => {
+      const cityName = newV?.name?.toLowerCase();
+
+      rentalPeriods.value = [
+        {
+          name: "Daily rental",
+          link: `/${cityName}/daily`,
+        },
+        {
+          name: "Weekly rental",
+          link: `/${cityName}/weekly`,
+        },
+        {
+          name: "Monthly rental",
+          link: `/${cityName}/monthly`,
+        },
+        {
+          name: "Car leasing",
+          link: `/${cityName}/leasing`,
+        },
+      ];
+    }
+  );
 
   return {
     rentalPeriods,

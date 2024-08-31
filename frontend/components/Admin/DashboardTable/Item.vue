@@ -12,9 +12,9 @@
           :isDecline="item?.views > itemNext?.views"
         >
           {{ item?.views }}
-          <br />
+          <!-- <br />
           {{ itemNext?.views }}
-          {{ itemNext?.views }}
+          {{ itemNext?.views }} -->
         </UiStatType>
       </div>
     </td>

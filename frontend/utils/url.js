@@ -8,10 +8,24 @@ export const convertNameToUrl = (name) =>
 export const convertUrlToName = (name) =>
   decodeURIComponent(name.replace(new RegExp("_", "g"), " "));
 
+const getPeriodParam = (val) => {
+  const periods = {
+    daily: 1,
+    weekly: 7,
+    monthly: 30,
+  };
+
+  return periods[val];
+};
+
 export const setOneFilterValue = (routeParams, param = "") => {
   const data = {};
 
-  if (routeParams?.body)
+  if (routeParams?.period)
+    data[`filterEQ[${param}price.period]`] = getPeriodParam(
+      routeParams?.period
+    );
+  else if (routeParams?.body)
     data[`filterEQ[${param}generation.name]`] = routeParams?.body;
   else if (routeParams?.type)
     data[`filterEQ[${param}category.name]`] = routeParams?.type;
