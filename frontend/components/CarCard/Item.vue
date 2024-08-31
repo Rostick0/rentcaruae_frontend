@@ -133,7 +133,7 @@ const route = useRoute();
 
 const link = computed(() =>
   convertNameToUrl(
-    `/${currentCity?.name}/${
+    `/${currentCity.value?.name}/${
       route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
     }/${props.car?.generation?.model_car?.brand?.name}/${
       props.car?.generation?.model_car?.name

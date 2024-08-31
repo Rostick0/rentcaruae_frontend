@@ -1,3 +1,9 @@
+// const periods = {
+//   daily: 1,
+//   weekly: 7,
+//   monthly: 30,
+// };
+
 export const convertNameToUrl = (name) =>
   typeof name === "string"
     ? encodeURIComponent(
@@ -7,16 +13,6 @@ export const convertNameToUrl = (name) =>
 
 export const convertUrlToName = (name) =>
   decodeURIComponent(name.replace(new RegExp("_", "g"), " "));
-
-const getPeriodParam = (val) => {
-  const periods = {
-    daily: 1,
-    weekly: 7,
-    monthly: 30,
-  };
-
-  return periods[val];
-};
 
 export const setOneFilterValue = (routeParams, param = "") => {
   const data = {};

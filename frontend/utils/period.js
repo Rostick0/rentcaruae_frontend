@@ -6,15 +6,21 @@ export const periodOptions = [
   },
   {
     id: 2,
-    name: "week",
+    name: "weekly",
     period: 7,
   },
   {
     id: 3,
-    name: "month",
+    name: "monthly",
     period: 30,
   },
 ];
+
+export const getPeriodParam = (val) =>
+  periodOptions.find((item) => item.name === val)?.period;
+
+export const getPeriodName = (val) =>
+  periodOptions.find((item) => item.period === val)?.name;
 
 export const convertPeriod = (val) => {
   if (val == 1) return "day";

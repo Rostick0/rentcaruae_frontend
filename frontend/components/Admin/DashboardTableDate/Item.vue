@@ -49,8 +49,6 @@
 </template>
 
 <script setup>
-import moment from "moment";
-
 const props = defineProps({
   item: Object,
 });
