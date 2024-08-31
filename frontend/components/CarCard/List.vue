@@ -1,12 +1,18 @@
 <template>
   <div class="cars">
-    <LazyCarCardItem v-for="car in cars" :key="car?.id" :car="car" />
+    <LazyCarCardItem
+      v-for="car in cars"
+      :key="car?.id"
+      :car="car"
+      :isLeasing="isLeasing"
+    />
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
   cars: Array,
+  isLeasing: Boolean,
 });
 </script>
 

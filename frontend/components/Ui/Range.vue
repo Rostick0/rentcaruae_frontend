@@ -1,22 +1,25 @@
 <template>
   <div class="range">
     <div class="range__top"></div>
-    <div class="range-input" ref="rangeInput" @click="clickHandler">
+    <div
+      class="range-input"
+      ref="rangeInput"
+      @click="partsCount !== 0 && clickHandler"
+    >
       <div
         class="range-input__left"
         :style="{
           width: `calc(${valueComputed}% - 4px)`,
         }"
       ></div>
-      <!-- {{ line }} -->
       <div
         class="range-input__line"
-        @mousedown="mouseDownHandler"
-        @touchstart="touchStartHandler"
+        @mousedown="partsCount !== 0 && mouseDownHandler($event)"
+        @touchstart="partsCount !== 0 && touchStartHandler($event)"
         :style="{
           left: line?.x + 'px',
         }"
-      ></div>
+      />
       <!-- <input class="range-input__val" type="range" /> -->
       <div
         class="range-input__right"

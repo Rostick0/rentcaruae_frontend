@@ -1,0 +1,9 @@
+.color {
+  &-red {
+    color: var(--color-old-val);
+  }
+
+  &-light-green {
+    color: var(--color-light-green);
+  }
+}

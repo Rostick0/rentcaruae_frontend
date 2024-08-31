@@ -89,7 +89,7 @@ const props = defineProps({
     padding: 4px 12px 3px;
 
     &:first-child {
-      background-color: #10c44d;
+      background-color: var(--color-light-green);
     }
 
     &:nth-child(2) {

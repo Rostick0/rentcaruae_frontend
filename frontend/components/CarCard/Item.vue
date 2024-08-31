@@ -62,38 +62,54 @@
         <CarCardModule :car="car" />
       </div>
       <div class="car__params_right">
-        <div class="car-price">
-          <div class="car-price__old">
-            <span>Daily</span>
-            <del class="color-red" v-if="car?.price_special?.[0]?.price"
-              >AED {{ formatNumber(car?.price?.[0]?.price) }}</del
-            >
+        <template v-if="isLeasing">
+          <div class="car-price">
+            <div class="car-price__old">
+              <span>Monthly</span>
+              <del class="color-red" v-if="car?.price_leasing?.length"
+                >AED {{ formatNumber(car?.price_leasing?.[0]?.price) }}</del
+              >
+            </div>
+            <div class="car-price__current">
+              AED
+              {{ formatNumber(priceLeasingMaxPeriod?.price) }}
+            </div>
           </div>
-          <div class="car-price__current">
-            AED
-            {{
-              formatNumber(
-                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
-              )
-            }}
+        </template>
+        <template v-else>
+          <div class="car-price">
+            <div class="car-price__old">
+              <span>Daily</span>
+              <del class="color-red" v-if="car?.price_special?.[0]?.price"
+                >AED {{ formatNumber(car?.price?.[0]?.price) }}</del
+              >
+            </div>
+            <div class="car-price__current">
+              AED
+              {{
+                formatNumber(
+                  car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+                )
+              }}
+            </div>
           </div>
-        </div>
-        <div class="car-price">
-          <div class="car-price__old">
-            <span>Monthly</span>
-            <del class="color-red" v-if="car?.price_special?.[2]?.price"
-              >AED {{ formatNumber(car?.price?.[2]?.price) }}</del
-            >
+          <div class="car-price">
+            <div class="car-price__old">
+              <span>Monthly</span>
+              <del class="color-red" v-if="car?.price_special?.[2]?.price"
+                >AED {{ formatNumber(car?.price?.[2]?.price) }}</del
+              >
+            </div>
+            <div class="car-price__current">
+              AED
+              {{
+                formatNumber(
+                  car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
+                )
+              }}
+            </div>
           </div>
-          <div class="car-price__current">
-            AED
-            {{
-              formatNumber(
-                car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
-              )
-            }}
-          </div>
-        </div>
+        </template>
       </div>
     </div>
     <NuxtLink class="d-flex car__link" :to="link">
@@ -103,8 +119,11 @@
 </template>
 
 <script setup>
+import last from "lodash/last.js";
+
 const props = defineProps({
   car: Object,
+  isLeasing: Boolean,
 });
 
 const city = useState("currentCity");
@@ -119,6 +138,8 @@ const link = computed(() =>
     }/${props.car?.id}`
   )
 );
+
+const priceLeasingMaxPeriod = computed(() => last(props.car?.price_leasing));
 </script>
 
 <style lang="scss" scoped>

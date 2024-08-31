@@ -1,5 +1,5 @@
 <template>
-  <div class="car-module" v-if="!car?.security_deposit?.price">
+  <div class="car-module" v-if="car?.min_days === 1">
     <LazyNuxtImg
       src="images/icon/arrow.svg"
       alt=""
@@ -7,7 +7,27 @@
       width="20"
       height="20"
     />
-    <span>Deposit-free option</span>
+    <span>1 day rental available</span>
+  </div>
+  <div class="car-module" v-if="car?.security_deposit?.price">
+    <LazyNuxtImg
+      src="images/icon/arrow.svg"
+      alt=""
+      loading="lazy"
+      width="20"
+      height="20"
+    />
+    <span class="color-light-green">Deposit-free option</span>
+  </div>
+  <div class="car-module">
+    <LazyNuxtImg
+      src="images/icon/arrow.svg"
+      alt=""
+      loading="lazy"
+      width="20"
+      height="20"
+    />
+    <span>Free delivery</span>
   </div>
 </template>
 

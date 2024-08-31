@@ -6,7 +6,7 @@
       <slot name="topBlock" />
       <CarType id="carType" v-model="filters['filterEQ[generation.name]']" />
       <LazyFilter :prices="prices" />
-      <LazyCarCardList :cars="cars[0]" />
+      <LazyCarCardList :cars="cars[0]" :isLeasing="isLeasing" />
       <LazyCarCardShortList
         class="catalog__specials"
         v-if="carsSpecial?.length > 1"
@@ -15,7 +15,7 @@
         linkText="All special offers"
         link="/"
       />
-      <LazyCarCardList :cars="cars[1]" />
+      <LazyCarCardList :cars="cars[1]" :isLeasing="isLeasing" />
       <UiPagination
         class="catalog__pagination"
         v-model="filters.page"
@@ -51,6 +51,8 @@ const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
 );
 
+const isLeasing = computed(() => rent.value === "leasing");
+
 const paramLeasing = {};
 
 if (rent.value === "leasing")
@@ -60,7 +62,7 @@ const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
     extends:
-      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,security_deposit,user.company.image.image",
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,price_leasing,security_deposit,user.company.image.image",
     sort: "promo_car.point,id",
     limit: 12,
     ...paramLeasing,
