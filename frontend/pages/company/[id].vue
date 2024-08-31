@@ -44,10 +44,7 @@
             <div class="company__action">
               <a
                 class="d-flex"
-                :href="`https://www.google.ru/maps/place/${address?.replaceAll(
-                  ',',
-                  ''
-                )}`"
+                :href="`https://www.google.com/maps/search/${address}`"
                 rel="noopener nofollow"
                 target="_blank"
               >
@@ -118,8 +115,8 @@ const { data, get } = await useApi({
 await get();
 
 const address = computed(() =>
-  `${data.value?.office_number ?? ""} ${data.value?.building_name ?? ""} ${
-    data.value?.building_name ? "," : ""
+  `${data.value?.office_number ?? ""} ${
+    data.value?.building_name ? data.value?.building_name + "," : ""
   } ${data.value?.aread_name ? data.value?.aread_name + "," : ""} ${
     data.value?.city?.name
   }, ${data.value?.city?.country?.name}`.trim()
