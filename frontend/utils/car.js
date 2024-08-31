@@ -179,7 +179,7 @@ export const getCatalogSeo = ({ type, value }, city, pageText, isLeasing) => {
     return {
       title:
         `Car leasing in ${city?.name}, flexible monthly plans and best Deals in ${pageText}`.trimEnd(),
-      description: `Lease a car for long term basis in Dubai. Relive yourself from your travel troubles in Dubai. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      description: `Lease a car for long term basis in ${city?.name}. Relive yourself from your travel troubles in ${city?.name}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
       h1: `Lease a Car in ${city?.name} ${pageText}`.trimEnd(),
     };
 
