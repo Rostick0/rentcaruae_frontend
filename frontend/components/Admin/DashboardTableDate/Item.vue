@@ -9,28 +9,41 @@
     <td class="table__td"></td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType :isShowType="item?.id < 3" :isDecline="item?.id == 2">
+        <UiStatType
+          :isShowType="itemNext?.views && itemNext.views !== item?.views"
+          :isDecline="+itemNext?.views > +item?.views"
+        >
           {{ item?.views }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType>
+        <UiStatType
+          :isShowType="itemNext?.booking && itemNext.booking !== item?.booking"
+          :isDecline="+itemNext?.booking > +item?.booking"
+        >
           {{ item?.booking }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">
       <div class="table__td_flex">
-        <UiStatType>
+        <UiStatType
+          :isShowType="
+            itemNext?.whatsapp && itemNext.whatsapp !== item?.whatsapp
+          "
+          :isDecline="+itemNext?.whatsapp > +item?.whatsapp"
+        >
           {{ item?.whatsapp }}
         </UiStatType>
       </div>
     </td>
     <td class="table__td">AED {{ item?.price }}</td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/cars/${item?.car?.id}`">Edit</NuxtLink>
+      <NuxtLink class="link" :to="`/admin/cars/${item?.car?.id}`"
+        >Edit</NuxtLink
+      >
     </td>
   </tr>
 </template>

@@ -14,6 +14,7 @@
       v-for="item in data"
       :key="item?.id"
       :item="item"
+      :itemNext="data?.[index + 1]"
     />
   </table>
 </template>

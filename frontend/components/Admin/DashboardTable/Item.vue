@@ -9,12 +9,9 @@
       <div class="table__td_flex">
         <UiStatType
           :isShowType="itemNext?.views && itemNext.views !== item?.views"
-          :isDecline="item?.views > itemNext?.views"
+          :isDecline="+itemNext?.views > +item?.views"
         >
           {{ item?.views }}
-          <!-- <br />
-          {{ itemNext?.views }}
-          {{ itemNext?.views }} -->
         </UiStatType>
       </div>
     </td>
@@ -22,7 +19,7 @@
       <div class="table__td_flex">
         <UiStatType
           :isShowType="itemNext?.booking && itemNext.booking !== item?.booking"
-          :isDecline="itemNext?.booking > item?.booking"
+          :isDecline="+itemNext?.booking > +item?.booking"
         >
           {{ item?.booking }}
         </UiStatType>
@@ -34,7 +31,7 @@
           :isShowType="
             itemNext?.whatsapp && itemNext.whatsapp !== item?.whatsapp
           "
-          :isDecline="itemNext?.whatsapp > item?.whatsapp"
+          :isDecline="+itemNext?.whatsapp > +item?.whatsapp"
         >
           {{ item?.whatsapp }}
         </UiStatType>

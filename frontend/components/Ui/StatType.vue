@@ -26,9 +26,7 @@
 <script setup>
 const props = defineProps({
   isShowType: Boolean,
-  isDecline: {
-    type: Boolean,
-  },
+  isDecline: Boolean,
 });
 </script>
 
