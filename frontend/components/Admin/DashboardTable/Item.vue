@@ -9,9 +9,12 @@
       <div class="table__td_flex">
         <UiStatType
           :isShowType="itemNext?.views && itemNext.views !== item?.views"
-          :isDecline="itemNext?.views > item?.views"
+          :isDecline="item?.views > itemNext?.views"
         >
           {{ item?.views }}
+          <br />
+          {{ itemNext?.views }}
+          {{ itemNext?.views }}
         </UiStatType>
       </div>
     </td>
@@ -52,5 +55,3 @@ const props = defineProps({
   itemNext: Object,
 });
 </script>
-
-<style lang="scss" scoped></style>

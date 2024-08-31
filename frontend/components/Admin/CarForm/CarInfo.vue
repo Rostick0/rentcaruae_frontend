@@ -58,9 +58,11 @@ const model_car = ref({
     withIcon: false,
     deps: computed(() => brand.value.modelValue),
     onDepsChange(ctx) {
+      console.log(ctx?.modelValue);
+      console.log(brand.value?.modelValue);
       if (ctx.modelValue?.brand_id === brand.value.modelValue?.id) return;
 
-      if (ctx.modelValue) return;
+      // if (ctx.modelValue) return;
 
       ctx.updateModelValue();
       ctx.handleSearch();
@@ -114,6 +116,7 @@ const generation_id = ref({
     onDepsChange: debounce((ctx) => {
       ctx.handleSearch();
 
+      console.log(ctx);
       if (!ctx.modelValue) return;
 
       ctx.updateModelValue();
