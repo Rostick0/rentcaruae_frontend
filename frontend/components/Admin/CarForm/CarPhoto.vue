@@ -12,6 +12,8 @@ const props = defineProps({
 const images = ref({
   type: "multiple-photo-loader",
   name: "images",
-  modelValue: props?.car?.images?.map?.((item, i) => item?.image) ?? "",
+  modelValue:
+    props?.car?.images?.map?.((item, i) => ({ ...item?.image, order: i })) ??
+    "",
 });
 </script>

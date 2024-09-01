@@ -6,9 +6,7 @@
     <Teleport to="body">
       <div
         class="body"
-        :style="`top:${mouseInfo?.mousePosition?.y - 20}px;left:${
-          mouseInfo?.mousePosition?.x - 20
-        }px;`"
+        :style="`top:${mouseInfo?.mousePosition?.y}px;left:${mouseInfo?.mousePosition?.x}px;`"
         v-if="mouseInfo?.mouseDown"
       >
         <slot name="selected" :mouseInfo="mouseInfo" />
@@ -56,5 +54,6 @@ const mouseDownHandler = (e) => {
   user-select: none;
   pointer-events: none;
   position: fixed;
+  z-index: 1;
 }
 </style>

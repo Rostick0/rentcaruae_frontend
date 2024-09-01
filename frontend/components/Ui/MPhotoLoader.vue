@@ -5,18 +5,19 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <div class="photoloader__images">
+    {{ modelValue?.[0] }}
+    <div class="photoloader__images" @mouseup="dragElem = null">
       <template
-        v-for="item in files?.sort((a, b) => a?.order - b?.order)"
+        v-for="item in modelValue?.sort((a, b) => a?.order - b?.order)"
         :key="item.id"
       >
-        <div @mouseup="dragElem = null">
+        <div>
           <div @mousedown="dragElem = item">
             <UiDraggable>
               <template #willselect>
                 <div
                   class="photoloader__image"
-                  @mousemove="
+                  @mouseup="
                     dragElem &&
                       item.id != dragElem.id &&
                       changeOrder(dragElem, item)
@@ -28,13 +29,23 @@
                   >
                     ✖
                   </div>
-                  <img class="photoloader__img" :src="item?.path" alt="Error" />
+                  <img
+                    class="photoloader__img"
+                    :src="item?.path"
+                    alt="Error"
+                    width="154"
+                    height="96"
+                  />
                 </div>
               </template>
               <template #selected>
-                <div class="photoloader__image">
-                  <img class="photoloader__img" :src="item?.path" alt="Error" />
-                </div>
+                <img
+                  class="photoloader__img_drag"
+                  :src="item?.path"
+                  alt="Error"
+                  width="154"
+                  height="99"
+                />
               </template>
             </UiDraggable>
           </div>
@@ -106,31 +117,32 @@ const props = defineProps({
   forceDeps: Boolean,
 });
 
-const files = ref(
-  props.modelValue?.map((item, i) => ({ ...item, order: i + 1 }))
-);
+// const files = computed(
+//   props.modelValue?.map((item, i) => ({ ...item, order: i + 1 }))
+// );
 
-onMounted(async () => {
-  files.value =
-    props?.modelValue?.map((item, i) => ({ ...item, order: i + 1 })) || [];
-});
+// onMounted(async () => {
+//   files.value =
+//     props?.modelValue?.map((item, i) => ({ ...item, order: i + 1 })) || [];
+// });
 
 const dragElem = ref();
 
 const changeOrder = debounce((dragElemArg, el) => {
-  const tmpOrder = files.value.find((i) => i.id == dragElemArg.id).order;
-  files.value.find((i) => i.id == dragElemArg.id).order = el.order;
-  files.value.find((i) => i.id == el.id).order = tmpOrder;
+  const files = [...props.modelValue];
+  const tmpOrder = files.find((i) => i.id == dragElemArg.id).order;
+  files.find((i) => i.id == dragElemArg.id).order = el.order;
+  files.find((i) => i.id == el.id).order = tmpOrder;
 
-  emits("update:modelValue", files.value);
-  dragElem.value = null
+  emits("update:modelValue", files);
+  dragElem.value = null;
 });
 
 const handleOnFileChange = (e) => {
   const _files = e.target.files;
 
   if (!_files?.length) {
-    _files.value = [];
+    // _files.value = [];
     return emits("update:modelValue", []);
   }
 
@@ -155,12 +167,12 @@ const handleOnFileChange = (e) => {
   emits("update:modelValue", [...(props?.modelValue || []), file]);
 };
 
-watch(
-  () => props.modelValue,
-  () => {
-    files.value = props.modelValue;
-  }
-);
+// watch(
+//   () => props.modelValue,
+//   () => {
+//     files.value = props.modelValue;
+//   }
+// );
 
 const handleRemove = (item) => {
   emits(
@@ -252,12 +264,20 @@ const handleRemove = (item) => {
 
   &__img {
     border-radius: 8px;
+    pointer-events: none;
+    user-select: none;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+    &_drag {
+      border-radius: 8px;
+      object-fit: cover;
+      z-index: 10;
+    }
   }
 }
 </style>
