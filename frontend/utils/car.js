@@ -89,9 +89,9 @@ export const updateCarShow = (newV, prev) => {
     data.is_new = newV.is_new;
   }
 
-  if (newV?.price_leasing?.length !== data?.price_leasing?.length) {
+  if (newV?.price_special?.length !== data?.price_special?.length) {
     // при true, нужно чтоб массив не был пустым
-    data.price_special = newV.price_leasing;
+    data.price_special = newV.price_special;
   }
 
   if (newV?.transmission_id?.id !== data?.transmission?.id) {
