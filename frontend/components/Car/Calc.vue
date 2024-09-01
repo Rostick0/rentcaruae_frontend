@@ -37,7 +37,10 @@
           />
           <span>Deposit</span>
         </div>
-        <span>AED {{ car?.security_deposit?.price }}</span>
+        <strong v-if="without_deposite.modelValue" class="color-basic"
+          >FREE</strong
+        >
+        <span v-else>AED {{ car?.security_deposit?.price }}</span>
       </div>
       <div class="calc-item__flex" v-if="!car?.free_per_day_security">
         <div class="calc-item__flex_left">

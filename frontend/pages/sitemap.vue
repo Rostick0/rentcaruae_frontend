@@ -52,10 +52,8 @@ import api from "~/api";
 
 const currentCity = useState("currentCity");
 
-// const config = useRuntimeConfig();
 const data = await api.sitemap.get();
 
-// const data = computed(() => sitemap.data.value);
 const setLink = (link) =>
   link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name));
 

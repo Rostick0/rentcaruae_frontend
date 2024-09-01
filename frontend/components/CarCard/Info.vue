@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="car__info_right">
-      <NuxtLink class="d-flex" :to="`/company/${car?.user?.company?.id}`">
+      <!-- <NuxtLink class="d-flex" :to="`/company/${car?.user?.company?.id}`">
         <LazyNuxtImg
           class="car__info_img"
           :src="car?.user?.company?.image?.image?.path_webp + '?w=150'"
@@ -63,7 +63,7 @@
           width="78"
           height="39"
         />
-      </NuxtLink>
+      </NuxtLink> -->
     </div>
   </div>
 </template>

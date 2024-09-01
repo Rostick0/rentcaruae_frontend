@@ -1,4 +1,8 @@
 .color {
+  &-basic {
+    color: var(--color-basic);
+  }
+
   &-red {
     color: var(--color-old-val);
   }
