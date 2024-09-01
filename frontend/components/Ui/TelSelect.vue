@@ -18,6 +18,7 @@
           defaultCountry="ae"
           :dropdownOptions="{ showFlags: true, showDialCodeInList: true }"
           :inputOptions="{
+            type: 'tel',
             maxlength: 19,
           }"
         />
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 import { VueTelInput as TelInput } from "vue-tel-input";
 import "vue-tel-input/vue-tel-input.css";
 const emits = defineEmits(["update:modelValue"]);

@@ -137,6 +137,55 @@ const links = computed(() => {
       width: 50vw;
     }
   }
+
+  @media (max-width: 680px) {
+    &__container {
+      align-items: flex-start;
+    }
+
+    &__subtitle {
+      margin-bottom: 216px;
+    }
+
+    &__left {
+      max-width: 100%;
+    }
+
+    &__search {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    &__right {
+      top: 240px;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    &__img {
+      width: 495px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__right {
+      right: -10vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__right {
+      top: 260px;
+      right: calc(-20vw - 100px);
+    }
+  }
+
+  @media (max-width: 340px) {
+    &__right {
+      top: 300px;
+      right: calc(-30vw - 100px);
+    }
+  }
 }
 </style>
 

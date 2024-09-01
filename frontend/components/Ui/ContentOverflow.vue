@@ -10,7 +10,7 @@
 
     <UiButton
       class="content-overflow__btn"
-      @click="active = !active"
+      @click.prevent="active = !active"
       variant="outlined"
       >{{ active ? "Hide" : "Show more" }}</UiButton
     >
