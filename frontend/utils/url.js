@@ -18,18 +18,18 @@ export const setOneFilterValue = (routeParams, param = "") => {
   const data = {};
 
   if (routeParams?.period)
-    data[`filterEQ[${param}price.period]`] = getPeriodParam(
+    data[`filterEQ[${param}price.period]`] = convertUrlToName(getPeriodParam(
       routeParams?.period
-    );
+    ));
   else if (routeParams?.body)
-    data[`filterEQ[${param}generation.name]`] = routeParams?.body;
+    data[`filterEQ[${param}generation.name]`] = convertUrlToName(routeParams?.body);
   else if (routeParams?.type)
-    data[`filterEQ[${param}category.name]`] = routeParams?.type;
+    data[`filterEQ[${param}category.name]`] = convertUrlToName(routeParams?.type);
   else if (routeParams?.brand)
     data[`filterEQ[${param}generation.model_car.brand.name]`] =
-      routeParams?.brand;
+  convertUrlToName(routeParams?.brand);
   else if (routeParams?.modelcar)
-    data[`filterEQ[${param}generation.model_car.name]`] = routeParams?.modelcar;
+    data[`filterEQ[${param}generation.model_car.name]`] = convertUrlToName(routeParams?.modelcar);
 
   return data;
 };
