@@ -1,12 +1,60 @@
 <template>
-  <div class="container">
-    <Breadcrumbs :breadcrumbs="breadcrumbs" />
-    <h1 class="h1">Sitemap</h1>
+  <div class="sitemap">
+    <div class="container">
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
+      <h1 class="h1">Sitemap</h1>
+      <h2 class="sitemap__title">Brands</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="brand in data?.brands"
+          :to="setLink(brand?.link)"
+          >{{ brand?.name }}</NuxtLink
+        >
+      </div>
+
+      <h2 class="sitemap__title">Categories</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="category in data?.categories"
+          :to="setLink(category?.link)"
+          >{{ category?.name }}</NuxtLink
+        >
+      </div>
+
+      <h2 class="sitemap__title">Bodies</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="body in data?.bodies"
+          :to="setLink(body?.link)"
+          >{{ body?.name }}</NuxtLink
+        >
+      </div>
+
+      <h2 class="sitemap__title">Period</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="period in data?.periods"
+          :to="setLink(period?.link)"
+          >{{ period?.name }}</NuxtLink
+        >
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 const currentCity = useState("currentCity");
+
+const config = useRuntimeConfig();
+const sitemap = await useFetch(`${config.public.BACK_URL}/sitemap-json`);
+
+const data = computed(() => sitemap.data.value);
+const setLink = (link) =>
+  convertNameToUrl(link?.replace?.("{current_city}", currentCity.value?.name));
 
 const breadcrumbs = [
   {
@@ -22,3 +70,34 @@ useHead({
   title: `Sitemap - Rent a Car ${currentCity.value?.name}`,
 });
 </script>
+
+<style lang="scss" scoped>
+.sitemap {
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    color: var(--color-basic);
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    &::before {
+      background-color: var(--color-basic);
+      border-radius: 50%;
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+    }
+  }
+}
+</style>
