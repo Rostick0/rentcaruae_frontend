@@ -9,7 +9,7 @@
       ref="dropdownMenu"
       tabindex="-1"
     >
-      <slot name="drop" />
+      <slot name="drop" :close="close" />
     </div>
   </div>
 </template>
@@ -21,6 +21,8 @@ const wrapper = ref();
 const onFocusout = (e) => {
   if (!wrapper?.value?.contains(e?.relatedTarget)) isOpened.value = false;
 };
+
+const close = () => (isOpened.value = false);
 
 const toggle = () => {
   isOpened.value = !isOpened.value;

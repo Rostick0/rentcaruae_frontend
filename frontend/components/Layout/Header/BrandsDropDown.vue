@@ -4,6 +4,7 @@
       class="header-brands-drop-down__link"
       v-for="link in links"
       :key="link?.id"
+      @click="emits('close', true)"
       :to="link?.link"
     >
       <LazyNuxtImg
@@ -23,6 +24,8 @@
 const props = defineProps({
   links: Array,
 });
+
+const emits = defineEmits(["close"]);
 </script>
 
 <style lang="scss" scoped>
@@ -34,6 +37,7 @@ const props = defineProps({
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px 20px;
   padding: 20px;
+  overflow: auto;
 
   &__link {
     display: flex;
@@ -45,5 +49,13 @@ const props = defineProps({
       color: var(--color-basic);
     }
   }
+
+  @media (max-width: 1024px) {
+    max-width: calc(100vw - 40px);
+  }
+
+  // @media (max-width: 680px) {
+  //   grid-template-columns: repeat(2, 1fr );
+  // }
 }
 </style>

@@ -13,7 +13,11 @@
         v-for="link in item?.links"
         :key="link?.link"
       >
-        <NuxtLink class="header-rental-drop-down-item__item" :to="link?.link">
+        <NuxtLink
+          class="header-rental-drop-down-item__item"
+          @click="emits('close', true)"
+          :to="link?.link"
+        >
           {{ link?.name }}
         </NuxtLink>
       </div>
@@ -24,7 +28,10 @@
 <script setup>
 const props = defineProps({
   list: Array,
+  close: Function,
 });
+
+const emits = defineEmits(["close"]);
 </script>
 
 <style lang="scss" scoped>

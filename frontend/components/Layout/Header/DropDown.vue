@@ -5,6 +5,7 @@
       v-for="link in links"
       :key="link?.id"
       :to="link?.link"
+      @click="emits('close', true)"
     >
       {{ link?.name }}
     </NuxtLink>
@@ -15,6 +16,8 @@
 const props = defineProps({
   links: Array,
 });
+
+const emits = defineEmits(["close"]);
 </script>
 
 <style lang="scss" scoped>

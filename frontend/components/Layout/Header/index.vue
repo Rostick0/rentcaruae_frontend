@@ -53,8 +53,11 @@
               <span>Rent a car</span>
             </UiButton>
           </template>
-          <template #drop>
-            <LayoutHeaderRentalDropDown :list="rentACar" />
+          <template #drop="{ close }">
+            <LayoutHeaderRentalDropDown
+              :list="rentACar"
+              @close="close, (isActive = false)"
+            />
           </template>
         </UiDropdownMenu>
 
@@ -110,7 +113,11 @@
           <span>Log in</span>
         </UiButton>
       </div>
-      <div class="header__bottom" :class="{ active: isActive }">
+      <div
+        v-if="$device.isMobile ? isActive : true"
+        class="header__bottom"
+        :class="{ active: isActive }"
+      >
         <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
           <template #body>
             <UiButton class="btn-flex">
@@ -129,8 +136,11 @@
               <span>Rent a car</span>
             </UiButton>
           </template>
-          <template #drop>
-            <LayoutHeaderRentalDropDown :list="rentACar" />
+          <template #drop="{ close }">
+            <LayoutHeaderRentalDropDown
+              :list="rentACar"
+              @close="close, (isActive = false)"
+            />
           </template>
         </UiDropdownMenu>
         <UiSelectWithIcons
@@ -145,16 +155,22 @@
                 {{ menuItem.name }}
               </div>
             </template>
-            <template #drop>
+            <template #drop="{ close }">
               <LayoutHeaderDropDown
                 v-if="!menuItem?.is_brand"
                 :links="menuItem?.links"
+                @close="close, (isActive = false)"
               />
-              <LayoutHeaderBrandsDropDown v-else :links="menuItem?.links" />
+              <LayoutHeaderBrandsDropDown
+                v-else
+                :links="menuItem?.links"
+                @close="close, (isActive = false)"
+              />
             </template>
           </UiDropdownMenu>
           <NuxtLink
             class="header__link text-ui"
+            @click="isActive = false"
             :to="convertNameToUrl(`/${city?.name}/leasing`)"
             >Car Leasing</NuxtLink
           >
@@ -189,6 +205,7 @@ const lang = ref({
   type: "select",
   name: "lang",
   modelValue: langOptions[0],
+  withoutResetInUnmounted: true,
 
   bind: {
     options: langOptions,
@@ -202,6 +219,7 @@ const currency = ref({
   type: "select",
   name: "currency",
   modelValue: currencyOptions[0],
+  withoutResetInUnmounted: true,
 
   bind: {
     options: currencyOptions,
@@ -344,12 +362,13 @@ const rentACar = computed(() => {
 
     &__bottom {
       background-color: var(--color-bg-main);
-      display: none;
+      // display: none;
       align-items: flex-start;
       flex-direction: column;
       row-gap: 20px;
       padding: 8px 20px;
       position: absolute;
+      // overflow: hidden;
       left: 0;
       width: 100%;
       z-index: 2;
@@ -364,9 +383,9 @@ const rentACar = computed(() => {
         }
       }
 
-      &.active {
-        display: flex;
-      }
+      // &.active {
+      //   display: flex;
+      // }
 
       &_select {
         display: flex;
