@@ -3,6 +3,7 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="h1">Sitemap</h1>
+
       <h2 class="sitemap__title">Brands</h2>
       <div class="sitemap__list">
         <NuxtLink
@@ -47,14 +48,16 @@
 </template>
 
 <script setup>
+import api from "~/api";
+
 const currentCity = useState("currentCity");
 
-const config = useRuntimeConfig();
-const sitemap = await useFetch(`${config.public.BACK_URL}/sitemap-json`);
+// const config = useRuntimeConfig();
+const data = await api.sitemap.get();
 
-const data = computed(() => sitemap.data.value);
+// const data = computed(() => sitemap.data.value);
 const setLink = (link) =>
-  convertNameToUrl(link?.replace?.("{current_city}", currentCity.value?.name));
+  link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name));
 
 const breadcrumbs = [
   {
