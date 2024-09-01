@@ -25,7 +25,7 @@
         v-if="cars?.length"
         :cars="cars"
         title="Similar Car Rental Options"
-        linkText="All convertible"
+        :linkText="`All ${data?.category?.name}`"
         :link="
           convertNameToUrl(`/${currentCity?.name}/type/${data?.category?.name}`)
         "

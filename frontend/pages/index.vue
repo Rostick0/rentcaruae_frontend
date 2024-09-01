@@ -33,11 +33,11 @@
         :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
       />
       <CarCardShortList
-        v-if="convertibleCars?.length"
-        :cars="convertibleCars"
-        title="Convertible cars"
-        linkText="All Convertible cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/convertible`)"
+        v-if="cabrioCars?.length"
+        :cars="cabrioCars"
+        title="Cabrio cars"
+        linkText="All Cabrio cars"
+        :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
       />
       <CarCardShortList
         v-if="businessCars?.length"
@@ -114,14 +114,14 @@ const { data: suvCars, get: getSuvCars } = await useApi({
 });
 await getSuvCars();
 
-const { data: convertibleCars, get: getConvertibleCars } = await useApi({
+const { data: cabrioCars, get: getCabrioCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
     "filterEQ[category_id]": 4,
   },
 });
-await getConvertibleCars();
+await getCabrioCars();
 
 const { data: businessCars, get: getBusinessCars } = await useApi({
   name: "car.getAll",

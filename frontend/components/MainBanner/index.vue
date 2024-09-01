@@ -51,7 +51,7 @@ const links = computed(() => {
       name: "SUV",
     },
     {
-      name: "Convertible",
+      name: "Cabrio",
     },
     {
       name: "Business",

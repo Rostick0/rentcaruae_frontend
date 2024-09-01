@@ -29,17 +29,9 @@
         <div class="car-short__info">
           <span>From</span>
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
-            >AED {{ formatNumber(car?.price?.[0]?.price) }}AED
-            {{ car?.price_old }}</del
+            >AED {{ priceOld }}</del
           >
-          <span class="car-short__price text-ui"
-            >AED
-            {{
-              formatNumber(
-                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
-              )
-            }}</span
-          >
+          <span class="car-short__price text-ui">AED {{ price }}</span>
           <span>per day</span>
         </div>
       </div>
@@ -66,6 +58,21 @@ const props = defineProps({
 const route = useRoute();
 
 const currentCity = useState("currentCity");
+
+const price = computed(() =>
+  formatNumber(
+    props.car?.price_special?.[0]?.price
+      ? Math.round(
+          props.car?.price_special?.[0]?.price /
+            props.car?.price_special?.[0]?.period
+        )
+      : Math.round(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
+  )
+);
+
+const priceOld = computed(() =>
+  formatNumber(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
+);
 </script>
 
 <style lang="scss" scoped>
