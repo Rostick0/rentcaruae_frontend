@@ -5,7 +5,6 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    {{ modelValue?.[0] }}
     <div class="photoloader__images" @mouseup="dragElem = null">
       <template
         v-for="item in modelValue?.sort((a, b) => a?.order - b?.order)"
