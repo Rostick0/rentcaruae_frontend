@@ -1,8 +1,5 @@
 <template>
-  <component
-    v-if="componentImport"
-    :is="computedAsyncComponent"
-  />
+  <component v-if="componentImport" :is="computedAsyncComponent" />
 </template>
 
 <script setup>
@@ -11,8 +8,6 @@ import startCase from "lodash/startCase";
 const props = defineProps({
   type: String,
 });
-
-console.log(props.type);
 
 const componentImport = computed(async () => {
   try {
@@ -28,6 +23,4 @@ const computedAsyncComponent = computed(
   () =>
     componentImport.value && defineAsyncComponent(() => componentImport.value)
 );
-
-console.log(componentImport.value);
 </script>

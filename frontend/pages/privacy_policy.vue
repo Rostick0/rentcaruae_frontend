@@ -148,9 +148,6 @@ const breadcrumbs = [
 
 <style lang="scss" scoped>
 .text-information {
-  br {
-    line-height: 0.25px;
-  }
   &__inner {
     padding-bottom: 100px;
   }
