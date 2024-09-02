@@ -21,7 +21,7 @@
         v-model="filters.page"
         :meta="meta"
       />
-      <!-- <PageCatalogTextBodyConvertible /> -->
+      <PageCatalogText :type="oneFilterType" />
     </div>
   </div>
 </template>
@@ -150,8 +150,10 @@ watch(
   }
 );
 
+const oneFilterType = computed(() => getOneFilterType(route.params));
+
 const { title, description, h1 } = getCatalogSeo(
-  getOneFilterType(route.params),
+  oneFilterType.value,
   currentCity.value,
   pageText.value,
   rent.value === "leasing"

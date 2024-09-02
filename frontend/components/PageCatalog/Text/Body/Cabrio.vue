@@ -1,31 +1,31 @@
 <template>
   <div class="text-information">
-    <h2 class="text-information__title">Convertible</h2>
+    <h2 class="text-information__title">Cabrio</h2>
     <div class="text-information__content">
       <UiContentOverflow heightDefault="184">
         <div class="text-information__description">
           <p>
             Dubai, known for its prestigious lifestyle and unique modern
             architecture, is also a cihat celebrates the excitement of driving
-            premium vehicles. Among these, convertible cars are particularly
+            premium vehicles. Among these, cabrio cars are particularly
             enticing, offering a distinctive way to feel the city’s vibrant
             atmosphere.
           </p>
           <br />
           <p>
-            The term "cabriolet" specifically refers to a convertible vehicle
+            The term "cabriolet" specifically refers to a cabrio vehicle
             with a retractable roof, which can be either a soft top or a hard
             top.
           </p>
           <br />
-          <h3 class="text-information__description_title">
-            Why Rent a Convertible in Dubai?
+          <h3  >
+            Why Rent a Cabrio in Dubai?
           </h3>
           <h4>&ensp;&ensp;Perfect Climate</h4>
           <p>
             Dubai’s sunny weather is ideal for driving with the top down. Enjoy
             the pleasant breeze and warm temperatures, but don’t worry - our
-            convertibles come with advanced cooling systems to keep you
+            cabrios come with advanced cooling systems to keep you
             comfortable even in the heat.
           </p>
           <br />
@@ -36,18 +36,18 @@
             The stunning views and fresh air make for a memorable drive.
           </p>
           <br />
-          <h3 class="text-information__description_title">
+          <h3  >
             What You Get with a Cabriolet
           </h3>
           <p>
-            Convertible cars are synonymous with extravagance, freedom, and
+            Cabrio cars are synonymous with extravagance, freedom, and
             elegance. Their unique charm ensures they remain a popular choice
             among automotive enthusiasts.
           </p>
           <br />
           <p>
             Whether you’re cruising down a coastal highway with the top down or
-            navigating the bustling city streets with the roof up, convertibles
+            navigating the bustling city streets with the roof up, cabrios
             offer an unparalleled driving experience.
           </p>
           <ul class="text-information__ul">
@@ -57,27 +57,27 @@
               striking impression in a city that epitomizes style and luxury.
             </li>
             <li class="text-information__li">
-              <strong>Tourist Attraction</strong>: Renting a convertible is a
+              <strong>Tourist Attraction</strong>: Renting a cabrio is a
               popular choice for visitors looking to elevate their travel
               experience. Opting for a luxurious cabriolet allows tourists to
               explore Dubai in a stylish and comfortable manner.
             </li>
             <li class="text-information__li">
-              <strong>Aesthetic Appeal:</strong> Convertibles boast sleek,
+              <strong>Aesthetic Appeal:</strong> Cabrios boast sleek,
               sporty designs that are both visually stunning and fashionable.
               Their striking appearance makes them stand out on the road, adding
               an extra layer of allure to any journey.
             </li>
           </ul>
           <br />
-          <h3 class="text-information__description_title">Get the Cabriolet</h3>
+          <h3  >Get the Cabriolet</h3>
           <p>
-            We offer the selection of convertible cars, including the Ferrari F8
+            We offer the selection of cabrio cars, including the Ferrari F8
             Tributo Spider and the BMW 430i. Both models provide exceptional
             driving experiences and showcase top-tier engineering and design.
           </p>
           <br />
-          <h3 class="text-information__description_title">
+          <h3  >
             Rental Requirements
           </h3>
           <p>
@@ -87,17 +87,17 @@
             recommended.
           </p>
           <br />
-          <h3 class="text-information__description_title">
-            Experience Dubai in Style with Our Convertible Rentals
+          <h3  >
+            Experience Dubai in Style with Our Cabrio Rentals
           </h3>
           <p>
             We offer you an unbeatable driving encounter in Dubai with our
-            convertible car rentals. Here’s what you can expect:
+            cabrio car rentals. Here’s what you can expect:
           </p>
           <br />
           <h4>&ensp;&ensp;Low Prices</h4>
           <p>
-            Enjoy luxury without breaking the bank. Our convertible rentals
+            Enjoy luxury without breaking the bank. Our cabrio rentals
             start from just AED 499 per day.
           </p>
           <br />

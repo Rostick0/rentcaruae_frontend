@@ -13,14 +13,14 @@
             and can be done in just a few clicks.
           </p>
           <br />
-          <h3 class="text-information__description_title">Daily Rental</h3>
+          <h3  >Daily Rental</h3>
           <p>
             Daily rental is a great way to get acquainted with a car before
             buying or committing to a long-term rental. You can rent a car for
             one day with the option to extend the contract at a favorable price.
           </p>
           <br />
-          <h3 class="text-information__description_title">Weekly Rental</h3>
+          <h3  >Weekly Rental</h3>
           <p>
             Planning a vacation or business trip to Dubai? Then renting a car
             for a week or more at a special price is your choice! Renting a car
@@ -28,7 +28,7 @@
             enjoy all the attractions of Dubai.
           </p>
           <br />
-          <h3 class="text-information__description_title">Monthly Rental</h3>
+          <h3  >Monthly Rental</h3>
           <p>
             An economy car or a luxurious SUV with a monthly rental becomes more
             advantageous and allows you to enjoy your trip or business visit.
@@ -36,7 +36,7 @@
             airport and return it at any convenient location.
           </p>
           <br />
-          <h3 class="text-information__description_title">Cheap Car Rental</h3>
+          <h3  >Cheap Car Rental</h3>
           <p>
             We have selected the best offers from our partners starting from AED
             220. BMW, Toyota, Nissan, and many other economical cars with
@@ -47,13 +47,13 @@
             cars of a specific brand.
           </p>
           <br />
-          <h3 class="text-information__description_title">Payment Methods</h3>
+          <h3  >Payment Methods</h3>
           <p>
             Our partners accept cash and bank cards for car rental payments, and
             quite often, you can pay using cryptocurrency.
           </p>
           <br />
-          <h3 class="text-information__description_title">
+          <h3  >
             Popular Car Brands for Rent in Dubai
           </h3>
           <p>
