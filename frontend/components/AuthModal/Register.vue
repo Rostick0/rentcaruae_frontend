@@ -26,7 +26,7 @@
             >Terms of Service</NuxtLink
           >
           <br />and
-          <NuxtLink to="/private_policy" target="_blank"
+          <NuxtLink to="/privacy_policy" target="_blank"
             >Privacy Policy</NuxtLink
           >, including cookie use.
         </VFormComponent>

@@ -87,11 +87,11 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">About us</div>
             <div class="footer-item__list">
-              <!-- <NuxtLink class="footer-item__link" to="/">Blog</NuxtLink> -->
-              <NuxtLink class="footer-item__link" to="/"
+              <!-- <NuxtLink class="footer-item__link" to="/blog">Blog</NuxtLink> -->
+              <NuxtLink class="footer-item__link" to="/privacy_policy"
                 >Privacy policy</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/">Terms of use</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/terms_of_service">Terms of use</NuxtLink>
               <NuxtLink class="footer-item__link" to="/sitemap"
                 >Site map</NuxtLink
               >
