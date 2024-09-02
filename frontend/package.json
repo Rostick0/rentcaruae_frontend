@@ -10,8 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxtjs/device": "^3.2.2",
     "@nuxt/image": "^1.7.0",
+    "@nuxtjs/device": "^3.2.2",
+    "@stripe/stripe-js": "^4.4.0",
     "@vee-validate/i18n": "^4.13.2",
     "@vee-validate/rules": "^4.13.2",
     "@vuepic/vue-datepicker": "^8.8.1",
@@ -22,6 +23,7 @@
     "nuxt": "^3.12.3",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-swiper": "^1.2.2",
+    "stripe": "^16.9.0",
     "uuid": "^10.0.0",
     "vee-validate": "^4.13.2",
     "vue": "latest",

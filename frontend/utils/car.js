@@ -188,7 +188,7 @@ export const getCatalogSeo = ({ type, value }, city, pageText, isLeasing) => {
       title:
         `Rent ${value} Car in ${city?.name}, UAE - ${value} Cars Rental in ${city?.name} ${pageText}`.trimEnd(),
       description: `Find ${value} car rentals in ${city?.name} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
-      h1: `${value} cars for rent in Dubai ${city?.name} ${pageText}`.trimEnd(),
+      h1: `${value} cars for rent in ${city?.name} ${pageText}`.trimEnd(),
     };
 
   if (type === "brand" || type === "modelcar")

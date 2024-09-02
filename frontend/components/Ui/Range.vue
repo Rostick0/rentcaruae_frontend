@@ -4,7 +4,7 @@
     <div
       class="range-input"
       ref="rangeInput"
-      @click="partsCount !== 0 && clickHandler"
+      @click="partsCount !== 0 && clickHandler($event)"
     >
       <div
         class="range-input__left"
