@@ -68,7 +68,7 @@
           <VFormComponent :field="lang" />
           <VFormComponent :field="currency" />
         </div>
-        <NuxtLink v-if="user" to="/admin">
+        <NuxtLink v-if="user" to="/seller">
           <UiButton class="btn-flex">
             <svg
               width="20"

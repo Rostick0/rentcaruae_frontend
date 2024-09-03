@@ -90,51 +90,6 @@ export default defineNuxtConfig({
   },
 
   pwa: {
-    // manifest: {
-    //   name: "Rent Car UAE",
-    //   short_name: "RentCarUAE",
-    //   description: "Rent Car UAE",
-    //   theme_color: "white",
-    //   lang: "en-US",
-    //   icons: [
-    //     {
-    //       src: "icons/maskable_icon_x48.png",
-    //       sizes: "48x48",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //     {
-    //       src: "icons/maskable_icon_x72.png",
-    //       sizes: "72x72",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //     {
-    //       src: "icons/maskable_icon_x96.png",
-    //       sizes: "96x96",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //     {
-    //       src: "icons/maskable_icon_x128.png",
-    //       sizes: "128x128",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //     {
-    //       src: "icons/maskable_icon_x192.png",
-    //       sizes: "192x192",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //     {
-    //       src: "icons/maskable_icon_x512.png",
-    //       sizes: "512x512",
-    //       type: "image/png",
-    //       purpose: "maskable",
-    //     },
-    //   ],
-    // },
     // workbox: {
     //   navigateFallback: "/",
     //   importScripts: ["https://push4site.com/static/sw/buycardubai.js"],

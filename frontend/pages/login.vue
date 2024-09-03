@@ -4,6 +4,6 @@
 
 <script setup>
 // definePageMeta({
-//   layout: "admin",
+//   layout: "seller",
 // });
 </script>
