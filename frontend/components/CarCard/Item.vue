@@ -20,7 +20,7 @@
           car?.images?.[0]?.image?.path_webp +
           (car?.images?.[0]?.image?.path_webp?.startsWith('blob')
             ? ''
-            : '?w=350')
+            : '?w=400')
         "
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car)"

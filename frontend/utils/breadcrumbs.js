@@ -12,8 +12,6 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
     },
   ];
 
-  console.log(oneFilterType);
-
   if (rent === "leasing")
     return [...data, { name: `Car ${rent} in ${currentCity.name}` }];
 

@@ -128,27 +128,6 @@ const breadcrumbs = computed(() =>
   })
 );
 
-// {
-//     name: "Home",
-//     link: "/",
-//   },
-//   {
-//     name: currentCity.value?.name,
-//     link: convertNameToUrl(`/${currentCity.value?.name}`),
-//   },
-//   {
-//     name: 'Brand',
-//   },
-//   {
-//     name: 'Tesla',
-//   }
-// {
-//   name:
-//     rent.value === "leasing"
-//       ? `Car ${rent.value} in ${currentCity.value?.name}`
-//       : `Economy cars Rental`,
-// },
-
 watch(
   () => filters.value.page,
   (newV) => {
