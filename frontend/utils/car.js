@@ -29,6 +29,7 @@ export const getCarOnSubmitValues = async ({
   colour_interior_id,
   fuel_type_id,
   generation_id,
+  cities,
   transmission_id,
   min_days,
   price_leasing,
@@ -48,6 +49,7 @@ export const getCarOnSubmitValues = async ({
   return {
     ...values,
     images,
+    cities: cities?.map?.((item) => item?.id)?.join(","),
     category_id: category_id?.id,
     colour_id: colour_id?.id,
     colour_interior_id: colour_interior_id?.id,

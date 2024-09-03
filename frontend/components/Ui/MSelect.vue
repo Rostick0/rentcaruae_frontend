@@ -255,40 +255,37 @@ const handleScroll = (event) => {
   }
 
   &__value {
-    background-color: var(--color-white);
-    color: var(--color-grey-dark);
-    border: 1px solid var(--color-line);
     border-radius: 8px;
-    pointer-events: none;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 10px 16px;
-    padding-right: 40px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    font-size: 16px;
+    font-weight: 700;
+
+    padding: 8px;
+    padding-top: 24px;
+    // padding-right: 40px;
     width: 100%;
   }
 
   &__options {
     background-color: var(--color-white);
-    color: var(--color-grey-dark);
-    border: 1px solid var(--color-line);
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    color: var(--color-basic);
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 #00000040;
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
-    font-size: 14px;
-    padding: 10px 18px;
-    padding-left: 4px;
+    row-gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 8px;
     position: absolute;
-    bottom: 1px;
-    transform: translateY(100%);
     overflow: auto;
-    max-height: 20rem;
     width: 100%;
-    z-index: 1000000;
+    max-height: 20rem;
+    z-index: 10;
   }
 }
 

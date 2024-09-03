@@ -18,7 +18,7 @@ const id = useRoute().params.id;
 const { data, get } = await useApi({
   name: "car.get",
   params: {
-    extends: carFullExtends,
+    extends: carFullExtends + ",cities.city",
     without_cache: true,
   },
   requestParams: {
@@ -62,7 +62,7 @@ watch(
   values,
   debounce((newV) => {
     if (!isRenred.value) return;
-    
+
     data.value = updateCarShow(newV, data.value);
   }, 300)
 );

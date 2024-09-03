@@ -10,6 +10,7 @@
     </div>
     <div class="form-item">
       <VFormComponent :field="generation_id" />
+      <VFormComponent :field="cities" />
     </div>
   </AnyFormBlock>
 </template>
@@ -118,6 +119,18 @@ const generation_id = ref({
 
       ctx.updateModelValue();
     }, 300),
+  },
+});
+
+const cities = ref({
+  type: "multiple-select",
+  name: "cities",
+  rules: "required",
+  modelValue: props?.car?.cities?.map((item) => ({ ...item?.city })) ?? [],
+
+  bind: {
+    label: "Cities",
+    options: useState("cities"),
   },
 });
 
