@@ -37,6 +37,7 @@ const props = defineProps({
 });
 
 const route = useRoute();
+const currentCity = useState("currentCity");
 
 const oneFilterValue = setOneFilterValue(route.params);
 const oneFilterType = computed(() => getOneFilterType(route.params));
@@ -45,6 +46,7 @@ const { filters } = useFilter({
   initialFilters: {
     ...oneFilterValue,
     page: +(route.params?.page ?? 1),
+    "filterIN[cities.city_id]": currentCity.value?.id,
   },
 });
 
@@ -63,7 +65,7 @@ const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
     extends:
-      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,price_leasing,security_deposit,user.company.image.image",
+      "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,price_leasing,security_deposit,user.company.image.image,cities",
     sort: "promo_car.point,id",
     limit: 12,
     ...paramLeasing,
@@ -115,7 +117,13 @@ watch(filters.value, (newV) => {
   });
 });
 
-const currentCity = useState("currentCity");
+watch(
+  () => currentCity.value,
+  (newV) => {
+    filters.value["filterIN[cities.city_id]"] = newV?.id;
+  }
+);
+
 const pageText = computed(() =>
   filters.value.page > 1 ? `- Page ${filters.value.page}` : ""
 );
