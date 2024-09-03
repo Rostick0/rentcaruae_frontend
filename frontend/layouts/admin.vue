@@ -1,12 +1,8 @@
 <template>
   <div class="wrapper">
-    <LayoutAnyAside :navigations="navigations">
-      <template #aside-pre-top>
-        <SellerRefreshUsed />
-      </template>
-    </LayoutAnyAside>
+    <LayoutAnyAside :navigations="navigations" />
     <div class="wrapper__content">
-      <LayoutSellerHeader />
+      <!-- <LayoutSellerHeader /> -->
       <main class="main">
         <slot />
       </main>
@@ -18,19 +14,19 @@
 const navigations = [
   {
     name: "Dashboard",
-    link: "/seller",
+    link: "/admin",
   },
   {
-    name: "Manage cars",
-    link: "/seller/cars",
+    name: "Brands",
+    link: "/admin/brands",
   },
   {
-    name: "Leads",
-    link: "/seller/leads",
+    name: "Specials",
+    link: "/admin/specials",
   },
   {
-    name: "Profile",
-    link: "/seller/profile",
+    name: "Sellers",
+    link: "/admin/sellers",
   },
 ];
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Car specification">
+  <AnyFormBlock title="Car specification">
     <div class="form-item">
       <VFormComponent :field="transmission_id" />
       <VFormComponent :field="colour_id" />
@@ -13,7 +13,7 @@
       <VFormComponent v-if="isShowIsNew" :field="is_new" />
     </div>
     <VFormComponent :field="car_options" />
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

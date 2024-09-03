@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Special offer">
+  <AnyFormBlock title="Special offer">
     <div class="form-item__price">
       <div class="form-item__price_name">Price per day</div>
       <VFormComponent :field="special_price_day" />
@@ -22,7 +22,7 @@
       </div>
     </div>
     <slot name="bottom" />
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

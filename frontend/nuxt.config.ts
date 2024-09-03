@@ -104,9 +104,6 @@ export default defineNuxtConfig({
     "/amp": {
       ssr: true,
       experimentalNoScripts: true,
-      // render: {
-      //   spaScript: false,
-      // },
     },
   },
   nitro: {

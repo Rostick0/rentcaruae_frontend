@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Car photo">
+  <AnyFormBlock title="Car photo">
     <div class="form-item">
       <VFormComponent :field="company_name" />
       <VFormComponent :field="user_tel" />
@@ -24,7 +24,7 @@
       </div>
     </div>
     <VFormComponent :field="company_description" />
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Car info">
+  <AnyFormBlock title="Car info">
     <div class="form-item">
       <VFormComponent :field="brand" />
       <VFormComponent :field="year" />
@@ -11,7 +11,7 @@
     <div class="form-item">
       <VFormComponent :field="generation_id" />
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

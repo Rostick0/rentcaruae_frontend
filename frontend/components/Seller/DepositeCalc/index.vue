@@ -1,11 +1,11 @@
 <template>
-  <SellerFormBlock class="deposite-calc" title="Choose option">
+  <AnyFormBlock class="deposite-calc" title="Choose option">
     <SellerDepositeCalcSelect :deposites="data" v-model="price" />
     <div class="deposite-calc__bottom">
       <CalcAmount :price="price" textTopleft="Package Advanced" />
       <UiButton>Deposit</UiButton>
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

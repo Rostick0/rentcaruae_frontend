@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock class="verification" title="Verification status">
+  <AnyFormBlock class="verification" title="Verification status">
     <div class="verification__list">
       <UiStatus :isAccept="!!user?.company?.license"
         >Add Trade license</UiStatus
@@ -10,7 +10,7 @@
       <UiStatus :isAccept="!!user?.is_verified">Verified</UiStatus>
     </div>
     <UiButton>Resend</UiButton>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

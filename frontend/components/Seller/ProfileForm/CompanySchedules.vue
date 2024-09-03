@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Work time">
+  <AnyFormBlock title="Work time">
     <div class="form-item__price">
       <strong class="form-item__price_name">Monday</strong>
       <VFormComponent :field="monday" />
@@ -35,7 +35,7 @@
       <VFormComponent :field="sunday" />
       <VFormComponent :field="sunday_is_show" />
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

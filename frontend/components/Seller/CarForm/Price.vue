@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Price">
+  <AnyFormBlock title="Price">
     <div class="form-item__price">
       <div class="form-item__price_name">Price per day</div>
       <VFormComponent :field="price_per_day" />
@@ -37,7 +37,7 @@
         <VFormComponent :field="is_show_per_month" />
       </div>
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

@@ -1,7 +1,7 @@
 <template>
-  <SellerFormBlock title="Car photo">
+  <AnyFormBlock title="Car photo">
     <VFormComponent :field="images" />
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

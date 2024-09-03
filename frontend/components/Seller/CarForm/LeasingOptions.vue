@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="leasing options">
+  <AnyFormBlock title="leasing options">
     <div class="form-item__price">
       <div class="form-item__price_name">1 month</div>
       <VFormComponent :field="price_leasing_0" />
@@ -55,7 +55,7 @@
         />
       </div>
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

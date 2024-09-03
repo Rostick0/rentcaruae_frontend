@@ -1,5 +1,5 @@
 <template>
-  <SellerFormBlock title="Rental terms">
+  <AnyFormBlock title="Rental terms">
     <div class="form-item__price">
       <div class="form-item__price_name">Security deposit</div>
       <VFormComponent :field="security_deposit" />
@@ -11,7 +11,7 @@
       <div class=""></div>
       <VFormComponent :field="free_per_day_security" />
     </div>
-  </SellerFormBlock>
+  </AnyFormBlock>
 </template>
 
 <script setup>

@@ -39,6 +39,7 @@ const props = defineProps({
 const route = useRoute();
 
 const oneFilterValue = setOneFilterValue(route.params);
+const oneFilterType = computed(() => getOneFilterType(route.params));
 
 const { filters } = useFilter({
   initialFilters: {
@@ -119,22 +120,34 @@ const pageText = computed(() =>
   filters.value.page > 1 ? `- Page ${filters.value.page}` : ""
 );
 
-const breadcrumbs = computed(() => [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: currentCity.value?.name,
-    link: convertNameToUrl(`/${currentCity.value?.name}`),
-  },
-  {
-    name:
-      rent.value === "leasing"
-        ? `Car ${rent.value} in ${currentCity.value?.name}`
-        : `Economy cars Rental`,
-  },
-]);
+const breadcrumbs = computed(() =>
+  getCatalogBreadCrumbs({
+    currentCity: currentCity.value,
+    rent: rent.value,
+    oneFilterType: oneFilterType.value,
+  })
+);
+
+// {
+//     name: "Home",
+//     link: "/",
+//   },
+//   {
+//     name: currentCity.value?.name,
+//     link: convertNameToUrl(`/${currentCity.value?.name}`),
+//   },
+//   {
+//     name: 'Brand',
+//   },
+//   {
+//     name: 'Tesla',
+//   }
+// {
+//   name:
+//     rent.value === "leasing"
+//       ? `Car ${rent.value} in ${currentCity.value?.name}`
+//       : `Economy cars Rental`,
+// },
 
 watch(
   () => filters.value.page,
@@ -149,8 +162,6 @@ watch(
     });
   }
 );
-
-const oneFilterType = computed(() => getOneFilterType(route.params));
 
 const { title, description, h1 } = getCatalogSeo(
   oneFilterType.value,

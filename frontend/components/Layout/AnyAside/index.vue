@@ -3,12 +3,15 @@
     <NuxtLink class="seller-aside__logo">
       <Logo class="seller-aside__logo_inner" />
     </NuxtLink>
-    <SellerRefreshUsed />
-    <SellerAsideNavigation />
+    <slot name="aside-pre-top" />
+    <AnyAsideNavigation :navigations="navigations" />
   </div>
 </template>
 
 <script setup>
+const props = defineProps({
+  navigations: Array,
+});
 </script>
 
 <style lang="scss" scoped>

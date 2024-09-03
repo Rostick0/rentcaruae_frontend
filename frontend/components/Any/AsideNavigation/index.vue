@@ -5,7 +5,7 @@
       :class="{
         active: route.fullPath.split('/')[2] === link.link.split('/')[2],
       }"
-      v-for="link in links"
+      v-for="link in navigations"
       :to="link.link"
       :key="link.link"
       >{{ link.name }}
@@ -17,24 +17,9 @@
 <script setup>
 const route = useRoute();
 
-const links = [
-  {
-    name: "Dashboard",
-    link: "/seller",
-  },
-  {
-    name: "Manage cars",
-    link: "/seller/cars",
-  },
-  {
-    name: "Leads",
-    link: "/seller/leads",
-  },
-  {
-    name: "Profile",
-    link: "/seller/profile",
-  },
-];
+const props = defineProps({
+  navigations: Array,
+});
 </script>
 
 <style lang="scss" scoped>
