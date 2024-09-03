@@ -70,6 +70,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-swiper",
     "@nuxtjs/device",
+    "@vite-pwa/nuxt",
   ],
   swiper: {
     modules: ["pagination"],

@@ -15,6 +15,7 @@
     "@stripe/stripe-js": "^4.4.0",
     "@vee-validate/i18n": "^4.13.2",
     "@vee-validate/rules": "^4.13.2",
+    "@vite-pwa/nuxt": "^0.10.3",
     "@vuepic/vue-datepicker": "^8.8.1",
     "flag-icons": "^7.2.3",
     "lodash": "^4.17.21",
