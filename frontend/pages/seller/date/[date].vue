@@ -8,7 +8,7 @@
     subtitle="Show cars:"
   />
   <SellerDashboardTableDate :data="data" />
-  <SellerPagination
+  <AnyPagination
     :currentPage="meta?.current_page"
     :limit="selectedPeriod.id"
     :totalCountData="meta?.total"

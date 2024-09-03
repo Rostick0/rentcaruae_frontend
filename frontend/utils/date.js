@@ -27,9 +27,9 @@ export const convertTimeToEdit = (timeString) => {
 export const convertTimeToDb = (times) =>
   [0, 1].map(
     (i) =>
-      times?.[i]?.hours?.padStart(1) +
+      `${times?.[i]?.hours}`?.padStart(2, "0") +
       ":" +
-      times?.[i]?.minutes?.padStart(1) +
+      `${times?.[i]?.minutes}`?.padStart(2, "0") +
       ":" +
-      times?.[i]?.seconds?.padStart(1)
+      `${times?.[i]?.seconds}`?.padStart(2, "0")
   );

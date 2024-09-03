@@ -7,11 +7,12 @@
     subtitle="Selected period:"
   />
   <SellerLeadsTable :leads="data" />
-  <SellerPagination
+  <!-- <AnyPagination
+    @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"
     limit="8"
     :totalCountData="meta?.total"
-  />
+  /> -->
 </template>
 
 <script setup>

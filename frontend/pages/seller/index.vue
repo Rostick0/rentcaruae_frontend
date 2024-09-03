@@ -7,7 +7,7 @@
     subtitle="Selected period:"
   />
   <SellerDashboardTable :data="data" />
-  <!-- <SellerPagination currentPage="2" limit="8" totalCountData="40" /> -->
+  <!-- <AnyPagination currentPage="2" limit="8" totalCountData="40" /> -->
 </template>
 
 <script setup>

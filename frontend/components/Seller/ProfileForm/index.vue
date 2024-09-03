@@ -57,6 +57,7 @@ const onSubmit = handleSubmit(
 
       data.company_schedules.start.push(start);
       data.company_schedules.end.push(end);
+      console.log(data.company_schedules);
     });
 
     const res = await api.companies.update({

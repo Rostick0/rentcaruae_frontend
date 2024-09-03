@@ -20,7 +20,7 @@
       @setCarsSelected="changeCarsSelected"
       @changeOneCarSelected="changeOneCarSelected"
     />
-    <SellerPagination
+    <AnyPagination
       :currentPage="meta?.current_page"
       limit="8"
       :totalCountData="meta?.total"
