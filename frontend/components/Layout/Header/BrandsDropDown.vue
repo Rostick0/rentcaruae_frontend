@@ -38,6 +38,7 @@ const emits = defineEmits(["close"]);
   grid-gap: 10px 20px;
   padding: 20px;
   overflow: auto;
+  width: fit-content;
 
   &__link {
     display: flex;

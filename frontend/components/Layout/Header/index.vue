@@ -123,7 +123,6 @@
           v-if="$device.isMobile ? isActive : true"
           @click.self="isActive = false"
           class="header__bottom"
-          :class="{ active: isActive }"
         >
           <div class="header__bottom_inner">
             <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
@@ -365,9 +364,11 @@ const rentACar = computed(() => {
   }
 
   &__bottom {
-    display: flex;
-    align-items: center;
-    column-gap: 81px;
+    &_inner {
+      display: flex;
+      align-items: center;
+      column-gap: 81px;
+    }
   }
 
   &__links {
@@ -421,22 +422,12 @@ const rentACar = computed(() => {
 
       &_inner {
         background-color: var(--color-bg-main);
-        display: flex;
-        align-self: flex-start;
+        align-items: flex-start;
         flex-direction: column;
         row-gap: 20px;
         padding: 8px 20px;
         width: 100%;
       }
-
-      // &::after {
-      //   content: "";
-      //   // position: absolute;
-      //   background-color: rgba(0, 0, 0, 0.25);
-      //   width: 100%;
-      //   height: 100%;
-      //   left: 0;
-      // }
 
       &_rent {
         margin-bottom: -12px;
@@ -447,10 +438,6 @@ const rentACar = computed(() => {
           width: 100%;
         }
       }
-
-      // &.active {
-      //   display: flex;
-      // }
 
       &_select {
         display: flex;

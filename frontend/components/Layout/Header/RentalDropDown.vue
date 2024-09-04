@@ -61,6 +61,8 @@ const emits = defineEmits(["close"]);
     &__item {
       font-size: 14px;
       letter-spacing: 0.02em;
+      text-wrap: nowrap;
+      white-space: nowrap;
       padding: 8px;
       transition: 0.3s;
 
