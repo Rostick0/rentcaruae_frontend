@@ -17,7 +17,7 @@
         <SwiperSlide v-for="image in images" :key="image?.id">
           <LazyNuxtImg
             class="car-image__main_img"
-            :src="image?.image?.path_webp?.replace('?w=180', '') + '?w=700'"
+            :src="image?.image?.path_webp + '?w=700'"
             :title="getCarImageTitle(car, currentCity)"
             :alt="getCarImageAlt(car)"
             decoding="async"

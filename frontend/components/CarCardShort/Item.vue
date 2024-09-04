@@ -14,7 +14,7 @@
     <div class="car-short__image">
       <LazyNuxtImg
         class="car-short__img"
-        :src="car?.images?.[0]?.image?.path_webp + '?w=280'"
+        :src="car?.images?.[0]?.image?.path_webp + '?w=300'"
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car)"
         decoding="async"

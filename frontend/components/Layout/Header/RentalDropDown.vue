@@ -54,6 +54,8 @@ const emits = defineEmits(["close"]);
 
     &__title {
       margin-bottom: 8px;
+      text-wrap: nowrap;
+      white-space: nowrap;
     }
 
     &__item {
