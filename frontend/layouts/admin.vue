@@ -21,12 +21,16 @@ const navigations = [
     link: "/admin/brands",
   },
   {
-    name: "Specials",
-    link: "/admin/specials",
+    name: "Deposites",
+    link: "/admin/deposties",
   },
   {
     name: "Sellers",
     link: "/admin/sellers",
+  },
+  {
+    name: "Payments",
+    link: "/admin/payments",
   },
 ];
 </script>

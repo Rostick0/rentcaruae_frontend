@@ -121,6 +121,7 @@
         </div>
         <div
           v-if="$device.isMobile ? isActive : true"
+          @click.self="isActive = false"
           class="header__bottom"
           :class="{ active: isActive }"
         >
@@ -421,6 +422,7 @@ const rentACar = computed(() => {
       &_inner {
         background-color: var(--color-bg-main);
         display: flex;
+        align-self: flex-start;
         flex-direction: column;
         row-gap: 20px;
         padding: 8px 20px;

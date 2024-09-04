@@ -106,12 +106,20 @@ const links = computed(() => {
   &__right {
     flex-grow: 1;
     position: absolute;
-    right: 0;
+    // right: calc(100vw - 1440px);
+    // right: calc(1168px);
+    right: calc((100vw - 1400px) / 2);
   }
 
   &__img {
     max-width: 708px;
     width: 50vw;
+  }
+
+  @media (max-width: 1440px) {
+    &__right {
+      right: 0;
+    }
   }
 
   @media (max-width: 1280px) {
