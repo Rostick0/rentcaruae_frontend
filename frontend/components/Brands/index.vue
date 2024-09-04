@@ -9,7 +9,7 @@
       "
     >
       <LazyNuxtImg
-        :src="brand?.image_url"
+        :src="brand?.image_url + '?=w60'"
         :title="brand?.name"
         :alt="`${brand?.name} for rent`"
         loading="lazy"

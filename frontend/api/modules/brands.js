@@ -6,5 +6,5 @@ export default {
   update: async ({ id, data, params }) =>
     useFetcher().patch(`/brands/${id}`, data, params),
   getAll: async ({ params }) => useFetcher().get(`/brands`, params),
-  //   create: async ({ data }) => useFetcher().post(`/brands`, data),
+  create: async ({ data }) => useFetcher().post(`/brands`, data),
 };

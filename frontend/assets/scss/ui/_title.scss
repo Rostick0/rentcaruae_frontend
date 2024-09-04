@@ -7,6 +7,12 @@
     margin-bottom: 18px;
   }
 
+  &.flex-style {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   @media (max-width: 1024px) {
     font-size: 36px;
   }

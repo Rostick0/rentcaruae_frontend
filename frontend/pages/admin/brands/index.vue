@@ -1,11 +1,10 @@
 <template>
-  <h1 class="h1 seller">Dashboard</h1>
-  <!-- <SellerSelectPeriod
-    v-model="selectedPeriod"
-    :options="options"
-    title="Date range"
-    subtitle="Selected period:"
-  /> -->
+  <h1 class="h1 flex-style">
+    <span>Brands</span>
+    <NuxtLink class="d-flex" to="/admin/brands/add">
+      <UiButton class="page-cars__add" variant="outlined">+ Add brand</UiButton>
+    </NuxtLink>
+  </h1>
   <AdminBrandsTable :data="data" />
   <AnyPagination
     @setPage="(page) => (filters.page = page)"
@@ -16,21 +15,6 @@
 </template>
 
 <script setup>
-// import moment from "moment";
-
-// const options = [
-//   {
-//     id: moment().subtract(7, "d").format("YYYY-MM-DD"),
-//     name: "7 days",
-//   },
-//   {
-//     id: moment().subtract(30, "d").format("YYYY-MM-DD"),
-//     name: "30 days",
-//   },
-// ];
-
-// const selectedPeriod = ref(options[0]);
-
 const { filters } = useFilter({
   initialFilters: {
     page: 1,
@@ -41,9 +25,10 @@ const { filters } = useFilter({
 const { data, meta } = await useApi({
   name: "brands.getAll",
   filters,
-  //   params: {
-  //     sort: "date",
-  //   },
+  params: {
+    without_cache: true,
+    sort: "id",
+  },
   init: true,
 });
 

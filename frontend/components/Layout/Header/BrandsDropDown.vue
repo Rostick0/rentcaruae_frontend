@@ -8,7 +8,7 @@
       :to="link?.link"
     >
       <LazyNuxtImg
-        :src="$config.public.BACK_URL + link?.image_url"
+        :src="link?.image_url + '?=w60'"
         :title="link?.name"
         :alt="`${link?.name} for rent`"
         loading="lazy"

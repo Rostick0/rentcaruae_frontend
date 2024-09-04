@@ -13,14 +13,7 @@ const data = useState("brands");
 
 const config = useRuntimeConfig();
 
-const brands = computed(() =>
-  data.value
-    ?.map?.((item) => ({
-      ...item,
-      image_url: config.public.BACK_URL + item.image_url,
-    }))
-    ?.slice(0, 12)
-);
+const brands = computed(() => data.value?.slice?.(0, 12));
 </script>
 
 <style lang="scss" scoped>

@@ -3,9 +3,7 @@
     <div class="car__top">
       <div class="car__title">{{ car?.title }}</div>
       <LazyNuxtImg
-        :src="
-          $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
-        "
+        :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         loading="lazy"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"

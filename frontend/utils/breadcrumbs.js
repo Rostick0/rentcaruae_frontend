@@ -24,13 +24,4 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
   }
 
   return data;
-  //   return (
-
-  //     {
-  //       name: "Brand",
-  //     },
-  //     {
-  //       name: "Tesla",
-  //     }
-  //   );
 };

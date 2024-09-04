@@ -1,7 +1,7 @@
 <template>
-  <div class="seller-aside__links">
+  <div class="any-aside__links">
     <NuxtLink
-      class="seller-aside__link"
+      class="any-aside__link"
       :class="{
         active: route.fullPath.split('/')[2] === link.link.split('/')[2],
       }"
@@ -10,7 +10,7 @@
       :key="link.link"
       >{{ link.name }}
     </NuxtLink>
-    <NuxtLink class="seller-aside__link" to="/">Logout</NuxtLink>
+    <NuxtLink class="any-aside__link" to="/">Logout</NuxtLink>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-.seller-aside {
+.any-aside {
   &__links {
     display: flex;
     flex-direction: column;

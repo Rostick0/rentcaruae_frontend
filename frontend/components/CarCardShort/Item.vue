@@ -37,9 +37,7 @@
       </div>
       <LazyNuxtImg
         class="car-short__brand"
-        :src="
-          $config.public.BACK_URL + car?.generation?.model_car?.brand?.image_url
-        "
+        :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
         loading="lazy"

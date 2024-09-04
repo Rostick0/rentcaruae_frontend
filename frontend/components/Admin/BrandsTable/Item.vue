@@ -1,8 +1,9 @@
 <template>
   <tr>
+    <td class="table__td">{{ item?.id }}</td>
     <td class="table__td">{{ item?.name }}</td>
     <td class="table__td">
-      <a class="link" href="/" target="_blank">{{ item?.image_url }}</a>
+      <a class="link" :href="item?.image_url" target="_blank">Show</a>
     </td>
     <td class="table__td">
       <NuxtLink class="link" :to="`/admin/brands/${item?.id}`">Edit</NuxtLink>

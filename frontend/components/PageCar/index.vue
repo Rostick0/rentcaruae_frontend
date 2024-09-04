@@ -5,10 +5,7 @@
       <div class="car__top">
         <LazyNuxtImg
           class="car__make_img"
-          :src="
-            $config.public.BACK_URL +
-            data?.generation?.model_car?.brand?.image_url
-          "
+          :src="data?.generation?.model_car?.brand?.image_url + '?=w60'"
           :title="data?.generation?.model_car?.brand?.name"
           :alt="`${data?.generation?.model_car?.brand?.name} for rent`"
           decoding="async"

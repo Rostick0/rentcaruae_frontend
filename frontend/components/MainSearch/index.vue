@@ -80,7 +80,7 @@
         >
           <LazyNuxtImg
             class="main-search-brand__img"
-            :src="$config.public.BACK_URL + brand?.image_url"
+            :src="brand?.image_url + '?=w60'"
             :title="brand?.name"
             :alt="`${brand?.name} for rent`"
             loading="lazy"
