@@ -1,10 +1,11 @@
 <template>
   <header class="header">
     <div class="container">
-      <div class="header__top">
-        <template v-if="$device.isMobile">
-          <button class="d-flex" v-if="!isActive" @click="isActive = true">
+      <div class="header__container">
+        <div class="header__top">
+          <button class="d-flex" v-if="$device.isMobile" @click="toggleActive">
             <svg
+              v-if="!isActive"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -16,9 +17,8 @@
                 fill="#221EE3"
               />
             </svg>
-          </button>
-          <button class="d-flex" v-else @click="isActive = false">
             <svg
+              v-else
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -31,12 +31,50 @@
               />
             </svg>
           </button>
-        </template>
-        <NuxtLink class="header__logo d-flex" to="/">
-          <Logo />
-        </NuxtLink>
-        <UiDropdownMenu v-if="$device.isDesktopOrTablet">
-          <template #body>
+          <NuxtLink class="header__logo d-flex" to="/">
+            <Logo />
+          </NuxtLink>
+          <UiDropdownMenu v-if="$device.isDesktopOrTablet">
+            <template #body>
+              <UiButton class="btn-flex">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
+                  <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
+                  <rect
+                    x="11"
+                    y="11"
+                    width="7"
+                    height="7"
+                    rx="2"
+                    fill="white"
+                  />
+                  <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
+                </svg>
+                <span>Rent a car</span>
+              </UiButton>
+            </template>
+            <template #drop="{ close }">
+              <LayoutHeaderRentalDropDown
+                :list="rentACar"
+                @close="close, (isActive = false)"
+              />
+            </template>
+          </UiDropdownMenu>
+
+          <div class="header__search">
+            <MainSearch variant="outlined" />
+          </div>
+          <div class="d-flex" v-if="$device.isDesktopOrTablet">
+            <VFormComponent :field="lang" />
+            <VFormComponent :field="currency" />
+          </div>
+          <NuxtLink v-if="user" to="/seller">
             <UiButton class="btn-flex">
               <svg
                 width="20"
@@ -45,31 +83,23 @@
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
-                <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
-                <rect x="11" y="11" width="7" height="7" rx="2" fill="white" />
-                <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
+                <path
+                  d="M10 1.66669C5.40002 1.66669 1.66669 5.40002 1.66669 10C1.66669 14.6 5.40002 18.3334 10 18.3334C14.6 18.3334 18.3334 14.6 18.3334 10C18.3334 5.40002 14.6 1.66669 10 1.66669ZM6.12502 15.4167C7.21669 14.6334 8.55002 14.1667 10 14.1667C11.45 14.1667 12.7834 14.6334 13.875 15.4167C12.7834 16.2 11.45 16.6667 10 16.6667C8.55002 16.6667 7.21669 16.2 6.12502 15.4167ZM15.1167 14.2667C13.7084 13.1667 11.9334 12.5 10 12.5C8.06669 12.5 6.29169 13.1667 4.88335 14.2667C3.91669 13.1084 3.33335 11.625 3.33335 10C3.33335 6.31669 6.31669 3.33335 10 3.33335C13.6834 3.33335 16.6667 6.31669 16.6667 10C16.6667 11.625 16.0834 13.1084 15.1167 14.2667Z"
+                  fill="white"
+                />
+                <path
+                  d="M10 5.00002C8.39169 5.00002 7.08335 6.30835 7.08335 7.91669C7.08335 9.52502 8.39169 10.8334 10 10.8334C11.6084 10.8334 12.9167 9.52502 12.9167 7.91669C12.9167 6.30835 11.6084 5.00002 10 5.00002ZM10 9.16669C9.30835 9.16669 8.75002 8.60835 8.75002 7.91669C8.75002 7.22502 9.30835 6.66669 10 6.66669C10.6917 6.66669 11.25 7.22502 11.25 7.91669C11.25 8.60835 10.6917 9.16669 10 9.16669Z"
+                  fill="white"
+                />
               </svg>
-              <span>Rent a car</span>
+              <span>Profile</span>
             </UiButton>
-          </template>
-          <template #drop="{ close }">
-            <LayoutHeaderRentalDropDown
-              :list="rentACar"
-              @close="close, (isActive = false)"
-            />
-          </template>
-        </UiDropdownMenu>
-
-        <div class="header__search">
-          <MainSearch variant="outlined" />
-        </div>
-        <div class="d-flex" v-if="$device.isDesktopOrTablet">
-          <VFormComponent :field="lang" />
-          <VFormComponent :field="currency" />
-        </div>
-        <NuxtLink v-if="user" to="/seller">
-          <UiButton class="btn-flex">
+          </NuxtLink>
+          <UiButton
+            v-else
+            class="btn-flex"
+            @click="open(), (authModalState = 'login')"
+          >
             <svg
               width="20"
               height="20"
@@ -86,103 +116,110 @@
                 fill="white"
               />
             </svg>
-            <span>Profile</span>
+            <span>Log in</span>
           </UiButton>
-        </NuxtLink>
-        <UiButton
-          v-else
-          class="btn-flex"
-          @click="open(), (authModalState = 'login')"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 1.66669C5.40002 1.66669 1.66669 5.40002 1.66669 10C1.66669 14.6 5.40002 18.3334 10 18.3334C14.6 18.3334 18.3334 14.6 18.3334 10C18.3334 5.40002 14.6 1.66669 10 1.66669ZM6.12502 15.4167C7.21669 14.6334 8.55002 14.1667 10 14.1667C11.45 14.1667 12.7834 14.6334 13.875 15.4167C12.7834 16.2 11.45 16.6667 10 16.6667C8.55002 16.6667 7.21669 16.2 6.12502 15.4167ZM15.1167 14.2667C13.7084 13.1667 11.9334 12.5 10 12.5C8.06669 12.5 6.29169 13.1667 4.88335 14.2667C3.91669 13.1084 3.33335 11.625 3.33335 10C3.33335 6.31669 6.31669 3.33335 10 3.33335C13.6834 3.33335 16.6667 6.31669 16.6667 10C16.6667 11.625 16.0834 13.1084 15.1167 14.2667Z"
-              fill="white"
-            />
-            <path
-              d="M10 5.00002C8.39169 5.00002 7.08335 6.30835 7.08335 7.91669C7.08335 9.52502 8.39169 10.8334 10 10.8334C11.6084 10.8334 12.9167 9.52502 12.9167 7.91669C12.9167 6.30835 11.6084 5.00002 10 5.00002ZM10 9.16669C9.30835 9.16669 8.75002 8.60835 8.75002 7.91669C8.75002 7.22502 9.30835 6.66669 10 6.66669C10.6917 6.66669 11.25 7.22502 11.25 7.91669C11.25 8.60835 10.6917 9.16669 10 9.16669Z"
-              fill="white"
-            />
-          </svg>
-          <span>Log in</span>
-        </UiButton>
-      </div>
-      <div
-        v-if="$device.isMobile ? isActive : true"
-        class="header__bottom"
-        :class="{ active: isActive }"
-      >
-        <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
-          <template #body>
-            <UiButton class="btn-flex">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="2" y="2" width="7" height="7" rx="2" fill="white" />
-                <rect x="11" y="2" width="7" height="7" rx="2" fill="white" />
-                <rect x="11" y="11" width="7" height="7" rx="2" fill="white" />
-                <rect x="2" y="11" width="7" height="7" rx="2" fill="white" />
-              </svg>
-              <span>Rent a car</span>
-            </UiButton>
-          </template>
-          <template #drop="{ close }">
-            <LayoutHeaderRentalDropDown
-              :list="rentACar"
-              @close="close, (isActive = false)"
-            />
-          </template>
-        </UiDropdownMenu>
-        <UiSelectWithIcons
-          v-if="$device.isDesktopOrTablet"
-          v-model="city"
-          :options="citiesComputed"
-        />
-        <div class="header__links">
-          <UiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
-            <template #body>
-              <div class="header__link text-ui">
-                {{ menuItem.name }}
-              </div>
-            </template>
-            <template #drop="{ close }">
-              <LayoutHeaderDropDown
-                v-if="!menuItem?.is_brand"
-                :links="menuItem?.links"
-                @close="close, (isActive = false)"
-              />
-              <LayoutHeaderBrandsDropDown
-                v-else
-                :links="menuItem?.links"
-                @close="close, (isActive = false)"
-              />
-            </template>
-          </UiDropdownMenu>
-          <NuxtLink
-            class="header__link text-ui"
-            @click="isActive = false"
-            :to="convertNameToUrl(`/${city?.name}/leasing`)"
-            >Car Leasing</NuxtLink
-          >
         </div>
-        <UiSelectWithIcons
-          v-if="$device.isMobile"
-          v-model="city"
-          :options="citiesComputed"
-        />
-        <div class="header__bottom_select" v-if="$device.isMobile">
-          <VFormComponent :field="lang" />
-          <VFormComponent :field="currency" />
+        <div
+          v-if="$device.isMobile ? isActive : true"
+          class="header__bottom"
+          :class="{ active: isActive }"
+        >
+          <div class="header__bottom_inner">
+            <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
+              <template #body>
+                <UiButton class="btn-flex">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="7"
+                      height="7"
+                      rx="2"
+                      fill="white"
+                    />
+                    <rect
+                      x="11"
+                      y="2"
+                      width="7"
+                      height="7"
+                      rx="2"
+                      fill="white"
+                    />
+                    <rect
+                      x="11"
+                      y="11"
+                      width="7"
+                      height="7"
+                      rx="2"
+                      fill="white"
+                    />
+                    <rect
+                      x="2"
+                      y="11"
+                      width="7"
+                      height="7"
+                      rx="2"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Rent a car</span>
+                </UiButton>
+              </template>
+              <template #drop="{ close }">
+                <LayoutHeaderRentalDropDown
+                  :list="rentACar"
+                  @close="close, (isActive = false)"
+                />
+              </template>
+            </UiDropdownMenu>
+            <UiSelectWithIcons
+              v-if="$device.isDesktopOrTablet"
+              v-model="city"
+              :options="citiesComputed"
+            />
+            <div class="header__links">
+              <UiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
+                <template #body>
+                  <div class="header__link text-ui">
+                    {{ menuItem.name }}
+                  </div>
+                </template>
+                <template #drop="{ close }">
+                  <LayoutHeaderDropDown
+                    v-if="!menuItem?.is_brand"
+                    :links="menuItem?.links"
+                    @close="close, (isActive = false)"
+                  />
+                  <LayoutHeaderBrandsDropDown
+                    v-else
+                    :links="menuItem?.links"
+                    @close="close, (isActive = false)"
+                  />
+                </template>
+              </UiDropdownMenu>
+              <NuxtLink
+                class="header__link text-ui"
+                @click="isActive = false"
+                :to="convertNameToUrl(`/${city?.name}/leasing`)"
+                >Car Leasing</NuxtLink
+              >
+            </div>
+            <UiSelectWithIcons
+              v-if="$device.isMobile"
+              v-model="city"
+              :options="citiesComputed"
+            />
+            <div class="header__bottom_select" v-if="$device.isMobile">
+              <VFormComponent :field="lang" />
+              <VFormComponent :field="currency" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -200,6 +237,11 @@ const authModalState = useState("authModalState");
 const user = useState("user");
 
 const isActive = ref(false);
+
+const toggleActive = () => {
+  isActive.value = !isActive.value;
+  document.body.classList.toggle("overflow-hidden");
+};
 
 const lang = ref({
   type: "select",
@@ -340,6 +382,12 @@ const rentACar = computed(() => {
   @media (max-width: 1024px) {
     padding-top: 8px;
 
+    // &__container {
+    //   display: flex;
+    //   flex-direction: column;
+    //   min-height: 100dvh;
+    // }
+
     &__logo {
       margin-right: auto;
       // order: 1
@@ -361,17 +409,32 @@ const rentACar = computed(() => {
     }
 
     &__bottom {
-      background-color: var(--color-bg-main);
-      // display: none;
+      background-color: rgba(0, 0, 0, 0.25);
       align-items: flex-start;
-      flex-direction: column;
-      row-gap: 20px;
-      padding: 8px 20px;
       position: absolute;
-      // overflow: hidden;
+      overflow: hidden;
       left: 0;
       width: 100%;
+      min-height: calc(100dvh - 110px);
       z-index: 2;
+
+      &_inner {
+        background-color: var(--color-bg-main);
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        padding: 8px 20px;
+        width: 100%;
+      }
+
+      // &::after {
+      //   content: "";
+      //   // position: absolute;
+      //   background-color: rgba(0, 0, 0, 0.25);
+      //   width: 100%;
+      //   height: 100%;
+      //   left: 0;
+      // }
 
       &_rent {
         margin-bottom: -12px;
