@@ -2,11 +2,15 @@
   <table class="table">
     <tr class="table_tr">
       <th class="table__th">Id</th>
-      <th class="table__th">Name</th>
-      <th class="table__th">Image url</th>
+      <th class="table__th">Price</th>
+      <th class="table__th">Free leads</th>
       <th class="table__th"></th>
     </tr>
-    <AdminBrandsTableItem v-for="item in data" :key="item?.id" :item="item" />
+    <AdminDepositesTableItem
+      v-for="item in data"
+      :key="item?.id"
+      :item="item"
+    />
   </table>
 </template>
 
