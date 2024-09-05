@@ -1,7 +1,7 @@
 <template>
   <h1 class="h1 flex-style">
-    <span>Deposties</span>
-    <NuxtLink class="d-flex" to="/admin/brands/add">
+    <span>Deposites</span>
+    <NuxtLink class="d-flex" to="/admin/deposites/add">
       <UiButton class="page-cars__add" variant="outlined"
         >+ Add depostie</UiButton
       >

@@ -32,6 +32,9 @@ const price = ref({
 
   bind: {
     label: "Price",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 
@@ -42,8 +45,9 @@ const free_leads = ref({
 
   bind: {
     label: "Free leads",
-    // maska: "#",
-    // maskaTokens: "S:[0-9]:repeat",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 
@@ -53,49 +57,59 @@ const payment_id = ref({
   modelValue: props.deposite?.payment_id ?? "",
 
   bind: {
-    label: "Free leads",
-    // maska: "#",
-    // maskaTokens: "S:[0-9]:repeat",
+    label: "Payment id",
   },
 });
 
 const price_0 = ref({
   type: "text",
-  name: "price_0",
+  name: "prices_leads.0",
   modelValue: props.deposite?.deposite_leads?.[0]?.price ?? "",
 
   bind: {
     label: "All WhatsApp leads",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 
 const price_1 = ref({
   type: "text",
-  name: "price_1",
+  name: "prices_leads.1",
   modelValue: props.deposite?.deposite_leads?.[1]?.price ?? "",
 
   bind: {
     label: "All Booking leads",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 
 const price_2 = ref({
   type: "text",
-  name: "price_2",
+  name: "prices_leads.2",
   modelValue: props.deposite?.deposite_leads?.[2]?.price ?? "",
 
   bind: {
     label: "Premium WhatsApp leads",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 
 const price_3 = ref({
   type: "text",
-  name: "price_3",
+  name: "prices_leads.3",
   modelValue: props.deposite?.deposite_leads?.[3]?.price ?? "",
 
   bind: {
     label: "Premium Booking leads",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
   },
 });
 </script>

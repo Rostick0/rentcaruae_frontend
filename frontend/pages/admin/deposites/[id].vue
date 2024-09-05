@@ -28,7 +28,7 @@ const { handleSubmit, setErrors, values } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {
-    const data = await getBrandOnSubmitValues(values);
+    const data = getDepositeOnSubmitValues(values);
 
     const res = await api.deposites.update({
       data,
@@ -41,7 +41,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    navigateTo("/admin/brands");
+    navigateTo("/admin/deposites");
   },
   () => {
     warningPopup("Not all fields are valid");

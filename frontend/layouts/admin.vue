@@ -22,7 +22,7 @@ const navigations = [
   },
   {
     name: "Deposites",
-    link: "/admin/deposties",
+    link: "/admin/deposites",
   },
   {
     name: "Sellers",
