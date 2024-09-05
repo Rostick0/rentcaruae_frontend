@@ -11,6 +11,7 @@
 import { useForm } from "vee-validate";
 import api from "~/api";
 
+const router = useRouter();
 const id = useRoute().params.id;
 
 const { data, get } = await useApi({
@@ -42,7 +43,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    navigateTo("/admin/brands");
+    router.go(-1);
   },
   () => {
     warningPopup("Not all fields are valid");

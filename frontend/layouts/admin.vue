@@ -21,6 +21,14 @@ const navigations = [
     link: "/admin/brands",
   },
   {
+    name: "Model cars",
+    link: "/admin/model-cars",
+  },
+  {
+    name: "Generations",
+    link: "/admin/generations",
+  },
+  {
     name: "Deposites",
     link: "/admin/deposites",
   },

@@ -37,19 +37,14 @@
 <script setup>
 import api from "~/api";
 
-const page = useState("seller-cars-page", () => 1);
-
 const user = useState("user");
 
 const { filters } = useFilter({
+  withQueryParams: true,
+  withInitQueryParams: true,
   initialFilters: {
-    page,
     sort: "-id",
   },
-});
-
-watch(filters.value.page, (newV) => {
-  page.value = newV;
 });
 
 const { data, get, meta } = await useApi({

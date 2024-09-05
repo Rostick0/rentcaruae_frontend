@@ -1,6 +1,6 @@
 <template>
   <form class="form__fields" @submit="onSubmit">
-    <AdminBrandForm />
+    <AdminGenerationForm :modelCar="data" />
     <div class="">
       <UiButton>Save</UiButton>
     </div>
@@ -13,14 +13,29 @@ import api from "~/api";
 
 const router = useRouter();
 
+const id = useRoute().params.id;
+
+const { data, get } = await useApi({
+  name: "modelCars.get",
+  params: {
+    extends: "brand",
+    without_cache: true,
+  },
+  requestParams: {
+    id,
+  },
+});
+await get();
+
 const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {
-    const data = await getBrandOnSubmitValues(values);
+    const data = getModelCarOnSubmitValues(values);
 
-    const res = await api.brands.create({
+    const res = await api.modelCars.update({
       data,
+      id,
     });
 
     if (res?.error) {

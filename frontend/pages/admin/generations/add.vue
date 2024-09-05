@@ -1,6 +1,6 @@
 <template>
   <form class="form__fields" @submit="onSubmit">
-    <AdminBrandForm />
+    <AdminGenerationForm />
     <div class="">
       <UiButton>Save</UiButton>
     </div>
@@ -17,9 +17,9 @@ const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {
-    const data = await getBrandOnSubmitValues(values);
+    const data = getGenerationOnSubmitValues(values);
 
-    const res = await api.brands.create({
+    const res = await api.generations.create({
       data,
     });
 

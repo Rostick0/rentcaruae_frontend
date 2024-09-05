@@ -13,6 +13,7 @@ import debounce from "lodash/debounce";
 import api from "~/api";
 import { useForm } from "vee-validate";
 
+const router = useRouter();
 const id = useRoute().params.id;
 
 const { data, get } = await useApi({
@@ -45,7 +46,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    navigateTo("/seller/cars");
+    router.go(-1);
   },
   () => {
     warningPopup("Not all fields are valid");
