@@ -2,7 +2,7 @@
   <div class="breadcrumbs">
     <template v-for="(item, index) in breadcrumbs" :key="index">
       <NuxtLink class="breadcrumbs__item" v-if="item?.link" :to="item?.link">
-        <span class="breadcrumbs__item_name">{{ item.name }}</span>
+        <span class="breadcrumbs__item_name">{{ item?.name }}</span>
         <svg
           v-if="lastIndex !== index"
           width="20"
@@ -18,7 +18,7 @@
         </svg>
       </NuxtLink>
       <span v-else class="breadcrumbs__item">
-        <span class="breadcrumbs__item_name">{{ item.name }}</span>
+        <span class="breadcrumbs__item_name">{{ item?.name }}</span>
         <svg
           v-if="lastIndex !== index"
           width="20"
