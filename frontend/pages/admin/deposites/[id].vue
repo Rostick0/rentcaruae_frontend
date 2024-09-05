@@ -1,6 +1,9 @@
 <template>
   <form class="form__fields" @submit="onSubmit">
     <AdminDepositeForm :deposite="data" />
+    <div class="">
+      <UiButton>Save</UiButton>
+    </div>
   </form>
 </template>
 

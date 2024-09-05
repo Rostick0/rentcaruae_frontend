@@ -11,7 +11,7 @@
 import { useForm } from "vee-validate";
 import api from "~/api";
 
-const { handleSubmit, setErrors, values } = useForm();
+const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {

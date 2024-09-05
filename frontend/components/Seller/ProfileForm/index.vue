@@ -25,12 +25,14 @@ import { useForm } from "vee-validate";
 import useImage from "~/composables/useImage";
 import api from "~/api";
 
-const user = useState("user");
+// const user = useState("user");
 
 const { getFileFrom } = useFile();
 const { getImageFrom } = useImage();
 
 const { handleSubmit, setErrors, values } = useForm();
+
+const { user, getUser } = await useAuth();
 
 const onSubmit = handleSubmit(
   async ({ image, license, sertificate, company_schedules, ...values }) => {
@@ -75,6 +77,9 @@ const onSubmit = handleSubmit(
       setErrors(res?.errorResponse?.data?.errors);
       return;
     }
+
+    success('Updated')
+    await getUser();
   }
 );
 

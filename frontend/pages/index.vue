@@ -54,11 +54,11 @@
         :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
       />
       <CarCardShortList
-        v-if="sportsCars?.length"
-        :cars="sportsCars"
-        title="Sports cars"
-        linkText="All Sports cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/sports`)"
+        v-if="electroCars?.length"
+        :cars="electroCars"
+        title="Electro cars"
+        linkText="All Electro cars"
+        :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
       />
     </div>
     <MainServiceRental />
@@ -141,14 +141,14 @@ const { data: luxuryCars, get: getLuxuryCars } = await useApi({
 });
 await getLuxuryCars();
 
-const { data: sportsCars, get: getSportsCars } = await useApi({
+const { data: electroCars, get: getElectroCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 6,
+    "filterEQ[category_id]": 8,
   },
 });
-await getSportsCars();
+await getElectroCars();
 
 useHead({
   title: `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`,

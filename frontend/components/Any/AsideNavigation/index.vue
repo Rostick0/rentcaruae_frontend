@@ -10,11 +10,15 @@
       :key="link.link"
       >{{ link.name }}
     </NuxtLink>
-    <NuxtLink class="any-aside__link" to="/">Logout</NuxtLink>
+    <NuxtLink class="any-aside__link" @click.prevent="logout('/')" to="/"
+      >Logout</NuxtLink
+    >
   </div>
 </template>
 
 <script setup>
+const { logout } = await useAuth();
+
 const route = useRoute();
 
 const props = defineProps({

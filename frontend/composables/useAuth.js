@@ -70,6 +70,8 @@ export default async () => {
     } else {
       navigateTo("/");
     }
+
+    console.log(user.value)
   };
 
   // if (accessToken.value && !user.value) {

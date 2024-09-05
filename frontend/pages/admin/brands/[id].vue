@@ -1,6 +1,9 @@
 <template>
   <form class="form__fields" @submit="onSubmit">
     <AdminBrandForm :brand="data" />
+    <div class="">
+      <UiButton>Save</UiButton>
+    </div>
   </form>
 </template>
 
@@ -22,7 +25,7 @@ const { data, get } = await useApi({
 
 await get();
 
-const { handleSubmit, setErrors, values } = useForm();
+const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(
   async (values) => {

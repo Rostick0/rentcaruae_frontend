@@ -4,7 +4,9 @@
       <VFormComponent :field="price" />
       <VFormComponent :field="free_leads" />
     </div>
-    <pre></pre>
+    <div class="form-item">
+      <VFormComponent :field="payment_id" />
+    </div>
   </AnyFormBlock>
   <AnyFormBlock title="Tariff prices">
     <div class="form-item">
@@ -37,6 +39,18 @@ const free_leads = ref({
   type: "text",
   name: "free_leads",
   modelValue: props.deposite?.free_leads ?? "",
+
+  bind: {
+    label: "Free leads",
+    // maska: "#",
+    // maskaTokens: "S:[0-9]:repeat",
+  },
+});
+
+const payment_id = ref({
+  type: "text",
+  name: "payment_id",
+  modelValue: props.deposite?.payment_id ?? "",
 
   bind: {
     label: "Free leads",
