@@ -1,6 +1,6 @@
 <template>
   <form class="form__fields" @submit="onSubmit">
-    <AdminGenerationForm :modelCar="data" />
+    <AdminModelCarForm :modelCar="data" />
     <div class="">
       <UiButton>Save</UiButton>
     </div>

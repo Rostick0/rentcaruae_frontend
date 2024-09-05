@@ -102,6 +102,7 @@ const useApi = async ({
                 signal: signal.value,
               },
             };
+
             if (headers) {
               preParams["headers"] = headers;
             }

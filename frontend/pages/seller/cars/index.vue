@@ -43,6 +43,7 @@ const { filters } = useFilter({
   withQueryParams: true,
   withInitQueryParams: true,
   initialFilters: {
+    page: 1,
     sort: "-id",
   },
 });

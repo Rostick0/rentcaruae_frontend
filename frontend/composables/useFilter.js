@@ -12,22 +12,26 @@ export default ({
   const id = uniqueId();
   const router = useRouter();
   const filters = useState("filters-" + id, () => initialFilters);
+
   if (withInitQueryParams) {
-    onMounted(() => {
-      const params = useRoute().query;
-      filters.value = {
-        ...filters.value,
-        ...params,
-      };
-    });
+    // onMounted(() => {
+    const params = useRoute().query;
+    filters.value = {
+      ...filters.value,
+      ...params,
+    };
+    // });
   }
+
   const resetFilterValues = () => {
     filters.value = {};
     if (withQueryParams) router.replace({ query: {} });
   };
+
   const urlSerachParams = computed(() =>
     filters.value ? "?" + new URLSearchParams(filters.value).toString() : ""
   );
+
   watch(
     () => cloneDeep(filters.value),
     debounce((newVal) => {

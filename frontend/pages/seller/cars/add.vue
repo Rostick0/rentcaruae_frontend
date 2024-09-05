@@ -33,7 +33,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    navigateTo("/seller/cars");
+    router.go(-1);
   },
   () => {
     warningPopup("Not all fields are valid");
