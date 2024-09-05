@@ -1,8 +1,8 @@
 <template>
   <div class="select-icons">
     <div class="select-icons__switch" @click="isOpened = !isOpened">
-      <img
-        v-if="modelValue"
+      <LazyNuxtImg
+        v-if="modelValue?.icon_url"
         class="select-icons-switch__icon"
         :src="modelValue?.icon_url"
         :alt="modelValue?.name"

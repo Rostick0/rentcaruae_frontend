@@ -42,6 +42,10 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "format-detection", content: "telephone=no" },
+        {
+          name: "google-site-verification",
+          content: "nAke3KR5w3tRblpZKDBupgSzbRCQFQqZUWSL8HmxjdU",
+        },
       ],
       link: [
         ...appleTouchFavicons,
