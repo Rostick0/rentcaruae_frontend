@@ -32,11 +32,14 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  breadcrumbs: Array,
-});
+// const props = defineProps({
+//   breadcrumbs: Array,
+// });
 
 const currentCity = useState("currentCity");
+const rent = computed(() =>
+  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
+);
 
 const id = useRoute().params.id;
 
@@ -52,8 +55,19 @@ const { data, get } = await useApi({
     id,
   },
 });
-
 await get();
+
+const breadcrumbs = computed(() => [
+  ...getCatalogBreadCrumbs({
+    currentCity: currentCity.value,
+    rent: rent.value,
+    oneFilterType: {
+      value: data.value?.category?.name,
+      type: "type",
+    },
+  }),
+  { name: data.value?.title },
+]);
 
 const { data: cars, get: getCars } = await useApi({
   name: "car.getAll",

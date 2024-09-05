@@ -62,7 +62,7 @@
             <template #drop="{ close }">
               <LayoutHeaderRentalDropDown
                 :list="rentACar"
-                @close="close, (isActive = false)"
+                @close="close(), (isActive = false)"
               />
             </template>
           </UiDropdownMenu>
@@ -174,7 +174,7 @@
               <template #drop="{ close }">
                 <LayoutHeaderRentalDropDown
                   :list="rentACar"
-                  @close="close, (isActive = false)"
+                  @close="close(), (isActive = false)"
                 />
               </template>
             </UiDropdownMenu>
@@ -194,12 +194,12 @@
                   <LayoutHeaderDropDown
                     v-if="!menuItem?.is_brand"
                     :links="menuItem?.links"
-                    @close="close, (isActive = false)"
+                    @close="close(), (isActive = false)"
                   />
                   <LayoutHeaderBrandsDropDown
                     v-else
                     :links="menuItem?.links"
-                    @close="close, (isActive = false)"
+                    @close="close(), (isActive = false)"
                   />
                 </template>
               </UiDropdownMenu>
