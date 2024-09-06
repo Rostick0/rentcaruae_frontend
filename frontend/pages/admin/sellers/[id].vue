@@ -1,7 +1,7 @@
 <template>
   <h1 class="h1 seller">Profile</h1>
   <form method="POST" @submit="onSubmit">
-    <SellerProfileForm :user="user" />
+    <SellerProfileForm :user="data" />
   </form>
 </template>
 
@@ -9,7 +9,21 @@
 import { useForm } from "vee-validate";
 import api from "~/api";
 
-const { user, getUser } = await useAuth();
+const router = useRouter();
+
+const id = useRoute().params.id;
+
+const { data, get } = await useApi({
+  name: "users.get",
+  params: {
+    extends:
+      "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image",
+  },
+  requestParams: {
+    id,
+  },
+});
+await get();
 
 const { handleSubmit, setErrors } = useForm();
 
@@ -28,10 +42,10 @@ const onSubmit = handleSubmit(async (values) => {
   }
 
   success("Updated");
-  await getUser();
+  router.go(-1);
 });
 
 definePageMeta({
-  layout: "seller",
+  layout: "admin",
 });
 </script>

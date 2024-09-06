@@ -46,6 +46,7 @@ const props = defineProps({
 const monday = ref({
   type: "date",
   name: "company_schedules.period.0",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[0]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[0]?.end),
@@ -68,6 +69,7 @@ const monday_is_show = ref({
 const tuesday = ref({
   type: "date",
   name: "company_schedules.period.1",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[1]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[1]?.end),
@@ -90,6 +92,7 @@ const tuesday_is_show = ref({
 const wednesday = ref({
   type: "date",
   name: "company_schedules.period.2",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[2]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[2]?.end),
@@ -112,6 +115,7 @@ const wednesday_is_show = ref({
 const thursday = ref({
   type: "date",
   name: "company_schedules.period.3",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[3]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[3]?.end),
@@ -134,6 +138,7 @@ const thursday_is_show = ref({
 const friday = ref({
   type: "date",
   name: "company_schedules.period.4",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[4]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[4]?.end),
@@ -156,6 +161,7 @@ const friday_is_show = ref({
 const saturday = ref({
   type: "date",
   name: "company_schedules.period.5",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[5]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[5]?.end),
@@ -178,6 +184,7 @@ const saturday_is_show = ref({
 const sunday = ref({
   type: "date",
   name: "company_schedules.period.6",
+  rules: "required",
   modelValue: [
     convertTimeToEdit(props.user?.company?.company_schedules?.[6]?.start),
     convertTimeToEdit(props.user?.company?.company_schedules?.[6]?.end),
