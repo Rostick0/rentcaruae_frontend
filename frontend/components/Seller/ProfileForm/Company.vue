@@ -28,13 +28,15 @@
 </template>
 
 <script setup>
-const user = useState("user");
+const props = defineProps({
+  user: Object,
+});
 
 const company_name = ref({
   type: "text",
   name: "company.name",
   rules: "required|max:255",
-  modelValue: user.value?.company?.name ?? "",
+  modelValue: props.user?.company?.name ?? "",
 
   bind: {
     label: "Company Name",
@@ -45,8 +47,8 @@ const company_name = ref({
 const user_tel = ref({
   type: "tel",
   name: "user.tel",
-  // modelValue: convertTelToForm(user.value?.tel),
-  modelValue: convertPhoneToForm(user.value?.tel),
+  // modelValue: convertTelToForm(props.user?.tel),
+  modelValue: convertPhoneToForm(props.user?.tel),
 
   bind: {
     label: "Phone number",
@@ -57,7 +59,7 @@ const company_trn_number = ref({
   type: "text",
   name: "company.trn_number",
   rules: "required|max:255",
-  modelValue: user.value?.company?.trn_number ?? "",
+  modelValue: props.user?.company?.trn_number ?? "",
 
   bind: {
     label: "TRN number (TAX)",
@@ -69,7 +71,7 @@ const user_email = ref({
   type: "text",
   name: "user.email",
   rules: "required|email|max:255",
-  modelValue: user.value?.email ?? "",
+  modelValue: props.user?.email ?? "",
 
   bind: {
     label: "Leads email",
@@ -81,7 +83,7 @@ const company_city_id = ref({
   type: "select",
   name: "company.city_id",
   rules: "required",
-  modelValue: user.value?.company?.city ?? "",
+  modelValue: props.user?.company?.city ?? "",
 
   bind: {
     label: "City",
@@ -94,7 +96,7 @@ const company_aread_name = ref({
   type: "text",
   name: "company.aread_name",
   rules: "required|max:255",
-  modelValue: user.value?.company?.aread_name ?? "",
+  modelValue: props.user?.company?.aread_name ?? "",
 
   bind: {
     label: "Aread name",
@@ -106,7 +108,7 @@ const company_building_name = ref({
   type: "text",
   name: "company.building_name",
   rules: "required|max:255",
-  modelValue: user.value?.company?.building_name ?? "",
+  modelValue: props.user?.company?.building_name ?? "",
 
   bind: {
     label: "Building name",
@@ -118,7 +120,7 @@ const company_office_number = ref({
   type: "text",
   name: "company.office_number",
   rules: "required|max:255",
-  modelValue: user.value?.company?.office_number ?? "",
+  modelValue: props.user?.company?.office_number ?? "",
 
   bind: {
     label: "Office number",
@@ -129,7 +131,7 @@ const company_office_number = ref({
 const image = ref({
   type: "photo-loader",
   name: "image",
-  modelValue: user.value?.company?.image?.image,
+  modelValue: props.user?.company?.image?.image,
 
   bind: {
     title: "Upload logo",
@@ -140,7 +142,7 @@ const image = ref({
 const license = ref({
   type: "file-loader",
   name: "license",
-  modelValue: user.value?.company?.license?.file,
+  modelValue: props.user?.company?.license?.file,
 
   bind: {
     title: "Trade license",
@@ -151,7 +153,7 @@ const license = ref({
 const sertificate = ref({
   type: "file-loader",
   name: "sertificate",
-  modelValue: user.value?.company?.sertificate?.file,
+  modelValue: props.user?.company?.sertificate?.file,
 
   bind: {
     title: "Vat sertificate",
@@ -163,7 +165,7 @@ const company_description = ref({
   type: "textarea",
   name: "company.description",
   rules: "max:600",
-  modelValue: user.value?.company?.description ?? "",
+  modelValue: props.user?.company?.description ?? "",
 
   bind: {
     label: "Company description ",

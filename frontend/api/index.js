@@ -7,6 +7,7 @@ import colours from "./modules/colours";
 import companies from "./modules/companies";
 import deposite from "./modules/deposite";
 import deposites from "./modules/deposites";
+import depositeUsers from "./modules/depositeUsers";
 import distinctValue from "./modules/distinctValue";
 import emailCode from "./modules/emailCode";
 import file from "./modules/file";
@@ -34,6 +35,7 @@ export default {
   companies,
   deposite,
   deposites,
+  depositeUsers,
   distinctValue,
   emailCode,
   file,

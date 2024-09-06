@@ -1,8 +1,8 @@
 <template>
   <div class="profile-form form__flex">
     <form class="form__fields" @submit="onSubmit">
-      <SellerProfileFormCompany />
-      <SellerProfileFormCompanySchedules />
+      <SellerProfileFormCompany :user="user" />
+      <SellerProfileFormCompanySchedules :user="user" />
       <div class="form__bottom">
         <UiButton class="form-btn" @click.prevent variant="outlined">
           <span>Verification request</span>
@@ -25,14 +25,15 @@ import { useForm } from "vee-validate";
 import useImage from "~/composables/useImage";
 import api from "~/api";
 
-// const user = useState("user");
+const props = defineProps({
+  user: Object,
+  getUser: Function,
+});
 
 const { getFileFrom } = useFile();
 const { getImageFrom } = useImage();
 
-const { handleSubmit, setErrors, values } = useForm();
-
-const { user, getUser } = await useAuth();
+const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(
   async ({ image, license, sertificate, company_schedules, ...values }) => {
@@ -77,15 +78,15 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    success('Updated')
-    await getUser();
+    success("Updated");
+    await props?.getUser?.();
   }
 );
 
 const is_show = ref({
   type: "switch",
   name: "is_show",
-  modelValue: !!user.value?.is_show,
+  modelValue: !!props.user?.is_show,
 
   bind: {
     label: "Publish on website",
