@@ -6,6 +6,7 @@ export default defineEventHandler(async (e) => {
   return `User-agent: *
 
 Allow: /
+Disallow: /api
 Disallow: /admin
 Disallow: /seller
 Disallow: /privacy_policy

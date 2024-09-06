@@ -3,12 +3,14 @@
     <SellerDepositeCalcSelect :deposites="data" v-model="price" />
     <div class="deposite-calc__bottom">
       <CalcAmount :price="price" textTopleft="Package Advanced" />
-      <UiButton>Deposit</UiButton>
+      <UiButton @click="sendDeposte">Deposit</UiButton>
     </div>
   </AnyFormBlock>
 </template>
 
 <script setup>
+import api from "~/api";
+
 const { data, get } = await useApi({
   name: "deposites.getAll",
   params: {
@@ -19,6 +21,28 @@ const { data, get } = await useApi({
 await get();
 
 const price = ref(data.value?.[0]?.price);
+
+const sendDeposte = async () => {
+  const payment = data.value?.find?.((item) => item?.price === price.value);
+
+  const res = await api.deposite.create({
+    data: {
+      type: "deposites",
+      payment_id: payment?.payment_id,
+    },
+  });
+
+  if (res?.error) {
+    warningPopup("Error");
+    return;
+  }
+
+  console.log(res?.data?.link);
+  // navigateTo(res?.data?.link);
+  window.open(res?.data?.link);
+  // window.open('https://example.com', '_blank');
+  // console.log(res);
+};
 </script>
 
 <style lang="scss" scoped>
