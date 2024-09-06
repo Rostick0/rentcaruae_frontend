@@ -91,11 +91,15 @@
               <NuxtLink class="footer-item__link" to="/privacy_policy"
                 >Privacy policy</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/terms_of_service">Terms of use</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/terms_of_service"
+                >Terms of use</NuxtLink
+              >
               <NuxtLink class="footer-item__link" to="/sitemap"
                 >Site map</NuxtLink
               >
-              <a class="footer-item__link" href="mailto:hello@rentcaruae.com">Contact us</a>
+              <a class="footer-item__link" href="mailto:hello@rentcaruae.com"
+                >Contact us</a
+              >
             </div>
           </div>
 
@@ -128,7 +132,12 @@
                   />
                 </svg>
               </a> -->
-              <a class="footer-item__icon" href="#">
+              <a
+                class="footer-item__icon"
+                href="https://t.me/RentCarUAE"
+                target="_blank"
+                rel="noopener nofollow"
+              >
                 <svg
                   width="32"
                   height="32"
