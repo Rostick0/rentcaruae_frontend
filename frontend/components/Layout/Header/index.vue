@@ -275,7 +275,9 @@ const citiesComputed = computed(() =>
   cities.value?.map?.((item) => ({ ...item, icon_url: "images/flags/ae.svg" }))
 );
 
-const city = useState("currentCity", () => citiesComputed.value?.[3]);
+const city = useState("currentCity", () =>
+  citiesComputed.value?.find((item) => item?.name === "Dubai")
+);
 
 const categories = useState("categories");
 const brands = useState("brands");

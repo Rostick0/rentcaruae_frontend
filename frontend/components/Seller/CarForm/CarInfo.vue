@@ -122,6 +122,8 @@ const generation_id = ref({
   },
 });
 
+// const resAll = await api.cities.getAll();
+
 const cities = ref({
   type: "multiple-select",
   name: "cities",
@@ -130,7 +132,7 @@ const cities = ref({
 
   bind: {
     label: "Cities",
-    options: useState("cities"),
+    options: useState("citiesAll"),
   },
 });
 
