@@ -238,10 +238,24 @@ watch(
     column-gap: 8px;
   }
 
+  @media (max-width: 1024px) {
+    &__brands {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     &__send {
       padding: 11.25px;
       padding-left: 26px;
+    }
+
+    &__close {
+      right: 60px;
+    }
+
+    &__options {
+      width: 100%;
     }
   }
 }

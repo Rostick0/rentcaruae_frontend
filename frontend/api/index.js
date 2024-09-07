@@ -17,6 +17,7 @@ import image from "./modules/image";
 import modelCars from "./modules/modelCars";
 import operations from "./modules/operations";
 import options from "./modules/options";
+import posts from "./modules/posts";
 import pricePeriods from "./modules/pricePeriods";
 import promoCars from "./modules/promoCars";
 import sitemap from "./modules/sitemap";
@@ -46,6 +47,7 @@ export default {
   modelCars,
   operations,
   options,
+  posts,
   pricePeriods,
   promoCars,
   sitemap,

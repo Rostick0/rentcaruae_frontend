@@ -1,9 +1,10 @@
 <template>
-  <MainBanner />
-  <div class="container">
-    <MainBrands />
-    <div class="car-cards">
-      <!-- <CarCardShortList
+  <div class="overflow-hidden">
+    <MainBanner />
+    <div class="container">
+      <MainBrands />
+      <div class="car-cards">
+        <!-- <CarCardShortList
         v-if="specialCars?.length"
         :cars="specialCars"
         title="Special offers"
@@ -11,58 +12,59 @@
         :link="`/`"
       /> -->
 
-      <CarCardShortList
-        v-if="economyCars?.length"
-        :cars="economyCars"
-        title="Economy cars"
-        linkText="All Economy cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
-      />
-      <CarCardShortList
-        v-if="vanCars?.length"
-        :cars="vanCars"
-        title="Van cars"
-        linkText="All Van cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
-      />
-      <CarCardShortList
-        v-if="suvCars?.length"
-        :cars="suvCars"
-        title="SUV for rent"
-        linkText="All SUV"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
-      />
-      <CarCardShortList
-        v-if="cabrioCars?.length"
-        :cars="cabrioCars"
-        title="Cabrio cars"
-        linkText="All Cabrio cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
-      />
-      <CarCardShortList
-        v-if="businessCars?.length"
-        :cars="businessCars"
-        title="Business cars"
-        linkText="All Business cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
-      />
-      <CarCardShortList
-        v-if="luxuryCars?.length"
-        :cars="luxuryCars"
-        title="Luxury cars"
-        linkText="All Luxury cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
-      />
-      <CarCardShortList
-        v-if="electroCars?.length"
-        :cars="electroCars"
-        title="Electro cars"
-        linkText="All Electro cars"
-        :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
-      />
+        <CarCardShortList
+          v-if="economyCars?.length"
+          :cars="economyCars"
+          title="Economy cars"
+          linkText="All Economy cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
+        />
+        <CarCardShortList
+          v-if="vanCars?.length"
+          :cars="vanCars"
+          title="Van cars"
+          linkText="All Van cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
+        />
+        <CarCardShortList
+          v-if="suvCars?.length"
+          :cars="suvCars"
+          title="SUV for rent"
+          linkText="All SUV"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
+        />
+        <CarCardShortList
+          v-if="cabrioCars?.length"
+          :cars="cabrioCars"
+          title="Cabrio cars"
+          linkText="All Cabrio cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
+        />
+        <CarCardShortList
+          v-if="businessCars?.length"
+          :cars="businessCars"
+          title="Business cars"
+          linkText="All Business cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
+        />
+        <CarCardShortList
+          v-if="luxuryCars?.length"
+          :cars="luxuryCars"
+          title="Luxury cars"
+          linkText="All Luxury cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
+        />
+        <CarCardShortList
+          v-if="electroCars?.length"
+          :cars="electroCars"
+          title="Electro cars"
+          linkText="All Electro cars"
+          :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
+        />
+      </div>
+      <MainServiceRental />
+      <!-- <MainFaq /> -->
     </div>
-    <MainServiceRental />
-    <!-- <MainFaq /> -->
   </div>
 </template>
 

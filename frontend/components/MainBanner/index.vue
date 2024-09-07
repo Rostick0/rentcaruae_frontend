@@ -71,7 +71,6 @@ const links = computed(() => {
   padding-top: 48px;
   margin-bottom: 43px;
   position: relative;
-  overflow: hidden;
 
   &__container {
     display: flex;
