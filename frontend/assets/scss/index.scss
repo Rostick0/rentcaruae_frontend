@@ -4,9 +4,12 @@
 @import "./fonts";
 @import "./ui/";
 
-.wrapper {
+body {
   background: var(--color-bg-main);
   color: var(--color-text100);
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
