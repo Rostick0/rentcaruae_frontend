@@ -78,11 +78,6 @@ const cookieWatch = watch(
     if (!isOpen.value) open();
   }
 );
-
-if (acceptedCookie.value) {
-  cookieWatch();
-}
-
 const onAccepted = () => {
   acceptedCookie.value = true;
   useCookie("analytical_cookie").value = analyticalCookie.value;
@@ -92,6 +87,10 @@ const onAccepted = () => {
 };
 
 onMounted(() => {
+  if (acceptedCookie.value) {
+    cookieWatch();
+  }
+
   if (!acceptedCookie.value && route.path !== "/privacy_policy") {
     open();
   }
