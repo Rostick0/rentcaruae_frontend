@@ -2,7 +2,7 @@
   <div
     v-if="isOpen || isOpenAlways"
     class="modal"
-    @click.self="close"
+    @click.self="!cancelCloseOuter && close()"
     :class="props.position"
     z-index="1"
   >
@@ -18,7 +18,7 @@ const props = defineProps({
   position: { type: String, default: "center" },
   customClass: { type: String, default: null },
   isOpenAlways: Boolean,
-  // cancel,
+  cancelCloseOuter: Boolean,
 });
 const { isOpen, close } = useModal({ name: props.name });
 

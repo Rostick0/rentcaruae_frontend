@@ -1,5 +1,5 @@
 <template>
-  <UiModal name="cookie" position="bottom">
+  <UiModal name="cookie" position="bottom" cancelCloseOuter>
     <div class="modal-cookie">
       <div class="modal-cookie__content">
         <template v-if="isCustomize">
