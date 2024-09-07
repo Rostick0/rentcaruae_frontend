@@ -206,6 +206,7 @@ watch(
     border-radius: 8px;
     padding: 12px 10px;
     position: absolute;
+    overflow: auto;
     width: calc(100% - 104px);
     z-index: 2;
   }
