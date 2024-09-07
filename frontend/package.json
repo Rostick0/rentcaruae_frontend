@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^40.0.0",
+    "@ckeditor/ckeditor5-vue": "^5.1.0",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/device": "^3.2.2",
     "@stripe/stripe-js": "^4.4.0",

@@ -1,5 +1,5 @@
 <template>
-  <AnyFormBlock title="Model car">
+  <AnyFormBlock title="Post meta">
     <div class="form-item">
       <div class="form__fields_inner">
         <VFormComponent :field="title" />
@@ -7,6 +7,11 @@
       </div>
       <VFormComponent :field="image" />
     </div>
+  </AnyFormBlock>
+  <AnyFormBlock title="Info">
+    <VFormComponent :field="short_description" />
+    <VFormComponent :field="content" />
+     <!-- <UiCkeditor /> -->
   </AnyFormBlock>
 </template>
 
@@ -44,20 +49,50 @@ const car_id = ref({
   modelValue: props?.post?.car ?? {},
 
   bind: {
-    label: "Model car",
+    label: "Car",
     debounceMs: 200,
     searchFn: fetchCar,
     withIcon: false,
   },
 });
 
+const short_description = ref({
+  type: "textarea",
+  name: "short_description",
+  modelValue: props.post?.short_description ?? "",
+
+  bind: {
+    label: "Short description",
+    rows: 4,
+  },
+});
+
+const content = ref({
+  type: "ckeditor",
+  name: "content",
+  modelValue: props.post?.content ?? "",
+
+  bind: {
+    // label: "Content",
+    rows: 4,
+  },
+});
+
 async function fetchCar(_, searchString, limit, page) {
-  return await api.car.getAll({
-    params: {
-      "filterLIKE[name]": searchString,
-      limit,
-      page,
-    },
-  });
+  return await api.car
+    .getAll({
+      params: {
+        "filterLIKE[name]": searchString,
+        limit,
+        page,
+      },
+    })
+    .then((res) => ({
+      ...res,
+      data: res?.data?.map((item) => ({
+        ...item,
+        name: `${item?.title} #${item?.id}`,
+      })),
+    }));
 }
 </script>
