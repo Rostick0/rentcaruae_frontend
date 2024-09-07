@@ -136,5 +136,9 @@ const isCustomize = ref(false);
     width: 100%;
     max-width: 320px;
   }
+
+  @media (max-width: 1024px) {
+    border-radius: 20px 20px 0 0;
+  }
 }
 </style>

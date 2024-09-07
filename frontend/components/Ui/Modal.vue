@@ -68,5 +68,12 @@ watch(
     align-items: flex-end;
     padding-bottom: 100px;
   }
+
+  @media (max-width: 1024px) {
+    &.bottom {
+      padding: 0;
+      padding-bottom: 0;
+    }
+  }
 }
 </style>
