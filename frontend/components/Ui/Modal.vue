@@ -9,6 +9,7 @@
     <slot></slot>
   </div>
 </template>
+
 <script setup>
 import useModal from "~/composables/useModal";
 const props = defineProps({
@@ -17,6 +18,7 @@ const props = defineProps({
   position: { type: String, default: "center" },
   customClass: { type: String, default: null },
   isOpenAlways: Boolean,
+  // cancel,
 });
 const { isOpen, close } = useModal({ name: props.name });
 
@@ -40,6 +42,7 @@ watch(
   }
 );
 </script>
+
 <style scoped lang="scss">
 .modal {
   background-color: rgba(0, 0, 0, 0.6);
@@ -59,6 +62,11 @@ watch(
   & > * {
     overflow: auto;
     max-height: calc(100vh - 40px);
+  }
+
+  &.bottom {
+    align-items: flex-end;
+    padding-bottom: 100px;
   }
 }
 </style>

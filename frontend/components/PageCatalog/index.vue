@@ -150,16 +150,12 @@ watch(
   }
 );
 
-// console.log(categories.value)
-
 const { title, description, h1 } = getCatalogSeo(
   oneFilterType.value,
   currentCity.value,
   pageText.value,
   rent.value === "leasing"
 );
-
-console.log(h1);
 
 useHead({
   title,

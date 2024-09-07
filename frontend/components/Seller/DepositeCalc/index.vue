@@ -37,11 +37,8 @@ const sendDeposte = async () => {
     return;
   }
 
-  console.log(res?.data?.link);
-  // navigateTo(res?.data?.link);
   window.open(res?.data?.link);
   // window.open('https://example.com', '_blank');
-  // console.log(res);
 };
 </script>
 
