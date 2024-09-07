@@ -20,6 +20,7 @@ import options from "./modules/options";
 import pricePeriods from "./modules/pricePeriods";
 import promoCars from "./modules/promoCars";
 import sitemap from "./modules/sitemap";
+import spendings from "./modules/spendings";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
 import users from "./modules/users";
@@ -48,6 +49,7 @@ export default {
   pricePeriods,
   promoCars,
   sitemap,
+  spendings,
   statisticsDay,
   transmissions,
   users,

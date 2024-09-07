@@ -40,6 +40,10 @@ const navigations = [
     name: "Payments",
     link: "/admin/payments",
   },
+  {
+    name: "Spendings",
+    link: "/admin/spendings",
+  },
 ];
 </script>
 
