@@ -60,7 +60,9 @@ const { open, close, isOpen } = useModal({
   name: "cookie",
 });
 
-const acceptedCookie = useCookie("accepted_cookie");
+const acceptedCookie = useCookie("accepted_cookie", {
+  maxAge: 60 * 60 * 24 * 365,
+});
 
 const analyticalCookie = ref(true);
 const otherCookie = ref(true);
@@ -81,8 +83,12 @@ const cookieWatch = watch(
 
 const onAccepted = () => {
   acceptedCookie.value = true;
-  useCookie("analytical_cookie").value = analyticalCookie.value;
-  useCookie("other_cookie").value = otherCookie.value;
+  useCookie("analytical_cookie", {
+    maxAge: 60 * 60 * 24 * 365,
+  }).value = analyticalCookie.value;
+  useCookie("other_cookie", {
+    maxAge: 60 * 60 * 24 * 365,
+  }).value = otherCookie.value;
   close();
   cookieWatch();
 };
