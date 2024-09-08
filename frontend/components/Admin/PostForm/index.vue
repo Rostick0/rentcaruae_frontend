@@ -1,18 +1,29 @@
 <template>
-  <AnyFormBlock title="Post meta">
-    <div class="form-item">
-      <div class="form__fields_inner">
-        <VFormComponent :field="title" />
-        <VFormComponent :field="car_id" />
+  <div class="form__fields">
+    <AnyFormBlock title="Post meta">
+      <div class="form-item">
+        <div class="form__fields_inner">
+          <VFormComponent :field="title" />
+          <VFormComponent :field="car_id" />
+        </div>
+        <VFormComponent :field="image" />
       </div>
-      <VFormComponent :field="image" />
+      <div class="form-item">
+        <VFormComponent :field="post_category_id" />
+      </div>
+    </AnyFormBlock>
+    <AnyFormBlock title="Info">
+      <VFormComponent :field="short_description" />
+      <VFormComponent :field="content" />
+    </AnyFormBlock>
+
+    <div class="form__bottom">
+      <div class="form__flex_switch">
+        <VFormComponent :field="is_show" />
+        <UiButton>Save</UiButton>
+      </div>
     </div>
-  </AnyFormBlock>
-  <AnyFormBlock title="Info">
-    <VFormComponent :field="short_description" />
-    <VFormComponent :field="content" />
-     <!-- <UiCkeditor /> -->
-  </AnyFormBlock>
+  </div>
 </template>
 
 <script setup>
@@ -24,7 +35,8 @@ const props = defineProps({
 
 const title = ref({
   type: "text",
-  name: "name",
+  name: "title",
+  rules: "required|max:255",
   modelValue: props.post?.title ?? "",
 
   bind: {
@@ -46,7 +58,13 @@ const image = ref({
 const car_id = ref({
   type: "select",
   name: "car_id",
-  modelValue: props?.post?.car ?? {},
+  rules: "required",
+  modelValue: props?.post?.car
+    ? {
+        ...props?.post?.car,
+        name: `${props.post?.car?.title} #${props.post?.car?.id}`,
+      }
+    : {},
 
   bind: {
     label: "Car",
@@ -56,9 +74,22 @@ const car_id = ref({
   },
 });
 
+const post_category_id = ref({
+  type: "select",
+  name: "post_category_id",
+  rules: "required",
+  modelValue: props?.post?.post_category ?? {},
+
+  bind: {
+    label: "Category",
+    options: postCategories,
+  },
+});
+
 const short_description = ref({
   type: "textarea",
   name: "short_description",
+  rules: "required|max:255",
   modelValue: props.post?.short_description ?? "",
 
   bind: {
@@ -70,11 +101,21 @@ const short_description = ref({
 const content = ref({
   type: "ckeditor",
   name: "content",
+  rules: "required|max:65536",
   modelValue: props.post?.content ?? "",
 
   bind: {
-    // label: "Content",
     rows: 4,
+  },
+});
+
+const is_show = ref({
+  type: "switch",
+  name: "is_show",
+  modelValue: !!props.post?.is_show,
+
+  bind: {
+    label: "Publish on website",
   },
 });
 
@@ -82,7 +123,7 @@ async function fetchCar(_, searchString, limit, page) {
   return await api.car
     .getAll({
       params: {
-        "filterLIKE[name]": searchString,
+        "filterLIKE[title]": searchString?.split?.("#", 1)[0],
         limit,
         page,
       },

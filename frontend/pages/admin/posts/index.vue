@@ -1,13 +1,11 @@
 <template>
   <h1 class="h1 flex-style">
-    <span>Deposites</span>
-    <NuxtLink class="d-flex" to="/admin/deposites/add">
-      <UiButton class="page-cars__add" variant="outlined"
-        >+ Add depostie</UiButton
-      >
+    <span>Posts</span>
+    <NuxtLink class="d-flex" to="/admin/posts/add">
+      <UiButton class="page-cars__add" variant="outlined">+ Add post</UiButton>
     </NuxtLink>
   </h1>
-  <AdminDepositesTable :data="data" />
+  <AdminPostsTable :data="data" />
   <AnyPagination
     @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"
@@ -20,16 +18,20 @@
 const limit = 8;
 
 const { filters } = useFilter({
+  withQueryParams: true,
+  withInitQueryParams: true,
   initialFilters: {
     page: 1,
   },
 });
 
 const { data, meta } = await useApi({
-  name: "deposites.getAll",
+  name: "posts.getAll",
   filters,
   params: {
-    extends: "deposite_leads",
+    extends: "post_category",
+    without_cache: true,
+    sort: "id",
     limit,
   },
   init: true,

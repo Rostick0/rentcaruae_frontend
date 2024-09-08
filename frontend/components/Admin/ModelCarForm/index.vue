@@ -17,6 +17,7 @@ const props = defineProps({
 const name = ref({
   type: "text",
   name: "name",
+  rules: "required|max:255",
   modelValue: props.modelCar?.name ?? "",
 
   bind: {
@@ -27,6 +28,7 @@ const name = ref({
 const brand_id = ref({
   type: "select",
   name: "brand_id",
+  rules: "required",
   modelValue: props.modelCar?.brand ?? {},
 
   bind: {

@@ -17,6 +17,7 @@ const props = defineProps({
 const name = ref({
   type: "select",
   name: "name",
+  rules: "required|max:255",
   modelValue: generationsTypeOptions?.find(
     (item) => item.name === props.generation?.name
   ),
@@ -30,6 +31,7 @@ const name = ref({
 const model_car_id = ref({
   type: "select",
   name: "model_car_id",
+  rules: "required",
   modelValue: props?.generation?.model_car ?? {},
 
   bind: {

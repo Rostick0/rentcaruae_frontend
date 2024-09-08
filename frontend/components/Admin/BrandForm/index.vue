@@ -13,6 +13,7 @@ const props = defineProps({
 const name = ref({
   type: "text",
   name: "name",
+  rules: "required|max:255",
   modelValue: props.brand?.name ?? "",
 
   bind: {

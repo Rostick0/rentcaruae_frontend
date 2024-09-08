@@ -5,7 +5,11 @@
     :message="errorMessage || message"
     :rightIcon="rightIcon"
   >
-    <UiCkeditor v-model="value" :placeholder="placeholder" />
+    <UiCkeditor
+      :modelValue="modelValue"
+      @update:modelValue="(val) => emits('update:modelValue', val)"
+      :placeholder="placeholder"
+    />
   </UiControl>
 </template>
 
@@ -24,4 +28,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const emits = defineEmits(["update:modelValue"]);
 </script>

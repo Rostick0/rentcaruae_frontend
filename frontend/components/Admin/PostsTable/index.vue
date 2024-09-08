@@ -2,16 +2,12 @@
   <table class="table">
     <tr class="table_tr">
       <th class="table__th">Id</th>
-      <th class="table__th">Email</th>
-      <th class="table__th">Balance</th>
-      <th class="table__th">Last deposite</th>
+      <th class="table__th">Title</th>
+      <th class="table__th">Category</th>
+      <th class="table__th">Created</th>
       <th class="table__th"></th>
     </tr>
-    <AdminDepositesTableItem
-      v-for="item in data"
-      :key="item?.id"
-      :item="item"
-    />
+    <AdminPostsTableItem v-for="item in data" :key="item?.id" :item="item" />
   </table>
 </template>
 

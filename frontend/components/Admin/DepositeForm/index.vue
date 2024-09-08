@@ -28,6 +28,7 @@ const props = defineProps({
 const price = ref({
   type: "text",
   name: "price",
+  rules: "required",
   modelValue: props.deposite?.price ?? "",
 
   bind: {
@@ -41,6 +42,7 @@ const price = ref({
 const free_leads = ref({
   type: "text",
   name: "free_leads",
+  rules: "required",
   modelValue: props.deposite?.free_leads ?? "",
 
   bind: {
@@ -54,6 +56,7 @@ const free_leads = ref({
 const payment_id = ref({
   type: "text",
   name: "payment_id",
+  rules: "required",
   modelValue: props.deposite?.payment_id ?? "",
 
   bind: {
@@ -64,6 +67,7 @@ const payment_id = ref({
 const price_0 = ref({
   type: "text",
   name: "prices_leads.0",
+  rules: "required",
   modelValue: props.deposite?.deposite_leads?.[0]?.price ?? "",
 
   bind: {
@@ -77,6 +81,7 @@ const price_0 = ref({
 const price_1 = ref({
   type: "text",
   name: "prices_leads.1",
+  rules: "required",
   modelValue: props.deposite?.deposite_leads?.[1]?.price ?? "",
 
   bind: {
@@ -90,6 +95,7 @@ const price_1 = ref({
 const price_2 = ref({
   type: "text",
   name: "prices_leads.2",
+  rules: "required",
   modelValue: props.deposite?.deposite_leads?.[2]?.price ?? "",
 
   bind: {
@@ -103,6 +109,7 @@ const price_2 = ref({
 const price_3 = ref({
   type: "text",
   name: "prices_leads.3",
+  rules: "required",
   modelValue: props.deposite?.deposite_leads?.[3]?.price ?? "",
 
   bind: {

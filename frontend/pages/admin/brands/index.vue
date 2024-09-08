@@ -9,12 +9,14 @@
   <AnyPagination
     @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"
-    limit="8"
+    :limit="limit"
     :totalCountData="meta?.total"
   />
 </template>
 
 <script setup>
+const limit = 8;
+
 const { filters } = useFilter({
   withQueryParams: true,
   withInitQueryParams: true,
@@ -30,6 +32,7 @@ const { data, meta } = await useApi({
   params: {
     without_cache: true,
     sort: "id",
+    limit,
   },
   init: true,
 });
