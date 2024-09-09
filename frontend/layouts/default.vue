@@ -44,11 +44,11 @@ const initScripts = () => {
 };
 
 onMounted(() => {
-  if (analyticalCookie.value) {
-    nextTick(() => {
-      initScripts();
-    });
-  }
+  // if (analyticalCookie.value) {
+  //   nextTick(() => {
+  //     initScripts();
+  //   });
+  // }
 });
 
 watch(
