@@ -1,14 +1,14 @@
 <template>
   <div class="car-module" v-if="car?.min_days === 1">
-    <img src="images/icon/arrow.svg" alt="" width="20" height="20" />
+    <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
     <span>1 day rental available</span>
   </div>
   <div class="car-module" v-if="car?.security_deposit?.price">
-    <img src="images/icon/arrow.svg" alt="" width="20" height="20" />
+    <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
     <span class="color-light-green">Deposit-free option</span>
   </div>
   <div class="car-module">
-    <img src="images/icon/arrow.svg" alt="" width="20" height="20" />
+    <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
     <span>Free delivery</span>
   </div>
 </template>

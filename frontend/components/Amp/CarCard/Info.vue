@@ -11,7 +11,7 @@
         <div class="car-characteristic" :title="car?.transmission?.name">
           <img
             class="car-characteristic__iconc"
-            :src="`images/icon/auto.svg`"
+            src="/images/icon/auto.svg"
             alt="fuel type"
             width="20"
             height="20"
@@ -23,7 +23,7 @@
         <div class="car-characteristic">
           <img
             class="car-characteristic__icon"
-            src="images/icon/persons.svg"
+            src="/images/icon/persons.svg"
             alt="persons"
             width="20"
             height="20"
@@ -33,7 +33,7 @@
         <div class="car-characteristic">
           <img
             class="car-characteristic__icon"
-            :src="`images/icon/${
+            :src="`/images/icon/${
               car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
             }.svg`"
             alt="fuel type"
