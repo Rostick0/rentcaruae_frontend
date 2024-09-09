@@ -28,7 +28,11 @@
           />
         </svg>
       </button>
-      <UiButton class="d-flex main-search__send" :variant="variant">
+      <UiButton
+        class="d-flex main-search__send"
+        title="Search"
+        :variant="variant"
+      >
         <svg
           width="20"
           height="20"

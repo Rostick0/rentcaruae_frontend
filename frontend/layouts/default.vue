@@ -19,7 +19,6 @@ const analyticalCookie = useCookie("analytical_cookie");
 
 const initScripts = () => {
   setTimeout(() => {
-    // useHead()
     useHead({
       script: [
         {
@@ -46,13 +45,16 @@ const initScripts = () => {
 
 onMounted(() => {
   if (analyticalCookie.value) {
-    initScripts();
+    nextTick(() => {
+      initScripts();
+    });
   }
 });
 
 watch(
   () => analyticalCookie.value,
   (newV) => {
+    console.log(newV);
     if (newV) initScripts();
   }
 );

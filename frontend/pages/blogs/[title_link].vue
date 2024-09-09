@@ -44,7 +44,7 @@ const breadcrumbs = [
   },
 ];
 
-console.log(data.value);
+// console.log(data.value);
 </script>
 
 <style lang="scss" scoped>
