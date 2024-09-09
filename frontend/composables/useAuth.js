@@ -40,22 +40,24 @@ export default async () => {
 
   const getUser = async () => {
     try {
-      await auth
-        .me(
-          {
-            extends:
-              "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car",
-          },
-          {},
-          { Authorization: `Bearer ${accessToken.value}` }
-        )
-        .then((resp) => {
-          if (!resp?.error && resp) {
-            user.value = resp?.data;
-          }
-        });
+      const res = await auth.me(
+        {
+          extends:
+            "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car",
+        },
+        { Authorization: `Bearer ${accessToken.value}` }
+      );
+
+      if (res?.error) return;
+
+      user.value = await res?.data;
+      // .then((resp) => {
+      //   if (!resp?.error && resp) {
+      //     user.value = resp?.data;
+      //   }
+      // });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
