@@ -104,7 +104,12 @@ export default defineNuxtConfig({
     },
   },
 
+  target: "server",
+  modern: "server",
   routeRules: {
+    "/privacy_policy": {
+      static: true,
+    },
     "/amp": {
       ssr: true,
       experimentalNoScripts: true,
