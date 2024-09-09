@@ -14,7 +14,7 @@
           },
         }"
       >
-        <LazSwiperSlide v-for="image in images" :key="image?.id">
+        <LazySwiperSlide v-for="image in images" :key="image?.id">
           <LazyNuxtImg
             class="car-image__main_img"
             :src="image?.image?.path_webp + '?w=700'"
@@ -24,7 +24,7 @@
             loading="lazy"
             fit="cover"
           />
-        </LazSwiperSlide>
+        </LazySwiperSlide>
       </LazySwiper>
     </div>
     <div
