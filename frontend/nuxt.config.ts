@@ -104,6 +104,7 @@ export default defineNuxtConfig({
     },
   },
 
+  ssr: true,
   // target: "server",
   // modern: "server",
   routeRules: {
