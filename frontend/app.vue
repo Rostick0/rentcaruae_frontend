@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <!-- <NuxtPage /> -->
+    <NuxtPage />
   </NuxtLayout>
   <VitePwaManifest />
 </template>
@@ -42,10 +42,10 @@ configure({
   }),
 });
 
-const { accessToken, user, getUser } = await useAuth();
-if (accessToken.value && !user.value) {
-  await getUser();
-}
+// const { accessToken, user, getUser } = await useAuth();
+// if (accessToken.value && !user.value) {
+//   await getUser();
+// }
 
 await useCity();
 </script>
