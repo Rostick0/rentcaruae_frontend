@@ -5,7 +5,7 @@
       <slot />
     </main>
     <LayoutFooter />
-    <ModalCookie />
+    <LazyModalCookie />
   </div>
 </template>
 
