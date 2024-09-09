@@ -112,9 +112,8 @@ export default defineNuxtConfig({
     },
   },
 
-  ssr: true,
-  // target: "server",
-  // modern: "server",
+  target: "server",
+  modern: "server",
   routeRules: {
     "/privacy_policy": {
       static: true,
