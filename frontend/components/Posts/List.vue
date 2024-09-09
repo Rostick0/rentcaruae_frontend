@@ -14,7 +14,7 @@ const props = defineProps({
 .posts-list {
   display: grid;
   grid-gap: 16px 24px;
-  grid-template-columns: repeat(3, minmax(264px, 264px));
+  grid-template-columns: repeat(auto-fit, minmax(264px, 264px));
   overflow: auto;
 }
 </style>

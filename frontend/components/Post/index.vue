@@ -11,7 +11,10 @@
     </div>
     <div class="post__container">
       <div class="post__container_left">
-        <time class="post__datetime text-pre-small" :datetime="date?.created_at">
+        <time
+          class="post__datetime text-pre-small"
+          :datetime="date?.created_at"
+        >
           {{ moment(post?.created_at).format("DD.MM.yyyy") }}
         </time>
         <h1 class="h1 post__title">{{ post?.title }}</h1>
@@ -67,6 +70,22 @@ const props = defineProps({
 
   &__title {
     margin: 12px 0 24px;
+  }
+
+  @media (max-width: 820px) {
+    &__container {
+      align-items: center;
+      flex-direction: column;
+
+      &_right {
+        width: 100%;
+        max-width: 480px;
+      }
+    }
+
+    &__title {
+      margin-bottom: 14px;
+    }
   }
 }
 </style>

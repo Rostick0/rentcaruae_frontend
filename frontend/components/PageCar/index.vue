@@ -93,13 +93,13 @@ const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 const { h1, title, description } = getCarSeo(data.value, isLeasing.value);
 
 useHead({
-  title,
-  meta: [
-    {
-      name: "description",
-      content: description,
-    },
-  ],
+  // title,
+  // meta: [
+  //   {
+  //     name: "description",
+  //     content: description,
+  //   },
+  // ],
   script: [
     {
       innerHTML: JSON.stringify({
@@ -170,6 +170,16 @@ useHead({
       type: "application/ld+json",
     },
   ],
+});
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: data.value?.images?.[0]?.image?.path_webp,
+  ogImageWidth: data.value?.images?.[0]?.image?.width,
+  ogImageHeight: data.value?.images?.[0]?.image?.height,
 });
 </script>
 

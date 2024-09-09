@@ -43,16 +43,14 @@ const { data, get, meta } = await useApi({
     // extendsCount: "cars",
     // sort: "cars_count,-name",
     // limit: 1,
-    sort: 'id',
+    sort: "id",
     limit: 17,
   },
 });
+await get();
 
 const postFirst = computed(() => data.value?.[0]);
-
 const otherPosts = computed(() => data.value?.splice?.(1));
-
-await get();
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +58,8 @@ await get();
   padding-bottom: 80px;
 
   &__h2 {
+    display: flex;
+    align-items: center;
     height: 44px;
   }
 

@@ -157,14 +157,14 @@ const { title, description, h1 } = getCatalogSeo(
   rent.value === "leasing"
 );
 
-useHead({
+useSeoMeta({
   title,
-  meta: [
-    {
-      name: "description",
-      content: description,
-    },
-  ],
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  // ogImage: data.value?.images?.[0]?.image?.path_webp,
+  // ogImageWidth: data.value?.images?.[0]?.image?.width,
+  // ogImageHeight: data.value?.images?.[0]?.image?.height,
 });
 </script>
 
