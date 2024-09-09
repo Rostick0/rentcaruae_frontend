@@ -20,14 +20,17 @@
           </div>
         </div>
         <div class="banner__right">
-          <LazyNuxtImg
-            class="banner__img"
-            src="images/blue_lamborghini.png"
-            alt="RentCarUAE"
-            decoding="async"
-            loading="lazy"
-            fit="contain"
-          />
+          <LazyNuxtLazyHydrate whenVisible>
+            <LazyNuxtImg
+              class="banner__img"
+              src="images/blue_lamborghini.png"
+              alt="RentCarUAE"
+              decoding="async"
+              loading="lazy"
+              width="708"
+              height="330"
+            />
+          </LazyNuxtLazyHydrate>
         </div>
       </div>
     </div>
@@ -111,6 +114,7 @@ const links = computed(() => {
   }
 
   &__img {
+    object-fit: contain;
     max-width: 708px;
     width: 50vw;
   }
