@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="post-card" :to="`/blogs/${post?.title_link}`">
+  <NuxtLink class="post-card" v-if="post" :to="`/blogs/${post?.title_link}`">
     <div class="post-card__image">
       <LazyNuxtImg
         class="post-card__img"
