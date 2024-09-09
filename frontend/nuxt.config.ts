@@ -46,6 +46,14 @@ export default defineNuxtConfig({
           name: "google-site-verification",
           content: "nAke3KR5w3tRblpZKDBupgSzbRCQFQqZUWSL8HmxjdU",
         },
+        {
+          name: "yandex-verification",
+          content: "a29ffcb48fde9792",
+        },
+        {
+          name: "mailru-domain",
+          content: "zMFprLNRSMsFJbhB",
+        },
       ],
       link: [
         ...appleTouchFavicons,

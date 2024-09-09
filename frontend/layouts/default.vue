@@ -31,6 +31,12 @@ const initScripts = () => {
           async: true,
         },
       ],
+      noscript: [
+        {
+          innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9LMXWF4" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          tagPosition: "bodyClose",
+        },
+      ],
     });
 
     window.dataLayer = window.dataLayer || [];
@@ -40,21 +46,31 @@ const initScripts = () => {
     gtag("js", new Date());
 
     gtag("config", "G-E3NBJ9Z8Q2");
+
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-N9LMXWF4");
   }, 3000);
 };
 
 onMounted(() => {
-  // if (analyticalCookie.value) {
-  //   nextTick(() => {
-  //     initScripts();
-  //   });
-  // }
+  if (analyticalCookie.value) {
+    nextTick(() => {
+      initScripts();
+    });
+  }
 });
 
 watch(
   () => analyticalCookie.value,
   (newV) => {
-    console.log(newV);
     if (newV) initScripts();
   }
 );

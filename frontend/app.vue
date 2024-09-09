@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
-    <VitePwaManifest />
     <NuxtPage />
   </NuxtLayout>
+  <VitePwaManifest />
 </template>
 
 <script setup>
