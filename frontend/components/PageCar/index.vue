@@ -160,12 +160,6 @@ useHead({
           "@type": "EngineSpecification",
           fuelType: data.value?.fuel_type?.name,
         },
-        // mileageFromOdometer: {
-        //   "@type": "QuantitativeValue",
-        //   value: data?.value?.mileage,
-        //   unitCode: "KMT",
-        // },
-        // numberOfDoors: data.value?.modification?.doors_count,
       }),
       type: "application/ld+json",
     },

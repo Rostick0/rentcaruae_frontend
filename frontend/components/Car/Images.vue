@@ -1,7 +1,7 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <Swiper
+      <LazySwiper
         class="car-image__swiper"
         @swiper="(swiperInit) => (swiper = swiperInit)"
         :spaceBetween="10"
@@ -14,7 +14,7 @@
           },
         }"
       >
-        <SwiperSlide v-for="image in images" :key="image?.id">
+        <LazSwiperSlide v-for="image in images" :key="image?.id">
           <LazyNuxtImg
             class="car-image__main_img"
             :src="image?.image?.path_webp + '?w=700'"
@@ -24,8 +24,8 @@
             loading="lazy"
             fit="cover"
           />
-        </SwiperSlide>
-      </Swiper>
+        </LazSwiperSlide>
+      </LazySwiper>
     </div>
     <div
       class="car-image__list"
