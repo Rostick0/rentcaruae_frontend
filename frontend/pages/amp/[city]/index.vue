@@ -1,0 +1,3 @@
+<template>
+  <AmpPageCatalog />
+</template>

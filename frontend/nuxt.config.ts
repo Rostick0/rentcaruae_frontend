@@ -94,10 +94,10 @@ export default defineNuxtConfig({
   },
 
   pwa: {
-    workbox: {
-      navigateFallback: "/",
-      importScripts: ["https://push4site.com/static/sw/rentcaruae.js"],
-    },
+  //   workbox: {
+  //     navigateFallback: "/",
+  //     importScripts: ["https://push4site.com/static/sw/rentcaruae.js"],
+  //   },
     devOptions: {
       enabled: true,
       type: "module",
@@ -111,6 +111,10 @@ export default defineNuxtConfig({
       static: true,
     },
     "/amp": {
+      ssr: true,
+      experimentalNoScripts: true,
+    },
+    "/amp/**": {
       ssr: true,
       experimentalNoScripts: true,
     },
