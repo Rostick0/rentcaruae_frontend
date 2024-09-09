@@ -165,4 +165,4 @@ export const getWhatsappText = (car, isLeasing = false) =>
 
 export const getCarImageTitle = (car, city) =>
   `${car?.title} ${car?.year} for rent in ${city?.name}`;
-export const getCarImageAlt = (car) => `Rent ${car?.title} in ${car?.year}`;
+export const getCarImageAlt = (car, city) => `Rent ${car?.title} in ${city?.year}`;

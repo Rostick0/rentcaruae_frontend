@@ -4,11 +4,12 @@
       <div class="form-item">
         <div class="form__fields_inner">
           <VFormComponent :field="title" />
-          <VFormComponent :field="car_id" />
+          <VFormComponent :field="title_link" />
         </div>
         <VFormComponent :field="image" />
       </div>
       <div class="form-item">
+        <VFormComponent :field="car_id" />
         <VFormComponent :field="post_category_id" />
       </div>
     </AnyFormBlock>
@@ -44,10 +45,21 @@ const title = ref({
   },
 });
 
+const title_link = ref({
+  type: "text",
+  name: "title_link",
+  rules: "required|max:255",
+  modelValue: props.post?.title_link ?? "",
+
+  bind: {
+    label: "Link",
+  },
+});
+
 const image = ref({
   type: "photo-loader",
   name: "image",
-  modelValue: { path_webp: props.post?.image_url },
+  modelValue: { path_webp: props.post?.image?.image?.path_webp },
 
   bind: {
     title: "Upload logo",
@@ -89,7 +101,7 @@ const post_category_id = ref({
 const short_description = ref({
   type: "textarea",
   name: "short_description",
-  rules: "required|max:255",
+  rules: "required|max:600",
   modelValue: props.post?.short_description ?? "",
 
   bind: {

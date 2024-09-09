@@ -21,7 +21,7 @@
             : '?w=400')
         "
         :title="getCarImageTitle(car, currentCity)"
-        :alt="getCarImageAlt(car)"
+        :alt="getCarImageAlt(car, currentCity)"
         decoding="async"
         loading="lazy"
         width="320"

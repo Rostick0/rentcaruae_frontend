@@ -3,7 +3,12 @@
     <div class="container">
       <div class="header__container">
         <div class="header__top">
-          <button class="d-flex" v-if="$device.isMobile" @click="toggleActive">
+          <button
+            class="d-flex"
+            v-if="$device.isMobileOrTablet"
+            @click="toggleActive"
+            title="Toggle menu"
+          >
             <svg
               v-if="!isActive"
               width="20"

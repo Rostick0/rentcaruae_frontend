@@ -8,4 +8,6 @@ export default {
   getAll: async ({ params } = { params: {} }) =>
     useFetcher().get(`/posts`, params),
   create: async ({ data }) => useFetcher().post(`/posts`, data),
+  getByTitleLink: async ({ title_link, params }) =>
+    useFetcher().get(`/posts/link/${title_link}`, params),
 };

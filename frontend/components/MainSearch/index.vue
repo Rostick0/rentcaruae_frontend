@@ -4,13 +4,14 @@
       <input
         class="main-search__input"
         v-model="search"
-        type="еуче"
+        type="text"
         :placeholder="placeholder"
       />
       <button
         class="d-flex main-search__close"
         @click="search = ''"
         v-show="search?.length > 1"
+        title="Reset search"
         type="reset"
       >
         <svg

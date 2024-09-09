@@ -14,7 +14,7 @@ const id = useRoute().params.id;
 const { data, get } = await useApi({
   name: "posts.get",
   params: {
-    extends: "car,image,post_category",
+    extends: "car,image.image,post_category",
     without_cache: true,
   },
   requestParams: {
