@@ -1,5 +1,5 @@
-import CKEditor from "@ckeditor/ckeditor5-vue";
+// import CKEditor from "@ckeditor/ckeditor5-vue";
 
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(CKEditor);
-});
+// export default defineNuxtPlugin((nuxtApp) => {
+//   nuxtApp.vueApp.use(CKEditor);
+// });
