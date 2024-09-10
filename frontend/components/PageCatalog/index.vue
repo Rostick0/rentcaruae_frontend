@@ -36,6 +36,8 @@ const props = defineProps({
   },
 });
 
+const config = useRuntimeConfig();
+
 const route = useRoute();
 const currentCity = useState("currentCity");
 
@@ -156,15 +158,16 @@ const { title, description, h1 } = getCatalogSeo(
   pageText.value,
   rent.value === "leasing"
 );
+console.log(config);
 
 useSeoMeta({
   title,
   ogTitle: title,
   description,
   ogDescription: description,
-  // ogImage: data.value?.images?.[0]?.image?.path_webp,
-  // ogImageWidth: data.value?.images?.[0]?.image?.width,
-  // ogImageHeight: data.value?.images?.[0]?.image?.height,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
 });
 </script>
 

@@ -90,7 +90,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      HOST: process.env.HOST,
+      BASE_URL: process.env.BASE_URL,
       API_URL: `${process.env.API_URL}`,
       BACK_URL: `${process.env.BACK_URL}`,
     },
