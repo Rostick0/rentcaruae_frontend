@@ -144,6 +144,10 @@ const breadcrumbs = [
     name: "Privacy policy",
   },
 ];
+
+useSeoMeta({
+  title: "Privacy policy",
+});
 </script>
 
 <style lang="scss" scoped>

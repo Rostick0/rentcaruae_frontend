@@ -52,27 +52,10 @@ const breadcrumbs = [
 ];
 
 useHead({
-  script: [
-    {
-      innerHTML: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        headline: data.value?.title,
-        image: [data.value?.image?.image?.path_webp],
-        datePublished: data.value?.created_at,
-        datePublished: data.value?.updated_at,
-        description: data.value?.short_description,
-        author: {
-          "@type": "Person",
-          name: data.value?.user?.full_name,
-        },
-      }),
-      type: "application/ld+json",
-    },
-  ],
+  script: [getPostSchema(data.value)],
 });
 
-useSeoMeta(getSeoMeta(data.value));
+useSeoMeta(getPostSeoMeta(data.value));
 </script>
 
 <style lang="scss" scoped>

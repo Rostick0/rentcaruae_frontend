@@ -152,14 +152,17 @@ const { data: electroCars, get: getElectroCars } = await useApi({
 });
 await getElectroCars();
 
-useHead({
-  title: `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`,
-  meta: [
-    {
-      name: "description",
-      content: `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`,
-    },
-  ],
+const title = `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`;
+const description = `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`;
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
 });
 </script>
 

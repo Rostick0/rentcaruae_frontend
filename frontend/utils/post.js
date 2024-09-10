@@ -18,7 +18,24 @@ export const getPostOnSubmitValues = async ({
   };
 };
 
-export const getSeoMeta = (post) => ({
+export const getPostSchema = (post) => ({
+  innerHTML: JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: post?.title,
+    image: [post?.image?.image?.path_webp],
+    datePublished: post?.created_at,
+    datePublished: post?.updated_at,
+    description: post?.short_description,
+    author: {
+      "@type": "Person",
+      name: post?.user?.full_name,
+    },
+  }),
+  type: "application/ld+json",
+});
+
+export const getPostSeoMeta = (post) => ({
   title: post?.title,
   ogTitle: post?.title,
   description: post?.short_description,

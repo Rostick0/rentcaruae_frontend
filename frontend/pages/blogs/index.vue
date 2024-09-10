@@ -40,8 +40,6 @@ const { data, get, meta } = await useApi({
   filters,
   params: {
     extends: "image.image",
-    // extendsCount: "cars",
-    // sort: "cars_count,-name",
     // limit: 1,
     sort: "id",
     limit: 17,
@@ -51,6 +49,19 @@ await get();
 
 const postFirst = computed(() => data.value?.[0]);
 const otherPosts = computed(() => data.value?.splice?.(1));
+
+const title = "Blogs in RentCarUAE";
+const description = "";
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
+});
 </script>
 
 <style lang="scss" scoped>

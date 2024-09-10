@@ -67,8 +67,14 @@ const breadcrumbs = [
   },
 ];
 
-useHead({
-  title: `Sitemap - Rent a Car ${currentCity.value?.name}`,
+const title = `Sitemap - Rent a Car ${currentCity.value?.name}`;
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
 });
 </script>
 
