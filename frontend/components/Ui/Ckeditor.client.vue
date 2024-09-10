@@ -1,4 +1,7 @@
 <template>
+  1
+</template>
+<!-- <template>
   <ckeditor
     :editor="ClassicEditor"
     :config="editorConfig"
@@ -26,4 +29,4 @@ const value = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
-</script>
+</script> -->
