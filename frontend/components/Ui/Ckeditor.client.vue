@@ -1,7 +1,4 @@
 <template>
-  1
-</template>
-<!-- <template>
   <ckeditor
     :editor="ClassicEditor"
     :config="editorConfig"
@@ -11,6 +8,7 @@
 
 <script lang="ts" setup>
 // import "@ckeditor/ckeditor5-build-classic/build/translations/ru";
+// const ClassicEditor = await import("@ckeditor/ckeditor5-build-classic");
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import type { EditorConfig } from "@ckeditor/ckeditor5-core";
 
@@ -29,4 +27,4 @@ const value = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
-</script> -->
+</script>

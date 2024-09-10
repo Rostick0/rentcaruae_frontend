@@ -101,6 +101,8 @@ export default defineNuxtConfig({
     },
   },
 
+  plugins: [{ src: "~/plugins/editor.client.js", ssr: false }],
+
   pwa: {
     workbox: {
       navigateFallback: "/",
