@@ -80,14 +80,14 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-lazy-hydrate",
     "@nuxt/image",
-    "nuxt-swiper",
+    // "nuxt-swiper",
     "@nuxtjs/device",
     "@vite-pwa/nuxt",
   ],
-  swiper: {
-    modules: ["pagination"],
-    styleLang: "css",
-  },
+  // swiper: {
+  //   modules: ["pagination"],
+  //   styleLang: "css",
+  // },
 
   build: {
     transpile: ["@vuepic/vue-datepicker", "vue-toastification"],

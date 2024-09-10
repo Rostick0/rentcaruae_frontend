@@ -27,6 +27,7 @@
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-swiper": "^1.2.2",
     "stripe": "^16.9.0",
+    "swiper": "^11.1.12",
     "uuid": "^10.0.0",
     "vee-validate": "^4.13.2",
     "vue": "latest",
