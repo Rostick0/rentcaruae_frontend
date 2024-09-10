@@ -2,7 +2,7 @@
   <div class="blog">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1 class="h1">Blog</h1>
+      <h1 class="h1">Car Rental Blog</h1>
       <PostCategories
         :modelValue="filters['filterEQ[post_category_id]']"
         @update:modelValue="
@@ -52,8 +52,9 @@ await get();
 const postFirst = computed(() => data.value?.[0]);
 const otherPosts = computed(() => data.value?.splice?.(1));
 
-const title = "Blogs in RentCarUAE";
-const description = "";
+const title = "RentcarUAE Car Rental Blog | Your adventure begins here";
+const description =
+  "All about car rental in Dubai. Reviews of new car manufacturers that can already be tested";
 
 useSeoMeta({
   title,
