@@ -17,3 +17,14 @@ export const getPostOnSubmitValues = async ({
     post_category_id: post_category_id?.id,
   };
 };
+
+export const getSeoMeta = (post) => ({
+  title: post?.title,
+  ogTitle: post?.title,
+  description: post?.short_description,
+  ogDescription: post?.short_description,
+  ogImage: post?.image?.image?.path_webp,
+  ogImageWidth: post?.image?.image?.width,
+  ogImageHeight: post?.image?.image?.height,
+  ogType: "article",
+});

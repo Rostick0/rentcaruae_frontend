@@ -5,16 +5,16 @@
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
       <AmpCarType id="carType" v-model="filters['filterEQ[generation.name]']" />
-      <!-- <LazyFilter :prices="prices" /> -->
+      <LazyFilter :prices="prices" />
       <AmpCarCardList :cars="cars[0]" :isLeasing="isLeasing" />
-      <!-- <LazyCarCardShortList
+      <AmpCarCardShortList
         class="catalog__specials"
         v-if="carsSpecial?.length > 1"
         :cars="carsSpecial"
         title="Special offers"
         linkText="All special offers"
         link="/"
-      /> -->
+      />
       <AmpCarCardList :cars="cars[1]" :isLeasing="isLeasing" />
       <UiPagination
         class="catalog__pagination"

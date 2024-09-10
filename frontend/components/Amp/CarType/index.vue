@@ -18,8 +18,10 @@
           modelValue === type.name.toLowerCase() ? 'standard' : 'outlined'
         "
       >
-        <img :src="type.img" :alt="type.name" width="52" height="26" />
-        <span>{{ type.name }}</span>
+        <div class="d-flex">
+          <img :src="`/${type.img}`" :alt="type.name" width="52" height="26" />
+        </div>
+        <div>{{ type.name }}</div>
       </UiButton>
     </NuxtLink>
   </div>

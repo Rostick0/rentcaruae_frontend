@@ -53,7 +53,12 @@
       <div class="car-stat">
         <div class="car-stat__title">Minimum</div>
         <div class="car-stat__value">
-          {{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}
+          <template v-if="isLeasing">
+            {{ minMonthLeasing }} {{ pluralize("month", minMonthLeasing) }}
+          </template>
+          <template v-else>
+            {{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}
+          </template>
         </div>
       </div>
     </div>
@@ -137,6 +142,10 @@ const link = computed(() =>
       props.car?.generation?.model_car?.name
     }/${props.car?.id}`
   )
+);
+
+const minMonthLeasing = computed(
+  () => props.car?.price_leasing?.[0]?.period / 30
 );
 
 const priceLeasingMaxPeriod = computed(() => last(props.car?.price_leasing));

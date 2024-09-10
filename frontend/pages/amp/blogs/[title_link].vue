@@ -72,7 +72,16 @@ useHead({
   ],
 });
 
-useSeoMeta(getSeoMeta(data.value));
+useSeoMeta({
+  title: data.value?.title,
+  ogTitle: data.value?.title,
+  description: data.value?.short_description,
+  ogDescription: data.value?.short_description,
+  ogImage: data.value?.image?.image?.path_webp,
+  ogImageWidth: data.value?.image?.image?.width,
+  ogImageHeight: data.value?.image?.image?.height,
+  ogType: "article",
+});
 </script>
 
 <style lang="scss" scoped>
