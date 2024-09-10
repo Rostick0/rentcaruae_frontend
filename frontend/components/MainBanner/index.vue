@@ -23,7 +23,7 @@
           <LazyNuxtLazyHydrate whenVisible>
             <LazyNuxtImg
               class="banner__img"
-              src="images/blue_lamborghini.png"
+              src="images/blue_lamborghini.webp"
               alt="RentCarUAE"
               decoding="async"
               loading="lazy"
