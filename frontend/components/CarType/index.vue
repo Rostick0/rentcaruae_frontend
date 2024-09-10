@@ -8,7 +8,7 @@
       All Cars
     </UiButton>
     <UiButton
-      v-for="type in carType"
+      v-for="type in bodyTypesWithIcon"
       :key="type.name"
       class="car-type__item text-pre-small"
       :class="{ active: modelValue === type.name.toLowerCase() }"
@@ -35,37 +35,6 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["update:modelValue"]);
-
-const carType = [
-  {
-    name: "SUV",
-    img: "images/car-type/SUV.png",
-  },
-  {
-    name: "VAN",
-    img: "images/car-type/VAN.png",
-  },
-  {
-    name: "Sedan",
-    img: "images/car-type/Sedan.png",
-  },
-  {
-    name: "Coupe",
-    img: "images/car-type/Coupe.png",
-  },
-  {
-    name: "Cabrio",
-    img: "images/car-type/Cabrio.png",
-  },
-  {
-    name: "Hatchback",
-    img: "images/car-type/Hatchback.png",
-  },
-  {
-    name: "Liftback",
-    img: "images/car-type/Liftback.png",
-  },
-];
 </script>
 
 <style lang="scss" scoped>

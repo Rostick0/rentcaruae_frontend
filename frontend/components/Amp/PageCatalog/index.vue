@@ -4,7 +4,7 @@
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
-      <CarType id="carType" v-model="filters['filterEQ[generation.name]']" />
+      <AmpCarType id="carType" v-model="filters['filterEQ[generation.name]']" />
       <!-- <LazyFilter :prices="prices" /> -->
       <AmpCarCardList :cars="cars[0]" :isLeasing="isLeasing" />
       <!-- <LazyCarCardShortList
