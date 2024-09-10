@@ -3,14 +3,13 @@
 </template>
 
 <script lang="ts" setup>
-// import "@ckeditor/ckeditor5-build-classic/build/translations/ru";
-// const CKEditor = await import("@ckeditor/ckeditor5-vue");
-import CKEditor from "@ckeditor/ckeditor5-vue";
+const CKEditor = await import("@ckeditor/ckeditor5-vue");
+// import CKEditor from "@ckeditor/ckeditor5-vue";
 // const ClassicEditor = await import("@ckeditor/ckeditor5-build-classic");
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import type { EditorConfig } from "@ckeditor/ckeditor5-core";
 
-const ckedit = CKEditor.component;
+const ckedit = CKEditor.default.component;
 
 const props = defineProps<{
   modelValue?: any;
