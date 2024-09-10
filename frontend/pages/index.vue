@@ -71,6 +71,8 @@
 <script setup>
 const currentCity = useState("currentCity");
 
+const config = useRuntimeConfig();
+
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
   // "filterNEQ[price_special.price]": true,

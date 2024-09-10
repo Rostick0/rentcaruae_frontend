@@ -52,6 +52,8 @@ import api from "~/api";
 
 const currentCity = useState("currentCity");
 
+const config = useRuntimeConfig();
+
 const data = await api.sitemap.get();
 
 const setLink = (link) =>

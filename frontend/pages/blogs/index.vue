@@ -26,6 +26,8 @@
 <script setup>
 const breadcrumbs = [{ name: "Home", link: "/" }, { name: "Blog" }];
 
+const config = useRuntimeConfig();
+
 const { filters } = useFilter({
   withQueryParams: true,
   withInitQueryParams: true,
