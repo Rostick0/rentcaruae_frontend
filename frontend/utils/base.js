@@ -75,26 +75,6 @@ export const success = (message = "Данные успешно сохранен�
   }
 };
 
-export const checkSaved = (resp, callback, message = null, errorCallback) => {
-  try {
-    if (
-      resp.errors ||
-      resp?.error ||
-      (resp?.length && (resp[0]?.error || resp[0]?.errors))
-    ) {
-      if (errorCallback) {
-        errorCallback(resp);
-      }
-      notify(resp);
-    } else {
-      success(resp?.message ?? message ?? "Данные успешно сохранены");
-      typeof callback == "function" ? callback(resp) : null;
-    }
-  } catch (error) {
-    console.error("checkSaved", error);
-  }
-};
-
 function cloneDeep(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
@@ -103,26 +83,6 @@ function objNotEmpty(obj) {
   if (typeof obj !== "object" || obj == null) return;
   return !!Object.keys(obj).length;
 }
-
-function uniqueId() {
-  var idstr = String.fromCharCode(Math.floor(Math.random() * 25 + 65));
-  do {
-    var ascicode = Math.floor(Math.random() * 42 + 48);
-    if (ascicode < 58 || ascicode > 64) {
-      idstr += String.fromCharCode(ascicode);
-    }
-  } while (idstr.length < 32);
-
-  return idstr;
-}
-
-// const isObject = (obj) => {
-//   return obj && typeof obj == "object" && !Array?.isArray(obj);
-// };
-
-const isArray = (obj) => {
-  return obj && typeof obj == "object" && Array?.isArray(obj);
-};
 
 export const mergeObjectsData = (initialData, data, formatArray) => {
   try {
@@ -225,67 +185,10 @@ export const formatObjectReverse = (
   }
 };
 
-export function getProperty(obj, path, def) {
-  try {
-    const names = path.split(".");
-    let pre = obj;
-    for (var i = 0; i < names.length; i++) {
-      pre = pre?.[names[i]];
-      if (!pre) def;
-    }
-    return pre;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-export function setProperty(obj, path, value) {
-  try {
-    const r = !!obj?.value;
-    const names = path.split(".");
-
-    if (r) {
-      for (var i = 0; i < names.length - 1; i++) {
-        obj = obj[names[i]];
-        if (!obj) return;
-      }
-      obj.value[names[names.length - 1]] = value;
-    } else {
-      for (var i = 0; i < names.length - 1; i++) {
-        obj = obj[names[i]];
-        if (!obj) return;
-      }
-      obj[names[names.length - 1]] = value;
-    }
-  } catch (error) {
-    console.error(error);
-    return 0;
-  }
-}
-
-function declination(number, titles = [" год", " года", " лет"]) {
-  const cases = [2, 0, 1, 1, 1, 2];
-  return titles[
-    number % 100 > 4 && number % 100 < 20
-      ? 2
-      : cases[number % 10 < 5 ? number % 10 : 5]
-  ];
-}
-const log = (...all) => {
-  console.error(...all);
-};
 const Utils = {
-  log,
-  declination,
-  isArray,
   isObject,
-  uniqueId,
-  checkSaved,
   objNotEmpty,
   cloneDeep,
-  setProperty,
-  getProperty,
   warningPopup,
   getErrorData,
   notify,

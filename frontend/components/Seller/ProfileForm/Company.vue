@@ -47,7 +47,6 @@ const company_name = ref({
 const user_tel = ref({
   type: "tel",
   name: "user.tel",
-  // modelValue: convertTelToForm(props.user?.tel),
   modelValue: convertPhoneToForm(props.user?.tel),
 
   bind: {
