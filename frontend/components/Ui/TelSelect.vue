@@ -7,11 +7,6 @@
   >
     <div class="control__tel-select tel-select">
       <label class="tel-select__field">
-        <!-- <UiSelectWithIcons
-          v-model="phone"
-          :options="optionsNumbers"
-          closeAfterSelect
-        /> -->
         <TelInput
           @update:modelValue="updatePhone"
           :modelValue="modelValue"
@@ -22,20 +17,12 @@
             maxlength: 19,
           }"
         />
-        <!-- <input
-          class="tel-select__value"
-          v-model="phoneText"
-          type="text"
-          v-maska
-          data-maska="### ### ## ##"
-        /> -->
       </label>
     </div>
   </UiControl>
 </template>
 
 <script setup>
-// import debounce from "lodash/debounce";
 import { VueTelInput as TelInput } from "vue-tel-input";
 import "vue-tel-input/vue-tel-input.css";
 const emits = defineEmits(["update:modelValue"]);
@@ -55,16 +42,6 @@ const props = defineProps({
 
 const updatePhone = (val) =>
   emits("update:modelValue", convertPhoneToForm(val));
-
-// const phone = ref(props.modelValue?.[0] ?? optionsNumbers[0]);
-// const phoneText = ref(props.modelValue?.[1]);
-
-// watch(
-//   () => [phone.value, phoneText.value],
-//   () => {
-//     emits("update:modelValue", [phone.value?.name, phoneText.value]);
-//   }
-// );
 </script>
 
 <style lang="scss" scoped>

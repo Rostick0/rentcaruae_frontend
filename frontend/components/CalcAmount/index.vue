@@ -11,12 +11,10 @@
     </div>
     <div class="calc-amount__flex">
       <div class="calc-amount__flex_left">
-        <span>VAT</span>
+        <span>VAT&nbsp;</span>
         <span>Tax (5%)</span>
       </div>
-      <strong class="calc-amount__size-small"
-        >+ AED {{ formatNumber(tax) }}</strong
-      >
+      <strong class="calc-amount__size-small">tax is included</strong>
     </div>
     <div class="calc-amount__hr"></div>
     <slot name="summary" />
@@ -29,8 +27,6 @@ const props = defineProps({
   price: [String, Number],
   tax: [String, Number],
 });
-
-// const tax = computed(() => props.total * 0.05);
 </script>
 
 <style lang="scss" scoped>

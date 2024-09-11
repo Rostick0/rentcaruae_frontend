@@ -161,8 +161,9 @@ export const getCarSeo = (car, isLeasing) => {
 export const getWhatsappText = (car, isLeasing = false) =>
   `I would like to ${isLeasing ? "lease" : "rent"} ${
     car?.generation?.model_car?.brand?.name
-  } ${car?.generation?.model_car?.name}`;
+  } ${car?.generation?.model_car?.name} advertised on rentcaruae.com`;
 
 export const getCarImageTitle = (car, city) =>
   `${car?.title} ${car?.year} for rent in ${city?.name}`;
-export const getCarImageAlt = (car, city) => `Rent ${car?.title} in ${city?.year}`;
+export const getCarImageAlt = (car, city) =>
+  `Rent ${car?.title} in ${city?.year}`;

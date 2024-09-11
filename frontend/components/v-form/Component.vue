@@ -67,12 +67,6 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
-    <UiRadioCategory
-      v-else-if="field.type == 'radio-category'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
     <UiTelSelect
       v-else-if="field.type == 'tel'"
       v-model="model"
