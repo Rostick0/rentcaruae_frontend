@@ -298,10 +298,11 @@ const periodRental = ref(
 
 const periodText = computed(() => pluralize("day", periodRental?.value));
 
-const maxMileage = computed(() =>
-  props?.car?.price?.length && Array.isArray(props?.car?.price)
-    ? Math.max(...props?.car?.price?.map((item) => item?.mileage))
-    : 0
+const maxMileage = computed(
+  () =>
+    props?.car?.price?.find(
+      (item) => item?.period === periodSelect.value.modelValue?.period
+    )?.mileage
 );
 
 const priceSpecial = computed(() =>

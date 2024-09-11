@@ -280,10 +280,8 @@ const periodRental = computed(
 
 const periodText = computed(() => pluralize("month", periodRental.value));
 
-const maxMileage = computed(() =>
-  props?.car?.price_leasing?.length && Array.isArray(props?.car?.price_leasing)
-    ? Math.max(...props?.car?.price_leasing?.map((item) => item?.mileage))
-    : 0
+const maxMileage = computed(
+  () => props?.car?.price_leasing?.[periodSelect.value.modelValue]?.mileage
 );
 
 const price = computed(() =>
