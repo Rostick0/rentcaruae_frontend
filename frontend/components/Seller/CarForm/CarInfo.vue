@@ -84,6 +84,7 @@ const year = ref({
 
 const category_id = ref({
   type: "select",
+  // type: "multiple-select",
   name: "category_id",
   rules: "required",
   modelValue: props?.car?.category ?? "",

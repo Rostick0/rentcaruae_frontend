@@ -87,7 +87,7 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">About us</div>
             <div class="footer-item__list">
-              <!-- <NuxtLink class="footer-item__link" to="/blog">Blog</NuxtLink> -->
+              <NuxtLink class="footer-item__link" to="/blogs">Blog</NuxtLink>
               <NuxtLink class="footer-item__link" to="/privacy_policy"
                 >Privacy policy</NuxtLink
               >

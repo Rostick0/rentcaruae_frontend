@@ -20,17 +20,14 @@
           </div>
         </div>
         <div class="banner__right">
-          <LazyNuxtLazyHydrate whenVisible>
-            <LazyNuxtImg
-              class="banner__img"
-              src="images/blue_lamborghini.webp"
-              alt="RentCarUAE"
-              decoding="async"
-              loading="lazy"
-              width="708"
-              height="330"
-            />
-          </LazyNuxtLazyHydrate>
+          <NuxtImg
+            class="banner__img"
+            src="images/blue_lamborghini.webp"
+            alt="RentCarUAE"
+            preload
+            width="708"
+            height="330"
+          />
         </div>
       </div>
     </div>
