@@ -26,7 +26,7 @@ export const setOneFilterValue = (routeParams, param = "") => {
       routeParams?.body
     );
   else if (routeParams?.type)
-    data[`filterEQ[${param}category.name]`] = convertUrlToName(
+    data[`filterEQ[${param}car_categories.category.name]`] = convertUrlToName(
       routeParams?.type
     );
   else if (routeParams?.brand)

@@ -95,7 +95,7 @@ const { data: economyCars, get: getEconomyCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 1,
+    "filterEQ[car_categories.category_id]": 1,
   },
 });
 await getEconomyCars();
@@ -104,7 +104,7 @@ const { data: vanCars, get: getVanCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 2,
+    "filterEQ[car_categories.category_id]": 2,
   },
 });
 await getVanCars();
@@ -113,7 +113,7 @@ const { data: suvCars, get: getSuvCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 3,
+    "filterEQ[car_categories.category_id]": 3,
   },
 });
 await getSuvCars();
@@ -122,7 +122,7 @@ const { data: cabrioCars, get: getCabrioCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 4,
+    "filterEQ[car_categories.category_id]": 4,
   },
 });
 await getCabrioCars();
@@ -131,7 +131,7 @@ const { data: businessCars, get: getBusinessCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 5,
+    "filterEQ[car_categories.category_id]": 5,
   },
 });
 await getBusinessCars();
@@ -140,7 +140,7 @@ const { data: luxuryCars, get: getLuxuryCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 6,
+    "filterEQ[car_categories.category_id]": 6,
   },
 });
 await getLuxuryCars();
@@ -149,7 +149,7 @@ const { data: electroCars, get: getElectroCars } = await useApi({
   name: "car.getAll",
   params: {
     ...defaultParams,
-    "filterEQ[category_id]": 8,
+    "filterEQ[car_categories.category_id]": 8,
   },
 });
 await getElectroCars();

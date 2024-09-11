@@ -12,8 +12,8 @@
     >
       <template v-if="isSearchable">
         <input
-          v-if="!isOpened"
           class="select__value"
+          v-show="!isOpened"
           :placeholder="placeholder || 'No selected'"
           :value="selectedItemsText"
           readonly
@@ -21,10 +21,10 @@
 
         <input
           class="select__value"
+          v-show="isOpened"
           ref="inputRef"
           @input="$emit('update:searchString', $event.target.value)"
           :value="searchString"
-          v-if="isOpened"
           type="text"
         />
       </template>
@@ -32,11 +32,10 @@
         <input
           type="text"
           class="select__value"
-          :value="selectedItemsText || placeholder || 'No selected'"
+          :value="selectedItemsText"
+          :placeholder="placeholder ?? 'No selected'"
+          readonly
         />
-        <!-- <div class="select__value">
-            {{ selectedItemsText || placeholder || "No selected" }}
-          </div> -->
       </template>
       <svg
         v-if="withIcon"
@@ -116,10 +115,6 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  modelValueIsNumber: {
-    default: false,
-    type: Boolean,
-  },
   modelValue: {
     type: Array,
     default: [],
@@ -130,78 +125,50 @@ const props = defineProps({
 const isOpened = ref(false);
 
 const inputRef = ref();
+const wrapper = ref();
 
 const toggle = () => {
   isOpened.value = !isOpened.value;
   nextTick(() => {
-    inputRef.value?.focus();
+    console.log(inputRef.value);
+    inputRef.value?.focus?.();
   });
 };
-
-const wrapper = ref();
 
 const onFocusout = (e) => {
   if (!wrapper.value.contains(e.relatedTarget)) isOpened.value = false;
 };
 
 const handleSelect = (option) => {
-  if (!props.modelValueIsNumber) {
-    if (props.modelValue && props.modelValue?.find((i) => option.id == i.id)) {
-      emits(
-        "update:modelValue",
-        props.modelValue?.filter((i) => i.id !== option.id)
-      );
-    } else {
-      emits("update:modelValue", [...props.modelValue, option]);
-    }
+  if (props.modelValue && props.modelValue?.find((i) => option.id == i.id)) {
+    emits(
+      "update:modelValue",
+      props.modelValue?.filter((i) => i.id !== option.id)
+    );
   } else {
-    if (props.modelValue && props.modelValue?.find((i) => option.id == i)) {
-      emits(
-        "update:modelValue",
-        props.modelValue?.filter((i) => i !== option.id)
-      );
-    } else {
-      emits("update:modelValue", [...props.modelValue, option.id]);
-    }
+    emits("update:modelValue", [...props.modelValue, option]);
   }
 };
 
 const sortedOptions = computed(() => {
   const options = [...(props?.options || [])];
   const modelValue = props.modelValue;
-  if (!props.modelValueIsNumber) {
-    options.sort((a, b) => {
-      const firstVal = modelValue?.find?.((item) => item.id == a.id) ? 1 : 0;
-      const secondVal = modelValue?.find?.((item) => item.id == b.id) ? 1 : 0;
 
-      return secondVal - firstVal;
-    });
+  options.sort((a, b) => {
+    const firstVal = modelValue?.find?.((item) => item == a.id) ? 1 : 0;
+    const secondVal = modelValue?.find?.((item) => item == b.id) ? 1 : 0;
 
-    return options;
-  } else {
-    options.sort((a, b) => {
-      const firstVal = modelValue?.find?.((item) => item == a.id) ? 1 : 0;
-      const secondVal = modelValue?.find?.((item) => item == b.id) ? 1 : 0;
+    return secondVal - firstVal;
+  });
 
-      return secondVal - firstVal;
-    });
-
-    return options;
-  }
+  return options;
 });
 
-const selectedItemsText = computed(() => {
-  if (props.modelValueIsNumber) {
-    return props.options
-      .filter((i) => props.modelValue?.includes?.(i.id))
-      ?.map?.((item) => item.title || item.name || item.value || item.slug)
-      .join(", ");
-  }
-
-  return props.modelValue
-    ?.map((item) => item.title || item.name || item.value || item.slug)
-    ?.join(", ");
-});
+const selectedItemsText = computed(() =>
+  props.modelValue
+    ?.map((item) => item?.title || item?.name || item?.value || item?.slug)
+    ?.join(", ")
+);
 
 const handleScroll = (event) => {
   const div = event.target;

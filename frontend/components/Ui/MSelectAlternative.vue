@@ -103,10 +103,6 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  modelValueIsNumber: {
-    default: false,
-    type: Boolean,
-  },
   modelValue: {
     type: Array,
     default: [],
@@ -157,49 +153,28 @@ const onFocusout = (e) => {
 };
 
 const handleSelect = (option) => {
-  if (!props.modelValueIsNumber) {
-    if (props.modelValue && props.modelValue?.find((i) => option.id == i.id)) {
-      emits(
-        "update:modelValue",
-        props.modelValue?.filter((i) => i.id !== option.id)
-      );
-    } else {
-      emits("update:modelValue", [...props.modelValue, option]);
-    }
+  if (props.modelValue && props.modelValue?.find((i) => option.id == i.id)) {
+    emits(
+      "update:modelValue",
+      props.modelValue?.filter((i) => i.id !== option.id)
+    );
   } else {
-    if (props.modelValue && props.modelValue?.find((i) => option.id == i)) {
-      emits(
-        "update:modelValue",
-        props.modelValue?.filter((i) => i !== option.id)
-      );
-    } else {
-      emits("update:modelValue", [...props.modelValue, option.id]);
-    }
+    emits("update:modelValue", [...props.modelValue, option]);
   }
 };
 
 const sortedOptions = computed(() => {
   const options = [...(props?.options || [])];
   const modelValue = props.modelValue;
-  if (!props.modelValueIsNumber) {
-    options.sort((a, b) => {
-      const firstVal = modelValue?.find?.((item) => item.id == a.id) ? 1 : 0;
-      const secondVal = modelValue?.find?.((item) => item.id == b.id) ? 1 : 0;
 
-      return secondVal - firstVal;
-    });
+  options.sort((a, b) => {
+    const firstVal = modelValue?.find?.((item) => item == a.id) ? 1 : 0;
+    const secondVal = modelValue?.find?.((item) => item == b.id) ? 1 : 0;
 
-    return options;
-  } else {
-    options.sort((a, b) => {
-      const firstVal = modelValue?.find?.((item) => item == a.id) ? 1 : 0;
-      const secondVal = modelValue?.find?.((item) => item == b.id) ? 1 : 0;
+    return secondVal - firstVal;
+  });
 
-      return secondVal - firstVal;
-    });
-
-    return options;
-  }
+  return options;
 });
 
 const selectedItemsText = computed(() => {

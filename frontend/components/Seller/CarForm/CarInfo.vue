@@ -6,7 +6,7 @@
     </div>
     <div class="form-item">
       <VFormComponent :field="model_car" />
-      <VFormComponent :field="category_id" />
+      <VFormComponent :field="car_categories" />
     </div>
     <div class="form-item">
       <VFormComponent :field="generation_id" />
@@ -82,12 +82,11 @@ const year = ref({
   },
 });
 
-const category_id = ref({
-  type: "select",
-  // type: "multiple-select",
-  name: "category_id",
+const car_categories = ref({
+  type: "multiple-select",
+  name: "car_categories",
   rules: "required",
-  modelValue: props?.car?.category ?? "",
+  modelValue: props?.car?.car_categories?.map?.((item) => item?.category) ?? [],
 
   bind: {
     label: "Car categorias",
@@ -170,7 +169,7 @@ async function fetchModelCar(_, searchString, limit, page) {
 async function fetchCategory(_, searchString, limit, page) {
   return await api.categories.getAll({
     params: {
-      "filterLIKE[name]": searchString,
+      // "filterLIKE[name]": searchString,
       // extends: "categories",
       limit,
       page,

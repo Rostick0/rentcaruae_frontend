@@ -125,10 +125,6 @@ const props = defineProps({
   },
   options: Array,
   placeholder: [String, Number],
-  modelValueIsNumber: {
-    default: false,
-    type: Boolean,
-  },
   withIcon: {
     default: true,
     type: Boolean,
@@ -165,26 +161,11 @@ const model = computed({
   get() {
     if (!props.modelValue) return;
 
-    if (props.modelValueIsNumber) {
-      const option = props.options.find((i) => i.id == props.modelValue);
-      return {
-        id: props.modelValue,
-        value: option?.value ?? option?.name ?? option?.title,
-      };
-    }
     return props.modelValue;
   },
   set(_value) {
     if (!_value) {
       return emits("update:modelValue", null);
-    }
-
-    if (props.modelValueIsNumber) {
-      // if (props.modelValue === _value?.id) {
-      //   return emits("update:modelValue", null);
-      // }
-
-      return emits("update:modelValue", _value.id);
     }
 
     // if (props.modelValue?.id === _value?.id) {
