@@ -76,5 +76,9 @@ const props = defineProps({
     font-weight: 700;
     margin-bottom: 8px;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 </style>

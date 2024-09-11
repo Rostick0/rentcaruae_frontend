@@ -1,14 +1,18 @@
 <template>
   <div class="post-categories">
-    <UiButton
-      class="post-categories__btn"
-      :class="{ active: category.id == modelValue }"
+    <NuxtLink
+      class="d-flex"
       v-for="category in postCategories"
       :key="category.id"
-      @click="emits('update:modelValue', category.id)"
+      :to="`/amp/blogs/?filterEQ[post_category_id]=${category.id}`"
     >
-      {{ category.name }}
-    </UiButton>
+      <UiButton
+        class="post-categories__btn"
+        :class="{ active: category.id == modelValue }"
+      >
+        {{ category.name }}
+      </UiButton>
+    </NuxtLink>
   </div>
 </template>
 
@@ -16,8 +20,6 @@
 const props = defineProps({
   modelValue: [String, Number],
 });
-
-const emits = defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>

@@ -158,7 +158,6 @@ const { title, description, h1 } = getCatalogSeo(
   pageText.value,
   rent.value === "leasing"
 );
-console.log(config);
 
 useSeoMeta({
   title,

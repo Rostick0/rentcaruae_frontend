@@ -3,13 +3,11 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="car__top">
-        <LazyNuxtImg
+        <img
           class="car__make_img"
           :src="data?.generation?.model_car?.brand?.image_url + '?=w60'"
           :title="data?.generation?.model_car?.brand?.name"
           :alt="`${data?.generation?.model_car?.brand?.name} for rent`"
-          decoding="async"
-          loading="lazy"
           width="40"
           height="40"
         />
@@ -17,8 +15,8 @@
           {{ h1 }}
         </h1>
       </div>
-      <Car :car="data" :isLeasing="isLeasing" />
-      <CarCardShortList
+      <AmpCar :car="data" :isLeasing="isLeasing" />
+      <AmpCarCardShortList
         v-if="cars?.length"
         :cars="cars"
         title="Similar Car Rental Options"
@@ -32,6 +30,10 @@
 </template>
 
 <script setup>
+// const props = defineProps({
+//   breadcrumbs: Array,
+// });
+
 const currentCity = useState("currentCity");
 const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"

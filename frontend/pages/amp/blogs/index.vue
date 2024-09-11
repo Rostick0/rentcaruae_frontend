@@ -3,16 +3,11 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="h1">Blog</h1>
-      <PostCategories
-        :modelValue="filters['filterEQ[post_category_id]']"
-        @update:modelValue="
-          (val) => (filters['filterEQ[post_category_id]'] = val)
-        "
-      />
+      <AmpPostCategories :modelValue="filters['filterEQ[post_category_id]']" />
       <div class="blog__content">
         <h2 class="blog__h2">News</h2>
-        <PostCard :post="postFirst" />
-        <PostsList :posts="otherPosts" />
+        <AmpPostCard :post="postFirst" />
+        <AmpPostsList :posts="otherPosts" />
         <UiPagination
           class="catalog__pagination"
           v-model="filters.page"
@@ -40,9 +35,6 @@ const { data, get, meta } = await useApi({
   filters,
   params: {
     extends: "image.image",
-    // extendsCount: "cars",
-    // sort: "cars_count,-name",
-    // limit: 1,
     sort: "id",
     limit: 17,
   },
@@ -51,6 +43,10 @@ await get();
 
 const postFirst = computed(() => data.value?.[0]);
 const otherPosts = computed(() => data.value?.splice?.(1));
+
+definePageMeta({
+  layout: "amp-default",
+});
 </script>
 
 <style lang="scss" scoped>

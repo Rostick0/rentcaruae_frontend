@@ -1,7 +1,7 @@
 <template>
   <div class="posts-oveflow">
     <div class="posts-list">
-      <PostsItem v-for="item in posts" :key="item?.id" :post="item" />
+      <AmpPostsItem v-for="item in posts" :key="item?.id" :post="item" />
     </div>
   </div>
 </template>

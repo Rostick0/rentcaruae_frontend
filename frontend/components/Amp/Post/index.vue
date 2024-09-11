@@ -1,14 +1,16 @@
 <template>
   <div class="post">
     <div class="post__image">
-      <LazyNuxtImg
-        class="post__img"
-        :src="post?.image?.image?.path_webp"
-        :alt="post?.title"
-        decoding="async"
-        loading="lazy"
-        height="520"
-      />
+      <div class="post__image_inner">
+        <img
+          class="post__img"
+          :src="post?.image?.image?.path_webp + '?w=1000'"
+          :alt="post?.title"
+          width="100%"
+          height="100%"
+          layout="fill"
+        />
+      </div>
     </div>
     <div class="post__container">
       <div class="post__container_left">
@@ -22,7 +24,7 @@
         <div class="post__content" v-html="post?.content"></div>
       </div>
       <div class="post__container_right">
-        <CarCardItem :car="post?.car" />
+        <AmpCarCardItem :car="post?.car" />
       </div>
     </div>
   </div>
@@ -39,28 +41,36 @@ const props = defineProps({
 <style lang="scss" scoped>
 .post {
   &__image {
-    display: flex;
-    margin-bottom: 16px;
+    overflow: hidden;
+    max-height: 520px;
+
+    &_inner {
+      padding-top: 50%;
+      position: relative;
+    }
   }
 
   &__img {
-    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 520px;
+    height: 100%;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   &__container {
     display: flex;
-    align-items: flex-start;
-    grid-gap: 24px 20px;
-
-    &_left {
-      flex-shrink: 1;
-    }
+    align-items: center;
+    flex-direction: column;
+    row-gap: 24px;
 
     &_right {
-      flex: 1 0 100%;
-      max-width: 360px;
+      width: 100%;
+      max-width: 480px;
     }
   }
 
@@ -70,23 +80,7 @@ const props = defineProps({
   }
 
   &__title {
-    margin: 12px 0 24px;
-  }
-
-  @media (max-width: 820px) {
-    &__container {
-      align-items: center;
-      flex-direction: column;
-
-      &_right {
-        width: 100%;
-        max-width: 480px;
-      }
-    }
-
-    &__title {
-      margin-bottom: 14px;
-    }
+    margin: 12px 0 14px;
   }
 }
 </style>

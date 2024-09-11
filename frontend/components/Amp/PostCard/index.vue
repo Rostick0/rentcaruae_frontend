@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
-    class="post-item"
+    class="post-card"
+    v-if="post"
     :to="`/blogs/${post?.title_link}`"
     itemscope
     itemtype="https://schema.org/Article"
@@ -22,23 +23,22 @@
     />
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
-    <div class="post-item__image">
+    <div class="post-card__image">
       <LazyNuxtImg
-        class="post-item__img"
+        class="post-card__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
         decoding="async"
         loading="lazy"
-        width="264"
-        height="166"
+        height="300"
         itemprop="image"
       />
     </div>
-    <div class="post-item__content">
-      <h3 class="post-item__title" itemprop="headline">{{ post?.title }}</h3>
-      <p class="post-item__description text-pre-small" itemprop="description">
+    <div class="post-card__content">
+      <h3 class="post-card__title" itemprop="headline">{{ post?.title }}</h3>
+      <div class="post-card__description" itemprop="description">
         {{ post?.short_description }}
-      </p>
+      </div>
     </div>
   </NuxtLink>
 </template>
@@ -50,32 +50,35 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-.post-item {
+.post-card {
+  background-color: var(--color-white);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  width: 264px;
+  overflow: hidden;
 
   &__image {
     display: flex;
+    flex-grow: 1;
   }
 
   &__img {
-    border-radius: 8px 8px 0 0;
-    object-fit: cover;
-    width: 264px;
-    height: 166px;
-  }
+    width: 100%;
 
-  &__title {
-    font-size: 16px;
-    margin-bottom: 4px;
+    img {
+      object-fit: cover;
+    }
   }
 
   &__content {
-    background-color: var(--color-white);
-    border-radius: 0 0 8px 8px;
-    flex-grow: 1;
-    padding: 8px;
+    flex-basis: 44%;
+    padding: 16px 20px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
   }
 }
 </style>

@@ -39,3 +39,8 @@ export const setOneFilterValue = (routeParams, param = "") => {
 
   return data;
 };
+
+// export const updateQueryParams = (oldParams, newParams) => ({
+//   ...oldParams,
+//   newParams,
+// });

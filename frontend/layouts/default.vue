@@ -4,7 +4,16 @@
     <main class="main">
       <slot />
     </main>
-    <LayoutFooter />
+    <LayoutFooter>
+      <template #joinButton>
+        <UiButton
+          class="wrapper__footer_join"
+          @click="open(), (authModalState = 'register')"
+          variant="outlined"
+          >Join us</UiButton
+        >
+      </template>
+    </LayoutFooter>
     <LazyModalCookie />
   </div>
 </template>
@@ -14,6 +23,12 @@ await useCategory();
 await useBrand();
 await useGeneration();
 useRentalPeriod();
+
+const authModalState = useState("authModalState");
+
+const { open } = useModal({
+  name: "auth-modal",
+});
 
 const analyticalCookie = useCookie("analytical_cookie");
 
@@ -77,6 +92,16 @@ watch(
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  &__footer {
+    &_join {
+      padding: 6px 16px;
+      font-weight: 700;
+      width: fit-content;
+    }
+  }
+}
+
 .main {
   flex-grow: 1;
 }

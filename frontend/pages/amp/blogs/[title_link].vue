@@ -2,7 +2,7 @@
   <div class="blog-once">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <Post :post="data" />
+      <AmpPost :post="data" />
       <div class="blog-once-sumilar" v-if="posts?.length">
         <div class="blog-once-sumilar__top">
           <h2>More news</h2>
@@ -11,7 +11,7 @@
             :to="`/blogs?filterEQ[post_category_id]=${data?.post_category_id}`"
           />
         </div>
-        <PostsList :posts="posts" />
+        <AmpPostsList :posts="posts" />
       </div>
     </div>
   </div>
@@ -81,6 +81,10 @@ useSeoMeta({
   ogImageWidth: data.value?.image?.image?.width,
   ogImageHeight: data.value?.image?.image?.height,
   ogType: "article",
+});
+
+definePageMeta({
+  layout: "amp-default",
 });
 </script>
 

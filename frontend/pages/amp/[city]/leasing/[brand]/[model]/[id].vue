@@ -1,5 +1,5 @@
 <template>
-  <AmpPageCatalog />
+  <AmpPageCar />
 </template>
 
 <script setup>

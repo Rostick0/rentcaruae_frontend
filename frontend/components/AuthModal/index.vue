@@ -17,10 +17,14 @@ const { open, close } = useModal({
   name: modalName,
 });
 
+const route = useRoute();
+
 const authModalState = useState<"login" | "register" | "register_success">(
   "authModalState",
   () => "login"
 );
+
+if (route.query["auth-modal"]) open();
 </script>
 
 <style lang="scss" scoped></style>

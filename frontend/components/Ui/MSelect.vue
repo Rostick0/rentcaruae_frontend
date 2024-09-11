@@ -130,7 +130,6 @@ const wrapper = ref();
 const toggle = () => {
   isOpened.value = !isOpened.value;
   nextTick(() => {
-    console.log(inputRef.value);
     inputRef.value?.focus?.();
   });
 };

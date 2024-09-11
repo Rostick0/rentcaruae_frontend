@@ -32,7 +32,7 @@ const { filters } = useFilter({
   withQueryParams: true,
   withInitQueryParams: true,
   initialFilters: {
-    "filterEQ[post_category_id]": 1,
+    // "filterEQ[post_category_id]": 1,
     page: 1,
   },
 });

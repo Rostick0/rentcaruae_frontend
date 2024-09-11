@@ -23,14 +23,13 @@
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-item__image">
-      <LazyNuxtImg
+      <img
         class="post-item__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
-        decoding="async"
-        loading="lazy"
         width="264"
         height="166"
+        layout="responsive"
         itemprop="image"
       />
     </div>
@@ -61,9 +60,12 @@ const props = defineProps({
 
   &__img {
     border-radius: 8px 8px 0 0;
-    object-fit: cover;
     width: 264px;
     height: 166px;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   &__title {

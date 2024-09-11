@@ -158,12 +158,7 @@
             <div class="footer__rental text-pre-small">
               Are you a car rental company?
             </div>
-            <UiButton
-              class="footer__join"
-              @click="open(), (authModalState = 'register')"
-              variant="outlined"
-              >Join us</UiButton
-            >
+            <slot name="joinButton" />
           </div>
         </div>
         <div class="footer__bottom">© Buycaruae 2023</div>
@@ -187,12 +182,6 @@ const brandsLimit = computed(
 const generations = useState("generations");
 
 const rentalPeriods = useState("rentalPeriods");
-
-const { open } = useModal({
-  name: "auth-modal",
-});
-
-const authModalState = useState("authModalState");
 </script>
 
 <style lang="scss" scoped>
@@ -256,11 +245,11 @@ const authModalState = useState("authModalState");
     max-width: 124px;
   }
 
-  &__join {
-    padding: 6px 16px;
-    font-weight: 700;
-    width: fit-content;
-  }
+  // &__join {
+  //   padding: 6px 16px;
+  //   font-weight: 700;
+  //   width: fit-content;
+  // }
 
   &__bottom {
     font-size: 14px;

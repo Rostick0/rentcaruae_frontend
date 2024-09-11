@@ -167,12 +167,15 @@ const priceLeasingMaxPeriod = computed(() => last(props.car?.price_leasing));
 
   &__img {
     border-radius: 8px;
-    object-fit: cover;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   &__stats {

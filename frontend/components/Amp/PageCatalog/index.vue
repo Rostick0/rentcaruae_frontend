@@ -16,7 +16,7 @@
         link="/"
       />
       <AmpCarCardList :cars="cars[1]" :isLeasing="isLeasing" />
-      <UiPagination
+      <AmpUiPagination
         class="catalog__pagination"
         v-model="filters.page"
         :meta="meta"
