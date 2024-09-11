@@ -1,7 +1,8 @@
 <template>
-  <div class="car">
+  <div class="car" itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="description" :content="car?.description" />
     <div class="car__top">
-      <div class="car__title">{{ car?.title }}</div>
+      <div class="car__title" itemprop="name">{{ car?.title }}</div>
       <LazyNuxtImg
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         loading="lazy"
@@ -11,7 +12,7 @@
         height="40"
       />
     </div>
-    <NuxtLink class="car__image" :to="link">
+    <NuxtLink class="car__image" :to="link" itemprop="mainEntityOfPage">
       <LazyNuxtImg
         class="car__img"
         :src="
@@ -26,6 +27,7 @@
         loading="lazy"
         width="320"
         height="196"
+        itemprop="image"
       />
     </NuxtLink>
     <CarCardInfo :car="car" />
@@ -68,7 +70,15 @@
       </div>
       <div class="car__params_right">
         <template v-if="isLeasing">
-          <div class="car-price">
+          <div
+            class="car-price"
+            itemprop="offers"
+            itemscope
+            itemtype="http://schema.org/Offer"
+          >
+            <meta itemprop="priceCurrency" content="AED" />
+            <meta itemprop="price" :content="priceLeasingMaxPeriod?.price" />
+            <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
               <span>Monthly</span>
               <del class="color-red" v-if="car?.price_leasing?.length"
@@ -76,13 +86,20 @@
               >
             </div>
             <div class="car-price__current">
-              AED
-              {{ formatNumber(priceLeasingMaxPeriod?.price) }}
+              AED {{ formatNumber(priceLeasingMaxPeriod?.price) }}
             </div>
           </div>
         </template>
         <template v-else>
-          <div class="car-price">
+          <div
+            class="car-price"
+            itemprop="offers"
+            itemscope
+            itemtype="http://schema.org/Offer"
+          >
+            <meta itemprop="priceCurrency" content="AED" />
+            <meta itemprop="price" :content="car?.price_special?.[0]?.price ?? car?.price?.[0]?.price" />
+            <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
               <span>Daily</span>
               <del class="color-red" v-if="car?.price_special?.[0]?.price"
@@ -107,11 +124,13 @@
             </div>
             <div class="car-price__current">
               AED
-              {{
-                formatNumber(
-                  car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
-                )
-              }}
+              <span itemprop="priceRange">
+                {{
+                  formatNumber(
+                    car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
+                  )
+                }}
+              </span>
             </div>
           </div>
         </template>

@@ -1,16 +1,12 @@
 <template>
   <NuxtLink
     class="car-short"
-    :to="
-      convertNameToUrl(
-        `/${currentCity?.name}/${
-          route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
-        }/${car?.generation?.model_car?.brand?.name}/${
-          car?.generation?.model_car?.name
-        }/${car?.id}`
-      )
-    "
+    :to="link"
+    itemscope
+    itemtype="http://schema.org/Product"
   >
+    <meta itemprop="mainEntityOfPage" :content="link" />
+    <link itemprop="availability" href="https://schema.org/InStock" />
     <div class="car-short__image">
       <LazyNuxtImg
         class="car-short__img"
@@ -21,12 +17,20 @@
         loading="lazy"
         width="264"
         height="166"
+        itemprop="image"
       />
     </div>
     <div class="car-short__content">
       <div class="car-short__content_left">
-        <div class="car-short__title">{{ car?.title }}</div>
-        <div class="car-short__info">
+        <div class="car-short__title" itemprop="name">{{ car?.title }}</div>
+        <div
+          class="car-short__info"
+          itemprop="offers"
+          itemscope
+          itemtype="http://schema.org/Offer"
+        >
+          <meta itemprop="priceCurrency" content="AED" />
+          <meta itemprop="price" :content="price" />
           <span>From</span>
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
             >AED {{ priceOld }}</del
@@ -70,6 +74,16 @@ const price = computed(() =>
 
 const priceOld = computed(() =>
   formatNumber(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
+);
+
+const link = computed(() =>
+  convertNameToUrl(
+    `/${currentCity.value?.name}/${
+      route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
+    }/${props.car?.generation?.model_car?.brand?.name}/${
+      props.car?.generation?.model_car?.name
+    }/${props.car?.id}`
+  )
 );
 </script>
 

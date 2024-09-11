@@ -22,6 +22,7 @@
       :content="post?.updated_at"
     />
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
+    <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-card__image">
       <LazyNuxtImg
         class="post-card__img"
