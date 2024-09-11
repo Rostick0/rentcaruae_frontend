@@ -1,5 +1,27 @@
 <template>
-  <NuxtLink class="post-card" v-if="post" :to="`/blogs/${post?.title_link}`">
+  <NuxtLink
+    class="post-card"
+    v-if="post"
+    :to="`/blogs/${post?.title_link}`"
+    itemscope
+    itemtype="https://schema.org/Article"
+  >
+    <link
+      itemprop="mainEntityOfPage"
+      :href="`${$config.public.BASE_URL}/blogs/${post?.title_link}`"
+    />
+    <meta itemprop="author" :content="post?.user?.full_name" />
+    <meta
+      itemprop="datePublished"
+      :datetime="post?.created_at"
+      :content="post?.created_at"
+    />
+    <meta
+      itemprop="dateModified"
+      :datetime="post?.updated_at"
+      :content="post?.updated_at"
+    />
+    <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <div class="post-card__image">
       <LazyNuxtImg
         class="post-card__img"
@@ -8,11 +30,14 @@
         decoding="async"
         loading="lazy"
         height="300"
+        itemprop="image"
       />
     </div>
     <div class="post-card__content">
-      <h3 class="post-card__title">{{ post?.title }}</h3>
-      <div class="post-card__description">{{ post?.short_description }}</div>
+      <h3 class="post-card__title" itemprop="headline">{{ post?.title }}</h3>
+      <div class="post-card__description" itemprop="description">
+        {{ post?.short_description }}
+      </div>
     </div>
   </NuxtLink>
 </template>

@@ -41,7 +41,7 @@ const { data, get, meta } = await useApi({
   name: "posts.getAll",
   filters,
   params: {
-    extends: "image.image",
+    extends: "image.image,user,post_category",
     // limit: 1,
     sort: "id",
     limit: 17,

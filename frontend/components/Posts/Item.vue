@@ -1,5 +1,26 @@
 <template>
-  <NuxtLink class="post-item" :to="`/blogs/${post?.title_link}`">
+  <NuxtLink
+    class="post-item"
+    :to="`/blogs/${post?.title_link}`"
+    itemscope
+    itemtype="https://schema.org/Article"
+  >
+    <link
+      itemprop="mainEntityOfPage"
+      :href="`${$config.public.BASE_URL}/blogs/${post?.title_link}`"
+    />
+    <meta itemprop="author" :content="post?.user?.full_name" />
+    <meta
+      itemprop="datePublished"
+      :datetime="post?.created_at"
+      :content="post?.created_at"
+    />
+    <meta
+      itemprop="dateModified"
+      :datetime="post?.updated_at"
+      :content="post?.updated_at"
+    />
+    <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <div class="post-item__image">
       <LazyNuxtImg
         class="post-item__img"
@@ -9,11 +30,12 @@
         loading="lazy"
         width="264"
         height="166"
+        itemprop="image"
       />
     </div>
     <div class="post-item__content">
-      <h3 class="post-item__title">{{ post?.title }}</h3>
-      <p class="post-item__description text-pre-small">
+      <h3 class="post-item__title" itemprop="headline">{{ post?.title }}</h3>
+      <p class="post-item__description text-pre-small" itemprop="description">
         {{ post?.short_description }}
       </p>
     </div>
