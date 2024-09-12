@@ -8,10 +8,7 @@
           active: idx === modelValue,
         }"
         :disabled="!+idx"
-        :to="`${$route.path.replace(
-          '/amp',
-          ''
-        )}/page-${idx}?${new URLSearchParams($route.query).toString()}`"
+        :to="getUrl(idx)"
       >
         <span>{{ idx }}</span>
       </NuxtLink>
@@ -20,7 +17,13 @@
 </template>
 
 <script setup>
-import { URLSearchParams } from "url";
+const route = useRoute();
+
+const getUrl = (pageNumber) =>
+  `${route.path.replace("/amp", "")}/page-${pageNumber}${
+    route.query ? "?" + new URLSearchParams(route.query).toString() : ""
+  }`;
+
 // const padding = 2;
 
 const props = defineProps({
