@@ -33,6 +33,12 @@ const navigations = [
     link: "/seller/profile",
   },
 ];
+
+const user = useState("user");
+
+if (!["admin", "seller"].includes(user.value?.role)) {
+  navigateTo("/404");
+}
 </script>
 
 <style lang="scss" scoped>

@@ -49,6 +49,12 @@ const navigations = [
     link: "/admin/posts",
   },
 ];
+
+const user = useState("user");
+
+if (user.value?.role !== "admin") {
+  navigateTo("/404");
+}
 </script>
 
 <style lang="scss" scoped>

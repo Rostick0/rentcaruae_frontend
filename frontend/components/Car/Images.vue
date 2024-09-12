@@ -1,31 +1,33 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <Swiper
-        class="car-image__swiper"
-        @swiper="(swiperInit) => (swiper = swiperInit)"
-        :spaceBetween="10"
-        :breakpoints="{
-          0: {
-            slidesPerView: 1.07,
-          },
-          769: {
-            slidesPerView: 1,
-          },
-        }"
-      >
-        <SwiperSlide v-for="image in images" :key="image?.id">
-          <LazyNuxtImg
-            class="car-image__main_img"
-            :src="image?.image?.path_webp + '?w=700'"
-            :title="getCarImageTitle(car, currentCity)"
-            :alt="getCarImageAlt(car, currentCity)"
-            decoding="async"
-            loading="lazy"
-            fit="cover"
-          />
-        </SwiperSlide>
-      </Swiper>
+      <ClientOnly>
+        <Swiper
+          class="car-image__swiper"
+          @swiper="(swiperInit) => (swiper = swiperInit)"
+          :spaceBetween="10"
+          :breakpoints="{
+            0: {
+              slidesPerView: 1.07,
+            },
+            769: {
+              slidesPerView: 1,
+            },
+          }"
+        >
+          <SwiperSlide v-for="image in images" :key="image?.id">
+            <LazyNuxtImg
+              class="car-image__main_img"
+              :src="image?.image?.path_webp + '?w=700'"
+              :title="getCarImageTitle(car, currentCity)"
+              :alt="getCarImageAlt(car, currentCity)"
+              decoding="async"
+              loading="lazy"
+              fit="cover"
+            />
+          </SwiperSlide>
+        </Swiper>
+      </ClientOnly>
     </div>
     <div
       class="car-image__list"
