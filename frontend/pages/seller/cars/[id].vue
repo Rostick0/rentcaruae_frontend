@@ -46,6 +46,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
+    success("Updated");
     router.go(-1);
   },
   () => {

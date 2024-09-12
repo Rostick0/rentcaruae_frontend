@@ -33,6 +33,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
+    success("Created");
     router.go(-1);
   },
   () => {
