@@ -181,6 +181,7 @@
         </template>
       </CarForm>
     </template>
+    <VFormComponent :field="g_recaptcha_response" />
   </form>
 </template>
 
@@ -270,6 +271,13 @@ const start_date = ref({
     minDate: new Date(),
   },
 });
+
+const g_recaptcha_response = ref({
+  type: "recaptcha",
+  name: "g_recaptcha_response",
+  modelValue: "",
+});
+
 const startDateFormated = computed(() =>
   moment(start_date.value.modelValue).format("D MMM YYYY")
 );

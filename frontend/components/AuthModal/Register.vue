@@ -31,6 +31,7 @@
           >, including cookie use.
         </VFormComponent>
       </div>
+      <VFormComponent :field="g_recaptcha_response" />
     </form>
   </AuthModalTemplate>
 </template>
@@ -138,6 +139,12 @@ const is_agree = ref({
   },
 });
 
+const g_recaptcha_response = ref({
+  type: "recaptcha",
+  name: "g_recaptcha_response",
+  modelValue: "",
+});
+
 const formValues = ref();
 const authModalState = useState("authModalState");
 
@@ -152,9 +159,10 @@ const onSubmit = handleSubmit(async ({ tel, city_id, ...values }) => {
   const data = {
     ...values,
     tel: convertPhoneToDb(tel),
+    type: "register",
   };
   data.company.city_id = data?.company?.city_id?.id;
-  
+
   const res = await api.emailCode.create({
     data,
   });

@@ -6,12 +6,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueReCaptcha, {
     siteKey: config.public.NOCAPTCHA_SITEKEY,
     loaderOptions: {
-      // autoHideBadge: false,
+      autoHideBadge: true,
       useRecaptchaNet: true,
-      explicitRenderParameters: {
-        badge: "inline",
-        // badge: "bottomleft",
-      },
     },
   });
 });

@@ -185,12 +185,10 @@
               }}</span>
             </strong>
           </div>
-          <VFormComponent :field="captcha" />
-
-          <!-- <Recaptcha /> -->
         </template>
       </CarForm>
     </template>
+    <VFormComponent :field="g_recaptcha_response" />
   </form>
 </template>
 
@@ -235,23 +233,22 @@ const clickWhatsApp = async () => {
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
-  // console.log(await recaptcha);
-  // const data = {
-  //   ...values,
-  //   start_date: moment(period?.[1]).format("YYYY-MM-DD"),
-  //   period: periodRental.value,
-  //   tel: convertPhoneToDb(tel),
-  //   car_id: route.params.id,
-  //   type: "rent",
-  // };
-  // const res = await api.operations.create({ data });
-  // if (res?.error) {
-  //   warningPopup(res?.errorResponse?.data?.message);
-  //   setErrors(res?.errorResponse?.data?.errors);
-  //   return;
-  // }
-  // success("Thank you for your application");
-  // isBook.value = false;
+  const data = {
+    ...values,
+    start_date: moment(period?.[1]).format("YYYY-MM-DD"),
+    period: periodRental.value,
+    tel: convertPhoneToDb(tel),
+    car_id: route.params.id,
+    type: "rent",
+  };
+  const res = await api.operations.create({ data });
+  if (res?.error) {
+    warningPopup(res?.errorResponse?.data?.message);
+    setErrors(res?.errorResponse?.data?.errors);
+    return;
+  }
+  success("Thank you for your application");
+  isBook.value = false;
 });
 
 const periodSelect = ref({
@@ -291,9 +288,9 @@ const without_deposite = ref({
   },
 });
 
-const captcha = ref({
-  type: 'recaptcha',
-  name: "g-recaptcha-response",
+const g_recaptcha_response = ref({
+  type: "recaptcha",
+  name: "g_recaptcha_response",
   modelValue: "",
 });
 

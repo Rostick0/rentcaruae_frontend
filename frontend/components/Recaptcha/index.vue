@@ -1,6 +1,6 @@
 <template>
   <input v-model="value" type="hidden" />
-  <button @click.prevent="recaptcha">Execute recaptcha</button>
+  <!-- <button @click.prevent="recaptcha">Execute recaptcha</button> -->
 </template>
 
 <script setup>
@@ -10,20 +10,24 @@ const { recaptchaLoaded, executeRecaptcha } = useReCaptcha();
 
 const props = defineProps({
   modelValue: String,
+  action: {
+    type: String,
+    default: "operation",
+  },
 });
 
 const emit = defineEmits(["update:modelValue"]);
 
 const recaptcha = async () => {
-  // optional you can await for the reCaptcha load
   await recaptchaLoaded();
 
-  // get the token, a custom action could be added as argument to the method
-  const token = await executeRecaptcha("yourActionHere");
+  const token = await executeRecaptcha(props.action);
 
+  console.log(token);
   emit("update:modelValue", token);
-  // return token;
 };
+
+recaptcha();
 
 const value = computed({
   get: () => props.modelValue,

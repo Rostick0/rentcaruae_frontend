@@ -6,6 +6,7 @@
         <VFormComponent v-if="isSendedCode" :field="code" />
       </div>
       <UiButton class="auth-modal__btn" variant="outlined">Login</UiButton>
+      <VFormComponent :field="g_recaptcha_response" />
     </form>
   </AuthModalTemplate>
 </template>
@@ -44,6 +45,12 @@ const code = ref({
   },
 });
 
+const g_recaptcha_response = ref({
+  type: "recaptcha",
+  name: "g_recaptcha_response",
+  modelValue: "",
+});
+
 const { login } = await useAuth();
 const { handleSubmit, setErrors } = useForm();
 
@@ -51,8 +58,13 @@ const onSubmit = handleSubmit(async (values) => {
   if (isSendedCode.value) return;
 
   isSendedCode.value = true;
-  
-  const res = await api.emailCode.create({ data: values });
+
+  const res = await api.emailCode.create({
+    data: {
+      ...values,
+      type: "login",
+    },
+  });
   if (res?.error) {
     warningPopup("Code don't sended");
     isSendedCode.value = false;
