@@ -23,7 +23,6 @@ const recaptcha = async () => {
 
   const token = await executeRecaptcha(props.action);
 
-  console.log(token);
   emit("update:modelValue", token);
 };
 
@@ -37,7 +36,7 @@ const value = computed({
 watch(
   () => value.value,
   (newV) => {
-    if (value.value) return;
+    if (newV) return;
 
     recaptcha();
   }
