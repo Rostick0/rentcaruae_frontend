@@ -65,6 +65,9 @@ const onSubmit = handleSubmit(async (values) => {
       type: "login",
     },
   });
+
+  g_recaptcha_response.value.modelValue = "";
+
   if (res?.error) {
     warningPopup("Code don't sended");
     isSendedCode.value = false;

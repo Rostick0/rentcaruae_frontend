@@ -167,6 +167,8 @@ const onSubmit = handleSubmit(async ({ tel, city_id, ...values }) => {
     data,
   });
 
+  g_recaptcha_response.value.modelValue = "";
+
   if (res?.error) {
     warningPopup("Code don't sended");
     isSendedCode.value = false;

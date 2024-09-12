@@ -136,7 +136,7 @@
       </a>
     </div>
     <slot name="car-info" />
-    <template v-if="true || isBook">
+    <template v-if="isBook">
       <div class="calc-item" ref="book">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
@@ -230,7 +230,7 @@ const clickWhatsApp = async () => {
   } catch {}
 };
 
-const { handleSubmit } = useForm();
+const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
   const data = {
@@ -242,6 +242,9 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     type: "rent",
   };
   const res = await api.operations.create({ data });
+
+  g_recaptcha_response.value.modelValue = "";
+
   if (res?.error) {
     warningPopup(res?.errorResponse?.data?.message);
     setErrors(res?.errorResponse?.data?.errors);

@@ -33,4 +33,13 @@ const value = computed({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
+
+watch(
+  () => value.value,
+  (newV) => {
+    if (value.value) return;
+
+    recaptcha();
+  }
+);
 </script>

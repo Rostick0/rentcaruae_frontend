@@ -234,8 +234,9 @@ const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
     car_id: route.params.id,
     type: "leasing",
   };
-
   const res = await api.operations.create({ data });
+
+  g_recaptcha_response.value.modelValue = "";
 
   if (res?.error) {
     warningPopup(res?.errorResponse?.data?.message);
