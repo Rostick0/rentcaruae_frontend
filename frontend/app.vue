@@ -2,7 +2,7 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
-  <VitePwaManifest />
+  <VitePwaManifest />  
 </template>
 
 <script setup>

@@ -136,7 +136,7 @@
       </a>
     </div>
     <slot name="car-info" />
-    <template v-if="isBook">
+    <template v-if="true || isBook">
       <div class="calc-item" ref="book">
         <div class="calc__title">Choose rental dates</div>
         <div class="calc-date">
@@ -185,6 +185,7 @@
               }}</span>
             </strong>
           </div>
+          <VueReCaptcha key="6LdaxTcqAAAAAD0gyacqOi5F7Ga6CTB44ZDI0MIg" />
         </template>
       </CarForm>
     </template>
@@ -192,9 +193,12 @@
 </template>
 
 <script setup>
+import { VueReCaptcha, useReCaptcha } from "vue-recaptcha-v3";
 import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
+
+// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
 
 const props = defineProps({
   car: Object,

@@ -1,5 +1,5 @@
 <template>
-  <form class="calc" @submit="onSubmit">
+  <form class="calc">
     <div class="calc__top">
       <div class="calc__top_left">
         <div class="calc__top_title calc__title">
@@ -122,7 +122,7 @@
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
+      <UiButton class="calc__button">Book</UiButton>
       <a
         class="d-flex"
         @click="clickWhatsApp"
@@ -136,82 +136,16 @@
       </a>
     </div>
     <slot name="car-info" />
-    <template v-if="isBook">
-      <div class="calc-item" ref="book">
-        <div class="calc__title">Choose rental dates</div>
-        <div class="calc-date">
-          <div class="calc-date__item">
-            <strong class="calc-item__size-small">Pick-up date</strong>
-            <div class="text-ui">
-              {{ moment(period.modelValue?.[0]).format("D MMM YYYY") }}
-            </div>
-          </div>
-          <div class="calc-date__item">
-            <strong class="calc-item__size-small">Drop-off date</strong>
-            <div class="text-ui">
-              {{ moment(period.modelValue?.[1]).format("D MMM YYYY") }}
-            </div>
-          </div>
-          <div class="calc-date__item">
-            <strong class="calc-item__size-small">Your rental</strong>
-            <div class="calc__price text-ui">
-              {{ periodRental }} {{ periodText }}
-            </div>
-          </div>
-        </div>
-        <VFormComponent :field="period" />
-      </div>
-      <CarForm
-        :periodRental="periodRental"
-        :priceRental="priceRental"
-        :periodText="periodText"
-        :tax="tax"
-      >
-        <template #calc-stats>
-          <div class="calc-amount__flex" v-if="without_deposite.modelValue">
-            <div class="calc-amount__flex_left">Deposite free</div>
-            <strong class="calc-amount__size-small"
-              >AED {{ withoutDepositePrice }}</strong
-            >
-          </div>
-        </template>
-        <template #summary>
-          <div class="calc-amount__flex">
-            <div class="calc__title">Total</div>
-            <strong class="calc-amount__price">
-              AED
-              <span class="calc-amount__price_val">{{
-                formatNumber(total)
-              }}</span>
-            </strong>
-          </div>
-        </template>
-      </CarForm>
-    </template>
   </form>
 </template>
 
 <script setup>
-import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
 
 const props = defineProps({
   car: Object,
 });
-
-const route = useRoute();
-
-const isBook = ref();
-const book = ref();
-
-const clickBook = () => {
-  isBook.value = true;
-
-  nextTick(() => {
-    book.value?.scrollIntoView({ behavior: "smooth" });
-  });
-};
 
 const isAddStatisticWhatsApp = ref(false);
 
@@ -228,31 +162,6 @@ const clickWhatsApp = async () => {
     });
   } catch {}
 };
-
-const { handleSubmit } = useForm();
-
-const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
-  const data = {
-    ...values,
-    start_date: moment(period?.[1]).format("YYYY-MM-DD"),
-    period: periodRental.value,
-    tel: convertPhoneToDb(tel),
-    car_id: route.params.id,
-    type: "rent",
-  };
-
-  const res = await api.operations.create({ data });
-
-  if (res?.error) {
-    warningPopup(res?.errorResponse?.data?.message);
-    setErrors(res?.errorResponse?.data?.errors);
-    return;
-  }
-
-  success("Thank you for your application");
-
-  isBook.value = false;
-});
 
 const periodSelect = ref({
   type: "select",

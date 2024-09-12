@@ -2,7 +2,12 @@
   <AnyFormBlock class="deposite-calc" title="Choose option">
     <SellerDepositeCalcSelect :deposites="data" v-model="price" />
     <div class="deposite-calc__bottom">
-      <CalcAmount :price="price" textTopleft="Package Advanced" />
+      <CalcAmount
+        :price="price"
+        textTopleft="Package Advanced"
+        tax="tax is included"
+        :taxIsNumber="false"
+      />
       <UiButton @click="sendDeposte">Deposit</UiButton>
     </div>
   </AnyFormBlock>
