@@ -7,7 +7,7 @@
   >
     <div class="photoloader__images" @mouseup="dragElem = null">
       <template
-        v-for="item in modelValue?.sort((a, b) => a?.order - b?.order)"
+        v-for="item in modelValue?.sort?.((a, b) => a?.order - b?.order)"
         :key="item.id"
       >
         <div>

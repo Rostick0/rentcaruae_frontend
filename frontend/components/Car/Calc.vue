@@ -185,7 +185,9 @@
               }}</span>
             </strong>
           </div>
-          <VueReCaptcha key="6LdaxTcqAAAAAD0gyacqOi5F7Ga6CTB44ZDI0MIg" />
+          <VFormComponent :field="captcha" />
+
+          <!-- <Recaptcha /> -->
         </template>
       </CarForm>
     </template>
@@ -193,12 +195,9 @@
 </template>
 
 <script setup>
-import { VueReCaptcha, useReCaptcha } from "vue-recaptcha-v3";
 import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
-
-// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
 
 const props = defineProps({
   car: Object,
@@ -236,26 +235,23 @@ const clickWhatsApp = async () => {
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
-  const data = {
-    ...values,
-    start_date: moment(period?.[1]).format("YYYY-MM-DD"),
-    period: periodRental.value,
-    tel: convertPhoneToDb(tel),
-    car_id: route.params.id,
-    type: "rent",
-  };
-
-  const res = await api.operations.create({ data });
-
-  if (res?.error) {
-    warningPopup(res?.errorResponse?.data?.message);
-    setErrors(res?.errorResponse?.data?.errors);
-    return;
-  }
-
-  success("Thank you for your application");
-
-  isBook.value = false;
+  // console.log(await recaptcha);
+  // const data = {
+  //   ...values,
+  //   start_date: moment(period?.[1]).format("YYYY-MM-DD"),
+  //   period: periodRental.value,
+  //   tel: convertPhoneToDb(tel),
+  //   car_id: route.params.id,
+  //   type: "rent",
+  // };
+  // const res = await api.operations.create({ data });
+  // if (res?.error) {
+  //   warningPopup(res?.errorResponse?.data?.message);
+  //   setErrors(res?.errorResponse?.data?.errors);
+  //   return;
+  // }
+  // success("Thank you for your application");
+  // isBook.value = false;
 });
 
 const periodSelect = ref({
@@ -293,6 +289,12 @@ const without_deposite = ref({
     label:
       "You can rent a car without any deposit dy including the additional service fee in your rental price",
   },
+});
+
+const captcha = ref({
+  type: 'recaptcha',
+  name: "g-recaptcha-response",
+  modelValue: "",
 });
 
 const periodRental = ref(

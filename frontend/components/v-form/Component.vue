@@ -91,8 +91,16 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
+
     <VFormCkeditor
       v-else-if="field.type == 'ckeditor'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+
+    <VFormRecaptcha
+      v-else-if="field.type == 'recaptcha'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
