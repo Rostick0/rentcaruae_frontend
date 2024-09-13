@@ -1,7 +1,11 @@
 <template>
   <h1 class="h1 seller">Profile</h1>
   <form method="POST" @submit="onSubmit">
-    <SellerProfileForm :user="data" />
+    <SellerProfileForm :user="data">
+      <template #adminBlock>
+        <AdminProfileFormSpecial :user="data" />
+      </template>
+    </SellerProfileForm>
   </form>
 </template>
 

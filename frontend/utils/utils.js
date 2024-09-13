@@ -9,7 +9,7 @@ export const groupByInArray = (array, name) => {
   }));
 };
 
-export const removeSpaces = (str) => str?.replace(new RegExp(" ", "g"), "");
+export const removeSpaces = (str) => str?.replace?.(new RegExp(" ", "g"), "");
 
 export const pluralize = (word, count) => {
   if (count > 1) {

@@ -7,11 +7,7 @@
       <th class="table__th">Last deposite</th>
       <th class="table__th"></th>
     </tr>
-    <AdminDepositesTableItem
-      v-for="item in data"
-      :key="item?.id"
-      :item="item"
-    />
+    <AdminSellersTableItem v-for="item in data" :key="item?.id" :item="item" />
   </table>
 </template>
 

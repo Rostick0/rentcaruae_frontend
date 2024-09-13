@@ -2,20 +2,20 @@
   <div class="profile-form form__flex">
     <div class="form__fields">
       <SellerProfileFormCompany :user="user" />
+      <slot name="adminBlock" />
       <SellerProfileFormCompanySchedules :user="user" />
       <div class="form__bottom">
-        <UiButton class="form-btn" @click.prevent variant="outlined">
-          <span>Verification request</span>
-          <span class="text-small">3-4 business days</span>
-        </UiButton>
+        <div class="">
+          <slot name="verification-btn" />
+        </div>
         <div class="form__flex_switch">
           <VFormComponent :field="is_show" />
           <UiButton>Save</UiButton>
         </div>
       </div>
     </div>
-    <div class="form__flex_right">
-      <SellerProfileFormVerificationStatus />
+    <div v-if="$slots.verification" class="form__flex_right">
+      <slot name="verification" />
     </div>
   </div>
 </template>

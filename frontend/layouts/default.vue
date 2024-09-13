@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <!-- {{ route.path }} -->
     <LayoutHeader />
     <main class="main">
       <slot />
@@ -23,6 +24,9 @@ await useCategory();
 await useBrand();
 await useGeneration();
 useRentalPeriod();
+
+const route = useRoute();
+const config = useRuntimeConfig();
 
 const authModalState = useState("authModalState");
 
@@ -89,6 +93,24 @@ watch(
     if (newV) initScripts();
   }
 );
+
+const setCanoncalLink = () => ({
+  rel: "canonical",
+  href: config.public.BASE_URL + route.path + (route.path === "/" ? "" : "/"),
+});
+
+watch(
+  () => route.path,
+  (newV) => {
+    useHead({
+      link: [setCanoncalLink()],
+    });
+  }
+);
+
+useHead({
+  link: [setCanoncalLink()],
+});
 </script>
 
 <style lang="scss" scoped>

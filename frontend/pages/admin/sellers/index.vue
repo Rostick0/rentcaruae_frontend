@@ -1,6 +1,9 @@
 <template>
   <h1 class="h1 flex-style">
     <span>Dealers</span>
+    <NuxtLink class="d-flex" to="/admin/sellers/add">
+      <UiButton class="page-cars__add" variant="outlined">+ Add dealers</UiButton>
+    </NuxtLink>
   </h1>
   <AdminSellersTable :data="data" />
   <AnyPagination

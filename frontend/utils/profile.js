@@ -1,6 +1,8 @@
 import useImage from "~/composables/useImage";
 
 export const getProfileOnSubmitValues = async ({
+  balance,
+  free_leads,
   image,
   license,
   sertificate,
@@ -35,6 +37,8 @@ export const getProfileOnSubmitValues = async ({
 
   return {
     ...data,
+    balance: removeSpaces(balance),
+    free_leads: removeSpaces(free_leads),
     image: image_id,
     license: license_id,
     sertificate: sertificate_id,

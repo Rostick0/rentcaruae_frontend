@@ -9,12 +9,14 @@
       >
       <UiStatus :isAccept="!!user?.is_verified">Verified</UiStatus>
     </div>
-    <UiButton>Resend</UiButton>
+    <UiButton class="verification__btn">Resend</UiButton>
   </AnyFormBlock>
 </template>
 
 <script setup>
-const user = useState("user");
+const props = defineProps({
+  user: Object,
+});
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +25,11 @@ const user = useState("user");
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+  }
+
+  &__btn {
+    margin-left: auto;
+    width: fit-content;
   }
 }
 </style>

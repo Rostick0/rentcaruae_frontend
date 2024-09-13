@@ -11,7 +11,7 @@
     </div>
     <div class="calc-amount__flex">
       <div class="calc-amount__flex_left">
-        <span>VAT</span>
+        <span>VAT&nbsp;</span>
         <span>Tax (5%)</span>
       </div>
       <strong class="calc-amount__size-small" v-if="taxIsNumber"

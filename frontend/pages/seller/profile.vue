@@ -1,7 +1,17 @@
 <template>
   <h1 class="h1 seller">Profile</h1>
   <form method="POST" @submit="onSubmit">
-    <SellerProfileForm :user="user" />
+    <SellerProfileForm :user="user">
+      <template #verification-btn>
+        <UiButton class="form-btn" @click.prevent variant="outlined">
+          <span>Verification request</span>
+          <span class="text-small">3-4 business days</span>
+        </UiButton>
+      </template>
+      <template #verification>
+        <SellerProfileFormVerificationStatus :user="user" />
+      </template>
+    </SellerProfileForm>
   </form>
 </template>
 

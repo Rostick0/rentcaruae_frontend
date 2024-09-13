@@ -1,7 +1,11 @@
 <template>
   <h1 class="h1 seller">Profile</h1>
   <form method="POST" @submit="onSubmit">
-    <SellerProfileForm />
+    <SellerProfileForm>
+      <template #adminBlock>
+        <AdminProfileFormSpecial />
+      </template>
+    </SellerProfileForm>
   </form>
 </template>
 
