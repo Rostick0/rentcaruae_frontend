@@ -3,7 +3,11 @@
   <form method="POST" @submit="onSubmit">
     <SellerProfileForm :user="data">
       <template #adminBlock>
-        <AdminProfileFormSpecial :user="data" />
+        <AdminProfileFormSpecial :user="data">
+          <template #balance>
+            <VFormComponent :field="balance" />
+          </template>
+        </AdminProfileFormSpecial>
       </template>
     </SellerProfileForm>
   </form>
@@ -29,13 +33,29 @@ const { data, get } = await useApi({
 });
 await get();
 
+const balance = ref({
+  type: "text",
+  name: "user.balance",
+  modelValue: data.value?.balance ?? "",
+
+  bind: {
+    label: "Balance user",
+    placeholder: "Balance",
+    maska: "S SS#",
+    maskaTokens: "S:[0-9]:repeated",
+    dataMaskaReversed: true,
+  },
+});
+
+const companyId = computed(() => data.value?.company?.id);
+
 const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
   const data = await getProfileOnSubmitValues(values);
 
   const res = await api.companies.update({
-    id: user.value?.company?.id,
+    id: companyId.value,
     data,
   });
 

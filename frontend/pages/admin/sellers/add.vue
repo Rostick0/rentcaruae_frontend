@@ -3,7 +3,11 @@
   <form method="POST" @submit="onSubmit">
     <SellerProfileForm>
       <template #adminBlock>
-        <AdminProfileFormSpecial />
+        <AdminProfileFormSpecial>
+          <template #balance>
+            <VFormComponent :field="deposite_id" />
+          </template>
+        </AdminProfileFormSpecial>
       </template>
     </SellerProfileForm>
   </form>
@@ -15,27 +19,24 @@ import api from "~/api";
 
 const router = useRouter();
 
-const id = useRoute().params.id;
+const deposites = await api.deposites.getAll({});
+const deposite_id = ref({
+  type: "select",
+  name: "deposite_id",
+  modelValue: "",
 
-const { data, get } = await useApi({
-  name: "users.get",
-  params: {
-    extends:
-      "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image",
-  },
-  requestParams: {
-    id,
+  bind: {
+    label: "Deposite user",
+    options: deposites?.data?.map?.((item) => ({ ...item, name: item?.price })),
   },
 });
-await get();
 
 const { handleSubmit, setErrors } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
   const data = await getProfileOnSubmitValues(values);
 
-  const res = await api.companies.update({
-    id: user.value?.company?.id,
+  const res = await api.companies.create({
     data,
   });
 

@@ -1,8 +1,6 @@
 import useImage from "~/composables/useImage";
 
 export const getProfileOnSubmitValues = async ({
-  balance,
-  free_leads,
   image,
   license,
   sertificate,
@@ -24,6 +22,10 @@ export const getProfileOnSubmitValues = async ({
   data.user.tel = convertPhoneToDb(data?.user?.tel);
   data.company.city_id = data?.company?.city_id?.id;
 
+  if (data.user?.balance) data.user.balance = removeSpaces(data.user.balance);
+  if (data.user?.free_leads)
+    data.user.free_leads = removeSpaces(data.user.free_leads);
+
   const image_id = await getImageFrom(image).then((res) => res?.id);
   const license_id = await getFileFrom(license).then((res) => res?.id);
   const sertificate_id = await getFileFrom(sertificate).then((res) => res?.id);
@@ -37,8 +39,7 @@ export const getProfileOnSubmitValues = async ({
 
   return {
     ...data,
-    balance: removeSpaces(balance),
-    free_leads: removeSpaces(free_leads),
+    deposite_id: values?.deposite_id?.id,
     image: image_id,
     license: license_id,
     sertificate: sertificate_id,

@@ -6,7 +6,7 @@
       {{ item?.balance }}
     </td>
     <td class="table__td">
-      {{ moment(item?.deposite_last?.created_at).format("DD MMM YYYY") }}
+      {{ item?.deposite_last?.created_at ? moment(item?.deposite_last?.created_at).format("DD MMM YYYY") : '-' }}
     </td>
     <td class="table__td">
       <NuxtLink class="link" :to="`/admin/sellers/${item?.id}`">Edit</NuxtLink>
