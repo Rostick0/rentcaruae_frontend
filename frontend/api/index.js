@@ -25,6 +25,7 @@ import spendings from "./modules/spendings";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
 import users from "./modules/users";
+import verificationUsers from "./modules/verificationUsers";
 import views from "./modules/views";
 
 export default {
@@ -55,5 +56,6 @@ export default {
   statisticsDay,
   transmissions,
   users,
+  verificationUsers,
   views,
 };

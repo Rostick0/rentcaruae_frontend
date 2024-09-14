@@ -1,21 +1,28 @@
 <template>
   <AnyFormBlock class="verification" title="Verification status">
     <div class="verification__list">
-      <UiStatus :isAccept="!!user?.company?.is_trade_license"
+      <UiStatus :isAccept="!!user?.company?.license"
         >Add Trade license</UiStatus
       >
-      <UiStatus :isAccept="!!user?.company?.is_vat_sertificate"
+      <UiStatus :isAccept="!!user?.company?.sertificate"
         >Add Vat sertificate</UiStatus
       >
       <UiStatus :isAccept="!!user?.is_verified">Verified</UiStatus>
     </div>
-    <UiButton class="verification__btn">Resend</UiButton>
+    <UiButton
+      class="verification__btn"
+      v-if="isShowBtn"
+      @click.prevent="clickBtn"
+      >Resend</UiButton
+    >
   </AnyFormBlock>
 </template>
 
 <script setup>
 const props = defineProps({
   user: Object,
+  clickBtn: Function,
+  isShowBtn: Boolean,
 });
 </script>
 

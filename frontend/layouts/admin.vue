@@ -37,6 +37,10 @@ const navigations = [
     link: "/admin/sellers",
   },
   {
+    name: "Verification users",
+    link: "/admin/verification-users",
+  },
+  {
     name: "Payments",
     link: "/admin/payments",
   },

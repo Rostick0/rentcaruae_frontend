@@ -4,7 +4,7 @@
     <div class="modal-toast">
       <div class="modal-toast__top">
         <div class="modal-toast__title">{{ title }}</div>
-        <button class="d-flex">
+        <button class="d-flex" @click="close">
           <svg
             width="20"
             height="20"

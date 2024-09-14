@@ -51,6 +51,7 @@ export default async () => {
       if (res?.error) return;
 
       user.value = await res?.data;
+      console.log(user.value)
       // .then((resp) => {
       //   if (!resp?.error && resp) {
       //     user.value = resp?.data;

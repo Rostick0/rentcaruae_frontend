@@ -28,7 +28,10 @@
         />
       </div>
 
-      <VFormComponent :field="is_verified" />
+      <VFormComponent
+        v-if="user?.company?.license && user?.company?.sertificate"
+        :field="is_verified"
+      />
     </div>
   </AnyFormBlock>
 </template>
@@ -40,7 +43,7 @@ const props = defineProps({
 
 const is_trade_license = ref({
   type: "switch",
-  name: "is_trade_license",
+  name: "company.is_trade_license",
   modelValue: props.user?.company?.is_trade_license,
 
   bind: {
@@ -62,7 +65,7 @@ const reason_is_trade_license = ref({
 
 const is_vat_sertificate = ref({
   type: "switch",
-  name: "is_vat_sertificate",
+  name: "company.is_vat_sertificate",
   modelValue: props.user?.company?.is_vat_sertificate,
 
   bind: {
