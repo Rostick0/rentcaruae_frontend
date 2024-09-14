@@ -1,10 +1,10 @@
 <template>
   <AnyFormBlock class="verification" title="Verification status">
     <div class="verification__list">
-      <UiStatus :isAccept="!!user?.company?.license"
+      <UiStatus :isAccept="!!user?.company?.is_trade_license"
         >Add Trade license</UiStatus
       >
-      <UiStatus :isAccept="!!user?.company?.sertificate"
+      <UiStatus :isAccept="!!user?.company?.is_vat_sertificate"
         >Add Vat sertificate</UiStatus
       >
       <UiStatus :isAccept="!!user?.is_verified">Verified</UiStatus>

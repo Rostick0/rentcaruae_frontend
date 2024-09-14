@@ -42,6 +42,13 @@
         <span class="fileloader__subtitle" v-if="subtitle">{{ subtitle }}</span>
       </span>
     </label>
+    <a
+      class="link"
+      v-if="modelValue?.path"
+      :href="modelValue?.path"
+      target="_blank"
+      >link</a
+    >
   </UiControl>
 </template>
 <script setup>

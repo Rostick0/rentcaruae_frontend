@@ -9,6 +9,9 @@
           </template>
         </AdminProfileFormSpecial>
       </template>
+      <template #verification>
+        <AdminProfileFormVerification :user="data" />
+      </template>
     </SellerProfileForm>
   </form>
 </template>
