@@ -25,7 +25,7 @@
       </div> -->
     </div>
     <div class="car__right">
-      <LazyCarCalcLeasing v-if="isLeasing" :car="car">
+      <LazyCarCalcLeasing v-if="isLeasing" :car="car" @submited="open()">
         <template v-if="$device.isMobile" #car-info>
           <CarInfo
             :car="car"
@@ -34,7 +34,7 @@
           />
         </template>
       </LazyCarCalcLeasing>
-      <LazyCarCalc v-else :car="car">
+      <LazyCarCalc v-else :car="car" @submited="open()">
         <template v-if="$device.isMobile" #car-info>
           <CarInfo
             :car="car"
@@ -45,12 +45,20 @@
       </LazyCarCalc>
     </div>
   </div>
+  <UiModalToast title="Thank you for booking" :name="name">
+    <p>A company representative will contact you within 1 hour</p>
+  </UiModalToast>
 </template>
 
 <script setup>
 const props = defineProps({
   car: Object,
   isLeasing: Boolean,
+});
+
+const name = "thanksForBooking";
+const { open, close } = useModal({
+  name,
 });
 
 const specifications = computed(() =>

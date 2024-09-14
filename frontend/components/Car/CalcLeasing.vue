@@ -191,6 +191,8 @@ import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
 
+const emits = defineEmits(["submited"]);
+
 const props = defineProps({
   car: Object,
 });
@@ -243,10 +245,10 @@ const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
     setErrors(res?.errorResponse?.data?.errors);
     return;
   }
-
+  
   success("Thank you for your application");
-
   isBook.value = false;
+  emits("submited", true);
 });
 
 const periodSelect = ref({

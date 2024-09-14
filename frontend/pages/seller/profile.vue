@@ -13,6 +13,10 @@
       </template>
     </SellerProfileForm>
   </form>
+  <UiModalToast title="Thank you for your request" :name="name">
+    <p>We will contact you within 3-4 business days</p>
+    <p>After approval, you will be able to publish your company</p>
+  </UiModalToast>
 </template>
 
 <script setup>
@@ -20,6 +24,11 @@ import { useForm } from "vee-validate";
 import api from "~/api";
 
 const { user, getUser } = await useAuth();
+
+const name = "thanksForRequest";
+const { open, close } = useModal({
+  name,
+});
 
 const { handleSubmit, setErrors } = useForm();
 
