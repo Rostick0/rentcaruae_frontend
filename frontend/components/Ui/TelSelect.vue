@@ -24,7 +24,8 @@
 
 <script setup>
 import { VueTelInput as TelInput } from "vue-tel-input";
-import "vue-tel-input/vue-tel-input.css";
+await import("vue-tel-input/vue-tel-input.css");
+// import "vue-tel-input/vue-tel-input.css";
 const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
@@ -83,6 +84,11 @@ const updatePhone = (val) =>
     border: none;
     box-shadow: none;
     width: 100%;
+
+    &:focus-within {
+      border: none;
+      box-shadow: none;
+    }
   }
 
   .vti {
@@ -122,26 +128,5 @@ const updatePhone = (val) =>
       // height: 14px;
     }
   }
-
-  // .select-icons {
-  //   &-switch {
-  //     &__icon {
-  //       order: 1;
-  //     }
-
-  //     &__arrow {
-  //       order: 2;
-
-  //       path {
-  //         fill: var(--color-text100);
-  //       }
-  //     }
-  //   }
-
-  //   &__value {
-  //     color: var(--color-text100);
-  //     order: 3;
-  //   }
-  // }
 }
 </style>
