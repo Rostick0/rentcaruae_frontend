@@ -12,7 +12,18 @@
       },
     }"
   >
-    <SwiperSlide v-for="image in images" :key="image?.id">
+    <SwiperSlide>
+      <LazyNuxtImg
+        class="car-image__main_img"
+        :src="firstImage?.image?.path_webp + '?w=700'"
+        :title="getCarImageTitle(car, currentCity)"
+        :alt="getCarImageAlt(car, currentCity)"
+        preload
+        decoding="async"
+        loading="lazy"
+      />
+    </SwiperSlide>
+    <SwiperSlide v-for="image in otherImages" :key="image?.id">
       <img
         class="car-image__main_img"
         :src="image?.image?.path_webp + '?w=700'"
@@ -28,7 +39,7 @@
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
+await import("swiper/css");
 
 const props = defineProps({
   car: Object,
@@ -37,6 +48,9 @@ const props = defineProps({
 });
 
 const swiper = ref();
+
+const firstImage = computed(() => props?.images?.[0]);
+const otherImages = computed(() => props?.images?.slice(0, -1));
 
 watch(props.activeSlide, (newV) => {
   swiper.value.slideTo(newV, 200, false);

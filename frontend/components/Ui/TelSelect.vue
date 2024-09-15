@@ -25,7 +25,6 @@
 <script setup>
 import { VueTelInput as TelInput } from "vue-tel-input";
 await import("vue-tel-input/vue-tel-input.css");
-// import "vue-tel-input/vue-tel-input.css";
 const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
