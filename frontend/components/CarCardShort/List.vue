@@ -5,7 +5,12 @@
       <LinkMore :name="linkText" :to="link" />
     </div>
     <div class="car-list__cars">
-      <LazyCarCardShortItem v-for="car in cars" :key="car?.id" :car="car" />
+      <LazyCarCardShortItem
+        v-for="(car, index) in cars"
+        :key="car?.id"
+        :car="car"
+        :isPreload="isPreloadFirst && index <= 1"
+      />
     </div>
   </div>
 </template>
@@ -16,6 +21,7 @@ const props = defineProps({
   title: String,
   linkText: String,
   link: String,
+  isPreloadFirst: Boolean,
 });
 </script>
 

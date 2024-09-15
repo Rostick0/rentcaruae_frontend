@@ -2,7 +2,24 @@
   <div class="brands__list">
     <NuxtLink
       class="brands__link"
-      v-for="brand in brands"
+      v-for="brand in firstsBrands"
+      :key="brand?.id"
+      :to="
+        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
+      "
+    >
+      <LazyNuxtImg
+        :src="brand?.image_url + '?=w60'"
+        :title="brand?.name"
+        :alt="`${brand?.name} for rent`"
+        preload
+        width="40"
+        height="40"
+      />
+    </NuxtLink>
+    <NuxtLink
+      class="brands__link"
+      v-for="brand in otherBrands"
       :key="brand?.id"
       :to="
         convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
@@ -26,6 +43,9 @@
 const props = defineProps({
   brands: Array,
 });
+
+const firstsBrands = computed(() => props?.brands?.slice(0, 5));
+const otherBrands = computed(() => props?.brands?.slice(5));
 
 const currentCity = useState("currentCity");
 </script>

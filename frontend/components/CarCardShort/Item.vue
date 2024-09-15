@@ -10,12 +10,24 @@
     <div class="car-short__image">
       <img
         class="car-short__img"
+        v-if="!isPreload"
         :src="car?.images?.[0]?.image?.path_webp + '?w=300'"
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car, currentCity)"
         v-lazy-load
         loading="lazy"
         decoding="async"
+        width="264"
+        height="166"
+        itemprop="image"
+      />
+      <NuxtImg
+        class="car-short__img"
+        v-else
+        preload
+        :src="car?.images?.[0]?.image?.path_webp + '?w=300'"
+        :title="getCarImageTitle(car, currentCity)"
+        :alt="getCarImageAlt(car, currentCity)"
         width="264"
         height="166"
         itemprop="image"
@@ -60,6 +72,7 @@
 <script setup>
 const props = defineProps({
   car: Object,
+  isPreload: Boolean,
 });
 
 const route = useRoute();

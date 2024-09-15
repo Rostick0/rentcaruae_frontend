@@ -10,6 +10,7 @@
           title="Economy cars"
           linkText="All Economy cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
+          isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="vanCars?.length"
@@ -17,6 +18,7 @@
           title="Van cars"
           linkText="All Van cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
+          isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="suvCars?.length"
@@ -24,6 +26,7 @@
           title="SUV for rent"
           linkText="All SUV"
           :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
+          isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="cabrioCars?.length"
