@@ -2,7 +2,7 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
-  <LazyModalPWA v-if="$device.isIos" />
+  <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
   <VitePwaManifest />
 </template>
 
