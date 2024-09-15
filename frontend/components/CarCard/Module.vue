@@ -1,7 +1,7 @@
 <template>
   <div class="car-module" v-if="car?.min_days === 1">
     <LazyNuxtImg
-      src="images/icon/arrow.svg"
+      src="images-frontend/icon/arrow.svg"
       alt=""
       loading="lazy"
       width="20"
@@ -11,7 +11,7 @@
   </div>
   <div class="car-module" v-if="car?.security_deposit?.price">
     <LazyNuxtImg
-      src="images/icon/arrow.svg"
+      src="images-frontend/icon/arrow.svg"
       alt=""
       loading="lazy"
       width="20"
@@ -21,7 +21,7 @@
   </div>
   <div class="car-module">
     <LazyNuxtImg
-      src="images/icon/arrow.svg"
+      src="images-frontend/icon/arrow.svg"
       alt=""
       loading="lazy"
       width="20"

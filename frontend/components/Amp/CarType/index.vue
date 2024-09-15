@@ -13,13 +13,17 @@
       <UiButton
         class="car-type__item text-pre-small"
         :class="{ active: modelValue === type.name.toLowerCase() }"
-        @click="emits('update:modelValue', type.name.toLowerCase())"
         :variant="
           modelValue === type.name.toLowerCase() ? 'standard' : 'outlined'
         "
       >
         <div class="d-flex">
-          <img :src="`/${type.img}`" :alt="type.name" width="52" height="26" />
+          <amp-img
+            :src="`/${type.img}`"
+            :alt="type.name"
+            width="52"
+            height="26"
+          />
         </div>
         <div>{{ type.name }}</div>
       </UiButton>
@@ -31,8 +35,6 @@
 const props = defineProps({
   modelValue: String,
 });
-
-const emits = defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>

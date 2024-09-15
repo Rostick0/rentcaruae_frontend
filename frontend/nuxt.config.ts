@@ -102,6 +102,7 @@ export default defineNuxtConfig({
       navigateFallback: "/",
       importScripts: ["https://push4site.com/static/sw/rentcaruae.js"],
     },
+
     devOptions: {
       enabled: true,
       type: "module",

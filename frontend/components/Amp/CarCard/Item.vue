@@ -2,7 +2,7 @@
   <div class="car">
     <div class="car__top">
       <div class="car__title">{{ car?.title }}</div>
-      <img
+      <amp-img
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
@@ -11,7 +11,7 @@
       />
     </div>
     <NuxtLink class="car__image" :to="link">
-      <img
+      <amp-img
         class="car__img"
         :src="car?.images?.[0]?.image?.path_webp + '?w=400'"
         :title="getCarImageTitle(car, currentCity)"

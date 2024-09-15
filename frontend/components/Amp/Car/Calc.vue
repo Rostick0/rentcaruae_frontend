@@ -29,7 +29,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/deposit.svg"
+            src="images-frontend/icon/deposit.svg"
             alt="Deposit"
             loading="lazy"
             width="20"
@@ -57,7 +57,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/calendar.svg"
+            src="images-frontend/icon/calendar.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
@@ -72,7 +72,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/map.svg"
+            src="images-frontend/icon/map.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
@@ -85,7 +85,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/settings.svg"
+            src="images-frontend/icon/settings.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
@@ -98,7 +98,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/protect.svg"
+            src="images-frontend/icon/protect.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
@@ -111,7 +111,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <LazyNuxtImg
-            src="images/icon/card.svg"
+            src="images-frontend/icon/card.svg"
             alt="Calendar"
             loading="lazy"
             width="20"

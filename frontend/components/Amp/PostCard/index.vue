@@ -24,7 +24,7 @@
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-card__image">
-      <LazyNuxtImg
+      <amp-img
         class="post-card__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"

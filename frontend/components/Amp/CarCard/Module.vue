@@ -1,19 +1,19 @@
 <template>
   <div class="car-module" v-if="car?.min_days === 1">
     <span class="d-flex">
-      <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
+      <amp-img src="/images-frontend/icon/arrow.svg" alt="" width="20" height="20" />
     </span>
     <span>1 day rental available</span>
   </div>
   <div class="car-module" v-if="car?.security_deposit?.price">
     <span class="d-flex">
-      <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
+      <amp-img src="/images-frontend/icon/arrow.svg" alt="" width="20" height="20" />
     </span>
     <span class="color-light-green">Deposit-free option</span>
   </div>
   <div class="car-module">
     <span class="d-flex">
-      <img src="/images/icon/arrow.svg" alt="" width="20" height="20" />
+      <amp-img src="/images-frontend/icon/arrow.svg" alt="" width="20" height="20" />
     </span>
     <span>Free delivery</span>
   </div>

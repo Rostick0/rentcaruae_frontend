@@ -277,7 +277,7 @@ const currency = ref({
 const cities = useState("cities");
 
 const citiesComputed = computed(() =>
-  cities.value?.map?.((item) => ({ ...item, icon_url: "images/flags/ae.svg" }))
+  cities.value?.map?.((item) => ({ ...item, icon_url: "images-frontend/flags/ae.svg" }))
 );
 
 const city = useState("currentCity", () =>

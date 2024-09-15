@@ -2,7 +2,7 @@
   <div class="post">
     <div class="post__image">
       <div class="post__image_inner">
-        <img
+        <amp-img
           class="post__img"
           :src="post?.image?.image?.path_webp + '?w=1000'"
           :alt="post?.title"

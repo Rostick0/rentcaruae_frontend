@@ -12,7 +12,7 @@
     "
   >
     <div class="car-short__image">
-      <img
+      <amp-img
         class="car-short__img"
         :src="car?.images?.[0]?.image?.path_webp + '?w=300'"
         :title="getCarImageTitle(car, currentCity)"
@@ -33,7 +33,7 @@
           <span>per day</span>
         </div>
       </div>
-      <img
+      <amp-img
         class="car-short__brand"
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         :title="car?.generation?.model_car?.brand?.name"
@@ -84,12 +84,15 @@ const priceOld = computed(() =>
 
   &__img {
     border-radius: 8px;
-    object-fit: cover;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   &__content {

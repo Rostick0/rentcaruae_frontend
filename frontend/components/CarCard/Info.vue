@@ -14,7 +14,7 @@
         <div class="car-characteristic" :title="car?.transmission?.name">
           <LazyNuxtImg
             class="car-characteristic__iconc"
-            :src="`images/icon/auto.svg`"
+            :src="`images-frontend/icon/auto.svg`"
             alt="fuel type"
             loading="lazy"
             width="20"
@@ -27,7 +27,7 @@
         <div class="car-characteristic">
           <LazyNuxtImg
             class="car-characteristic__icon"
-            src="images/icon/persons.svg"
+            src="images-frontend/icon/persons.svg"
             alt="persons"
             loading="lazy"
             width="20"
@@ -38,7 +38,7 @@
         <div class="car-characteristic">
           <LazyNuxtImg
             class="car-characteristic__icon"
-            :src="`images/icon/${
+            :src="`images-frontend/icon/${
               car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
             }.svg`"
             alt="fuel type"

@@ -23,7 +23,7 @@
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-item__image">
-      <img
+      <amp-img
         class="post-item__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"

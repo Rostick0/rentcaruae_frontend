@@ -2,6 +2,7 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <!-- <NoInternet v-if="$pwa?.needRefresh" /> -->
   <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
   <VitePwaManifest />
 </template>
@@ -11,6 +12,12 @@ const { configure, defineRule } = await import("vee-validate");
 const { email, min, max, required, size, image, min_value, max_value } =
   await import("@vee-validate/rules");
 const { localize } = await import("@vee-validate/i18n");
+
+// const { $pwa } = useNuxtApp();
+
+// onMounted(() => {
+//   if ($pwa.offlineReady) success("App ready to work offline");
+// });
 
 defineRule("required", required);
 defineRule("email", email);

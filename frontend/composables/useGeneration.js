@@ -4,31 +4,31 @@ export default async () => {
   const generations = useState("generations", () => [
     {
       name: "SUV",
-      img: "images/car-type/SUV.png",
+      img: "images-frontend/car-type/SUV.png",
     },
     {
       name: "VAN",
-      img: "images/car-type/VAN.png",
+      img: "images-frontend/car-type/VAN.png",
     },
     {
       name: "Sedan",
-      img: "images/car-type/Sedan.png",
+      img: "images-frontend/car-type/Sedan.png",
     },
     {
       name: "Coupe",
-      img: "images/car-type/Coupe.png",
+      img: "images-frontend/car-type/Coupe.png",
     },
     {
       name: "Cabrio",
-      img: "images/car-type/Cabrio.png",
+      img: "images-frontend/car-type/Cabrio.png",
     },
     {
       name: "Hatchback",
-      img: "images/car-type/Hatchback.png",
+      img: "images-frontend/car-type/Hatchback.png",
     },
     {
       name: "Liftback",
-      img: "images/car-type/Liftback.png",
+      img: "images-frontend/car-type/Liftback.png",
     },
   ]);
 

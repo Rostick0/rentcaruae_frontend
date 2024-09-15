@@ -20,9 +20,9 @@
           </div>
         </div>
         <div class="banner__right">
-          <NuxtImg
+          <amp-img
             class="banner__img"
-            src="images-frontend/blue_lamborghini.webp"
+            src="/images-frontend/blue_lamborghini.webp"
             alt="RentCarUAE"
             preload
             width="708"
@@ -74,11 +74,12 @@ const links = computed(() => {
 
   &__container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   &__left {
     position: relative;
+    max-width: 100%;
     z-index: 1;
   }
 
@@ -88,12 +89,13 @@ const links = computed(() => {
 
   &__subtitle {
     font-weight: 400;
-    margin-bottom: 48px;
+    font-size: 20px;
+    margin-bottom: 216px;
   }
 
   &__search {
-    margin-bottom: 41px;
-    width: 92%;
+    margin-bottom: 20px;
+    width: 100%;
   }
 
   &__links {
@@ -105,75 +107,23 @@ const links = computed(() => {
   &__right {
     flex-grow: 1;
     position: absolute;
-    // right: calc(100vw - 1440px);
-    // right: calc(1168px);
-    right: calc((100vw - 1400px) / 2);
+    top: 240px;
+    right: 0;
+    transform: translateY(-50%);
   }
 
   &__img {
     object-fit: contain;
     max-width: 708px;
-    width: 50vw;
+    width: 495px;
+    // width: 50vw;
   }
 
-  @media (max-width: 1440px) {
-    &__right {
-      right: 0;
-    }
-  }
-
-  @media (max-width: 1280px) {
-    &__img {
-      width: 46vw;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    &__subtitle {
-      font-size: 20px;
-    }
-
-    &__left {
-      max-width: 55vw;
-    }
-
-    &__right {
-      right: -64px;
-    }
-
-    &__img {
-      width: 50vw;
-    }
-  }
-
-  @media (max-width: 680px) {
-    &__container {
-      align-items: flex-start;
-    }
-
-    &__subtitle {
-      margin-bottom: 216px;
-    }
-
-    &__left {
-      max-width: 100%;
-    }
-
-    &__search {
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    &__right {
-      top: 240px;
-      right: 0;
-      transform: translateY(-50%);
-    }
-
-    &__img {
-      width: 495px;
-    }
-  }
+  // @media (max-width: 680px) {
+  //   &__img {
+  //     width: 495px;
+  //   }
+  // }
 
   @media (max-width: 576px) {
     &__right {

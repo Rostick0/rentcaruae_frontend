@@ -3,7 +3,7 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="car__top">
-        <img
+        <amp-img
           class="car__make_img"
           :src="data?.generation?.model_car?.brand?.image_url + '?=w60'"
           :title="data?.generation?.model_car?.brand?.name"
