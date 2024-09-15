@@ -18,7 +18,7 @@
         </h1>
       </div>
       <Car :car="data" :isLeasing="isLeasing" />
-      <CarCardShortList
+      <LazyCarCardShortList
         v-if="cars?.length"
         :cars="cars"
         title="Similar Car Rental Options"

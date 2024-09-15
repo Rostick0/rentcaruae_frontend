@@ -1,7 +1,7 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <ClientOnly>
+      <LazyClientOnly>
         <Swiper
           class="car-image__swiper"
           @swiper="(swiperInit) => (swiper = swiperInit)"
@@ -27,7 +27,7 @@
             />
           </SwiperSlide>
         </Swiper>
-      </ClientOnly>
+      </LazyClientOnly>
     </div>
     <div
       class="car-image__list"

@@ -78,11 +78,12 @@ const initScripts = () => {
 };
 
 onMounted(() => {
+  console.log(analyticalCookie.value)
   if (analyticalCookie.value) {
     nextTick(() => {
       setTimeout(() => {
         initScripts();
-      }, 4000);
+      }, 5000);
     });
   }
 });

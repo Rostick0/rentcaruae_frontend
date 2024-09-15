@@ -95,14 +95,16 @@ const onAccepted = () => {
 };
 
 onMounted(() => {
-  if (acceptedCookie.value) {
-    cookieWatch();
-    return;
-  }
+  setTimeout(() => {
+    if (acceptedCookie.value) {
+      cookieWatch();
+      return;
+    }
 
-  if (route.path !== "/privacy_policy") {
-    open();
-  }
+    if (route.path !== "/privacy_policy") {
+      open();
+    }
+  }, 500);
 });
 
 const isCustomize = ref(false);
