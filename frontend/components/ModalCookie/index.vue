@@ -1,6 +1,6 @@
 <template>
-  <LazyUiModal name="cookie" position="bottom" cancelCloseOuter>
-    <div class="modal-cookie">
+  <LazyUiModal :name="name" position="bottom" cancelCloseOuter>
+    <div class="modal-bottom modal-cookie">
       <div class="modal-cookie__content">
         <template v-if="isCustomize">
           <div class="modal-cookie__content_item">
@@ -56,8 +56,9 @@
 </template>
 
 <script setup>
+const name = "cookie";
 const { open, close, isOpen } = useModal({
-  name: "cookie",
+  name,
 });
 
 const acceptedCookie = useCookie("accepted_cookie", {
@@ -108,6 +109,8 @@ const isCustomize = ref(false);
 </script>
 
 <style lang="scss" scoped>
+@import "./../../assets/scss/components/modal-bottom";
+
 .modal-cookie {
   background-color: var(--color-white);
   border-radius: 20px;
