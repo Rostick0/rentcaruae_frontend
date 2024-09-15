@@ -18,6 +18,7 @@
       </LazyLayoutFooter>
     </LazyNuxtLazyHydrate>
     <LazyModalCookie />
+    <LazyAuthModal />
   </div>
 </template>
 

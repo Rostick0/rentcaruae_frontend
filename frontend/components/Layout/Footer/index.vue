@@ -165,7 +165,6 @@
       </div>
     </div>
   </footer>
-  <AuthModal />
 </template>
 
 <script setup>

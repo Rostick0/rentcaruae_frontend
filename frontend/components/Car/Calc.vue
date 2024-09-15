@@ -187,8 +187,8 @@
           </div>
         </template>
       </CarForm>
+      <VFormComponent :field="g_recaptcha_response" />
     </template>
-    <VFormComponent :field="g_recaptcha_response" />
   </form>
 </template>
 
@@ -252,7 +252,7 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     setErrors(res?.errorResponse?.data?.errors);
     return;
   }
-  
+
   success("Thank you for your application");
   isBook.value = false;
   emits("submited", true);

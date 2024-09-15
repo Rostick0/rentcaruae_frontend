@@ -4,7 +4,20 @@
 </template>
 
 <script setup>
-import { useReCaptcha } from "vue-recaptcha-v3";
+// import { useReCaptcha } from "vue-recaptcha-v3";
+import { useReCaptcha, VueReCaptcha } from "vue-recaptcha-v3";
+// import { VueReCaptcha } from "vue-recaptcha-v3";
+
+const config = useRuntimeConfig();
+
+const nuxt = useNuxtApp();
+nuxt.vueApp.use(VueReCaptcha, {
+  siteKey: config.public.NOCAPTCHA_SITEKEY,
+  loaderOptions: {
+    autoHideBadge: true,
+    useRecaptchaNet: true,
+  },
+});
 
 const { recaptchaLoaded, executeRecaptcha } = useReCaptcha();
 
