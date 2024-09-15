@@ -98,7 +98,12 @@
             itemtype="http://schema.org/Offer"
           >
             <meta itemprop="priceCurrency" content="AED" />
-            <meta itemprop="price" :content="car?.price_special?.[0]?.price ?? car?.price?.[0]?.price" />
+            <meta
+              itemprop="price"
+              :content="
+                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+              "
+            />
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
               <span>Daily</span>

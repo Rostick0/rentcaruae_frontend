@@ -35,7 +35,9 @@
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
             >AED {{ priceOld }}</del
           >
-          <span class="car-short__price text-ui">AED {{ price }}</span>
+          <span class="car-short__price text-ui"
+            >AED {{ formatNumber(price) }}</span
+          >
           <span>per day</span>
         </div>
       </div>
@@ -62,14 +64,12 @@ const route = useRoute();
 const currentCity = useState("currentCity");
 
 const price = computed(() =>
-  formatNumber(
-    props.car?.price_special?.[0]?.price
-      ? Math.round(
-          props.car?.price_special?.[0]?.price /
-            props.car?.price_special?.[0]?.period
-        )
-      : Math.round(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
-  )
+  props.car?.price_special?.[0]?.price
+    ? Math.round(
+        props.car?.price_special?.[0]?.price /
+          props.car?.price_special?.[0]?.period
+      )
+    : Math.round(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
 );
 
 const priceOld = computed(() =>
