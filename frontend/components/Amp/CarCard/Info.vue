@@ -12,7 +12,7 @@
           <div class="d-flex">
             <img
               class="car-characteristic__iconc"
-              src="/images-frontend/icon/auto.svg"
+              src="/frontend-images/icon/auto.svg"
               alt="fuel type"
               width="20"
               height="20"
@@ -26,7 +26,7 @@
           <div class="d-flex">
             <img
               class="car-characteristic__icon"
-              src="/images-frontend/icon/persons.svg"
+              src="/frontend-images/icon/persons.svg"
               alt="persons"
               width="20"
               height="20"
@@ -38,7 +38,7 @@
           <div class="d-flex">
             <amp-img
               class="car-characteristic__icon"
-              :src="`/images-frontend/icon/${
+              :src="`/frontend-images/icon/${
                 car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
               }.svg`"
               alt="fuel type"

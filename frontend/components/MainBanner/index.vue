@@ -22,7 +22,7 @@
         <div class="banner__right">
           <NuxtImg
             class="banner__img"
-            src="images-frontend/blue_lamborghini.webp"
+            src="frontend-images/blue_lamborghini.webp"
             alt="RentCarUAE"
             preload
             width="708"
