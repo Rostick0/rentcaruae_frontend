@@ -4,130 +4,71 @@
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="text-information__inner">
         <h1 class="h1">Privacy policy</h1>
+        <h2>1. Information we may collect</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus,
-          neque blandit blandit laoreet, dolor erat sodales felis, non
-          scelerisque enim turpis sit amet nulla. Duis rutrum arcu eget
-          elementum scelerisque. Donec varius nulla ligula, et rutrum odio
-          aliquam in. Aliquam erat volutpat. Integer facilisis non tortor at
-          auctor. Cras orci elit, faucibus a nisi a, rhoncus finibus ante. Proin
-          facilisis neque nisl. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit.
+          To provide our services to the customers Rentcaruae.com need to
+          collect certain information from clients, such as: personal data,
+          including but not limited to Name, contact numbers, email address and
+          residential address, location, payment details, as well as information
+          collected automatically by service providers to evaluate statistics
+          and update our website accordingly, this can include your IP Address,
+          browser used, language settings, hardware used, operating system,
+          clicks, pages visited, cookie files, information on your activity when
+          using the website, IP geolocation, webvisors information. Our website
+          uses cookies and other identifiers. By using yeti.ae website and
+          services you agree to the handling of your information. We might also
+          collect other information that is provided to us by phone or by text
+          messages or email, including whatsapp, facebook or any other
+          application or by filling the forms on our website including booking,
+          contact me form or automatic webchat messages.
         </p>
         <br />
+        <h2>2. Use of Information</h2>
+        <ul class="text-information__ul">
+          <li class="text-information__li">
+            To provide you with information about your booking, your rent,
+            delivery, payments, additional services or any other car rental
+            related information
+          </li>
+          <li class="text-information__li">
+            To provide you with current offers through advertisement
+          </li>
+          <li class="text-information__li">
+            To improve our website and our services
+          </li>
+        </ul>
+        <br />
+        <h2>3. We may share your information</h2>
+        <ul class="text-information__ul">
+          <li class="text-information__li">
+            To Governmental authorities and other third parties. To offer you
+            services we can provide your information to UAE governmental
+            authorities and other third parties if required to perform our
+            services or required by law. This includes but not limited by RTA,
+            Police, Courts, Insurance companies, governmental and private
+            hospitals.
+          </li>
+          <li class="text-information__li">
+            Marketing and promotion. We may provide your information to our
+            advertisement provider in order to inform you about our offers.
+          </li>
+          <li class="text-information__li">
+            Links. Please note that our website can have some links to other
+            websites and if you follow a link you will enter another website,
+            which has other privacy policy. Rentcaruae.com is not responsible
+            for other websites privacy policies.
+          </li>
+          <li class="text-information__li">
+            Online payment. Rentcaruae.com is not storing any client’s payment
+            card information on our website, For payments done through
+            Credit/Debit Card all details will be provided directly to payment
+            gateway provider through secure connection.
+          </li>
+        </ul>
         <p>
-          Sed vel libero molestie, blandit leo ut, fringilla nisl. Nam aliquam
-          magna vel tempor accumsan. Suspendisse erat ligula, vehicula ut
-          maximus nec, sollicitudin in tortor. Duis vel accumsan tellus. Duis
-          accumsan nisl sed lorem aliquet, vitae mattis nisi imperdiet. Mauris
-          viverra erat et eros sagittis blandit. Aliquam sed ante vitae lectus
-          pulvinar porta vitae sit amet nibh. Praesent tincidunt, est rutrum
-          aliquam finibus, ante odio interdum ante, consectetur malesuada elit
-          eros id nulla. Vestibulum ante ipsum primis in faucibus orci luctus et
-          ultrices posuere cubilia curae; Fusce in posuere elit. Donec vitae
-          metus neque. Aenean magna est, feugiat eu leo semper, faucibus finibus
-          arcu.
-        </p>
-        <br />
-        <p>
-          Ut eu ultrices tortor. Curabitur pharetra leo leo, cursus feugiat
-          lorem posuere eget. Sed eu ante ex. Suspendisse laoreet enim at nisi
-          pretium, ut ornare justo consequat. Curabitur ornare magna quis erat
-          pretium efficitur. Aenean varius orci vitae tortor faucibus, feugiat
-          sodales est iaculis. Sed volutpat vehicula arcu quis placerat.
-        </p>
-        <br />
-        <br />
-        <h2>Cars That Talk, Dance and Fly: The Best Car Tech at CES 2024</h2>
-        <br />
-        <p>
-          Nullam eget leo cursus, sollicitudin erat eleifend, congue enim. Donec
-          finibus magna est, a aliquam dui vestibulum vitae. Integer hendrerit
-          pulvinar ligula, ac venenatis elit tincidunt quis. Sed ut nulla erat.
-          Nulla facilisi. Aliquam in metus gravida, tincidunt arcu ut, vehicula
-          turpis. Vivamus porttitor at nulla a pretium. Ut sit amet nisl in
-          libero viverra porttitor at vel odio. Praesent porta aliquam arcu quis
-          maximus. Sed ligula mauris, tempor sagittis felis eget, pellentesque
-          bibendum libero.
-        </p>
-        <br />
-        <p>
-          Vivamus eu elit vitae leo accumsan blandit eu id metus. Mauris eget
-          erat ac sapien rhoncus sodales et vel ante. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Aenean eget velit feugiat sem vehicula euismod non ac metus. Duis sit
-          amet magna et ligula feugiat eleifend. In hac habitasse platea
-          dictumst. Etiam ullamcorper lobortis urna. Quisque viverra condimentum
-          laoreet.
-        </p>
-        <br />
-        <br />
-        <h2>Cars That Talk, Dance and Fly: The Best Car Tech at CES 2024</h2>
-        <br />
-        <p>
-          Nullam eget leo cursus, sollicitudin erat eleifend, congue enim. Donec
-          finibus magna est, a aliquam dui vestibulum vitae. Integer hendrerit
-          pulvinar ligula, ac venenatis elit tincidunt quis. Sed ut nulla erat.
-          Nulla facilisi. Aliquam in metus gravida, tincidunt arcu ut, vehicula
-          turpis. Vivamus porttitor at nulla a pretium. Ut sit amet nisl in
-          libero viverra porttitor at vel odio. Praesent porta aliquam arcu quis
-          maximus. Sed ligula mauris, tempor sagittis felis eget, pellentesque
-          bibendum libero.
-        </p>
-        <br />
-        <p>
-          Vivamus eu elit vitae leo accumsan blandit eu id metus. Mauris eget
-          erat ac sapien rhoncus sodales et vel ante. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Aenean eget velit feugiat sem vehicula euismod non ac metus. Duis sit
-          amet magna et ligula feugiat eleifend. In hac habitasse platea
-          dictumst. Etiam ullamcorper lobortis urna. Quisque viverra condimentum
-          laoreet.
-        </p>
-        <br />
-        <br />
-        <h2>Cars That Talk, Dance and Fly: The Best Car Tech at CES 2024</h2>
-        <br />
-        <p>
-          Nullam eget leo cursus, sollicitudin erat eleifend, congue enim. Donec
-          finibus magna est, a aliquam dui vestibulum vitae. Integer hendrerit
-          pulvinar ligula, ac venenatis elit tincidunt quis. Sed ut nulla erat.
-          Nulla facilisi. Aliquam in metus gravida, tincidunt arcu ut, vehicula
-          turpis. Vivamus porttitor at nulla a pretium. Ut sit amet nisl in
-          libero viverra porttitor at vel odio. Praesent porta aliquam arcu quis
-          maximus. Sed ligula mauris, tempor sagittis felis eget, pellentesque
-          bibendum libero.
-        </p>
-        <br />
-        <p>
-          Vivamus eu elit vitae leo accumsan blandit eu id metus. Mauris eget
-          erat ac sapien rhoncus sodales et vel ante. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Aenean eget velit feugiat sem vehicula euismod non ac metus. Duis sit
-          amet magna et ligula feugiat eleifend. In hac habitasse platea
-          dictumst. Etiam ullamcorper lobortis urna. Quisque viverra condimentum
-          laoreet.
-        </p>
-        <br />
-        <p>
-          Nullam eget leo cursus, sollicitudin erat eleifend, congue enim. Donec
-          finibus magna est, a aliquam dui vestibulum vitae. Integer hendrerit
-          pulvinar ligula, ac venenatis elit tincidunt quis. Sed ut nulla erat.
-          Nulla facilisi. Aliquam in metus gravida, tincidunt arcu ut, vehicula
-          turpis. Vivamus porttitor at nulla a pretium. Ut sit amet nisl in
-          libero viverra porttitor at vel odio. Praesent porta aliquam arcu quis
-          maximus. Sed ligula mauris, tempor sagittis felis eget, pellentesque
-          bibendum libero.
-        </p>
-        <br />
-        <p>
-          Vivamus eu elit vitae leo accumsan blandit eu id metus. Mauris eget
-          erat ac sapien rhoncus sodales et vel ante. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Aenean eget velit feugiat sem vehicula euismod non ac metus. Duis sit
-          amet magna et ligula feugiat eleifend. In hac habitasse platea
-          dictumst. Etiam ullamcorper lobortis urna. Quisque viverra condimentum
-          laoreet.
+          Privacy policy can be changed from time to time and we will post the
+          recent version on our website. It is your obligation to check the
+          Privacy Policy if you continue using our website.
         </p>
       </div>
     </div>
@@ -151,6 +92,8 @@ useSeoMeta({
 </script>
 
 <style lang="scss" scoped>
+@import "./../assets/scss/components/text-information";
+
 .text-information {
   &__inner {
     padding-bottom: 100px;
