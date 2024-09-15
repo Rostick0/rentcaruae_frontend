@@ -25,24 +25,26 @@
       </div> -->
     </div>
     <div class="car__right">
-      <LazyCarCalcLeasing v-if="isLeasing" :car="car" @submited="open()">
-        <template v-if="$device.isMobile" #car-info>
-          <CarInfo
-            :car="car"
-            :specifications="specifications"
-            :isLeasing="isLeasing"
-          />
-        </template>
-      </LazyCarCalcLeasing>
-      <LazyCarCalc v-else :car="car" @submited="open()">
-        <template v-if="$device.isMobile" #car-info>
-          <CarInfo
-            :car="car"
-            :specifications="specifications"
-            :isLeasing="isLeasing"
-          />
-        </template>
-      </LazyCarCalc>
+      <LazyNuxtLazyHydrate whenVisible>
+        <LazyCarCalcLeasing v-if="isLeasing" :car="car" @submited="open()">
+          <template v-if="$device.isMobile" #car-info>
+            <CarInfo
+              :car="car"
+              :specifications="specifications"
+              :isLeasing="isLeasing"
+            />
+          </template>
+        </LazyCarCalcLeasing>
+        <LazyCarCalc v-else :car="car" @submited="open()">
+          <template v-if="$device.isMobile" #car-info>
+            <CarInfo
+              :car="car"
+              :specifications="specifications"
+              :isLeasing="isLeasing"
+            />
+          </template>
+        </LazyCarCalc>
+      </LazyNuxtLazyHydrate>
     </div>
   </div>
   <LazyUiModalToast title="Thank you for booking" :name="name">

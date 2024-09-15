@@ -6,7 +6,7 @@
       <slot />
     </main>
     <LazyNuxtLazyHydrate whenVisible>
-      <LayoutFooter>
+      <LazyLayoutFooter>
         <template #joinButton>
           <UiButton
             class="wrapper__footer_join"
@@ -15,7 +15,7 @@
             >Join us</UiButton
           >
         </template>
-      </LayoutFooter>
+      </LazyLayoutFooter>
     </LazyNuxtLazyHydrate>
     <LazyModalCookie />
   </div>

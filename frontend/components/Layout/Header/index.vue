@@ -185,7 +185,7 @@
             </UiDropdownMenu>
             <UiSelectWithIcons
               v-if="$device.isDesktopOrTablet"
-              v-model="city"
+              v-model="cityWithFlag"
               :options="citiesComputed"
             />
             <div class="header__links">
@@ -277,12 +277,19 @@ const currency = ref({
 const cities = useState("cities");
 
 const citiesComputed = computed(() =>
-  cities.value?.map?.((item) => ({ ...item, icon_url: "frontend-images/flags/ae.svg" }))
+  cities.value?.map?.((item) => ({
+    ...item,
+    icon_url: "frontend-images/flags/ae.svg",
+  }))
 );
 
-const city = useState("currentCity", () =>
-  citiesComputed.value?.find((item) => item?.name === "Dubai")
-);
+const city = useState("currentCity");
+
+const cityWithFlag = computed({
+  get: () => citiesComputed.value?.find((item) => item?.id === city.value?.id),
+  set: (val) =>
+    (city.value = cities?.value?.find((item) => item?.id === val?.id)),
+});
 
 const categories = useState("categories");
 const brands = useState("brands");

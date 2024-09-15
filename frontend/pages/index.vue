@@ -4,14 +4,6 @@
     <div class="container">
       <MainBrands />
       <div class="car-cards">
-        <!-- <CarCardShortList
-        v-if="specialCars?.length"
-        :cars="specialCars"
-        title="Special offers"
-        linkText="All special offers"
-        :link="`/`"
-      /> -->
-
         <CarCardShortList
           v-if="economyCars?.length"
           :cars="economyCars"
@@ -79,17 +71,6 @@ const defaultParams = {
   sort: "id",
   limit: 4,
 };
-// const { data: specialCars, get: getSpecialCars } = await useApi({
-//   name: "car.getAll",
-//   params: {
-//     extends: "images.image,price,price_special,generation.model_car.brand",
-//     "filterNEEQ[price_special.id]": true,
-//     sort: "-id",
-//     limit: 4,
-//   },
-// });
-
-// await getSpecialCars();
 
 const { data: economyCars, get: getEconomyCars } = await useApi({
   name: "car.getAll",
