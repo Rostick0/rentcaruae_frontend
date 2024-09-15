@@ -20,9 +20,11 @@
         v-if="cars?.length"
         :cars="cars"
         title="Similar Car Rental Options"
-        :linkText="`All ${data?.category?.name}`"
+        :linkText="`All ${data?.car_categories?.[0]?.category?.name}`"
         :link="
-          convertNameToUrl(`/${currentCity?.name}/type/${data?.category?.name}`)
+          convertNameToUrl(
+            `/${currentCity?.name}/type/${data?.car_categories?.[0]?.category?.name}`
+          )
         "
       />
     </div>

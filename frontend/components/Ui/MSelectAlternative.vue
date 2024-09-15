@@ -262,7 +262,6 @@ const addMore = (event) => {
 
     &:hover {
       background-color: var(--color-blue-light);
-      // color: var(--color-white);
     }
     &.selected {
       background-color: var(--color-dark);
@@ -286,29 +285,7 @@ const addMore = (event) => {
   &__label {
     display: flex;
     position: relative;
-
-    // &_name {
-    //   color: var(--color-grey-dark);
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 12px;
-    //   transform: translateY(-50%);
-    //   transition: 0.3s;
-    // }
   }
-
-  // &__field_placeholder-no-focus:focus + &__label_name {
-  //   font-size: 16px;
-  //   transform: translateY(-50%);
-  //   top: 50%;
-  // }
-
-  // &__field:focus + &__label_name,
-  // &__field:not(:placeholder-shown) + &__label_name {
-  //   font-size: 12px;
-  //   top: 11px;
-  //   transform: translateY(0);
-  // }
 
   &__field {
     border: 1px solid var(--color-grey-dark);

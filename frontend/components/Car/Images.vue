@@ -1,33 +1,13 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <LazyClientOnly>
-        <Swiper
-          class="car-image__swiper"
-          @swiper="(swiperInit) => (swiper = swiperInit)"
-          :spaceBetween="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 1.07,
-            },
-            769: {
-              slidesPerView: 1,
-            },
-          }"
-        >
-          <SwiperSlide v-for="image in images" :key="image?.id">
-            <LazyNuxtImg
-              class="car-image__main_img"
-              :src="image?.image?.path_webp + '?w=700'"
-              :title="getCarImageTitle(car, currentCity)"
-              :alt="getCarImageAlt(car, currentCity)"
-              decoding="async"
-              loading="lazy"
-              fit="cover"
-            />
-          </SwiperSlide>
-        </Swiper>
-      </LazyClientOnly>
+      <LazyNuxtLazyHydrate whenVisible>
+        <LazyCarSwiperImages
+          :activeSlide="activeSlide"
+          :car="car"
+          :images="images"
+        />
+      </LazyNuxtLazyHydrate>
     </div>
     <div
       class="car-image__list"
@@ -41,7 +21,7 @@
         :src="image?.image?.path_webp + '?w=180'"
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car, currentCity)"
-        @click="changeActiveIndex(index)"
+        @click="activeSlide = index"
         decoding="async"
         loading="lazy"
         width="154"
@@ -61,9 +41,6 @@
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-
 const props = defineProps({
   images: Array,
   car: Object,
@@ -73,8 +50,7 @@ const isShowAll = ref(false);
 
 const currentCity = useState("currentCity");
 
-const swiper = ref();
-const changeActiveIndex = (index) => swiper.value.slideTo(index, 200, false);
+const activeSlide = ref();
 </script>
 
 <style lang="scss" scoped>
@@ -87,24 +63,6 @@ const changeActiveIndex = (index) => swiper.value.slideTo(index, 200, false);
     margin-bottom: 16px;
     position: relative;
     width: 100%;
-
-    &_img {
-      border-radius: 8px;
-      object-fit: cover;
-      // position: absolute;
-      // left: 0;
-      // top: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &__swiper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
   }
 
   &__list {

@@ -5,16 +5,18 @@
     <main class="main">
       <slot />
     </main>
-    <LayoutFooter>
-      <template #joinButton>
-        <UiButton
-          class="wrapper__footer_join"
-          @click="open(), (authModalState = 'register')"
-          variant="outlined"
-          >Join us</UiButton
-        >
-      </template>
-    </LayoutFooter>
+    <LazyNuxtLazyHydrate whenVisible>
+      <LayoutFooter>
+        <template #joinButton>
+          <UiButton
+            class="wrapper__footer_join"
+            @click="open(), (authModalState = 'register')"
+            variant="outlined"
+            >Join us</UiButton
+          >
+        </template>
+      </LayoutFooter>
+    </LazyNuxtLazyHydrate>
     <LazyModalCookie />
   </div>
 </template>
@@ -78,7 +80,6 @@ const initScripts = () => {
 };
 
 onMounted(() => {
-  console.log(analyticalCookie.value)
   if (analyticalCookie.value) {
     nextTick(() => {
       setTimeout(() => {

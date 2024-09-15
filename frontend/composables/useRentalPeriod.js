@@ -20,13 +20,17 @@ export default () => {
 
   const currentCity = useState("currentCity");
 
-  const rentalPeriods = useState("rentalPeriods", () => []);
+  const rentalPeriods = useState("rentalPeriods", () =>
+    currentCity.value?.name
+      ? setRentalPeriods(currentCity.value?.name?.toLowerCase?.())
+      : []
+  );
 
-  if (currentCity.value?.name) {
-    rentalPeriods.value = setRentalPeriods(
-      currentCity.value?.name?.toLowerCase?.()
-    );
-  }
+  // if (currentCity.value?.name) {
+  //   rentalPeriods.value = setRentalPeriods(
+  //     currentCity.value?.name?.toLowerCase?.()
+  //   );
+  // }
 
   watch(
     () => currentCity.value,
