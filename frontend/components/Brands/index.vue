@@ -8,11 +8,13 @@
         convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
       "
     >
-      <LazyNuxtImg
+      <img
         :src="brand?.image_url + '?=w60'"
         :title="brand?.name"
         :alt="`${brand?.name} for rent`"
+        v-lazy-load
         loading="lazy"
+        decoding="async"
         width="40"
         height="40"
       />

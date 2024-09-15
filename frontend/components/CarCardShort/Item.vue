@@ -8,13 +8,14 @@
     <meta itemprop="mainEntityOfPage" :content="link" />
     <link itemprop="availability" href="https://schema.org/InStock" />
     <div class="car-short__image">
-      <LazyNuxtImg
+      <img
         class="car-short__img"
         :src="car?.images?.[0]?.image?.path_webp + '?w=300'"
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car, currentCity)"
-        decoding="async"
+        v-lazy-load
         loading="lazy"
+        decoding="async"
         width="264"
         height="166"
         itemprop="image"
@@ -41,12 +42,14 @@
           <span>per day</span>
         </div>
       </div>
-      <LazyNuxtImg
+      <img
         class="car-short__brand"
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
+        v-lazy-load
         loading="lazy"
+        decoding="async"
         width="40"
         height="40"
       />

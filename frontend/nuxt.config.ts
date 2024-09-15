@@ -82,6 +82,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/device",
     "@vite-pwa/nuxt",
+    "nuxt-lazy-load",
   ],
 
   build: {
@@ -107,6 +108,9 @@ export default defineNuxtConfig({
       enabled: true,
       type: "module",
     },
+  },
+  lazyLoad: {
+    directiveOnly: true,
   },
 
   target: "server",

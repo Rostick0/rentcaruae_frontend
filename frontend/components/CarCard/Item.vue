@@ -3,17 +3,19 @@
     <meta itemprop="description" :content="car?.description" />
     <div class="car__top">
       <div class="car__title" itemprop="name">{{ car?.title }}</div>
-      <LazyNuxtImg
+      <img
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
-        loading="lazy"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
+        v-lazy-load
+        loading="lazy"
+        decoding="async"
         width="40"
         height="40"
       />
     </div>
     <NuxtLink class="car__image" :to="link" itemprop="mainEntityOfPage">
-      <LazyNuxtImg
+      <img
         class="car__img"
         :src="
           car?.images?.[0]?.image?.path_webp +
@@ -23,8 +25,9 @@
         "
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car, currentCity)"
-        decoding="async"
+        v-lazy-load
         loading="lazy"
+        decoding="async"
         width="320"
         height="196"
         itemprop="image"

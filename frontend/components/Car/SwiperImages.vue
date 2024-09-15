@@ -13,17 +13,15 @@
     }"
   >
     <SwiperSlide v-for="image in images" :key="image?.id">
-      <LazyClientOnly>
-        <LazyNuxtImg
-          class="car-image__main_img"
-          :src="image?.image?.path_webp + '?w=700'"
-          :title="getCarImageTitle(car, currentCity)"
-          :alt="getCarImageAlt(car, currentCity)"
-          decoding="async"
-          loading="lazy"
-          fit="cover"
-        />
-      </LazyClientOnly>
+      <img
+        class="car-image__main_img"
+        :src="image?.image?.path_webp + '?w=700'"
+        :title="getCarImageTitle(car, currentCity)"
+        :alt="getCarImageAlt(car, currentCity)"
+        v-lazy-load
+        decoding="async"
+        loading="lazy"
+      />
     </SwiperSlide>
   </Swiper>
 </template>

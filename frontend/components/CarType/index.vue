@@ -17,10 +17,12 @@
         modelValue === type.name.toLowerCase() ? 'standard' : 'outlined'
       "
     >
-      <LazyNuxtImg
+      <img
         :src="type.img"
         :alt="type.name"
+        v-lazy-load
         loading="lazy"
+        decoding="async"
         width="52"
         height="26"
       />

@@ -19,42 +19,42 @@
           linkText="All Economy cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="vanCars?.length"
           :cars="vanCars"
           title="Van cars"
           linkText="All Van cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="suvCars?.length"
           :cars="suvCars"
           title="SUV for rent"
           linkText="All SUV"
           :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="cabrioCars?.length"
           :cars="cabrioCars"
           title="Cabrio cars"
           linkText="All Cabrio cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="businessCars?.length"
           :cars="businessCars"
           title="Business cars"
           linkText="All Business cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="luxuryCars?.length"
           :cars="luxuryCars"
           title="Luxury cars"
           linkText="All Luxury cars"
           :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
         />
-        <CarCardShortList
+        <LazyCarCardShortList
           v-if="electroCars?.length"
           :cars="electroCars"
           title="Electro cars"

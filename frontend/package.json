@@ -25,6 +25,7 @@
     "moment": "^2.30.1",
     "nuxt": "^3.12.3",
     "nuxt-lazy-hydrate": "^1.0.0",
+    "nuxt-lazy-load": "^3.0.4",
     "stripe": "^16.9.0",
     "swiper": "^11.1.12",
     "uuid": "^10.0.0",

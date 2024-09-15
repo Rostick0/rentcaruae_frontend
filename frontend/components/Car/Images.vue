@@ -14,7 +14,7 @@
       :class="{ all: isShowAll }"
       v-if="images?.length && $device?.isDesktopOrTablet"
     >
-      <LazyNuxtImg
+      <img
         class="car-image__item"
         v-for="(image, index) in images"
         :key="image?.id"
@@ -22,6 +22,7 @@
         :title="getCarImageTitle(car, currentCity)"
         :alt="getCarImageAlt(car, currentCity)"
         @click="activeSlide = index"
+        v-lazy-load
         decoding="async"
         loading="lazy"
         width="154"
