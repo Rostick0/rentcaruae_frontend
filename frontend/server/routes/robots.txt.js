@@ -18,6 +18,6 @@ Disallow: /index.php
 Disallow: /*?page=
 Disallow: /*&page=
 
-Host: ${config.public.HOST}
-Sitemap: ${config.public.HOST}/sitemap.xml`;
+Host: ${config.public.BASE_URL}
+Sitemap: ${config.public.BASE_URL}/sitemap.xml`;
 });
