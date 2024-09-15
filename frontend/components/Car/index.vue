@@ -45,9 +45,9 @@
       </LazyCarCalc>
     </div>
   </div>
-  <UiModalToast title="Thank you for booking" :name="name">
+  <LazyUiModalToast title="Thank you for booking" :name="name">
     <p>A company representative will contact you within 1 hour</p>
-  </UiModalToast>
+  </LazyUiModalToast>
 </template>
 
 <script setup>

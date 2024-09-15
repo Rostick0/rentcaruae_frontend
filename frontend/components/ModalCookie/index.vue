@@ -104,7 +104,7 @@ onMounted(() => {
     if (route.path !== "/privacy_policy") {
       open();
     }
-  }, 500);
+  }, 1500);
 });
 
 const isCustomize = ref(false);
