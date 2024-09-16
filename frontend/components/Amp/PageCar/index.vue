@@ -86,7 +86,7 @@ const { data: cars, get: getCars } = await useApi({
 await getCars();
 
 const route = useRoute();
-const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
+const isLeasing = computed(() => route.fullPath.split("/")[3] === "leasing");
 
 const { h1, title, description } = getCarSeo(data.value, isLeasing.value);
 

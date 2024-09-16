@@ -205,8 +205,14 @@ const props = defineProps({
 
 const route = useRoute();
 
-const isBook = ref();
+const isBook = ref(route.query?.["open-book"]);
 const book = ref();
+
+onMounted(() => {
+  if (isBook.value) {
+    book.value?.scrollIntoView({ behavior: "smooth" });
+  }
+});
 
 const clickBook = () => {
   isBook.value = true;

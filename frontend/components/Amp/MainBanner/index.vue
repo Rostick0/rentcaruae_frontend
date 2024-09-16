@@ -7,7 +7,7 @@
           <h2 class="banner__subtitle">
             Book a car for a day or a month without commission
           </h2>
-          <MainSearch class="banner__search" />
+          <AmpMainSearch class="banner__search" />
           <div class="banner__links">
             <NuxtLink
               v-for="link in links"

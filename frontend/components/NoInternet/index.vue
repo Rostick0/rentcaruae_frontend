@@ -68,6 +68,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  min-height: 100dvh;
 
   &__title {
     margin-bottom: 60px;
@@ -75,6 +76,10 @@
 
   &__icon {
     margin-bottom: 60px;
+  }
+
+  &__text {
+    margin-bottom: 16px;
   }
 
   &__btn {

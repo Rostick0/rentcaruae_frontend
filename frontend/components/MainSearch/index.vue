@@ -3,6 +3,7 @@
     <div class="main-search__field">
       <input
         class="main-search__input"
+        ref="searchInput"
         v-model="search"
         type="text"
         :placeholder="placeholder"
@@ -63,7 +64,6 @@
         </svg>
       </UiButton>
     </div>
-    <!-- {{ brands }} -->
     <div class="main-search__options" v-show="isShow">
       <div class="main-search__models" v-if="modelCars?.length">
         <UiButton
@@ -105,6 +105,10 @@
 <script setup>
 import debounce from "lodash/debounce";
 
+const route = useRoute();
+
+const searchInput = ref();
+
 const props = defineProps({
   placeholder: {
     type: String,
@@ -114,8 +118,13 @@ const props = defineProps({
 });
 
 const search = ref("");
-// const isShow = computed(() => search.value?.length >= 3);
 const isShow = ref();
+
+onMounted(() => {
+  if (route.query?.["focus-banner"]) {
+    searchInput.value?.focus?.();
+  }
+});
 
 watch(
   () => search.value?.length,

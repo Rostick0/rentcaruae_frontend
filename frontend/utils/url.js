@@ -40,6 +40,8 @@ export const setOneFilterValue = (routeParams, param = "") => {
   return data;
 };
 
+// export const replaceAmp = (string) => string?.replace?.("/amp", "");
+
 // export const updateQueryParams = (oldParams, newParams) => ({
 //   ...oldParams,
 //   newParams,

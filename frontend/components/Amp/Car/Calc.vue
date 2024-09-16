@@ -5,12 +5,6 @@
         <div class="calc__top_title calc__title">
           {{ periodSelect.modelValue?.name }} rental offer
         </div>
-        <div class="calc__top_period">
-          <span>Selected period:</span>
-          <div>
-            <VFormComponent :field="periodSelect" />
-          </div>
-        </div>
       </div>
       <div class="calc__top_right">
         <div class="calc__price-old">
@@ -29,24 +23,21 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/deposit.svg"
+            src="/frontend-images/icon/deposit.svg"
             alt="Deposit"
             width="20"
             height="20"
           />
           <span>Deposit</span>
         </div>
-        <strong v-if="without_deposite.modelValue" class="color-basic"
-          >FREE</strong
-        >
-        <span v-else>AED {{ car?.security_deposit?.price }}</span>
+        <span>AED {{ car?.security_deposit?.price }}</span>
       </div>
       <div class="calc-item__flex" v-if="!car?.free_per_day_security">
         <div class="calc-item__flex_left">
-          <VFormComponent
-            class="calc-item__switch calc-item__size-small"
-            :field="without_deposite"
-          />
+          <div>
+            You can rent a car without any deposit dy including the additional
+            service fee in your rental price
+          </div>
         </div>
         <div class="calc-item__flex_right">
           AED 45 <br />
@@ -56,7 +47,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/calendar.svg"
+            src="/frontend-images/icon/calendar.svg"
             alt="Calendar"
             width="20"
             height="20"
@@ -70,7 +61,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/map.svg"
+            src="/frontend-images/icon/map.svg"
             alt="Calendar"
             width="20"
             height="20"
@@ -82,7 +73,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/settings.svg"
+            src="/frontend-images/icon/settings.svg"
             alt="Calendar"
             width="20"
             height="20"
@@ -94,7 +85,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/protect.svg"
+            src="/frontend-images/icon/protect.svg"
             alt="Calendar"
             width="20"
             height="20"
@@ -106,7 +97,7 @@
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
           <amp-img
-            src="frontend-images/icon/card.svg"
+            src="/frontend-images/icon/card.svg"
             alt="Calendar"
             width="20"
             height="20"
@@ -116,7 +107,9 @@
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button">Book</UiButton>
+      <NuxtLink :to="route.path?.replace('/amp', '') + '?open-book=true'">
+        <UiButton class="calc__button">Book</UiButton>
+      </NuxtLink>
       <a
         class="d-flex"
         @click="clickWhatsApp"
@@ -134,8 +127,9 @@
 </template>
 
 <script setup>
-import moment from "moment";
 import api from "~/api";
+
+const route = useRoute();
 
 const props = defineProps({
   car: Object,
@@ -168,39 +162,6 @@ const periodSelect = ref({
   },
 });
 
-const period = ref({
-  type: "date",
-  name: "period",
-  modelValue: [new Date(), new Date()],
-
-  bind: {
-    autoApply: true,
-    inline: true,
-    enableTimePicker: false,
-    range: true,
-    monthNameFormat: "long",
-    minDate: new Date(),
-  },
-});
-
-const without_deposite = ref({
-  type: "switch",
-  name: "without_deposite",
-  modelValue: false,
-
-  bind: {
-    label:
-      "You can rent a car without any deposit dy including the additional service fee in your rental price",
-  },
-});
-
-const periodRental = ref(
-  moment(period.modelValue?.[1]).diff(moment(period.modelValue?.[0]), "days") +
-    1
-);
-
-const periodText = computed(() => pluralize("day", periodRental?.value));
-
 const maxMileage = computed(
   () =>
     props?.car?.price?.find(
@@ -228,31 +189,6 @@ const price = computed(() =>
         (item) => item?.period === periodSelect.value.modelValue.period
       )?.price
   )
-);
-
-const withoutDepositePrice = computed(() =>
-  without_deposite.value?.modelValue ? 45 * periodRental.value : 0
-);
-
-const priceRental = computed(() =>
-  getPeriodPrice(props.car, periodRental.value)
-);
-
-const preTotal = computed(() =>
-  Math.round(priceRental.value + withoutDepositePrice.value)
-);
-const tax = computed(() => Math.round(preTotal.value * 0.05));
-const total = computed(() => preTotal.value + tax.value);
-
-watch(
-  () => period.value.modelValue,
-  () => {
-    periodRental.value =
-      moment(period.value.modelValue?.[1]).diff(
-        moment(period.value.modelValue?.[0]),
-        "days"
-      ) + 1;
-  }
 );
 </script>
 

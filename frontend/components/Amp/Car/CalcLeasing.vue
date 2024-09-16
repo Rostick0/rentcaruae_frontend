@@ -12,28 +12,6 @@
         </div>
       </div>
     </div>
-    <div class="calc-range">
-      <div class="calc-range__top text-ui text-pre-small">
-        <div class="">{{ periodRental }} {{ periodText }}</div>
-        <div class="text-right">
-          <del
-            class="calc-range__del color-red"
-            v-if="periodSelect.modelValue !== 0"
-            >AED
-            {{ formatNumber(priceRentalDel) }}
-          </del>
-          <div class="">
-            AED
-            {{ formatNumber(priceRental) }}
-          </div>
-        </div>
-      </div>
-      <VFormComponent :field="periodSelect" />
-      <div class="calc-range__bottom">
-        <div class="">{{ minMonth }}</div>
-        <div class="">{{ maxMonth }}</div>
-      </div>
-    </div>
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -110,7 +88,12 @@
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
+      <NuxtLink
+        class="d-fle"
+        :to="route.path?.replace('/amp', '') + '?open-book=true'"
+      >
+        <UiButton class="calc__button">Book</UiButton>
+      </NuxtLink>
       <a
         class="d-flex"
         @click="clickWhatsApp"
@@ -135,20 +118,11 @@ import lastItem from "lodash/last";
 import moment from "moment";
 import api from "~/api";
 
+const route = useRoute();
+
 const props = defineProps({
   car: Object,
 });
-
-const isBook = ref();
-const book = ref();
-
-const clickBook = () => {
-  isBook.value = true;
-
-  nextTick(() => {
-    book.value?.scrollIntoView({ behavior: "smooth" });
-  });
-};
 
 const isAddStatisticWhatsApp = ref(false);
 
@@ -240,22 +214,6 @@ const maxMonth = computed(() => {
 <style lang="scss" scoped>
 @import "../../../assets/scss/components/calc-amount";
 @import "../../../assets/scss/components/car-carc";
-
-.calc {
-  &-range {
-    &__top,
-    &__bottom {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 500;
-    }
-
-    &__top {
-      align-items: flex-end;
-      font-size: 14px;
-    }
-  }
-}
 </style>
 
 <style lang="scss">

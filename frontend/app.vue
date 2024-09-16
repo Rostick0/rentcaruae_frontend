@@ -1,11 +1,13 @@
 <template>
-  <div v-if="$pwa.offlineReady">123</div>
-  <div v-if="$pwa.needRefresh">1234</div>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
-  <!-- <NoInternet v-if="$pwa?.needRefresh" /> -->
-  <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
+  <NoInternet v-if="false && $nuxt" />
+
+  <template v-else>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+    <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
+  </template>
+
   <VitePwaManifest />
 </template>
 
@@ -15,23 +17,6 @@ const { email, min, max, required, size, image, min_value, max_value } =
   await import("@vee-validate/rules");
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
-
-const isOffline = ref(false);
-
-onMounted(() => {
-  window.addEventListener("offline", (e) => {
-    //displays an error when the browser is not connected to the internet
-    showError({
-      message: "⚠️ You are not connected to the internet!",
-      statusCode: 503,
-    });
-  });
-});
-// const { $pwa } = useNuxtApp();
-
-// onMounted(() => {
-//   if ($pwa.offlineReady) success("App ready to work offline");
-// });
 
 defineRule("required", required);
 defineRule("email", email);

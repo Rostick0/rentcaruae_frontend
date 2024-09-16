@@ -10,6 +10,7 @@
 
     <UiButton
       class="content-overflow__btn"
+      v-if="!$route.path?.startsWith('/amp')"
       @click.prevent="active = !active"
       variant="outlined"
       >{{ active ? "Hide" : "Show more" }}</UiButton
@@ -22,8 +23,10 @@ const props = defineProps({
   heightDefault: [Number, String],
 });
 
+const route = useRoute();
+
 const isShow = ref();
-const active = ref();
+const active = ref(route.path?.startsWith("/amp"));
 const content = ref();
 
 onMounted(() => {
