@@ -31,7 +31,6 @@
           <amp-img
             src="frontend-images/icon/deposit.svg"
             alt="Deposit"
-            loading="lazy"
             width="20"
             height="20"
           />
@@ -59,7 +58,6 @@
           <amp-img
             src="frontend-images/icon/calendar.svg"
             alt="Calendar"
-            loading="lazy"
             width="20"
             height="20"
           />
@@ -74,7 +72,6 @@
           <amp-img
             src="frontend-images/icon/map.svg"
             alt="Calendar"
-            loading="lazy"
             width="20"
             height="20"
           />
@@ -87,7 +84,6 @@
           <amp-img
             src="frontend-images/icon/settings.svg"
             alt="Calendar"
-            loading="lazy"
             width="20"
             height="20"
           />
@@ -100,7 +96,6 @@
           <amp-img
             src="frontend-images/icon/protect.svg"
             alt="Calendar"
-            loading="lazy"
             width="20"
             height="20"
           />
@@ -113,7 +108,6 @@
           <amp-img
             src="frontend-images/icon/card.svg"
             alt="Calendar"
-            loading="lazy"
             width="20"
             height="20"
           />

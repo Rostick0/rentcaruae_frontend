@@ -34,7 +34,6 @@ export default defineNuxtConfig({
   pages: true,
   app: {
     head: {
-      title: "Car",
       htmlAttrs: {
         lang: "en-US",
       },

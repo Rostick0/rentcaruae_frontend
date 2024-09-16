@@ -38,7 +38,6 @@
         :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
         :title="car?.generation?.model_car?.brand?.name"
         :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
-        loading="lazy"
         width="40"
         height="40"
       />
