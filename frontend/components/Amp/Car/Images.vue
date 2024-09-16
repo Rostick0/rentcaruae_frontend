@@ -1,7 +1,14 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <amp-carousel class="car-image__carousel" type="carousel" role="region">
+      <amp-carousel
+        class="car-image__carousel"
+        layout="responsive"
+        width="390"
+        height="241"
+        type="carousel"
+        role="region"
+      >
         <amp-img
           v-for="image in images"
           :key="image?.id"
