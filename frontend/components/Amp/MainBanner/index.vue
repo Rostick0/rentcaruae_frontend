@@ -25,7 +25,7 @@
             src="/frontend-images/blue_lamborghini.webp"
             alt="RentCarUAE"
             preload
-            width="708"
+            width="495"
             height="330"
           />
         </div>
@@ -113,17 +113,12 @@ const links = computed(() => {
   }
 
   &__img {
-    object-fit: contain;
-    max-width: 708px;
     width: 495px;
-    // width: 50vw;
-  }
 
-  // @media (max-width: 680px) {
-  //   &__img {
-  //     width: 495px;
-  //   }
-  // }
+    img {
+      object-fit: contain;
+    }
+  }
 
   @media (max-width: 576px) {
     &__right {
