@@ -6,7 +6,7 @@
         layout="responsive"
         width="390"
         height="241"
-        type="carousel"
+        type="slides"
         role="region"
       >
         <amp-img
@@ -39,18 +39,18 @@ const currentCity = useState("currentCity");
   margin-bottom: 20px;
 
   &__main {
-    display: flex;
-    padding-top: 62%;
-    margin-bottom: 16px;
-    position: relative;
+    // display: flex;
+    // padding-top: 62%;
+    // margin-bottom: 16px;
+    // position: relative;
     width: 100%;
 
     &_img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+      // position: absolute;
+      // left: 0;
+      // top: 0;
+      // width: 100%;
+      // height: 100%;
 
       img {
         border-radius: 8px;
@@ -60,11 +60,11 @@ const currentCity = useState("currentCity");
   }
 
   &__carousel {
-    position: absolute;
-    left: 0;
-    top: 0;
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
     width: 100%;
-    height: 100%;
+    //   height: 100%;
   }
 }
 </style>
