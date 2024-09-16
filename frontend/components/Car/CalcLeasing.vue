@@ -119,7 +119,6 @@
       <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
       <a
         class="d-flex"
-        @click="clickWhatsApp"
         :href="`https://wa.me/${car?.user?.tel}?text=${getWhatsappText(
           car,
           true
@@ -127,7 +126,10 @@
         rel="noopener nofollow"
         target="_blank"
       >
-        <UiButton class="calc__button no-click" @click.prevent color="whatsapp"
+        <UiButton
+          class="calc__button no-click"
+          @click="clickWhatsApp"
+          color="whatsapp"
           >WhatsApp</UiButton
         >
       </a>
@@ -219,7 +221,7 @@ const clickBook = () => {
 const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
-  if (!isAddStatisticWhatsApp) return;
+  if (!isAddStatisticWhatsApp.value) return;
   isAddStatisticWhatsApp.value = true;
 
   try {

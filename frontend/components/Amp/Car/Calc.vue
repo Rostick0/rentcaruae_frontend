@@ -138,7 +138,7 @@ const props = defineProps({
 const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
-  if (!isAddStatisticWhatsApp) return;
+  if (!isAddStatisticWhatsApp.value) return;
   isAddStatisticWhatsApp.value = true;
 
   try {
