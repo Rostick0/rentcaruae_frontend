@@ -1,4 +1,6 @@
 <template>
+  <div v-if="$pwa.offlineReady">123</div>
+  <div v-if="$pwa.needRefresh">1234</div>
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -14,6 +16,17 @@ const { email, min, max, required, size, image, min_value, max_value } =
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
 
+const isOffline = ref(false);
+
+onMounted(() => {
+  window.addEventListener("offline", (e) => {
+    //displays an error when the browser is not connected to the internet
+    showError({
+      message: "⚠️ You are not connected to the internet!",
+      statusCode: 503,
+    });
+  });
+});
 // const { $pwa } = useNuxtApp();
 
 // onMounted(() => {
