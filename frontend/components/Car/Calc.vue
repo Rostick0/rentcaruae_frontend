@@ -33,7 +33,7 @@
             alt="Deposit"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Deposit</span>
         </div>
@@ -61,7 +61,7 @@
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Minimum rental period</span>
         </div>
@@ -76,7 +76,7 @@
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Total mileage limit</span>
         </div>
@@ -89,7 +89,7 @@
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Service and maintenance</span>
         </div>
@@ -102,7 +102,7 @@
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Basic insurance</span>
         </div>
@@ -115,7 +115,7 @@
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>VAT Tax Applicable</span>
         </div>

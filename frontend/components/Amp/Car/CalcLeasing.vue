@@ -1,5 +1,5 @@
 <template>
-  <form class="calc" @submit="onSubmit">
+  <div class="calc">
     <div class="calc__top">
       <div class="calc__top_left">
         <div class="calc__top_title calc__title">Monthly rental offer</div>
@@ -37,12 +37,12 @@
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/deposit.svg"
+          <amp-img
+            src="/frontend-images/icon/deposit.svg"
             alt="Deposit"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Deposit</span>
         </div>
@@ -50,12 +50,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/calendar.svg"
+          <amp-img
+            src="/frontend-images/icon/calendar.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Minimum rental period</span>
         </div>
@@ -65,12 +65,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/map.svg"
+          <amp-img
+            src="/frontend-images/icon/map.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Total mileage limit</span>
         </div>
@@ -78,12 +78,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/settings.svg"
+          <amp-img
+            src="/frontend-images/icon/settings.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Service and maintenance</span>
         </div>
@@ -91,12 +91,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/protect.svg"
+          <amp-img
+            src="/frontend-images/icon/protect.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Basic insurance</span>
         </div>
@@ -104,12 +104,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
-            src="frontend-images/icon/card.svg"
+          <amp-img
+            src="/frontend-images/icon/card.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>VAT Tax Applicable</span>
         </div>
@@ -133,68 +133,17 @@
       </a>
     </div>
     <slot name="car-info" />
-    <template v-if="isBook">
-      <div class="calc-item" ref="book">
-        <div class="calc__title">Choose rental dates</div>
-        <div class="calc-date">
-          <div class="calc-date__item">
-            <strong class="calc-item__size-small">Start date</strong>
-            <div class="text-ui">
-              {{ startDateFormated }}
-            </div>
-          </div>
-          <div class="calc-date__item">
-            <strong class="calc-item__size-small">Your rental</strong>
-            <div class="calc__price text-ui">
-              {{ periodRental }} {{ periodText }}
-            </div>
-          </div>
-        </div>
-        <VFormComponent :field="start_date" />
-      </div>
-      <CarForm
-        :periodRental="periodRental"
-        :priceRental="priceRental"
-        :periodText="periodText"
-        :tax="tax"
-      >
-        <template #calc-stats>
-          <div class="calc-amount__flex">
-            <div class="calc-amount__flex_left">Start date</div>
-            <strong class="text-ui calc-amount__size-small">{{
-              startDateFormated
-            }}</strong>
-          </div>
-          <div class="calc-amount__flex">
-            <div class="calc-amount__flex_left">Car delivery</div>
-            <strong class="calc-amount__size-small">Free</strong>
-          </div>
-        </template>
-        <template #summary>
-          <div class="calc-amount__flex">
-            <div class="calc__title">Monthly payment</div>
-            <strong class="calc-amount__price">
-              AED
-              <span class="calc-amount__price_val">{{ price }}</span>
-            </strong>
-          </div>
-        </template>
-      </CarForm>
-    </template>
-  </form>
+  </div>
 </template>
 
 <script setup>
 import lastItem from "lodash/last";
-import { useForm } from "vee-validate";
 import moment from "moment";
 import api from "~/api";
 
 const props = defineProps({
   car: Object,
 });
-
-const route = useRoute();
 
 const isBook = ref();
 const book = ref();
@@ -222,30 +171,6 @@ const clickWhatsApp = async () => {
     });
   } catch {}
 };
-
-const { handleSubmit, setErrors } = useForm();
-
-const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
-  const data = {
-    ...values,
-    start_date: moment(start_date).format("YYYY-MM-DD"),
-    tel: convertPhoneToDb(tel),
-    car_id: route.params.id,
-    type: "leasing",
-  };
-
-  const res = await api.operations.create({ data });
-
-  if (res?.error) {
-    warningPopup(res?.errorResponse?.data?.message);
-    setErrors(res?.errorResponse?.data?.errors);
-    return;
-  }
-
-  success("Thank you for your application");
-
-  isBook.value = false;
-});
 
 const periodSelect = ref({
   type: "range",
@@ -302,7 +227,6 @@ const priceRental = computed(
     props.car?.price_leasing[periodSelect.value.modelValue]?.price *
     (props.car?.price_leasing[periodSelect.value.modelValue]?.period / 30)
 );
-const tax = computed(() => Math.round(priceRentalDel.value * 0.05));
 
 const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
 
@@ -320,8 +244,8 @@ const maxMonth = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/components/calc-amount";
-@import "../../assets/scss/components/car-carc";
+@import "../../../assets/scss/components/calc-amount";
+@import "../../../assets/scss/components/car-carc";
 
 .calc {
   &-range {

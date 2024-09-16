@@ -113,10 +113,25 @@ export default defineNuxtConfig({
     directiveOnly: true,
   },
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag: any) => ["amp-img", "amp-carousel"].includes(tag),
+    },
+  },
+
   target: "server",
   modern: "server",
   routeRules: {
+    "/404": {
+      static: true,
+    },
     "/privacy_policy": {
+      static: true,
+    },
+    "/terms_of_service": {
+      static: true,
+    },
+    "/sitemap": {
       static: true,
     },
     "/amp": {

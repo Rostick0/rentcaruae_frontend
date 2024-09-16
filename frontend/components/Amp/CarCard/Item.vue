@@ -2,13 +2,16 @@
   <div class="car">
     <div class="car__top">
       <div class="car__title">{{ car?.title }}</div>
-      <amp-img
-        :src="car?.generation?.model_car?.brand?.image_url + '?=w60'"
-        :title="car?.generation?.model_car?.brand?.name"
-        :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
-        width="40"
-        height="40"
-      />
+      <div class="car__brand">
+        <amp-img
+          class="car__brand_img"
+          :src="car?.generation?.model_car?.brand?.image_url + '?w=60'"
+          :title="car?.generation?.model_car?.brand?.name"
+          :alt="`${car?.generation?.model_car?.brand?.name} for rent`"
+          width="40"
+          height="40"
+        />
+      </div>
     </div>
     <NuxtLink class="car__image" :to="link">
       <amp-img

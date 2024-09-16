@@ -32,10 +32,6 @@
 </template>
 
 <script setup>
-// const props = defineProps({
-//   breadcrumbs: Array,
-// });
-
 const currentCity = useState("currentCity");
 const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
@@ -95,13 +91,6 @@ const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 const { h1, title, description } = getCarSeo(data.value, isLeasing.value);
 
 useHead({
-  // title,
-  // meta: [
-  //   {
-  //     name: "description",
-  //     content: description,
-  //   },
-  // ],
   script: [
     {
       innerHTML: JSON.stringify({
@@ -164,6 +153,11 @@ useHead({
         },
       }),
       type: "application/ld+json",
+    },
+    {
+      async: true,
+      "custom-element": "amp-carousel",
+      src: "https://cdn.ampproject.org/v0/amp-carousel-0.1.js",
     },
   ],
 });

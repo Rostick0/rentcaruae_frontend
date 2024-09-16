@@ -33,8 +33,9 @@ export default defineNitroPlugin((nuxtApp) => {
         /<link[^>]*rel="stylesheet" href=".*\.css[^>]*>/gi,
         ""
       );
-      // html.head[0] = html.head[0]?.replaceAll("<style>", "<style amp-custom>");
       // html.body[0] = html.body[0]?.replaceAll("<img", "<amp-img");
+      // html.body[0] = html.body[0]?.replaceAll("<carousel", "<amp-carousel");
+
       html.head.push(
         `<style amp-custom>${getStyleText(html.head[0])}</style>`.replaceAll(
           "!important",

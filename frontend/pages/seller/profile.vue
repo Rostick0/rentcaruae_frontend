@@ -55,8 +55,6 @@ const isShowVerificationAction = ref(
     user.value?.company?.sertificate
 );
 
-console.log(user.value);
-
 const createVerification = async () => {
   const res = await api.verificationUsers.create({});
   if (res?.error) {

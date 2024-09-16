@@ -1,5 +1,5 @@
 <template>
-  <form class="calc">
+  <div class="calc">
     <div class="calc__top">
       <div class="calc__top_left">
         <div class="calc__top_title calc__title">
@@ -28,12 +28,12 @@
     <div class="calc-item">
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/deposit.svg"
             alt="Deposit"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Deposit</span>
         </div>
@@ -56,12 +56,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/calendar.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Minimum rental period</span>
         </div>
@@ -71,12 +71,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/map.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Total mileage limit</span>
         </div>
@@ -84,12 +84,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/settings.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Service and maintenance</span>
         </div>
@@ -97,12 +97,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/protect.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>Basic insurance</span>
         </div>
@@ -110,12 +110,12 @@
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
-          <LazyNuxtImg
+          <amp-img
             src="frontend-images/icon/card.svg"
             alt="Calendar"
             loading="lazy"
             width="20"
-            heihgt="20"
+            height="20"
           />
           <span>VAT Tax Applicable</span>
         </div>
@@ -136,7 +136,7 @@
       </a>
     </div>
     <slot name="car-info" />
-  </form>
+  </div>
 </template>
 
 <script setup>
@@ -263,8 +263,8 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/components/car-carc";
-@import "../../assets/scss/components/calc-amount";
+@import "../../../assets/scss/components/car-carc";
+@import "../../../assets/scss/components/calc-amount";
 </style>
 
 <style lang="scss">

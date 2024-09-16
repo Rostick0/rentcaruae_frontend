@@ -6,7 +6,7 @@
 import startCase from "lodash/startCase";
 
 const props = defineProps({
-  type: String,
+  type: Object,
 });
 
 const componentImport = computed(async () => {

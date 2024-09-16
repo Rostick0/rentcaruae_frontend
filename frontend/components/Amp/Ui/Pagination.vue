@@ -20,7 +20,7 @@
 const route = useRoute();
 
 const getUrl = (pageNumber) =>
-  `${route.path.replace("/amp", "")}/page-${pageNumber}${
+  `${route.path.replace("/amp", "")}page-${pageNumber}${
     route.query ? "?" + new URLSearchParams(route.query).toString() : ""
   }`;
 

@@ -1,33 +1,27 @@
 <template>
   <div class="car">
     <div class="car__left">
-      <LazyCarImages :images="car?.images" :car="car" />
-      <CarInfo
-        v-if="$device.isDesktopOrTablet"
-        :car="car"
-        :specifications="specifications"
-        :isLeasing="isLeasing"
-      />
+      <AmpCarImages :images="car?.images" :car="car" />
     </div>
     <div class="car__right">
-      <LazyCarCalcLeasing v-if="isLeasing" :car="car">
+      <AmpCarCalcLeasing v-if="isLeasing" :car="car">
         <template v-if="$device.isMobile" #car-info>
-          <CarInfo
+          <AmpCarInfo
             :car="car"
             :specifications="specifications"
             :isLeasing="isLeasing"
           />
         </template>
-      </LazyCarCalcLeasing>
-      <LazyCarCalc v-else :car="car">
+      </AmpCarCalcLeasing>
+      <AmpCarCalc v-else :car="car">
         <template v-if="$device.isMobile" #car-info>
-          <CarInfo
+          <AmpCarInfo
             :car="car"
             :specifications="specifications"
             :isLeasing="isLeasing"
           />
         </template>
-      </LazyCarCalc>
+      </AmpCarCalc>
     </div>
   </div>
 </template>
@@ -49,7 +43,7 @@ const specifications = computed(() =>
 <style lang="scss" scoped>
 .car {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   column-gap: 20px;
   margin-bottom: 20px;
 
@@ -57,25 +51,6 @@ const specifications = computed(() =>
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-  }
-
-  &__left {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-
-  &__right {
-    flex: 0 0 456px;
-    position: sticky;
-    top: 16px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-wrap: wrap;
-
-    &__right {
-      flex: 1 0 100%;
-    }
   }
 }
 </style>

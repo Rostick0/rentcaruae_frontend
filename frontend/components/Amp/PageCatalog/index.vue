@@ -5,7 +5,7 @@
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
       <AmpCarType id="carType" v-model="filters['filterEQ[generation.name]']" />
-      <LazyFilter :prices="prices" />
+      <Filter :prices="prices" />
       <AmpCarCardList :cars="cars[0]" :isLeasing="isLeasing" />
       <AmpCarCardShortList
         class="catalog__specials"
@@ -35,6 +35,8 @@ const props = defineProps({
     default: {},
   },
 });
+
+const config = useRuntimeConfig();
 
 const route = useRoute();
 const currentCity = useState("currentCity");
@@ -108,22 +110,6 @@ const { data: prices, get: getPrices } = await useApi({
 });
 await getPrices();
 
-// watch(filters.value, (newV) => {
-//   ["filterEQ[generation.name]"]?.forEach((item) => {
-//     const a = item?.replace("filterEQ[", "filterEQ[car.");
-//     if (newV[item] !== pricesFilters.value[a]) {
-//       pricesFilters.value[a] = newV[item];
-//     }
-//   });
-// });
-
-// watch(
-//   () => currentCity.value,
-//   (newV) => {
-//     filters.value["filterIN[cities.city_id]"] = newV?.id;
-//   }
-// );
-
 const pageText = computed(() =>
   filters.value.page > 1 ? `- Page ${filters.value.page}` : ""
 );
@@ -134,20 +120,6 @@ const breadcrumbs = computed(() =>
     rent: rent.value,
     oneFilterType: oneFilterType.value,
   })
-);
-
-watch(
-  () => filters.value.page,
-  (newV) => {
-    document
-      .querySelector("#carType")
-      ?.scrollIntoView?.({ behavior: "smooth" });
-    window.history.pushState({}, null, setCatalogUrl(route.path, newV));
-    useHead({
-      title:
-        `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
-    });
-  }
 );
 
 const { title, description, h1 } = getCatalogSeo(
@@ -162,9 +134,9 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-  // ogImage: data.value?.images?.[0]?.image?.path_webp,
-  // ogImageWidth: data.value?.images?.[0]?.image?.width,
-  // ogImageHeight: data.value?.images?.[0]?.image?.height,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
 });
 </script>
 

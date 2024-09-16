@@ -3,13 +3,17 @@
     <NuxtLink class="d-flex">
       <UiButton
         class="car-type__item"
-        @click="emits('update:modelValue', '')"
         :variant="!modelValue ? 'standard' : 'outlined'"
       >
         All Cars
       </UiButton>
     </NuxtLink>
-    <NuxtLink class="d-flex" v-for="type in bodyTypesWithIcon" :key="type.name">
+    <NuxtLink
+      class="d-flex"
+      v-for="type in bodyTypesWithIcon"
+      :key="type.name"
+      :to="`/${currentCity?.name}/${type.name.toLowerCase()}`"
+    >
       <UiButton
         class="car-type__item text-pre-small"
         :class="{ active: modelValue === type.name.toLowerCase() }"
@@ -19,7 +23,7 @@
       >
         <div class="d-flex">
           <amp-img
-            :src="`/${type.img}`"
+            :src="`${type.img}`"
             :alt="type.name"
             width="52"
             height="26"
@@ -35,6 +39,8 @@
 const props = defineProps({
   modelValue: String,
 });
+
+const currentCity = useState("currentCity");
 </script>
 
 <style lang="scss" scoped>
@@ -52,6 +58,7 @@ const props = defineProps({
     column-gap: 4px;
     flex-shrink: 0;
     font-weight: 700;
+    white-space: nowrap;
     padding: 7px 7.75px;
 
     &.outlined {

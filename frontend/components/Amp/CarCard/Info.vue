@@ -9,9 +9,8 @@
       </div>
       <div class="car__characteristics">
         <div class="car-characteristic" :title="car?.transmission?.name">
-          <div class="d-flex">
-            <img
-              class="car-characteristic__iconc"
+          <div class="car-characteristic__icon">
+            <amp-img
               src="/frontend-images/icon/auto.svg"
               alt="fuel type"
               width="20"
@@ -23,9 +22,8 @@
           }}</span>
         </div>
         <div class="car-characteristic">
-          <div class="d-flex">
-            <img
-              class="car-characteristic__icon"
+          <div class="car-characteristic__icon">
+            <amp-img
               src="/frontend-images/icon/persons.svg"
               alt="persons"
               width="20"
@@ -35,9 +33,8 @@
           <span class="car-characteristic__text">{{ car?.seats }} Person</span>
         </div>
         <div class="car-characteristic">
-          <div class="d-flex">
+          <div class="car-characteristic__icon">
             <amp-img
-              class="car-characteristic__icon"
               :src="`/frontend-images/icon/${
                 car?.fuel_type?.name === 'Electro' ? 'electric' : 'petrol'
               }.svg`"
@@ -127,6 +124,8 @@ const props = defineProps({
 
     &__icon {
       flex-shrink: 0;
+      // width: 20px;
+      // height: 20px;
     }
 
     &__text {
