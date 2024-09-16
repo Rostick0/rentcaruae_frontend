@@ -12,7 +12,6 @@
         :src="brand?.image_url + '?=w60'"
         :title="brand?.name"
         :alt="`${brand?.name} for rent`"
-        loading="lazy"
         width="40"
         height="40"
       />

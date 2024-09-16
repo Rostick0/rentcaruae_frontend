@@ -24,7 +24,6 @@
             class="banner__img"
             src="/frontend-images/blue_lamborghini.webp"
             alt="RentCarUAE"
-            preload
             width="495"
             height="330"
           />
