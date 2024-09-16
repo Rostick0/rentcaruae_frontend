@@ -3,7 +3,6 @@
     <li class="pagination-item" v-for="idx of items" v-bind:key="idx">
       <NuxtLink
         class="pagination-btn"
-        type="button"
         :class="{
           active: idx === modelValue,
         }"
