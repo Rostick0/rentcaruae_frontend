@@ -101,6 +101,14 @@ export default defineNuxtConfig({
     workbox: {
       navigateFallback: "/",
       importScripts: ["https://push4site.com/static/sw/rentcaruae.js"],
+      cacheId: "nuxt",
+      runtimeCaching: [
+        {
+          urlPattern: "/",
+          handler: "NetworkFirst",
+          method: "GET",
+        },
+      ],
     },
 
     devOptions: {
