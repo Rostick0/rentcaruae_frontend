@@ -7,4 +7,5 @@ export default {
     useFetcher().patch(`/cars/${id}`, data, params),
   getAll: async ({ params }) => useFetcher().get(`/cars`, params),
   create: async ({ data }) => useFetcher().post(`/cars`, data),
+  getMyIds: async () => useFetcher().get(`/cars/my-ids/`),
 };

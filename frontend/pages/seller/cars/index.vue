@@ -14,11 +14,13 @@
       </strong>
     </div>
     <SellerCarsTable
+      :selectValue="countSelected === carsSelected?.length"
       :cars="data"
       :carsSelected="carsSelected"
       @selectCar="(car) => ((carSelected = car), open())"
       @setCarsSelected="changeCarsSelected"
       @changeOneCarSelected="changeOneCarSelected"
+      v-model="filters"
     />
     <AnyPagination
       :currentPage="meta?.current_page"
@@ -67,8 +69,9 @@ const { open, close } = useModal({
 
 const carSelected = ref(null);
 
+const carsIds = await api.car.getMyIds();
 const carsSelected = ref(
-  data.value?.map(({ id }) => ({
+  await carsIds?.data?.map?.(({ id }) => ({
     id,
     value: false,
   }))
@@ -83,7 +86,7 @@ const price = computed(() =>
 );
 
 const changeCarsSelected = (value) => {
-  carsSelected.value = data.value?.map?.(({ id }) => ({
+  carsSelected.value = carsSelected.value?.map?.(({ id }) => ({
     id,
     value,
   }));
