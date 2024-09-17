@@ -50,7 +50,7 @@ configure({
 });
 
 const { accessToken, user, getUser } = await useAuth();
-if (true || accessToken.value && !user.value) {
+if (accessToken.value && !user.value) {
   await getUser();
 }
 
