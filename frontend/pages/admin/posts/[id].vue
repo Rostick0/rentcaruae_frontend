@@ -2,6 +2,9 @@
   <form @submit="onSubmit">
     <AdminPostForm :post="data" />
   </form>
+  <br />
+  <UiButton @click="open" variant="red">Delete</UiButton>
+  <AnyModalDelete :functionConfirm="functionConfirm" />
 </template>
 
 <script setup>
@@ -46,6 +49,15 @@ const onSubmit = handleSubmit(
     warningPopup("Not all fields are valid");
   }
 );
+
+const { open } = useModal({
+  name: "delete-modal",
+});
+
+const functionConfirm = async () => {
+  await api.posts.delete({ id });
+  router.go(-1);
+};
 
 definePageMeta({
   layout: "admin",

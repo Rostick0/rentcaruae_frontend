@@ -12,7 +12,7 @@ defineComponent({
 });
 
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
-  variant?: "standard" | "outlined";
+  variant?: "standard" | "outlined" | "red";
   color?: "whatsapp";
 }
 
@@ -58,6 +58,10 @@ defineProps<Props>();
         stroke: var(--color-basic-hover);
       }
     }
+  }
+
+  &.red {
+    background-color: var(--color-red);
   }
 
   &.whatsapp {

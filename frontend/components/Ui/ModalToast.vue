@@ -23,7 +23,9 @@
         <div class="modal-toast__content_inner">
           <slot />
         </div>
-        <div class="modal-toast__bottom">
+
+        <slot v-if="$slots.bottom" name="bottom" />
+        <div class="modal-toast__bottom" v-else>
           <UiButton class="modal-toast__btn" @click="close">{{
             btnName
           }}</UiButton>
@@ -66,6 +68,7 @@ const { close } = useModal({
   &__top {
     border-bottom: 1px solid var(--color-line);
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 20px;
     padding-bottom: 12px;
