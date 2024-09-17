@@ -22,7 +22,7 @@ export default async () => {
 
       setUser(resp);
 
-      if (isRedirect) navigateTo("/");
+      if (isRedirect) navigateTo("/seller");
     } catch (error) {
       console.error(error);
     }

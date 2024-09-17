@@ -79,10 +79,13 @@ watch(
   debounce(async (newValue) => {
     if (newValue.length !== 6) return;
 
-    const errors = await login({
-      email: email.value.modelValue,
-      code: newValue,
-    });
+    const errors = await login(
+      {
+        email: email.value.modelValue,
+        code: newValue,
+      },
+      true
+    );
 
     if (errors) {
       setErrors(errors);
