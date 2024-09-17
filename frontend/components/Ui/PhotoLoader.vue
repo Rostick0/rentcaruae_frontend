@@ -40,7 +40,7 @@
         accept="image/png,image/jpeg,image/jpg"
       />
       <div v-if="url" class="photoloader__image">
-        <img class="photoloader__img" :src="url" alt="Error" />
+        <NuxtImg class="photoloader__img" :src="url" alt="Error" />
       </div>
       <span v-else class="photoloader__block_content">
         <svg

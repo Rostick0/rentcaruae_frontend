@@ -28,10 +28,11 @@
                   >
                     ✖
                   </div>
-                  <img
+                  <NuxtImg
                     class="photoloader__img"
                     :src="item?.path"
                     alt="Error"
+                    loading="lazy"
                     width="154"
                     height="96"
                   />
