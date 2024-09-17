@@ -73,6 +73,11 @@ const route = useRoute();
 const cookieWatch = watch(
   () => route.path,
   (newV) => {
+    if (acceptedCookie.value) {
+      cookieWatch();
+      return;
+    }
+
     if (newV === "/privacy_policy") {
       close();
       return;
@@ -97,7 +102,6 @@ const onAccepted = () => {
 onMounted(() => {
   setTimeout(() => {
     if (acceptedCookie.value) {
-      cookieWatch();
       return;
     }
 

@@ -1,11 +1,14 @@
 <template>
   <div class="seller-pagination" v-if="totalCountData > limit">
     <div class="seller-pagination__info">
-      {{ (currentPage - 1) * limit + 1 }} - {{ currentPage * limit }} of
+      {{ (currentPage - 1) * limit + 1 }} -
+      {{ lastPage <= currentPage ? totalCountData : currentPage * limit }} of
       {{ totalCountData }} items
     </div>
     <div class="seller-pagination__btns">
-      <button class="seller-pagination__btn" @click="prevClick">Previous</button>
+      <button class="seller-pagination__btn" @click="prevClick">
+        Previous
+      </button>
       <button class="seller-pagination__btn" @click="nextClick">Next</button>
     </div>
   </div>
@@ -23,6 +26,8 @@ const emit = defineEmits(["setPage"]);
 const lastPage = computed(() =>
   Math.ceil(props?.totalCountData / props?.limit)
 );
+
+const currentMax = computed(() => props.currentPage * props.limit);
 
 const prevClick = () =>
   props?.currentPage > 1 && emit("setPage", props?.currentPage - 1);
