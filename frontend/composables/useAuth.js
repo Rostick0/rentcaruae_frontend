@@ -1,6 +1,9 @@
 import auth from "~/api/modules/auth";
 
 export default async () => {
+  const extnedsUser =
+    "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car";
+
   const accessToken = useCookie("accessToken", {
     maxAge: 60 * 60 * 24 * 7,
   });
@@ -13,7 +16,7 @@ export default async () => {
 
   const login = async (data, isRedirect = true) => {
     try {
-      const resp = await auth.login(data);
+      const resp = await auth.login({ ...data, extends: extnedsUser });
 
       if (resp?.error) return resp?.errorResponse?.data;
 
@@ -42,8 +45,7 @@ export default async () => {
     try {
       const res = await auth.me(
         {
-          extends:
-            "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car",
+          extends: extnedsUser,
         },
         { Authorization: `Bearer ${accessToken.value}` }
       );
