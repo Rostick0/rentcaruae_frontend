@@ -23,10 +23,11 @@
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-item__image">
-      <LazyNuxtImg
+      <img
         class="post-item__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
+        v-lazy-load
         decoding="async"
         loading="lazy"
         width="264"

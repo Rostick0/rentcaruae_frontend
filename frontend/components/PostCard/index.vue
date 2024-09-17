@@ -24,12 +24,11 @@
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-card__image">
-      <LazyNuxtImg
+      <NuxtImg
         class="post-card__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
-        decoding="async"
-        loading="lazy"
+        preload
         height="300"
         itemprop="image"
       />

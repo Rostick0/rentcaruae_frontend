@@ -1,12 +1,11 @@
 <template>
   <div class="post">
     <div class="post__image">
-      <LazyNuxtImg
+      <NuxtImg
         class="post__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
-        decoding="async"
-        loading="lazy"
+        preload
         height="520"
       />
     </div>
