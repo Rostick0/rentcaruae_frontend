@@ -1,5 +1,5 @@
 <template>
-  <NoInternet v-if="false && $nuxt" />
+  <NoInternet v-if="isOffline" />
 
   <template v-else>
     <NuxtLayout>
@@ -17,6 +17,18 @@ const { email, min, max, required, size, image, min_value, max_value } =
   await import("@vee-validate/rules");
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
+
+const isOffline = ref(false);
+
+onMounted(() => {
+  window.addEventListener("offline", () => {
+    isOffline.value = true;
+  });
+
+  window.addEventListener("online", () => {
+    isOffline.value = false;
+  });
+});
 
 defineRule("required", required);
 defineRule("email", email);
