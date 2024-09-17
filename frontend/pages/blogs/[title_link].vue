@@ -38,6 +38,7 @@ const { data: posts, get: getPosts } = await useApi({
   params: {
     extends: "image.image",
     // "filterEQ[post_category_id]": data.value?.post_category_id,
+    "filterEQ[is_show]": 1,
     limit: 4,
   },
 });

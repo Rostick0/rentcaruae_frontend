@@ -42,7 +42,7 @@ const { data, get, meta } = await useApi({
   filters,
   params: {
     extends: "image.image,user,post_category",
-    // limit: 1,
+    "filterEQ[is_show]": 1,
     sort: "id",
     limit: 17,
   },
