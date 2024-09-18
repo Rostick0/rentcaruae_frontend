@@ -66,6 +66,7 @@ if (rent.value === "leasing")
 const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
+    "filterEQ[is_show]": 1,
     extends:
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,price_leasing,security_deposit,user.company.image.image,cities",
     sort: "promo_car.point,id",
@@ -82,6 +83,7 @@ const cars = computed(() => chunk(data.value, 6));
 const { data: carsSpecial, get: getCarsSpecial } = await useApi({
   name: "car.getAll",
   params: {
+    "filterEQ[is_show]": 1,
     extends:
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special",
     sort: "-id",

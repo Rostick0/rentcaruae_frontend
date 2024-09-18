@@ -45,7 +45,7 @@ const isSendedCode = ref(false);
 
 const company_name = ref({
   type: "text",
-  name: "company.name",
+  name: "company_name",
   rules: "required|max:255",
   modelValue: "",
 
@@ -57,7 +57,7 @@ const company_name = ref({
 
 const company_website = ref({
   type: "text",
-  name: "company.website",
+  name: "company_website",
   rules: "required|max:255",
   modelValue: "",
 
@@ -69,7 +69,7 @@ const company_website = ref({
 
 const company_city_id = ref({
   type: "select",
-  name: "company.city_id",
+  name: "company_city_id",
   rules: "required",
   modelValue: {},
 

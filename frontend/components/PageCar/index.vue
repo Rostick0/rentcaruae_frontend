@@ -47,6 +47,7 @@ create(id);
 const { data, get } = await useApi({
   name: "car.get",
   params: {
+    "filterEQ[is_show]": 1,
     extends: carFullExtends + ",user.company.city",
   },
   requestParams: {
@@ -72,6 +73,7 @@ const { data: cars, get: getCars } = await useApi({
   params: {
     "filterNEQ[id]": id,
     // "filterEQ[generation.model_car.id]": data.value?.generation?.model_car?.id,
+    "filterEQ[is_show]": 1,
     "filterIN[car_categories.category_id]": data.value?.car_categories
       ?.map?.((item) => item?.category_id)
       ?.join(","),

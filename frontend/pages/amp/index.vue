@@ -66,6 +66,7 @@ const config = useRuntimeConfig();
 
 const defaultParams = {
   extends: "images.image,price,price_special,generation.model_car.brand",
+  "filterEQ[is_show]": 1,
   // "filterNEQ[price_special.price]": true,
   sort: "id",
   limit: 4,
