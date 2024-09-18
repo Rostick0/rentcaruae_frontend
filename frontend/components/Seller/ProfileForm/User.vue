@@ -23,14 +23,14 @@ const user_full_name = ref({
 
   bind: {
     label: "User Name",
-    placeholder: "My Company",
+    placeholder: "User name",
   },
 });
 
 const user_tel = ref({
   type: "tel",
   name: "user.tel",
-  modelValue: convertPhoneToForm(props.user?.company?.tel),
+  modelValue: convertPhoneToForm(props.user?.tel),
 
   bind: {
     label: "User number",

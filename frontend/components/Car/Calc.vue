@@ -225,7 +225,7 @@ const clickBook = () => {
 const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
-  if (!isAddStatisticWhatsApp.value) return;
+  if (isAddStatisticWhatsApp.value) return;
   isAddStatisticWhatsApp.value = true;
 
   try {
