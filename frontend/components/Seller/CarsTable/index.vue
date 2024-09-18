@@ -12,7 +12,7 @@
       <th class="table__th">
         <div
           class="table__th_sort"
-          @click="() => updateSorting('price_special.id')"
+          @click="() => updateSorting('is_special')"
         >
           <span>Special offer</span>
 
