@@ -12,10 +12,10 @@
       <th class="table__th">
         <div
           class="table__th_sort"
+          @click="() => updateSorting('price_special.id')"
         >
           <span>Special offer</span>
-          <!-- 
-          @click="() => updateSorting('price_special.id')"
+
           <svg
             width="21"
             height="20"
@@ -27,7 +27,7 @@
               d="M13.8333 14.175V8.33333H12.1666V14.175H9.66663L13 17.5L16.3333 14.175H13.8333ZM7.99996 2.5L4.66663 5.825H7.16663V11.6667H8.83329V5.825H11.3333L7.99996 2.5ZM13.8333 14.175V8.33333H12.1666V14.175H9.66663L13 17.5L16.3333 14.175H13.8333ZM7.99996 2.5L4.66663 5.825H7.16663V11.6667H8.83329V5.825H11.3333L7.99996 2.5Z"
               fill="#221EE3"
             />
-          </svg> -->
+          </svg>
         </div>
       </th>
       <th class="table__th">Published</th>
