@@ -7,6 +7,10 @@
   >
     <meta itemprop="mainEntityOfPage" :content="link" />
     <link itemprop="availability" href="https://schema.org/InStock" />
+    <meta
+      itemprop="image"
+      :content="car?.images?.[0]?.image?.path_webp + '?w=300'"
+    />
     <div class="car-short__image">
       <img
         class="car-short__img"
@@ -19,7 +23,6 @@
         decoding="async"
         width="264"
         height="166"
-        itemprop="image"
       />
       <NuxtImg
         class="car-short__img"
@@ -30,7 +33,6 @@
         :alt="getCarImageAlt(car, currentCity)"
         width="264"
         height="166"
-        itemprop="image"
       />
     </div>
     <div class="car-short__content">

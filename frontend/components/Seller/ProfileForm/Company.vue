@@ -1,12 +1,12 @@
 <template>
-  <AnyFormBlock title="Car photo">
+  <AnyFormBlock title="Company profile">
     <div class="form-item">
       <VFormComponent :field="company_name" />
-      <VFormComponent :field="user_tel" />
+      <VFormComponent :field="company_tel" />
     </div>
     <div class="form-item">
       <VFormComponent :field="company_trn_number" />
-      <VFormComponent :field="user_email" />
+      <VFormComponent :field="company_email" />
     </div>
     <div class="form-item">
       <div class="form__fields_inner">
@@ -44,10 +44,10 @@ const company_name = ref({
   },
 });
 
-const user_tel = ref({
+const company_tel = ref({
   type: "tel",
-  name: "user.tel",
-  modelValue: convertPhoneToForm(props.user?.tel),
+  name: "company.tel",
+  modelValue: convertPhoneToForm(props.user?.company?.tel),
 
   bind: {
     label: "Phone number",
@@ -66,11 +66,11 @@ const company_trn_number = ref({
   },
 });
 
-const user_email = ref({
+const company_email = ref({
   type: "text",
-  name: "user.email",
+  name: "company.email",
   rules: "required|email|max:255",
-  modelValue: props.user?.email ?? "",
+  modelValue: props.user?.company?.email ?? "",
 
   bind: {
     label: "Leads email",

@@ -1,6 +1,7 @@
 <template>
   <div class="profile-form form__flex">
     <div class="form__fields">
+      <SellerProfileFormUser :user="user" />
       <SellerProfileFormCompany :user="user" />
       <slot name="adminBlock" />
       <SellerProfileFormCompanySchedules :user="user" />
