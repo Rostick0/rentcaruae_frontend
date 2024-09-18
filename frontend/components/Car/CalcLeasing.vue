@@ -119,7 +119,7 @@
       <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
       <a
         class="d-flex"
-        :href="`https://wa.me/${car?.user?.tel}?text=${getWhatsappText(
+        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(
           car,
           true
         )}`"

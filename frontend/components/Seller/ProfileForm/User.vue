@@ -30,7 +30,7 @@ const user_full_name = ref({
 const user_tel = ref({
   type: "tel",
   name: "user.tel",
-  modelValue: convertPhoneToForm(props.user?.tel),
+  modelValue: convertPhoneToForm(props.user?.company?.tel),
 
   bind: {
     label: "User number",

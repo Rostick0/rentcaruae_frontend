@@ -113,7 +113,7 @@
       <a
         class="d-flex"
         @click="clickWhatsApp"
-        :href="`https://wa.me/${car?.user?.tel}?text=${getWhatsappText(car)}`"
+        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(car)}`"
         rel="noopener nofollow"
         target="_blank"
       >

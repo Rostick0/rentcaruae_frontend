@@ -20,6 +20,8 @@ export const getProfileOnSubmitValues = async ({
   };
 
   data.user.tel = convertPhoneToDb(data?.user?.tel);
+  data.company.tel = convertPhoneToDb(data?.company?.tel);
+
   data.company.city_id = data?.company?.city_id?.id;
 
   if (data.user?.balance) data.user.balance = removeSpaces(data.user.balance);

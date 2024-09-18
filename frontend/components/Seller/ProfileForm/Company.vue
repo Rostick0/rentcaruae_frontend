@@ -50,7 +50,7 @@ const company_tel = ref({
   modelValue: convertPhoneToForm(props.user?.company?.tel),
 
   bind: {
-    label: "Phone number",
+    label: "Leads phone number",
   },
 });
 

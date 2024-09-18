@@ -47,7 +47,8 @@ export default () => {
 
   const getImageIdsFrom = async (images) => {
     const newIds = await createImages(images);
-    const idsOld = images?.filter?.((i) => !i?.file)?.map((item) => item?.id);
+    const idsOld =
+      images?.filter?.((i) => !i?.file)?.map((item) => item?.id) ?? [];
 
     return [...idsOld, ...newIds].join();
   };
