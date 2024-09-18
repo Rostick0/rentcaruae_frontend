@@ -33,9 +33,6 @@ export default async () => {
       const resp = await auth.register(data);
 
       if (resp?.error) return resp?.errorResponse?.data;
-
-      setUser(resp);
-      if (isRedirect) navigateTo("/");
     } catch (error) {
       console.error(error);
     }

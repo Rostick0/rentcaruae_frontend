@@ -1,8 +1,8 @@
 <template>
   <h1 class="h1 flex-style">
-    <span>Verification users</span>
+    <span>Register users</span>
   </h1>
-  <AdminVerificationUsersTable :data="data" />
+  <AdminUserApplicationsTable :data="data" :get="get" />
   <AnyPagination
     @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"
@@ -22,11 +22,10 @@ const { filters } = useFilter({
   },
 });
 
-const { data, meta } = await useApi({
-  name: "verificationUsers.getAll",
+const { data, get, meta } = await useApi({
+  name: "userApplications.getAll",
   filters,
   params: {
-    extends: "user.company",
     without_cache: true,
     sort: "id",
     limit,

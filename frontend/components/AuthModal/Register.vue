@@ -160,8 +160,8 @@ const onSubmit = handleSubmit(async ({ tel, city_id, ...values }) => {
     ...values,
     tel: convertPhoneToDb(tel),
     type: "register",
+    company_city_id: values?.company_city_id?.id,
   };
-  data.company.city_id = data?.company?.city_id?.id;
 
   const res = await api.emailCode.create({
     data,

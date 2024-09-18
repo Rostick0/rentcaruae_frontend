@@ -41,6 +41,10 @@ const navigations = [
     link: "/admin/verification-users",
   },
   {
+    name: "Register users",
+    link: "/admin/user-applications",
+  },
+  {
     name: "Payments",
     link: "/admin/payments",
   },
@@ -56,9 +60,9 @@ const navigations = [
 
 const user = useState("user");
 
-// if (user.value?.role !== "admin") {
-//   navigateTo("/404");
-// }
+if (user.value?.role !== "admin") {
+  navigateTo("/404");
+}
 </script>
 
 <style lang="scss" scoped>

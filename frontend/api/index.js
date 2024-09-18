@@ -24,6 +24,7 @@ import sitemap from "./modules/sitemap";
 import spendings from "./modules/spendings";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
+import userApplications from "./modules/userApplications";
 import users from "./modules/users";
 import verificationUsers from "./modules/verificationUsers";
 import views from "./modules/views";
@@ -55,6 +56,7 @@ export default {
   spendings,
   statisticsDay,
   transmissions,
+  userApplications,
   users,
   verificationUsers,
   views,

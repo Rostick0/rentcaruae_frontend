@@ -496,9 +496,6 @@ const rentACar = computed(() => {
       white-space: nowrap;
     }
   }
-  // .control-select {
-  //   width: 100%;
-  // }
 
   @media (max-width: 1024px) {
     .header-rental-drop-down {

@@ -7,7 +7,7 @@
       <th class="table__th">Created at</th>
       <th class="table__th"></th>
     </tr>
-    <AdminVerificationUsersItem
+    <AdminVerificationUsersTableItem
       v-for="item in data"
       :key="item?.id"
       :item="item"
