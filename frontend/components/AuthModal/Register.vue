@@ -131,7 +131,7 @@ const code = ref({
 const is_agree = ref({
   type: "checkbox",
   name: "is_agree",
-  modelValue: false,
+  modelValue: true,
   rules: "required",
 
   bind: {
