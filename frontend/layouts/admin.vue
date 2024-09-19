@@ -2,7 +2,6 @@
   <div class="wrapper">
     <LayoutAnyAside :navigations="navigations" />
     <div class="wrapper__content">
-      <!-- <LayoutSellerHeader /> -->
       <main class="main">
         <slot />
       </main>
@@ -61,7 +60,7 @@ const navigations = [
 const user = useState("user");
 
 if (user.value?.role !== "admin") {
-  // navigateTo("/404");
+  navigateTo("/404");
 }
 </script>
 
