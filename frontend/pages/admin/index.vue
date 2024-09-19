@@ -54,6 +54,7 @@ const { data, get } = await useApi({
     "filterGEQ[date]": moment().add("days", -29).format("YYYY-MM-DD"),
     for_admin: true,
     sort: "date",
+    limit: 30,
   },
 });
 await get();
@@ -64,6 +65,7 @@ const { data: dataPayments, get: getPayments } = await useApi({
     "filterGEQ[date]": moment().add("days", -29).format("YYYY-MM-DD"),
     for_admin: true,
     sort: "date",
+    limit: 30,
   },
 });
 await getPayments();
