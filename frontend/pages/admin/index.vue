@@ -60,10 +60,8 @@ const { data, get } = await useApi({
 await get();
 
 const { data: dataPayments, get: getPayments } = await useApi({
-  name: "spendings.getAll",
+  name: "depositeUsers.union",
   params: {
-    "filterGEQ[date]": moment().add("days", -29).format("YYYY-MM-DD"),
-    for_admin: true,
     sort: "date",
     limit: 30,
   },
