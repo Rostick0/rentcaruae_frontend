@@ -61,7 +61,7 @@ const navigations = [
 const user = useState("user");
 
 if (user.value?.role !== "admin") {
-  navigateTo("/404");
+  // navigateTo("/404");
 }
 </script>
 

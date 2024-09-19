@@ -52,7 +52,8 @@ const { data, meta } = await useApi({
   filters,
   params: {
     extends: "car.generation.model_car.brand",
-    car_group: true,
+    is_car_group: true,
+    is_full_data: true,
     sort: "car.id",
   },
   init: true,

@@ -19,6 +19,7 @@
     "@vee-validate/rules": "^4.13.2",
     "@vite-pwa/nuxt": "^0.10.3",
     "@vuepic/vue-datepicker": "^8.8.1",
+    "chart.js": "^4.4.4",
     "flag-icons": "^7.2.3",
     "lodash": "^4.17.21",
     "maska": "^2.1.11",
@@ -31,6 +32,7 @@
     "uuid": "^10.0.0",
     "vee-validate": "^4.13.2",
     "vue": "latest",
+    "vue-chartjs": "^5.3.1",
     "vue-recaptcha-v3": "^2.0.1",
     "vue-tel-input": "^9.1.4",
     "vue-toastification": "^2.0.0-rc.5"

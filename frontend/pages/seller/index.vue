@@ -36,6 +36,7 @@ const { data } = await useApi({
   name: "statisticsDay.getAll",
   filters,
   params: {
+    is_full_data: true,
     sort: "date",
   },
   init: true,
