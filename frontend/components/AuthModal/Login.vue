@@ -88,7 +88,7 @@ watch(
     );
 
     if (errors) {
-      setErrors(errors);
+      setErrors(errors?.errors);
 
       if (errors?.email) {
         isSendedCode.value = false;
