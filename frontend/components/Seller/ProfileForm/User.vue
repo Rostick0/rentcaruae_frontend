@@ -6,6 +6,16 @@
     </div>
     <div class="form-item">
       <VFormComponent :field="user_email" />
+      <div>
+        <VFormComponent :field="user_tg_user_id" />
+        <a class="link" href="https://t.me/getmyid_bot" target="_blank"
+          >Get your telegram id</a
+        >
+      </div>
+    </div>
+    <div class="form-item">
+      <VFormComponent :field="user_is_mail_alerts" />
+      <VFormComponent :field="user_is_tg_alerts" />
     </div>
   </AnyFormBlock>
 </template>
@@ -46,6 +56,37 @@ const user_email = ref({
   bind: {
     label: "User email",
     placeholder: "email@company_name.com",
+  },
+});
+
+const user_is_mail_alerts = ref({
+  type: "switch",
+  name: "user.is_mail_alerts",
+  modelValue: props.user?.is_mail_alerts ?? "",
+
+  bind: {
+    label: "Mail alerts",
+  },
+});
+
+const user_is_tg_alerts = ref({
+  type: "switch",
+  name: "user.is_tg_alerts",
+  modelValue: props.user?.is_tg_alerts ?? "",
+
+  bind: {
+    label: "Mail alerts",
+  },
+});
+
+const user_tg_user_id = ref({
+  type: "text",
+  name: "user.tg_user_id",
+  rules: "max:255",
+  modelValue: props.user?.tg_user_id ?? "",
+
+  bind: {
+    label: "Your id in telegram",
   },
 });
 </script>
