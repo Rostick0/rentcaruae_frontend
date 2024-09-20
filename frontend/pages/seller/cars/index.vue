@@ -2,9 +2,18 @@
   <div class="page-cars">
     <h1 class="h1 seller page-cars__title">
       <span>Manage cars</span>
-      <NuxtLink class="d-flex" to="/seller/cars/add">
-        <UiButton class="page-cars__add" variant="outlined">+ Add car</UiButton>
-      </NuxtLink>
+      <div class="page-cars__btns">
+        <NuxtLink class="d-flex" to="/seller/cars/xml">
+          <UiButton class="page-cars__add" variant="outlined"
+            >Get cars xml</UiButton
+          >
+        </NuxtLink>
+        <NuxtLink class="d-flex" to="/seller/cars/add">
+          <UiButton class="page-cars__add" variant="outlined"
+            >+ Add car</UiButton
+          >
+        </NuxtLink>
+      </div>
     </h1>
     <div class="page-cars__refresh">
       <UiButton @click="countSelected > 0 && clickRefresh()">Refresh</UiButton>
@@ -133,6 +142,11 @@ definePageMeta({
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__btns {
+    display: flex;
+    column-gap: 10px;
   }
 
   &__add {
