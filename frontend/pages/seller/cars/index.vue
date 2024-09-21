@@ -3,7 +3,7 @@
     <h1 class="h1 seller page-cars__title">
       <span>Manage cars</span>
       <div class="page-cars__btns">
-        <NuxtLink class="d-flex" to="/seller/cars/xml">
+        <NuxtLink class="d-flex" to="/seller/cars/excel">
           <UiButton class="page-cars__add" variant="outlined"
             >Get cars excel</UiButton
           >
