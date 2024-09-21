@@ -5,7 +5,7 @@
       <div class="page-cars__btns">
         <NuxtLink class="d-flex" to="/seller/cars/xml">
           <UiButton class="page-cars__add" variant="outlined"
-            >Get cars xml</UiButton
+            >Get cars excel</UiButton
           >
         </NuxtLink>
         <NuxtLink class="d-flex" to="/seller/cars/add">

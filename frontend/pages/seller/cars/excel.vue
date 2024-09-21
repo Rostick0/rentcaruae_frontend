@@ -1,16 +1,16 @@
 <template>
-  <!-- <h1 class="h1 seller">Xml upload</h1> -->
-  <div class="car-xml">
+  <!-- <h1 class="h1 seller">Excel upload</h1> -->
+  <div class="car-excel">
     <AnyFormBlock title="Upload file">
       <VFormComponent :field="file" />
     </AnyFormBlock>
-    <div class="car-xml__bottom">
+    <div class="car-excel__bottom">
       <UiButton>Upload</UiButton>
       <a
         class="link"
-        :href="$config.public.BASE_URL + '/api/cars-xml'"
+        :href="$config.public.BASE_URL + '/api/cars-excel'"
         target="_blank"
-        >Install xml</a
+        >Install excel</a
       >
     </div>
   </div>
@@ -24,8 +24,8 @@ const file = ref({
   modelValue: null,
 
   bind: {
-    title: "Xml file",
-    accept: "text/xml",
+    title: "Excel file",
+    accept: "application/vnd.ms-excel",
   },
 });
 
@@ -35,7 +35,7 @@ definePageMeta({
 </script>
 
 <style lang="scss" scoped>
-.car-xml {
+.car-excel {
   &__bottom {
     display: flex;
     align-items: flex-start;
