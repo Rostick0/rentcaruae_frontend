@@ -9,7 +9,11 @@
       <div>
         <VFormComponent :field="user_tg_user_id" />
         <a class="link" href="https://t.me/getmyid_bot" target="_blank"
-          >Get your telegram id</a
+          >Get your id</a
+        >
+        &nbsp;
+        <a class="link" href="https://t.me/rentcaruae_bot" target="_blank"
+          >Access messages in tg</a
         >
       </div>
     </div>
