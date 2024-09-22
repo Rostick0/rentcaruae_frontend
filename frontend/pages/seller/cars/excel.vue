@@ -1,8 +1,18 @@
 <template>
   <!-- <h1 class="h1 seller">Excel upload</h1> -->
-  <div class="car-excel">
+  <form class="car-excel" @submit="onSubmit">
     <AnyFormBlock title="Upload file">
       <VFormComponent :field="file" />
+      <div v-for="item in errorsXlsxData">
+        <strong>#{{ item?.car_id }} {{ item?.name }}</strong>
+        <br />
+        Errors:
+        <div class="color-red text-pre-small">
+          <p class="" v-for="errorItem in Object.keys(item?.errros)">
+            {{ item?.errros?.[errorItem]?.[0] }}
+          </p>
+        </div>
+      </div>
     </AnyFormBlock>
     <div class="car-excel__bottom">
       <UiButton>Upload</UiButton>
@@ -13,10 +23,17 @@
         >Install excel</a
       >
     </div>
-  </div>
+  </form>
 </template>
 
 <script setup>
+import { useForm } from "vee-validate";
+import api from "~/api";
+
+const { getUser } = await useAuth();
+
+const errorsXlsxData = ref();
+
 const file = ref({
   type: "file-loader",
   name: "file",
@@ -25,8 +42,33 @@ const file = ref({
 
   bind: {
     title: "Excel file",
-    accept: "application/vnd.ms-excel",
+    accept: "*.xlsx",
   },
+});
+
+const { handleSubmit, setErrors } = useForm();
+
+const onSubmit = handleSubmit(async ({ file }) => {
+  errorsXlsxData.value = null;
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await api.carsExcel.updatePrices({ data: formData });
+
+  if (res?.error) {
+    if (res?.errorResponse?.data?.errors) {
+      setErrors(res?.errorResponse?.data?.errors);
+      return;
+    }
+
+    warningPopup("Dont valid");
+    errorsXlsxData.value = res?.errorResponse?.data?.invalid;
+    return;
+  }
+
+  await getUser();
+  success(res?.message);
 });
 
 definePageMeta({

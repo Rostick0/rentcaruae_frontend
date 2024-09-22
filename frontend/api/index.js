@@ -1,6 +1,7 @@
 import auth from "./modules/auth";
 import brands from "./modules/brands";
 import car from "./modules/car";
+import carsExcel from "./modules/carsExcel";
 import categories from "./modules/categories";
 import cities from "./modules/cities";
 import colours from "./modules/colours";
@@ -33,6 +34,7 @@ export default {
   auth,
   brands,
   car,
+  carsExcel,
   categories,
   cities,
   colours,
