@@ -25,8 +25,8 @@ const navigations = [
     link: "/seller/cars",
   },
   {
-    name: "Leads",
-    link: "/seller/leads",
+    name: "Bookings",
+    link: "/seller/bookings",
   },
   {
     name: "Profile",

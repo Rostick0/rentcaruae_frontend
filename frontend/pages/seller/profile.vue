@@ -23,7 +23,6 @@
     </SellerProfileForm>
   </form>
   <UiModalToast title="Thank you for your request" :name="name">
-    <template></template>
     <p>We will contact you within 3-4 business days</p>
     <p>After approval, you will be able to publish your company</p>
   </UiModalToast>

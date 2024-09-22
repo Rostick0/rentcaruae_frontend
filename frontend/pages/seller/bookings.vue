@@ -1,12 +1,12 @@
 <template>
-  <h1 class="h1 seller">Leads</h1>
+  <h1 class="h1 seller">Booking</h1>
   <SellerSelectPeriod
     v-model="selectedPeriod"
     :options="options"
     title="Date range"
     subtitle="Selected period:"
   />
-  <SellerLeadsTable :leads="data" />
+  <SellerBookingsTable :bookings="data" />
   <!-- <AnyPagination
     @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"

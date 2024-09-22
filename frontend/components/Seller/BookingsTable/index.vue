@@ -11,14 +11,18 @@
       <th class="table__th">Price</th>
     </tr>
     <tbody>
-      <SellerLeadsTableItem v-for="lead in leads" :key="lead.id" :lead="lead" />
+      <SellerBookingsTableItem
+        v-for="booking in bookings"
+        :key="booking.id"
+        :booking="booking"
+      />
     </tbody>
   </table>
 </template>
 
 <script setup>
 const props = defineProps({
-  leads: Array,
+  bookings: Array,
 });
 </script>
 
