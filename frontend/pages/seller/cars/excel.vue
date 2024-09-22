@@ -1,5 +1,4 @@
 <template>
-  <!-- <h1 class="h1 seller">Excel upload</h1> -->
   <form class="car-excel" @submit="onSubmit">
     <AnyFormBlock title="Upload file">
       <VFormComponent :field="file" />
