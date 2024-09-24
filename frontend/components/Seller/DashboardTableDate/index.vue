@@ -10,6 +10,13 @@
       <th class="table__th">Daily spend</th>
       <th class="table__th"></th>
     </tr>
+    <tr>
+      <td class="table__td" colspan="6">
+        <div align="left">Upload Excel Price</div>
+      </td>
+      <td class="table__td">AED {{ excelData?.count }}</td>
+      <td class="table__td"></td>
+    </tr>
     <SellerDashboardTableDateItem
       v-for="item in data"
       :key="item?.id"
@@ -22,6 +29,7 @@
 <script setup>
 const props = defineProps({
   data: Array,
+  excelData: Object,
 });
 </script>
 

@@ -6,7 +6,7 @@
     <td class="table__td">
       {{ item?.car?.generation?.model_car?.name }}
     </td>
-    <td class="table__td"></td>
+    <td class="table__td">{{ item?.special_offers }}</td>
     <td class="table__td">
       <div class="table__td_flex">
         <UiStatType

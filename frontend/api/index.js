@@ -23,6 +23,7 @@ import pricePeriods from "./modules/pricePeriods";
 import promoCars from "./modules/promoCars";
 import sitemap from "./modules/sitemap";
 import spendings from "./modules/spendings";
+import statisticPrices from "./modules/statisticPrices";
 import statisticsDay from "./modules/statisticsDay";
 import transmissions from "./modules/transmissions";
 import userApplications from "./modules/userApplications";
@@ -56,6 +57,7 @@ export default {
   promoCars,
   sitemap,
   spendings,
+  statisticPrices,
   statisticsDay,
   transmissions,
   userApplications,

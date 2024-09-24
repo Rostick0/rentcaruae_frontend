@@ -7,7 +7,7 @@
     :titleRight="moment(route?.params?.date).format('DD MMM YYYY')"
     subtitle="Show cars:"
   />
-  <SellerDashboardTableDate :data="data" />
+  <SellerDashboardTableDate :data="data" :excelData="priceData?.[0]" />
   <AnyPagination
     :currentPage="meta?.current_page"
     :limit="selectedPeriod.id"
@@ -56,6 +56,16 @@ const { data, meta } = await useApi({
     is_full_data: true,
     sort: "car.id",
   },
+  init: true,
+});
+
+const { data: priceData } = await useApi({
+  name: "statisticPrices.getAll",
+  params: {
+    "filterEQ[type]": "excel",
+    limit: 1,
+  },
+  filters,
   init: true,
 });
 
