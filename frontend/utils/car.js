@@ -1,8 +1,6 @@
 import useImage from "~/composables/useImage";
 import lastItem from "lodash/last";
 
-export const PRICE_SPECAIL_PER_DAY = 10;
-
 export const carFullExtends = [
   "generation.model_car.brand",
   "car_options.option",

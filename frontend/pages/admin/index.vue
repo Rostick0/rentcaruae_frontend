@@ -2,45 +2,51 @@
   <div class="admin-dashboard">
     <h1 class="h1 seller">Dashboard</h1>
     <div class="admin-dashboard__charts">
-      <AnyChartStats
-        :datasets="[
-          {
-            backgroundColor: '#10c44d',
-            borderColor: '#10c44d',
-            label: 'Payments',
-            data: chartData.paymentsData,
-          },
-        ]"
-        :labels="labels"
-      />
-      <AnyChartStats
-        :datasets="[
-          {
-            backgroundColor: '#a82130',
-            borderColor: '#a82130',
-            label: 'Spendings',
-            data: chartData.spendingsData,
-          },
-        ]"
-        :labels="labels"
-      />
-      <AnyChartStats
-        :datasets="[
-          {
-            backgroundColor: '#221ee3',
-            borderColor: '#221ee3',
-            label: 'Booking',
-            data: chartData.bookingAppData,
-          },
-          {
-            backgroundColor: '#10c44d',
-            borderColor: '#10c44d',
-            label: 'Whatsapp',
-            data: chartData.whatsAppData,
-          },
-        ]"
-        :labels="labels"
-      />
+      <div class="">
+        <AnyChartStats
+          :datasets="[
+            {
+              backgroundColor: '#10c44d',
+              borderColor: '#10c44d',
+              label: 'Payments',
+              data: chartData.paymentsData,
+            },
+          ]"
+          :labels="labels"
+        />
+      </div>
+      <div class="">
+        <AnyChartStats
+          :datasets="[
+            {
+              backgroundColor: '#a82130',
+              borderColor: '#a82130',
+              label: 'Spendings',
+              data: chartData.spendingsData,
+            },
+          ]"
+          :labels="labels"
+        />
+      </div>
+      <div class="">
+        <AnyChartStats
+          :datasets="[
+            {
+              backgroundColor: '#221ee3',
+              borderColor: '#221ee3',
+              label: 'Booking',
+              data: chartData.bookingAppData,
+            },
+            {
+              backgroundColor: '#10c44d',
+              borderColor: '#10c44d',
+              label: 'Whatsapp',
+              data: chartData.whatsAppData,
+            },
+          ]"
+          :labels="labels"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -117,9 +123,9 @@ definePageMeta({
 <style lang="scss" scoped>
 .admin-dashboard {
   &__charts {
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
   }
 }
 </style>

@@ -14,22 +14,32 @@
       </div>
     </AnyFormBlock>
     <div class="car-excel__bottom">
-      <UiButton>Upload</UiButton>
+      <div class="car-excel__upload">
+        <UiButton>Upload</UiButton>
+        <div v-if="!isFree" class="text-ui">
+          {{ PRICE_UPLOAD_EXCEL_CARS }} AED
+        </div>
+      </div>
       <a
         class="link"
         :href="$config.public.BASE_URL + '/api/cars-excel'"
         target="_blank"
-        >Install excel</a
-      >
+        >Download Excel file to edit
+      </a>
     </div>
   </form>
 </template>
 
 <script setup>
+import moment from "moment";
 import { useForm } from "vee-validate";
 import api from "~/api";
 
-const { getUser } = await useAuth();
+const { user, getUser } = await useAuth();
+
+const isFree = computed(
+  () => moment(user.value?.last_load_excel) < moment().days(-7)
+);
 
 const errorsXlsxData = ref();
 
@@ -83,6 +93,12 @@ definePageMeta({
     flex-direction: column;
     row-gap: 10px;
     margin-top: 20px;
+  }
+
+  &__upload {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
   }
 }
 </style>

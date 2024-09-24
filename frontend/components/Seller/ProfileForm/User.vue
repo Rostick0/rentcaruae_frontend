@@ -79,7 +79,7 @@ const user_is_tg_alerts = ref({
   modelValue: props.user?.is_tg_alerts ?? "",
 
   bind: {
-    label: "Mail alerts",
+    label: "Telegram alerts",
   },
 });
 
