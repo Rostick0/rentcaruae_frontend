@@ -12,6 +12,25 @@ const { email, min, max, required, size, image, min_value, max_value } =
   await import("@vee-validate/rules");
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
+// useNuxtApp().$pwa.offlineReady;
+// onMounted(() => {
+//   if (navigator?.onLine !== true) navigateTo("/offline");
+// });
+// console.log(navigator)
+
+// onMounted(() => {
+//   if ("serviceWorker" in navigator) {
+//     // Весь код регистрации у нас асинхронный.
+//     navigator.serviceWorker
+//       .register("./sw-offline.js")
+//       .then(() =>
+//         navigator.serviceWorker.ready.then((worker) => {
+//           worker.sync.register("syncdata");
+//         })
+//       )
+//       .catch((err) => console.log(err));
+//   }
+// });
 
 defineRule("required", required);
 defineRule("email", email);

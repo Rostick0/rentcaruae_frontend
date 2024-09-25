@@ -31,6 +31,7 @@ function networkOrCache(request) {
 
 // Наш Fallback вместе с нашим собсвенным Динозавриком.
 const FALLBACK = `
+<head>
 <style>
 :root {
   --color-bg-main: #f7f8fa;
@@ -52,6 +53,10 @@ body{font-family: var(--font-family)}
 .btn{background-color:var(--color-basic);border:1px solid transparent;border-radius:8px;color:var(--color-white);font-size:16px;padding:11px 16px;transition:.3s}.btn:hover{background-color:var(--color-basic-hover)}.btn.outlined{background-color:transparent;border-color:var(--color-basic);color:var(--color-basic)}.btn.outlined .svg-fill{fill:var(--color-basic)}.btn.outlined .svg-stroke{stroke:var(--color-basic)}.btn.outlined:hover{border-color:var(--color-basic-hover);color:var(--color-basic-hover)}.btn.outlined:hover .svg-fill{fill:var(--color-basic-hover)}.btn.outlined:hover .svg-stroke{stroke:var(--color-basic-hover)}.btn.red{background-color:var(--color-red)}.btn.whatsapp{background:#2cb742}.error-page[data-v-ddf00349]{align-items:center;flex-grow:1;justify-content:center}.error-page[data-v-ddf00349],.error-page__content[data-v-ddf00349]{display:flex;flex-direction:column}.error-page__content[data-v-ddf00349]{margin:16px 0 24px;row-gap:4px}
 .no-internet{align-items:center;display:flex;flex-direction:column;justify-content:center;min-height:100dvh;text-align:center}.no-internet__icon,.no-internet__title{margin-bottom:60px}.no-internet__text{margin-bottom:16px}.no-internet__btn{max-width:320px;width:100%}
 </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No internet</title>
+</head>
 <div class="no-internet">
     <div class="no-internet__title">
       <svg
