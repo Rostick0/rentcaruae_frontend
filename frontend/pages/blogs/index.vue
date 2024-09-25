@@ -27,6 +27,7 @@
 const breadcrumbs = [{ name: "Home", link: "/" }, { name: "Blog" }];
 
 const config = useRuntimeConfig();
+const route = useRoute();
 
 const { filters } = useFilter({
   withQueryParams: true,
@@ -64,6 +65,15 @@ useSeoMeta({
   ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
   ogImageWidth: 736,
   ogImageHeight: 414,
+});
+
+useHead({
+  link: [
+    {
+      rel: "amphtml",
+      href: config.public.BASE_URL + "/amp" + route.path,
+    },
+  ],
 });
 </script>
 

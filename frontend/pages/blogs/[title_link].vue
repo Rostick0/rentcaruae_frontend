@@ -19,6 +19,7 @@
 
 <script setup>
 const route = useRoute();
+const config = useRuntimeConfig();
 
 const { data, get } = await useApi({
   name: "posts.getByTitleLink",
@@ -54,6 +55,12 @@ const breadcrumbs = [
 
 useHead({
   script: [getPostSchema(data.value)],
+  link: [
+    {
+      rel: "amphtml",
+      href: config.public.BASE_URL + "/amp" + route.path,
+    },
+  ],
 });
 
 useSeoMeta(getPostSeoMeta(data.value));

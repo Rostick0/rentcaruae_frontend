@@ -64,6 +64,7 @@ const { data: priceData } = await useApi({
   params: {
     "filterEQ[type]": "excel",
     limit: 1,
+    page: 1,
   },
   filters,
   init: true,

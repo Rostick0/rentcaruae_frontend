@@ -39,6 +39,7 @@ const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
 );
 
+const config = useRuntimeConfig();
 const id = useRoute().params.id;
 
 const { create } = useView();
@@ -157,6 +158,12 @@ useHead({
         },
       }),
       type: "application/ld+json",
+    },
+  ],
+  link: [
+    {
+      rel: "amphtml",
+      href: config.public.BASE_URL + "/amp" + route.path,
     },
   ],
 });

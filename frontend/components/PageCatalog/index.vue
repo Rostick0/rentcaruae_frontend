@@ -170,6 +170,15 @@ useSeoMeta({
   ogImageWidth: 736,
   ogImageHeight: 414,
 });
+
+useHead({
+  link: [
+    {
+      rel: "amphtml",
+      href: config.public.BASE_URL + "/amp" + route.path,
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>
