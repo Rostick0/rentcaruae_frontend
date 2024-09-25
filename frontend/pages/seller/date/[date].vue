@@ -59,16 +59,23 @@ const { data, meta } = await useApi({
   init: true,
 });
 
-const { data: priceData } = await useApi({
+const { data: priceData, get: priceGet } = await useApi({
   name: "statisticPrices.getAll",
   params: {
     "filterEQ[type]": "excel",
+    "filterEQ[date]": route.params?.date,
     limit: 1,
     page: 1,
   },
-  filters,
   init: true,
 });
+
+// watch(
+//   () => filters.value["filterEQ[date]"],
+//   async (newV) => {
+//     await priceGet({ "filterEQ[date]": newV });
+//   }
+// );
 
 watch(
   () => selectedPeriod.value,
