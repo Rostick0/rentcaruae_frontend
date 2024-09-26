@@ -187,7 +187,7 @@ const { open, close } = useModal({
 onMounted(() => {
   setTimeout(() => {
     open();
-  }, 1000 * 60 * 5);
+  }, 1000 * 60);
 });
 </script>
 
