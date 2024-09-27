@@ -163,6 +163,6 @@ export const getWhatsappText = (car, isLeasing = false) =>
   } ${car?.generation?.model_car?.name} advertised on rentcaruae.com`;
 
 export const getCarImageTitle = (car, city) =>
-  `${car?.title} ${car?.year} for rent in ${city?.city}`;
+  `${car?.title} ${car?.year} for rent in ${city?.name}`;
 export const getCarImageAlt = (car, city) =>
-  `Rent ${car?.title} in ${city?.city}`;
+  `Rent ${car?.title} in ${city?.name}`;
