@@ -1,4 +1,5 @@
 const CACHE = "offline-fallback-v1";
+const SERVER_URL = "http://localhost:3000";
 
 // При установке воркера мы должны закешировать часть данных (статику).
 self.addEventListener("install", (event) => {
@@ -20,7 +21,17 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", function (event) {
   // Можете использовать любую стратегию описанную выше.
   // Если она не отработает корректно, то используейте `Embedded fallback`.
-  event.respondWith(networkOrCache(event.request).catch(() => useFallback()));
+  if (event.request.mode === "navigate") {
+    return event.respondWith(fetch(event.request).catch(() => useFallback()));
+  }
+
+  // if (
+  //   true ||
+  //   (event.request?.method === "GET" &&
+  //     event.request?.url?.startWith?.(SERVER_URL))
+  // ) {
+  //   event.respondWith(networkOrCache(event.request).catch(() => useFallback()));
+  // }
 });
 
 function networkOrCache(request) {

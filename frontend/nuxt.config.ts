@@ -99,26 +99,18 @@ export default defineNuxtConfig({
 
   pwa: {
     workbox: {
+      navigateFallback: "/",
       importScripts: [
         "https://push4site.com/static/sw/rentcaruae.js",
         "/sw-offline.js",
       ],
-      // runtimeCaching: [
-      //   {
-      //     handler: "NetworkFirst",
-      //     urlPattern: "/offline",
-      //     options: {
-      //       cacheName: "offline",
-      //       expiration: {
-      //         maxEntries: 10,
-      //         maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-      //       },
-      //       cacheableResponse: {
-      //         statuses: [0, 200],
-      //       },
-      //     },
-      //   },
-      // ],
+      runtimeCaching: [
+        {
+          urlPattern: "/",
+          handler: "NetworkFirst",
+          method: "GET",
+        },
+      ],
     },
 
     devOptions: {
