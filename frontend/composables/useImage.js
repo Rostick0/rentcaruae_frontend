@@ -46,11 +46,24 @@ export default () => {
   };
 
   const getImageIdsFrom = async (images) => {
-    const newIds = await createImages(images);
-    const idsOld =
-      images?.filter?.((i) => !i?.file)?.map((item) => item?.id) ?? [];
+    const result = [];
 
-    return [...idsOld, ...newIds].join();
+    for (let i = 0; i < images.length; i++) {
+      if (!images[i]?.file) {
+        result.push(images[i]?.id);
+        continue;
+      }
+      const uploadeImage = await createImage(images[i]?.file);
+
+      result.push(uploadeImage?.id);
+    }
+
+    return result.join();
+    // const newIds = await createImages(images);
+    // const idsOld =
+    //   images?.filter?.((i) => !i?.file)?.map((item) => item?.id) ?? [];
+
+    // return [...idsOld, ...newIds].join();
   };
 
   return {

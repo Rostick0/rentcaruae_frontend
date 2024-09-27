@@ -6,10 +6,7 @@
     :rightIcon="rightIcon"
   >
     <div class="photoloader__images" @mouseup="dragElem = null">
-      <template
-        v-for="item in modelValue?.sort?.((a, b) => a?.order - b?.order)"
-        :key="item.id"
-      >
+      <template v-for="item in modelValue" :key="item.id">
         <div>
           <div @mousedown="dragElem = item">
             <UiDraggable>
@@ -87,6 +84,7 @@
     </div>
   </UiControl>
 </template>
+
 <script setup>
 import debounce from "lodash/debounce";
 import { size } from "@vee-validate/rules";
@@ -117,22 +115,15 @@ const props = defineProps({
   forceDeps: Boolean,
 });
 
-// const files = computed(
-//   props.modelValue?.map((item, i) => ({ ...item, order: i + 1 }))
-// );
-
-// onMounted(async () => {
-//   files.value =
-//     props?.modelValue?.map((item, i) => ({ ...item, order: i + 1 })) || [];
-// });
-
 const dragElem = ref();
 
 const changeOrder = debounce((dragElemArg, el) => {
   const files = [...props.modelValue];
-  const tmpOrder = files.find((i) => i.id == dragElemArg.id).order;
-  files.find((i) => i.id == dragElemArg.id).order = el.order;
-  files.find((i) => i.id == el.id).order = tmpOrder;
+
+  const first = files.findIndex((i) => i.id == dragElemArg.id);
+  const second = files.findIndex((i) => i.id == el.id);
+
+  [files[first], files[second]] = [files[second], files[first]];
 
   emits("update:modelValue", files);
   dragElem.value = null;
@@ -166,13 +157,6 @@ const handleOnFileChange = (e) => {
 
   emits("update:modelValue", [...(props?.modelValue || []), file]);
 };
-
-// watch(
-//   () => props.modelValue,
-//   () => {
-//     files.value = props.modelValue;
-//   }
-// );
 
 const handleRemove = (item) => {
   emits(
