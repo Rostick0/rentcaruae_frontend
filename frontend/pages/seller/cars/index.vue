@@ -63,6 +63,7 @@ const { data, get, meta } = await useApi({
   name: "car.getAll",
   params: {
     extends: "price,price_special",
+    "filterEQ[user_id]": user.value?.id,
     without_cache: true,
     limit: 8,
   },

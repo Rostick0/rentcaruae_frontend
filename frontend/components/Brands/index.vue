@@ -44,8 +44,8 @@ const props = defineProps({
   brands: Array,
 });
 
-const firstsBrands = computed(() => props?.brands?.slice(0, 5));
-const otherBrands = computed(() => props?.brands?.slice(5));
+const firstsBrands = computed(() => props?.brands?.slice(0, 4));
+const otherBrands = computed(() => props?.brands?.slice(4));
 
 const currentCity = useState("currentCity");
 </script>

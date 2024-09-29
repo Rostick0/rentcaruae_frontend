@@ -5,7 +5,7 @@
     </div>
     <div class="car__right">
       <AmpCarCalcLeasing v-if="isLeasing" :car="car">
-        <template v-if="$device.isMobile" #car-info>
+        <template #car-info>
           <AmpCarInfo
             :car="car"
             :specifications="specifications"
@@ -14,7 +14,7 @@
         </template>
       </AmpCarCalcLeasing>
       <AmpCarCalc v-else :car="car">
-        <template v-if="$device.isMobile" #car-info>
+        <template #car-info>
           <AmpCarInfo
             :car="car"
             :specifications="specifications"

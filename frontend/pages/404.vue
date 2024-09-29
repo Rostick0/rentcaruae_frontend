@@ -10,6 +10,13 @@
   </div>
 </template>
 
+<script setup>
+if (process.server) {
+  const event = useRequestEvent();
+  setResponseStatus(event, 404);
+}
+</script>
+
 <style lang="scss" scoped>
 @import "./../assets/scss/pages/error";
 </style>

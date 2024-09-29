@@ -1,7 +1,7 @@
 <template>
   <div class="car" itemscope itemtype="http://schema.org/Product">
     <meta itemprop="description" :content="car?.description" />
-    <meta itemprop="image" :content="car?.images?.[0]?.image?.path_web" />
+    <meta itemprop="image" :content="car?.images?.[0]?.image?.path_webp" />
     <div class="car__top">
       <div class="car__title" itemprop="name">{{ car?.title }}</div>
       <img
