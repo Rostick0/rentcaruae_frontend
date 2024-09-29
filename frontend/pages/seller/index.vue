@@ -17,10 +17,12 @@ const options = [
   {
     id: moment().subtract(7, "d").format("YYYY-MM-DD"),
     name: "7 days",
+    limit: 7,
   },
   {
     id: moment().subtract(30, "d").format("YYYY-MM-DD"),
     name: "30 days",
+    limit: 30,
   },
 ];
 
@@ -38,6 +40,7 @@ const { data } = await useApi({
   params: {
     is_full_data: true,
     sort: "date",
+    limit: 7,
   },
   init: true,
 });
@@ -46,6 +49,7 @@ watch(
   () => selectedPeriod.value,
   (newV) => {
     filters.value["filterGEQ[date]"] = newV.id;
+    filters.value.limit = newV.limit;
   }
 );
 
