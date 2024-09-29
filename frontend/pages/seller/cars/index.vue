@@ -15,13 +15,22 @@
         </NuxtLink>
       </div>
     </h1>
-    <div class="page-cars__refresh">
-      <UiButton @click="countSelected > 0 && clickRefresh()">Refresh</UiButton>
-      <strong class="">
-        <div class="text-pre-small">{{ countSelected }} cars</div>
-        <div class="text-ui page-cars__refresh_price">AED {{ price }}</div>
-      </strong>
+    <div class="page-cars__action">
+      <div class="page-cars__refresh">
+        <UiButton @click="countSelected > 0 && clickRefresh()"
+          >Refresh</UiButton
+        >
+        <strong class="">
+          <div class="text-pre-small">{{ countSelected }} cars</div>
+          <div class="text-ui page-cars__refresh_price">AED {{ price }}</div>
+        </strong>
+      </div>
+      <UiSearch
+        class="page-cars__action_search"
+        v-model="filters['filterLIKE[title]']"
+      />
     </div>
+
     <SellerCarsTable
       :selectValue="countSelected === carsSelected?.length"
       :cars="data"
@@ -54,6 +63,7 @@ const { filters } = useFilter({
   withQueryParams: true,
   withInitQueryParams: true,
   initialFilters: {
+    "filterLIKE[title]": null,
     page: 1,
     sort: "-id",
   },
@@ -155,11 +165,21 @@ definePageMeta({
     padding: 9.7 5px 15px;
   }
 
+  &__action {
+    display: flex;
+    column-gap: 152px;
+    margin-bottom: 20px;
+
+    &_search {
+      width: 100%;
+      max-width: 455px;
+    }
+  }
+
   &__refresh {
     display: flex;
     align-items: center;
     column-gap: 40px;
-    margin-bottom: 20px;
 
     &_price {
       font-size: 20px;

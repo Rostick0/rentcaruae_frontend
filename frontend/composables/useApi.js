@@ -7,11 +7,9 @@
 @callback  - функция срабатывает послк получения данных
 @popup вывести алерт при ошибке
 */
-import uniqueId from 'lodash/uniqueId';
-import Utils, {
-  formatObjectReverse,
-  mergeObjectsData,
-} from "~/utils/base";
+import uniqueId from "lodash/uniqueId";
+import debounce from "lodash/debounce";
+import Utils, { formatObjectReverse, mergeObjectsData } from "~/utils/base";
 
 import api from "~/api";
 
@@ -19,6 +17,7 @@ const useApi = async ({
   name,
   params = {},
   filters = {},
+  filterDebounce = 200,
   unwatchedFilters = {},
   requestParams = {},
   callback = null,
@@ -189,9 +188,9 @@ const useApi = async ({
       if (isReactive(filters.value)) {
         watch(
           [() => filters.value],
-          async () => {
+          debounce(async () => {
             await get({ ...params, ...filters });
-          },
+          }, filterDebounce),
           { deep: true }
         );
       }
