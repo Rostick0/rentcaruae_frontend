@@ -37,7 +37,7 @@ const navigations = [
 const user = useState("user");
 
 if (!["admin", "seller"].includes(user.value?.role)) {
-  // navigateTo("/404");
+  navigateTo("/404");
 }
 </script>
 
