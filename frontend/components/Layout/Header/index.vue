@@ -39,7 +39,7 @@
           <NuxtLink class="header__logo d-flex" to="/">
             <Logo />
           </NuxtLink>
-          <UiDropdownMenu v-if="$device.isDesktopOrTablet">
+          <LazyUiDropdownMenu v-if="$device.isDesktopOrTablet">
             <template #body>
               <UiButton class="btn-flex">
                 <svg
@@ -70,7 +70,7 @@
                 @close="close(), (isActive = false)"
               />
             </template>
-          </UiDropdownMenu>
+          </LazyUiDropdownMenu>
 
           <div class="header__search">
             <MainSearch variant="outlined" />
@@ -130,7 +130,7 @@
           class="header__bottom"
         >
           <div class="header__bottom_inner">
-            <UiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
+            <LazyUiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
               <template #body>
                 <UiButton class="btn-flex">
                   <svg
@@ -182,14 +182,14 @@
                   @close="close(), (isActive = false)"
                 />
               </template>
-            </UiDropdownMenu>
-            <UiSelectWithIcons
+            </LazyUiDropdownMenu>
+            <LazyUiSelectWithIcons
               v-if="$device.isDesktopOrTablet"
               v-model="cityWithFlag"
               :options="citiesComputed"
             />
             <div class="header__links">
-              <UiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
+              <LazyUiDropdownMenu v-for="menuItem in menu" :key="menuItem.name">
                 <template #body>
                   <div class="header__link text-ui">
                     {{ menuItem.name }}
@@ -207,7 +207,7 @@
                     @close="close(), (isActive = false)"
                   />
                 </template>
-              </UiDropdownMenu>
+              </LazyUiDropdownMenu>
               <NuxtLink
                 class="header__link text-ui"
                 @click="isActive = false"
