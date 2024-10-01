@@ -21,7 +21,7 @@
         v-model="filters.page"
         :meta="meta"
       />
-      <PageCatalogText :type="oneFilterType" />
+      <PageCatalogText :type="oneFilterType" :isLeasing="isLeasing" />
     </div>
   </div>
 </template>
@@ -41,19 +41,18 @@ const config = useRuntimeConfig();
 const route = useRoute();
 const currentCity = useState("currentCity");
 
-console.log(route.params);
 if (
   (route.params?.city &&
     currentCity.value?.name?.toLowerCase?.() !== route.params?.city) ||
   (route.params?.page && isNaN(route.params.page)) ||
   (route.params?.period &&
     !periodOptions.find((item) => item.name === route.params?.period))
-)
+) {
   navigateTo("/404");
+}
 
 const oneFilterValue = setOneFilterValue(route.params);
 const oneFilterType = ref(await getOneFilterType(route.params));
-
 const { filters } = useFilter({
   initialFilters: {
     ...oneFilterValue,
@@ -62,15 +61,13 @@ const { filters } = useFilter({
   },
 });
 
-const rent = computed(() =>
-  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
-);
+const rent = route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy";
 
-const isLeasing = computed(() => rent.value === "leasing");
+const isLeasing = rent === "leasing";
 
 const paramLeasing = {};
 
-if (rent.value === "leasing")
+if (rent === "leasing")
   paramLeasing["filterNEQ[price_leasing.id]"] = true;
 
 const { data, get, meta } = await useApi({
@@ -80,7 +77,7 @@ const { data, get, meta } = await useApi({
     extends:
       "generation.model_car.brand,price,images.image,fuel_type,transmission,price_special,price_leasing,security_deposit,user.company.image.image,cities",
     sort: "promo_car.point,id",
-    limit: 12,
+    limit: 5,
     ...paramLeasing,
     ...props?.paramsCar,
   },
@@ -115,7 +112,7 @@ const { data: prices, get: getPrices } = await useApi({
     limit: 8,
     sort: "-price",
     extends: "car.generation.model_car.brand",
-    "filterEQ[type]": rent.value === "leasing" ? "price_leasing" : "price",
+    "filterEQ[type]": rent === "leasing" ? "price_leasing" : "price",
     "filterGEQ[price]": 1,
   },
   filters: pricesFilters,
@@ -145,7 +142,7 @@ const pageText = computed(() =>
 const breadcrumbs = computed(() =>
   getCatalogBreadCrumbs({
     currentCity: currentCity.value,
-    rent: rent.value,
+    rent: rent,
     oneFilterType: oneFilterType.value,
   })
 );
@@ -159,7 +156,7 @@ watch(
     window.history.pushState({}, null, setCatalogUrl(route.path, newV));
     useHead({
       title:
-        `Car ${rent.value} in ${currentCity.value?.name} ${pageText.value}`.trim(),
+        `Car ${rent} in ${currentCity.value?.name} ${pageText.value}`.trim(),
     });
   }
 );
@@ -168,7 +165,7 @@ const { title, description, h1 } = getCatalogSeo(
   oneFilterType.value,
   currentCity.value,
   pageText.value,
-  rent.value === "leasing"
+  rent === "leasing"
 );
 
 useSeoMeta({

@@ -1,5 +1,5 @@
 <template>
-  <component v-if="componentImport" :is="computedAsyncComponent" />
+  <component v-if="initCompnent" :is="textComponent" />
 </template>
 
 <script setup>
@@ -7,20 +7,26 @@ import startCase from "lodash/startCase";
 
 const props = defineProps({
   type: Object,
+  isLeasing: Boolean,
 });
 
-const componentImport = computed(async () => {
+const componentImport = async () => {
   try {
+    if (props.isLeasing) {
+      return await import("./Leasing/index.vue");
+    }
     return await import(
       `./${startCase(props?.type?.type)}/${props?.type?.value}.vue`
     );
   } catch (e) {
     return null;
   }
-});
+};
 
-const computedAsyncComponent = computed(
-  () =>
-    componentImport.value && defineAsyncComponent(() => componentImport.value)
-);
+const initCompnent = await componentImport();
+const textComponent = ref();
+
+if (initCompnent) {
+  textComponent.value = defineAsyncComponent(async () => await initCompnent);
+}
 </script>
