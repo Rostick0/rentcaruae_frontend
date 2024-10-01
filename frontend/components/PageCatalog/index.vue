@@ -41,6 +41,16 @@ const config = useRuntimeConfig();
 const route = useRoute();
 const currentCity = useState("currentCity");
 
+console.log(route.params);
+if (
+  (route.params?.city &&
+    currentCity.value?.name?.toLowerCase?.() !== route.params?.city) ||
+  (route.params?.page && isNaN(route.params.page)) ||
+  (route.params?.period &&
+    !periodOptions.find((item) => item.name === route.params?.period))
+)
+  navigateTo("/404");
+
 const oneFilterValue = setOneFilterValue(route.params);
 const oneFilterType = ref(await getOneFilterType(route.params));
 
