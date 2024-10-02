@@ -41,6 +41,16 @@ const config = useRuntimeConfig();
 const route = useRoute();
 const currentCity = useState("currentCity");
 
+if (
+  (route.params?.city &&
+    currentCity.value?.name?.toLowerCase?.() !== route.params?.city) ||
+  (route.params?.page && isNaN(route.params.page)) ||
+  (route.params?.period &&
+    !periodOptions.find((item) => item.name === route.params?.period))
+) {
+  navigateTo("/404");
+}
+
 const oneFilterValue = setOneFilterValue(route.params);
 const oneFilterType = ref(await getOneFilterType(route.params));
 
@@ -52,16 +62,12 @@ const { filters } = useFilter({
   },
 });
 
-const rent = computed(() =>
-  route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
-);
-
-const isLeasing = computed(() => rent.value === "leasing");
+const rent = route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy";
+const isLeasing = rent === "leasing";
 
 const paramLeasing = {};
 
-if (rent.value === "leasing")
-  paramLeasing["filterNEQ[price_leasing.id]"] = true;
+if (rent === "leasing") paramLeasing["filterNEQ[price_leasing.id]"] = true;
 
 const { data, get, meta } = await useApi({
   name: "car.getAll",
@@ -105,7 +111,7 @@ const { data: prices, get: getPrices } = await useApi({
     limit: 8,
     sort: "-price",
     extends: "car.generation.model_car.brand",
-    "filterEQ[type]": rent.value === "leasing" ? "price_leasing" : "price",
+    "filterEQ[type]": rent === "leasing" ? "price_leasing" : "price",
     "filterGEQ[price]": 1,
   },
   filters: pricesFilters,
@@ -119,7 +125,7 @@ const pageText = computed(() =>
 const breadcrumbs = computed(() =>
   getCatalogBreadCrumbs({
     currentCity: currentCity.value,
-    rent: rent.value,
+    rent: rent,
     oneFilterType: oneFilterType.value,
   })
 );
@@ -128,7 +134,7 @@ const { title, description, h1 } = getCatalogSeo(
   oneFilterType.value,
   currentCity.value,
   pageText.value,
-  rent.value === "leasing"
+  rent === "leasing"
 );
 
 useSeoMeta({

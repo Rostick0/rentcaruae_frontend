@@ -18,10 +18,14 @@
 <script setup>
 const route = useRoute();
 
-const getUrl = (pageNumber) =>
-  `${route.path.replace("/amp", "")}page-${pageNumber}${
+const getUrl = (pageNumber) => {
+  return `${
+    route.path.replace("/amp", "").replace(/page-[a-zA-Z0-9]+/g, "") +
+    (!route.params?.page ? "/" : "")
+  }page-${pageNumber}${
     route.query ? "?" + new URLSearchParams(route.query).toString() : ""
   }`;
+};
 
 // const padding = 2;
 
