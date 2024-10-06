@@ -1,11 +1,13 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <LazyCarSwiperImages
-        :activeSlide="activeSlide"
-        :car="car"
-        :images="images"
-      />
+      <ClientOnly>
+        <CarSwiperImages
+          :activeSlide="activeSlide"
+          :car="car"
+          :images="images"
+        />
+      </ClientOnly>
     </div>
     <div
       class="car-image__list"

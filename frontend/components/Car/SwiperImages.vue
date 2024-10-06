@@ -13,7 +13,7 @@
     }"
   >
     <SwiperSlide>
-      <LazyNuxtImg
+      <NuxtImg
         class="car-image__main_img"
         :src="firstImage?.image?.path_webp + '?w=700'"
         :title="getCarImageTitle(car, currentCity)"
