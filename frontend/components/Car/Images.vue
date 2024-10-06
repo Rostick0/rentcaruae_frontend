@@ -1,13 +1,11 @@
 <template>
   <div class="car-image">
     <div class="car-image__main">
-      <LazyNuxtLazyHydrate whenVisible>
-        <LazyCarSwiperImages
-          :activeSlide="activeSlide"
-          :car="car"
-          :images="images"
-        />
-      </LazyNuxtLazyHydrate>
+      <LazyCarSwiperImages
+        :activeSlide="activeSlide"
+        :car="car"
+        :images="images"
+      />
     </div>
     <div
       class="car-image__list"

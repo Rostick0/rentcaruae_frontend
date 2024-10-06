@@ -41,6 +41,8 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 await import("swiper/css");
 
+const currentCity = useState("currentCity");
+
 const props = defineProps({
   car: Object,
   activeSlide: Number,
@@ -50,11 +52,14 @@ const props = defineProps({
 const swiper = ref();
 
 const firstImage = computed(() => props?.images?.[0]);
-const otherImages = computed(() => props?.images?.slice(0, -1));
+const otherImages = computed(() => props?.images?.slice(1, -1));
 
-watch(props.activeSlide, (newV) => {
-  swiper.value.slideTo(newV, 200, false);
-});
+watch(
+  () => props.activeSlide,
+  (cur) => {
+    swiper.value.slideTo(cur, 200, false);
+  }
+);
 </script>
 
 <style lang="scss" scoped>
