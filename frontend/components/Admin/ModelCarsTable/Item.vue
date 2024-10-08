@@ -6,7 +6,7 @@
       {{ item?.brand?.name }}
     </td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/model-cars/${item?.id}`"
+      <NuxtLink class="link" :to="`/admin/model-cars/${item?.id}/`"
         >Edit</NuxtLink
       >
     </td>

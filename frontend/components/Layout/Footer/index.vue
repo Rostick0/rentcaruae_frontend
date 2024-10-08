@@ -13,7 +13,7 @@
               <NuxtLink
                 class="footer-item__link"
                 v-for="city in cities"
-                :to="convertNameToUrl(`/${city.name}`)"
+                :to="convertNameToUrl(`/${city.name}/`)"
                 :key="city.id"
                 >{{ city.name }}</NuxtLink
               >
@@ -29,7 +29,7 @@
                 :key="category.id"
                 :to="
                   convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/type/${category?.name}`
+                    `/${currentCity?.name ?? 'all'}/type/${category?.name}/`
                   )
                 "
                 >{{ category.name }}</NuxtLink
@@ -46,7 +46,7 @@
                 :key="brand.id"
                 :to="
                   convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/brand/${brand?.name}`
+                    `/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`
                   )
                 "
                 >{{ brand.name }}</NuxtLink
@@ -63,7 +63,7 @@
                 :key="generation.id"
                 :to="
                   convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/body/${generation?.name}`
+                    `/${currentCity?.name ?? 'all'}/body/${generation?.name}/`
                   )
                 "
                 >{{ generation.name }}</NuxtLink
@@ -87,14 +87,14 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">About us</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/blogs">Blog</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/privacy_policy"
+              <NuxtLink class="footer-item__link" to="/blogs/">Blog</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/privacy_policy/"
                 >Privacy policy</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/terms_of_service"
+              <NuxtLink class="footer-item__link" to="/terms_of_service/"
                 >Terms of use</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/sitemap"
+              <NuxtLink class="footer-item__link" to="/sitemap/"
                 >Site map</NuxtLink
               >
               <a class="footer-item__link" href="mailto:hello@rentcaruae.com"

@@ -41,7 +41,7 @@ const onSubmit = handleSubmit(
       return;
     }
 
-    navigateTo("/admin/deposites");
+    navigateTo("/admin/deposites/");
   },
   () => {
     warningPopup("Not all fields are valid");

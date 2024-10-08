@@ -9,7 +9,7 @@
       {{ moment(item?.created_at).format("DD MMM YYYY") }}
     </td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/sellers/${item?.user_id}`"
+      <NuxtLink class="link" :to="`/admin/sellers/${item?.user_id}/`"
         >Show</NuxtLink
       >
     </td>

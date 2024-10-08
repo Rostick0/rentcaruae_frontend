@@ -37,7 +37,7 @@
             others. They are necessary for the optimal operation of sites and
             services, help RentCarUAE recognize you and store your settings.
             Read more in the
-            <NuxtLink class="color-basic" to="/privacy_policy" target="_blank"
+            <NuxtLink class="color-basic" to="/privacy_policy/" target="_blank"
               >Policy.</NuxtLink
             >
           </div>

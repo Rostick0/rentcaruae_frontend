@@ -39,7 +39,7 @@
     </td>
     <td class="table__td">AED {{ item?.price }}</td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/seller/date/${item?.date}`">More</NuxtLink>
+      <NuxtLink class="link" :to="`/seller/date/${item?.date}/`">More</NuxtLink>
     </td>
   </tr>
 </template>

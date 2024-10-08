@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+import isEmpty from "lodash/isEmpty";
 const route = useRoute();
 
 const getUrl = (pageNumber) => {
@@ -23,8 +24,10 @@ const getUrl = (pageNumber) => {
     route.path.replace("/amp", "").replace(/page-[a-zA-Z0-9]+/g, "") +
     (!route.params?.page ? "/" : "")
   }page-${pageNumber}${
-    route.query ? "?" + new URLSearchParams(route.query).toString() : ""
-  }`;
+    !isEmpty(route.query)
+      ? "?" + new URLSearchParams(route.query).toString()
+      : "/"
+  }`.replace("//", "/");
 };
 
 // const padding = 2;

@@ -13,47 +13,47 @@
 const navigations = [
   {
     name: "Dashboard",
-    link: "/admin",
+    link: "/admin/",
   },
   {
     name: "Brands",
-    link: "/admin/brands",
+    link: "/admin/brands/",
   },
   {
     name: "Model cars",
-    link: "/admin/model-cars",
+    link: "/admin/model-cars/",
   },
   {
     name: "Generations",
-    link: "/admin/generations",
+    link: "/admin/generations/",
   },
   {
     name: "Deposites",
-    link: "/admin/deposites",
+    link: "/admin/deposites/",
   },
   {
     name: "Sellers",
-    link: "/admin/sellers",
+    link: "/admin/sellers/",
   },
   {
     name: "Verification users",
-    link: "/admin/verification-users",
+    link: "/admin/verification-users/",
   },
   {
     name: "Register users",
-    link: "/admin/user-applications",
+    link: "/admin/user-applications/",
   },
   {
     name: "Payments",
-    link: "/admin/payments",
+    link: "/admin/payments/",
   },
   {
     name: "Spendings",
-    link: "/admin/spendings",
+    link: "/admin/spendings/",
   },
   {
     name: "Posts",
-    link: "/admin/posts",
+    link: "/admin/posts/",
   },
 ];
 

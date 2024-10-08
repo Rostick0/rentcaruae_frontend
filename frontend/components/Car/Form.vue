@@ -19,11 +19,11 @@
     <UiButton class="calc__button">Book</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
       By ticking this box, you agree to the
-      <NuxtLink to="/terms_of_service" target="_blank"
+      <NuxtLink to="/terms_of_service/" target="_blank"
         >Terms of Service</NuxtLink
       >
       <br />and
-      <NuxtLink to="/privacy_policy" target="_blank">Privacy Policy</NuxtLink>,
+      <NuxtLink to="/privacy_policy/" target="_blank">Privacy Policy</NuxtLink>,
       including cookie use.
     </VFormComponent>
   </div>

@@ -25,7 +25,7 @@
             <Logo />
           </NuxtLink>
 
-          <NuxtLink v-if="user" to="/seller">
+          <NuxtLink v-if="user" to="/seller/">
             <UiButton class="btn-flex">
               <svg
                 width="20"

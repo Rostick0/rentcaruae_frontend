@@ -29,7 +29,7 @@
       </template>
     </td>
     <td class="table__td">
-      <NuxtLink class="link" :to="'/seller/cars/' + car?.id">Edit</NuxtLink>
+      <NuxtLink class="link" :to="`/seller/cars/${car?.id}/`">Edit</NuxtLink>
     </td>
     <td class="table__td">
       <UiButton @click="emits('selectCar', car)" variant="outlined"

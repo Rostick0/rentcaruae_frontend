@@ -41,7 +41,7 @@
     </td>
     <td class="table__td">AED {{ item?.price }}</td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/seller/cars/${item?.car?.id}`"
+      <NuxtLink class="link" :to="`/seller/cars/${item?.car?.id}/`"
         >Edit</NuxtLink
       >
     </td>

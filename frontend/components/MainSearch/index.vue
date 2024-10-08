@@ -137,7 +137,7 @@ const city = useState("currentCity");
 
 const clickRedirect = (type, name) => {
   isShow.value = false;
-  navigateTo(convertNameToUrl(`/${city.value?.name}/${type}/${name}`));
+  navigateTo(convertNameToUrl(`/${city.value?.name}/${type}/${name}/`));
 };
 
 const { filters } = useFilter({

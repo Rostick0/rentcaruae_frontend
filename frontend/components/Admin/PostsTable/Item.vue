@@ -14,7 +14,7 @@
       {{ moment(item?.created_at).format("DD MMM YYYY") }}
     </td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/posts/${item?.id}`">Edit</NuxtLink>
+      <NuxtLink class="link" :to="`/admin/posts/${item?.id}/`">Edit</NuxtLink>
     </td>
   </tr>
 </template>

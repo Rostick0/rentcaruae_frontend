@@ -168,7 +168,7 @@ const link = computed(() =>
       route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
     }/${props.car?.generation?.model_car?.brand?.name}/${
       props.car?.generation?.model_car?.name
-    }/${props.car?.id}`
+    }/${props.car?.id}/`
   )
 );
 

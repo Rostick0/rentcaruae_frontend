@@ -9,7 +9,7 @@
       {{ item?.model_car?.brand?.name }}
     </td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/generations/${item?.id}`"
+      <NuxtLink class="link" :to="`/admin/generations/${item?.id}/`"
         >Edit</NuxtLink
       >
     </td>

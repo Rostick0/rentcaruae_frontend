@@ -211,7 +211,7 @@
               <NuxtLink
                 class="header__link text-ui"
                 @click="isActive = false"
-                :to="convertNameToUrl(`/${city?.name}/leasing`)"
+                :to="convertNameToUrl(`/${city?.name}/leasing/`)"
                 >Car Leasing</NuxtLink
               >
             </div>

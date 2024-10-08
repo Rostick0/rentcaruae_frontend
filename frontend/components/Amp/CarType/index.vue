@@ -12,7 +12,7 @@
       class="d-flex"
       v-for="type in bodyTypesWithIcon"
       :key="type.name"
-      :to="`/${currentCity?.name}/${type.name.toLowerCase()}`"
+      :to="`/${currentCity?.name}/${type.name}/`.toLowerCase()"
     >
       <UiButton
         class="car-type__item text-pre-small"

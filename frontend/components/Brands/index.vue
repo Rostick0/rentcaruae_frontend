@@ -5,7 +5,7 @@
       v-for="brand in firstsBrands"
       :key="brand?.id"
       :to="
-        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
+        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`)
       "
     >
       <LazyNuxtImg
@@ -22,7 +22,7 @@
       v-for="brand in otherBrands"
       :key="brand?.id"
       :to="
-        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}`)
+        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`)
       "
     >
       <img

@@ -1,7 +1,7 @@
 <template>
   <h1 class="h1 flex-style">
     <span>Generations</span>
-    <NuxtLink class="d-flex" to="/admin/model-cars/add">
+    <NuxtLink class="d-flex" to="/admin/model-cars/add/">
       <UiButton class="page-cars__add" variant="outlined"
         >+ Add generation</UiButton
       >

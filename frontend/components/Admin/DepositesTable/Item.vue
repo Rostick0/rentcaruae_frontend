@@ -4,7 +4,7 @@
     <td class="table__td">{{ item?.price }}</td>
     <td class="table__td">{{ item?.free_leads }}</td>
     <td class="table__td">
-      <NuxtLink class="link" :to="`/admin/deposites/${item?.id}`">Edit</NuxtLink>
+      <NuxtLink class="link" :to="`/admin/deposites/${item?.id}/`">Edit</NuxtLink>
     </td>
   </tr>
 </template>

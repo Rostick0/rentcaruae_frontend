@@ -2,7 +2,7 @@
   <NuxtLink
     class="post-card"
     v-if="post"
-    :to="`/blogs/${post?.title_link}`"
+    :to="`/blogs/${post?.title_link}/`"
     itemscope
     itemtype="https://schema.org/Article"
   >

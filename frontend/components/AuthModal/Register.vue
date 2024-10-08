@@ -22,11 +22,11 @@
       <div class="auth-modal__checkbox">
         <VFormComponent :field="is_agree">
           By ticking this box, you agree to the
-          <NuxtLink to="/terms_of_service" target="_blank"
+          <NuxtLink to="/terms_of_service/" target="_blank"
             >Terms of Service</NuxtLink
           >
           <br />and
-          <NuxtLink to="/privacy_policy" target="_blank"
+          <NuxtLink to="/privacy_policy/" target="_blank"
             >Privacy Policy</NuxtLink
           >, including cookie use.
         </VFormComponent>

@@ -60,7 +60,7 @@ const links = computed(() => {
     },
   ].map(({ name }) => ({
     name,
-    link: convertNameToUrl(link + name),
+    link: convertNameToUrl(link + name + "/"),
   }));
 });
 </script>

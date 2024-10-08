@@ -18,26 +18,26 @@
 const navigations = [
   {
     name: "Dashboard",
-    link: "/seller",
+    link: "/seller/",
   },
   {
     name: "Manage cars",
-    link: "/seller/cars",
+    link: "/seller/cars/",
   },
   {
     name: "Bookings",
-    link: "/seller/bookings",
+    link: "/seller/bookings/",
   },
   {
     name: "Profile",
-    link: "/seller/profile",
+    link: "/seller/profile/",
   },
 ];
 
 const user = useState("user");
 
 if (!["admin", "seller"].includes(user.value?.role)) {
-  // navigateTo("/404");
+  navigateTo("/404");
 }
 </script>
 

@@ -6,7 +6,7 @@
         formatNumber(user?.balance)
       }}</span>
     </div>
-    <NuxtLink class="d-flex" to="/seller/deposite">
+    <NuxtLink class="d-flex" to="/seller/deposite/">
       <UiButton class="seller-header__btn">Deposite</UiButton>
     </NuxtLink>
   </div>

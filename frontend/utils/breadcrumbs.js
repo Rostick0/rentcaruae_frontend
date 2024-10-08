@@ -10,7 +10,7 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
     },
     {
       name: currentCity?.name,
-      link: cityLink,
+      link: cityLink + "/",
     },
   ];
 
@@ -19,7 +19,7 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
       ...data,
       {
         name: `Car ${rent} in ${currentCity?.name}`,
-        link: `${cityLink}/leasing`,
+        link: `${cityLink}/leasing/`,
       },
     ];
 
@@ -30,7 +30,7 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
       {
         name: oneFilterType.value,
         link: convertNameToUrl(
-          `${cityLink}/${oneFilterType.type}/${oneFilterType.value}`
+          `${cityLink}/${oneFilterType.type}/${oneFilterType.value}/`
         ),
       },
     ];
