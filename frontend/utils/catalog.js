@@ -2,7 +2,7 @@ import startCase from "lodash/startCase";
 import api from "~/api";
 
 export const setCatalogUrl = (val, page) =>
-  val?.split("/page")[0] + (page > 1 ? `/page-${page}` : "");
+  val?.split("/page")[0] + (page > 1 ? `page-${page}/` : "");
 
 export const getNameTypeCatalog = async (type, value) => {
   const types = {
