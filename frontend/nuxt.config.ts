@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  site: { indexable: false },
+  site: { trailingSlash: true },
   pages: true,
   app: {
     head: {
@@ -82,6 +82,7 @@ export default defineNuxtConfig({
     "@nuxtjs/device",
     "@vite-pwa/nuxt",
     "nuxt-lazy-load",
+    "@nuxtjs/seo",
   ],
 
   build: {
@@ -128,15 +129,15 @@ export default defineNuxtConfig({
     },
   },
 
+  router: {
+    options: {
+      strict: true,
+    },
+  },
+
   target: "server",
   modern: "server",
   routeRules: {
-    offline: {
-      prerender: true,
-      cache: {
-        swr: true,
-      },
-    },
     "/404": {
       static: true,
     },
