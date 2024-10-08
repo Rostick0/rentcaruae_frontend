@@ -129,7 +129,7 @@ watch(
 
 const setCanoncalLink = () => ({
   rel: "canonical",
-  href: config.public.BASE_URL + route.path + (route.path === "/" ? "" : "/"),
+  href: config.public.BASE_URL + route.path,
 });
 
 watch(
