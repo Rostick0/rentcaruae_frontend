@@ -39,13 +39,19 @@ const props = defineProps({
 .post {
   &__image {
     display: flex;
+    padding-top: 46.1%;
+    position: relative;
+    max-height: 520px;
     margin-bottom: 16px;
   }
 
   &__img {
     object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
-    max-height: 520px;
+    height: 100%;
   }
 
   &__container {

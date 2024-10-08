@@ -4,10 +4,10 @@
       <div class="post__image_inner">
         <amp-img
           class="post__img"
-          :src="post?.image?.image?.path_webp + '?w=1000'"
+          :src="post?.image?.image?.path_webp + '?w=500'"
           :alt="post?.title"
-          width="100%"
-          height="100%"
+          width="395"
+          height="195"
           layout="fill"
         />
       </div>

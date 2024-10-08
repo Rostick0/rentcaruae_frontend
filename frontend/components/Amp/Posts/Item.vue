@@ -12,7 +12,6 @@
     <meta itemprop="author" :content="post?.user?.full_name" />
     <meta
       itemprop="datePublished"
-      :datetime="post?.created_at"
       :content="post?.created_at"
     />
     <meta
