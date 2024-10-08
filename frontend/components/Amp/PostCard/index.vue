@@ -17,7 +17,6 @@
     />
     <meta
       itemprop="dateModified"
-      :datetime="post?.updated_at"
       :content="post?.updated_at"
     />
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
