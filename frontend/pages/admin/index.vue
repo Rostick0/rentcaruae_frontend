@@ -57,7 +57,7 @@ import moment from "moment";
 const { data, get } = await useApi({
   name: "statisticsDay.getAll",
   params: {
-    "filterGEQ[date]": moment().add("days", -29).format("YYYY-MM-DD"),
+    "filterGEQ[date]": moment().add(-29, "days").format("YYYY-MM-DD"),
     for_admin: true,
     sort: "date",
     limit: 30,

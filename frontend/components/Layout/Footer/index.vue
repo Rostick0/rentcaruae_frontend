@@ -161,7 +161,7 @@
             <slot name="joinButton" />
           </div>
         </div>
-        <div class="footer__bottom">© Buycaruae 2023</div>
+        <div class="footer__bottom">© Rentcaruae 2024</div>
       </div>
     </div>
   </footer>
