@@ -97,6 +97,9 @@
               <NuxtLink class="footer-item__link" to="/sitemap/"
                 >Site map</NuxtLink
               >
+              <NuxtLink class="footer-item__link" to="/sitemap_amp/"
+                >Site map amp</NuxtLink
+              >
               <a class="footer-item__link" href="mailto:hello@rentcaruae.com"
                 >Contact us</a
               >
