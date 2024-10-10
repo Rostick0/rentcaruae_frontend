@@ -91,7 +91,8 @@ const telegram_ids = ref({
   modelValue: props.user?.user_socs?.map?.((item) => item?.value).join() ?? "",
 
   bind: {
-    label: "Your id in telegram",
+    label: "Your ids in telegram",
+    placeholder: '1123 or 1123,3213,321',
     maska: "S#",
     maskaTokens: "S:[0-9,]:multiple",
   },
