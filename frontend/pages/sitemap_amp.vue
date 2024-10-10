@@ -71,7 +71,7 @@ const breadcrumbs = [
   },
 ];
 
-const title = `Sitemap - Rent a Car ${currentCity.value?.name}`;
+const title = `Sitemap Amp - Rent a Car ${currentCity.value?.name}`;
 
 useSeoMeta({
   title,
