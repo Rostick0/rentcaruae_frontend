@@ -65,6 +65,9 @@ const seats = ref({
   bind: {
     label: "Seats",
     placeholder: "Seats",
+    maska: maskaOnlyNumber.mask,
+    maskaTokens: maskaOnlyNumber.tokens,
+    // dataMaskaReversed: true
   },
 });
 

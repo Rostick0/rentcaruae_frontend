@@ -2,7 +2,7 @@ import auth from "~/api/modules/auth";
 
 export default async () => {
   const extnedsUser =
-    "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car";
+    "company.company_schedules,company.city,company.license.file,company.sertificate.file,company.image.image,refresh_car,user_socs";
 
   const accessToken = useCookie("accessToken", {
     maxAge: 60 * 60 * 24 * 7,

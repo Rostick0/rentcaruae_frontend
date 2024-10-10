@@ -7,7 +7,7 @@
     <div class="form-item">
       <VFormComponent :field="user_email" />
       <div>
-        <VFormComponent :field="user_tg_user_id" />
+        <VFormComponent :field="telegram_ids" />
         <a class="link" href="https://t.me/getmyid_bot" target="_blank"
           >Get your id</a
         >
@@ -83,14 +83,17 @@ const user_is_tg_alerts = ref({
   },
 });
 
-const user_tg_user_id = ref({
+const telegram_ids = ref({
   type: "text",
-  name: "user.tg_user_id",
-  rules: "max:255",
-  modelValue: props.user?.tg_user_id ?? "",
+  name: "telegram_ids",
+  // name: "user.tg_user_id",
+  // rules: "max:255",
+  modelValue: props.user?.user_socs?.map?.((item) => item?.value).join() ?? "",
 
   bind: {
     label: "Your id in telegram",
+    maska: "S#",
+    maskaTokens: "S:[0-9,]:multiple",
   },
 });
 </script>
