@@ -151,32 +151,36 @@ const authModalState = useState("authModalState");
 const { register } = await useAuth();
 const { handleSubmit, setErrors } = useForm();
 
-const onSubmit = handleSubmit(async ({ tel, city_id, ...values }) => {
-  if (isSendedCode.value) return;
+const onSubmit = handleSubmit(
+  async ({ tel, city_id, company_city_id, ...values }) => {
+    if (isSendedCode.value) return;
 
-  isSendedCode.value = true;
+    isSendedCode.value = true;
 
-  const data = {
-    ...values,
-    tel: convertPhoneToDb(tel),
-    type: "register",
-    company_city_id: values?.company_city_id?.id,
-  };
+    const data = {
+      ...values,
+      tel: convertPhoneToDb(tel),
+      type: "register",
+      company_city_id: company_city_id?.id,
+    };
 
-  const res = await api.emailCode.create({
-    data,
-  });
+    const res = await api.emailCode.create({
+      data,
+    });
 
-  g_recaptcha_response.value.modelValue = "";
+    g_recaptcha_response.value.modelValue = "";
 
-  if (res?.error) {
-    warningPopup("Code don't sended");
-    isSendedCode.value = false;
-    return;
+    if (res?.error) {
+      warningPopup("Code don't sended");
+      isSendedCode.value = false;
+
+      setErrors(res?.errorResponse?.data?.errors);
+      return;
+    }
+
+    formValues.value = data;
   }
-
-  formValues.value = data;
-});
+);
 
 watch(
   () => code.value.modelValue,
