@@ -1,6 +1,6 @@
 <template>
   <div class="spoiler">
-    <div class="spoiler__switch" @click="active = !active">
+    <div class="spoiler__switch" :class="{ active }" @click="active = !active">
       <svg
         class="spoiler__icon"
         :class="{ active }"
