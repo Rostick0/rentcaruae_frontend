@@ -26,7 +26,7 @@
     </div>
     <div
       class="spoiler__content"
-      v-if="active"
+      :class="{ active }"
       itemscope
       itemprop="acceptedAnswer"
       itemtype="https://schema.org/Answer"
@@ -67,10 +67,15 @@ const active = ref(false);
   }
 
   &__content {
+    display: none;
     font-size: 12px;
     line-height: 1.4;
     padding-left: 20px;
     margin-top: 8px;
+
+    &.active {
+      display: block;
+    }
   }
 }
 </style>
