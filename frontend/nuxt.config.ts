@@ -125,7 +125,8 @@ export default defineNuxtConfig({
 
   vue: {
     compilerOptions: {
-      isCustomElement: (tag: any) => ["amp-img", "amp-carousel"].includes(tag),
+      isCustomElement: (tag: any) =>
+        ["amp-img", "amp-carousel", "amp-accordion"].includes(tag),
     },
   },
 

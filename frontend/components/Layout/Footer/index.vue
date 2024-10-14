@@ -97,7 +97,7 @@
               <NuxtLink class="footer-item__link" to="/sitemap/"
                 >Site map</NuxtLink
               >
-              <NuxtLink class="footer-item__link" to="/sitemap_amp/"
+              <NuxtLink class="footer-item__link" to="/amp/sitemap/"
                 >Site map amp</NuxtLink
               >
               <NuxtLink class="footer-item__link" to="/faq/"

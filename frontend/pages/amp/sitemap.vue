@@ -43,6 +43,16 @@
           >{{ period?.name }}</NuxtLink
         >
       </div>
+
+      <h2 class="sitemap__title">About us</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="item in data?.about_us?.slice(0, 2)"
+          :to="setAmpLink(item?.link)"
+          >{{ item?.name }}</NuxtLink
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -56,10 +66,13 @@ const config = useRuntimeConfig();
 
 const data = await api.sitemap.get();
 
+const setAmpLink = (link) =>
+  link?.replace(config.public.BASE_URL, config.public.BASE_URL + "/amp");
+
 const setLink = (link) =>
-  link
-    ?.replace(config.public.BASE_URL, config.public.BASE_URL + "/amp")
-    ?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name));
+  setAmpLink(
+    link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name))
+  );
 
 const breadcrumbs = [
   {
@@ -100,6 +113,7 @@ useSeoMeta({
     display: flex;
     align-items: center;
     column-gap: 8px;
+    width: fit-content;
 
     &::before {
       background-color: var(--color-basic);

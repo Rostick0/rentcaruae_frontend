@@ -43,6 +43,16 @@
           >{{ period?.name }}</NuxtLink
         >
       </div>
+
+      <h2 class="sitemap__title">About us</h2>
+      <div class="sitemap__list">
+        <NuxtLink
+          class="sitemap__link"
+          v-for="item in data?.about_us"
+          :to="item?.link"
+          >{{ item?.name }}</NuxtLink
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -98,6 +108,7 @@ useSeoMeta({
     display: flex;
     align-items: center;
     column-gap: 8px;
+    width: fit-content;
 
     &::before {
       background-color: var(--color-basic);
