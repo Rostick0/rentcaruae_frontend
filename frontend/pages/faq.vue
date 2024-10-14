@@ -775,7 +775,7 @@ const config = useRuntimeConfig();
     }
 
     &-list {
-      row-gap: 20px;
+      row-gap: 40px;
       margin-top: 20px;
     }
 
