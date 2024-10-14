@@ -734,6 +734,27 @@ const breadcrumbs = [
 ];
 
 const config = useRuntimeConfig();
+
+useHead({
+  htmlAttrs: {
+    itemscope: true,
+    itemtype: "https://schema.org/FAQPage",
+  },
+});
+
+const title = "Dubai Car Rental FAQs: Know before Renting a Car in UAE";
+const description =
+  "Get answers to frequently asked questions about renting and driving a car in the UAE: Dubai, Abu Dhabi.";
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: config.public.BASE_URL + "/images/RentCarUAE.jpg",
+  ogImageWidth: 736,
+  ogImageHeight: 414,
+});
 </script>
 
 <style lang="scss" scoped>

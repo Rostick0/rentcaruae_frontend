@@ -1,5 +1,10 @@
 <template>
-  <div class="spoiler">
+  <div
+    class="spoiler"
+    itemscope
+    itemprop="mainEntity"
+    itemtype="https://schema.org/Question"
+  >
     <div class="spoiler__switch" :class="{ active }" @click="active = !active">
       <svg
         class="spoiler__icon"
@@ -15,12 +20,20 @@
           fill="#221EE3"
         />
       </svg>
-      <div class="spoiler__title">
+      <div class="spoiler__title" itemprop="name">
         <slot name="title" />
       </div>
     </div>
-    <div class="spoiler__content" v-if="active">
-      <slot name="content" />
+    <div
+      class="spoiler__content"
+      v-if="active"
+      itemscope
+      itemprop="acceptedAnswer"
+      itemtype="https://schema.org/Answer"
+    >
+      <div itemprop="text">
+        <slot name="content" />
+      </div>
     </div>
   </div>
 </template>
