@@ -92,6 +92,7 @@ const props = defineProps({
 .post__content {
   amp-img {
     max-width: calc(100vw - 40px);
+    max-height: 80vw;
   }
 
   img {
