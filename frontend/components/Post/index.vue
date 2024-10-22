@@ -92,6 +92,13 @@ const props = defineProps({
     &__title {
       margin-bottom: 14px;
     }
+
+    &__content {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }
 </style>

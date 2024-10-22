@@ -69,6 +69,8 @@ const props = defineProps({
     row-gap: 24px;
 
     &_right {
+      position: sticky;
+      top: 0;
       width: 100%;
       max-width: 480px;
     }
@@ -81,6 +83,13 @@ const props = defineProps({
 
   &__title {
     margin: 12px 0 14px;
+  }
+
+  &__content {
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
