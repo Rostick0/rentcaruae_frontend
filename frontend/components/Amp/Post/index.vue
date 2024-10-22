@@ -95,7 +95,7 @@ const props = defineProps({
   }
 
   img {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 </style>
