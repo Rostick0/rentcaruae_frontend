@@ -21,7 +21,10 @@
           {{ moment(post?.created_at).format("DD.MM.yyyy") }}
         </time>
         <h1 class="h1 post__title">{{ post?.title }}</h1>
-        <div class="post__content" v-html="post?.content"></div>
+        <div
+          class="post__content"
+          v-html="post?.content?.replace(/<img/gi, '<amp-img')"
+        ></div>
       </div>
       <div class="post__container_right">
         <AmpCarCardItem :car="post?.car" />
@@ -69,8 +72,6 @@ const props = defineProps({
     row-gap: 24px;
 
     &_right {
-      position: sticky;
-      top: 0;
       width: 100%;
       max-width: 480px;
     }
@@ -84,12 +85,14 @@ const props = defineProps({
   &__title {
     margin: 12px 0 14px;
   }
+}
+</style>
 
-  &__content {
-    img {
-      max-width: 100%;
-      height: 100%;
-    }
+<style lang="scss">
+.post__content {
+  amp-img {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 </style>

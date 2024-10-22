@@ -64,6 +64,8 @@ const props = defineProps({
     }
 
     &_right {
+      position: sticky;
+      top: 0;
       flex: 1 0 100%;
       max-width: 360px;
     }
@@ -92,13 +94,15 @@ const props = defineProps({
     &__title {
       margin-bottom: 14px;
     }
+  }
+}
+</style>
 
-    &__content {
-      img {
-        max-width: 100%;
-        height: 100%;
-      }
-    }
+<style lang="scss">
+.post__content {
+  img {
+    max-width: 100%;
+    height: 100%;
   }
 }
 </style>
