@@ -36,7 +36,6 @@
 <script setup>
 import moment from "moment";
 
-
 const props = defineProps({
   post: Object,
 });
@@ -92,8 +91,11 @@ const props = defineProps({
 <style lang="scss">
 .post__content {
   amp-img {
-    width: 100% !important;
-    height: 100% !important;
+    max-width: calc(100vw - 40px);
+  }
+
+  img {
+    object-fit: cover;
   }
 }
 </style>
