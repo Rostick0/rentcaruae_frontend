@@ -90,6 +90,10 @@ const props = defineProps({
 
 <style lang="scss">
 .post__content {
+  a {
+    color: var(--color-basic);
+  }
+
   amp-img {
     max-width: calc(100vw - 40px);
     max-height: 80vw;
