@@ -8,19 +8,15 @@
 </template>
 
 <script lang="ts" setup>
-const CKEditor = await import("@ckeditor/ckeditor5-vue");
-// import CKEditor from "@ckeditor/ckeditor5-vue";
-// const ClassicEditor = await import("@ckeditor/ckeditor5-build-classic");
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+const ckedit = await import("@ckeditor/ckeditor5-vue").then(
+  (res) => res.default.component
+);
 const ClassicEditor = await import("@ckeditor/ckeditor5-build-classic").then(
   (res) => res.default
 );
+
 import type { EditorConfig } from "@ckeditor/ckeditor5-core";
 import api from "~/api";
-
-const ckedit = CKEditor.default.component;
-
-const config = useRuntimeConfig();
 
 const props = defineProps<{
   modelValue?: any;
@@ -58,12 +54,40 @@ class UploadAdapter {
 const onInit = (editor: any) => {
   editor.plugins.get("FileRepository").createUploadAdapter = (loader: any) =>
     new UploadAdapter(loader);
+
+  // editor.colorButton_colors = "CF5D4E,454545,FFF,DDD,CCEAEE,66AB16";
+  // editor.colorButton_enableAutomatic = false;
+  // console.log(editor.config());
+  // editor.toolbar.push(["TextColor", "BGColor"]);
 };
 
 const editorConfig = ref<EditorConfig>({
-  // ckfinder: {
-  //   uploadUrl: config.public.BACK_URL + "/api/image/upload",
-  // },
+  // toolbar: [
+  //   "undo",
+  //   "redo",
+  //   "|",
+  //   "heading",
+  //   "|",
+  //   "fontFamily",
+  //   "FontSize",
+  //   "fontColor",
+  //   "fontBackgroundColor",
+  //   "|",
+  //   "bold",
+  //   "italic",
+  //   "underline",
+  //   "subscript",
+  //   "superscript",
+  //   "|",
+  //   "link",
+  //   "alignment",
+  //   "outdent",
+  //   "indent",
+  //   "|",
+  //   "bulletedList",
+  //   "numberedList",
+  //   "blockQuote",
+  // ],
 });
 
 const value = computed({

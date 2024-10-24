@@ -29,9 +29,6 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
       { name: startCase(oneFilterType.type) },
       {
         name: oneFilterType.value,
-        link: convertNameToUrl(
-          `${cityLink}/${oneFilterType.type}/${oneFilterType.value}/`
-        ),
       },
     ];
   }
