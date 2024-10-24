@@ -100,6 +100,10 @@ const props = defineProps({
 
 <style lang="scss">
 .post__content {
+  a {
+    color: var(--color-basic);
+  }
+
   img {
     max-width: 100%;
     height: 100%;

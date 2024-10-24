@@ -25,17 +25,23 @@ export const setOneFilterValue = (routeParams, param = "") => {
     data[`filterEQ[${param}generation.name]`] = convertUrlToName(
       routeParams?.body
     );
-  else if (routeParams?.type)
-    data[`filterEQ[${param}car_categories.category.name]`] = convertUrlToName(
-      routeParams?.type
-    );
-  else if (routeParams?.brand)
+  else if (routeParams?.type) {
+    if (["van", "minivan"].includes(routeParams?.type)) {
+      data[`filterEQ[generation.name]`] = convertUrlToName(routeParams?.type);
+    } else {
+      data[`filterEQ[${param}car_categories.category.name]`] = convertUrlToName(
+        routeParams?.type
+      );
+    }
+  } else if (routeParams?.brand)
     data[`filterEQ[${param}generation.model_car.brand.name]`] =
       convertUrlToName(routeParams?.brand);
   else if (routeParams?.modelcar)
     data[`filterEQ[${param}generation.model_car.name]`] = convertUrlToName(
       routeParams?.modelcar
     );
+
+  // console.log(routeParams?.type === );
 
   return data;
 };
