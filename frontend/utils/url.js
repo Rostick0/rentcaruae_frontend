@@ -27,7 +27,7 @@ export const setOneFilterValue = (routeParams, param = "") => {
     );
   else if (routeParams?.type) {
     if (["van", "minivan"].includes(routeParams?.type)) {
-      data[`filterEQ[generation.name]`] = convertUrlToName(routeParams?.type);
+      data[`filterEQ[generation.name]`] = convertUrlToName("van");
     } else {
       data[`filterEQ[${param}car_categories.category.name]`] = convertUrlToName(
         routeParams?.type
