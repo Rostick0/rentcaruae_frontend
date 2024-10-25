@@ -130,7 +130,10 @@
           class="header__bottom"
         >
           <div class="header__bottom_inner">
-            <LazyUiDropdownMenu class="header__bottom_rent" v-if="$device.isMobile">
+            <LazyUiDropdownMenu
+              class="header__bottom_rent"
+              v-if="$device.isMobile"
+            >
               <template #body>
                 <UiButton class="btn-flex">
                   <svg
@@ -245,8 +248,14 @@ const isActive = ref(false);
 
 const toggleActive = () => {
   isActive.value = !isActive.value;
-  document.body.classList.toggle("overflow-hidden");
 };
+
+watch(
+  () => isActive.value,
+  () => {
+    document.body.classList.toggle("overflow-hidden");
+  }
+);
 
 const lang = ref({
   type: "select",
