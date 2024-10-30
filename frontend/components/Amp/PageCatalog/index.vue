@@ -84,6 +84,10 @@ const { data, get, meta } = await useApi({
 });
 await get();
 
+if (meta.value?.total_count < 1) {
+  navigateTo("/404");
+}
+
 const cars = computed(() => chunk(data.value, 6));
 
 const { data: carsSpecial, get: getCarsSpecial } = await useApi({

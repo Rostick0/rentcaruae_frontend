@@ -67,8 +67,7 @@ const isLeasing = rent === "leasing";
 
 const paramLeasing = {};
 
-if (rent === "leasing")
-  paramLeasing["filterNEQ[price_leasing.id]"] = true;
+if (rent === "leasing") paramLeasing["filterNEQ[price_leasing.id]"] = true;
 
 const { data, get, meta } = await useApi({
   name: "car.getAll",
@@ -84,6 +83,10 @@ const { data, get, meta } = await useApi({
   filters,
 });
 await get();
+
+if (meta.value?.total_count < 1) {
+  navigateTo("/404");
+}
 
 const cars = computed(() => chunk(data.value, 6));
 
