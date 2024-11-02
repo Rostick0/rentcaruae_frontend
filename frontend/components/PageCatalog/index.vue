@@ -84,7 +84,6 @@ const { data, get, meta } = await useApi({
 });
 await get();
 
-console.log(meta.value)
 if (meta.value?.total < 1) {
   navigateTo("/404");
 }

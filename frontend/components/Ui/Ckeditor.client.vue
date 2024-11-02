@@ -39,7 +39,6 @@ class UploadAdapter {
           data,
         })
         .then((res) => {
-          console.log(res);
           return { default: res?.data.path_webp };
         })
         .catch(({ error }) => Promise.reject(error?.message ?? genericError));
