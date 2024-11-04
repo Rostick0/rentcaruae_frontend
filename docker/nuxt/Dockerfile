@@ -23,4 +23,4 @@ FROM base
 COPY --from=build /src/.output /src/.output
 
 
-CMD ["node",".output/server/index.mjs", "--max_old_space_size=3072", "--optimize_for_size"  ] 
+CMD ["node",".output/server/index.mjs", "--max_old_space_size=4096", "--optimize_for_size"  ] 
