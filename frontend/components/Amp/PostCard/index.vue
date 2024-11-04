@@ -26,8 +26,6 @@
         class="post-card__img"
         :src="post?.image?.image?.path_webp"
         :alt="post?.title"
-        decoding="async"
-        loading="lazy"
         height="300"
         itemprop="image"
       />
