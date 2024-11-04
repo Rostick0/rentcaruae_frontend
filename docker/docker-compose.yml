@@ -23,7 +23,7 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=3000
-    restart: "no"
+    restart: "unless-stopped"
     ports:
       - "24681:24678"
       - "5002:3000"
