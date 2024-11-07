@@ -9,6 +9,6 @@ export const postCategories = [
   },
   {
     id: 3,
-    name: "Vlog",
+    name: "Good to know",
   },
 ];

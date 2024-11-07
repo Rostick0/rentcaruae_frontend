@@ -192,7 +192,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/modal-bottom";
+@forward "./../../assets/scss/components/modal-bottom";
 
 .modal-pwa {
   padding-top: 32px;

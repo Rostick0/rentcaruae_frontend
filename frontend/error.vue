@@ -25,5 +25,5 @@ await useCity();
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/pages/error";
+@forward "./assets/scss/pages/error";
 </style>

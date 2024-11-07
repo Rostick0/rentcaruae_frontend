@@ -474,7 +474,7 @@ const rentACar = computed(() => {
 </style>
 
 <style lang="scss">
-@import "./../../../assets/scss/ui/";
+@forward "./../../../assets/scss/ui/";
 
 .header {
   &__search {

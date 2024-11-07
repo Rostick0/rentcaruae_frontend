@@ -19,7 +19,7 @@ const { close } = useModal({
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/auth-modal";
+@forward "./../../assets/scss/components/auth-modal";
 
 .auth-modal__success {
   &_text {

@@ -339,8 +339,8 @@ const maxMonth = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/components/calc-amount";
-@import "../../assets/scss/components/car-carc";
+@forward "../../assets/scss/components/calc-amount";
+@forward "../../assets/scss/components/car-carc";
 
 .calc {
   &-range {

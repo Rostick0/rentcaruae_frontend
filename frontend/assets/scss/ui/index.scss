@@ -1,11 +1,11 @@
-@import "./container";
+@forward "./container";
 
-@import "./btn";
-@import "./text";
-@import "./color";
-@import "./input";
-@import "./link";
+@forward "./btn";
+@forward "./text";
+@forward "./color";
+@forward "./input";
+@forward "./link";
 
-@import "./form";
-@import "./table";
-@import "./title";
+@forward "./form";
+@forward "./table";
+@forward "./title";

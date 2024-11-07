@@ -71,7 +71,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/text-information";
+@forward "./../../assets/scss/components/text-information";
 
 .rental-service {
   margin-bottom: 42px;

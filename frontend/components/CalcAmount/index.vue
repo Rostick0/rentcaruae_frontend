@@ -39,5 +39,5 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/calc-amount";
+@forward "./../../assets/scss/components/calc-amount";
 </style>

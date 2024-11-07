@@ -758,7 +758,7 @@ useSeoMeta({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/components/text-information";
+@forward "../assets/scss/components/text-information";
 
 .faq {
   padding-bottom: 100px;

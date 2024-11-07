@@ -1,8 +1,8 @@
-@import "./reset";
-@import "./root";
-@import "./vars";
-@import "./fonts";
-@import "./ui/";
+@forward "./reset";
+@forward "./root";
+@forward "./vars";
+@forward "./fonts";
+@forward "./ui/";
 
 body {
   background: var(--color-bg-main);

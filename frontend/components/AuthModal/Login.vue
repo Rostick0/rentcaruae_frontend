@@ -102,5 +102,5 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/auth-modal";
+@forward "./../../assets/scss/components/auth-modal";
 </style>

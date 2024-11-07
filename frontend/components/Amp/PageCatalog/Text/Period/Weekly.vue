@@ -125,5 +125,5 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../../../../assets/scss/components/text-information";
+@forward "../../../../assets/scss/components/text-information";
 </style>

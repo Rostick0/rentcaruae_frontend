@@ -83,5 +83,5 @@ const is_agree = ref({
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/components/car-carc";
+@forward "../../assets/scss/components/car-carc";
 </style>

@@ -193,8 +193,8 @@ const price = computed(() =>
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/scss/components/car-carc";
-@import "../../../assets/scss/components/calc-amount";
+@forward "../../../assets/scss/components/car-carc";
+@forward "../../../assets/scss/components/calc-amount";
 </style>
 
 <style lang="scss">

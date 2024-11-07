@@ -115,7 +115,7 @@ const isCustomize = ref(false);
 </script>
 
 <style lang="scss" scoped>
-@import "./../../assets/scss/components/modal-bottom";
+@forward "./../../assets/scss/components/modal-bottom";
 
 .modal-cookie {
   background-color: var(--color-white);
