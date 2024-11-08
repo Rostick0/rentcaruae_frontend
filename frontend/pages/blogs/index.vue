@@ -11,8 +11,10 @@
       />
       <div class="blog__content">
         <h2 class="blog__h2">News</h2>
-        <PostCard :post="postFirst" />
-        <PostsList :posts="otherPosts" />
+        <PostMobile v-if="isMobileOrTablet" :posts="data" />
+        <PostDesktop v-else :posts="data" />
+        <!-- <PostCard :post="postFirst" />
+        <PostsList :posts="otherPosts" /> -->
         <UiPagination
           class="catalog__pagination"
           v-model="filters.page"
@@ -24,6 +26,7 @@
 </template>
 
 <script setup>
+const { isMobileOrTablet } = useDevice();
 const breadcrumbs = [{ name: "Home", link: "/" }, { name: "Blog" }];
 
 const config = useRuntimeConfig();
@@ -45,7 +48,7 @@ const { data, get, meta } = await useApi({
     extends: "image.image,user,post_category",
     "filterEQ[is_show]": 1,
     sort: "id",
-    limit: 17,
+    limit: isMobileOrTablet ? 9 : 17,
   },
 });
 await get();

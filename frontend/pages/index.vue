@@ -57,6 +57,9 @@
           :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
         />
       </div>
+      <div class="car-posts">
+        <PostsList :posts="posts" />
+      </div>
       <MainServiceRental />
       <!-- <MainFaq /> -->
     </div>
@@ -139,6 +142,15 @@ const { data: electroCars, get: getElectroCars } = await useApi({
 });
 await getElectroCars();
 
+const { data: posts, get: getPosts } = await useApi({
+  name: "posts.getAll",
+  params: {
+    ...defaultParams,
+    extends: "image.image,user,post_category",
+  },
+});
+await getPosts();
+
 const title = `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`;
 const description = `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`;
 
@@ -163,10 +175,16 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-.car-cards {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  margin-bottom: 20px;
+.car {
+  &-cards {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  &-posts {
+    margin-bottom: 20px;
+  }
 }
 </style>
