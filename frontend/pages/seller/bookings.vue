@@ -7,12 +7,12 @@
     subtitle="Selected period:"
   />
   <SellerBookingsTable :bookings="data" />
-  <!-- <AnyPagination
+  <AnyPagination
     @setPage="(page) => (filters.page = page)"
     :currentPage="meta?.current_page"
     limit="8"
     :totalCountData="meta?.total"
-  /> -->
+  />
 </template>
 
 <script setup>
@@ -30,6 +30,10 @@ const options = [
   {
     id: moment().subtract(30, "d").format("YYYY-MM-DD"),
     name: "30 days",
+  },
+  {
+    id: null,
+    name: "All",
   },
 ];
 

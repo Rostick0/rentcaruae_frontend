@@ -87,7 +87,16 @@ const lastThirtyDays = ref(
 );
 
 const labels = computed(() =>
-  lastThirtyDays.value.map((item) => item.split("-")[2])
+  lastThirtyDays.value.map((item) => {
+    const day = item.split("-")[2];
+
+    if (day == "01")
+      return new Date(item)?.toLocaleDateString("en-us", {
+        month: "short",
+      });
+
+    return day;
+  })
 );
 
 const chartData = computed(() => {
