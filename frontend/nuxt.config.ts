@@ -136,9 +136,9 @@ export default defineNuxtConfig({
   //   },
   // },
 
-  router: {
-    prefetchLinks: false,
-  },
+  // router: {
+  //   prefetchLinks: false,
+  // },
 
   target: "server",
   modern: "server",
