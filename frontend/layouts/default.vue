@@ -111,13 +111,13 @@ const initScripts = () => {
 };
 
 onMounted(() => {
-  // if (analyticalCookie.value) {
-  nextTick(() => {
-    setTimeout(() => {
-      initScripts();
-    }, 5000);
-  });
-  // }
+  if (analyticalCookie.value) {
+    nextTick(() => {
+      setTimeout(() => {
+        initScripts();
+      }, 5000);
+    });
+  }
 });
 
 watch(
