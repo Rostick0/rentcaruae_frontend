@@ -3,18 +3,14 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <Post :post="data" />
-      <LazyClientOnly v-if="posts?.length">
-        <div class="blog-once-sumilar">
-          <div class="blog-once-sumilar__top">
-            <h2>More news</h2>
-            <LinkMore
-              name="All news"
-              :to="`/blogs?filterEQ[post_category_id]=${data?.post_category_id}`"
-            />
-          </div>
-          <PostsList :posts="posts" />
-        </div>
-      </LazyClientOnly>
+      <div class="blog-once-sumilar" v-if="posts?.length">
+        <TitleList
+          :link="`/blogs?filterEQ[post_category_id]=${data?.post_category_id}`"
+          linkText="All news"
+          title="More news"
+        ></TitleList>
+        <PostsList :posts="posts" />
+      </div>
     </div>
   </div>
 </template>
@@ -74,13 +70,6 @@ useSeoMeta(getPostSeoMeta(data.value));
 
   &-sumilar {
     margin-top: 48px;
-
-    &__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
   }
 }
 </style>

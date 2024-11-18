@@ -39,12 +39,6 @@ const user = useState("user");
 if (!["admin", "seller"].includes(user.value?.role)) {
   navigateTo("/404");
 }
-
-onMounted(async () => {
-  setTimeout(() => {
-    warningPopup("test");
-  }, 2000);
-});
 </script>
 
 <style lang="scss" scoped>
