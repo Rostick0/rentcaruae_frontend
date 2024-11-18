@@ -58,6 +58,7 @@
         />
       </div>
       <div class="car-posts">
+        <TitleList link="/posts/" linkText="All posts" title="New posts" />
         <PostsList :posts="posts" />
       </div>
       <MainServiceRental />

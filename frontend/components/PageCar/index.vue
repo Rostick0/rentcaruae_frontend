@@ -18,17 +18,18 @@
         </h1>
       </div>
       <Car :car="data" :isLeasing="isLeasing" />
-      <LazyCarCardShortList
-        v-if="cars?.length"
-        :cars="cars"
-        title="Similar Car Rental Options"
-        :linkText="`All ${data?.car_categories?.[0]?.category?.name}`"
-        :link="
-          convertNameToUrl(
-            `/${currentCity?.name}/type/${data?.car_categories?.[0]?.category?.name}`
-          )
-        "
-      />
+      <LazyClientOnly v-if="cars?.length">
+        <LazyCarCardShortList
+          :cars="cars"
+          title="Similar Car Rental Options"
+          :linkText="`All ${data?.car_categories?.[0]?.category?.name}`"
+          :link="
+            convertNameToUrl(
+              `/${currentCity?.name}/type/${data?.car_categories?.[0]?.category?.name}`
+            )
+          "
+        />
+      </LazyClientOnly>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <!-- {{ $props }} -->
-  <UiModal :="$props">
+  <LazyUiModal :="$props">
     <div class="modal-toast">
       <div class="modal-toast__top">
         <div class="modal-toast__title">{{ title }}</div>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-  </UiModal>
+  </LazyUiModal>
 </template>
 
 <script setup>

@@ -1,4 +1,3 @@
-// import { useToast } from "vue-toastification";
 import api from "~/api";
 
 export default () => {

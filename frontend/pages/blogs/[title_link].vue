@@ -3,16 +3,18 @@
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <Post :post="data" />
-      <div class="blog-once-sumilar" v-if="posts?.length">
-        <div class="blog-once-sumilar__top">
-          <h2>More news</h2>
-          <LinkMore
-            name="All news"
-            :to="`/blogs?filterEQ[post_category_id]=${data?.post_category_id}`"
-          />
+      <LazyClientOnly v-if="posts?.length">
+        <div class="blog-once-sumilar">
+          <div class="blog-once-sumilar__top">
+            <h2>More news</h2>
+            <LinkMore
+              name="All news"
+              :to="`/blogs?filterEQ[post_category_id]=${data?.post_category_id}`"
+            />
+          </div>
+          <PostsList :posts="posts" />
         </div>
-        <PostsList :posts="posts" />
-      </div>
+      </LazyClientOnly>
     </div>
   </div>
 </template>
