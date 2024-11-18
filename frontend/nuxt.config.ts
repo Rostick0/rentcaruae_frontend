@@ -136,14 +136,17 @@ export default defineNuxtConfig({
   //   },
   // },
 
-  // router: {
-  //   prefetchLinks: false,
-  // },
+  router: {
+    prefetchLinks: true,
+  },
 
   target: "server",
   modern: "server",
   routeRules: {
     "/404": {
+      static: true,
+    },
+    "/faq": {
       static: true,
     },
     "/privacy_policy": {
@@ -155,6 +158,11 @@ export default defineNuxtConfig({
     "/sitemap": {
       static: true,
     },
+    "/": { isr: 3600 },
+    "/blogs": { isr: 3600 },
+    "/blogs/**": { isr: 3600 },
+    "/[city]": { isr: 3600 },
+    "/[city]/**": { isr: 3600 },
     "/amp": {
       ssr: true,
       experimentalNoScripts: true,

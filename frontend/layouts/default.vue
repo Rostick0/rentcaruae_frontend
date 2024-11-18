@@ -115,7 +115,7 @@ onMounted(() => {
   nextTick(() => {
     setTimeout(() => {
       initScripts();
-    }, 3000);
+    }, 5000);
   });
   // }
 });
