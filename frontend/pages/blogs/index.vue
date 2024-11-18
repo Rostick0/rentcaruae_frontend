@@ -53,8 +53,8 @@ const { data, get, meta } = await useApi({
 });
 await get();
 
-const postFirst = computed(() => data.value?.[0]);
-const otherPosts = computed(() => data.value?.splice?.(1));
+// const postFirst = computed(() => data.value?.[0]);
+// const otherPosts = computed(() => data.value?.splice?.(1));
 
 const title = "RentcarUAE Car Rental Blog | Your adventure begins here";
 const description =
