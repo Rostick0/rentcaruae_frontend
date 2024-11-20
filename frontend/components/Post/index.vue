@@ -100,6 +100,10 @@ const props = defineProps({
 
 <style lang="scss">
 .post__content {
+  * {
+    line-height: 1.472;
+  }
+
   a {
     color: var(--color-basic);
   }
