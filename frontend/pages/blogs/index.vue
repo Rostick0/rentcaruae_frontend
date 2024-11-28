@@ -19,6 +19,7 @@
           class="catalog__pagination"
           v-model="filters.page"
           :meta="meta"
+          :limit="limit"
         />
       </div>
     </div>
@@ -41,6 +42,7 @@ const { filters } = useFilter({
   },
 });
 
+const limit = isMobileOrTablet ? 9 : 17;
 const { data, get, meta } = await useApi({
   name: "posts.getAll",
   filters,
@@ -48,10 +50,12 @@ const { data, get, meta } = await useApi({
     extends: "image.image,user,post_category",
     "filterEQ[is_show]": 1,
     sort: "id",
-    limit: isMobileOrTablet ? 9 : 17,
+    limit,
   },
 });
 await get();
+
+console.log(meta.value);
 
 // const postFirst = computed(() => data.value?.[0]);
 // const otherPosts = computed(() => data.value?.splice?.(1));

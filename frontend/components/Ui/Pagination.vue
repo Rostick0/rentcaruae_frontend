@@ -63,7 +63,7 @@ const setPage = (val) => {
 const { meta, modelValue } = toRefs(props);
 
 const number = computed(() =>
-  Math.floor(props?.meta?.total / props?.meta?.per_page)
+  Math.ceil(props?.meta?.total / props?.meta?.per_page)
 );
 
 const items = computed(() => {
