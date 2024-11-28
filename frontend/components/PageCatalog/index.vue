@@ -28,6 +28,7 @@
 
 <script setup>
 import chunk from "lodash/chunk";
+import api from "~/api";
 
 const props = defineProps({
   paramsCar: {
@@ -60,6 +61,11 @@ const { filters } = useFilter({
     "filterIN[cities.city_id]": currentCity.value?.id,
   },
 });
+
+// const generations = ref();
+
+// // await api.generations.getAll({ params: oneFilterValue });
+// // console.log(oneFilterValue);
 
 const rent = route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy";
 

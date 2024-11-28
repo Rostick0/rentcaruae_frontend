@@ -90,7 +90,7 @@ const labels = computed(() =>
   lastThirtyDays.value.map((item) => {
     const day = item.split("-")[2];
 
-    if (day == "01")
+    if (["01", "02"].includes(day))
       return new Date(item)?.toLocaleDateString("en-us", {
         month: "short",
       });

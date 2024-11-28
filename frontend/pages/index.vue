@@ -58,7 +58,7 @@
         />
       </div>
       <div class="car-posts">
-        <TitleList link="/posts/" linkText="All posts" title="New posts" />
+        <TitleList link="/blogs/" linkText="All news" title="New news" />
         <PostsList :posts="posts" />
       </div>
       <MainServiceRental />
