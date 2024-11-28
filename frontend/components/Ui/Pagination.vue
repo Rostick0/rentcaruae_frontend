@@ -41,10 +41,6 @@ const props = defineProps({
     type: [Number, null],
     default: 1,
   },
-  limit: {
-    type: Number,
-    default: 20,
-  },
 });
 
 const page = ref(1);

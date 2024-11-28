@@ -19,7 +19,6 @@
           class="catalog__pagination"
           v-model="filters.page"
           :meta="meta"
-          :limit="limit"
         />
       </div>
     </div>

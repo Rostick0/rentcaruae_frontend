@@ -1,6 +1,10 @@
 <template>
   <AmpCarCardInfo :car="car" />
-  <CarSpecifications v-if="specifications" :specifications="specifications" />
+  <CarSpecifications
+    v-if="specifications"
+    :specifications="specifications"
+    :car="car"
+  />
   <AmpCarDescription v-if="car?.description" :car="car" />
   <CarRentalPricing :car="car" :isLeasing="isLeasing" />
 </template>
