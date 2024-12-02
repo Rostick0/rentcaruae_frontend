@@ -41,8 +41,6 @@ export const setOneFilterValue = (routeParams, param = "") => {
       routeParams?.modelcar
     );
 
-  // console.log(routeParams?.type === );
-
   return data;
 };
 

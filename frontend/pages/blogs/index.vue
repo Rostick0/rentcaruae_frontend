@@ -54,8 +54,6 @@ const { data, get, meta } = await useApi({
 });
 await get();
 
-console.log(meta.value);
-
 // const postFirst = computed(() => data.value?.[0]);
 // const otherPosts = computed(() => data.value?.splice?.(1));
 

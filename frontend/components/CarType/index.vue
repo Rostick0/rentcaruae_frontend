@@ -8,7 +8,7 @@
       All Cars
     </UiButton>
     <UiButton
-      v-for="type in bodyTypesWithIcon"
+      v-for="type in generations"
       :key="type.name"
       class="car-type__item text-pre-small"
       :class="{ active: modelValue === type.name.toLowerCase() }"
@@ -33,6 +33,7 @@
 
 <script setup>
 const props = defineProps({
+  generations: Array,
   modelValue: String,
 });
 

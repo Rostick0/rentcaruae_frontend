@@ -28,3 +28,19 @@ export const bodyTypesWithIcon = [
     img: "/frontend-images/car-type/Liftback.png",
   },
 ];
+
+export const getBodyImages = async (generations) => {
+  const data = [];
+
+  generations.data?.forEach((item) => {
+    const findedGeneration = bodyTypesWithIcon.find(
+      (el) => el?.name?.toLowerCase() == item?.name?.toLowerCase()
+    );
+
+    if (!findedGeneration) return;
+
+    data.push(findedGeneration);
+  });
+
+  return data;
+};

@@ -56,7 +56,6 @@ const onInit = (editor: any) => {
 
   // editor.colorButton_colors = "CF5D4E,454545,FFF,DDD,CCEAEE,66AB16";
   // editor.colorButton_enableAutomatic = false;
-  // console.log(editor.config());
   // editor.toolbar.push(["TextColor", "BGColor"]);
 };
 

@@ -4,7 +4,11 @@
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="catalog__title h1" v-if="h1">{{ h1 }}</h1>
       <slot name="topBlock" />
-      <CarType id="carType" v-model="filters['filterEQ[generation.name]']" />
+      <CarType
+        id="carType"
+        :generations="generations"
+        v-model="filters['filterEQ[generation.name]']"
+      />
       <LazyFilter :prices="prices" />
       <LazyCarCardList :cars="cars[0]" :isLeasing="isLeasing" />
       <LazyCarCardShortList
@@ -29,6 +33,7 @@
 <script setup>
 import chunk from "lodash/chunk";
 import api from "~/api";
+import { getBodyImages } from "~/utils/bodyTypes";
 
 const props = defineProps({
   paramsCar: {
@@ -62,10 +67,19 @@ const { filters } = useFilter({
   },
 });
 
-// const generations = ref();
+const generations = ref(bodyTypesWithIcon);
 
-// // await api.generations.getAll({ params: oneFilterValue });
-// // console.log(oneFilterValue);
+if (route.params?.brand) {
+  generations.value = await getBodyImages(
+    await api.distinctValue.getAll({
+      params: {
+        table: "generations",
+        column: "name",
+        "filterEQ[model_car.brand.name]": oneFilterType.value?.value,
+      },
+    })
+  );
+}
 
 const rent = route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy";
 
