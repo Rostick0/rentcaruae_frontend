@@ -7,58 +7,62 @@
         <CarCardShortList
           v-if="economyCars?.length"
           :cars="economyCars"
-          title="Economy cars"
-          linkText="All Economy cars"
+          :title="$t('economyCars')"
+          :linkText="$t('allEconomyCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
           isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="vanCars?.length"
           :cars="vanCars"
-          title="Van cars"
-          linkText="All Van cars"
+          :title="$t('vanCars')"
+          :linkText="$t('allVanCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
           isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="suvCars?.length"
           :cars="suvCars"
-          title="SUV for rent"
-          linkText="All SUV"
+          :title="$t('SUVForRent')"
+          :linkText="$t('allSUV')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
           isPreloadFirst
         />
         <LazyCarCardShortList
           v-if="cabrioCars?.length"
           :cars="cabrioCars"
-          title="Cabrio cars"
-          linkText="All Cabrio cars"
+          :title="$t('cabrioCars')"
+          :linkText="$t('allCabrioCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
         />
         <LazyCarCardShortList
           v-if="businessCars?.length"
           :cars="businessCars"
-          title="Business cars"
-          linkText="All Business cars"
+          :title="$t('businessCars')"
+          :linkText="$t('allBusinessCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
         />
         <LazyCarCardShortList
           v-if="luxuryCars?.length"
           :cars="luxuryCars"
-          title="Luxury cars"
-          linkText="All Luxury cars"
+          :title="$t('luxuryCars')"
+          :linkText="$t('allLuxuryCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
         />
         <LazyCarCardShortList
           v-if="electroCars?.length"
           :cars="electroCars"
-          title="Electro cars"
-          linkText="All Electro cars"
+          :title="$t('electroCars')"
+          :linkText="$t('allElectroCars')"
           :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
         />
       </div>
       <div class="car-posts">
-        <TitleList link="/blogs/" linkText="All news" title="New news" />
+        <TitleList
+          link="/blogs/"
+          :linkText="$t('allNews')"
+          :title="$t('newNews')"
+        />
         <PostsList :posts="posts" />
       </div>
       <MainServiceRental />

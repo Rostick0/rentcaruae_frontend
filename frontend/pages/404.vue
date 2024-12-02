@@ -1,11 +1,11 @@
 <template>
   <div class="error-page">
-    <h2 class="tit le">Error: 404</h2>
+    <h2 class="tit le">{{ $t("error") }}: 404</h2>
     <div class="error-page__content">
-      <div class="">Page not found</div>
+      <div class="">{{ $t("pageNotFound") }}</div>
     </div>
     <NuxtLink to="/">
-      <UiButton>Go main</UiButton>
+      <UiButton>{{ $t("goMain") }}</UiButton>
     </NuxtLink>
   </div>
 </template>

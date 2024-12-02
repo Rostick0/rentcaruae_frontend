@@ -2,9 +2,9 @@
   <div class="sitemap">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1 class="h1">Sitemap</h1>
+      <h1 class="h1">{{ $t("sitemap") }}</h1>
 
-      <h2 class="sitemap__title">Brands</h2>
+      <h2 class="sitemap__title">{{ $t("brands") }}</h2>
       <div class="sitemap__list">
         <NuxtLink
           class="sitemap__link"
@@ -14,7 +14,7 @@
         >
       </div>
 
-      <h2 class="sitemap__title">Categories</h2>
+      <h2 class="sitemap__title">{{ $t("categories") }}</h2>
       <div class="sitemap__list">
         <NuxtLink
           class="sitemap__link"
@@ -24,7 +24,7 @@
         >
       </div>
 
-      <h2 class="sitemap__title">Bodies</h2>
+      <h2 class="sitemap__title">{{ $t("bodies") }}</h2>
       <div class="sitemap__list">
         <NuxtLink
           class="sitemap__link"
@@ -34,7 +34,7 @@
         >
       </div>
 
-      <h2 class="sitemap__title">Period</h2>
+      <h2 class="sitemap__title">{{ $t("period") }}</h2>
       <div class="sitemap__list">
         <NuxtLink
           class="sitemap__link"
@@ -44,7 +44,7 @@
         >
       </div>
 
-      <h2 class="sitemap__title">About us</h2>
+      <h2 class="sitemap__title">{{ $t("aboutUs") }}</h2>
       <div class="sitemap__list">
         <NuxtLink
           class="sitemap__link"
@@ -74,17 +74,19 @@ const setLink = (link) =>
     link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name))
   );
 
+const { t } = useI18n();
+
 const breadcrumbs = [
   {
-    name: "Home",
+    name: t("home"),
     link: "/",
   },
   {
-    name: "Sitemap",
+    name: t("sitemap"),
   },
 ];
 
-const title = `Sitemap Amp - Rent a Car ${currentCity.value?.name}`;
+const title = `${t("sitemapAmpTitle")} ${currentCity.value?.name}`;
 
 useSeoMeta({
   title,

@@ -81,8 +81,9 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/device",
     "@vite-pwa/nuxt",
-    "nuxt-lazy-load",
     // "@nuxtjs/seo",
+    "nuxt-lazy-load",
+    "@nuxtjs/i18n",
   ],
 
   build: {
@@ -121,6 +122,14 @@ export default defineNuxtConfig({
   },
   lazyLoad: {
     directiveOnly: true,
+  },
+  i18n: {
+    locales: [
+      { code: "en", language: "en-US" },
+      { code: "fr", language: "fr-FR" },
+    ],
+    defaultLocale: "en",
+    vueI18n: "./i18n.config.ts",
   },
 
   vue: {

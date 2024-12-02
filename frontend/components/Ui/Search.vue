@@ -5,7 +5,7 @@
         class="search__input"
         v-model="value"
         type="text"
-        :placeholder="placeholder"
+        :placeholder="placeholder ?? $t('searchCarBrandOrModel')"
       />
       <button
         class="d-flex search__close"
@@ -69,7 +69,6 @@ const props = defineProps({
   modelValue: [String],
   placeholder: {
     type: String,
-    default: "Search a car by brand or model",
   },
 });
 

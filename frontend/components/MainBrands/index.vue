@@ -1,8 +1,8 @@
 <template>
   <div class="brands">
     <div class="brands__top">
-      <h2 class="brands__title">Most wanted car brands in Dubai</h2>
-      <LinkMore name="All brands" to="/" />
+      <h2 class="brands__title">{{ $t("mostWantedCarBrands") }}</h2>
+      <LinkMore :name="$t('allBrands')" to="/" />
     </div>
     <Brands :brands="brands" />
   </div>
@@ -10,8 +10,6 @@
 
 <script setup>
 const data = useState("brands");
-
-const config = useRuntimeConfig();
 
 const brands = computed(() => data.value?.slice?.(0, 12));
 </script>

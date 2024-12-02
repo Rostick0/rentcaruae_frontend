@@ -21,7 +21,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Categories</div>
+            <div class="footer-item__title text-ui">{{ $t("categories") }}</div>
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
@@ -38,7 +38,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Brands</div>
+            <div class="footer-item__title text-ui">{{ $t("brands") }}</div>
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
@@ -55,7 +55,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Body Types</div>
+            <div class="footer-item__title text-ui">{{ $t("bodyTypes") }}</div>
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
@@ -85,7 +85,7 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">About us</div>
+            <div class="footer-item__title text-ui">{{ $t("aboutUs") }}</div>
             <div class="footer-item__list">
               <NuxtLink class="footer-item__link" to="/blogs/">Blog</NuxtLink>
               <NuxtLink class="footer-item__link" to="/privacy_policy/"
