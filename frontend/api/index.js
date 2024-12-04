@@ -11,6 +11,7 @@ import deposites from "./modules/deposites";
 import depositeUsers from "./modules/depositeUsers";
 import distinctValue from "./modules/distinctValue";
 import emailCode from "./modules/emailCode";
+import exchangeRate from "./modules/exchangeRate";
 import file from "./modules/file";
 import fuelTypes from "./modules/fuelTypes";
 import generations from "./modules/generations";
@@ -45,6 +46,7 @@ export default {
   depositeUsers,
   distinctValue,
   emailCode,
+  exchangeRate,
   file,
   fuelTypes,
   generations,

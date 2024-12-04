@@ -61,7 +61,7 @@
         <TitleList
           link="/blogs/"
           :linkText="$t('allNews')"
-          :title="$t('newNews')"
+          :title="$t('blog')"
         />
         <PostsList :posts="posts" />
       </div>

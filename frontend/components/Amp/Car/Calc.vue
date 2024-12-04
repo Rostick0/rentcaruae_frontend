@@ -113,7 +113,9 @@
       <a
         class="d-flex"
         @click="clickWhatsApp"
-        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(car)}`"
+        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(
+          car
+        )}`"
         rel="noopener nofollow"
         target="_blank"
       >
@@ -134,6 +136,8 @@ const route = useRoute();
 const props = defineProps({
   car: Object,
 });
+
+const { getConvertedPrice } = await useExchangeRate();
 
 const isAddStatisticWhatsApp = ref(false);
 
@@ -182,12 +186,14 @@ const priceSpecial = computed(() =>
 
 const price = computed(() =>
   formatNumber(
-    props?.car?.price_special?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price ??
-      props?.car?.price?.find(
+    getConvertedPrice(
+      props?.car?.price_special?.find(
         (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
+      )?.price ??
+        props?.car?.price?.find(
+          (item) => item?.period === periodSelect.value.modelValue.period
+        )?.price
+    )
   )
 );
 </script>

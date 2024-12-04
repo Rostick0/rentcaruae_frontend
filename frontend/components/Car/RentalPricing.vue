@@ -9,7 +9,10 @@
           :key="item?.id"
         >
           <span>{{ item?.period }} Days</span>
-          <span>AED {{ formatNumber(item?.price) }}</span>
+          <span
+            >{{ currentExchangeRate?.name }}
+            {{ formatNumber(getConvertedPrice(item?.price)) }}</span
+          >
         </li>
         <li>
           <NuxtLink
@@ -28,7 +31,10 @@
           :key="item?.id"
         >
           <span>{{ item?.period }} Days</span>
-          <span>AED {{ formatNumber(item?.price) }}</span>
+          <span
+            >{{ currentExchangeRate?.name }}
+            {{ formatNumber(getConvertedPrice(item?.price)) }}</span
+          >
         </li>
         <template v-if="car?.price_leasing?.length">
           <li>
@@ -51,6 +57,8 @@ const props = defineProps({
   car: Object,
   isLeasing: Boolean,
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 </script>
 
 <style lang="scss" scoped>

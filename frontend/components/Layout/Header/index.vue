@@ -271,17 +271,29 @@ const lang = ref({
   },
 });
 
+// const exchangeRates = useState("exchangeRates");
+const { currentExchangeRate, exchangeRates } = await useExchangeRate();
+
 const currency = ref({
   type: "select",
   name: "currency",
-  modelValue: currencyOptions[0],
+  // modelValue: currencyOptions[0],
+  modelValue: currentExchangeRate.value,
   withoutResetInUnmounted: true,
 
   bind: {
-    options: currencyOptions,
+    options: exchangeRates.value,
     isAlternative: true,
   },
 });
+
+watch(
+  () => currency.value.modelValue,
+  (cur) => {
+    currentExchangeRate.value = cur;
+    // console.log(cur); 
+  }
+);
 
 const cities = useState("cities");
 

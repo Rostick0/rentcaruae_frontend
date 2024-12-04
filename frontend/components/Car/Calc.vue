@@ -16,11 +16,11 @@
         <div class="calc__price-old">
           {{ periodSelect.modelValue?.name }}
           <del class="color-red" v-if="priceSpecial"
-            >AED {{ priceSpecial }}</del
+            >{{ currentExchangeRate?.name }} {{ priceSpecial }}</del
           >
         </div>
         <div class="calc__price">
-          AED
+          {{ currentExchangeRate?.name }}
           <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
@@ -40,7 +40,10 @@
         <strong v-if="without_deposite.modelValue" class="color-basic"
           >FREE</strong
         >
-        <span v-else>AED {{ car?.security_deposit?.price }}</span>
+        <span v-else
+          >{{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(car?.security_deposit?.price) }}</span
+        >
       </div>
       <!-- {{car}} -->
       <div class="calc-item__flex" v-if="car?.free_per_day_security">
@@ -51,7 +54,7 @@
           />
         </div>
         <div class="calc-item__flex_right">
-          AED 45 <br />
+          {{ currentExchangeRate?.name }} {{ getConvertedPrice(45) }} <br />
           <span class="calc-item__size-small">per day</span>
         </div>
       </div>
@@ -127,7 +130,9 @@
       <a
         class="d-flex"
         @click="clickWhatsApp"
-        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(car)}`"
+        :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(
+          car
+        )}`"
         rel="noopener nofollow"
         target="_blank"
       >
@@ -172,7 +177,8 @@
           <div class="calc-amount__flex" v-if="without_deposite.modelValue">
             <div class="calc-amount__flex_left">Deposite free</div>
             <strong class="calc-amount__size-small"
-              >AED {{ withoutDepositePrice }}</strong
+              >{{ currentExchangeRate?.name }}
+              {{ withoutDepositePrice }}</strong
             >
           </div>
         </template>
@@ -180,9 +186,9 @@
           <div class="calc-amount__flex">
             <div class="calc__title">Total</div>
             <strong class="calc-amount__price">
-              AED
+              {{ currentExchangeRate?.name }}
               <span class="calc-amount__price_val">{{
-                formatNumber(total)
+                formatNumber(getConvertedPrice(total))
               }}</span>
             </strong>
           </div>
@@ -203,6 +209,8 @@ const emits = defineEmits(["submited"]);
 const props = defineProps({
   car: Object,
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const route = useRoute();
 
@@ -324,28 +332,34 @@ const maxMileage = computed(
 
 const priceSpecial = computed(() =>
   formatNumber(
-    props?.car?.price_special?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price &&
-      props?.car?.price?.find(
+    getConvertedPrice(
+      props?.car?.price_special?.find(
         (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
+      )?.price &&
+        props?.car?.price?.find(
+          (item) => item?.period === periodSelect.value.modelValue.period
+        )?.price
+    )
   )
 );
 
 const price = computed(() =>
   formatNumber(
-    props?.car?.price_special?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price ??
-      props?.car?.price?.find(
+    getConvertedPrice(
+      props?.car?.price_special?.find(
         (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
+      )?.price ??
+        props?.car?.price?.find(
+          (item) => item?.period === periodSelect.value.modelValue.period
+        )?.price
+    )
   )
 );
 
 const withoutDepositePrice = computed(() =>
-  without_deposite.value?.modelValue ? 45 * periodRental.value : 0
+  without_deposite.value?.modelValue
+    ? getConvertedPrice(45 * periodRental.value)
+    : 0
 );
 
 const priceRental = computed(() =>

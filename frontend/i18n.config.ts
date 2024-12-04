@@ -22,7 +22,6 @@ export default defineI18nConfig(() => ({
       electroCars: "Electro cars",
       allElectroCars: "All Electro cars",
       allNews: "All news",
-      newNews: "New news",
 
       // sitemap
       sitemap: "Sitemap",
@@ -42,6 +41,7 @@ export default defineI18nConfig(() => ({
       bodyTypes: "Body Types",
       period: "Period",
       aboutUs: "About us",
+      blog: "Blog",
     },
     fr: {
       welcome: "Bienvenue",

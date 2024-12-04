@@ -49,5 +49,11 @@ if (accessToken.value && !user.value) {
   await getUser();
 }
 
+await useExchangeRate({
+  isInit: true,
+});
+
+// console.log(currentExchangeRate.value);
+// console.log(exchangeRates.value);
 await useCity();
 </script>
