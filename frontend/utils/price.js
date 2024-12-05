@@ -11,3 +11,5 @@ export const getPeriodPrice = (car, period) => {
     ) / 100
   );
 };
+
+export const WITHOUT_DEPOSITE_PRICE = 45;

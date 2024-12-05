@@ -42,7 +42,11 @@
           class="car-stat__value"
           :class="{ free: !car?.security_deposit?.price }"
         >
-          {{ car?.security_deposit?.price ?? "Free" }}
+          {{
+            car?.security_deposit?.price
+              ? getConvertedPrice(car?.security_deposit?.price)
+              : "Free"
+          }}
         </div>
       </div>
       <div class="car-stat__hr"></div>
@@ -80,17 +84,31 @@
             itemscope
             itemtype="http://schema.org/Offer"
           >
-            <meta itemprop="priceCurrency" content="AED" />
-            <meta itemprop="price" :content="priceLeasingMaxPeriod?.price" />
+            <meta
+              itemprop="priceCurrency"
+              :content="currentExchangeRate?.name"
+            />
+            <meta
+              itemprop="price"
+              :content="getConvertedPrice(priceLeasingMaxPeriod?.price)"
+            />
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
               <span>Monthly</span>
               <del class="color-red" v-if="car?.price_leasing?.length"
-                >AED {{ formatNumber(car?.price_leasing?.[0]?.price) }}</del
+                >{{ currentExchangeRate?.name }}
+                {{
+                  formatNumber(
+                    getConvertedPrice(car?.price_leasing?.[0]?.price)
+                  )
+                }}</del
               >
             </div>
             <div class="car-price__current">
-              AED {{ formatNumber(priceLeasingMaxPeriod?.price) }}
+              {{ currentExchangeRate?.name }}
+              {{
+                formatNumber(getConvertedPrice(priceLeasingMaxPeriod?.price))
+              }}
             </div>
           </div>
         </template>
@@ -101,25 +119,35 @@
             itemscope
             itemtype="http://schema.org/Offer"
           >
-            <meta itemprop="priceCurrency" content="AED" />
+            <meta
+              itemprop="priceCurrency"
+              :content="currentExchangeRate?.name"
+            />
             <meta
               itemprop="price"
               :content="
-                car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+                getConvertedPrice(
+                  car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+                )
               "
             />
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
               <span>Daily</span>
               <del class="color-red" v-if="car?.price_special?.[0]?.price"
-                >AED {{ formatNumber(car?.price?.[0]?.price) }}</del
+                >{{ currentExchangeRate?.name }}
+                {{
+                  formatNumber(getConvertedPrice(car?.price?.[0]?.price))
+                }}</del
               >
             </div>
             <div class="car-price__current">
-              AED
+              {{ currentExchangeRate?.name }}
               {{
                 formatNumber(
-                  car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+                  getConvertedPrice(
+                    car?.price_special?.[0]?.price ?? car?.price?.[0]?.price
+                  )
                 )
               }}
             </div>
@@ -128,15 +156,20 @@
             <div class="car-price__old">
               <span>Monthly</span>
               <del class="color-red" v-if="car?.price_special?.[2]?.price"
-                >AED {{ formatNumber(car?.price?.[2]?.price) }}</del
+                >{{ currentExchangeRate?.name }}
+                {{
+                  formatNumber(getConvertedPrice(car?.price?.[2]?.price))
+                }}</del
               >
             </div>
             <div class="car-price__current">
-              AED
+              {{ currentExchangeRate?.name }}
               <span itemprop="priceRange">
                 {{
                   formatNumber(
-                    car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
+                    getConvertedPrice(
+                      car?.price_special?.[2]?.price ?? car?.price?.[2]?.price
+                    )
                   )
                 }}
               </span>
@@ -158,6 +191,8 @@ const props = defineProps({
   car: Object,
   isLeasing: Boolean,
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const currentCity = useState("currentCity");
 const route = useRoute();

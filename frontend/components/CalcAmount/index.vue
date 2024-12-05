@@ -6,7 +6,8 @@
         {{ textTopleft }}
       </div>
       <strong class="calc-amount__size-small"
-        >AED {{ formatNumber(price) }}</strong
+        >{{ currentExchangeRate?.name }}
+        {{ formatNumber(getConvertedPrice(price)) }}</strong
       >
     </div>
     <div class="calc-amount__flex">
@@ -15,7 +16,8 @@
         <span>Tax (5%)</span>
       </div>
       <strong class="calc-amount__size-small" v-if="taxIsNumber"
-        >+ AED {{ formatNumber(tax) }}</strong
+        >+ {{ currentExchangeRate?.name }}
+        {{ formatNumber(getConvertedPrice(tax)) }}</strong
       >
       <strong class="calc-amount__size-small" v-else>{{ tax }}</strong>
     </div>
@@ -34,6 +36,8 @@ const props = defineProps({
     default: true,
   },
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 // const tax = computed(() => props.total * 0.05);
 </script>

@@ -27,9 +27,11 @@
         <div class="car-short__info">
           <span>From</span>
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
-            >AED {{ priceOld }}</del
+            >{{ currentExchangeRate?.name }} {{ priceOld }}</del
           >
-          <span class="car-short__price text-ui">AED {{ price }}</span>
+          <span class="car-short__price text-ui"
+            >{{ currentExchangeRate?.name }} {{ price }}</span
+          >
           <span>per day</span>
         </div>
       </div>
@@ -50,23 +52,33 @@ const props = defineProps({
   car: Object,
 });
 
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
+
 const route = useRoute();
 
 const currentCity = useState("currentCity");
 
 const price = computed(() =>
   formatNumber(
-    props.car?.price_special?.[0]?.price
-      ? Math.round(
-          props.car?.price_special?.[0]?.price /
-            props.car?.price_special?.[0]?.period
-        )
-      : Math.round(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
+    getConvertedPrice(
+      props.car?.price_special?.[0]?.price
+        ? Math.round(
+            props.car?.price_special?.[0]?.price /
+              props.car?.price_special?.[0]?.period
+          )
+        : Math.round(
+            props.car?.price?.[0]?.price / props.car?.price?.[0]?.period
+          )
+    )
   )
 );
 
 const priceOld = computed(() =>
-  formatNumber(props.car?.price?.[0]?.price / props.car?.price?.[0]?.period)
+  formatNumber(
+    getConvertedPrice(
+      props.car?.price?.[0]?.price / props.car?.price?.[0]?.period
+    )
+  )
 );
 </script>
 

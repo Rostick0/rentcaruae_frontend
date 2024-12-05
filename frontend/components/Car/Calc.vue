@@ -54,7 +54,7 @@
           />
         </div>
         <div class="calc-item__flex_right">
-          {{ currentExchangeRate?.name }} {{ getConvertedPrice(45) }} <br />
+          {{ currentExchangeRate?.name }} {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
           <span class="calc-item__size-small">per day</span>
         </div>
       </div>
@@ -331,16 +331,17 @@ const maxMileage = computed(
 );
 
 const priceSpecial = computed(() =>
-  formatNumber(
-    getConvertedPrice(
-      props?.car?.price_special?.find(
-        (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price &&
-        props?.car?.price?.find(
-          (item) => item?.period === periodSelect.value.modelValue.period
-        )?.price
-    )
-  )
+  props?.car?.price_special?.find(
+    (item) => item?.period === periodSelect.value.modelValue.period
+  )?.price
+    ? formatNumber(
+        getConvertedPrice(
+          props?.car?.price?.find(
+            (item) => item?.period === periodSelect.value.modelValue.period
+          )?.price
+        )
+      )
+    : null
 );
 
 const price = computed(() =>

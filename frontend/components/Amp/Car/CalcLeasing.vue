@@ -7,7 +7,7 @@
       <div class="calc__top_right">
         <div class="calc__price-old">Monthly price</div>
         <div class="calc__price">
-          AED
+          {{ currentExchangeRate?.name }}
           <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
@@ -23,7 +23,10 @@
           />
           <span>Deposit</span>
         </div>
-        <span>AED {{ car?.security_deposit?.price }}</span>
+        <span
+          >{{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(car?.security_deposit?.price) }}</span
+        >
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -126,6 +129,8 @@ const props = defineProps({
   car: Object,
 });
 
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
+
 const isAddStatisticWhatsApp = ref(false);
 
 const clickWhatsApp = async () => {
@@ -181,7 +186,9 @@ const maxMileage = computed(
 
 const price = computed(() =>
   formatNumber(
-    props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price
+    getConvertedPrice(
+      props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price
+    )
   )
 );
 

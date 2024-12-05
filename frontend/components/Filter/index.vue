@@ -16,7 +16,10 @@
         "
       >
         <span>{{ item?.car?.title }}</span>
-        <span>from AED {{ item?.price }}</span>
+        <span
+          >from {{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(item?.price) }}</span
+        >
       </NuxtLink>
     </div>
     <!-- <div class="filter__right">
@@ -51,6 +54,8 @@
 const props = defineProps({
   prices: Array,
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const city = useState("currentCity");
 const route = useRoute();

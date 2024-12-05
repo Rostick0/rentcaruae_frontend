@@ -37,6 +37,8 @@ const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
 );
 
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
+
 const id = useRoute().params.id;
 
 const { create } = useView();
@@ -104,8 +106,8 @@ useHead({
         offers: [
           {
             "@type": "Offer",
-            priceCurrency: "AED",
-            price: data.value?.price?.[0]?.price,
+            priceCurrency: currentExchangeRate?.value?.name,
+            price: getConvertedPrice(data.value?.price?.[0]?.price),
             itemCondition: "https://schema.org/NewCondition",
             availability: "https://schema.org/InStock",
             rentalDuration: {
@@ -116,8 +118,8 @@ useHead({
           },
           {
             "@type": "Offer",
-            priceCurrency: "AED",
-            price: data.value?.price?.[1]?.price,
+            priceCurrency: currentExchangeRate?.value?.name,
+            price: getConvertedPrice(data.value?.price?.[1]?.price),
             itemCondition: "https://schema.org/NewCondition",
             availability: "https://schema.org/InStock",
             rentalDuration: {
@@ -128,8 +130,8 @@ useHead({
           },
           {
             "@type": "Offer",
-            priceCurrency: "AED",
-            price: data.value?.price?.[2]?.price,
+            priceCurrency: currentExchangeRate?.value?.name,
+            price: getConvertedPrice(data.value?.price?.[2]?.price),
             itemCondition: "https://schema.org/NewCondition",
             availability: "https://schema.org/InStock",
             rentalDuration: {

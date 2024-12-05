@@ -7,7 +7,7 @@
       <div class="calc__top_right">
         <div class="calc__price-old">Monthly price</div>
         <div class="calc__price">
-          AED
+          {{ currentExchangeRate?.name }}
           <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
@@ -19,12 +19,12 @@
           <del
             class="calc-range__del color-red"
             v-if="periodSelect.modelValue !== 0"
-            >AED
-            {{ formatNumber(priceRentalDel) }}
+            >{{ currentExchangeRate?.name }}
+            {{ formatNumber(getConvertedPrice(priceRentalDel)) }}
           </del>
           <div class="">
-            AED
-            {{ formatNumber(priceRental) }}
+            {{ currentExchangeRate?.name }}
+            {{ formatNumber(getConvertedPrice(priceRental)) }}
           </div>
         </div>
       </div>
@@ -46,7 +46,10 @@
           />
           <span>Deposit</span>
         </div>
-        <span>AED {{ car?.security_deposit?.price }}</span>
+        <span
+          >{{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(car?.security_deposit?.price) }}</span
+        >
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -176,7 +179,7 @@
           <div class="calc-amount__flex">
             <div class="calc__title">Monthly payment</div>
             <strong class="calc-amount__price">
-              AED
+              {{ currentExchangeRate?.name }}
               <span class="calc-amount__price_val">{{ price }}</span>
             </strong>
           </div>
@@ -198,6 +201,8 @@ const emits = defineEmits(["submited"]);
 const props = defineProps({
   car: Object,
 });
+
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const route = useRoute();
 
@@ -305,7 +310,9 @@ const maxMileage = computed(
 
 const price = computed(() =>
   formatNumber(
-    props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price
+    getConvertedPrice(
+      props?.car?.price_leasing?.[periodSelect.value.modelValue]?.price
+    )
   )
 );
 

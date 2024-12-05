@@ -10,11 +10,11 @@
         <div class="calc__price-old">
           {{ periodSelect.modelValue?.name }}
           <del class="color-red" v-if="priceSpecial"
-            >AED {{ priceSpecial }}</del
+            >{{ currentExchangeRate?.name }} {{ priceSpecial }}</del
           >
         </div>
         <div class="calc__price">
-          AED
+          {{ currentExchangeRate?.name }}
           <span class="calc__price_val">{{ price }}</span>
         </div>
       </div>
@@ -30,7 +30,10 @@
           />
           <span>Deposit</span>
         </div>
-        <span>AED {{ car?.security_deposit?.price }}</span>
+        <span
+          >{{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(car?.security_deposit?.price) }}</span
+        >
       </div>
       <div class="calc-item__flex" v-if="!car?.free_per_day_security">
         <div class="calc-item__flex_left">
@@ -40,7 +43,7 @@
           </div>
         </div>
         <div class="calc-item__flex_right">
-          AED 45 <br />
+          {{ currentExchangeRate?.name }} {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
           <span class="calc-item__size-small">per day</span>
         </div>
       </div>
@@ -137,7 +140,7 @@ const props = defineProps({
   car: Object,
 });
 
-const { getConvertedPrice } = await useExchangeRate();
+const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const isAddStatisticWhatsApp = ref(false);
 
@@ -174,14 +177,17 @@ const maxMileage = computed(
 );
 
 const priceSpecial = computed(() =>
-  formatNumber(
-    props?.car?.price_special?.find(
-      (item) => item?.period === periodSelect.value.modelValue.period
-    )?.price &&
-      props?.car?.price?.find(
-        (item) => item?.period === periodSelect.value.modelValue.period
-      )?.price
-  )
+  props?.car?.price_special?.find(
+    (item) => item?.period === periodSelect.value.modelValue.period
+  )?.price
+    ? formatNumber(
+        getConvertedPrice(
+          props?.car?.price?.find(
+            (item) => item?.period === periodSelect.value.modelValue.period
+          )?.price
+        )
+      )
+    : null
 );
 
 const price = computed(() =>
