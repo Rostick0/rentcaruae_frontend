@@ -14,6 +14,7 @@
                 class="footer-item__link"
                 v-for="city in cities"
                 :to="convertNameToUrl(`/${city.name}/`)"
+                @click="currentCity = city"
                 :key="city.id"
                 >{{ city.name }}</NuxtLink
               >

@@ -13,6 +13,8 @@ const { email, min, max, required, size, image, min_value, max_value } =
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
 
+const route = useRoute();
+
 defineRule("required", required);
 defineRule("email", email);
 defineRule("min", min);
@@ -53,7 +55,16 @@ await useExchangeRate({
   isInit: true,
 });
 
+const { cities, currentCity } = await useCity();
+
+if (route.params?.city) {
+  currentCity.value = cities.value?.find(
+    (item) =>
+      item?.name?.replace(" ", "_")?.toLowerCase() === route.params?.city
+  );
+}
+console.log(currentCity.value);
+
 // console.log(currentExchangeRate.value);
 // console.log(exchangeRates.value);
-await useCity();
 </script>

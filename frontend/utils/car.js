@@ -141,19 +141,19 @@ export const updateCarShow = (newV, prev) => {
   return data;
 };
 
-export const getCarSeo = (car, isLeasing) => {
+export const getCarSeo = (car, isLeasing, currentCity) => {
   return isLeasing
     ? {
-        title: `Lease ${car?.title} in Dubai at AED ${formatNumber(
-          lastItem(car?.price_leasing)?.price
-        )}/month`,
-        description: `Lease a ${car?.title} at RentcarUAE for long term basis in ${car?.user?.company?.city?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-        h1: `Monthly rental ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}`,
+        title: `Lease ${car?.title} in ${
+          currentCity?.name
+        } at AED ${formatNumber(lastItem(car?.price_leasing)?.price)}/month`,
+        description: `Lease a ${car?.title} at RentcarUAE for long term basis in ${currentCity?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+        h1: `Monthly rental ${car?.generation?.model_car?.name} in ${currentCity?.name}`,
       }
     : {
-        title: `Rent ${car?.generation?.model_car?.name} in ${car?.user?.company?.city?.name}, UAE at AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month `,
-        description: `Rent ${car?.title} in ${car?.user?.company?.city?.name}, UAE for AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month.`,
-        h1: `Rent ${car?.title} in ${car?.user?.company?.city?.name}`,
+        title: `Rent ${car?.generation?.model_car?.name} in ${currentCity?.name}, UAE at AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month `,
+        description: `Rent ${car?.title} in ${currentCity?.name}, UAE for AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month.`,
+        h1: `Rent ${car?.title} in ${currentCity?.name}`,
       };
 };
 

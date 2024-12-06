@@ -49,7 +49,8 @@ const currentCity = useState("currentCity");
 
 if (
   (route.params?.city &&
-    currentCity.value?.name?.toLowerCase?.() !== route.params?.city) ||
+    currentCity.value?.name?.toLowerCase?.() !==
+      route.params?.city?.replace("_", " ")) ||
   (route.params?.page && isNaN(route.params.page)) ||
   (route.params?.period &&
     !periodOptions.find((item) => item.name === route.params?.period))

@@ -291,7 +291,6 @@ watch(
   () => currency.value.modelValue,
   (cur) => {
     currentExchangeRate.value = cur;
-    // console.log(cur); 
   }
 );
 
