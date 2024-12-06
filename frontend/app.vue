@@ -63,8 +63,4 @@ if (route.params?.city) {
       item?.name?.replace(" ", "_")?.toLowerCase() === route.params?.city
   );
 }
-console.log(currentCity.value);
-
-// console.log(currentExchangeRate.value);
-// console.log(exchangeRates.value);
 </script>

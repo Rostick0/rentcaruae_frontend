@@ -51,8 +51,7 @@
             >{{ currentExchangeRate?.name }} {{ priceOld }}</del
           >
           <span class="car-short__price text-ui"
-            >{{ currentExchangeRate?.name }}
-            {{ formatNumber(getConvertedPrice(price)) }}</span
+            >{{ currentExchangeRate?.name }} {{ formatNumber(price) }}</span
           >
           <span>per day</span>
         </div>
