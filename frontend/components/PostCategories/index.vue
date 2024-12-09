@@ -7,7 +7,7 @@
       :key="category.id"
       @click="emits('update:modelValue', category.id)"
     >
-      {{ category.name }}
+      {{ $t("blogs." + category.name) }}
     </UiButton>
   </div>
 </template>

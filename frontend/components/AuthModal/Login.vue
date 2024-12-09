@@ -1,11 +1,16 @@
 <template>
-  <AuthModalTemplate title="Login" subtitle="For Rent a car companies">
+  <AuthModalTemplate
+    :title="$t('modal.auth.title')"
+    :subtitle="$t('modal.auth.subtitle')"
+  >
     <form @submit="onSubmit">
       <div class="auth-modal__fields">
         <VFormComponent :field="email" />
         <VFormComponent v-if="isSendedCode" :field="code" />
       </div>
-      <UiButton class="auth-modal__btn" variant="outlined">Login</UiButton>
+      <UiButton class="auth-modal__btn" variant="outlined">{{
+        $t("Login")
+      }}</UiButton>
       <VFormComponent :field="g_recaptcha_response" />
     </form>
   </AuthModalTemplate>
@@ -15,6 +20,8 @@
 import debounce from "lodash/debounce";
 import { useForm } from "vee-validate";
 import api from "~/api";
+
+const { t } = useI18n();
 
 const emits = defineEmits(["closeModal"]);
 
@@ -69,7 +76,7 @@ const onSubmit = handleSubmit(async (values) => {
   g_recaptcha_response.value.modelValue = "";
 
   if (res?.error) {
-    warningPopup("Code don't sended");
+    warningPopup(t("modal.dontSendCode"));
     isSendedCode.value = false;
   }
 });

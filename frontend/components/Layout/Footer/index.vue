@@ -8,7 +8,7 @@
 
         <div class="footer__center">
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Rent car</div>
+            <div class="footer-item__title text-ui">{{ $t("rentCar") }}</div>
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
@@ -16,7 +16,7 @@
                 :to="convertNameToUrl(`/${city.name}/`)"
                 @click="currentCity = city"
                 :key="city.id"
-                >{{ city.name }}</NuxtLink
+                >{{ $t(city.name) }}</NuxtLink
               >
             </div>
           </div>
@@ -73,14 +73,16 @@
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Rental by period</div>
+            <div class="footer-item__title text-ui">
+              {{ $t("rentalByPeriod") }}
+            </div>
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
                 v-for="period in rentalPeriods"
                 :key="period?.link"
                 :to="period?.link"
-                >{{ period?.name }}</NuxtLink
+                >{{ $t("rentalPeriod." + period?.name) }}</NuxtLink
               >
             </div>
           </div>
@@ -88,28 +90,32 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">{{ $t("aboutUs") }}</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/blogs/">Blog</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/privacy_policy/"
-                >Privacy policy</NuxtLink
-              >
-              <NuxtLink class="footer-item__link" to="/terms_of_service/"
-                >Terms of use</NuxtLink
-              >
-              <NuxtLink class="footer-item__link" to="/sitemap/"
-                >Site map</NuxtLink
-              >
+              <NuxtLink class="footer-item__link" to="/blogs/">{{
+                $t("blog")
+              }}</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/privacy_policy/">{{
+                $t("privacyPolicy")
+              }}</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/terms_of_service/">{{
+                $t("termsOfUse")
+              }}</NuxtLink>
+              <NuxtLink class="footer-item__link" to="/sitemap/">{{
+                $t("siteMap")
+              }}</NuxtLink>
               <!-- <NuxtLink class="footer-item__link" to="/amp/sitemap/"
                 >Site map amp</NuxtLink
               > -->
-              <NuxtLink class="footer-item__link" to="/faq/">FAQ</NuxtLink>
-              <a class="footer-item__link" href="mailto:hello@rentcaruae.com"
-                >Contact us</a
-              >
+              <NuxtLink class="footer-item__link" to="/faq/">{{
+                $t("FAQ")
+              }}</NuxtLink>
+              <a class="footer-item__link" href="mailto:hello@rentcaruae.com">{{
+                $t("contactUs")
+              }}</a>
             </div>
           </div>
 
           <div class="footer-item">
-            <div class="footer-item__title text-ui">Follow us</div>
+            <div class="footer-item__title text-ui">{{ $t("followUs") }}</div>
             <div class="footer-item__btns">
               <!-- <a class="footer-item__icon" href="#">
                 <svg
@@ -181,7 +187,7 @@
               </a>
             </div>
             <div class="footer__rental text-pre-small">
-              Are you a car rental company?
+              {{ $t("carRentalCompany") }}
             </div>
             <slot name="joinButton" />
           </div>

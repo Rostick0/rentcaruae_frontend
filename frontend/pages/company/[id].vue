@@ -1,8 +1,5 @@
 <template>
-  <PageCatalog
-    :breadcrumbs="breadcrumbs"
-    :paramsCar="{ 'filterEQ[user_id]': data.owner?.id }"
-  >
+  <PageCatalog :paramsCar="{ 'filterEQ[user_id]': data.owner?.id }">
     <template #topBlock>
       <div class="company">
         <div class="company__top">
@@ -48,9 +45,9 @@
                 rel="noopener nofollow"
                 target="_blank"
               >
-                <UiButton class="company__btn" variant="outlined"
-                  >View on map</UiButton
-                >
+                <UiButton class="company__btn" variant="outlined">{{
+                  $t("company.view_on_map")
+                }}</UiButton>
               </a>
               <a
                 class="d-flex"
@@ -58,9 +55,9 @@
                 rel="noopener nofollow"
                 target="_blank"
               >
-                <UiButton class="company__btn" color="whatsapp"
-                  >WhatsApp</UiButton
-                >
+                <UiButton class="company__btn" color="whatsapp">{{
+                  $t("company.whats_app")
+                }}</UiButton>
               </a>
             </div>
             <div class="company__schedule">
@@ -68,7 +65,7 @@
                 class="company__schedule_item"
                 v-for="item in companySchedules"
               >
-                <span>{{ item.week_day }}</span>
+                <span>{{ $t(item.week_day) }}</span>
                 <span>
                   {{ item.period }}
                 </span>
@@ -82,24 +79,6 @@
 </template>
 
 <script setup>
-const breadcrumbs = ref([
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "Dubai",
-    link: "/",
-  },
-  {
-    name: "Car rental",
-    link: "/",
-  },
-  {
-    name: "Yeti car",
-  },
-]);
-
 const id = useRoute().params?.id;
 
 const { data, get } = await useApi({
@@ -111,7 +90,6 @@ const { data, get } = await useApi({
     id,
   },
 });
-
 await get();
 
 const address = computed(() =>

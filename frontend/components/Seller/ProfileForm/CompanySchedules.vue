@@ -1,37 +1,37 @@
 <template>
   <AnyFormBlock title="Work time">
     <div class="form-item__price">
-      <strong class="form-item__price_name">Monday</strong>
+      <strong class="form-item__price_name">{{ $t("Monday") }}</strong>
       <VFormComponent :field="monday" />
       <VFormComponent :field="monday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Tuesday</strong>
+      <strong class="form-item__price_name">{{ $t("Tuesday") }}</strong>
       <VFormComponent :field="tuesday" />
       <VFormComponent :field="tuesday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Wednesday</strong>
+      <strong class="form-item__price_name">{{ $t("Wednesday") }}</strong>
       <VFormComponent :field="wednesday" />
       <VFormComponent :field="wednesday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Thursday</strong>
+      <strong class="form-item__price_name">{{ $t("Thursday") }}</strong>
       <VFormComponent :field="thursday" />
       <VFormComponent :field="thursday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Friday</strong>
+      <strong class="form-item__price_name">{{ $t("Friday") }}</strong>
       <VFormComponent :field="friday" />
       <VFormComponent :field="friday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Saturday</strong>
+      <strong class="form-item__price_name">{{ $t("Saturday") }}</strong>
       <VFormComponent :field="saturday" />
       <VFormComponent :field="saturday_is_show" />
     </div>
     <div class="form-item__price">
-      <strong class="form-item__price_name">Sunday</strong>
+      <strong class="form-item__price_name">{{ $t("Sunday") }}</strong>
       <VFormComponent :field="sunday" />
       <VFormComponent :field="sunday_is_show" />
     </div>

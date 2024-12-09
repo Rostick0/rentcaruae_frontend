@@ -2,7 +2,7 @@
   <div class="blog">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1 class="h1">Car Rental Blog</h1>
+      <h1 class="h1">{{ $t("blogs.carRentalBlog") }}</h1>
       <PostCategories
         :modelValue="filters['filterEQ[post_category_id]']"
         @update:modelValue="
@@ -10,11 +10,9 @@
         "
       />
       <div class="blog__content">
-        <h2 class="blog__h2">News</h2>
+        <h2 class="blog__h2">{{ $t("News") }}</h2>
         <PostMobile v-if="isMobileOrTablet" :posts="data" />
         <PostDesktop v-else :posts="data" />
-        <!-- <PostCard :post="postFirst" />
-        <PostsList :posts="otherPosts" /> -->
         <UiPagination
           class="catalog__pagination"
           v-model="filters.page"
@@ -27,7 +25,10 @@
 
 <script setup>
 const { isMobileOrTablet } = useDevice();
-const breadcrumbs = [{ name: "Home", link: "/" }, { name: "Blog" }];
+
+const { t } = useI18n();
+
+const breadcrumbs = [{ name: t("home"), link: "/" }, { name: t("blog") }];
 
 const config = useRuntimeConfig();
 const route = useRoute();
@@ -54,12 +55,8 @@ const { data, get, meta } = await useApi({
 });
 await get();
 
-// const postFirst = computed(() => data.value?.[0]);
-// const otherPosts = computed(() => data.value?.splice?.(1));
-
-const title = "RentcarUAE Car Rental Blog | Your adventure begins here";
-const description =
-  "All about car rental in Dubai. Reviews of new car manufacturers that can already be tested";
+const title = t("blogs.pageTitle");
+const description = t("blogs.pageDescription");
 
 useSeoMeta({
   title,
