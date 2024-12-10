@@ -2,10 +2,12 @@
   <form class="calc" @submit="onSubmit">
     <div class="calc__top">
       <div class="calc__top_left">
-        <div class="calc__top_title calc__title">Monthly rental offer</div>
+        <div class="calc__top_title calc__title">
+          {{ $t("monthly") }} {{ $t("calc.rentalOffer") }}
+        </div>
       </div>
       <div class="calc__top_right">
-        <div class="calc__price-old">Monthly price</div>
+        <div class="calc__price-old">{{ $t("calc.monthlyPrice") }}</div>
         <div class="calc__price">
           {{ currentExchangeRate?.name }}
           <span class="calc__price_val">{{ price }}</span>
@@ -44,7 +46,7 @@
             width="20"
             height="20"
           />
-          <span>Deposit</span>
+          <span>{{ $t("calc.Deposit") }}</span>
         </div>
         <span
           >{{ currentExchangeRate?.name }}
@@ -60,10 +62,11 @@
             width="20"
             height="20"
           />
-          <span>Minimum rental period</span>
+          <span>{{ $t("calc.minRentalPeriod") }}</span>
         </div>
         <span
-          >{{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}</span
+          >{{ car?.min_days ?? 1 }}
+          {{ $t("calc." + pluralize("day", car?.min_days)) }}</span
         >
       </div>
       <div class="calc-item__flex">
@@ -75,9 +78,9 @@
             width="20"
             height="20"
           />
-          <span>Total mileage limit</span>
+          <span>{{ $t("calc.totalMileageLimit") }}</span>
         </div>
-        <span>{{ maxMileage }} km</span>
+        <span>{{ maxMileage }} {{ $t("calc.km") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -88,9 +91,9 @@
             width="20"
             height="20"
           />
-          <span>Service and maintenance</span>
+          <span>{{ $t("calc.serviceMaintenance") }}</span>
         </div>
-        <span>Free</span>
+        <span>{{ $t("calc.Free") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -101,9 +104,9 @@
             width="20"
             height="20"
           />
-          <span>Basic insurance</span>
+          <span>{{ $t("calc.basicInsurance") }}</span>
         </div>
-        <span>Free</span>
+        <span>{{ $t("calc.Free") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -114,12 +117,14 @@
             width="20"
             height="20"
           />
-          <span>VAT Tax Applicable</span>
+          <span>{{ $t("VAT") }} {{ $t("Tax") }} {{ $t("Applicable") }}</span>
         </div>
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
+      <UiButton class="calc__button" @click.prevent="clickBook">{{
+        $t("calc.Book")
+      }}</UiButton>
       <a
         class="d-flex"
         :href="`https://wa.me/${car?.user?.company?.tel}?text=${getWhatsappText(
@@ -133,23 +138,27 @@
           class="calc__button no-click"
           @click="clickWhatsApp"
           color="whatsapp"
-          >WhatsApp</UiButton
+          >{{ $t("calc.WhatsApp") }}</UiButton
         >
       </a>
     </div>
     <slot name="car-info" />
     <template v-if="isBook">
       <div class="calc-item" ref="book">
-        <div class="calc__title">Choose rental dates</div>
+        <div class="calc__title">{{ $t("calc.chooseRentalDates") }}</div>
         <div class="calc-date">
           <div class="calc-date__item">
-            <strong class="calc-item__size-small">Start date</strong>
+            <strong class="calc-item__size-small">{{
+              $t("calc.startDate")
+            }}</strong>
             <div class="text-ui">
               {{ startDateFormated }}
             </div>
           </div>
           <div class="calc-date__item">
-            <strong class="calc-item__size-small">Your rental</strong>
+            <strong class="calc-item__size-small">{{
+              $t("calc.yourRental")
+            }}</strong>
             <div class="calc__price text-ui">
               {{ periodRental }} {{ periodText }}
             </div>
@@ -165,19 +174,21 @@
       >
         <template #calc-stats>
           <div class="calc-amount__flex">
-            <div class="calc-amount__flex_left">Start date</div>
+            <div class="calc-amount__flex_left">{{ $t("calc.startDate") }}</div>
             <strong class="text-ui calc-amount__size-small">{{
               startDateFormated
             }}</strong>
           </div>
           <div class="calc-amount__flex">
-            <div class="calc-amount__flex_left">Car delivery</div>
-            <strong class="calc-amount__size-small">Free</strong>
+            <div class="calc-amount__flex_left">
+              {{ $t("calc.carDelivery") }}
+            </div>
+            <strong class="calc-amount__size-small">{{ $t("Free") }}</strong>
           </div>
         </template>
         <template #summary>
           <div class="calc-amount__flex">
-            <div class="calc__title">Monthly payment</div>
+            <div class="calc__title">{{ $t("calc.monthlyPayment") }}</div>
             <strong class="calc-amount__price">
               {{ currentExchangeRate?.name }}
               <span class="calc-amount__price_val">{{ price }}</span>
@@ -205,6 +216,8 @@ const props = defineProps({
 const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const route = useRoute();
+
+const { t } = useI18n();
 
 const isBook = ref(route.query?.["open-book"]);
 const book = ref();
@@ -259,7 +272,7 @@ const onSubmit = handleSubmit(async ({ start_date, tel, ...values }) => {
     return;
   }
 
-  success("Thank you for your application");
+  success(t("calc.thankApplication"));
   isBook.value = false;
   emits("submited", true);
 });
@@ -302,7 +315,7 @@ const periodRental = computed(
   () => props.car?.price_leasing?.[periodSelect.value.modelValue]?.period / 30
 );
 
-const periodText = computed(() => pluralize("month", periodRental.value));
+const periodText = computed(() => t(pluralize("month", periodRental.value)));
 
 const maxMileage = computed(
   () => props?.car?.price_leasing?.[periodSelect.value.modelValue]?.mileage
@@ -335,13 +348,13 @@ const lastPriceLeasing = computed(() => lastItem(props.car?.price_leasing));
 const minMonth = computed(() => {
   const monthCount = props.car?.price_leasing?.[0]?.period / 30;
 
-  return `${monthCount} ${pluralize("month", monthCount)}`;
+  return `${monthCount} ${t(pluralize("month", monthCount))}`;
 });
 
 const maxMonth = computed(() => {
   const monthCount = lastPriceLeasing.value?.period / 30;
 
-  return `${monthCount} ${pluralize("month", monthCount)}`;
+  return `${monthCount} ${t(pluralize("month", monthCount))}`;
 });
 </script>
 

@@ -5,9 +5,9 @@
         <!-- <div class="car__option" v-for="option in car?.options" :key="option">
           {{ option }}
         </div> -->
-        <div class="car__option" v-if="car?.is_new">NEW</div>
+        <div class="car__option" v-if="car?.is_new">{{ $t("NEW") }}</div>
         <div class="car__option" v-if="car?.price_special?.length">
-          Special offer
+          {{ $t("specialOffer") }}
         </div>
       </div>
       <div class="car__characteristics">
@@ -21,7 +21,7 @@
             height="20"
           />
           <span class="car-characteristic__text">{{
-            car?.transmission?.name?.substr(0, 4)
+            $t("transmissions." + car?.transmission?.name)?.substr(0, 4)
           }}</span>
         </div>
         <div class="car-characteristic">
@@ -33,7 +33,9 @@
             width="20"
             height="20"
           />
-          <span class="car-characteristic__text">{{ car?.seats }} Person</span>
+          <span class="car-characteristic__text"
+            >{{ car?.seats }} {{ $t("Person") }}</span
+          >
         </div>
         <div class="car-characteristic">
           <LazyNuxtImg
@@ -47,7 +49,7 @@
             height="20"
           />
           <span class="car-characteristic__text">{{
-            car?.fuel_type?.name
+            $t("fuelTypes." + car?.fuel_type?.name)
           }}</span>
         </div>
       </div>

@@ -5,51 +5,42 @@
         <template v-if="isCustomize">
           <div class="modal-cookie__content_item">
             <div>
-              <span class="color-basic">Technical</span> — provides
-              authentication, navigation and other important functions. Their
-              absence may disrupt the operation of RenrCarUAE sites and
-              services, so they are used by default.
+              <span class="color-basic">{{ $t("modalCookie.title1") }}</span> —
+              {{ $t("modalCookie.description1") }}
             </div>
             <UiSwitch modelValue />
           </div>
           <div class="modal-cookie__content_item">
             <div>
-              <span class="color-basic">Analytical/marketing</span> — improve
-              the quality of work with RentCarUAE services. They remember
-              preference settings, anonymously analyze site traffic and allow
-              you to display relevant ads.
+              <span class="color-basic">{{ $t("modalCookie.title2") }}</span> —
+              {{ $t("modalCookie.description2") }}
             </div>
             <UiSwitch v-model="analyticalCookie" />
           </div>
           <div class="modal-cookie__content_item">
             <div>
-              <span class="color-basic">Other cookies</span> — perform service
-              functions and make it easier to work with RentCarUAE sites and
-              services. These files help you remember the page status, select a
-              region, save personal preferences, and more.
+              <span class="color-basic">{{ $t("modalCookie.title3") }}</span> —
+              {{ $t("modalCookie.description3") }}
             </div>
             <UiSwitch v-model="otherCookie" />
           </div>
         </template>
         <template v-else>
           <div class="modal-cookie__short-text">
-            RentCarUAE uses cookies: technical, analytical, marketing and
-            others. They are necessary for the optimal operation of sites and
-            services, help RentCarUAE recognize you and store your settings.
-            Read more in the
+            {{ $t("modalCookie.description4") }}
             <NuxtLink class="color-basic" to="/privacy_policy/" target="_blank"
-              >Policy.</NuxtLink
+              >{{ $t("Policy") }}.</NuxtLink
             >
           </div>
         </template>
       </div>
       <div class="modal-cookie__btns">
-        <UiButton @click="isCustomize = !isCustomize" variant="outlined"
-          >Customize</UiButton
-        >
-        <UiButton class="modal-cookie__big-btn" @click="onAccepted"
-          >Accept</UiButton
-        >
+        <UiButton @click="isCustomize = !isCustomize" variant="outlined">{{
+          $t("Customize")
+        }}</UiButton>
+        <UiButton class="modal-cookie__big-btn" @click="onAccepted">{{
+          $t("Accept")
+        }}</UiButton>
       </div>
     </div>
   </LazyUiModal>

@@ -53,11 +53,11 @@
       </svg>
     </div>
     <div class="no-internet__text">
-      The internet connection is probably interrupted
+      {{ $t("noInternet.problem") }}
     </div>
-    <UiButton class="no-internet__btn" @click="$pwa?.updateServiceWorker()"
-      >Try again</UiButton
-    >
+    <UiButton class="no-internet__btn" @click="$pwa?.updateServiceWorker()">{{
+      $t("noInternet.tryAgain")
+    }}</UiButton>
   </div>
 </template>
 

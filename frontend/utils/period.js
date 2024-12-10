@@ -19,9 +19,6 @@ export const periodOptions = [
 export const getPeriodParam = (val) =>
   periodOptions.find((item) => item.name === val)?.period;
 
-export const getPeriodName = (val) =>
-  periodOptions.find((item) => item.period === val)?.name;
-
 export const convertPeriod = (val) => {
   if (val == 1) return "day";
 

@@ -17,7 +17,7 @@
       >
         <span>{{ item?.car?.title }}</span>
         <span
-          >from {{ currentExchangeRate?.name }}
+          >{{ $t("filter.from") }} {{ currentExchangeRate?.name }}
           {{ getConvertedPrice(item?.price) }}</span
         >
       </NuxtLink>

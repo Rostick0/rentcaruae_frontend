@@ -34,8 +34,8 @@
         v-if="!isShowAll"
         @click="isShowAll = true"
       >
-        Show <br />
-        all
+        {{ $t("bookForm.Show") }} <br />
+        {{ $t("bookForm.all") }}
       </button>
     </div>
   </div>

@@ -1,9 +1,9 @@
 <template>
   <div class="specifications" v-if="specifications?.length">
-    <h2 class="specifications__title">Specifications</h2>
+    <h2 class="specifications__title">{{ $t("Specifications") }}</h2>
     <div class="specifications__inner">
       <div class="specification">
-        <div class="specification__title">Brand</div>
+        <div class="specification__title">{{ $t("Brand") }}</div>
         <NuxtLink
           class="specification__item"
           :to="
@@ -18,7 +18,7 @@
         </NuxtLink>
       </div>
       <div class="specification">
-        <div class="specification__title">Body</div>
+        <div class="specification__title">{{ $t("Body") }}</div>
         <NuxtLink
           class="specification__item"
           :to="
@@ -26,7 +26,7 @@
               `/${currentCity?.name ?? 'all'}/body/${car?.generation?.name}/`
             )
           "
-          >{{ car?.generation?.name }}</NuxtLink
+          >{{ $t("bodyTypesList." + car?.generation?.name) }}</NuxtLink
         >
       </div>
       <div
@@ -34,14 +34,16 @@
         v-for="specType in specifications"
         :key="specType.group"
       >
-        <div class="specification__title">{{ specType.group }}</div>
+        <div class="specification__title">
+          {{ $t("specifications.types." + specType.group) }}
+        </div>
         <ul class="specification__list" v-if="specType.value?.length">
           <li
             class="specification__item"
             v-for="spec in specType.value"
             :key="spec?.name"
           >
-            {{ spec?.name }}
+            {{ $t("specifications.names." + spec?.name) }}
           </li>
         </ul>
       </div>

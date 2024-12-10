@@ -1,6 +1,6 @@
 <template>
   <div class="rental-pricing">
-    <h2 class="rental-pricing__title">Rental pricing</h2>
+    <h2 class="rental-pricing__title">{{ $t("rentalPricing.title") }}</h2>
     <ul class="rental-pricing__list">
       <template v-if="isLeasing">
         <li
@@ -8,7 +8,7 @@
           v-for="item in car?.price_leasing"
           :key="item?.id"
         >
-          <span>{{ item?.period }} Days</span>
+          <span>{{ item?.period }} {{ $t("days") }}</span>
           <span
             >{{ currentExchangeRate?.name }}
             {{ formatNumber(getConvertedPrice(item?.price)) }}</span
@@ -19,8 +19,8 @@
             class="rental-pricing__item text-ui"
             :to="$route.fullPath.replace('leasing', 'rent')"
           >
-            <span>View daily offer</span>
-            <span>1-30 days</span>
+            <span>{{ $t("rentalPricing.ViewDailyOffer") }}</span>
+            <span>1-30 {{ $t("days") }}</span>
           </NuxtLink>
         </li>
       </template>
@@ -30,7 +30,7 @@
           v-for="item in car?.price"
           :key="item?.id"
         >
-          <span>{{ item?.period }} Days</span>
+          <span>{{ item?.period }} {{ $t("days") }}</span>
           <span
             >{{ currentExchangeRate?.name }}
             {{ formatNumber(getConvertedPrice(item?.price)) }}</span
@@ -42,8 +42,8 @@
               class="rental-pricing__item text-ui"
               :to="$route.fullPath.replace('rent', 'leasing')"
             >
-              <span>View mounthly offer</span>
-              <span>1-12 months</span>
+              <span>{{ $t("rentalPricing.ViewMounthlyOffer") }}</span>
+              <span>1-12 {{ $t("months") }}</span>
             </NuxtLink>
           </li>
         </template>

@@ -12,8 +12,8 @@
     </div>
     <div class="calc-amount__flex">
       <div class="calc-amount__flex_left">
-        <span>VAT&nbsp;</span>
-        <span>Tax (5%)</span>
+        <span>{{$t('VAT')}}&nbsp;</span>
+        <span>{{ $t('Tax') }} (5%)</span>
       </div>
       <strong class="calc-amount__size-small" v-if="taxIsNumber"
         >+ {{ currentExchangeRate?.name }}

@@ -46,14 +46,14 @@
         >
           <meta itemprop="priceCurrency" :content="currentExchangeRate?.name" />
           <meta itemprop="price" :content="price" />
-          <span>From</span>
+          <span>{{ $t("carCardItem.Form") }}</span>
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
             >{{ currentExchangeRate?.name }} {{ priceOld }}</del
           >
           <span class="car-short__price text-ui"
             >{{ currentExchangeRate?.name }} {{ formatNumber(price) }}</span
           >
-          <span>per day</span>
+          <span>{{ $t("calc.perDay") }}</span>
         </div>
       </div>
       <img

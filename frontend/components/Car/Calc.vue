@@ -3,10 +3,10 @@
     <div class="calc__top">
       <div class="calc__top_left">
         <div class="calc__top_title calc__title">
-          {{ periodSelect.modelValue?.name }} rental offer
+          {{ periodSelect.modelValue?.name }} {{ $t("calc.rentalOffer") }}
         </div>
         <div class="calc__top_period">
-          <span>Selected period:</span>
+          <span>{{ $t("calc.selectedPeriod") }}:</span>
           <div>
             <VFormComponent :field="periodSelect" />
           </div>
@@ -35,11 +35,11 @@
             width="20"
             height="20"
           />
-          <span>Deposit</span>
+          <span>{{ $t("calc.Deposit") }}</span>
         </div>
-        <strong v-if="without_deposite.modelValue" class="color-basic"
-          >FREE</strong
-        >
+        <strong v-if="without_deposite.modelValue" class="color-basic">{{
+          $t("calc.FREE")
+        }}</strong>
         <span v-else
           >{{ currentExchangeRate?.name }}
           {{ getConvertedPrice(car?.security_deposit?.price) }}</span
@@ -54,8 +54,9 @@
           />
         </div>
         <div class="calc-item__flex_right">
-          {{ currentExchangeRate?.name }} {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
-          <span class="calc-item__size-small">per day</span>
+          {{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
+          <span class="calc-item__size-small">{{ $t("calc.perDay") }}</span>
         </div>
       </div>
       <div class="calc-item__flex">
@@ -67,10 +68,11 @@
             width="20"
             height="20"
           />
-          <span>Minimum rental period</span>
+          <span>{{ $t("calc.minRentalPeriod") }}</span>
         </div>
         <span
-          >{{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}</span
+          >{{ car?.min_days ?? 1 }}
+          {{ $t("calc." + pluralize("day", car?.min_days)) }}</span
         >
       </div>
       <div class="calc-item__flex">
@@ -82,9 +84,9 @@
             width="20"
             height="20"
           />
-          <span>Total mileage limit</span>
+          <span>{{ $t("calc.totalMileageLimit") }}</span>
         </div>
-        <span>{{ maxMileage }} km</span>
+        <span>{{ maxMileage }} {{ $t("calc.km") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -95,9 +97,9 @@
             width="20"
             height="20"
           />
-          <span>Service and maintenance</span>
+          <span>{{ $t("calc.serviceMaintenance") }}</span>
         </div>
-        <span>Free</span>
+        <span>{{ $t("calc.Free") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -108,9 +110,9 @@
             width="20"
             height="20"
           />
-          <span>Basic insurance</span>
+          <span>{{ $t("calc.basicInsurance") }}</span>
         </div>
-        <span>Free</span>
+        <span>{{ $t("calc.Free") }}</span>
       </div>
       <div class="calc-item__flex">
         <div class="calc-item__flex_left">
@@ -121,12 +123,14 @@
             width="20"
             height="20"
           />
-          <span>VAT Tax Applicable</span>
+          <span>{{ $t("VAT") }} {{ $t("Tax") }} {{ $t("Applicable") }}</span>
         </div>
         <span>+5%</span>
       </div>
 
-      <UiButton class="calc__button" @click.prevent="clickBook">Book</UiButton>
+      <UiButton class="calc__button" @click.prevent="clickBook">{{
+        $t("Book")
+      }}</UiButton>
       <a
         class="d-flex"
         @click="clickWhatsApp"
@@ -136,8 +140,11 @@
         rel="noopener nofollow"
         target="_blank"
       >
-        <UiButton class="calc__button no-click" @click.prevent color="whatsapp"
-          >WhatsApp</UiButton
+        <UiButton
+          class="calc__button no-click"
+          @click.prevent
+          color="whatsapp"
+          >{{ $t("WhatsApp") }}</UiButton
         >
       </a>
     </div>
@@ -175,7 +182,7 @@
       >
         <template #calc-stats>
           <div class="calc-amount__flex" v-if="without_deposite.modelValue">
-            <div class="calc-amount__flex_left">Deposite free</div>
+            <div class="calc-amount__flex_left">{{ $t("depositeFree") }}</div>
             <strong class="calc-amount__size-small"
               >{{ currentExchangeRate?.name }}
               {{ withoutDepositePrice }}</strong
@@ -184,7 +191,7 @@
         </template>
         <template #summary>
           <div class="calc-amount__flex">
-            <div class="calc__title">Total</div>
+            <div class="calc__title">{{ $t("Total") }}</div>
             <strong class="calc-amount__price">
               {{ currentExchangeRate?.name }}
               <span class="calc-amount__price_val">{{
@@ -213,6 +220,8 @@ const props = defineProps({
 const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const route = useRoute();
+
+const { t } = useI18n();
 
 const isBook = ref(route.query?.["open-book"]);
 const book = ref();
@@ -268,18 +277,23 @@ const onSubmit = handleSubmit(async ({ period, tel, ...values }) => {
     return;
   }
 
-  success("Thank you for your application");
+  success(t('calc.thankApplication'));
   isBook.value = false;
   emits("submited", true);
 });
 
+const translitedPeriodSelect = periodOptions.map((item) => ({
+  ...item,
+  name: t(item.name),
+}));
+
 const periodSelect = ref({
   type: "select",
   name: "period",
-  modelValue: periodOptions[0],
+  modelValue: translitedPeriodSelect[0],
 
   bind: {
-    options: periodOptions,
+    options: translitedPeriodSelect,
     isAlternative: true,
   },
 });

@@ -7,7 +7,7 @@
       width="20"
       height="20"
     />
-    <span>1 day rental available</span>
+    <span>{{ $t('carCardModule.ƒ') }}</span>
   </div>
   <div class="car-module" v-if="car?.security_deposit?.price">
     <LazyNuxtImg
@@ -17,7 +17,7 @@
       width="20"
       height="20"
     />
-    <span class="color-light-green">Deposit-free option</span>
+    <span class="color-light-green">{{ $t('carCardModule.depositfreeOption') }}</span>
   </div>
   <div class="car-module">
     <LazyNuxtImg
@@ -27,7 +27,7 @@
       width="20"
       height="20"
     />
-    <span>Free delivery</span>
+    <span>{{ $t("carCardModule.freeDelivery") }}</span>
   </div>
 </template>
 

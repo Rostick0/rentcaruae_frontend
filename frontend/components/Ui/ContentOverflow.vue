@@ -13,7 +13,7 @@
       v-if="!$route.path?.startsWith('/amp')"
       @click.prevent="active = !active"
       variant="outlined"
-      >{{ active ? "Hide" : "Show more" }}</UiButton
+      >{{ active ? $t("") : $t("showMore") }}</UiButton
     >
   </div>
 </template>

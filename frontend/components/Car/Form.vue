@@ -1,6 +1,6 @@
 <template>
   <div class="calc-item" ref="book">
-    <div class="calc__title">Your booking details</div>
+    <div class="calc__title">{{ $t("bookingDetails.bookingDetails") }}</div>
     <VFormComponent :field="tel" />
     <VFormComponent :field="full_name" />
     <VFormComponent :field="email" />
@@ -16,15 +16,18 @@
         <slot name="summary" />
       </template>
     </CalcAmount>
-    <UiButton class="calc__button">Book</UiButton>
+    <UiButton class="calc__button">{{ $t("calc.Book") }}</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
-      By ticking this box, you agree to the
-      <NuxtLink to="/terms_of_service/" target="_blank"
-        >Terms of Service</NuxtLink
-      >
+      {{ $t("bookForm.TickingBoxAgree") }}
+      <NuxtLink to="/terms_of_service/" target="_blank">{{
+        $t("termsService")
+      }}</NuxtLink>
       <br />and
-      <NuxtLink to="/privacy_policy/" target="_blank">Privacy Policy</NuxtLink>,
-      including cookie use.
+      <NuxtLink to="/privacy_policy/" target="_blank">{{
+        $t("privacyPolicy")
+      }}</NuxtLink
+      >,
+      {{ $t("bookForm.includingCookie") }}
     </VFormComponent>
   </div>
 </template>
@@ -37,6 +40,8 @@ const props = defineProps({
   periodText: String,
 });
 
+const { t } = useI18n();
+
 const tel = ref({
   type: "tel",
   name: "tel",
@@ -44,7 +49,7 @@ const tel = ref({
   rules: "",
 
   bind: {
-    label: "Phone number",
+    label: t("bookForm.phoneNumber"),
   },
 });
 
@@ -55,7 +60,7 @@ const full_name = ref({
   rules: "required|max:255",
 
   bind: {
-    label: "Full Name",
+    label: t("bookForm.fullName"),
   },
 });
 
@@ -66,7 +71,7 @@ const email = ref({
   rules: "required|email|max:255",
 
   bind: {
-    label: "E-mail",
+    label: t("bookForm.email"),
   },
 });
 

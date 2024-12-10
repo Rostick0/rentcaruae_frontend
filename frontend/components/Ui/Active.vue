@@ -1,6 +1,6 @@
 <template>
   <div class="active text-small">
-    <span>Active</span>
+    <span>{{ $t("Active") }}</span>
   </div>
 </template>
 

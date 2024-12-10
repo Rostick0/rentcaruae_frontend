@@ -25,15 +25,15 @@
             height="84"
           />
         </div>
-        <div class="modal-pwa__">Add to home screen</div>
-        <h2 class="modal-pwa__title">Install RentCarUAE App</h2>
+        <div class="modal-pwa__">{{ $t("pwa.pre-title") }}</div>
+        <h2 class="modal-pwa__title">{{ $t("pwa.title") }}</h2>
       </div>
       <ol class="modal-pwa__list">
         <li class="modal-pwa__item">
           <span>
-            Tap on the
-            <strong class="color-basic">Share</strong>
-            button below
+            {{ $t("pwa.tapOnThe") }}
+            <strong class="color-basic">{{ $t("pwa.Share") }}</strong>
+            {{ $t("pwa.buttonBelow") }}
           </span>
           <div class="modal-pwa__btn">
             <svg
@@ -56,7 +56,8 @@
         </li>
         <li class="modal-pwa__item">
           <span>
-            Select <strong class="color-basic">Add to Home Screen</strong>
+            {{ $t("pwa.Select") }}
+            <strong class="color-basic">{{ $t("pwa.addHomeScreen") }}</strong>
           </span>
           <div class="modal-pwa__btn">
             <svg
@@ -92,7 +93,10 @@
           </div>
         </li>
         <li class="modal-pwa__item">
-          <span>Select <strong class="color-basic">Add</strong></span>
+          <span
+            >{{ $t("pwa.Select") }}
+            <strong class="color-basic">{{ $t("pwa.Add") }}</strong></span
+          >
         </li>
       </ol>
       <div class="modal-pwa__advantages">
@@ -112,7 +116,7 @@
                 stroke-width="0.5"
               />
             </svg>
-            <span>Push notifecations</span>
+            <span>{{ $t("pwa.pushNotifecations") }}</span>
           </div>
         </div>
         <div class="modal-pwa-advantage">
@@ -141,7 +145,7 @@
                 fill="white"
               />
             </svg>
-            <span>Fullscreen browsing</span>
+            <span>{{ $t("pwa.fullscreenBrowsing") }}</span>
           </div>
         </div>
         <div class="modal-pwa-advantage">
@@ -170,7 +174,7 @@
                 fill="white"
               />
             </svg>
-            <span>Improved performance</span>
+            <span>{{ $t("pwa.improvedPerformance") }}</span>
           </div>
         </div>
       </div>

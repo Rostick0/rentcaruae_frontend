@@ -47,8 +47,8 @@
       </LazyNuxtLazyHydrate>
     </div>
   </div>
-  <LazyUiModalToast title="Thank you for booking" :name="name">
-    <p>A company representative will contact you within 1 hour</p>
+  <LazyUiModalToast :title="$t('thankBooking')" :name="name">
+    <p>{{ $t("representativeWillContact") }}</p>
   </LazyUiModalToast>
 </template>
 

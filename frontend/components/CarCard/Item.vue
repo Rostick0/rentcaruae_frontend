@@ -37,7 +37,7 @@
     <CarCardInfo :car="car" />
     <div class="car__stats">
       <div class="car-stat">
-        <div class="car-stat__title">Deposit</div>
+        <div class="car-stat__title">{{ $t("calc.Depost") }}</div>
         <div
           class="car-stat__value"
           :class="{ free: !car?.security_deposit?.price }"
@@ -45,29 +45,29 @@
           {{
             car?.security_deposit?.price
               ? getConvertedPrice(car?.security_deposit?.price)
-              : "Free"
+              : $t("Free")
           }}
         </div>
       </div>
       <div class="car-stat__hr"></div>
       <div class="car-stat">
-        <div class="car-stat__title">Mileage day/mo</div>
+        <div class="car-stat__title">{{ $t("carCard.MileageDM") }}</div>
         <div class="car-stat__value">
           {{ car?.price?.[0]?.mileage }}
-          <span class="car-stat__value_km">km</span> /
+          <span class="car-stat__value_km">{{ $t("km") }}</span> /
           {{ car?.price?.[2]?.mileage }}
-          <span class="car-stat__value_km">km</span>
+          <span class="car-stat__value_km">{{ $t("km") }}</span>
         </div>
       </div>
       <div class="car-stat__hr"></div>
       <div class="car-stat">
-        <div class="car-stat__title">Minimum</div>
+        <div class="car-stat__title">{{ $t("Minimum") }}</div>
         <div class="car-stat__value">
           <template v-if="isLeasing">
-            {{ minMonthLeasing }} {{ pluralize("month", minMonthLeasing) }}
+            {{ minMonthLeasing }} {{ $t(pluralize("month", minMonthLeasing)) }}
           </template>
           <template v-else>
-            {{ car?.min_days ?? 1 }} {{ pluralize("day", car?.min_days) }}
+            {{ car?.min_days ?? 1 }} {{ $t(pluralize("day", car?.min_days)) }}
           </template>
         </div>
       </div>
@@ -94,7 +94,7 @@
             />
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
-              <span>Monthly</span>
+              <span>{{ capitalize($t("monthly")) }}</span>
               <del class="color-red" v-if="car?.price_leasing?.length"
                 >{{ currentExchangeRate?.name }}
                 {{
@@ -133,7 +133,7 @@
             />
             <link itemprop="availability" href="https://schema.org/InStock" />
             <div class="car-price__old">
-              <span>Daily</span>
+              <span>{{ capitalize($t("daily")) }}</span>
               <del class="color-red" v-if="car?.price_special?.[0]?.price"
                 >{{ currentExchangeRate?.name }}
                 {{
@@ -154,7 +154,7 @@
           </div>
           <div class="car-price">
             <div class="car-price__old">
-              <span>Monthly</span>
+              <span>{{ capitalize($t("monthly")) }}</span>
               <del class="color-red" v-if="car?.price_special?.[2]?.price"
                 >{{ currentExchangeRate?.name }}
                 {{
@@ -179,12 +179,13 @@
       </div>
     </div>
     <NuxtLink class="d-flex car__link" :to="link">
-      <UiButton class="car__btn">Rent now</UiButton>
+      <UiButton class="car__btn">{{ $t("carCard.rentNow") }}</UiButton>
     </NuxtLink>
   </div>
 </template>
 
 <script setup>
+import capitalize from "lodash/capitalize";
 import last from "lodash/last.js";
 
 const props = defineProps({

@@ -33,7 +33,7 @@
                     `/${currentCity?.name ?? 'all'}/type/${category?.name}/`
                   )
                 "
-                >{{ category.name }}</NuxtLink
+                >{{ $t("categoriesList." + category.name) }}</NuxtLink
               >
             </div>
           </div>
@@ -67,7 +67,7 @@
                     `/${currentCity?.name ?? 'all'}/body/${generation?.name}/`
                   )
                 "
-                >{{ generation.name }}</NuxtLink
+                >{{ $t("bodyTypesList." + generation.name) }}</NuxtLink
               >
             </div>
           </div>

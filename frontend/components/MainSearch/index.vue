@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="color-red" v-if="!modelCars?.length && !brands?.length">
-        None
+        {{ $t("None") }}
       </div>
     </div>
   </div>

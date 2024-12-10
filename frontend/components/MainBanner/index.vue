@@ -35,6 +35,8 @@
 <script setup>
 const currentCity = useState("currentCity");
 
+const { t } = useI18n();
+
 const links = computed(() => {
   const link = `/${currentCity.value?.name ?? "all"}/type/`;
 
@@ -58,7 +60,7 @@ const links = computed(() => {
       name: "Luxury",
     },
   ].map(({ name }) => ({
-    name,
+    name: t(name),
     link: convertNameToUrl(link + name),
   }));
 });
