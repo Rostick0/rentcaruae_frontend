@@ -1,6 +1,40 @@
 export default defineI18nConfig(() => ({
   messages: {
     en: {
+      faq: {
+        title1: "Getting started",
+        question1: "What documents do I need for car rental in the UAE?",
+        answer1: {
+          0: "The necessary documents for renting a car in the UAE vary depending on whether you're a tourist or a resident. Here’s what you’ll need: ",
+          1: "For tourists:",
+          2: "A valid international driving permit.",
+          3: "Your passport.",
+          4: "A form of payment, such as a credit or debit card, or cash.",
+          5: "For UAE residents:",
+          6: "A valid UAE driving license.",
+          7: "Your passport.",
+          8: "A resident visa.",
+          9: "An Emirates ID.",
+          10: "Payment options including cash, credit, or debit card.",
+        },
+        question2: "Getting Started Can I rent a car without a credit card?",
+        answer2:
+          "Absolutely! You can make a cash deposit instead. However, keep in mind that this deposit will typically be returned only 21 to 26 days after you return the vehicle. This time frame accounts for any fines that might still be issued after the car is back in our possession.",
+        question3: "How long does It take to get a rental car delivered?",
+        answer3:
+          "Delivery times can vary based on your location, the time of day, and current traffic conditions. For example, morning rush hours can lead to delays, while afternoons might see quicker deliveries since most commuters are at work. On average, you can expect delivery to take anywhere from 45 minutes to 2 hours. It's always a good idea to check with a company representative to ensure there are no unexpected delays.",
+        question4: "Can I pick up my rental car from Dubai airport?",
+        answer4:
+          "Yes, we can deliver the car directly to the airport for you. Please note that there is an additional fee for this service, starting at a minimum of 126 AED.",
+        question5: "Can I rent a car with a new driving license in the UAE?",
+        answer5:
+          "Yes, it’s acceptable. Keep in mind that you should follow local traffic rules.",
+        question6: "What should I do if I have an accident in a rental car?",
+        answer6: {
+          0: "In the unfortunate event of an accident, your first step is to contact the police to file a report. For minor accidents, you can also use the police application to submit your report.",
+          1: "Afterward, be sure to notify the rental company’s representative. Obtaining a detailed accident report is crucial, as insurance claims typically require this documentation; without it, you may be responsible for covering the damage yourself.",
+        },
+      },
       // main page
       rentCarInDubai: "Rent a car in Dubai",
       bookCar: "Book a car for a day or a month without commission",
@@ -343,7 +377,14 @@ export default defineI18nConfig(() => ({
       joinUs: "Join us",
     },
     fr: {
-      welcome: "Bienvenue",
+      faq: {
+        title1: "Pour commencer",
+      },
+    },
+    de: {
+      faq: {
+        title1: "Erste Schritte",
+      },
     },
   },
 }));

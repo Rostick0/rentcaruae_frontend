@@ -19,15 +19,19 @@
 import isEmpty from "lodash/isEmpty";
 const route = useRoute();
 
+const localePath = useLocalePath();
+
 const getUrl = (pageNumber) => {
-  return `${
-    route.path.replace("/amp", "").replace(/page-[a-zA-Z0-9]+/g, "") +
-    (!route.params?.page ? "/" : "")
-  }page-${pageNumber}${
-    !isEmpty(route.query)
-      ? "?" + new URLSearchParams(route.query).toString()
-      : "/"
-  }`.replace("//", "/");
+  return localePath(
+    `${
+      route.path.replace("/amp", "").replace(/page-[a-zA-Z0-9]+/g, "") +
+      (!route.params?.page ? "/" : "")
+    }page-${pageNumber}${
+      !isEmpty(route.query)
+        ? "?" + new URLSearchParams(route.query).toString()
+        : "/"
+    }`.replace("//", "/")
+  );
 };
 
 // const padding = 2;

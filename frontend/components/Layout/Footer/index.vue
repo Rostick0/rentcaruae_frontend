@@ -2,7 +2,7 @@
   <footer class="footer" id="footer">
     <div class="container">
       <div class="footer__container">
-        <NuxtLink class="footer__top" to="/">
+        <NuxtLink class="footer__top" :to="$localePath('/')'">
           <Logo class="footer__logo" />
         </NuxtLink>
 
@@ -13,7 +13,7 @@
               <NuxtLink
                 class="footer-item__link"
                 v-for="city in cities"
-                :to="convertNameToUrl(`/${city.name}/`)"
+                :to="$localePath(convertNameToUrl(`/${city.name}/`))"
                 @click="currentCity = city"
                 :key="city.id"
                 >{{ $t(city.name) }}</NuxtLink
@@ -29,8 +29,10 @@
                 v-for="category in categories"
                 :key="category.id"
                 :to="
-                  convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/type/${category?.name}/`
+                  $localePath(
+                    convertNameToUrl(
+                      `/${currentCity?.name ?? 'all'}/type/${category?.name}/`
+                    )
                   )
                 "
                 >{{ $t("categoriesList." + category.name) }}</NuxtLink
@@ -46,8 +48,10 @@
                 v-for="brand in brandsLimit"
                 :key="brand.id"
                 :to="
-                  convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`
+                  $localePath(
+                    convertNameToUrl(
+                      `/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`
+                    )
                   )
                 "
                 >{{ brand.name }}</NuxtLink
@@ -63,8 +67,10 @@
                 v-for="generation in generations"
                 :key="generation.id"
                 :to="
-                  convertNameToUrl(
-                    `/${currentCity?.name ?? 'all'}/body/${generation?.name}/`
+                  $localePath(
+                    convertNameToUrl(
+                      `/${currentCity?.name ?? 'all'}/body/${generation?.name}/`
+                    )
                   )
                 "
                 >{{ $t("bodyTypesList." + generation.name) }}</NuxtLink
@@ -81,7 +87,7 @@
                 class="footer-item__link"
                 v-for="period in rentalPeriods"
                 :key="period?.link"
-                :to="period?.link"
+                :to="$localePath(period?.link)"
                 >{{ $t("rentalPeriod." + period?.name) }}</NuxtLink
               >
             </div>
@@ -90,22 +96,30 @@
           <div class="footer-item">
             <div class="footer-item__title text-ui">{{ $t("aboutUs") }}</div>
             <div class="footer-item__list">
-              <NuxtLink class="footer-item__link" to="/blogs/">{{
-                $t("blog")
-              }}</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/privacy_policy/">{{
-                $t("privacyPolicy")
-              }}</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/terms_of_service/">{{
-                $t("termsOfUse")
-              }}</NuxtLink>
-              <NuxtLink class="footer-item__link" to="/sitemap/">{{
-                $t("siteMap")
-              }}</NuxtLink>
-              <!-- <NuxtLink class="footer-item__link" to="/amp/sitemap/"
+              <NuxtLink
+                class="footer-item__link"
+                :to="$localePath('/blogs/')"
+                >{{ $t("blog") }}</NuxtLink
+              >
+              <NuxtLink
+                class="footer-item__link"
+                :to="$localePath('/privacy_policy/')"
+                >{{ $t("privacyPolicy") }}</NuxtLink
+              >
+              <NuxtLink
+                class="footer-item__link"
+                :to="$localePath('/terms_of_service/')"
+                >{{ $t("termsOfUse") }}</NuxtLink
+              >
+              <NuxtLink
+                class="footer-item__link"
+                :to="$localePath('/sitemap/')"
+                >{{ $t("siteMap") }}</NuxtLink
+              >
+              <!-- <NuxtLink class="footer-item__link" :to="localePath('/amp/sitemap/')"
                 >Site map amp</NuxtLink
               > -->
-              <NuxtLink class="footer-item__link" to="/faq/">{{
+              <NuxtLink class="footer-item__link" :to="$localePath('/faq/')">{{
                 $t("FAQ")
               }}</NuxtLink>
               <a class="footer-item__link" href="mailto:hello@rentcaruae.com">{{

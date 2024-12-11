@@ -37,6 +37,8 @@ const currentCity = useState("currentCity");
 
 const { t } = useI18n();
 
+const localePath = useLocalePath();
+
 const links = computed(() => {
   const link = `/${currentCity.value?.name ?? "all"}/type/`;
 
@@ -61,7 +63,7 @@ const links = computed(() => {
     },
   ].map(({ name }) => ({
     name: t(name),
-    link: convertNameToUrl(link + name),
+    link: localePath(convertNameToUrl(link + name)),
   }));
 });
 </script>

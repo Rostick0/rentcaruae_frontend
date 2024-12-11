@@ -2,130 +2,112 @@
   <div class="faq faq-page">
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
+      <!-- {{ $ }} -->
       <h1 class="h1 faq__h1">Frequently Asked Questions</h1>
       <p>Discover the best car rental service in UAE with RentCarUAE</p>
       <div class="faq-list">
         <div class="faq-item">
-          <h2 class="faq-item__title text-ui">Getting started</h2>
+          <h2 class="faq-item__title text-ui">{{ $t("faq.title1") }}</h2>
           <div class="faq-item__content">
             <UiSpoiler>
-              <template #title
-                >What documents do I need for car rental in the UAE?</template
-              >
+              <template #title>{{ $t("faq.question1") }}</template>
               <template #content>
                 <p>
-                  The necessary documents for renting a car in the UAE vary
-                  depending on whether you're a tourist or a resident. Here’s
-                  what you’ll need:
+                  {{ $t("faq.answer1.0") }}
                 </p>
                 <br />
                 <figure>
                   <figcaption class="text-information__figcaption">
-                    For tourists:
+                    {{ $t("faq.answer1.1") }}
                   </figcaption>
                   <ul class="text-information__ul">
                     <li class="text-information__li">
-                      A valid international driving permit.
+                      {{ $t("faq.answer1.2") }}
                     </li>
-                    <li class="text-information__li">Your passport.</li>
                     <li class="text-information__li">
-                      A form of payment, such as a credit or debit card, or
-                      cash.
+                      {{ $t("faq.answer1.3") }}
+                    </li>
+                    <li class="text-information__li">
+                      {{ $t("faq.answer1.4") }}
                     </li>
                   </ul>
                 </figure>
                 <br />
                 <figure>
                   <figcaption class="text-information__figcaption">
-                    For UAE residents:
+                    {{ $t("faq.answer1.5") }}
                   </figcaption>
                   <ul class="text-information__ul">
                     <li class="text-information__li">
-                      A valid UAE driving license.
+                      {{ $t("faq.answer1.6") }}
                     </li>
-                    <li class="text-information__li">Your passport.</li>
-                    <li class="text-information__li">A resident visa.</li>
-                    <li class="text-information__li">An Emirates ID.</li>
                     <li class="text-information__li">
-                      Payment options including cash, credit, or debit card.
+                      {{ $t("faq.answer1.7") }}
+                    </li>
+                    <li class="text-information__li">
+                      {{ $t("faq.answer1.8") }}
+                    </li>
+                    <li class="text-information__li">
+                      {{ $t("faq.answer1.9") }}
+                    </li>
+                    <li class="text-information__li">
+                      {{ $t("faq.answer1.10") }}
                     </li>
                   </ul>
                 </figure>
               </template>
             </UiSpoiler>
             <UiSpoiler>
-              <template #title
-                >Getting Started Can I rent a car without a credit
-                card?</template
-              >
+              <template #title>
+                {{ $t("faq.question2") }}
+              </template>
               <template #content>
                 <p>
-                  Absolutely! You can make a cash deposit instead. However, keep
-                  in mind that this deposit will typically be returned only 21
-                  to 26 days after you return the vehicle. This time frame
-                  accounts for any fines that might still be issued after the
-                  car is back in our possession.
+                  {{ $t("faq.answer2") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
-              <template #title
-                >How long does It take to get a rental car delivered?</template
-              >
+              <template #title>
+                {{ $t("faq.question3") }}
+              </template>
               <template #content>
                 <p>
-                  Delivery times can vary based on your location, the time of
-                  day, and current traffic conditions. For example, morning rush
-                  hours can lead to delays, while afternoons might see quicker
-                  deliveries since most commuters are at work. On average, you
-                  can expect delivery to take anywhere from 45 minutes to 2
-                  hours. It's always a good idea to check with a company
-                  representative to ensure there are no unexpected delays.
+                  {{ $t("faq.answer3") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
-              <template #title
-                >Can I pick up my rental car from Dubai airport?</template
-              >
+              <template #title>
+                {{ $t("faq.question4") }}
+              </template>
               <template #content>
                 <p>
-                  Yes, we can deliver the car directly to the airport for you.
-                  Please note that there is an additional fee for this service,
-                  starting at a minimum of 126 AED.
+                  {{ $t("faq.answer4") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
-              <template #title
-                >Can I rent a car with a new driving license in the
-                UAE?</template
-              >
+              <template #title>
+                {{ $t("faq.question5") }}
+              </template>
               <template #content>
                 <p>
-                  Yes, it’s acceptable. Keep in mind that you should follow
-                  local traffic rules.
+                  {{ $t("faq.question5") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
-              <template #title
-                >What should I do if I have an accident in a rental
-                car?</template
-              >
+              <template #title>
+                {{ $t("faq.question6") }}
+              </template>
               <template #content>
                 <p>
-                  In the unfortunate event of an accident, your first step is to
-                  contact the police to file a report. For minor accidents, you
-                  can also use the police application to submit your report.
+                  {{ $t("faq.answer6.0") }}
                 </p>
                 <br />
                 <p>
-                  Afterward, be sure to notify the rental company’s
-                  representative. Obtaining a detailed accident report is
-                  crucial, as insurance claims typically require this
-                  documentation; without it, you may be responsible for covering
-                  the damage yourself.
+                  {{ $t("faq.answer6.1") }}
                 </p>
               </template>
             </UiSpoiler>

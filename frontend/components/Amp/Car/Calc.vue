@@ -43,7 +43,8 @@
           </div>
         </div>
         <div class="calc-item__flex_right">
-          {{ currentExchangeRate?.name }} {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
+          {{ currentExchangeRate?.name }}
+          {{ getConvertedPrice(WITHOUT_DEPOSITE_PRICE) }} <br />
           <span class="calc-item__size-small">per day</span>
         </div>
       </div>
@@ -110,7 +111,9 @@
         <span>+5%</span>
       </div>
 
-      <NuxtLink :to="route.path?.replace('/amp', '') + '?open-book=true'">
+      <NuxtLink
+        :to="$localePath(route.path?.replace('/amp', '') + '?open-book=true')"
+      >
         <UiButton class="calc__button">Book</UiButton>
       </NuxtLink>
       <a

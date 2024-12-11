@@ -17,7 +17,7 @@
         <li>
           <NuxtLink
             class="rental-pricing__item text-ui"
-            :to="$route.fullPath.replace('leasing', 'rent')"
+            :to="$localePath($route.fullPath.replace('leasing', 'rent'))"
           >
             <span>{{ $t("rentalPricing.ViewDailyOffer") }}</span>
             <span>1-30 {{ $t("days") }}</span>
@@ -40,7 +40,7 @@
           <li>
             <NuxtLink
               class="rental-pricing__item text-ui"
-              :to="$route.fullPath.replace('rent', 'leasing')"
+              :to="$localePath($route.fullPath.replace('rent', 'leasing'))"
             >
               <span>{{ $t("rentalPricing.ViewMounthlyOffer") }}</span>
               <span>1-12 {{ $t("months") }}</span>

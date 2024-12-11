@@ -46,7 +46,7 @@
         >
           <meta itemprop="priceCurrency" :content="currentExchangeRate?.name" />
           <meta itemprop="price" :content="price" />
-          <span>{{ $t("carCardItem.Form") }}</span>
+          <span>{{ $t("carCardItem.From") }}</span>
           <del class="car-short__price-old" v-if="car?.price_special?.[0]"
             >{{ currentExchangeRate?.name }} {{ priceOld }}</del
           >
@@ -81,6 +81,8 @@ const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const route = useRoute();
 
+const localePath = useLocalePath();
+
 const currentCity = useState("currentCity");
 
 const price = computed(() =>
@@ -103,12 +105,14 @@ const priceOld = computed(() =>
 );
 
 const link = computed(() =>
-  convertNameToUrl(
-    `/${currentCity.value?.name}/${
-      route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
-    }/${props.car?.generation?.model_car?.brand?.name}/${
-      props.car?.generation?.model_car?.name
-    }/${props.car?.id}/`
+  localePath(
+    convertNameToUrl(
+      `/${currentCity.value?.name}/${
+        route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
+      }/${props.car?.generation?.model_car?.brand?.name}/${
+        props.car?.generation?.model_car?.name
+      }/${props.car?.id}/`
+    )
   )
 );
 </script>

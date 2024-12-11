@@ -7,10 +7,12 @@
         <NuxtLink
           class="specification__item"
           :to="
-            convertNameToUrl(
-              `/${currentCity?.name ?? 'all'}/brand/${
-                car?.generation?.model_car?.brand?.name
-              }/`
+            $localePath(
+              convertNameToUrl(
+                `/${currentCity?.name ?? 'all'}/brand/${
+                  car?.generation?.model_car?.brand?.name
+                }/`
+              )
             )
           "
         >
@@ -22,8 +24,10 @@
         <NuxtLink
           class="specification__item"
           :to="
-            convertNameToUrl(
-              `/${currentCity?.name ?? 'all'}/body/${car?.generation?.name}/`
+            $localePath(
+              convertNameToUrl(
+                `/${currentCity?.name ?? 'all'}/body/${car?.generation?.name}/`
+              )
             )
           "
           >{{ $t("bodyTypesList." + car?.generation?.name) }}</NuxtLink

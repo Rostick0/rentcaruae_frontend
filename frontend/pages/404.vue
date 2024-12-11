@@ -4,7 +4,7 @@
     <div class="error-page__content">
       <div class="">{{ $t("404.pageNotFound") }}</div>
     </div>
-    <NuxtLink to="/">
+    <NuxtLink :to="$localePath('/')">
       <UiButton>{{ $t("404.goMain") }}</UiButton>
     </NuxtLink>
   </div>

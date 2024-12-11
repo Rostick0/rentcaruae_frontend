@@ -6,7 +6,7 @@
     </main>
     <LayoutFooter>
       <template #joinButton>
-        <NuxtLink class="d-flex" to="/?auth-modal=true">
+        <NuxtLink class="d-flex" :to="$localePath('/?auth-modal=true')">
           <UiButton class="wrapper__footer_join" variant="outlined"
             >Join us</UiButton
           >

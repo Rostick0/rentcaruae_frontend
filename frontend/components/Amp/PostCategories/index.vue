@@ -4,7 +4,7 @@
       class="d-flex"
       v-for="category in postCategories"
       :key="category.id"
-      :to="`/amp/blogs?filterEQ[post_category_id]=${category.id}`"
+      :to="$localePath(`/amp/blogs?filterEQ[post_category_id]=${category.id}`)"
     >
       <UiButton
         class="post-categories__btn"

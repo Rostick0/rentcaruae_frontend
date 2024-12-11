@@ -5,7 +5,11 @@
       v-for="brand in brands"
       :key="brand?.id"
       :to="
-        convertNameToUrl(`/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`)
+        $localePath(
+          convertNameToUrl(
+            `/${currentCity?.name ?? 'all'}/brand/${brand?.name}/`
+          )
+        )
       "
     >
       <amp-img

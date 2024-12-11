@@ -37,7 +37,7 @@
     <CarCardInfo :car="car" />
     <div class="car__stats">
       <div class="car-stat">
-        <div class="car-stat__title">{{ $t("calc.Depost") }}</div>
+        <div class="car-stat__title">{{ $t("calc.Deposit") }}</div>
         <div
           class="car-stat__value"
           :class="{ free: !car?.security_deposit?.price }"
@@ -198,13 +198,17 @@ const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 const currentCity = useState("currentCity");
 const route = useRoute();
 
+const localePath = useLocalePath();
+
 const link = computed(() =>
-  convertNameToUrl(
-    `/${currentCity.value?.name}/${
-      route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
-    }/${props.car?.generation?.model_car?.brand?.name}/${
-      props.car?.generation?.model_car?.name
-    }/${props.car?.id}/`
+  localePath(
+    convertNameToUrl(
+      `/${currentCity.value?.name}/${
+        route.fullPath.split("/")[2] === "leasing" ? "leasing" : "rent"
+      }/${props.car?.generation?.model_car?.brand?.name}/${
+        props.car?.generation?.model_car?.name
+      }/${props.car?.id}/`
+    )
   )
 );
 

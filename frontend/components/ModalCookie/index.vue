@@ -28,7 +28,10 @@
         <template v-else>
           <div class="modal-cookie__short-text">
             {{ $t("modalCookie.description4") }}
-            <NuxtLink class="color-basic" to="/privacy_policy/" target="_blank"
+            <NuxtLink
+              class="color-basic"
+              :to="$localePath('/privacy_policy/')"
+              target="_blank"
               >{{ $t("Policy") }}.</NuxtLink
             >
           </div>

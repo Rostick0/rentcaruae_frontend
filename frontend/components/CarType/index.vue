@@ -5,7 +5,7 @@
       @click="emits('update:modelValue', '')"
       :variant="!modelValue ? 'standard' : 'outlined'"
     >
-      {{ $t("carType.allCars") }}
+      {{ $t("bodyTypesList.allCars") }}
     </UiButton>
     <UiButton
       v-for="type in generations"

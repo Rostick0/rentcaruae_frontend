@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="post-item"
-    :to="`/blogs/${post?.title_link}/`"
+    :to="$localePath(`/blogs/${post?.title_link}/`)"
     itemscope
     itemtype="https://schema.org/Article"
   >

@@ -66,12 +66,19 @@ const config = useRuntimeConfig();
 
 const data = await api.sitemap.get();
 
+const localePath = useLocalePath();
+
 const setAmpLink = (link) =>
   link?.replace(config.public.BASE_URL, config.public.BASE_URL + "/amp");
 
 const setLink = (link) =>
-  setAmpLink(
-    link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name))
+  localePath(
+    setAmpLink(
+      link?.replace?.(
+        "{current_city}",
+        convertNameToUrl(currentCity.value?.name)
+      )
+    )
   );
 
 const { t } = useI18n();
@@ -79,7 +86,7 @@ const { t } = useI18n();
 const breadcrumbs = [
   {
     name: t("home"),
-    link: "/",
+    link: localePath("/"),
   },
   {
     name: t("sitemap"),

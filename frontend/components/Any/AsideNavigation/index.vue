@@ -10,7 +10,10 @@
       :key="link.link"
       >{{ link.name }}
     </NuxtLink>
-    <NuxtLink class="any-aside__link" @click.prevent="logout('/')" to="/"
+    <NuxtLink
+      class="any-aside__link"
+      @click.prevent="logout($localePath('/'))"
+      :to="$localePath('/')"
       >Logout</NuxtLink
     >
   </div>

@@ -36,7 +36,7 @@
               />
             </svg>
           </button>
-          <NuxtLink class="header__logo d-flex" to="/">
+          <NuxtLink class="header__logo d-flex" :to="$localePath('/')">
             <Logo />
           </NuxtLink>
           <LazyUiDropdownMenu v-if="$device.isDesktopOrTablet">
@@ -214,7 +214,7 @@
               <NuxtLink
                 class="header__link text-ui"
                 @click="isActive = false"
-                :to="convertNameToUrl(`/${city?.name}/leasing/`)"
+                :to="$localePath(convertNameToUrl(`/${city?.name}/leasing/`))"
                 >Car Leasing</NuxtLink
               >
             </div>
@@ -236,6 +236,8 @@
 
 <script setup>
 import remove from "lodash/remove";
+
+const { setLocale } = useI18n();
 
 const { open } = useModal({
   name: "auth-modal",
@@ -270,6 +272,18 @@ const lang = ref({
     isAlternative: true,
   },
 });
+
+watch(
+  () => lang.value.modelValue,
+  (cur) => {
+    setLocale(cur.id);
+    useHead({
+      htmlAttrs: {
+        lang: cur.id,
+      },
+    });
+  }
+);
 
 // const exchangeRates = useState("exchangeRates");
 const { currentExchangeRate, exchangeRates } = await useExchangeRate();

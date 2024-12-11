@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header__container">
         <div class="header__top">
-          <NuxtLink class="d-flex" to="/" title="Toggle menu">
+          <NuxtLink class="d-flex" :to="$localePath('/')'" title="Toggle menu">
             <svg
               width="20"
               height="20"
@@ -21,7 +21,7 @@
               ></path>
             </svg>
           </NuxtLink>
-          <NuxtLink class="header__logo d-flex" to="/">
+          <NuxtLink class="header__logo d-flex" :to="$localePath('/')">
             <Logo />
           </NuxtLink>
 
@@ -46,7 +46,11 @@
               <span>Profile</span>
             </UiButton>
           </NuxtLink>
-          <NuxtLink class="d-flex" v-else to="/?auth-modal=true">
+          <NuxtLink
+            class="d-flex"
+            v-else
+            :to="$localePath('/?auth-modal=true')"
+          >
             <UiButton class="btn-flex">
               <svg
                 width="20"

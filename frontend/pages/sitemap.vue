@@ -49,7 +49,7 @@
         <NuxtLink
           class="sitemap__link"
           v-for="item in data?.about_us"
-          :to="item?.link"
+          :to="$localePath(item?.link)"
           >{{ item?.name }}</NuxtLink
         >
       </div>
@@ -65,9 +65,12 @@ const currentCity = useState("currentCity");
 const config = useRuntimeConfig();
 
 const data = await api.sitemap.get();
+const localePath = useLocalePath();
 
 const setLink = (link) =>
-  link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name));
+  localePath(
+    link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name))
+  );
 
 const breadcrumbs = [
   {

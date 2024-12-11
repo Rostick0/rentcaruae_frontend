@@ -93,7 +93,7 @@
 
       <NuxtLink
         class="d-fle"
-        :to="route.path?.replace('/amp', '') + '?open-book=true'"
+        :to="$localePath(route.path?.replace('/amp', '') + '?open-book=true')"
       >
         <UiButton class="calc__button">Book</UiButton>
       </NuxtLink>

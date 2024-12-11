@@ -19,11 +19,11 @@
     <UiButton class="calc__button">{{ $t("calc.Book") }}</UiButton>
     <VFormComponent :field="is_agree" class="calc-item__checkbox">
       {{ $t("bookForm.TickingBoxAgree") }}
-      <NuxtLink to="/terms_of_service/" target="_blank">{{
+      <NuxtLink :to="$localePath(/terms_of_service/)" target="_blank">{{
         $t("termsService")
       }}</NuxtLink>
       <br />{{ $t("bookForm.and") }}
-      <NuxtLink to="/privacy_policy/" target="_blank">{{
+      <NuxtLink :to="$localePath(/privacy_policy/)" target="_blank">{{
         $t("privacyPolicy")
       }}</NuxtLink
       >,

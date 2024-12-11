@@ -1,12 +1,12 @@
 <template>
   <NuxtLayout class="error">
     <div class="error-page">
-      <h2 class="tit le">Error: {{ error?.statusCode }}</h2>
+      <h2 class="title">Error: {{ error?.statusCode }}</h2>
       <div class="error-page__content">
         <div class="">{{ error?.message }}</div>
         <div class="" v-if="error?.stack" v-html="error?.stack"></div>
       </div>
-      <NuxtLink to="/">
+      <NuxtLink :to="$localePath('/')">
         <UiButton>Go main</UiButton>
       </NuxtLink>
     </div>

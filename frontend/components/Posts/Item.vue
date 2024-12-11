@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="post-item"
-    :to="`/blogs/${post?.title_link}/`"
+    :to="$localePath(`/blogs/${post?.title_link}/`)"
     itemscope
     itemtype="https://schema.org/Article"
   >
@@ -10,14 +10,8 @@
       :href="`${$config.public.BASE_URL}/blogs/${post?.title_link}`"
     />
     <meta itemprop="author" :content="post?.user?.full_name" />
-    <meta
-      itemprop="datePublished"
-      :content="post?.created_at"
-    />
-    <meta
-      itemprop="dateModified"
-      :content="post?.updated_at"
-    />
+    <meta itemprop="datePublished" :content="post?.created_at" />
+    <meta itemprop="dateModified" :content="post?.updated_at" />
     <meta itemprop="articleSection" :content="post?.post_category?.name" />
     <meta itemprop="articleBody" :content="post?.content" />
     <div class="post-item__image">

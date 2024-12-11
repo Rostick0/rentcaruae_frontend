@@ -22,11 +22,11 @@
       <div class="auth-modal__checkbox">
         <VFormComponent :field="is_agree">
           {{ $t("bookForm.TickingBoxAgree") }}
-          <NuxtLink to="/terms_of_service/" target="_blank">{{
+          <NuxtLink :to="$localePath('/terms_of_service/')" target="_blank">{{
             $t("termsService")
           }}</NuxtLink>
           <br />{{ $t("bookForm.and") }}
-          <NuxtLink to="/privacy_policy/" target="_blank">{{
+          <NuxtLink :to="$localePath('/privacy_policy/')" target="_blank">{{
             $t("privacyPolicy")
           }}</NuxtLink
           >, {{ $t("bookForm.includingCookie") }}

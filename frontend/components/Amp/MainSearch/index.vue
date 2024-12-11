@@ -1,6 +1,6 @@
 <template>
   <div class="main-search">
-    <NuxtLink class="main-search__field" to="/?focus-banner=true">
+    <NuxtLink class="main-search__field" :to="$localePath('/?focus-banner=true')">
       <input
         class="main-search__input"
         v-model="search"

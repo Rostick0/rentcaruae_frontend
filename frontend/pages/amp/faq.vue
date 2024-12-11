@@ -6,12 +6,10 @@
       <p>Discover the best car rental service in UAE with RentCarUAE</p>
       <div class="faq-list">
         <div class="faq-item">
-          <h2 class="faq-item__title text-ui">Getting started</h2>
+          <h2 class="faq-item__title text-ui">{{ $t("faq.title1") }}</h2>
           <div class="faq-item__content">
             <UiSpoiler>
-              <template #title
-                >What documents do I need for car rental in the UAE?</template
-              >
+              <template #title>{{ $t("faq.answer1") }}</template>
               <template #content>
                 <p>
                   The necessary documents for renting a car in the UAE vary

@@ -6,12 +6,14 @@
         v-for="item in prices"
         :key="item?.id"
         :to="
-          convertNameToUrl(
-            `/${city?.name}/${
-              route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
-            }/${item.car?.generation?.model_car?.brand?.name}/${
-              item.car?.generation?.model_car?.name
-            }/${item.car?.id}`
+          $localePath(
+            convertNameToUrl(
+              `/${city?.name}/${
+                route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
+              }/${item.car?.generation?.model_car?.brand?.name}/${
+                item.car?.generation?.model_car?.name
+              }/${item.car?.id}`
+            )
           )
         "
       >

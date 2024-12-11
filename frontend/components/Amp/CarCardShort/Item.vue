@@ -2,12 +2,14 @@
   <NuxtLink
     class="car-short"
     :to="
-      convertNameToUrl(
-        `/${currentCity?.name}/${
-          route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
-        }/${car?.generation?.model_car?.brand?.name}/${
-          car?.generation?.model_car?.name
-        }/${car?.id}/`
+      $localePath(
+        convertNameToUrl(
+          `/${currentCity?.name}/${
+            route.fullPath.split('/')[2] === 'leasing' ? 'leasing' : 'rent'
+          }/${car?.generation?.model_car?.brand?.name}/${
+            car?.generation?.model_car?.name
+          }/${car?.id}/`
+        )
       )
     "
   >
