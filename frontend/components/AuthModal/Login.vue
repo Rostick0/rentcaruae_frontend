@@ -34,7 +34,7 @@ const email = ref({
   modelValue: "",
 
   bind: {
-    label: "Work email",
+    label: t("modal.auth.email.label"),
     placeholder: "email@company_name.com",
   },
 });
@@ -46,7 +46,7 @@ const code = ref({
   modelValue: "",
 
   bind: {
-    label: "Enter pin code",
+    label: t("modal.auth.code.label"),
     placeholder: "Pin code",
     maska: "######",
   },

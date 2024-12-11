@@ -12,7 +12,7 @@
             class="wrapper__footer_join"
             @click="open(), (authModalState = 'register')"
             variant="outlined"
-            >Join us</UiButton
+            >{{ $t("joinUs") }}</UiButton
           >
         </template>
       </LazyLayoutFooter>

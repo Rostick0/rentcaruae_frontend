@@ -111,6 +111,44 @@ export default defineI18nConfig(() => ({
         auth: {
           title: "Auth",
           subtitle: "For Rent a car companies",
+          email: {
+            label: "Work email",
+          },
+          code: {
+            label: "Enter pin code",
+          },
+        },
+        register: {
+          title: "Become a partnership",
+          subtitle: "For Rent a car companies",
+          sendRequest: "Send a request",
+          company_name: {
+            label: "Company Name",
+            placeholder: "My Company",
+          },
+          company_website: {
+            label: "Company Website",
+            placeholder: "https://",
+          },
+          company_city_id: {
+            label: "City",
+            placeholder: "City",
+          },
+          full_name: {
+            label: "Full Name",
+            placeholder: "Full Name",
+          },
+          tel: {
+            label: "Phone number",
+          },
+          email: {
+            label: "Work email",
+            placeholder: "email@company_name.com",
+          },
+          code: {
+            label: "Enter pin code",
+            placeholder: "Pin code",
+          },
         },
 
         dontSendCode: "Code don't sended",
@@ -189,11 +227,18 @@ export default defineI18nConfig(() => ({
 
       bookForm: {
         bookingDetails: "Your booking details",
-        phoneNumber: "Phone number",
-        fullName: "Full Name",
-        email: "E-mail",
+        tel: {
+          label: "Phone number",
+        },
+        full_name: {
+          label: "Full Name",
+        },
+        email: {
+          label: "E-mail",
+        },
         TickingBoxAgree: "By ticking this box, you agree to the",
         includingCookie: "including cookie use.",
+        and: "and",
         Show: "Show",
         all: "all",
       },
@@ -294,6 +339,8 @@ export default defineI18nConfig(() => ({
       specialOffer: "Special offer",
       Person: "Person",
       Minimum: "Minimum",
+      Close: "Close",
+      joinUs: "Join us",
     },
     fr: {
       welcome: "Bienvenue",

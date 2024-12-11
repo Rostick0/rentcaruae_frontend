@@ -8,7 +8,9 @@
       <span>Thanks!</span>
       <span>We will contact you as soon as possible</span>
     </div>
-    <UiButton class="auth-modal__btn" @click="close" variant="outlined">Close</UiButton>
+    <UiButton class="auth-modal__btn" @click="close" variant="outlined">{{
+      $t("Close")
+    }}</UiButton>
   </AuthModalTemplate>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <AuthModalTemplate
-    title="Become a partnership"
-    subtitle="For Rent a car companies"
+    :title="$t('modal.register.title')"
+    :subtitle="$t('modal.register.subtitle')"
   >
     <form @submit="onSubmit">
       <div class="auth-modal__fields">
@@ -16,19 +16,20 @@
         <VFormComponent :field="email" />
         <VFormComponent v-if="isSendedCode" :field="code" />
       </div>
-      <UiButton class="auth-modal__btn" variant="outlined"
-        >Send a request</UiButton
-      >
+      <UiButton class="auth-modal__btn" variant="outlined">{{
+        $t("modal.register.sendRequest")
+      }}</UiButton>
       <div class="auth-modal__checkbox">
         <VFormComponent :field="is_agree">
-          By ticking this box, you agree to the
-          <NuxtLink to="/terms_of_service/" target="_blank"
-            >Terms of Service</NuxtLink
-          >
-          <br />and
-          <NuxtLink to="/privacy_policy/" target="_blank"
-            >Privacy Policy</NuxtLink
-          >, including cookie use.
+          {{ $t("bookForm.TickingBoxAgree") }}
+          <NuxtLink to="/terms_of_service/" target="_blank">{{
+            $t("termsService")
+          }}</NuxtLink>
+          <br />{{ $t("bookForm.and") }}
+          <NuxtLink to="/privacy_policy/" target="_blank">{{
+            $t("privacyPolicy")
+          }}</NuxtLink
+          >, {{ $t("bookForm.includingCookie") }}
         </VFormComponent>
       </div>
       <VFormComponent :field="g_recaptcha_response" />
@@ -43,6 +44,8 @@ import api from "~/api";
 
 const isSendedCode = ref(false);
 
+const { t } = useI18n();
+
 const company_name = ref({
   type: "text",
   name: "company_name",
@@ -50,8 +53,8 @@ const company_name = ref({
   modelValue: "",
 
   bind: {
-    label: "Company Name",
-    placeholder: "My Company",
+    label: t("modal.register.company_name.label"),
+    label: t("modal.register.company_name.placeholder"),
   },
 });
 
@@ -62,8 +65,8 @@ const company_website = ref({
   modelValue: "",
 
   bind: {
-    label: "Company Website",
-    placeholder: "https://",
+    label: t("modal.register.company_website.label"),
+    placeholder: t("modal.register.company_website.placeholder"),
   },
 });
 
@@ -74,8 +77,8 @@ const company_city_id = ref({
   modelValue: {},
 
   bind: {
-    label: "City",
-    placeholder: "City",
+    label: t("modal.register.company_city_id.label"),
+    placeholder: t("modal.register.company_city_id.placeholder"),
     options: useState("cities"),
   },
 });
@@ -87,8 +90,8 @@ const full_name = ref({
   modelValue: "",
 
   bind: {
-    label: "Full Name",
-    placeholder: "Full Name",
+    label: t("modal.register.full_name.label"),
+    placeholder: t("modal.register.full_name.placeholder"),
   },
 });
 
@@ -99,7 +102,7 @@ const tel = ref({
   modelValue: "",
 
   bind: {
-    label: "Phone number",
+    label: t("modal.register.tel.label"),
   },
 });
 
@@ -110,8 +113,8 @@ const email = ref({
   modelValue: "",
 
   bind: {
-    label: "Work email",
-    placeholder: "email@company_name.com",
+    label: t("modal.register.email.label"),
+    placeholder: t("modal.register.email.placeholder"),
   },
 });
 
@@ -122,8 +125,8 @@ const code = ref({
   modelValue: "",
 
   bind: {
-    label: "Enter pin code",
-    placeholder: "Pin code",
+    label: t("modal.register.code.label"),
+    placeholder: t("modal.register.code.placeholder"),
     maska: "######",
   },
 });

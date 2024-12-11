@@ -22,7 +22,7 @@
       <NuxtLink to="/terms_of_service/" target="_blank">{{
         $t("termsService")
       }}</NuxtLink>
-      <br />and
+      <br />{{ $t("bookForm.and") }}
       <NuxtLink to="/privacy_policy/" target="_blank">{{
         $t("privacyPolicy")
       }}</NuxtLink
@@ -49,7 +49,7 @@ const tel = ref({
   rules: "",
 
   bind: {
-    label: t("bookForm.phoneNumber"),
+    label: t("bookForm.tel.label"),
   },
 });
 
@@ -60,7 +60,7 @@ const full_name = ref({
   rules: "required|max:255",
 
   bind: {
-    label: t("bookForm.fullName"),
+    label: t("bookForm.full_name.label"),
   },
 });
 
@@ -71,7 +71,7 @@ const email = ref({
   rules: "required|email|max:255",
 
   bind: {
-    label: t("bookForm.email"),
+    label: t("bookForm.email.label"),
   },
 });
 
