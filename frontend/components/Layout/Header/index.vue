@@ -236,6 +236,8 @@
 
 <script setup>
 import remove from "lodash/remove";
+// const { setLocale: setLocaleI18N } = await import("@vee-validate/i18n");
+import { setLocale as setLocaleI18N } from "@vee-validate/i18n";
 
 const { setLocale } = useI18n();
 
@@ -277,6 +279,8 @@ watch(
   () => lang.value.modelValue,
   (cur) => {
     setLocale(cur.id);
+    setLocaleI18N(cur.id);
+
     useHead({
       htmlAttrs: {
         lang: cur.id,

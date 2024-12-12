@@ -124,12 +124,15 @@ export default defineNuxtConfig({
     directiveOnly: true,
   },
   i18n: {
-    locales: [
-      { code: "en", language: "en-US" },
-      { code: "fr", language: "fr-FR" },
-    ],
     defaultLocale: "en",
-    vueI18n: "./i18n.config.ts",
+    locales: [
+      { code: "en", language: "en-US", file: "en.ts" },
+      { code: "fr", language: "fr-FR", file: "fr.ts" },
+      { code: "de", language: "de-DE", file: "de.ts" },
+      { code: "ar", language: "ar-AR", file: "ar.ts" },
+    ],
+    lazy: true,
+    // vueI18n: "./i18n.config.ts",
   },
 
   vue: {

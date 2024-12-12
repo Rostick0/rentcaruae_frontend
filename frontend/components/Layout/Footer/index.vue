@@ -2,7 +2,7 @@
   <footer class="footer" id="footer">
     <div class="container">
       <div class="footer__container">
-        <NuxtLink class="footer__top" :to="$localePath('/')'">
+        <NuxtLink class="footer__top" :to="$localePath('/')">
           <Logo class="footer__logo" />
         </NuxtLink>
 
