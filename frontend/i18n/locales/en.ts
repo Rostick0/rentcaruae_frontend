@@ -34,6 +34,37 @@ export default defineI18nLocale(async (locale) => ({
     },
   },
 
+  nestedVariable: "Your full name is {user.firstName} {user.lastName}.",
+  // welcome_message: "Welcome, {city.name}!",
+
+  catalog_seo: {
+    leasing: {
+      title: `Car leasing in {city?.name}, flexible monthly plans and best Deals in {pageText}`,
+      description: `Lease a car for long term basis in {city?.name}. Relive yourself from your travel troubles in {city?.name}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Lease a Car in {city?.name} {pageText}`,
+    },
+    type: {
+      title: `Rent {value} Car in {city?.name}, UAE - {value} Cars Rental in {city?.name} {pageText}`,
+      description: `Find {value} car rentals in {city?.name} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
+      h1: `{value} cars for rent in {city?.name} {pageText}`,
+    },
+    brandOrModel: {
+      title: `{value} rental in {city?.name}, hire a {value} in rentcaruae`,
+      description: `Choose {value} rentals offered by rental companies in {city?.name}. Free delivery in {city?.name}.`,
+      h1: `Rent {value} in {city?.name} {pageText}`,
+    },
+    body: {
+      title: `Rent a {value} Car in {city?.name} | Rental {value} UAE price {pageText}`,
+      description: `Rent {value} car {city?.name}, Best Deals to hire a {value}. You can rent a {value} online`,
+      h1: `{value} car for rent in {city?.name} {pageText}`,
+    },
+    period: {
+      title: `{value} Car Rental Dubai, UAE | Best Rates | Hire cars per {value} {pageText}`,
+      description: `{value} car rental deals. Large vehicle fleet. Cheap {value} rent online in {city?.name}`,
+      h1: `{value} Car Rental {city?.name} {pageText}`,
+    },
+  },
+
   form: {
     required: "The {field} field is required",
     email: "The {field} must be a valid email address",
@@ -49,7 +80,7 @@ export default defineI18nLocale(async (locale) => ({
     min_value: "The {field} must be greater than or equal to 0:{min}",
     max_value: "The {field} must be less than 0:{max_value}",
   },
-  
+
   // main page
   rentCarInDubai: "Rent a car in Dubai",
   bookCar: "Book a car for a day or a month without commission",

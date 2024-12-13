@@ -1,11 +1,8 @@
 <template>
   <NuxtLayout>
-    <!-- {{ $t("form.email", 0) }}
-    <br />
-    {{ $t("form.email", 1) }}
-    <br />
-    {{ $t("form.email") }}
-    <br /> -->
+    {{
+      $t("nestedVariable", { user: { firstName: "Иван", lastName: "Иванов" } })
+    }}
     <NuxtPage />
   </NuxtLayout>
   <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
