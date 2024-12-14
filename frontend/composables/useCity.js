@@ -24,7 +24,7 @@ export default async () => {
     });
     cities.value = res?.data;
     currentCity.value = cities.value?.find(
-      (item) => item?.name === t(`cities.Dubai`)
+      (item) => item?.name === 'Dubai'
     );
 
     api.cities.getAll().then((res) => {
