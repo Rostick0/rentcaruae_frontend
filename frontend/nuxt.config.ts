@@ -127,9 +127,10 @@ export default defineNuxtConfig({
     baseUrl: process.env.BASE_URL,
     locales: [
       { code: "en", language: "en-US", file: "en.ts" },
-      { code: "fr", language: "fr-FR", isCatchallLocale: true, file: "fr.ts" },
+      { code: "fr", language: "fr-FR", file: "fr.ts" },
       { code: "de", language: "de-DE", file: "de.ts" },
       { code: "ar", language: "ar-AR", file: "ar.ts", dir: "rtl" },
+      { code: "ru", language: "ru-RU", file: "ru.ts" },
     ],
     lazy: true,
     defaultLocale: "en",

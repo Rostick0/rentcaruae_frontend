@@ -141,21 +141,41 @@ export const updateCarShow = (newV, prev) => {
   return data;
 };
 
-export const getCarSeo = (car, isLeasing, currentCity) => {
-  return isLeasing
+export const getCarSeo = (car, isLeasing, currentCity, t) =>
+  isLeasing
     ? {
-        title: `Lease ${car?.title} in ${
-          currentCity?.name
-        } at AED ${formatNumber(lastItem(car?.price_leasing)?.price)}/month`,
-        description: `Lease a ${car?.title} at RentcarUAE for long term basis in ${currentCity?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-        h1: `Monthly rental ${car?.generation?.model_car?.name} in ${currentCity?.name}`,
+        title: t("car_seo.leasing.title", {
+          carTitle: car?.title,
+          cityName: currentCity?.name,
+          priceLeasing: formatNumber(lastItem(car?.price_leasing)?.price),
+        }),
+        description: t("car_seo.leasing.description", {
+          carTitle: car?.title,
+          cityName: currentCity?.name,
+        }),
+        h1: t("car_seo.leasing.h1", {
+          modelCar: car?.generation?.model_car?.name,
+          cityName: currentCity?.name,
+        }),
       }
     : {
-        title: `Rent ${car?.generation?.model_car?.name} in ${currentCity?.name}, UAE at AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month `,
-        description: `Rent ${car?.title} in ${currentCity?.name}, UAE for AED ${car?.price?.[0]?.price}/day & AED ${car?.price?.[2]?.price}/month.`,
-        h1: `Rent ${car?.title} in ${currentCity?.name}`,
+        title: t("car_seo.rent.title", {
+          modelCar: car?.generation?.model_car?.name,
+          cityName: currentCity?.name,
+          priceDay: car?.price?.[0]?.price,
+          priceMonth: car?.price?.[2]?.price,
+        }),
+        description: t("car_seo.rent.description", {
+          modelCar: car?.generation?.model_car?.name,
+          cityName: currentCity?.name,
+          priceDay: car?.price?.[0]?.price,
+          priceMonth: car?.price?.[2]?.price,
+        }),
+        h1: t("car_seo.rent.h1", {
+          carTitle: car?.title,
+          cityName: currentCity?.name,
+        }),
       };
-};
 
 export const getWhatsappText = (car, isLeasing = false) =>
   `I would like to ${isLeasing ? "lease" : "rent"} ${

@@ -143,7 +143,8 @@ const { title, description, h1 } = getCatalogSeo(
   oneFilterType.value,
   currentCity.value,
   pageText.value,
-  rent === "leasing"
+  rent === "leasing",
+  t
 );
 
 useSeoMeta({

@@ -129,7 +129,7 @@
       </div>
 
       <UiButton class="calc__button" @click.prevent="clickBook">{{
-        $t("Book")
+        $t("calc.Book")
       }}</UiButton>
       <a
         class="d-flex"
@@ -144,7 +144,7 @@
           class="calc__button no-click"
           @click.prevent
           color="whatsapp"
-          >{{ $t("WhatsApp") }}</UiButton
+          >{{ $t("calc.WhatsApp") }}</UiButton
         >
       </a>
     </div>

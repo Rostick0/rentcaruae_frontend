@@ -75,7 +75,7 @@
       </div>
       <div class="car-posts">
         <TitleList
-          link="/blogs/"
+          :link="$localePath('/blogs/')"
           :linkText="$t('allNews')"
           :title="$t('blog')"
         />

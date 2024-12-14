@@ -15,4 +15,8 @@ export const langOptions = [
     id: "ar",
     value: "العربية",
   },
+  {
+    id: "ru",
+    value: "Русский",
+  },
 ];

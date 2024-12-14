@@ -1,4 +1,70 @@
 export default defineI18nLocale(async (locale) => ({
+  catalogue_seo: {
+    leasing: {
+      title:
+        "Location de voiture à {cityName}, forfaits mensuels flexibles et meilleures offres à {pageText}",
+      description:
+        "Louez une voiture à long terme à {cityName}. Libérez-vous de vos soucis de voyage à {cityName}. Nous proposons des véhicules de qualité pour toutes les occasions, notamment des voitures de luxe, des voitures de sport et des modèles économiques.",
+      h1: "Louer une voiture à {cityName} {pageText} ",
+    },
+    type: {
+      title:
+        "Louer une voiture {value} à {cityName}, Émirats arabes unis - Location de voitures {value} à {cityName} {pageText}",
+      description:
+        "Trouvez des locations de voitures {value} à {cityName} chez RentcarUAE auprès de fournisseurs de location de voitures locaux. Forfaits de location de voiture quotidiens, hebdomadaires et mensuels disponibles. Paiement en espèces et en ligne.",
+      h1: "{value} voitures à louer à {cityName} {pageText}",
+    },
+    brandOrModel: {
+      title:
+        "Location {value} à {cityName}, louez un {value} chez rentcaruae",
+      description:
+        "Choisissez les locations {value} proposées par les sociétés de location à {cityName}. Livraison gratuite à {cityName}.",
+      h1: "Louez {value} à {cityName} {pageText}",
+    },
+    body: {
+      title:
+        "Louer une voiture {value} à {cityName} {'|'} Location {value} EAU prix {pageText}",
+      description:
+        "Location de voiture {value} {cityName}, meilleures offres pour louer une {value}. Vous pouvez louer une {value} en ligne",
+      h1: "Voiture {value} à louer à {cityName} {pageText}",
+    },
+    period: {
+      title:
+        "{value} Location de voiture Dubaï, Émirats arabes unis {'|'} Meilleurs tarifs {'|'} Location de voitures par {value} {pageText}",
+      description:
+        "Offres de location de voitures {value}. Grande flotte de véhicules. Location de voitures {value} pas chère en ligne à {cityName}",
+      h1: "{value} Location de voiture {cityName} {pageText} ",
+    },
+  },
+  car_seo: {
+    leasing: {
+      title:
+        "Louez {carTitle} à {cityName} à {priceLeasing} AED/mois ",
+      description:
+        "Louez une {carTitle} chez RentcarUAE pour une durée longue à {cityName}. Nous proposons des véhicules de qualité pour toutes les occasions, notamment des voitures de luxe, des voitures de sport et des modèles économiques.",
+      h1: "Location mensuelle {modelCar} à {cityName}",
+    },
+    rent: {
+      title:
+        "Louez {modelCar} à {cityName}, Émirats arabes unis à {priceDay} AED/jour et {priceMonth} AED/mois ",
+      description:
+        "Louez {carTitle} à {cityName}, Émirats arabes unis pour {priceDay} AED/jour et {priceMonth} AED/mois.",
+      h1: "Louer {carTitle} à {cityName} ",
+    },
+  },
+  faq_seo: {
+    titre:
+      "FAQ sur la location de voitures à Dubaï : à savoir avant de louer une voiture aux EAU ",
+    description:
+      "Obtenez des réponses aux questions fréquemment posées sur la location et la conduite d'une voiture aux Émirats arabes unis : Dubaï, Abu Dhabi.",
+  },
+  main_seo: {
+    title:
+      "Louer une voiture {currentCity.value?.name} {'|'} Location de voiture pas chère {currentCity.value?.name} {'|'} Location de voiture EAU",
+    description:
+      "Louez une voiture à {currentCity.value?.name} aux meilleurs tarifs pour toutes les voitures. Une société de location de voitures à {currentCity.value?.name} propose des forfaits de location de voiture à la journée, à la semaine et au mois.",
+  },
+
   form: {
     required: "Le champ {field} est requis",
     email: "Le champ {field} doit être une adresse email valide",
@@ -45,7 +111,7 @@ export default defineI18nLocale(async (locale) => ({
     News: "Actualités",
     Reviews: "Avis",
     "Good to know": "Bon à savoir",
-    pageTitle: "Blog RentcarUAE | Votre aventure commence ici",
+    pageTitle: "Blog RentcarUAE {'|'} Votre aventure commence ici",
     description:
       "Tout sur la location de voitures à Dubaï. Avis sur les nouveaux constructeurs automobiles qui peuvent déjà être testés",
   },
@@ -180,6 +246,7 @@ export default defineI18nLocale(async (locale) => ({
     Economy: "Économie",
     Minivan: "Minivan",
     SUV: "SUV",
+    VAN: "Van",
     Cabrio: "Cabriolet",
     Business: "Business",
     Luxury: "Luxe",

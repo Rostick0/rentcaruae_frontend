@@ -110,7 +110,7 @@
           class="calc__button no-click"
           @click="clickWhatsApp"
           color="whatsapp"
-          >WhatsApp</UiButton
+          >{{ $t("calc.WhatsApp") }}</UiButton
         >
       </a>
     </div>

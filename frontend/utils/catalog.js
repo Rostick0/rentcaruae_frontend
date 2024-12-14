@@ -45,45 +45,106 @@ export const getOneFilterType = async (routeParams) => {
   return result;
 };
 
-export const getCatalogSeo = ({ type, value }, city, pageText, isLeasing) => {
+export const getCatalogSeo = (
+  { type, value },
+  city,
+  pageText,
+  isLeasing,
+  t
+) => {
   if (isLeasing)
     return {
-      title:
-        `Car leasing in ${city?.name}, flexible monthly plans and best Deals in ${pageText}`.trimEnd(),
-      description: `Lease a car for long term basis in ${city?.name}. Relive yourself from your travel troubles in ${city?.name}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-      h1: `Lease a Car in ${city?.name} ${pageText}`.trimEnd(),
+      title: t("catalog_seo.leasing.title", {
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
+      description: t("catalog_seo.leasing.description", {
+        cityName: city?.name,
+      }),
+      h1: t("catalog_seo.leasing.h1", {
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
     };
 
-  if (type === "type")
+  if (type === "type") {
+    const val = t(`categoriesList.${value}`);
+
     return {
-      title:
-        `Rent ${value} Car in ${city?.name}, UAE - ${value} Cars Rental in ${city?.name} ${pageText}`.trimEnd(),
-      description: `Find ${value} car rentals in ${city?.name} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
-      h1: `${value} cars for rent in ${city?.name} ${pageText}`.trimEnd(),
+      title: t("catalog_seo.type.title", {
+        value: val,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
+      description: t("catalog_seo.type.description", {
+        value: val,
+        cityName: city?.name,
+      }),
+      h1: t("catalog_seo.type.h1", {
+        value: val,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
     };
+  }
 
   if (type === "brand" || type === "modelcar")
     return {
-      title: `${value} rental in ${city?.name}, hire a ${value} in rentcaruae`,
-      description: `Choose ${value} rentals offered by rental companies in ${city?.name}. Free delivery in ${city?.name}.`,
-      h1: `Rent ${value} in ${city?.name} ${pageText}`.trimEnd(),
+      title: t("catalog_seo.brandOrModel.title", {
+        value,
+        cityName: city?.name,
+      }),
+      description: t("catalog_seo.brandOrModel.description", {
+        value,
+        cityName: city?.name,
+      }),
+      h1: t("catalog_seo.brandOrModel.h1", {
+        value,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
     };
 
-  if (type === "body")
-    return {
-      title:
-        `Rent a ${value} Car in ${city?.name} | Rental ${value} UAE price ${pageText}`.trimEnd(),
-      description: `Rent ${value} car ${city?.name}, Best Deals to hire a ${value}. You can rent a ${value} online`,
-      h1: `${value} car for rent in ${city?.name} ${pageText}`.trimEnd(),
-    };
+  if (type === "body") {
+    const val = t(`bodyTypesList.${value}`);
 
-  if (type === "period")
     return {
-      title:
-        `${value} Car Rental Dubai, UAE | Best Rates | Hire cars per ${value} ${pageText}`.trimEnd(),
-      description: `${value} car rental deals. Large vehicle fleet. Cheap ${value} rent online in ${city?.name}`,
-      h1: `${value} Car Rental ${city?.name} ${pageText}`.trimEnd(),
+      title: t("catalog_seo.body.title", {
+        value: val,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
+      description: t("catalog_seo.body.description", {
+        value: val,
+        cityName: city?.name,
+      }),
+      h1: t("catalog_seo.body.h1", {
+        value: val,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
     };
+  }
+
+  if (type === "period") {
+    const val = startCase(t(value?.toLowerCase()));
+
+    return {
+      title: t("catalog_seo.period.title", {
+        value: val,
+        pageText,
+      }).trimEnd(),
+      description: t("catalog_seo.body.description", {
+        value: val,
+        cityName: city?.name,
+      }),
+      h1: t("catalog_seo.body.h1", {
+        value: val,
+        cityName: city?.name,
+        pageText,
+      }).trimEnd(),
+    };
+  }
 
   return {};
 };

@@ -2,7 +2,7 @@
   <div class="brands">
     <div class="brands__top">
       <h2 class="brands__title">{{ $t("mostWantedCarBrands") }}</h2>
-      <LinkMore :name="$t('allBrands')" to="/" />
+      <LinkMore :name="$t('allBrands')" :to="$localePath('/')" />
     </div>
     <Brands :brands="brands" />
   </div>

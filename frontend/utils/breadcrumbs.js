@@ -15,7 +15,7 @@ export const getCatalogBreadCrumbs = ({
       link: localePath("/"),
     },
     {
-      name: t(currentCity?.name),
+      name: t(`cities.${currentCity?.name}`),
       link: localePath(cityLink + "/"),
     },
   ];
@@ -32,7 +32,7 @@ export const getCatalogBreadCrumbs = ({
   if (oneFilterType?.type && oneFilterType?.value) {
     return [
       ...data,
-      { name: startCase(oneFilterType.type) },
+      { name: t(startCase(oneFilterType.type)) },
       {
         name: oneFilterType.value,
       },

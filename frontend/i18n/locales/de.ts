@@ -1,4 +1,70 @@
 export default defineI18nLocale(async (locale) => ({
+  catalog_seo: {
+    leasing: {
+      title:
+        "Autoleasing in {cityName}, flexible Monatsraten und beste Angebote in {pageText}",
+      description:
+        "Mieten Sie ein Auto für einen längeren Zeitraum in {cityName}. Befreien Sie sich von Ihren Reiseproblemen in {cityName}. Wir bieten hochwertige Fahrzeuge für alle Gelegenheiten, darunter Luxusautos, Sportwagen und Economy-Modelle.",
+      h1: "Ein Auto leasen in {cityName} {pageText}",
+    },
+    type: {
+      Titel:
+        "{value} Auto mieten in {cityName}, VAE - {value} Autovermietung in {cityName} {pageText}",
+      description:
+        "Finden Sie bei RentcarUAE {value} Mietwagen in {cityName} von lokalen Autovermietungen. Tägliche, wöchentliche und monatliche Mietwagenpakete verfügbar. Barzahlung und Online-Zahlung.",
+      h1: "{value} Autos zu vermieten in {cityName} {pageText}",
+    },
+    brandOrModel: {
+      title:
+        "{value} Vermietung in {cityName}, mieten Sie einen {value} in rentcaruae",
+      description:
+        "Wählen Sie {value} Anmietungen aus, die von Autovermietungen in {cityName} angeboten werden. Kostenlose Lieferung in {cityName}.",
+      h1: "Miete {value} in {cityName} {pageText}",
+    },
+    body: {
+      Titel:
+        "Mieten Sie ein {value} Auto in {cityName} {'|'} Mieten Sie {value} VAE Preis {pageText}",
+      description:
+        "Mieten Sie ein {value}-Auto in {cityName}. Die besten Angebote für ein {value}-Auto. Sie können ein {value}-Auto online mieten.",
+      h1: "{value} Auto zu vermieten in {cityName} {pageText}",
+    },
+    period: {
+      title:
+        "{value} Autovermietung Dubai, VAE {'|'} Beste Preise {'|'} Mietwagen pro {value} {pageText}",
+      description:
+        "{value} Mietwagen-Angebote. Große Fahrzeugflotte. Günstige {value}-Miete online in {cityName}",
+      h1: "{value} Autovermietung {cityName} {pageText}",
+    },
+  },
+  car_seo: {
+    leasing: {
+      Titel:
+        "Leasen Sie {carTitle} in {cityName} für AED {priceLeasing}/Monat",
+      description:
+        "Leasen Sie bei RentcarUAE langfristig ein {carTitle} in {cityName}. Wir bieten Qualitätsfahrzeuge für alle Gelegenheiten, darunter Luxusautos, Sportwagen und Economy-Modelle.",
+      h1: "Monatliche Miete von {modelCar} in {cityName}",
+    },
+    rent: {
+      Titel:
+        "Mieten Sie {modelCar} in {cityName}, VAE für AED {priceDay}/Tag und AED {priceMonth}/Monat",
+      description:
+        "Mieten Sie {carTitle} in {cityName}, VAE für AED {priceDay}/Tag und AED {priceMonth}/Monat.",
+      h1: "Mieten Sie {carTitle} in {cityName}",
+    },
+  },
+  faq_seo: {
+    Titel:
+      "Häufig gestellte Fragen zur Autovermietung in Dubai: Was Sie vor der Anmietung eines Autos in den VAE wissen sollten",
+    description:
+      "Erhalten Sie Antworten auf häufig gestellte Fragen zum Mieten und Fahren eines Autos in den Vereinigten Arabischen Emiraten: Dubai, Abu Dhabi.",
+  },
+  main_seo: {
+    Titel:
+      "Auto mieten {currentCity.value?.name} {'|'} Günstige Autovermietung {currentCity.value?.name} {'|'} Autovermietung VAE",
+    description:
+      "Mieten Sie ein Auto in {currentCity.value?.name} zu den besten Preisen für alle Autos. Eine Autovermietung in {currentCity.value?.name} bietet Tages-, Wochen- und Monatspakete für die Autovermietung an.",
+  },
+
   faq: {
     title1: "Erste Schritte",
   },
@@ -48,7 +114,7 @@ export default defineI18nLocale(async (locale) => ({
     News: "Nachrichten",
     Reviews: "Bewertungen",
     "Good to know": "Gut zu wissen",
-    pageTitle: "RentcarUAE Autovermietungs-Blog | Ihr Abenteuer beginnt hier",
+    pageTitle: "RentcarUAE Autovermietungs-Blog {'|'} Ihr Abenteuer beginnt hier",
     description:
       "Alles über Autovermietung in Dubai. Bewertungen von neuen Autoherstellern, die bereits getestet werden können",
   },

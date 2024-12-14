@@ -1,4 +1,68 @@
 export default defineI18nLocale(async (locale) => ({
+  catalog_seo: {
+    leasing: {
+      title:
+        "تأجير السيارات في {cityName}، خطط شهرية مرنة وأفضل العروض في {pageText} ",
+      description:
+        "استأجر سيارة لفترة طويلة في {cityName}. تخلص من متاعب السفر في {cityName}. نحن نقدم سيارات عالية الجودة لجميع المناسبات، بما في ذلك السيارات الفاخرة والسيارات الرياضية والنماذج الاقتصادية. ",
+      h1: "استئجار سيارة في {cityName} {pageText}",
+    },
+    type: {
+      title:
+        "تأجير {value} سيارة في {cityName}، الإمارات العربية المتحدة - تأجير {value} سيارة في {cityName} {pageText}",
+      description:
+        "اعثر على {value} سيارة للإيجار في {cityName} على RentcarUAE من موردي تأجير السيارات المحليين. تتوفر باقات تأجير سيارات يومية وأسبوعية وشهرية. الدفع نقدًا أو عبر الإنترنت. ",
+      h1: "{value} سيارة للإيجار في {cityName} {pageText}",
+    },
+    brandOrModel: {
+      title: "{value} إيجار في {cityName}، استئجار {value} في rentcaruae ",
+      description:
+        "اختر {value} من الإيجارات التي تقدمها شركات الإيجار في {cityName}. التوصيل مجاني في {cityName}. ",
+      h1: "استأجر {value} في {cityName} {pageText}",
+    },
+    body: {
+      title:
+        "استئجار سيارة بقيمة {value} في {cityName} {'|'} سعر استئجار سيارة بقيمة {value} في الإمارات العربية المتحدة {pageText} ",
+      description:
+        "استأجر سيارة بقيمة {value} في {cityName}، أفضل العروض لاستئجار سيارة بقيمة {value}. يمكنك استئجار سيارة بقيمة {value} عبر الإنترنت",
+      h1: "{value} سيارة للإيجار في {cityName} {pageText}",
+    },
+    period: {
+      title:
+        "{value} تأجير سيارات دبي، الإمارات العربية المتحدة {'|'} أفضل الأسعار {'|'} استئجار سيارات لكل {value} {pageText}",
+      description:
+        "عروض تأجير السيارات بقيمة {value}. أسطول كبير من المركبات. تأجير سيارات رخيصة بقيمة {value} عبر الإنترنت في {cityName} ",
+      h1: "{value} تأجير سيارات {cityName} {pageText}",
+    },
+  },
+  car_seo: {
+    leasing: {
+      title:
+        "استأجر {carTitle} في {cityName} بسعر {priceLeasing} درهم إماراتي/شهريًا",
+      description:
+        "قم باستئجار سيارة {carTitle} من RentcarUAE على المدى الطويل في {cityName}. نحن نقدم مركبات عالية الجودة لجميع المناسبات، بما في ذلك السيارات الفاخرة والسيارات الرياضية والنماذج الاقتصادية. ",
+      h1: "إيجار شهري لسيارة {modelCar} في {cityName}",
+    },
+    rent: {
+      title:
+        "استأجر {modelCar} في {cityName}، الإمارات العربية المتحدة بسعر {priceDay} درهم إماراتي/يوم و{priceMonth} درهم إماراتي /شهر",
+      description:
+        "استأجر {carTitle} في {cityName}، الإمارات العربية المتحدة مقابل {priceDay} درهم إماراتي/يوم و{priceMonth} درهم إماراتي/شهر.",
+      h1: "استأجر {carTitle} في {cityName}",
+    },
+  },
+  faq_seo: {
+    title:
+      "الأسئلة الشائعة حول تأجير السيارات في دبي: تعرف عليها قبل استئجار سيارة في الإمارات العربية المتحدة ",
+    description:
+      "احصل على إجابات للأسئلة الشائعة حول استئجار وقيادة السيارة في الإمارات العربية المتحدة: دبي، أبو ظبي.",
+  },
+  main_seo: {
+    title:
+      "تأجير سيارة {currentCity.value?.name} {'|'} تأجير سيارات رخيصة {currentCity.value?.name} {'|'} تأجير سيارات في الإمارات العربية المتحدة ",
+    description:
+      "قم باستئجار سيارة في {currentCity.value?.name} بأفضل الأسعار لجميع السيارات. تقدم شركة تأجير السيارات في {currentCity.value?.name} باقات تأجير سيارات يومية وأسبوعية وشهرية.",
+  },
   form: {
     required: "حقل {field} مطلوب",
     email: "يجب أن يكون {field} عنوان بريد إلكتروني صالحًا",
@@ -45,7 +109,7 @@ export default defineI18nLocale(async (locale) => ({
     News: "الأخبار",
     Reviews: "المراجعات",
     "Good to know": "من الجيد أن تعرف",
-    pageTitle: "مدونة تأجير السيارات | تبدأ مغامرتك هنا",
+    pageTitle: "مدونة تأجير السيارات {'|'} تبدأ مغامرتك هنا",
     description:
       "كل ما يخص تأجير السيارات في دبي. مراجعات لأحدث السيارات التي يمكن تجربتها",
   },
@@ -180,6 +244,7 @@ export default defineI18nLocale(async (locale) => ({
     Economy: "اقتصادية",
     Minivan: "ميني فان",
     SUV: "SUV",
+    VAN: "فان",
     Cabrio: "كابريو",
     Business: "أعمال",
     Luxury: "فاخرة",

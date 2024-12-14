@@ -126,7 +126,7 @@
         target="_blank"
       >
         <UiButton class="calc__button no-click" @click.prevent color="whatsapp"
-          >WhatsApp</UiButton
+          >{{ $t('calc.WhatsApp') }}</UiButton
         >
       </a>
     </div>

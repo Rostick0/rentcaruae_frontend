@@ -239,7 +239,8 @@ import remove from "lodash/remove";
 // const { setLocale: setLocaleI18N } = await import("@vee-validate/i18n");
 import { setLocale as setLocaleI18N } from "@vee-validate/i18n";
 
-const { locale, setLocale } = useI18n();
+const { t, locale, setLocale } = useI18n();
+const localePath = useLocalePath();
 
 const { open } = useModal({
   name: "auth-modal",
@@ -311,12 +312,10 @@ watch(
   }
 );
 
-const cities = useState("cities");
-
-const localePath = useLocalePath();
+const translatedCities = useState("translatedCities");
 
 const citiesComputed = computed(() =>
-  cities.value?.map?.((item) => ({
+  translatedCities.value?.map?.((item) => ({
     ...item,
     icon_url: "frontend-images/flags/ae.svg",
   }))
@@ -327,7 +326,9 @@ const city = useState("currentCity");
 const cityWithFlag = computed({
   get: () => citiesComputed.value?.find((item) => item?.id === city.value?.id),
   set: (val) =>
-    (city.value = cities?.value?.find((item) => item?.id === val?.id)),
+    (city.value = translatedCities?.value?.find(
+      (item) => item?.id === val?.id
+    )),
 });
 
 const categories = useState("categories");

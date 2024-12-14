@@ -64,16 +64,14 @@ export default defineI18nLocale((locale) => ({
 
   car_seo: {
     leasing: {
-      title: `Lease {car.title} in {
-              currentCityName
-            } at AED {priceLeasing}/month`,
-      description: `Lease a {car.title} at RentcarUAE for long term basis in {currentCityName}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-      h1: `Monthly rental {car.generation.model_car.name} in {currentCityName}`,
+      title: `Lease {carTitle} in {cityName} at AED {priceLeasing}/month`,
+      description: `Lease a {carTitle} at RentcarUAE for long term basis in {cityName}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Monthly rental {modelCar} in {cityName}`,
     },
     rent: {
-      title: `Rent {car.generation.model_car.name} in {currentCityName}, UAE at AED {car.price.[0].price}/day & AED {car.price.[2].price}/month `,
-      description: `Rent {car.title} in {currentCityName}, UAE for AED {car.price.[0].price}/day & AED {car.price.[2].price}/month.`,
-      h1: `Rent {car.title} in {currentCityName}`,
+      title: `Rent {modelCar} in {cityName}, UAE at AED {priceDay}/day & AED {priceMonth}/month `,
+      description: `Rent {carTitle} in {cityName}, UAE for AED {priceDay}/day & AED {priceMonth}/month.`,
+      h1: `Rent {carTitle} in {cityName}`,
     },
   },
 
@@ -295,6 +293,7 @@ export default defineI18nLocale((locale) => ({
     Economy: "Economy",
     Minivan: "Minivan",
     SUV: "SUV",
+    VAN: "VAN",
     Cabrio: "Cabrio",
     Business: "Business",
     Luxury: "Luxury",

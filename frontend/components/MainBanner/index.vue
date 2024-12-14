@@ -36,7 +36,6 @@
 const currentCity = useState("currentCity");
 
 const { t } = useI18n();
-
 const localePath = useLocalePath();
 
 const links = computed(() => {
@@ -62,7 +61,7 @@ const links = computed(() => {
       name: "Luxury",
     },
   ].map(({ name }) => ({
-    name: t(name),
+    name: t(`categoriesList.${name}`),
     link: localePath(convertNameToUrl(link + name)),
   }));
 });

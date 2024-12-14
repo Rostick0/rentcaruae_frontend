@@ -103,7 +103,8 @@ const isLeasing = computed(() => route.fullPath.split("/")[2] === "leasing");
 const { h1, title, description } = getCarSeo(
   data.value,
   isLeasing.value,
-  currentCity.value
+  currentCity.value,
+  t
 );
 
 useHead({

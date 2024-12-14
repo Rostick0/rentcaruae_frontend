@@ -12,11 +12,11 @@
             <div class="footer-item__list">
               <NuxtLink
                 class="footer-item__link"
-                v-for="city in cities"
+                v-for="city in translatedCities"
                 :to="$localePath(convertNameToUrl(`/${city.name}/`))"
                 @click="currentCity = city"
                 :key="city.id"
-                >{{ $t(city.name) }}</NuxtLink
+                >{{ city.name }}</NuxtLink
               >
             </div>
           </div>
@@ -213,7 +213,7 @@
 </template>
 
 <script setup>
-const cities = useState("cities");
+const translatedCities = useState("translatedCities");
 const currentCity = useState("currentCity");
 
 const categories = useState("categories");

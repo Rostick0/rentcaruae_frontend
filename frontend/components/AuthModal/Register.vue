@@ -79,7 +79,7 @@ const company_city_id = ref({
   bind: {
     label: t("modal.register.company_city_id.label"),
     placeholder: t("modal.register.company_city_id.placeholder"),
-    options: useState("cities"),
+    options: useState("translatedCities"),
   },
 });
 
