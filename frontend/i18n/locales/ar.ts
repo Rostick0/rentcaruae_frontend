@@ -59,9 +59,9 @@ export default defineI18nLocale(async (locale) => ({
   },
   main_seo: {
     title:
-      "تأجير سيارة {currentCity.value?.name} {'|'} تأجير سيارات رخيصة {currentCity.value?.name} {'|'} تأجير سيارات في الإمارات العربية المتحدة ",
+      "تأجير سيارة {cityName} {'|'} تأجير سيارات رخيصة {cityName} {'|'} تأجير سيارات في الإمارات العربية المتحدة ",
     description:
-      "قم باستئجار سيارة في {currentCity.value?.name} بأفضل الأسعار لجميع السيارات. تقدم شركة تأجير السيارات في {currentCity.value?.name} باقات تأجير سيارات يومية وأسبوعية وشهرية.",
+      "قم باستئجار سيارة في {cityName} بأفضل الأسعار لجميع السيارات. تقدم شركة تأجير السيارات في {cityName} باقات تأجير سيارات يومية وأسبوعية وشهرية.",
   },
   form: {
     required: "حقل {field} مطلوب",

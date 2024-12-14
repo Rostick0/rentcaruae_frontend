@@ -60,9 +60,9 @@ export default defineI18nLocale(async (locale) => ({
   },
   main_seo: {
     Titel:
-      "Auto mieten {currentCity.value?.name} {'|'} Günstige Autovermietung {currentCity.value?.name} {'|'} Autovermietung VAE",
+      "Auto mieten {cityName} {'|'} Günstige Autovermietung {cityName} {'|'} Autovermietung VAE",
     description:
-      "Mieten Sie ein Auto in {currentCity.value?.name} zu den besten Preisen für alle Autos. Eine Autovermietung in {currentCity.value?.name} bietet Tages-, Wochen- und Monatspakete für die Autovermietung an.",
+      "Mieten Sie ein Auto in {cityName} zu den besten Preisen für alle Autos. Eine Autovermietung in {cityName} bietet Tages-, Wochen- und Monatspakete für die Autovermietung an.",
   },
 
   faq: {

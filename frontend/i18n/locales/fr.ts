@@ -60,9 +60,9 @@ export default defineI18nLocale(async (locale) => ({
   },
   main_seo: {
     title:
-      "Louer une voiture {currentCity.value?.name} {'|'} Location de voiture pas chère {currentCity.value?.name} {'|'} Location de voiture EAU",
+      "Louer une voiture {cityName} {'|'} Location de voiture pas chère {cityName} {'|'} Location de voiture EAU",
     description:
-      "Louez une voiture à {currentCity.value?.name} aux meilleurs tarifs pour toutes les voitures. Une société de location de voitures à {currentCity.value?.name} propose des forfaits de location de voiture à la journée, à la semaine et au mois.",
+      "Louez une voiture à {cityName} aux meilleurs tarifs pour toutes les voitures. Une société de location de voitures à {cityName} propose des forfaits de location de voiture à la journée, à la semaine et au mois.",
   },
 
   form: {
