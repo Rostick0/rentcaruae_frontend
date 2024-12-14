@@ -156,8 +156,8 @@ const { data: posts, get: getPosts } = await useApi({
 });
 await getPosts();
 
-const title = `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`;
-const description = `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`;
+const title = t("main_seo.title");
+const description = t("main_seo.description");
 
 useSeoMeta({
   title,

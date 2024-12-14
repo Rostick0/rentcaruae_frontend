@@ -72,17 +72,17 @@ const setLink = (link) =>
     link?.replace?.("{current_city}", convertNameToUrl(currentCity.value?.name))
   );
 
+const { t } = useI18n();
+
 const breadcrumbs = [
   {
-    name: "Home",
+    name: t("home"),
     link: "/",
   },
   {
-    name: "Sitemap",
+    name: t("sitemapTitle"),
   },
 ];
-
-const { t } = useI18n();
 
 const title = `${t("sitemapTitle")} ${currentCity.value?.name}`;
 

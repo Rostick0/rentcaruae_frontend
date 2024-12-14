@@ -65,6 +65,32 @@ export default defineI18nLocale(async (locale) => ({
     },
   },
 
+  car_seo: {
+    leasing: {
+      title: `Lease {car?.title} in {
+              currentCity?.name
+            } at AED {priceLeasing}/month`,
+      description: `Lease a {car?.title} at RentcarUAE for long term basis in {currentCity?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Monthly rental {car?.generation?.model_car?.name} in {currentCity?.name}`,
+    },
+    rent: {
+      title: `Rent {car?.generation?.model_car?.name} in {currentCity?.name}, UAE at AED {car?.price?.[0]?.price}/day & AED {car?.price?.[2]?.price}/month `,
+      description: `Rent {car?.title} in {currentCity?.name}, UAE for AED {car?.price?.[0]?.price}/day & AED {car?.price?.[2]?.price}/month.`,
+      h1: `Rent {car?.title} in {currentCity?.name}`,
+    },
+  },
+
+  faq_seo: {
+    title: "Dubai Car Rental FAQs: Know before Renting a Car in UAE",
+    description:
+      "Get answers to frequently asked questions about renting and driving a car in the UAE: Dubai, Abu Dhabi.",
+  },
+
+  main_seo: {
+    title: `Rent a Car {currentCity.value?.name} | Cheap Car Rental {currentCity.value?.name} | Car Hire UAE`,
+    description: `Rent a car in {currentCity.value?.name} at the best rates for all cars. A  car rental company in {currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`,
+  },
+
   form: {
     required: "The {field} field is required",
     email: "The {field} must be a valid email address",

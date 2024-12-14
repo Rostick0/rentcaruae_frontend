@@ -180,18 +180,20 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
+
 const breadcrumbs = [
   {
-    name: "Home",
+    name: t("home"),
     link: "/",
   },
   {
-    name: "Terms of service",
+    name: t("termsService"),
   },
 ];
 
 useSeoMeta({
-  title: "Terms of service",
+  title: t("termsService"),
 });
 </script>
 

@@ -717,6 +717,8 @@ const breadcrumbs = [
 
 const config = useRuntimeConfig();
 
+const { t } = useI18n();
+
 useHead({
   htmlAttrs: {
     itemscope: true,
@@ -724,9 +726,8 @@ useHead({
   },
 });
 
-const title = "Dubai Car Rental FAQs: Know before Renting a Car in UAE";
-const description =
-  "Get answers to frequently asked questions about renting and driving a car in the UAE: Dubai, Abu Dhabi.";
+const title = t("faq_seo.title");
+const description = t("faq_seo.description");
 
 useSeoMeta({
   title,
