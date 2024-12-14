@@ -218,6 +218,7 @@ export default defineI18nLocale(async (locale) => ({
     Economy: "Эконом",
     Minivan: "Минивэн",
     SUV: "Внедорожник",
+    VAN: "Минивэны",
     Cabrio: "Кабриолет",
     Business: "Бизнес",
     Luxury: "Люкс",

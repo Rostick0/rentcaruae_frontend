@@ -23,9 +23,12 @@ export default async () => {
       },
     });
     cities.value = res?.data;
-    currentCity.value = cities.value?.find(
-      (item) => item?.name === 'Dubai'
-    );
+    const findedCity = cities.value?.find((item) => item?.name === "Dubai");
+    currentCity.value = {
+      ...findedCity,
+      name: t(`cities.${findedCity?.name}`),
+    };
+    console.log(currentCity.value);
 
     api.cities.getAll().then((res) => {
       citiesAll.value = res?.data;
@@ -33,7 +36,20 @@ export default async () => {
     });
   }
 
-  watch(() => locale.value, updateTranslatedCities);
+  watch(
+    () => locale.value,
+    () => {
+      updateTranslatedCities();
+
+      const findedCity = cities.value.find(
+        (item) => item?.id == currentCity.value?.id
+      );
+      currentCity.value = {
+        ...findedCity,
+        name: t(`cities.${findedCity?.name}`),
+      };
+    }
+  );
 
   return {
     cities,
