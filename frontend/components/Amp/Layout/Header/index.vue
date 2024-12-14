@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header__container">
         <div class="header__top">
-          <NuxtLink class="d-flex" :to="$localePath('/')'" title="Toggle menu">
+          <NuxtLink class="d-flex" :to="$localePath('/')" title="Toggle menu">
             <svg
               width="20"
               height="20"
