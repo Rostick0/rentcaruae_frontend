@@ -1,20 +1,23 @@
 export default () => {
+  const { t } = useI18n();
+  const localePath = useLocalePath();
+
   const setRentalPeriods = (cityName) => [
     {
-      name: "Daily rental",
-      link: `/${cityName}/daily`,
+      name: t("rentalPeriod.Daily rental"),
+      link: localePath(`/${cityName}/daily`),
     },
     {
-      name: "Weekly rental",
-      link: `/${cityName}/weekly`,
+      name: t("rentalPeriod.Weekly rental"),
+      link: localePath(`/${cityName}/weekly`),
     },
     {
-      name: "Monthly rental",
-      link: `/${cityName}/monthly`,
+      name: t("rentalPeriod.Monthly rental"),
+      link: localePath(`/${cityName}/monthly`),
     },
     {
-      name: "Car leasing",
-      link: `/${cityName}/leasing`,
+      name: t("rentalPeriod.Car leasing"),
+      link: localePath(`/${cityName}/leasing`),
     },
   ];
 

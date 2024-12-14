@@ -141,7 +141,7 @@ watch(
   }
 );
 
-const localeHead = useLocaleHead({ key: "" });
+const localeHead = useLocaleHead();
 
 useHead({
   htmlAttrs: {

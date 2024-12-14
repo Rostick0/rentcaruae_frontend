@@ -250,9 +250,7 @@ const user = useState("user");
 
 const isActive = ref(false);
 
-const toggleActive = () => {
-  isActive.value = !isActive.value;
-};
+const toggleActive = () => (isActive.value = !isActive.value);
 
 watch(
   () => isActive.value,
@@ -315,6 +313,8 @@ watch(
 
 const cities = useState("cities");
 
+const localePath = useLocalePath();
+
 const citiesComputed = computed(() =>
   cities.value?.map?.((item) => ({
     ...item,
@@ -338,40 +338,46 @@ const rentalPeriods = useState("rentalPeriods");
 const categoriesLinks = computed(() =>
   categories.value?.map?.((item) => ({
     ...item,
-    link: convertNameToUrl(`/${city.value?.name ?? "all"}/type/${item?.name}`),
+    link: localePath(
+      convertNameToUrl(`/${city.value?.name ?? "all"}/type/${item?.name}`)
+    ),
   }))
 );
 
 const brandsLinks = computed(() =>
   brands.value?.map?.((item) => ({
     ...item,
-    link: convertNameToUrl(`/${city.value?.name ?? "all"}/brand/${item?.name}`),
+    link: localePath(
+      convertNameToUrl(`/${city.value?.name ?? "all"}/brand/${item?.name}`)
+    ),
   }))
 );
 
 const generationsLinks = computed(() =>
   generations.value?.map?.((item) => ({
     ...item,
-    link: convertNameToUrl(`/${city.value?.name ?? "all"}/body/${item?.name}`),
+    link: localePath(
+      convertNameToUrl(`/${city.value?.name ?? "all"}/body/${item?.name}`)
+    ),
   }))
 );
 
 const menu = computed(() => [
   {
-    name: "Categories",
+    name: t("categories"),
     links: categoriesLinks.value,
   },
   {
-    name: "Brands",
+    name: t("brands"),
     links: brandsLinks.value,
     is_brand: true,
   },
   {
-    name: "Body Types",
+    name: t("bodyTypes"),
     links: generationsLinks.value,
   },
   {
-    name: "Rental by period",
+    name: t("rentalByPeriod"),
     links: rentalPeriods.value,
   },
 ]);
@@ -379,7 +385,7 @@ const menu = computed(() => [
 const citiesLinks = computed(() =>
   cities.value?.map((item) => ({
     ...item,
-    link: convertNameToUrl(`/${item?.name}`),
+    link: localePath(convertNameToUrl(`/${item?.name}`)),
   }))
 );
 
@@ -389,7 +395,7 @@ const rentACar = computed(() => {
 
   return [
     {
-      name: "Rent car",
+      name: t("rentCar"),
       links: citiesLinks.value,
     },
     ...data,

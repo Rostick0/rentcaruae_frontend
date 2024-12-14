@@ -87,8 +87,8 @@
                 class="footer-item__link"
                 v-for="period in rentalPeriods"
                 :key="period?.link"
-                :to="$localePath(period?.link)"
-                >{{ $t("rentalPeriod." + period?.name) }}</NuxtLink
+                :to="period?.link"
+                >{{ period?.name }}</NuxtLink
               >
             </div>
           </div>
