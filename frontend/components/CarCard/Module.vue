@@ -7,7 +7,7 @@
       width="20"
       height="20"
     />
-    <span>{{ $t('carCardModule.ƒ') }}</span>
+    <span>{{ $t('carCardModule.dayRentalAvailable') }}</span>
   </div>
   <div class="car-module" v-if="car?.security_deposit?.price">
     <LazyNuxtImg
