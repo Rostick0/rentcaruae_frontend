@@ -134,15 +134,20 @@ const setCanoncalLink = () => ({
 
 watch(
   () => route.path,
-  (newV) => {
+  () => {
     useHead({
       link: [setCanoncalLink()],
     });
   }
 );
 
+const localeHead = useLocaleHead({ key: "" });
+
 useHead({
-  link: [setCanoncalLink()],
+  htmlAttrs: {
+    lang: localeHead.value.htmlAttrs?.lang,
+  },
+  link: [setCanoncalLink(), ...(localeHead.value.link || [])],
 });
 </script>
 

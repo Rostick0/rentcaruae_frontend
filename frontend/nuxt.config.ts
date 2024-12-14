@@ -34,9 +34,9 @@ export default defineNuxtConfig({
   pages: true,
   app: {
     head: {
-      htmlAttrs: {
-        lang: "en-US",
-      },
+      // htmlAttrs: {
+      //   lang: "en-US",
+      // },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -124,11 +124,12 @@ export default defineNuxtConfig({
     directiveOnly: true,
   },
   i18n: {
+    baseUrl: process.env.BASE_URL,
     locales: [
       { code: "en", language: "en-US", file: "en.ts" },
-      { code: "fr", language: "fr-FR", file: "fr.ts" },
+      { code: "fr", language: "fr-FR", isCatchallLocale: true, file: "fr.ts" },
       { code: "de", language: "de-DE", file: "de.ts" },
-      { code: "ar", language: "ar-AR", file: "ar.ts" },
+      { code: "ar", language: "ar-AR", file: "ar.ts", dir: "rtl" },
     ],
     lazy: true,
     defaultLocale: "en",

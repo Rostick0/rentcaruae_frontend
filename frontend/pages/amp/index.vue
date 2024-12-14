@@ -7,51 +7,67 @@
         <AmpCarCardShortList
           v-if="economyCars?.length"
           :cars="economyCars"
-          title="Economy cars"
-          linkText="All Economy cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
+          :title="$t('economyCars')"
+          :linkText="$t('allEconomyCars')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/economy`))
+          "
         />
         <AmpCarCardShortList
           v-if="vanCars?.length"
           :cars="vanCars"
-          title="Van cars"
-          linkText="All Van cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
+          :title="$t('vanCars')"
+          :linkText="$t('allVanCars')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/van`))
+          "
         />
         <AmpCarCardShortList
           v-if="suvCars?.length"
           :cars="suvCars"
-          title="SUV for rent"
-          linkText="All SUV"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
+          :title="$t('SUVForRent')"
+          :linkText="$t('allSUV')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/suv`))
+          "
         />
         <AmpCarCardShortList
           v-if="cabrioCars?.length"
           :cars="cabrioCars"
-          title="Cabrio cars"
-          linkText="All Cabrio cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
+          :title="$t('cabrioCars')"
+          :linkText="$t('allCabrioCars')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/cabrio`))
+          "
         />
         <AmpCarCardShortList
           v-if="businessCars?.length"
           :cars="businessCars"
-          title="Business cars"
-          linkText="All Business cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
+          :title="$t('businessCars')"
+          :linkText="$t('allBusinessCars')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/business`))
+          "
         />
         <AmpCarCardShortList
           v-if="luxuryCars?.length"
           :cars="luxuryCars"
-          title="Luxury cars"
-          linkText="All Luxury cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
+          :title="$t('luxuryCars')"
+          :linkText="$t('allLuxuryCars')"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/luxury`))
+          "
         />
         <AmpCarCardShortList
           v-if="electroCars?.length"
           :cars="electroCars"
-          title="Electro cars"
-          linkText="All Electro cars"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
+          :title="$t('electroCars')"
+          :linkText="$t('allElectroCars')"
+          :link="
+            $localePath(
+              convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)
+            )
+          "
         />
       </div>
       <MainServiceRental />
@@ -61,6 +77,8 @@
 
 <script setup>
 const currentCity = useState("currentCity");
+
+const { t } = useI18n();
 
 const config = useRuntimeConfig();
 
@@ -135,8 +153,12 @@ const { data: electroCars, get: getElectroCars } = await useApi({
 });
 await getElectroCars();
 
-const title = `Rent a Car ${currentCity.value?.name} | Cheap Car Rental ${currentCity.value?.name} | Car Hire UAE`;
-const description = `Rent a car in ${currentCity.value?.name} at the best rates for all cars. A  car rental company in ${currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`;
+const title = t("main_seo.title", {
+  cityName: currentCity.value?.name,
+});
+const description = t("main_seo.description", {
+  cityName: currentCity.value?.name,
+});
 
 useSeoMeta({
   title,

@@ -1,3 +1,3 @@
 <template>
-  <PageCar :breadcrumbs="breadcrumbs" />
+  <PageCar />
 </template>

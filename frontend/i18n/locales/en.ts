@@ -1,4 +1,4 @@
-export default defineI18nLocale(async (locale) => ({
+export default defineI18nLocale((locale) => ({
   faq: {
     title1: "Getting started",
     question1: "What documents do I need for car rental in the UAE?",
@@ -34,49 +34,46 @@ export default defineI18nLocale(async (locale) => ({
     },
   },
 
-  nestedVariable: "Your full name is {user.firstName} {user.lastName}.",
-  // welcome_message: "Welcome, {city.name}!",
-
   catalog_seo: {
     leasing: {
-      title: `Car leasing in {city?.name}, flexible monthly plans and best Deals in {pageText}`,
-      description: `Lease a car for long term basis in {city?.name}. Relive yourself from your travel troubles in {city?.name}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-      h1: `Lease a Car in {city?.name} {pageText}`,
+      title: `Car leasing in {cityName}, flexible monthly plans and best Deals in {pageText}`,
+      description: `Lease a car for long term basis in {cityName}. Relive yourself from your travel troubles in {cityName}. We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Lease a Car in {cityName} {pageText}`,
     },
     type: {
-      title: `Rent {value} Car in {city?.name}, UAE - {value} Cars Rental in {city?.name} {pageText}`,
-      description: `Find {value} car rentals in {city?.name} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
-      h1: `{value} cars for rent in {city?.name} {pageText}`,
+      title: `Rent {value} Car in {cityName}, UAE - {value} Cars Rental in {cityName} {pageText}`,
+      description: `Find {value} car rentals in {cityName} at RentcarUAE from local car hire suppliers. Daily, weekly and monthly car rental packages available. Cash and online payment.`,
+      h1: `{value} cars for rent in {cityName} {pageText}`,
     },
     brandOrModel: {
-      title: `{value} rental in {city?.name}, hire a {value} in rentcaruae`,
-      description: `Choose {value} rentals offered by rental companies in {city?.name}. Free delivery in {city?.name}.`,
-      h1: `Rent {value} in {city?.name} {pageText}`,
+      title: `{value} rental in {cityName}, hire a {value} in rentcaruae`,
+      description: `Choose {value} rentals offered by rental companies in {cityName}. Free delivery in {cityName}.`,
+      h1: `Rent {value} in {cityName} {pageText}`,
     },
     body: {
-      title: `Rent a {value} Car in {city?.name} | Rental {value} UAE price {pageText}`,
-      description: `Rent {value} car {city?.name}, Best Deals to hire a {value}. You can rent a {value} online`,
-      h1: `{value} car for rent in {city?.name} {pageText}`,
+      title: `Rent a {value} Car in {cityName} {'|'} Rental {value} UAE price {pageText}`,
+      description: `Rent {value} car {cityName}, Best Deals to hire a {value}. You can rent a {value} online`,
+      h1: `{value} car for rent in {cityName} {pageText}`,
     },
     period: {
-      title: `{value} Car Rental Dubai, UAE | Best Rates | Hire cars per {value} {pageText}`,
-      description: `{value} car rental deals. Large vehicle fleet. Cheap {value} rent online in {city?.name}`,
-      h1: `{value} Car Rental {city?.name} {pageText}`,
+      title: `{value} Car Rental Dubai, UAE {'|'} Best Rates {'|'} Hire cars per {value} {pageText}`,
+      description: `{value} car rental deals. Large vehicle fleet. Cheap {value} rent online in {cityName}`,
+      h1: `{value} Car Rental {cityName} {pageText}`,
     },
   },
 
   car_seo: {
     leasing: {
-      title: `Lease {car?.title} in {
-              currentCity?.name
+      title: `Lease {car.title} in {
+              currentCityName
             } at AED {priceLeasing}/month`,
-      description: `Lease a {car?.title} at RentcarUAE for long term basis in {currentCity?.name}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
-      h1: `Monthly rental {car?.generation?.model_car?.name} in {currentCity?.name}`,
+      description: `Lease a {car.title} at RentcarUAE for long term basis in {currentCityName}.We feature quality vehicles for all occasions, including luxury cars, sports cars, and economy models.`,
+      h1: `Monthly rental {car.generation.model_car.name} in {currentCityName}`,
     },
     rent: {
-      title: `Rent {car?.generation?.model_car?.name} in {currentCity?.name}, UAE at AED {car?.price?.[0]?.price}/day & AED {car?.price?.[2]?.price}/month `,
-      description: `Rent {car?.title} in {currentCity?.name}, UAE for AED {car?.price?.[0]?.price}/day & AED {car?.price?.[2]?.price}/month.`,
-      h1: `Rent {car?.title} in {currentCity?.name}`,
+      title: `Rent {car.generation.model_car.name} in {currentCityName}, UAE at AED {car.price.[0].price}/day & AED {car.price.[2].price}/month `,
+      description: `Rent {car.title} in {currentCityName}, UAE for AED {car.price.[0].price}/day & AED {car.price.[2].price}/month.`,
+      h1: `Rent {car.title} in {currentCityName}`,
     },
   },
 
@@ -87,8 +84,9 @@ export default defineI18nLocale(async (locale) => ({
   },
 
   main_seo: {
-    title: `Rent a Car {currentCity.value?.name} | Cheap Car Rental {currentCity.value?.name} | Car Hire UAE`,
-    description: `Rent a car in {currentCity.value?.name} at the best rates for all cars. A  car rental company in {currentCity.value?.name} offers daily, weekly, and monthly car hire packages.`,
+    title:
+      "Rent a Car {cityName} {'|'} Cheap Car Rental {cityName} {'|'} Car Hire UAE",
+    description: `Rent a car in {cityName} at the best rates for all cars. A  car rental company in {cityName} offers daily, weekly, and monthly car hire packages.`,
   },
 
   form: {
@@ -147,7 +145,7 @@ export default defineI18nLocale(async (locale) => ({
     News: "News",
     Reviews: "Reviews",
     "Good to know": "Good to know",
-    pageTitle: "RentcarUAE Car Rental Blog | Your adventure begins here",
+    pageTitle: "RentcarUAE Car Rental Blog {'|'} Your adventure begins here",
     description:
       "All about car rental in Dubai. Reviews of new car manufacturers that can already be tested",
   },

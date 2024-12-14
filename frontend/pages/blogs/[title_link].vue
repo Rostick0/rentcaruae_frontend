@@ -43,9 +43,12 @@ const { data: posts, get: getPosts } = await useApi({
 });
 await getPosts();
 
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 const breadcrumbs = [
-  { name: "Home", link: "/" },
-  { name: "Blog", link: "/blogs" },
+  { name: t("home"), link: localePath("/") },
+  { name: t("blog"), link: localePath("/blogs") },
   {
     name: data.value?.title,
   },

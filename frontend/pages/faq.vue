@@ -705,19 +705,20 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 const breadcrumbs = [
   {
-    name: "Home",
-    link: "/",
+    name: t("Home"),
+    link: localePath("/"),
   },
   {
-    name: "FAQ",
+    name: t("FAQ"),
   },
 ];
 
 const config = useRuntimeConfig();
-
-const { t } = useI18n();
 
 useHead({
   htmlAttrs: {

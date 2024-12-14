@@ -37,6 +37,9 @@ const rent = computed(() =>
   route.fullPath.split("/")[2] === "leasing" ? "leasing" : "economy"
 );
 
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 const { currentExchangeRate, getConvertedPrice } = await useExchangeRate();
 
 const id = useRoute().params.id;
@@ -58,6 +61,8 @@ await get();
 
 const breadcrumbs = computed(() => [
   ...getCatalogBreadCrumbs({
+    t,
+    localePath,
     currentCity: currentCity.value,
     rent: rent.value,
     oneFilterType: {

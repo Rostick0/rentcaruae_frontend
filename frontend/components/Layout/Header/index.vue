@@ -121,7 +121,7 @@
                 fill="white"
               />
             </svg>
-            <span>Log in</span>
+            <span>{{ $t("Login") }}</span>
           </UiButton>
         </div>
         <div
@@ -239,7 +239,7 @@ import remove from "lodash/remove";
 // const { setLocale: setLocaleI18N } = await import("@vee-validate/i18n");
 import { setLocale as setLocaleI18N } from "@vee-validate/i18n";
 
-const { setLocale } = useI18n();
+const { locale, setLocale } = useI18n();
 
 const { open } = useModal({
   name: "auth-modal",
@@ -264,7 +264,8 @@ watch(
 const lang = ref({
   type: "select",
   name: "lang",
-  modelValue: langOptions[0],
+  modelValue:
+    langOptions.find((item) => item.id === locale.value) ?? langOptions[0],
   withoutResetInUnmounted: true,
 
   bind: {

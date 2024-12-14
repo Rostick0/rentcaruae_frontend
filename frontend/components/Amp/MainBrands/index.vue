@@ -2,7 +2,7 @@
   <div class="brands">
     <div class="brands__top">
       <h2 class="brands__title">Most wanted car brands in Dubai</h2>
-      <LinkMore name="All brands" to="/" />
+      <LinkMore name="All brands" :to="$localePath('/')" />
     </div>
     <AmpBrands :brands="brands" />
   </div>

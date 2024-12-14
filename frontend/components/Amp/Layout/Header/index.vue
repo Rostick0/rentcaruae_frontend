@@ -68,7 +68,7 @@
                   fill="white"
                 />
               </svg>
-              <span>Log in</span>
+              <span>{{ $t("Login") }}</span>
             </UiButton>
           </NuxtLink>
         </div>

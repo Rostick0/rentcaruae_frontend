@@ -95,9 +95,7 @@ const onAccepted = () => {
 
 onMounted(() => {
   setTimeout(() => {
-    if (acceptedCookie.value) {
-      return;
-    }
+    if (acceptedCookie.value) return;
 
     if (route.path !== "/privacy_policy") {
       open();

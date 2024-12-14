@@ -11,4 +11,8 @@ export const langOptions = [
     id: "de",
     value: "German",
   },
+  {
+    id: "ar",
+    value: "العربية",
+  },
 ];

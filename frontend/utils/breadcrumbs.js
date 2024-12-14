@@ -1,16 +1,22 @@
 import startCase from "lodash/startCase";
 
-export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
+export const getCatalogBreadCrumbs = ({
+  localePath,
+  t,
+  currentCity,
+  rent,
+  oneFilterType,
+}) => {
   const cityLink = convertNameToUrl(`/${currentCity?.name}`);
 
   const data = [
     {
-      name: "Home",
-      link: "/",
+      name: t("home"),
+      link: localePath("/"),
     },
     {
-      name: currentCity?.name,
-      link: cityLink + "/",
+      name: t(currentCity?.name),
+      link: localePath(cityLink + "/"),
     },
   ];
 
@@ -19,7 +25,7 @@ export const getCatalogBreadCrumbs = ({ currentCity, rent, oneFilterType }) => {
       ...data,
       {
         name: `Car ${rent} in ${currentCity?.name}`,
-        link: `${cityLink}/leasing/`,
+        link: localePath(`${cityLink}/leasing/`),
       },
     ];
 

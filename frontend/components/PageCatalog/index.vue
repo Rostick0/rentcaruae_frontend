@@ -35,6 +35,9 @@ import chunk from "lodash/chunk";
 import api from "~/api";
 import { getBodyImages } from "~/utils/bodyTypes";
 
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 const props = defineProps({
   paramsCar: {
     type: Object,
@@ -165,6 +168,8 @@ const pageText = computed(() =>
 
 const breadcrumbs = computed(() =>
   getCatalogBreadCrumbs({
+    localePath,
+    t,
     currentCity: currentCity.value,
     rent: rent,
     oneFilterType: oneFilterType.value,

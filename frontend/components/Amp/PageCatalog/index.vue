@@ -41,6 +41,9 @@ const config = useRuntimeConfig();
 const route = useRoute();
 const currentCity = useState("currentCity");
 
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 if (
   (route.params?.city &&
     currentCity.value?.name?.toLowerCase?.() !== route.params?.city) ||
@@ -128,6 +131,8 @@ const pageText = computed(() =>
 
 const breadcrumbs = computed(() =>
   getCatalogBreadCrumbs({
+    t,
+    localePath,
     currentCity: currentCity.value,
     rent: rent,
     oneFilterType: oneFilterType.value,

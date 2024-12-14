@@ -77,7 +77,7 @@ const { t } = useI18n();
 const breadcrumbs = [
   {
     name: t("home"),
-    link: "/",
+    link: localePath("/"),
   },
   {
     name: t("sitemapTitle"),

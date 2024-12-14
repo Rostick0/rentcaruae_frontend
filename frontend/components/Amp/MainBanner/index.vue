@@ -3,10 +3,8 @@
     <div class="container">
       <div class="banner__container">
         <div class="banner__left">
-          <h1 class="banner__title h1">Rent a car in Dubai</h1>
-          <h2 class="banner__subtitle">
-            Book a car for a day or a month without commission
-          </h2>
+          <h1 class="banner__title h1">{{ $t("rentCarInDubai") }}</h1>
+          <h2 class="banner__subtitle">{{ $t("bookCar") }}</h2>
           <AmpMainSearch class="banner__search" />
           <div class="banner__links">
             <NuxtLink
@@ -61,7 +59,7 @@ const links = computed(() => {
       name: "Luxury",
     },
   ].map(({ name }) => ({
-    name,
+    name: t(name),
     link: localePath(convertNameToUrl(link + name + "/")),
   }));
 });

@@ -1,8 +1,5 @@
 <template>
   <NuxtLayout>
-    {{
-      $t("nestedVariable", { user: { firstName: "Иван", lastName: "Иванов" } })
-    }}
     <NuxtPage />
   </NuxtLayout>
   <LazyModalPWA v-if="$device.isIos && !$pwa?.isPWAInstalled" />
@@ -28,7 +25,7 @@ defineRule("image", image);
 defineRule("min_value", min_value);
 defineRule("max_value", max_value);
 
-const { t, locale } = useI18n();
+const { t, locale } = useI18n({});
 
 configure({
   generateMessage: localize(locale.value, getMessagesValidate(t)),

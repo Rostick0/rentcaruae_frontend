@@ -77,11 +77,12 @@
 
 <script setup>
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 const breadcrumbs = [
   {
     name: t("home"),
-    link: "/",
+    link: localePath("/"),
   },
   {
     name: t("privacyPolicy"),

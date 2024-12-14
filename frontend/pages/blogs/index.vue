@@ -27,8 +27,12 @@
 const { isMobileOrTablet } = useDevice();
 
 const { t } = useI18n();
+const localePath = useLocalePath();
 
-const breadcrumbs = [{ name: t("home"), link: "/" }, { name: t("blog") }];
+const breadcrumbs = [
+  { name: t("home"), link: localePath("/") },
+  { name: t("blog") },
+];
 
 const config = useRuntimeConfig();
 const route = useRoute();

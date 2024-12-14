@@ -19,7 +19,13 @@
 </template>
 
 <script setup>
-const breadcrumbs = [{ name: "Home", link: "/" }, { name: "Blog" }];
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const breadcrumbs = [
+  { name: t("home"), link: localePath("/") },
+  { name: t("blog") },
+];
 
 const { filters } = useFilter({
   withQueryParams: true,

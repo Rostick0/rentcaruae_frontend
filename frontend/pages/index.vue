@@ -9,7 +9,9 @@
           :cars="economyCars"
           :title="$t('economyCars')"
           :linkText="$t('allEconomyCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/economy`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/economy`))
+          "
           isPreloadFirst
         />
         <LazyCarCardShortList
@@ -17,7 +19,9 @@
           :cars="vanCars"
           :title="$t('vanCars')"
           :linkText="$t('allVanCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/van`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/van`))
+          "
           isPreloadFirst
         />
         <LazyCarCardShortList
@@ -25,7 +29,9 @@
           :cars="suvCars"
           :title="$t('SUVForRent')"
           :linkText="$t('allSUV')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/suv`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/suv`))
+          "
           isPreloadFirst
         />
         <LazyCarCardShortList
@@ -33,28 +39,38 @@
           :cars="cabrioCars"
           :title="$t('cabrioCars')"
           :linkText="$t('allCabrioCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/cabrio`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/cabrio`))
+          "
         />
         <LazyCarCardShortList
           v-if="businessCars?.length"
           :cars="businessCars"
           :title="$t('businessCars')"
           :linkText="$t('allBusinessCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/business`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/business`))
+          "
         />
         <LazyCarCardShortList
           v-if="luxuryCars?.length"
           :cars="luxuryCars"
           :title="$t('luxuryCars')"
           :linkText="$t('allLuxuryCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/luxury`)"
+          :link="
+            $localePath(convertNameToUrl(`/${currentCity?.name}/type/luxury`))
+          "
         />
         <LazyCarCardShortList
           v-if="electroCars?.length"
           :cars="electroCars"
           :title="$t('electroCars')"
           :linkText="$t('allElectroCars')"
-          :link="convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)"
+          :link="
+            $localePath(
+              convertNameToUrl(`/${currentCity?.name}/type/electric_(ev)`)
+            )
+          "
         />
       </div>
       <div class="car-posts">
@@ -73,6 +89,8 @@
 
 <script setup>
 const currentCity = useState("currentCity");
+
+const { t } = useI18n();
 
 const config = useRuntimeConfig();
 
@@ -156,8 +174,12 @@ const { data: posts, get: getPosts } = await useApi({
 });
 await getPosts();
 
-const title = t("main_seo.title");
-const description = t("main_seo.description");
+const title = t("main_seo.title", {
+  cityName: currentCity.value?.name,
+});
+const description = t("main_seo.description", {
+  cityName: currentCity.value?.name,
+});
 
 useSeoMeta({
   title,
