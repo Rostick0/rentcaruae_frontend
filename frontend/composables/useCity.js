@@ -28,7 +28,6 @@ export default async () => {
       ...findedCity,
       name: t(`cities.${findedCity?.name}`),
     };
-    console.log(currentCity.value);
 
     api.cities.getAll().then((res) => {
       citiesAll.value = res?.data;

@@ -174,8 +174,6 @@ const { data: posts, get: getPosts } = await useApi({
 });
 await getPosts();
 
-console.log(currentCity.value?.name);
-
 const title = t("main_seo.title", {
   cityName: currentCity.value?.name,
 });

@@ -7,51 +7,51 @@
       <p>Discover the best car rental service in UAE with RentCarUAE</p>
       <div class="faq-list">
         <div class="faq-item">
-          <h2 class="faq-item__title text-ui">{{ $t("faq.title1") }}</h2>
+          <h2 class="faq-item__title text-ui">{{ $t("faq.title_1") }}</h2>
           <div class="faq-item__content">
             <UiSpoiler>
-              <template #title>{{ $t("faq.question1") }}</template>
+              <template #title>{{ $t("faq.question_1") }}</template>
               <template #content>
                 <p>
-                  {{ $t("faq.answer1.0") }}
+                  {{ $t("faq.answer_1_1") }}
                 </p>
                 <br />
                 <figure>
                   <figcaption class="text-information__figcaption">
-                    {{ $t("faq.answer1.1") }}
+                    {{ $t("faq.answer_1_2") }}
                   </figcaption>
                   <ul class="text-information__ul">
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.2") }}
+                      {{ $t("faq.answer_1_3") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.3") }}
+                      {{ $t("faq.answer_1_4") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.4") }}
+                      {{ $t("faq.answer_1_5") }}
                     </li>
                   </ul>
                 </figure>
                 <br />
                 <figure>
                   <figcaption class="text-information__figcaption">
-                    {{ $t("faq.answer1.5") }}
+                    {{ $t("faq.answer_1_6") }}
                   </figcaption>
                   <ul class="text-information__ul">
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.6") }}
+                      {{ $t("faq.answer_1_7") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.7") }}
+                      {{ $t("faq.answer_1_8") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.8") }}
+                      {{ $t("faq.answer_1_9") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.9") }}
+                      {{ $t("faq.answer_1_10") }}
                     </li>
                     <li class="text-information__li">
-                      {{ $t("faq.answer1.10") }}
+                      {{ $t("faq.answer_1_11") }}
                     </li>
                   </ul>
                 </figure>
@@ -59,55 +59,55 @@
             </UiSpoiler>
             <UiSpoiler>
               <template #title>
-                {{ $t("faq.question2") }}
+                {{ $t("faq.question_2") }}
               </template>
               <template #content>
                 <p>
-                  {{ $t("faq.answer2") }}
+                  {{ $t("faq.answer_2_1") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
               <template #title>
-                {{ $t("faq.question3") }}
+                {{ $t("faq.question_3") }}
               </template>
               <template #content>
                 <p>
-                  {{ $t("faq.answer3") }}
+                  {{ $t("faq.answer_3_1") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
               <template #title>
-                {{ $t("faq.question4") }}
+                {{ $t("faq.question_4") }}
               </template>
               <template #content>
                 <p>
-                  {{ $t("faq.answer4") }}
+                  {{ $t("faq.answer_4_1") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
               <template #title>
-                {{ $t("faq.question5") }}
+                {{ $t("faq.question_5") }}
               </template>
               <template #content>
                 <p>
-                  {{ $t("faq.question5") }}
+                  {{ $t("faq.answer_5_1") }}
                 </p>
               </template>
             </UiSpoiler>
             <UiSpoiler>
               <template #title>
-                {{ $t("faq.question6") }}
+                {{ $t("faq.question_6") }}
               </template>
               <template #content>
                 <p>
-                  {{ $t("faq.answer6.0") }}
+                  {{ $t("faq.answer_6_1") }}
                 </p>
                 <br />
                 <p>
-                  {{ $t("faq.answer6.1") }}
+                  {{ $t("faq.answer_6_2") }}
                 </p>
               </template>
             </UiSpoiler>
