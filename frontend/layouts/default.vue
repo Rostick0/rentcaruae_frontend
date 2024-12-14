@@ -4,18 +4,16 @@
     <main class="main">
       <slot />
     </main>
-    <LazyNuxtLazyHydrate whenVisible>
-      <LazyLayoutFooter>
-        <template #joinButton>
-          <UiButton
-            class="wrapper__footer_join"
-            @click="open(), (authModalState = 'register')"
-            variant="outlined"
-            >{{ $t("joinUs") }}</UiButton
-          >
-        </template>
-      </LazyLayoutFooter>
-    </LazyNuxtLazyHydrate>
+    <LazyLayoutFooter>
+      <template #joinButton>
+        <UiButton
+          class="wrapper__footer_join"
+          @click="open(), (authModalState = 'register')"
+          variant="outlined"
+          >{{ $t("joinUs") }}</UiButton
+        >
+      </template>
+    </LazyLayoutFooter>
     <LazyModalCookie />
     <LazyAuthModal />
   </div>
